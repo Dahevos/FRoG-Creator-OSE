@@ -1,0 +1,6 @@
+Ligne 18: La classe RichTextLib.RichTextBox du contrôle txtChat n'est pas une classe de contrôle chargée.
+Ligne 24: Le nom de la propriété _ExtentX dans txtChat est incorrect.
+Ligne 25: Le nom de la propriété _ExtentY dans txtChat est incorrect.
+Ligne 26: Le nom de la propriété _Version dans txtChat est incorrect.
+Ligne 28: Le nom de la propriété ReadOnly dans txtChat est incorrect.
+Ligne 30: Le nom de la propriété TextRTF dans txtChat est incorrect.

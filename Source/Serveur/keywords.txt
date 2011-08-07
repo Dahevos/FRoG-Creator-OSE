@@ -1,0 +1,25 @@
+ANNULER LE CHOIX
+If
+Then
+Else
+Sub
+End
+Goto
+Do
+Loop
+Print
+Save
+Dim
+Public
+Private
+Function
+Get
+Set
+Let
+String
+Long
+Variant
+Integer
+Case
+Select
+plop
