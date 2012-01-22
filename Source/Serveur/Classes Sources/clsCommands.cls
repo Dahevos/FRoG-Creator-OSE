@@ -466,11 +466,11 @@ Sub SetPlayerY(ByVal Index As Long, ByVal Y As Long)
 End Sub
 
 Function GetPlayerSex(ByVal Index As Long) As Byte
-    GetPlayerSex = Player(Index).Char(Player(Index).CharNum).SEX
+    GetPlayerSex = Player(Index).Char(Player(Index).CharNum).Sex
 End Function
 
-Sub SetPlayerSex(ByVal Index As Long, ByVal SEX As Byte)
-    Player(Index).Char(Player(Index).CharNum).SEX = SEX
+Sub SetPlayerSex(ByVal Index As Long, ByVal Sex As Byte)
+    Player(Index).Char(Player(Index).CharNum).Sex = Sex
 End Sub
 
 Function GetPlayerDir(ByVal Index As Long) As Long
@@ -871,7 +871,7 @@ Dim i As Long
     If IsPlaying(Index) = False Or ItemNum <= 0 Or ItemNum > MAX_ITEMS Then Exit Function
            
     If item(ItemNum).Type = ITEM_TYPE_CURRENCY Or item(ItemNum).Empilable <> 0 Then
-        ' If currency then check to see if they already have an instance of the item and add it to that
+        ' If currency then check to see if they already have an guildSoloView of the item and add it to that
         For i = 1 To MAX_INV
             If GetPlayerInvItemNum(Index, i) = ItemNum Then
                 FindOpenInvSlot = i
@@ -1179,7 +1179,7 @@ Sub ChangeClasse(ByVal Index As Long, ByVal Classes As Long)
 
 If Val(Classes) < 0 Or Val(Classes) > Max_Classes Then Exit Sub
 
-If Player(Index).Char(Player(Index).CharNum).SEX = 0 Then
+If Player(Index).Char(Player(Index).CharNum).Sex = 0 Then
     If GetPlayerSprite(Index) <> Classe(GetPlayerClass(Index)).MaleSprite Then
         Call SetPlayerSprite(Index, Classe(Classes).MaleSprite)
     End If

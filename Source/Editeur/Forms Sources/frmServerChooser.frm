@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
 Begin VB.Form frmServerChooser 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Sélection du Serveur"
@@ -40,13 +39,6 @@ Begin VB.Form frmServerChooser
       Top             =   2160
       Width           =   975
    End
-   Begin InetCtlsObjects.Inet Inet 
-      Left            =   480
-      Top             =   1920
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      _Version        =   393216
-   End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Height          =   375
@@ -76,8 +68,8 @@ Public Extension As String
         GAME_IP = ReadINI("SERVER" & lstServers.ListIndex, "IP", App.Path & "\Config\Serveur.ini")
         GAME_PORT = Val(ReadINI("SERVER" & lstServers.ListIndex, "PORT", App.Path & "\Config\Serveur.ini"))
         Me.Caption = "Liste de Serveur - Vérification de l'état du Serveurs..."
-        If CheckServerStatus = False Then Me.Caption = "Liste de Serveur - Serveur Hors-Ligne!": cmdOk.Enabled = True: Exit Sub
-        cmdOk.Enabled = True
+        If CheckServerStatus = False Then Me.Caption = "Liste de Serveur - Serveur Hors-Ligne!": CmdOk.Enabled = True: Exit Sub
+        CmdOk.Enabled = True
         Me.Caption = "Liste de Serveur - Connecté au Serveur!"
         frmMirage.Socket.Close
         frmMirage.Socket.RemoteHost = GAME_IP
@@ -96,7 +88,7 @@ Public Extension As String
         CHECK_WAIT = False
         lstServers.Clear
        
-        cmdOk.Enabled = False
+        CmdOk.Enabled = False
         Me.Caption = "Liste de Serveur - Vérification de l'état des Serveurs..."
         Do Until c = 1
             DoEvents
@@ -112,7 +104,7 @@ Public Extension As String
             End If
             Sleep 1
         Loop
-        cmdOk.Enabled = True
+        CmdOk.Enabled = True
         Me.Caption = "Liste de Serveur - Vérification Terminée!"
         
         Call WriteINI("UPDATER", "exename", App.EXEName, App.Path & "\Config\Updater.ini")
@@ -123,7 +115,7 @@ Public Extension As String
         frmMirage.Socket.RemoteHost = GAME_IP
         frmMirage.Socket.RemotePort = GAME_PORT
 
-        cmdOk.Enabled = False
+        CmdOk.Enabled = False
         CheckServerStatus = False
        
         If ConnectToServer Then
@@ -136,5 +128,5 @@ Private Sub Label1_Click()
 End Sub
 
 Private Sub lstServers_DblClick()
-    If cmdOk.Enabled = True Then Call cmdOk_Click
+    If CmdOk.Enabled = True Then Call cmdOk_Click
 End Sub

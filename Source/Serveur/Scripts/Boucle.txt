@@ -1,0 +1,51 @@
+Sub Boucle()
+' Script s'execute toute les 50 Ms
+' Boucle script tout les secondes 
+dim alea
+dim sec
+dim mp
+dim i
+
+mp = int(GetVar("Data.ini", "MAX", "MAX_PLAYERS"))
+i = int(GetVar("Data.ini", "SCRIPT", "for"))
+sec = int(GetVar("Data.ini", "SCRIPT", "Sec"))
+
+'message toute les 30 secondes
+if sec = 600 then
+	alea = int(rnd * 20)
+	if alea = 2 then
+		call GlobalMsg("Flèche de direction - Bouge le personnage.", 10)
+	elseif alea = 4 then
+		call GlobalMsg("Enter - Utilisé pour prendre des objets sur la carte, et pour chatter.", 10)
+	elseif alea = 6 then	
+		call GlobalMsg("Shift - Utiliser celui de gauche pour courir.", 10)
+	elseif alea = 8 then
+		call GlobalMsg("Ctrl - Cette touche permet d'attaquer.", 10)
+	elseif alea = 10 then
+		call GlobalMsg("Insert - Lorsque vous sélectionnez une cible et un sort, Insert permet de le lancer.", 10)
+	elseif alea = 12 then
+		call GlobalMsg("F2 - Ouvre le panneau d'aide aux joueurs.", 10)
+	elseif alea = 14 then
+		call GlobalMsg("F11 - Cela permet de prendre un screenshot de votre écran.", 10)
+	elseif alea = 16 then
+		call GlobalMsg("F12 - Cela permet de prendre un screenshot de votre interface de jeu seulement.", 10)
+	elseif alea = 18 then
+		call GlobalMsg("End - Vous faites tourner votre personnage sur lui-même.", 10)
+	end if
+	sec = 0
+else
+	sec = sec + 1
+end if
+Call PutVar("Data.ini", "SCRIPT", "Sec", CStr(sec))
+
+'Execute un script si le joueur est connecté.
+if IsPlaying(i) then
+	'Si le joueur avec l'index i est connecter sa execute le script ici.
+end if
+
+i = i + 1
+if i > mp then
+i = 0
+end if
+Call PutVar("Data.ini", "SCRIPT", "for", CStr(i))
+End Sub

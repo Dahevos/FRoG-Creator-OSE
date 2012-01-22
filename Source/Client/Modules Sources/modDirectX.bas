@@ -46,6 +46,9 @@ Public DD_ArrowAnim As DirectDrawSurface7
 Public DDSD_Outil As DDSURFACEDESC2
 Public DD_OutilSurf As DirectDrawSurface7
 
+Public DDSD_MiniMap As DDSURFACEDESC2
+Public DD_MiniMap As DirectDrawSurface7
+
 'PAPERDOLL
 
 Public DD_PaperDollSurf() As DirectDrawSurface7
@@ -207,7 +210,7 @@ Dim i As Long
 
     ' Check for files existing
     'If Not FileExiste("\GFX\sprites.png") Or Not
-    If Not FileExiste("\GFX\items.png") Or Not FileExiste("\GFX\emoticons.png") Or Not FileExiste("\GFX\Outils.png") Or Not FileExiste("\GFX\arrows.png") Then Call MsgBox("Plusieur fichier manquants", vbOKOnly, GAME_NAME): Call GameDestroy
+    If Not FileExiste("\GFX\items.png") Or Not FileExiste("\GFX\emoticons.png") Or Not FileExiste("\GFX\Outils.png") Or Not FileExiste("\GFX\minimap.png") Or Not FileExiste("\GFX\arrows.png") Then Call MsgBox("Plusieur fichier manquants", vbOKOnly, GAME_NAME): Call GameDestroy
     
     ' Set the key for masks
     key.low = 0
@@ -224,6 +227,11 @@ Dim i As Long
     DDSD_Outil.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
     Set DD_OutilSurf = LoadImage(App.Path & "\GFX\Outils.png", DD, DDSD_Outil)
     SetMaskColorFromPixel DD_OutilSurf, 0, 0
+    
+    DDSD_MiniMap.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_MiniMap.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_MiniMap = LoadImage(App.Path & "\GFX\minimap.png", DD, DDSD_MiniMap)
+    SetMaskColorFromPixel DD_MiniMap, 0, 0
     
     For i = 0 To LoadMaxSprite()
         DDSD_Character(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -599,8 +607,8 @@ If GetPlayerExp(Index) <> 0 Then
     DrawTextInter TexthDC, 38, 79, Trim$(GetPlayerExp(Index) & " / " & nelvl)
     Call DD_BackBuffer.ReleaseDC(TexthDC)
 End If
-
 End Sub
+
 
 Sub BltSpell(ByVal Index As Long)
 Dim x As Long, y As Long, i As Long

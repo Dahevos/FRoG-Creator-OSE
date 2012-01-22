@@ -532,14 +532,14 @@ Dim z As Long
         Player(n).HP = Val(Parse(4))
         Player(n).MaxMp = Val(Parse(5))
         Player(n).MP = Val(Parse(6))
-        With frmMirage
-            For i = 0 To 2
-                If Val(.lblPPName(i).Tag) = n Then
-                    .shpPPLife(i).Width = Player(n).HP / Player(n).MaxHp * .backPPLife(i).Width
-                    .shpPPMana(i).Width = Player(n).MP / Player(n).MaxMp * .backPPMana(i).Width
-                End If
-            Next
-        End With
+        'With frmMirage
+        '    For i = 0 To 2
+        '        If Val(.lblPPName(i).Tag) = n Then
+        '            .shpPPLife(i).Width = Player(n).HP / Player(n).MaxHp * .backPPLife(i).Width
+        '            .shpPPMana(i).Width = Player(n).MP / Player(n).MaxMp * .backPPMana(i).Width
+        '        End If
+        '    Next
+        'End With
         Exit Sub
     End If
     If LCase$(Parse(0)) = "partyindex" Then
@@ -917,6 +917,9 @@ mont:
             .TranSup = Val(Parse(n + 16))
             .Fog = Val(Parse(n + 17))
             .FogAlpha = Val(Parse(n + 18))
+            .guildSoloView = Parse(n + 19)
+            .petView = Parse(n + 20)
+            .traversable = Parse(n + 21)
         End With
         
         GettingMap = True

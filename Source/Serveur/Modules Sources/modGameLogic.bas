@@ -117,7 +117,7 @@ Dim i As Long
     If ItemNum <= 0 Or ItemNum > MAX_ITEMS Then Exit Function
     
     If item(ItemNum).Type = ITEM_TYPE_CURRENCY Or item(ItemNum).Empilable <> 0 Then
-        ' If currency then check to see if they already have an instance of the item and add it to that
+        ' If currency then check to see if they already have an guildSoloView of the item and add it to that
         For i = 1 To MAX_INV
             If GetPlayerInvItemNum(Index, i) = ItemNum Then FindOpenInvSlot = i: Exit Function
         Next i
@@ -1096,6 +1096,9 @@ If IsPlaying(Attacker) Then
                             Call QueteMsg(Attacker, Trim$(quete(Npc(NpcNum).QueteNum).nom) & " : " & Trim$(quete(Npc(NpcNum).QueteNum).description))
                         End If
                     End If
+                ElseIf Npc(NpcNum).Behavior = NPC_BEHAVIOR_SHOPKEEPER Then
+                    Call QueteMsg(Attacker, Shop(Npc(NpcNum).QueteNum).JoinSay)
+                    Call SendTrade(Attacker, Npc(NpcNum).QueteNum)
                 ElseIf Npc(NpcNum).Behavior = NPC_BEHAVIOR_SCRIPT Then
                     If Val(Scripting) = 1 Then
                         MyScript.ExecuteStatement "Scripts\Main.txt", "ScriptedTile " & Attacker & "," & (Npc(NpcNum).QueteNum)

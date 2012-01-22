@@ -1707,6 +1707,23 @@ Begin VB.Form frmTrade
       Top             =   1005
       Width           =   480
    End
+   Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
+      Caption         =   $"frmTrade.frx":C83FE
+      Height          =   615
+      Left            =   3960
+      TabIndex        =   95
+      Top             =   5040
+      Width           =   3735
+   End
+   Begin VB.Label lblVendre 
+      BackStyle       =   0  'Transparent
+      Height          =   255
+      Left            =   4920
+      TabIndex        =   94
+      Top             =   4800
+      Width           =   735
+   End
    Begin VB.Label picFixItems 
       BackStyle       =   0  'Transparent
       Height          =   300
@@ -2305,6 +2322,18 @@ For i = 1 To 6
 Next i
 
     If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("traderequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & SEP_CHAR & END_CHAR)
+End Sub
+
+Private Sub lblVendre_Click()
+Dim i As Long
+Dim Selected As Long
+
+For i = 1 To 6
+    If Trade(i).Selected = YES Then Selected = i: Exit For
+Next i
+
+    If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("vendrerequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & SEP_CHAR & END_CHAR)
+
 End Sub
 
 Private Sub picFixItems_Click()

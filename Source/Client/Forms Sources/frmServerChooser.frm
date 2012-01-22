@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{48E59290-9880-11CF-9754-00AA00C00908}#1.0#0"; "MSINET.OCX"
 Begin VB.Form frmServerChooser 
    BorderStyle     =   0  'None
    Caption         =   "Sélection du Serveur"
@@ -47,13 +46,6 @@ Begin VB.Form frmServerChooser
       TabIndex        =   0
       Top             =   2160
       Width           =   1335
-   End
-   Begin InetCtlsObjects.Inet Inet 
-      Left            =   60
-      Top             =   300
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      _Version        =   393216
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent

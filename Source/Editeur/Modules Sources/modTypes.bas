@@ -416,6 +416,9 @@ Type MapRec
     TranSup As Byte
     Fog As Integer
     FogAlpha As Byte
+    guildSoloView As Byte
+    petView As Byte
+    traversable As Byte
 End Type
 
 Type RecompRec
@@ -1171,6 +1174,9 @@ For i = 0 To 5
     TempMap(i).TranSup = 0
     TempMap(i).Fog = 0
     TempMap(i).FogAlpha = 0
+    TempMap(i).guildSoloView = 0
+    TempMap(i).petView = 0
+    TempMap(i).traversable = 0
 Next i
 End Sub
 
@@ -1244,6 +1250,9 @@ Dim y As Long
     TempMap(Index).TranSup = 0
     TempMap(Index).Fog = 0
     TempMap(Index).FogAlpha = 0
+    TempMap(Index).guildSoloView = 0
+    TempMap(Index).petView = 0
+    TempMap(Index).traversable = 0
 End Sub
 
 Sub VidercttMap(ByVal MapNum As Long)
@@ -1305,6 +1314,9 @@ i = MapNum
     Map(i).TranSup = 0
     Map(i).Fog = 0
     Map(i).FogAlpha = 0
+    Map(i).guildSoloView = 0
+    Map(i).petView = 0
+    Map(i).traversable = 0
 Call ClearMapItems
 Call ClearMapNpcs
 End Sub
@@ -1368,6 +1380,9 @@ i = MapNum
     Map(i).TranSup = 0
     Map(i).Fog = 0
     Map(i).FogAlpha = 0
+    Map(i).guildSoloView = 0
+    Map(i).petView = 0
+    Map(i).traversable = 0
 End Sub
 
 Sub ClearMapItems()

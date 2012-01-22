@@ -19,6 +19,23 @@ Begin VB.Form frmMainMenu
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   639
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Cmd640 
+      Caption         =   "640x480"
+      Height          =   255
+      Left            =   120
+      TabIndex        =   27
+      Top             =   5760
+      Width           =   1095
+   End
+   Begin VB.CommandButton Cmd800 
+      Caption         =   "Original"
+      Enabled         =   0   'False
+      Height          =   255
+      Left            =   120
+      TabIndex        =   26
+      Top             =   5520
+      Width           =   1095
+   End
    Begin MSComctlLib.ImageList imgl 
       Left            =   9000
       Top             =   0
@@ -469,6 +486,20 @@ Private Sub Check1_Click()
 If Check1.Value = "0" Then StopMidi Else If FileExiste("Music\mainmenu.mid") Then Call PlayMidi("mainmenu.mid") Else Call PlayMidi("mainmenu.mp3")
 
 Call WriteINI("CONFIG", "Music", STR$(Check1.Value), App.Path & "\Config\Client.ini")
+End Sub
+
+Private Sub Cmd640_Click()
+    notebook = True
+    Cmd640.Enabled = False
+    Cmd800.Enabled = True
+    Call notebook_change
+End Sub
+
+Private Sub Cmd800_Click()
+    notebook = False
+    Cmd640.Enabled = True
+    Cmd800.Enabled = False
+    Call notebook_change
 End Sub
 
 Private Sub Form_GotFocus()

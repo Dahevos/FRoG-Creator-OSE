@@ -269,7 +269,7 @@ Type PlayerRec
     
     'FIN PAPERDOLL
     
-    
+    vendeur As Long
 End Type
 
 Type PlayerTradeRec
@@ -409,6 +409,9 @@ Type MapRec
     TranSup As Byte
     Fog As Integer
     FogAlpha As Byte
+    guildSoloView As Byte
+    petView As Byte
+    traversable As Byte
 End Type
 
 Type RecompRec
@@ -806,6 +809,8 @@ With Player(Index)
         .Char(i).pet.X = 0
         .Char(i).pet.Y = 0
         
+        .Char(i).vendeur = 0
+        
         .Char(i).QueteEnCour = 0
         .Char(i).Quetep.Data1 = 0
         .Char(i).Quetep.Data2 = 0
@@ -1137,6 +1142,9 @@ With Map(MapNum)
     .TranSup = 0
     .Fog = 0
     .FogAlpha = 0
+    .guildSoloView = 0
+    .petView = 0
+    .traversable = 0
     ' Reset the values for if a player is on the map or not
     PlayersOnMap(MapNum) = NO
 End With

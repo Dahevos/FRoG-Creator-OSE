@@ -816,24 +816,27 @@ mont:
     If LCase$(Parse(0)) = "mapdatas" Then
         n = 1
         MapNumS = Val(Parse(1))
-        Map(Val(Parse(1))).name = Parse(n + 1)
-        Map(Val(Parse(1))).Revision = Val(Parse(n + 2))
-        Map(Val(Parse(1))).Moral = Val(Parse(n + 3))
-        Map(Val(Parse(1))).Up = Val(Parse(n + 4))
-        Map(Val(Parse(1))).Down = Val(Parse(n + 5))
-        Map(Val(Parse(1))).Left = Val(Parse(n + 6))
-        Map(Val(Parse(1))).Right = Val(Parse(n + 7))
-        Map(Val(Parse(1))).Music = Parse(n + 8)
-        Map(Val(Parse(1))).BootMap = Val(Parse(n + 9))
-        Map(Val(Parse(1))).BootX = Val(Parse(n + 10))
-        Map(Val(Parse(1))).BootY = Val(Parse(n + 11))
-        Map(Val(Parse(1))).Indoors = Val(Parse(n + 12))
-        Map(Val(Parse(1))).PanoInf = Parse(n + 13)
-        Map(Val(Parse(1))).TranInf = Val(Parse(n + 14))
-        Map(Val(Parse(1))).PanoSup = Parse(n + 15)
-        Map(Val(Parse(1))).TranSup = Val(Parse(n + 16))
-        Map(Val(Parse(1))).Fog = Val(Parse(n + 17))
-        Map(Val(Parse(1))).FogAlpha = Val(Parse(n + 18))
+        Map(MapNumS).name = Parse(n + 1)
+        Map(MapNumS).Revision = Val(Parse(n + 2))
+        Map(MapNumS).Moral = Val(Parse(n + 3))
+        Map(MapNumS).Up = Val(Parse(n + 4))
+        Map(MapNumS).Down = Val(Parse(n + 5))
+        Map(MapNumS).Left = Val(Parse(n + 6))
+        Map(MapNumS).Right = Val(Parse(n + 7))
+        Map(MapNumS).Music = Parse(n + 8)
+        Map(MapNumS).BootMap = Val(Parse(n + 9))
+        Map(MapNumS).BootX = Val(Parse(n + 10))
+        Map(MapNumS).BootY = Val(Parse(n + 11))
+        Map(MapNumS).Indoors = Val(Parse(n + 12))
+        Map(MapNumS).PanoInf = Parse(n + 13)
+        Map(MapNumS).TranInf = Val(Parse(n + 14))
+        Map(MapNumS).PanoSup = Parse(n + 15)
+        Map(MapNumS).TranSup = Val(Parse(n + 16))
+        Map(MapNumS).Fog = Val(Parse(n + 17))
+        Map(MapNumS).FogAlpha = Val(Parse(n + 18))
+        Map(MapNumS).guildSoloView = Parse(n + 19)
+        Map(MapNumS).petView = Parse(n + 20)
+        Map(MapNumS).traversable = Parse(n + 21)
         Exit Sub
     End If
     
@@ -2265,7 +2268,7 @@ Dim y As Long
         Packet = Packet & Map(Player(MyIndex).Map).Npcs(x).Imobile & SEP_CHAR
         DoEvents
     Next x
-    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR
+    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR & Map(Player(MyIndex).Map).guildSoloView & SEP_CHAR & Map(Player(MyIndex).Map).petView & SEP_CHAR & Map(Player(MyIndex).Map).traversable & SEP_CHAR
     
     Packet = Packet & END_CHAR
     DoEvents
@@ -2310,7 +2313,7 @@ Dim y As Long
         Packet = Packet & Map(MapNum).Npcs(x).Imobile & SEP_CHAR
         DoEvents
     Next x
-    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR
+    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR & Map(Player(MyIndex).Map).guildSoloView & SEP_CHAR & Map(Player(MyIndex).Map).petView & SEP_CHAR
     
     Packet = Packet & END_CHAR
     DoEvents

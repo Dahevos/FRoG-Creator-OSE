@@ -142,6 +142,8 @@ Public drx As Long
 Public dry As Long
 Public dr As Boolean
 
+Public cychat As Integer
+
 'Pour les couleurs personalisables
 Public AccModo As Long
 Public AccMapeur As Long
@@ -699,18 +701,31 @@ rest:
                              
              For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) And Player(i).PartyIndex = Player(MyIndex).PartyIndex Then
-                    Call BltPlayerOmbre(i)
-                    Call BltPlayerBar(i)
+                    If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                        If Player(MyIndex).Guild = Player(i).Guild Then
+                            Call BltPlayerOmbre(i)
+                            Call BltPlayerBar(i)
+                        End If
+                    Else
+                        Call BltPlayerOmbre(i)
+                            Call BltPlayerBar(i)
+                    End If
                 End If
             Next i
              If AccOpt.PlayBar And Player(MyIndex).PartyIndex > 0 Then
                  For i = 1 To MAX_PLAYERS
                      If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) And Player(i).PartyIndex = Player(MyIndex).PartyIndex Then
-                         Call BltPlayerBar(i)
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Player(MyIndex).Guild = Player(i).Guild Then
+                                Call BltPlayerBar(i)
+                            End If
+                        Else
+                            Call BltPlayerBar(i)
+                        End If
                      End If
                  Next i
              ElseIf AccOpt.PlayBar Then
-                 Call BltPlayerBar(MyIndex)
+                    Call BltPlayerBar(MyIndex)
              End If
              
              ' Blit out the sprite change attribute
@@ -736,9 +751,22 @@ rest:
              ' Blit out players
              For i = 1 To MAX_PLAYERS
                  If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) Then
-                     Call BltPlayer(i)
+                     If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                        If Player(MyIndex).Guild = Player(i).Guild Then
+                            Call BltPlayer(i)
+                        End If
+                    Else
+                        Call BltPlayer(i)
+                    End If
                      Call BltArrow(i)
-                     If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                     If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                        If Player(MyIndex).Guild = Player(i).Guild Then
+                            If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                        End If
+                    Else
+                        If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                    End If
+                    
                  End If
              Next i
 
@@ -750,7 +778,15 @@ rest:
              For i = 1 To MAX_PLAYERS
                  If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) Then
                      'Ajout du haut du personnage pour le 32*64
-                     If PIC_PL > 1 Then Call BltPlayerTop(i)
+                     If PIC_PL > 1 Then
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Player(MyIndex).Guild = Player(i).Guild Then
+                                Call BltPlayerTop(i)
+                            End If
+                        Else
+                            Call BltPlayerTop(i)
+                        End If
+                     End If
                      
                      Call BltBlood(i, PIC_X, PIC_Y, 40)
                      ' Call BltBlood(i) ferais aussi l'affaire car les autres paramètres peuvent être modifier selon le blood.png.
@@ -779,8 +815,15 @@ rest:
                 TexthDC = DD_BackBuffer.GetDC
                 For i = 1 To MAX_PLAYERS
                     If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) Then
-                        Call BltPlayerGuildName(i)
-                        Call BltPlayerName(i)
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Player(MyIndex).Guild = Player(i).Guild Then
+                                Call BltPlayerGuildName(i)
+                                Call BltPlayerName(i)
+                            End If
+                        Else
+                            Call BltPlayerGuildName(i)
+                            Call BltPlayerName(i)
+                        End If
                     End If
                 Next i
                 Call DD_BackBuffer.ReleaseDC(TexthDC)
@@ -814,26 +857,30 @@ rest:
         ' Lock the backbuffer so we can draw text and names
         TexthDC = DD_BackBuffer.GetDC
         If Not GettingMap Then
-            
+            If notebook = True Then
+                cychat = 200
+            Else
+                cychat = 0
+            End If
             If AccOpt.NpcDamage Then
                 If NPCDmgDamage > 0 Then
                     If Not AccOpt.PlayName Then
-                        If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 22 - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
+                        If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 22 - cychat - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
                     Else
                         If GetPlayerGuild(MyIndex) <> vbNullString Then
-                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 42 - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
+                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 42 - cychat - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
                         Else
-                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 22 - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
+                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, ((Len(NPCDmgDamage)) \ 2) * 3 + NewX + sx, NewY - 22 - cychat - ii + sx, NPCDmgDamage, QBColor(IIf(NPCDmgAddRem = 0, BrightRed, BrightGreen))) Else NPCDmgAddRem = 0
                         End If
                     End If
                 Else
                     If Not AccOpt.PlayName Then
-                        If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 22 - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
+                        If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 22 - cychat - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
                     Else
                         If GetPlayerGuild(MyIndex) <> vbNullString Then
-                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 42 - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
+                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 42 - cychat - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
                         Else
-                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 22 - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
+                            If Tick < NPCDmgTime + 2000 Then Call DrawText(TexthDC, 6 + NewX + sx, NewY - 22 - cychat - ii + sx, "Raté", QBColor(BrightBlue)) Else NPCDmgAddRem = 0
                         End If
                     End If
                 End If
@@ -891,12 +938,12 @@ rest:
             For i = 1 To MAX_BLT_LINE
                 If BattlePMsg(i).Index > 0 Then
                     If BattlePMsg(i).Color > 15 Then Coulor = BattlePMsg(i).Color Else Coulor = QBColor(BattlePMsg(i).Color)
-                    If BattlePMsg(i).Time + 60000 > Tick Then Call DrawText(TexthDC, 1 + sx, BattlePMsg(i).y + PicScHeight - 80 + sx, Trim$(BattlePMsg(i).Msg), Coulor) Else BattlePMsg(i).Done = 0
+                    If BattlePMsg(i).Time + 60000 > Tick Then Call DrawText(TexthDC, 1 + sx, BattlePMsg(i).y + PicScHeight - 80 - cychat + sx, Trim$(BattlePMsg(i).Msg), Coulor) Else BattlePMsg(i).Done = 0
                 End If
                 
                 If BattleMMsg(i).Index > 0 Then
                     If BattleMMsg(i).Color > 15 Then Coulor = BattleMMsg(i).Color Else Coulor = QBColor(BattleMMsg(i).Color)
-                    If BattleMMsg(i).Time + 60000 > Tick Then Call DrawText(TexthDC, (PicScWidth - (Len(BattleMMsg(i).Msg) * 8)) + sx, BattleMMsg(i).y + PicScHeight - 80 + sx, Trim$(BattleMMsg(i).Msg), Coulor) Else BattleMMsg(i).Done = 0
+                    If BattleMMsg(i).Time + 60000 > Tick Then Call DrawText(TexthDC, (PicScWidth - (Len(BattleMMsg(i).Msg) * 8)) + sx, BattleMMsg(i).y + PicScHeight - 80 - cychat + sx, Trim$(BattleMMsg(i).Msg), Coulor) Else BattleMMsg(i).Done = 0
                 End If
             Next i
         End If
@@ -913,6 +960,8 @@ rest:
         'Dessin du brouillard
         If Map(GetPlayerMap(MyIndex)).Fog <> 0 And Not AccOpt.LowEffect And GameTime <> TIME_NIGHT Then Call BltFog(MinDrawMapX, MaxDrawMapX, MinDrawMapY, MaxDrawMapY)
         
+        
+        
         'Dessin de la nuit en "hight"
         If GameTime = TIME_NIGHT And Not AccOpt.LowEffect And Map(GetPlayerMap(MyIndex)).Indoors = 0 Then Call Night(MinDrawMapX, MaxDrawMapX, MinDrawMapY, MaxDrawMapY)
 
@@ -925,6 +974,7 @@ rest:
 
         ' Blit the backbuffer
         Call DD_PrimarySurf.Blt(rec_pos, DD_BackBuffer, rec_back, DDBLT_WAIT)
+        
         
         If TickMove < Tick And Not GettingMap Then
             ' Check if player is trying to move
@@ -1304,12 +1354,13 @@ End Sub
 
 Sub BltPlayerPet(ByVal Index As Long)
 Dim Anim As Byte
-Dim x As Long, y As Long
+Dim x As Long, y As Long, tx As Long, ty As Long
 Dim num As Long
 If Index <= 0 And Index >= MAX_PLAYERS Then Exit Sub
 If Player(Index).PetSlot <= 0 And Player(Index).PetSlot >= MAX_ITEMS Then Exit Sub
 
 If Not IsPlaying(Index) Then Exit Sub
+If Map(Player(MyIndex).Map).petView = 1 Then Exit Sub
     
     Anim = 1
     If Player(Index).Attacking = 0 Or Player(Index).Moving > 0 Then
@@ -1324,25 +1375,26 @@ If Not IsPlaying(Index) Then Exit Sub
                 If (Player(Index).pet.XOffset < PIC_Y / 2 * -1) Then Anim = Player(Index).pet.Anim
         End Select
     End If
-   
-    rec.Top = Player(Index).pet.Dir * PIC_Y
-    rec.Bottom = rec.Top + PIC_Y
-    rec.Left = Anim * PIC_X + PIC_X
-    rec.Right = rec.Left + PIC_X
     
-    x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset
-    If DDSD_Character(GetPlayerSprite(Index)).lHeight = 256 And DDSD_Character(GetPlayerSprite(Index)).lWidth = 128 Then
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset
-    Else
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (PIC_Y / 2)
-    End If
-   
-    If x < 0 Then x = 0
-    If y < 0 Then y = 0
-       
     num = Pets(Item(GetPlayerInvItemNum(Index, GetPlayerPetSlot(Index))).Data1).sprite
+    
+    ty = DDSD_Pets(num).lHeight / 4
+    tx = DDSD_Pets(num).lWidth / 4
+    
+    rec.Top = Player(Index).pet.Dir * ty
+    rec.Bottom = rec.Top + ty
+    rec.Left = Anim * tx + tx
+    rec.Right = rec.Left + tx
+    
+    x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset - (tx / 2) + 16
+    y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (ty / 2) + 16
+
+    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
+    
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PetsSurf(num), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
+
 Sub BltPlayerOmbre(ByVal Index As Long)
 Dim x As Long, y As Long
 
@@ -1359,6 +1411,7 @@ Dim x As Long, y As Long
     
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_OutilSurf, rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
+
 Sub BltPlayer(ByVal Index As Long)
 Dim Anim As Byte
 Dim x As Long, y As Long
@@ -2059,9 +2112,9 @@ Else
 End If
 ' Handle when the player presses the return key
     
-
     If (KeyAscii = vbKeyReturn) Then
         If frmMirage.txtMyTextBox.Locked = False Then
+            frmMirage.txtMyTextBox.Text = vbNullString
             frmMirage.txtMyTextBox.Locked = True
             frmMirage.txtMyTextBox.Visible = False
             frmMirage.Canal.Visible = False
@@ -2500,13 +2553,9 @@ End If
                 Call SayMsg(MyText)
             End If
             
-            If (KeyAscii = vbKeyReturn) And frmMirage.txtMyTextBox.Locked = False Then
-                frmMirage.txtMyTextBox.Locked = True
-                frmMirage.txtMyTextBox.Visible = False
-                frmMirage.Canal.Visible = False
-            End If
         End If
-    MyText = vbNullString
+        MyText = vbNullString
+        KeyAscii = 0
     Exit Sub
     End If
 End Sub
@@ -2533,7 +2582,13 @@ Sub CheckInput(ByVal KeyState As Byte, ByVal KeyCode As Integer, ByVal Shift As 
 
     If GettingMap = False Then
         If KeyState = 1 Then
-            If KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "ramasser", App.Path & "\Config\Option.ini")))).Value Then If frmMirage.txtQ.Visible Then frmMirage.txtQ.Visible = False Else Call CheckMapGetItem
+            If KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "ramasser", App.Path & "\Config\Option.ini")))).Value Then
+                If frmMirage.txtQ.Visible Then
+                    frmMirage.txtQ.Visible = False
+                Else
+                    Call CheckMapGetItem
+                End If
+            End If
             If KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "attaque", App.Path & "\Config\Option.ini")))).Value Then ControlDown = True
             If KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "haut", App.Path & "\Config\Option.ini")))).Value Then
                 DirUp = True
@@ -2749,12 +2804,28 @@ Dim Dire As Long
             For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) Then
                     If GetPlayerMap(i) = GetPlayerMap(MyIndex) Then
-                        If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
-                            CanMove = False
-                        
-                            ' Set the new direction if they weren't facing that direction
-                            If d <> Dire Then Call Sendplayerdir
-                            Exit Function
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Map(Player(MyIndex).Map).traversable = 0 Then
+                                If Player(MyIndex).Guild = Player(i).Guild Then
+                                    If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                        CanMove = False
+                                    
+                                        ' Set the new direction if they weren't facing that direction
+                                        If d <> Dire Then Call Sendplayerdir
+                                        Exit Function
+                                    End If
+                                End If
+                            End If
+                        Else
+                            If Map(Player(MyIndex).Map).traversable = 0 Then
+                                If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                    CanMove = False
+                                
+                                    ' Set the new direction if they weren't facing that direction
+                                    If d <> Dire Then Call Sendplayerdir
+                                    Exit Function
+                                End If
+                            End If
                         End If
                     End If
                 End If
@@ -3972,5 +4043,101 @@ Dim dRECT As RECT
     End With
     Call DD_Surf.BltToDC(PicBox.hDC, sRECT, dRECT)
     PicBox.Refresh
+    End If
+End Sub
+
+Public Sub notebook_change()
+Dim i As Byte
+Dim Ending As String
+    For i = 1 To 4
+        If i = 1 Then Ending = ".gif"
+        If i = 2 Then Ending = ".jpg"
+        If i = 3 Then Ending = ".png"
+        If i = 4 Then Ending = ".bmp"
+        If notebook = True Then
+            If FileExiste(Rep_Theme & "\Jeu\MiniInterface" & Ending) Then frmMirage.Interface.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\MiniInterface" & Ending)
+        Else
+            If FileExiste(Rep_Theme & "\Jeu\Interface" & Ending) Then frmMirage.Interface.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Interface" & Ending)
+        End If
+    Next i
+    For i = 0 To 13
+        frmMirage.picRac(i).Visible = False
+    Next i
+    
+    If notebook = True Then
+        frmMirage.Interface.Width = 640
+        frmMirage.picScreen.Width = 640
+        frmMirage.picScreen.Height = 420
+        frmMirage.Height = 7665
+        frmMirage.Width = 9570
+        For i = 0 To 8
+            frmMirage.picRac(i).Visible = True
+            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).Top = 621 - 188
+        Next i
+        frmMirage.menu_inv.Left = 358
+        frmMirage.menu_sort.Left = 382
+        frmMirage.menu_equ.Left = 414
+        frmMirage.menu_quete.Left = 446
+        frmMirage.menu_guild.Left = 486
+        frmMirage.menu_tchat.Left = 510
+        frmMirage.menu_who.Left = 534
+        frmMirage.menu_opt.Left = 574
+        frmMirage.menu_quit.Left = 606
+        
+        frmMirage.menu_inv.Top = 616 - 188
+        frmMirage.menu_sort.Top = 616 - 188
+        frmMirage.menu_equ.Top = 616 - 188
+        frmMirage.menu_quete.Top = 616 - 188
+        frmMirage.menu_guild.Top = 616 - 188
+        frmMirage.menu_tchat.Top = 616 - 188
+        frmMirage.menu_who.Top = 616 - 188
+        frmMirage.menu_opt.Top = 616 - 188
+        frmMirage.menu_quit.Top = 616 - 188
+    Else
+        frmMirage.Interface.Width = 800
+        frmMirage.picScreen.Width = 800
+        frmMirage.picScreen.Height = 608
+        frmMirage.Height = 10500
+        frmMirage.Width = 12075
+        For i = 0 To 13
+            frmMirage.picRac(i).Visible = True
+            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).Top = 621
+        Next i
+        frmMirage.menu_inv.Left = 528
+        frmMirage.menu_sort.Left = 552
+        frmMirage.menu_equ.Left = 584
+        frmMirage.menu_quete.Left = 616
+        frmMirage.menu_guild.Left = 656
+        frmMirage.menu_tchat.Left = 680
+        frmMirage.menu_who.Left = 704
+        frmMirage.menu_opt.Left = 744
+        frmMirage.menu_quit.Left = 776
+        
+        frmMirage.menu_inv.Top = 616
+        frmMirage.menu_sort.Top = 616
+        frmMirage.menu_equ.Top = 616
+        frmMirage.menu_quete.Top = 616
+        frmMirage.menu_guild.Top = 616
+        frmMirage.menu_tchat.Top = 616
+        frmMirage.menu_who.Top = 616
+        frmMirage.menu_opt.Top = 616
+        frmMirage.menu_quit.Top = 616
+    End If
+    
+    frmMirage.Interface.Top = frmMirage.picScreen.Height
+    frmMirage.txtQ.Top = frmMirage.picScreen.Height - frmMirage.txtQ.Height
+    frmMirage.Canal.Top = frmMirage.picScreen.Height - frmMirage.Canal.Height
+    frmMirage.txtMyTextBox.Top = frmMirage.picScreen.Height - frmMirage.txtMyTextBox.Height
+    frmMirage.picParty.Top = frmMirage.picScreen.Height - frmMirage.picParty.Height
+    frmMirage.fra_fenetre.Top = frmMirage.picScreen.Height - frmMirage.fra_fenetre.Height - 10
+    frmMirage.fra_fenetre.Left = frmMirage.picScreen.Width - frmMirage.fra_fenetre.Width - 30
+    If notebook = True Then
+        frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+        frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+    Else
+        frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+        frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
     End If
 End Sub

@@ -730,59 +730,56 @@ Dim SpellSlot As Byte
                 If MapNpc(Y, X).num > 0 And PnjMove(X, Y) = True Then
                     Target = MapNpc(Y, X).Target
                     
-                    ' Check to see if its time for the npc to walk
-                    If Npc(NpcNum).Behavior <> NPC_BEHAVIOR_SHOPKEEPER Then
-                        ' Check to see if we are following a player or not
-                        If Target > 0 Then
-                            ' Check if the player is even playing, if so follow'm
-                            If ValidTarget(Target, Y, MapNpc(Y, X).TargetType) Then
-                                DidWalk = False
-                                
-                                i = Int(Rnd * 5)
-                                
-                                ' Lets move the npc
-                                SelectMoveNpc i, Y, X, Target, MapNpc(Y, X).TargetType, DidWalk
-                            Else
-                                MapNpc(Y, X).Target = 0
-                            End If
-                        Else
-                            If Map(Y).Npcs(X).Hasardm = 0 And Map(Y).Npcs(X).Imobile = 0 Then
-                                If MapNpc(Y, X).X = Map(Y).Npcs(X).X And MapNpc(Y, X).Y = Map(Y).Npcs(X).Y Then
-                                    Map(Y).Npcs(X).Axy1 = False
-                                    Map(Y).Npcs(X).Axy = True
-                                    Map(Y).Npcs(X).Axy2 = False
-                                ElseIf MapNpc(Y, X).X = Map(Y).Npcs(X).x1 And MapNpc(Y, X).Y = Map(Y).Npcs(X).y1 And Map(Y).Npcs(X).Axy = True Then
-                                    Map(Y).Npcs(X).Axy1 = True
-                                    Map(Y).Npcs(X).Axy = False
-                                    Map(Y).Npcs(X).Axy2 = False
-                                ElseIf MapNpc(Y, X).X = Map(Y).Npcs(X).x2 And MapNpc(Y, X).Y = Map(Y).Npcs(X).y2 And Map(Y).Npcs(X).Axy1 = True Then
-                                    Map(Y).Npcs(X).Axy1 = False
-                                    Map(Y).Npcs(X).Axy = False
-                                    Map(Y).Npcs(X).Axy2 = True
-                                End If
+                    ' Check to see if we are following a player or not
+                    If Target > 0 Then
+                        ' Check if the player is even playing, if so follow'm
+                        If ValidTarget(Target, Y, MapNpc(Y, X).TargetType) Then
+                            DidWalk = False
                             
-                                ' mouvement a x1 et y1
-                                If Map(Y).Npcs(X).Axy1 = True Then
-                                    If Map(Y).Npcs(X).x2 > 0 Or Map(Y).Npcs(X).y2 > 0 Then
-                                        Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).x2), Val(Map(Y).Npcs(X).y2))
-                                    Else
-                                        Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).X), Val(Map(Y).Npcs(X).Y))
-                                    End If
+                            i = Int(Rnd * 5)
+                            
+                            ' Lets move the npc
+                            SelectMoveNpc i, Y, X, Target, MapNpc(Y, X).TargetType, DidWalk
+                        Else
+                            MapNpc(Y, X).Target = 0
+                        End If
+                    Else
+                        If Map(Y).Npcs(X).Hasardm = 0 And Map(Y).Npcs(X).Imobile = 0 Then
+                            If MapNpc(Y, X).X = Map(Y).Npcs(X).X And MapNpc(Y, X).Y = Map(Y).Npcs(X).Y Then
+                                Map(Y).Npcs(X).Axy1 = False
+                                Map(Y).Npcs(X).Axy = True
+                                Map(Y).Npcs(X).Axy2 = False
+                            ElseIf MapNpc(Y, X).X = Map(Y).Npcs(X).x1 And MapNpc(Y, X).Y = Map(Y).Npcs(X).y1 And Map(Y).Npcs(X).Axy = True Then
+                                Map(Y).Npcs(X).Axy1 = True
+                                Map(Y).Npcs(X).Axy = False
+                                Map(Y).Npcs(X).Axy2 = False
+                            ElseIf MapNpc(Y, X).X = Map(Y).Npcs(X).x2 And MapNpc(Y, X).Y = Map(Y).Npcs(X).y2 And Map(Y).Npcs(X).Axy1 = True Then
+                                Map(Y).Npcs(X).Axy1 = False
+                                Map(Y).Npcs(X).Axy = False
+                                Map(Y).Npcs(X).Axy2 = True
+                            End If
+                        
+                            ' mouvement a x1 et y1
+                            If Map(Y).Npcs(X).Axy1 = True Then
+                                If Map(Y).Npcs(X).x2 > 0 Or Map(Y).Npcs(X).y2 > 0 Then
+                                    Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).x2), Val(Map(Y).Npcs(X).y2))
+                                Else
+                                    Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).X), Val(Map(Y).Npcs(X).Y))
                                 End If
-                                
-                                ' mouvement a X et Y
-                                If Map(Y).Npcs(X).Axy = True Then Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).x1), Val(Map(Y).Npcs(X).y1))
-                                
-                                ' mouvement a x2 et y2
-                                If Map(Y).Npcs(X).Axy2 = True Then Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).X), Val(Map(Y).Npcs(X).Y))
-                                
-                            Else
-                                If Map(Y).Npcs(X).Imobile = 0 Then
+                            End If
+                            
+                            ' mouvement a X et Y
+                            If Map(Y).Npcs(X).Axy = True Then Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).x1), Val(Map(Y).Npcs(X).y1))
+                            
+                            ' mouvement a x2 et y2
+                            If Map(Y).Npcs(X).Axy2 = True Then Call NpcMoveTo(Y, X, 2, MOVING_WALKING, Val(Map(Y).Npcs(X).X), Val(Map(Y).Npcs(X).Y))
+                            
+                        Else
+                            If Map(Y).Npcs(X).Imobile = 0 Then
+                                i = Int(Rnd * 4)
+                                If i = 1 Then
                                     i = Int(Rnd * 4)
-                                    If i = 1 Then
-                                        i = Int(Rnd * 4)
-                                        If CanNpcMove(Y, X, i) Then Call NpcMove(Y, X, i, MOVING_WALKING)
-                                    End If
+                                    If CanNpcMove(Y, X, i) Then Call NpcMove(Y, X, i, MOVING_WALKING)
                                 End If
                             End If
                         End If

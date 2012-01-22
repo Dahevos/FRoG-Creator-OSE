@@ -149,7 +149,7 @@ Dim N As Long
         ' General
         Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(Index).Char(i).Name))
         Call PutVar(FileName, "CHAR" & i, "Class", STR$(Player(Index).Char(i).Class))
-        Call PutVar(FileName, "CHAR" & i, "Sex", STR$(Player(Index).Char(i).SEX))
+        Call PutVar(FileName, "CHAR" & i, "Sex", STR$(Player(Index).Char(i).Sex))
         Call PutVar(FileName, "CHAR" & i, "Sprite", STR$(Player(Index).Char(i).sprite))
         Call PutVar(FileName, "CHAR" & i, "Level", STR$(Player(Index).Char(i).Level))
         Call PutVar(FileName, "CHAR" & i, "Exp", STR$(Player(Index).Char(i).Exp))
@@ -243,7 +243,7 @@ With Player(Index)
     With .Char(i)
         ' General
         .Name = GetVar(FileName, "CHAR" & i, "Name")
-        .SEX = Val(GetVar(FileName, "CHAR" & i, "Sex"))
+        .Sex = Val(GetVar(FileName, "CHAR" & i, "Sex"))
         .Class = Val(GetVar(FileName, "CHAR" & i, "Class"))
         .sprite = Val(GetVar(FileName, "CHAR" & i, "Sprite"))
         .Level = Val(GetVar(FileName, "CHAR" & i, "Level"))
@@ -381,7 +381,7 @@ Dim i As Long
     Call SavePlayer(Index)
 End Sub
 
-Sub AddChar(ByVal Index As Long, ByVal Name As String, ByVal SEX As Byte, ByVal ClassNum As Byte, ByVal CharNum As Long)
+Sub AddChar(ByVal Index As Long, ByVal Name As String, ByVal Sex As Byte, ByVal ClassNum As Byte, ByVal CharNum As Long)
 Dim f As Long
 
     If Trim$(Player(Index).Char(CharNum).Name) = vbNullString Then
@@ -389,10 +389,10 @@ Dim f As Long
         .CharNum = CharNum
         
         .Char(CharNum).Name = Name
-        .Char(CharNum).SEX = SEX
+        .Char(CharNum).Sex = Sex
         .Char(CharNum).Class = ClassNum
         
-        If .Char(CharNum).SEX = SEX_MALE Then
+        If .Char(CharNum).Sex = SEX_MALE Then
             .Char(CharNum).sprite = Classe(ClassNum).MaleSprite
         Else
             .Char(CharNum).sprite = Classe(ClassNum).FemaleSprite

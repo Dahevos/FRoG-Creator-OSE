@@ -969,10 +969,19 @@ rest:
                     ' Blit out players ,arrows and spells
                     For i = 1 To MAX_PLAYERS
                         If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                            Call BltPlayerOmbre(i)
-                            Call BltPlayer(i)
-                            Call BltArrow(i)
-                            If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                            If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                                If Player(MyIndex).guild = Player(i).guild Then
+                                    Call BltPlayerOmbre(i)
+                                    Call BltPlayer(i)
+                                    Call BltArrow(i)
+                                    If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                                End If
+                            Else
+                                Call BltPlayerOmbre(i)
+                                Call BltPlayer(i)
+                                Call BltArrow(i)
+                                If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                            End If
                         End If
                     Next i
                 End If
@@ -991,7 +1000,15 @@ rest:
                 If Not InEditor Then
                     For i = 1 To MAX_PLAYERS
                         If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                            If PIC_PL > 1 Then Call BltPlayerTop(i)                     '<- pour 32*64
+                            If PIC_PL > 1 Then
+                                If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                                    If Player(MyIndex).guild = Player(i).guild Then
+                                        Call BltPlayerTop(i)
+                                    End If
+                                Else
+                                    Call BltPlayerTop(i)
+                                End If
+                            End If
 
                             Call BltBlood(i, PIC_X, PIC_Y, 40)
                             ' Call BltBlood(i) ferais aussi l'affaire car les autres paramètres peuvent être modifier selon le blood.png.
@@ -1024,8 +1041,15 @@ rest:
             TexthDC = DD_BackBuffer.GetDC
             For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                    Call BltPlayerGuildName(i)
-                    Call BltPlayerName(i)
+                    If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                        If Player(MyIndex).guild = Player(i).guild Then
+                            Call BltPlayerGuildName(i)
+                            Call BltPlayerName(i)
+                        End If
+                    Else
+                        Call BltPlayerGuildName(i)
+                        Call BltPlayerName(i)
+                    End If
                 End If
             Next i
             Call DD_BackBuffer.ReleaseDC(TexthDC)
@@ -1662,7 +1686,7 @@ If Not IsPlaying(Index) Then Exit Sub
     rec.Left = Anim * tx + tx
     rec.Right = rec.Left + tx
     
-    x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16) '(tx / 4) - ((tx / 4) / 2)
+    x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
     y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
     
     
@@ -1699,13 +1723,14 @@ End Sub
 
 Sub BltPlayerPet(ByVal Index As Long)
 Dim Anim As Byte
-Dim x As Long, y As Long
+Dim x As Long, y As Long, tx As Long, ty As Long
 Dim num As Long
 If Index <= 0 And Index >= MAX_PLAYERS Then Exit Sub
 If Player(Index).PetSlot <= 0 And Player(Index).PetSlot >= MAX_ITEMS Then Exit Sub
 
 If Not IsPlaying(Index) Then Exit Sub
-    
+If Map(Player(MyIndex).Map).petView = 1 Then Exit Sub
+
     Anim = 1
     If Player(Index).Attacking = 0 Or Player(Index).Moving > 0 Then
         Select Case Player(Index).pet.Dir
@@ -1720,22 +1745,24 @@ If Not IsPlaying(Index) Then Exit Sub
         End Select
     End If
        
-    rec.Top = Player(Index).pet.Dir * PIC_Y
-    rec.Bottom = rec.Top + PIC_Y
-    rec.Left = Anim * PIC_X + PIC_X
-    rec.Right = rec.Left + PIC_X
-    
-    x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset
-    If DDSD_Character(GetPlayerSprite(Index)).lHeight = 256 And DDSD_Character(GetPlayerSprite(Index)).lWidth = 128 Then
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset
-    Else
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (PIC_Y / 2)
-    End If
-   
-    If x < 0 Then x = 0
-    If y < 0 Then y = 0
-    
     num = Pets(Item(GetPlayerInvItemNum(Index, GetPlayerPetSlot(Index))).Data1).sprite
+    
+    ty = DDSD_Pets(num).lHeight / 4
+    tx = DDSD_Pets(num).lWidth / 4
+    
+    rec.Top = Player(Index).pet.Dir * ty
+    rec.Bottom = rec.Top + ty
+    rec.Left = Anim * tx + tx
+    rec.Right = rec.Left + tx
+
+        x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset - (tx / 2) + 16
+ 
+        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (ty / 2) + 16
+
+
+    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
+   
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PetsSurf(num), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
 
@@ -3583,12 +3610,28 @@ Dim Dire As Long
             For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) Then
                     If Player(i).Map = Player(MyIndex).Map Then
-                        If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
-                            CanMove = False
-                        
-                            ' Set the new direction if they weren't facing that direction
-                            If d <> Dire Then Call SendPlayerDir
-                            Exit Function
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Map(Player(MyIndex).Map).traversable = 1 Then
+                                If Player(MyIndex).guild = Player(i).guild Then
+                                    If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                        CanMove = False
+                                    
+                                        ' Set the new direction if they weren't facing that direction
+                                        If d <> Dire Then Call SendPlayerDir
+                                        Exit Function
+                                    End If
+                                End If
+                            End If
+                        Else
+                            If Map(Player(MyIndex).Map).traversable = 1 Then
+                                If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                    CanMove = False
+                                
+                                    ' Set the new direction if they weren't facing that direction
+                                    If d <> Dire Then Call SendPlayerDir
+                                    Exit Function
+                                End If
+                            End If
                         End If
                     End If
                 End If
@@ -4352,7 +4395,7 @@ Dim i As Long
     If IsPlaying(MyIndex) = False Or ItemNum <= 0 Or ItemNum > MAX_ITEMS Then Exit Function
     
     If Item(ItemNum).Type = ITEM_TYPE_CURRENCY Then
-        ' If currency then check to see if they already have an instance of the item and add it to that
+        ' If currency then check to see if they already have an guildSoloView of the item and add it to that
         For i = 1 To MAX_INV
             If GetPlayerInvItemNum(MyIndex, i) = ItemNum Then FindOpenInvSlot = i: Exit Function
         Next i
@@ -5783,12 +5826,11 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scripting", frmoptions.script, App.Path & "\config.ini")
-    Call WriteINI("INFO", "GameName", GAME_NAME, App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxplayers", Val(frmoptions.mj), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxitems", Val(frmoptions.mo), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxnpcs", Val(frmoptions.mpnj), App.Path & "\config.ini")
@@ -5796,11 +5838,12 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxjguild", Val(frmoptions.mjg), App.Path & "\config.ini")
+    Call WriteINI("INFO", "GameName", GAME_NAME, App.Path & "\config.ini")
     Call WriteINI("INFO", "motd", frmoptions.motd, App.Path & "\config.ini")
     
     frmMirage.Caption = "Editeur pour le jeu : " & Trim$(GAME_NAME) & " Mettez votre souris sur un élément pour plus de détails."
@@ -5813,7 +5856,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -5826,7 +5869,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -5839,10 +5882,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -5856,7 +5899,7 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)

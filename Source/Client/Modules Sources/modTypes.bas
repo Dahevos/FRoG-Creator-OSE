@@ -183,6 +183,8 @@ Public Const SPELL_TYPE_DEFENC As Byte = 10
 Public Loading As Boolean
 Public deco As Boolean
 
+Public notebook As Boolean
+
 Type ChatBubble
     Text As String
     Created As Long
@@ -412,6 +414,9 @@ Type MapRec
     TranSup As Byte
     Fog As Integer
     FogAlpha As Byte
+    guildSoloView As Byte
+    petView As Byte
+    traversable As Byte
 End Type
 
 Type RecompRec
@@ -1096,6 +1101,9 @@ With Map(i)
     .TranSup = 0
     .Fog = 0
     .FogAlpha = 0
+    .guildSoloView = 0
+    .petView = 0
+    .traversable = 0
 End With
 Next i
 End Sub

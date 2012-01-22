@@ -149,7 +149,7 @@ Begin VB.Form frmNpcEditor
          Max             =   10000
          Min             =   1
          TabIndex        =   53
-         Top             =   3560
+         Top             =   3600
          Value           =   1
          Visible         =   0   'False
          Width           =   2655
@@ -1167,6 +1167,11 @@ ElseIf cmbBehavior.ListIndex = 6 Then
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Case Script:"
+ElseIf cmbBehavior.ListIndex = 3 Then
+    qutn.Visible = True
+    Label20.Visible = True
+    quetenum.Visible = True
+    Label20.Caption = "Magasin:"
 Else
     qutn.Visible = False
     Label20.Visible = False
