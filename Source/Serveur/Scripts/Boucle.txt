@@ -1,4 +1,8 @@
 Sub Boucle()
+<<<<<<< HEAD
+=======
+' Script s'execute toute les 50 Ms
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
 ' Boucle script tout les secondes 
 dim alea
 dim sec

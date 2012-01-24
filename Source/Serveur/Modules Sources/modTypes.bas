@@ -291,10 +291,13 @@ Type PlayerRec
     'FIN PAPERDOLL
     
     vendeur As Long
+<<<<<<< HEAD
     
     metier As Long
     MetierLvl As Long
     MetierExp As Long
+=======
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
 End Type
 
 Type PlayerTradeRec

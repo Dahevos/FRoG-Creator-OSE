@@ -1169,13 +1169,17 @@ ElseIf cmbBehavior.ListIndex = 6 Then
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Case Script:"
+<<<<<<< HEAD
     quetenum.min = 1
     quetenum.Max = 255
+=======
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
 ElseIf cmbBehavior.ListIndex = 3 Then
     qutn.Visible = True
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Magasin:"
+<<<<<<< HEAD
     quetenum.min = 1
     quetenum.Max = MAX_SHOPS
 ElseIf cmbBehavior.ListIndex = 0 Or cmbBehavior.ListIndex = 1 Then
@@ -1185,6 +1189,8 @@ ElseIf cmbBehavior.ListIndex = 0 Or cmbBehavior.ListIndex = 1 Then
     Label20.Caption = "Type d'Arme:"
     quetenum.min = 0
     quetenum.Max = 11 + MAX_METIER
+=======
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
 Else
     qutn.Visible = False
     Label20.Visible = False

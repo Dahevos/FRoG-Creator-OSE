@@ -1320,6 +1320,7 @@ On Error GoTo er:
                          n = n + 1
                          Call ClearMapNpc(X, MapNum)
                      Next X
+<<<<<<< HEAD
                      Map(MapNum).PanoInf = Parse(n)
                      Map(MapNum).TranInf = Val(Parse(n + 1))
                      Map(MapNum).PanoSup = Parse(n + 2)
@@ -1329,6 +1330,17 @@ On Error GoTo er:
                      Map(MapNum).guildSoloView = Parse(n + 6)
                      Map(MapNum).petView = Parse(n + 7)
                      Map(MapNum).traversable = Parse(n + 8)
+=======
+                     Map(MapNum).PanoInf = Parse(N)
+                     Map(MapNum).TranInf = Val(Parse(N + 1))
+                     Map(MapNum).PanoSup = Parse(N + 2)
+                     Map(MapNum).TranSup = Val(Parse(N + 3))
+                     Map(MapNum).Fog = Val(Parse(N + 4))
+                     Map(MapNum).FogAlpha = Val(Parse(N + 5))
+                     Map(MapNum).guildSoloView = Parse(N + 6)
+                     Map(MapNum).petView = Parse(N + 7)
+                     Map(MapNum).traversable = Parse(N + 8)
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
                              
                      ' Clear out it all
                      For i = 1 To MAX_MAP_ITEMS
@@ -2947,6 +2959,36 @@ On Error GoTo er:
                         Call PlayerMsg(Index, "Vous n'avez pas l'objet demandé.", BrightRed)
                     End If
                     Exit Sub
+<<<<<<< HEAD
+=======
+                Case "vendrerequest"
+                    ' Trade num
+                    N = Val(Parse(1))
+                    z = Val(Parse(2))
+                    ' Prevent hacking
+                    If (N < 1) Or (N > 6) Then Call HackingAttempt(Index, "Modification d'une requet d'échange"): Exit Sub
+                    If (z <= 0) Or (z > (MAX_TRADES * 6)) Then Call HackingAttempt(Index, "Modification d'une requet d'échange"): Exit Sub
+                    ' Index for shop
+                    i = Player(Index).Char(Player(Index).CharNum).vendeur
+                    ' Check if inv full
+                    If i <= 0 Then Exit Sub
+                    X = FindOpenInvSlot(Index, Shop(i).TradeItem(N).value(z).GiveItem) 'Shop(i).TradeItem(N).value(z).GetItem)
+                    If X = 0 Then Call PlayerMsg(Index, "L'échange a échoué, Inventaire pleins!", BrightRed): Exit Sub
+                    ' Check if they have the item
+                    If HasItem(Index, Shop(i).TradeItem(N).value(z).GetItem) >= Shop(i).TradeItem(N).value(z).GetValue Then
+                        Call GiveItem(Index, Shop(i).TradeItem(N).value(z).GiveItem, Math.Round(Shop(i).TradeItem(N).value(z).GiveValue / 2))
+                        Call TakeItem(Index, Shop(i).TradeItem(N).value(z).GetItem, Shop(i).TradeItem(N).value(z).GetValue)
+                        Call PlayerMsg(Index, "Echange réussit!", Yellow)
+                        If Player(Index).Char(Player(Index).CharNum).QueteEnCour > 0 Then
+                            If quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).Type = QUETE_TYPE_RECUP Then
+                                Call PlayerQueteTypeRecup(Index, Player(Index).Char(Player(Index).CharNum).QueteEnCour, Shop(i).TradeItem(N).value(z).GetItem, Shop(i).TradeItem(N).value(z).GetValue)
+                            End If
+                        End If
+                    Else
+                        Call PlayerMsg(Index, "Vous n'avez pas l'objet demandé.", BrightRed)
+                    End If
+                    Exit Sub
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
                 Case "fixitem"
                     Dim D As Currency
                     ' Inv num

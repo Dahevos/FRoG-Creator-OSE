@@ -19,6 +19,7 @@ Begin VB.Form frmMainMenu
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   639
    StartUpPosition =   2  'CenterScreen
+<<<<<<< HEAD
    Begin VB.Timer tmrPicChar 
       Interval        =   500
       Left            =   5760
@@ -140,6 +141,8 @@ Begin VB.Form frmMainMenu
          Width           =   3390
       End
    End
+=======
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
    Begin VB.CommandButton Cmd640 
       Caption         =   "640x480"
       Height          =   255

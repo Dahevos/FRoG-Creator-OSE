@@ -3753,7 +3753,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Val(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -3766,7 +3766,7 @@ If Val(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Val(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4176,7 +4176,7 @@ End Sub
 Private Sub lstIndex_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 2 Then
     If DonID > 0 Then colle.Enabled = True Else colle.Enabled = False
-    Call PopupMenu(edit)
+    Call PopupMenu(Edit)
 End If
 End Sub
 
@@ -4226,7 +4226,7 @@ End Sub
 
 Private Sub opt_Click()
 frmoptions.SSTab1.Tab = 0
-If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Val(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4239,7 +4239,7 @@ If Val(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Val(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4331,7 +4331,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Val(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4344,7 +4344,7 @@ If Val(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Val(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Val(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4660,7 +4660,7 @@ If quete(Queten).Temps > 0 And Player(MyIndex).QueteEnCour > 0 Then
         Seco = 59
         seconde.Caption = Seco
         Minu = Minu - 1
-        If Len(CStr(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
+        If Len(CStr(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
     End If
 
     If Seco <= 0 And Minu <= 0 Then

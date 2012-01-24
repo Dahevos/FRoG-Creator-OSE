@@ -116,7 +116,11 @@ Dim i As Long
     ' Check for subscript out of range
     If ItemNum <= 0 Or ItemNum > MAX_ITEMS Then Exit Function
     
+<<<<<<< HEAD
     If item(ItemNum).type = ITEM_TYPE_CURRENCY Or item(ItemNum).Empilable <> 0 Then
+=======
+    If item(ItemNum).Type = ITEM_TYPE_CURRENCY Or item(ItemNum).Empilable <> 0 Then
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
         ' If currency then check to see if they already have an guildSoloView of the item and add it to that
         For i = 1 To MAX_INV
             If GetPlayerInvItemNum(index, i) = ItemNum Then FindOpenInvSlot = i: Exit Function
@@ -1122,10 +1126,17 @@ If IsPlaying(Attacker) Then
                             Call QueteMsg(Attacker, Trim$(quete(Npc(npcnum).QueteNum).nom) & " : " & Trim$(quete(Npc(npcnum).QueteNum).description))
                         End If
                     End If
+<<<<<<< HEAD
                 ElseIf Npc(npcnum).Behavior = NPC_BEHAVIOR_SHOPKEEPER Then
                     Call QueteMsg(Attacker, Shop(Npc(npcnum).QueteNum).JoinSay)
                     Call SendTrade(Attacker, Npc(npcnum).QueteNum)
                 ElseIf Npc(npcnum).Behavior = NPC_BEHAVIOR_SCRIPT Then
+=======
+                ElseIf Npc(NpcNum).Behavior = NPC_BEHAVIOR_SHOPKEEPER Then
+                    Call QueteMsg(Attacker, Shop(Npc(NpcNum).QueteNum).JoinSay)
+                    Call SendTrade(Attacker, Npc(NpcNum).QueteNum)
+                ElseIf Npc(NpcNum).Behavior = NPC_BEHAVIOR_SCRIPT Then
+>>>>>>> 78e891abe783f077a019bb7ae3b3f68bd63dddde
                     If Val(Scripting) = 1 Then
                         MyScript.ExecuteStatement "Scripts\Main.txt", "ScriptedTile " & Attacker & "," & (Npc(npcnum).QueteNum)
                         Exit Function
