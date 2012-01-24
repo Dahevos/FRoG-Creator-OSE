@@ -1,7 +1,7 @@
-frmServer = 21, 367, 898, 849, C, 20, 132, 1063, 817, C
+frmServer = 21, 367, 898, 849, , 20, 132, 1063, 817, C
 modDatabase = 0, 0, 0, 0, C
 modTypes = 0, 0, 0, 0, C
-modGameLogic = 0, 0, 0, 0, C
+modGameLogic = 75, 75, 1169, 708, Z
 modGeneral = 0, 0, 0, 0, C
 modText = 0, 0, 0, 0, C
 frmLoad = 0, 0, 0, 0, C, 0, 0, 0, 0, C

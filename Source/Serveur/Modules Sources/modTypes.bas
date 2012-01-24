@@ -23,6 +23,8 @@ Public Scripting As Byte
 Public NOOB_LEVEL As Long
 Public PK_LEVEL As Long
 Public MAX_PETS As Long
+Public MAX_METIER As Long
+Public MAX_RECETTE As Long
 
 Public Const MAX_PARTY_MEMBERS As Byte = 20
 Public Const MAX_PARTYS As Byte = 20
@@ -100,6 +102,8 @@ Public Const TILE_TYPE_TOIT = 26
 Public Const TILE_TYPE_BLOCK_GUILDE = 27
 Public Const TILE_TYPE_BLOCK_TOIT = 28
 Public Const TILE_TYPE_BLOCK_DIR = 29
+Public Const TILE_TYPE_CRAFT As Byte = 30
+Public Const TILE_TYPE_METIER As Byte = 31
 
 ' quetes constant
 Public Const QUETE_TYPE_AUCUN = 0
@@ -130,6 +134,23 @@ Public Const ITEM_TYPE_SPELL As Byte = 13
 Public Const ITEM_TYPE_MONTURE As Byte = 14
 Public Const ITEM_TYPE_SCRIPT As Byte = 15
 Public Const ITEM_TYPE_PET As Byte = 16
+
+Public Const ITEM_TYPEARME_NONE As Byte = 0
+Public Const ITEM_TYPEARME_EPEES As Byte = 1
+Public Const ITEM_TYPEARME_HACHES As Byte = 2
+Public Const ITEM_TYPEARME_DAGUES As Byte = 3
+Public Const ITEM_TYPEARME_FAUX As Byte = 4
+Public Const ITEM_TYPEARME_MARTEAUX As Byte = 5
+Public Const ITEM_TYPEARME_PIOCHES As Byte = 6
+Public Const ITEM_TYPEARME_PELLES As Byte = 7
+Public Const ITEM_TYPEARME_BATONS As Byte = 8
+Public Const ITEM_TYPEARME_BAGUETTES As Byte = 9
+Public Const ITEM_TYPEARME_OUTILLAGE As Byte = 10
+Public Const ITEM_TYPEARME_ARC As Byte = 11
+
+' Metier
+Public Const METIER_CHASSEUR As Byte = 0
+Public Const METIER_CRAFT As Byte = 1
 
 ' Direction constants
 Public Const DIR_UP = 3
@@ -187,9 +208,9 @@ Public Const TARGET_TYPE_NPC = 1
 Public Const TARGET_TYPE_CASE = 2
 
 Type IndRec
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    data1 As Long
+    data2 As Long
+    data3 As Long
     String1 As String
 End Type
 
@@ -201,9 +222,9 @@ End Type
 
 Type PlayerQueteRec
     temps As Long
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    data1 As Long
+    data2 As Long
+    data3 As Long
     String1 As String
     indexe(1 To 15) As IndRec
 End Type
@@ -269,7 +290,11 @@ Type PlayerRec
     
     'FIN PAPERDOLL
     
+    vendeur As Long
     
+    metier As Long
+    MetierLvl As Long
+    MetierExp As Long
 End Type
 
 Type PlayerTradeRec
@@ -339,10 +364,10 @@ Type TileRec
     F2Anim As Long
     Fringe3 As Long '<--
     F3Anim As Long '<--
-    Type As Byte
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    type As Byte
+    data1 As Long
+    data2 As Long
+    data3 As Long
     String1 As String
     String2 As String
     String3 As String
@@ -409,6 +434,9 @@ Type MapRec
     TranSup As Byte
     Fog As Integer
     FogAlpha As Byte
+    guildSoloView As Byte
+    petView As Byte
+    traversable As Byte
 End Type
 
 Type RecompRec
@@ -423,13 +451,13 @@ End Type
 
 Type QueteRec
     nom As String * 40
-    Type As Long
+    type As Long
     description As String
     reponse As String
     temps As Long
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    data1 As Long
+    data2 As Long
+    data3 As Long
     String1 As String
     Recompence As RecompRec
     indexe(1 To 15) As IndRec
@@ -441,7 +469,7 @@ Type ClassRec
     
     AdvanceFrom As Long
     LevelReq As Long
-    Type As Long
+    type As Long
     Locked As Long
     
     MaleSprite As Long
@@ -459,13 +487,13 @@ End Type
 
 Type ItemRec
     Name As String * NAME_LENGTH
-    Desc As String * 150
+    desc As String * 150
     
     Pic As Long
-    Type As Byte
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    type As Byte
+    data1 As Long
+    data2 As Long
+    data3 As Long
     StrReq As Long
     DefReq As Long
     SpeedReq As Long
@@ -490,6 +518,7 @@ Type ItemRec
     NCoul As Long
     
     Sex As Byte
+    tArme As Long
 End Type
 
 Type MapItemRec
@@ -504,7 +533,7 @@ End Type
 Type NPCEditorRec
     ItemNum As Long
     ItemValue As Long
-    Chance As Long
+    chance As Long
 End Type
 
 Type NpcRec
@@ -585,10 +614,10 @@ Type SpellRec
     LevelReq As Long
     MPCost As Long
     Sound As Long
-    Type As Long
-    Data1 As Long
-    Data2 As Long
-    Data3 As Long
+    type As Long
+    data1 As Long
+    data2 As Long
+    data3 As Long
     Range As Byte
     
     Big As Byte
@@ -636,6 +665,20 @@ Type PetsRec
     addDefence As Byte
 End Type
 
+Type MetierRec
+    nom As String
+    type As Byte
+    desc As String
+    
+    data(0 To MAX_DATA_METIER, 0 To 1) As Integer
+End Type
+
+Type RecetteRec
+    nom As String
+    InCraft(0 To 9, 0 To 1) As Integer
+    craft(0 To 1) As Integer
+End Type
+
 ' Used for parsing
 Public SEP_CHAR As String * 1
 Public END_CHAR As String * 1
@@ -672,6 +715,8 @@ Public Point() As Long
 Public PointT() As Long
 Public IBMsgs(1 To 10) As IBMsgs
 Public Pets() As PetsRec
+Public metier() As MetierRec
+Public recette() As RecetteRec
 
 Type ArrowRec
     Name As String
@@ -722,16 +767,16 @@ Dim i As Long, Y As Long, X As Long
     Next i
 End Sub
 
-Public Sub ContrOnOff(ByVal Index As Long)
+Public Sub ContrOnOff(ByVal index As Long)
 Dim Packet As String
 
 Packet = "CONOFF" & SEP_CHAR & END_CHAR
 
-Call SendDataTo(Index, Packet)
+Call SendDataTo(index, Packet)
 End Sub
 
-Public Sub PNJOnOff(ByVal Index As Long, ByVal Carte As Long)
-If PnjMove(Index, Carte) = False Then PnjMove(Index, Carte) = True Else PnjMove(Index, Carte) = False
+Public Sub PNJOnOff(ByVal index As Long, ByVal Carte As Long)
+If PnjMove(index, Carte) = False Then PnjMove(index, Carte) = True Else PnjMove(index, Carte) = False
 End Sub
 
 Sub ClearClasses()
@@ -741,7 +786,7 @@ Dim i As Long
         Classe(i).Name = vbNullString
         Classe(i).AdvanceFrom = 0
         Classe(i).LevelReq = 0
-        Classe(i).Type = 1
+        Classe(i).type = 1
         Classe(i).STR = 0
         Classe(i).def = 0
         Classe(i).Speed = 0
@@ -754,10 +799,10 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearPlayer(ByVal Index As Long)
+Sub ClearPlayer(ByVal index As Long)
 Dim i As Long
-Dim N As Long
-With Player(Index)
+Dim n As Long
+With Player(index)
     .Login = vbNullString
     .Password = vbNullString
     
@@ -781,15 +826,15 @@ With Player(Index)
         .Char(i).Speed = 0
         .Char(i).magi = 0
         
-        For N = 1 To MAX_INV
-            .Char(i).Inv(N).num = 0
-            .Char(i).Inv(N).value = 0
-            .Char(i).Inv(N).Dur = 0
-        Next N
+        For n = 1 To MAX_INV
+            .Char(i).Inv(n).num = 0
+            .Char(i).Inv(n).value = 0
+            .Char(i).Inv(n).Dur = 0
+        Next n
         
-        For N = 1 To MAX_PLAYER_SPELLS
-            .Char(i).Spell(N) = 0
-        Next N
+        For n = 1 To MAX_PLAYER_SPELLS
+            .Char(i).Spell(n) = 0
+        Next n
         
         .Char(i).ArmorSlot = 0
         .Char(i).WeaponSlot = 0
@@ -806,18 +851,24 @@ With Player(Index)
         .Char(i).pet.X = 0
         .Char(i).pet.Y = 0
         
+        .Char(i).vendeur = 0
+        
         .Char(i).QueteEnCour = 0
-        .Char(i).Quetep.Data1 = 0
-        .Char(i).Quetep.Data2 = 0
-        .Char(i).Quetep.Data3 = 0
+        .Char(i).Quetep.data1 = 0
+        .Char(i).Quetep.data2 = 0
+        .Char(i).Quetep.data3 = 0
         .Char(i).Quetep.String1 = vbNullString
         
-        For N = 1 To 15
-        .Char(i).Quetep.indexe(N).Data1 = 0
-        .Char(i).Quetep.indexe(N).Data2 = 0
-        .Char(i).Quetep.indexe(N).Data3 = 0
-        .Char(i).Quetep.indexe(N).String1 = vbNullString
-        Next N
+        .Char(i).metier = 0
+        .Char(i).MetierLvl = 1
+        .Char(i).MetierExp = 0
+        
+        For n = 1 To 15
+        .Char(i).Quetep.indexe(n).data1 = 0
+        .Char(i).Quetep.indexe(n).data2 = 0
+        .Char(i).Quetep.indexe(n).data3 = 0
+        .Char(i).Quetep.indexe(n).String1 = vbNullString
+        Next n
         
         ' Temporary vars
         .Buffer = vbNullString
@@ -840,26 +891,26 @@ With Player(Index)
         .TradeOk = 0
         .TradeItemMax = 0
         .TradeItemMax2 = 0
-        For N = 1 To MAX_PLAYER_TRADES
-            .Trading(N).InvName = vbNullString
-            .Trading(N).InvNum = 0
-        Next N
+        For n = 1 To MAX_PLAYER_TRADES
+            .Trading(n).InvName = vbNullString
+            .Trading(n).InvNum = 0
+        Next n
         .ChatPlayer = 0
     Next i
 End With
     
-    bouclier(Index) = False
-    BouclierT(Index) = 0
-    Para(Index) = False
-    ParaT(Index) = 0
-    Point(Index) = 0
-    PointT(Index) = 0
+    bouclier(index) = False
+    BouclierT(index) = 0
+    Para(index) = False
+    ParaT(index) = 0
+    Point(index) = 0
+    PointT(index) = 0
     
 End Sub
 
-Sub ClearChar(ByVal Index As Long, ByVal CharNum As Long)
-Dim N As Long
-With Player(Index)
+Sub ClearChar(ByVal index As Long, ByVal CharNum As Long)
+Dim n As Long
+With Player(index)
     .Char(CharNum).Name = vbNullString
     .Char(CharNum).Class = 0
     .Char(CharNum).sprite = 0
@@ -879,18 +930,18 @@ With Player(Index)
     .Char(CharNum).Speed = 0
     .Char(CharNum).magi = 0
     
-    For N = 1 To MAX_INV
-        .Char(CharNum).Inv(N).num = 0
-        .Char(CharNum).Inv(N).value = 0
-        .Char(CharNum).Inv(N).Dur = 0
-    Next N
+    For n = 1 To MAX_INV
+        .Char(CharNum).Inv(n).num = 0
+        .Char(CharNum).Inv(n).value = 0
+        .Char(CharNum).Inv(n).Dur = 0
+    Next n
     
-    For N = 1 To MAX_PLAYER_SPELLS
-        .Char(CharNum).Spell(N) = 0
-    Next N
+    For n = 1 To MAX_PLAYER_SPELLS
+        .Char(CharNum).Spell(n) = 0
+    Next n
     
-    For N = 1 To MAX_QUETES
-        .Char(CharNum).QueteStatut(N) = 0
+    For n = 1 To MAX_QUETES
+        .Char(CharNum).QueteStatut(n) = 0
         
     Next
     .Char(CharNum).QueteEnCour = 0
@@ -912,15 +963,15 @@ With Player(Index)
 End With
 End Sub
     
-Sub ClearItem(ByVal Index As Long)
-With item(Index)
+Sub ClearItem(ByVal index As Long)
+With item(index)
     .Name = vbNullString
-    .Desc = vbNullString
+    .desc = vbNullString
     
-    .Type = 0
-    .Data1 = 0
-    .Data2 = 0
-    .Data3 = 0
+    .type = 0
+    .data1 = 0
+    .data2 = 0
+    .data3 = 0
     .StrReq = 0
     .DefReq = 0
     .SpeedReq = 0
@@ -943,6 +994,7 @@ With item(Index)
     .AttackSpeed = 1000
     
     .NCoul = 0
+    .tArme = 0
 End With
 End Sub
 
@@ -954,9 +1006,9 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearNpc(ByVal Index As Long)
+Sub ClearNpc(ByVal index As Long)
 Dim i As Long
-With Npc(Index)
+With Npc(index)
     .Name = vbNullString
     .AttackSay = vbNullString
     .sprite = 0
@@ -974,7 +1026,7 @@ With Npc(Index)
     .Inv = 0
     .Vol = 0
     For i = 1 To MAX_NPC_DROPS
-        .ItemNPC(i).Chance = 0
+        .ItemNPC(i).chance = 0
         .ItemNPC(i).ItemNum = 0
         .ItemNPC(i).ItemValue = 0
     Next i
@@ -992,8 +1044,8 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearPet(ByVal Index As Long)
-With Pets(Index)
+Sub ClearPet(ByVal index As Long)
+With Pets(index)
     .nom = ""
     .sprite = 0
     .addForce = 0
@@ -1009,12 +1061,55 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearMapItem(ByVal Index As Long, ByVal MapNum As Long)
-    MapItem(MapNum, Index).num = 0
-    MapItem(MapNum, Index).value = 0
-    MapItem(MapNum, Index).Dur = 0
-    MapItem(MapNum, Index).X = 0
-    MapItem(MapNum, Index).Y = 0
+Sub ClearMetier(ByVal index As Long)
+Dim i As Long
+With metier(index)
+    .nom = ""
+    .type = 0
+    .desc = ""
+    For i = 0 To MAX_DATA_METIER
+        .data(i, 0) = 0
+        .data(i, 1) = 1
+    Next i
+End With
+End Sub
+
+Sub ClearMetiers()
+Dim i As Long
+
+    For i = 1 To MAX_METIER
+        Call ClearMetier(i)
+    Next i
+End Sub
+
+Sub ClearRecette(ByVal index As Long)
+Dim i As Long, z As Long
+With recette(index)
+    .nom = ""
+    For i = 0 To 9
+        .InCraft(i, 0) = 0
+        .InCraft(i, 1) = 0
+    Next i
+    For z = 0 To 1
+        .craft(z) = 0
+    Next z
+End With
+End Sub
+
+Sub ClearRecettes()
+Dim i As Long
+
+    For i = 1 To MAX_RECETTE
+        Call ClearRecette(i)
+    Next i
+End Sub
+
+Sub ClearMapItem(ByVal index As Long, ByVal MapNum As Long)
+    MapItem(MapNum, index).num = 0
+    MapItem(MapNum, index).value = 0
+    MapItem(MapNum, index).Dur = 0
+    MapItem(MapNum, index).X = 0
+    MapItem(MapNum, index).Y = 0
 End Sub
 
 Sub ClearMapItems()
@@ -1028,8 +1123,8 @@ Dim Y As Long
     Next Y
 End Sub
 
-Sub ClearMapNpc(ByVal Index As Long, ByVal MapNum As Long)
-With MapNpc(MapNum, Index)
+Sub ClearMapNpc(ByVal index As Long, ByVal MapNum As Long)
+With MapNpc(MapNum, index)
     .num = 0
     .Target = 0
     .TargetType = 0
@@ -1043,7 +1138,7 @@ With MapNpc(MapNum, Index)
     .X = 0
     .Y = 0
     .Dir = 0
-    PnjMove(Index, MapNum) = True
+    PnjMove(index, MapNum) = True
     
     ' Server use only
     .SpawnWait = 0
@@ -1088,10 +1183,10 @@ With Map(MapNum)
             .Tile(X, Y).FAnim = 0
             .Tile(X, Y).Fringe2 = 0
             .Tile(X, Y).F2Anim = 0
-            .Tile(X, Y).Type = 0
-            .Tile(X, Y).Data1 = 0
-            .Tile(X, Y).Data2 = 0
-            .Tile(X, Y).Data3 = 0
+            .Tile(X, Y).type = 0
+            .Tile(X, Y).data1 = 0
+            .Tile(X, Y).data2 = 0
+            .Tile(X, Y).data3 = 0
             .Tile(X, Y).String1 = vbNullString
             .Tile(X, Y).String2 = vbNullString
             .Tile(X, Y).String3 = vbNullString
@@ -1137,28 +1232,31 @@ With Map(MapNum)
     .TranSup = 0
     .Fog = 0
     .FogAlpha = 0
+    .guildSoloView = 0
+    .petView = 0
+    .traversable = 0
     ' Reset the values for if a player is on the map or not
     PlayersOnMap(MapNum) = NO
 End With
 End Sub
 
-Sub ClearQuete(ByVal Index As Long)
+Sub ClearQuete(ByVal index As Long)
 Dim i As Long
-With quete(Index)
+With quete(index)
     .nom = vbNullString
-    .Data1 = 0
-    .Data2 = 0
-    .Data2 = 0
+    .data1 = 0
+    .data2 = 0
+    .data2 = 0
     .description = vbNullString
     .reponse = vbNullString
     .String1 = vbNullString
     .temps = 0
-    .Type = 0
+    .type = 0
     
     For i = 1 To 15
-        .indexe(i).Data1 = 1
-        .indexe(i).Data2 = 0
-        .indexe(i).Data3 = 0
+        .indexe(i).data1 = 1
+        .indexe(i).data2 = 0
+        .indexe(i).data3 = 0
         .indexe(i).String1 = vbNullString
     Next i
     
@@ -1173,19 +1271,19 @@ With quete(Index)
 End With
 End Sub
 
-Sub ClearPlayerQuete(ByVal Index As Long)
+Sub ClearPlayerQuete(ByVal index As Long)
 Dim i As Long
-With Player(Index).Char(Player(Index).CharNum)
+With Player(index).Char(Player(index).CharNum)
     .QueteEnCour = 0
-    .Quetep.Data1 = 0
-    .Quetep.Data2 = 0
-    .Quetep.Data3 = 0
+    .Quetep.data1 = 0
+    .Quetep.data2 = 0
+    .Quetep.data3 = 0
     .Quetep.String1 = vbNullString
             
     For i = 1 To 15
-        .Quetep.indexe(i).Data1 = 0
-        .Quetep.indexe(i).Data2 = 0
-        .Quetep.indexe(i).Data3 = 0
+        .Quetep.indexe(i).data1 = 0
+        .Quetep.indexe(i).data2 = 0
+        .Quetep.indexe(i).data3 = 0
         .Quetep.indexe(i).String1 = 0
     Next i
 End With
@@ -1207,22 +1305,22 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearShop(ByVal Index As Long)
+Sub ClearShop(ByVal index As Long)
 Dim i As Long
 Dim z As Long
 
-    Shop(Index).Name = vbNullString
-    Shop(Index).JoinSay = vbNullString
-    Shop(Index).LeaveSay = vbNullString
-    Shop(Index).FixesItems = 0
-    Shop(Index).FixObjet = -1
+    Shop(index).Name = vbNullString
+    Shop(index).JoinSay = vbNullString
+    Shop(index).LeaveSay = vbNullString
+    Shop(index).FixesItems = 0
+    Shop(index).FixObjet = -1
     
     For z = 1 To 6
         For i = 1 To MAX_TRADES
-            Shop(Index).TradeItem(z).value(i).GiveItem = 0
-            Shop(Index).TradeItem(z).value(i).GiveValue = 0
-            Shop(Index).TradeItem(z).value(i).GetItem = 0
-            Shop(Index).TradeItem(z).value(i).GetValue = 0
+            Shop(index).TradeItem(z).value(i).GiveItem = 0
+            Shop(index).TradeItem(z).value(i).GiveValue = 0
+            Shop(index).TradeItem(z).value(i).GetItem = 0
+            Shop(index).TradeItem(z).value(i).GetValue = 0
         Next i
     Next z
 End Sub
@@ -1235,15 +1333,15 @@ Dim i As Long
     Next i
 End Sub
 
-Sub ClearSpell(ByVal Index As Long)
-With Spell(Index)
+Sub ClearSpell(ByVal index As Long)
+With Spell(index)
     .Name = vbNullString
     .ClassReq = 0
     .LevelReq = 0
-    .Type = 0
-    .Data1 = 0
-    .Data2 = 0
-    .Data3 = 0
+    .type = 0
+    .data1 = 0
+    .data2 = 0
+    .data3 = 0
     .MPCost = 0
     .Sound = 0
     .Range = 0
@@ -1272,178 +1370,178 @@ End Sub
 ' // PLAYER FUNCTIONS //
 ' //////////////////////
 
-Function GetPlayerLogin(ByVal Index As Long) As String
-    GetPlayerLogin = Trim$(Player(Index).Login)
+Function GetPlayerLogin(ByVal index As Long) As String
+    GetPlayerLogin = Trim$(Player(index).Login)
 End Function
 
-Sub SetPlayerLogin(ByVal Index As Long, ByVal Login As String)
-    Player(Index).Login = Login
+Sub SetPlayerLogin(ByVal index As Long, ByVal Login As String)
+    Player(index).Login = Login
 End Sub
 
-Function GetPlayerPassword(ByVal Index As Long) As String
-    GetPlayerPassword = Trim$(Player(Index).Password)
+Function GetPlayerPassword(ByVal index As Long) As String
+    GetPlayerPassword = Trim$(Player(index).Password)
 End Function
 
-Sub SetPlayerPassword(ByVal Index As Long, ByVal Password As String)
-    Player(Index).Password = Password
+Sub SetPlayerPassword(ByVal index As Long, ByVal Password As String)
+    Player(index).Password = Password
 End Sub
 
-Function GetPlayerName(ByVal Index As Long) As String
-    GetPlayerName = Trim$(Player(Index).Char(Player(Index).CharNum).Name)
+Function GetPlayerName(ByVal index As Long) As String
+    GetPlayerName = Trim$(Player(index).Char(Player(index).CharNum).Name)
 End Function
 
-Sub SetPlayerName(ByVal Index As Long, ByVal Name As String)
-    Player(Index).Char(Player(Index).CharNum).Name = Name
+Sub SetPlayerName(ByVal index As Long, ByVal Name As String)
+    Player(index).Char(Player(index).CharNum).Name = Name
 End Sub
 
-Function GetPlayerGuild(ByVal Index As Long) As String
-    GetPlayerGuild = Trim$(Player(Index).Char(Player(Index).CharNum).Guild)
+Function GetPlayerGuild(ByVal index As Long) As String
+    GetPlayerGuild = Trim$(Player(index).Char(Player(index).CharNum).Guild)
 End Function
 
-Sub SetPlayerGuild(ByVal Index As Long, ByVal Guild As String)
-    Player(Index).Char(Player(Index).CharNum).Guild = Guild
+Sub SetPlayerGuild(ByVal index As Long, ByVal Guild As String)
+    Player(index).Char(Player(index).CharNum).Guild = Guild
 End Sub
 
-Function GetPlayerGuildAccess(ByVal Index As Long) As Long
-    GetPlayerGuildAccess = Player(Index).Char(Player(Index).CharNum).Guildaccess
+Function GetPlayerGuildAccess(ByVal index As Long) As Long
+    GetPlayerGuildAccess = Player(index).Char(Player(index).CharNum).Guildaccess
 End Function
 
-Sub SetPlayerGuildAccess(ByVal Index As Long, ByVal Guildaccess As Long)
-    Player(Index).Char(Player(Index).CharNum).Guildaccess = Guildaccess
+Sub SetPlayerGuildAccess(ByVal index As Long, ByVal Guildaccess As Long)
+    Player(index).Char(Player(index).CharNum).Guildaccess = Guildaccess
 End Sub
 
-Function GetPlayerClass(ByVal Index As Long) As Long
-    GetPlayerClass = Player(Index).Char(Player(Index).CharNum).Class
+Function GetPlayerClass(ByVal index As Long) As Long
+    GetPlayerClass = Player(index).Char(Player(index).CharNum).Class
 End Function
 
-Sub SetPlayerClass(ByVal Index As Long, ByVal ClassNum As Long)
-    Player(Index).Char(Player(Index).CharNum).Class = ClassNum
+Sub SetPlayerClass(ByVal index As Long, ByVal ClassNum As Long)
+    Player(index).Char(Player(index).CharNum).Class = ClassNum
 End Sub
 
-Function GetPlayerSprite(ByVal Index As Long) As Long
-    GetPlayerSprite = Player(Index).Char(Player(Index).CharNum).sprite
+Function GetPlayerSprite(ByVal index As Long) As Long
+    GetPlayerSprite = Player(index).Char(Player(index).CharNum).sprite
 End Function
 
-Sub SetPlayerSprite(ByVal Index As Long, ByVal sprite As Long)
-    Player(Index).Char(Player(Index).CharNum).sprite = sprite
+Sub SetPlayerSprite(ByVal index As Long, ByVal sprite As Long)
+    Player(index).Char(Player(index).CharNum).sprite = sprite
 End Sub
 
-Function GetPlayerLevel(ByVal Index As Long) As Long
-    GetPlayerLevel = Player(Index).Char(Player(Index).CharNum).Level
+Function GetPlayerLevel(ByVal index As Long) As Long
+    GetPlayerLevel = Player(index).Char(Player(index).CharNum).Level
 End Function
 
-Sub SetPlayerLevel(ByVal Index As Long, ByVal Level As Long)
-    If GetPlayerLevel(Index) > MAX_LEVEL Then Exit Sub
-    Player(Index).Char(Player(Index).CharNum).Level = Level
+Sub SetPlayerLevel(ByVal index As Long, ByVal Level As Long)
+    If GetPlayerLevel(index) > MAX_LEVEL Then Exit Sub
+    Player(index).Char(Player(index).CharNum).Level = Level
 End Sub
 
-Function GetPlayerNextLevel(ByVal Index As Long) As Long
-    If GetPlayerLevel(Index) > MAX_LEVEL Then Exit Function
-    GetPlayerNextLevel = experience(Val(GetPlayerLevel(Index)))
+Function GetPlayerNextLevel(ByVal index As Long) As Long
+    If GetPlayerLevel(index) > MAX_LEVEL Then Exit Function
+    GetPlayerNextLevel = experience(Val(GetPlayerLevel(index)))
 End Function
 
-Function GetPlayerExp(ByVal Index As Long) As Long
-    GetPlayerExp = Player(Index).Char(Player(Index).CharNum).Exp
+Function GetPlayerExp(ByVal index As Long) As Long
+    GetPlayerExp = Player(index).Char(Player(index).CharNum).Exp
 End Function
 
-Sub SetPlayerExp(ByVal Index As Long, ByVal Exp As Long)
+Sub SetPlayerExp(ByVal index As Long, ByVal Exp As Long)
 Dim Queten As Long
-Queten = Val(Player(Index).Char(Player(Index).CharNum).QueteEnCour)
-    If Queten > 0 Then If quete(Queten).Type = QUETE_TYPE_GAGNE_XP Then Call PlayerQueteTypeXp(Index, Queten, Exp)
-    Player(Index).Char(Player(Index).CharNum).Exp = Exp
+Queten = Val(Player(index).Char(Player(index).CharNum).QueteEnCour)
+    If Queten > 0 Then If quete(Queten).type = QUETE_TYPE_GAGNE_XP Then Call PlayerQueteTypeXp(index, Queten, Exp)
+    Player(index).Char(Player(index).CharNum).Exp = Exp
 End Sub
 
-Function GetPlayerAccess(ByVal Index As Long) As Long
-    GetPlayerAccess = Player(Index).Char(Player(Index).CharNum).Access
+Function GetPlayerAccess(ByVal index As Long) As Long
+    GetPlayerAccess = Player(index).Char(Player(index).CharNum).Access
 End Function
 
-Sub SetPlayerAccess(ByVal Index As Long, ByVal Access As Long)
-    Player(Index).Char(Player(Index).CharNum).Access = Access
+Sub SetPlayerAccess(ByVal index As Long, ByVal Access As Long)
+    Player(index).Char(Player(index).CharNum).Access = Access
 End Sub
 
-Function GetPlayerPK(ByVal Index As Long) As Long
-    GetPlayerPK = Player(Index).Char(Player(Index).CharNum).PK
+Function GetPlayerPK(ByVal index As Long) As Long
+    GetPlayerPK = Player(index).Char(Player(index).CharNum).PK
 End Function
 
-Sub SetPlayerPK(ByVal Index As Long, ByVal PK As Long)
-    Player(Index).Char(Player(Index).CharNum).PK = PK
+Sub SetPlayerPK(ByVal index As Long, ByVal PK As Long)
+    Player(index).Char(Player(index).CharNum).PK = PK
 End Sub
 
-Function GetPlayerHP(ByVal Index As Long) As Long
-    GetPlayerHP = Player(Index).Char(Player(Index).CharNum).HP
+Function GetPlayerHP(ByVal index As Long) As Long
+    GetPlayerHP = Player(index).Char(Player(index).CharNum).HP
 End Function
 
-Sub SetPlayerHP(ByVal Index As Long, ByVal HP As Long)
-    Player(Index).Char(Player(Index).CharNum).HP = HP
+Sub SetPlayerHP(ByVal index As Long, ByVal HP As Long)
+    Player(index).Char(Player(index).CharNum).HP = HP
     
-    If GetPlayerHP(Index) > GetPlayerMaxHP(Index) Then Player(Index).Char(Player(Index).CharNum).HP = GetPlayerMaxHP(Index)
-    If GetPlayerHP(Index) < 0 Then Player(Index).Char(Player(Index).CharNum).HP = 0
-    Call SendStats(Index)
+    If GetPlayerHP(index) > GetPlayerMaxHP(index) Then Player(index).Char(Player(index).CharNum).HP = GetPlayerMaxHP(index)
+    If GetPlayerHP(index) < 0 Then Player(index).Char(Player(index).CharNum).HP = 0
+    Call SendStats(index)
 End Sub
 
-Function GetPlayerMP(ByVal Index As Long) As Long
-    GetPlayerMP = Player(Index).Char(Player(Index).CharNum).MP
+Function GetPlayerMP(ByVal index As Long) As Long
+    GetPlayerMP = Player(index).Char(Player(index).CharNum).MP
 End Function
 
-Sub SetPlayerMP(ByVal Index As Long, ByVal MP As Long)
-    Player(Index).Char(Player(Index).CharNum).MP = MP
+Sub SetPlayerMP(ByVal index As Long, ByVal MP As Long)
+    Player(index).Char(Player(index).CharNum).MP = MP
 
-    If GetPlayerMP(Index) > GetPlayerMaxMP(Index) Then Player(Index).Char(Player(Index).CharNum).MP = GetPlayerMaxMP(Index)
-    If GetPlayerMP(Index) < 0 Then Player(Index).Char(Player(Index).CharNum).MP = 0
+    If GetPlayerMP(index) > GetPlayerMaxMP(index) Then Player(index).Char(Player(index).CharNum).MP = GetPlayerMaxMP(index)
+    If GetPlayerMP(index) < 0 Then Player(index).Char(Player(index).CharNum).MP = 0
 End Sub
 
-Function GetPlayerSP(ByVal Index As Long) As Long
-    GetPlayerSP = Player(Index).Char(Player(Index).CharNum).SP
+Function GetPlayerSP(ByVal index As Long) As Long
+    GetPlayerSP = Player(index).Char(Player(index).CharNum).SP
 End Function
 
-Sub SetPlayerSP(ByVal Index As Long, ByVal SP As Long)
-    Player(Index).Char(Player(Index).CharNum).SP = SP
+Sub SetPlayerSP(ByVal index As Long, ByVal SP As Long)
+    Player(index).Char(Player(index).CharNum).SP = SP
 
-    If GetPlayerSP(Index) > GetPlayerMaxSP(Index) Then Player(Index).Char(Player(Index).CharNum).SP = GetPlayerMaxSP(Index)
-    If GetPlayerSP(Index) < 0 Then Player(Index).Char(Player(Index).CharNum).SP = 0
+    If GetPlayerSP(index) > GetPlayerMaxSP(index) Then Player(index).Char(Player(index).CharNum).SP = GetPlayerMaxSP(index)
+    If GetPlayerSP(index) < 0 Then Player(index).Char(Player(index).CharNum).SP = 0
 End Sub
 
-Function GetPlayerMaxHP(ByVal Index As Long) As Long
+Function GetPlayerMaxHP(ByVal index As Long) As Long
 Dim CharNum As Long
 Dim i As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddHP
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddHP
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddHP
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddHP
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddHP
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddHP
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddHP
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddHP
     
-    CharNum = Player(Index).CharNum
+    CharNum = Player(index).CharNum
     'GetPlayerMaxHP = ((Player(index).Char(CharNum).Level + Int(GetPlayerstr(index) / 2) + ClassE(Player(index).Char(CharNum).Class).STR) * 2) + add
-    GetPlayerMaxHP = (GetPlayerLevel(Index) * AddHP.Level) + (GetPlayerStr(Index) * AddHP.STR) + (GetPlayerDEF(Index) * AddHP.def) + (GetPlayerMAGI(Index) * AddHP.magi) + (GetPlayerSPEED(Index) * AddHP.Speed) + add
+    GetPlayerMaxHP = (GetPlayerLevel(index) * AddHP.Level) + (GetPlayerStr(index) * AddHP.STR) + (GetPlayerDEF(index) * AddHP.def) + (GetPlayerMAGI(index) * AddHP.magi) + (GetPlayerSPEED(index) * AddHP.Speed) + add
 End Function
 
-Function GetPlayerMaxMP(ByVal Index As Long) As Long
+Function GetPlayerMaxMP(ByVal index As Long) As Long
 Dim CharNum As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddMP
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddMP
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddMP
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddMP
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddMP
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddMP
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddMP
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddMP
     
-    CharNum = Player(Index).CharNum
+    CharNum = Player(index).CharNum
     'GetPlayerMaxMP = ((Player(index).Char(CharNum).Level + Int(GetPlayerMAGI(index) / 2) + Class(Player(index).Char(CharNum).Class).MAGI) * 2) + add
-    GetPlayerMaxMP = (GetPlayerLevel(Index) * AddMP.Level) + (GetPlayerStr(Index) * AddMP.STR) + (GetPlayerDEF(Index) * AddMP.def) + (GetPlayerMAGI(Index) * AddMP.magi) + (GetPlayerSPEED(Index) * AddMP.Speed) + add
+    GetPlayerMaxMP = (GetPlayerLevel(index) * AddMP.Level) + (GetPlayerStr(index) * AddMP.STR) + (GetPlayerDEF(index) * AddMP.def) + (GetPlayerMAGI(index) * AddMP.magi) + (GetPlayerSPEED(index) * AddMP.Speed) + add
 End Function
 
-Function GetPlayerMaxSP(ByVal Index As Long) As Long
+Function GetPlayerMaxSP(ByVal index As Long) As Long
 Dim CharNum As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddSP
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddSP
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddSP
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddSP
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddSP
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddSP
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddSP
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddSP
     
-    CharNum = Player(Index).CharNum
+    CharNum = Player(index).CharNum
     'GetPlayerMaxSP = ((Player(index).Char(CharNum).Level + Int(GetPlayerSPEED(index) / 2) + Class(Player(index).Char(CharNum).Class).SPEED) * 2) + add
-    GetPlayerMaxSP = (GetPlayerLevel(Index) * AddSP.Level) + (GetPlayerStr(Index) * AddSP.STR) + (GetPlayerDEF(Index) * AddSP.def) + (GetPlayerMAGI(Index) * AddSP.magi) + (GetPlayerSPEED(Index) * AddSP.Speed) + add
+    GetPlayerMaxSP = (GetPlayerLevel(index) * AddSP.Level) + (GetPlayerStr(index) * AddSP.STR) + (GetPlayerDEF(index) * AddSP.def) + (GetPlayerMAGI(index) * AddSP.magi) + (GetPlayerSPEED(index) * AddSP.Speed) + add
 End Function
 
 Function GetClassName(ByVal ClassNum As Long) As String
@@ -1478,192 +1576,192 @@ Function GetClassMAGI(ByVal ClassNum As Long) As Long
     GetClassMAGI = Classe(ClassNum).magi
 End Function
 
-Function GetPlayerStr(ByVal Index As Long) As Long
+Function GetPlayerStr(ByVal index As Long) As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddStr
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddStr
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddStr
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddStr
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddStr
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddStr
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddStr
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddStr
     
-    GetPlayerStr = Player(Index).Char(Player(Index).CharNum).STR + add
+    GetPlayerStr = Player(index).Char(Player(index).CharNum).STR + add
 End Function
 
-Sub SetPlayerStr(ByVal Index As Long, ByVal STR As Long)
-    Player(Index).Char(Player(Index).CharNum).STR = STR
+Sub SetPlayerStr(ByVal index As Long, ByVal STR As Long)
+    Player(index).Char(Player(index).CharNum).STR = STR
 End Sub
 
-Function GetPlayerDEF(ByVal Index As Long) As Long
+Function GetPlayerDEF(ByVal index As Long) As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddDef
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddDef
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddDef
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddDef
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddDef
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddDef
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddDef
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddDef
     
-    GetPlayerDEF = Player(Index).Char(Player(Index).CharNum).def + add
+    GetPlayerDEF = Player(index).Char(Player(index).CharNum).def + add
 End Function
 
-Sub SetPlayerDEF(ByVal Index As Long, ByVal def As Long)
-    Player(Index).Char(Player(Index).CharNum).def = def
+Sub SetPlayerDEF(ByVal index As Long, ByVal def As Long)
+    Player(index).Char(Player(index).CharNum).def = def
 End Sub
 
-Function GetPlayerSPEED(ByVal Index As Long) As Long
+Function GetPlayerSPEED(ByVal index As Long) As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddSpeed
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddSpeed
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddSpeed
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddSpeed
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddSpeed
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddSpeed
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddSpeed
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddSpeed
     
-    GetPlayerSPEED = Player(Index).Char(Player(Index).CharNum).Speed + add
+    GetPlayerSPEED = Player(index).Char(Player(index).CharNum).Speed + add
 End Function
 
-Sub SetPlayerSPEED(ByVal Index As Long, ByVal Speed As Long)
-    Player(Index).Char(Player(Index).CharNum).Speed = Speed
+Sub SetPlayerSPEED(ByVal index As Long, ByVal Speed As Long)
+    Player(index).Char(Player(index).CharNum).Speed = Speed
 End Sub
 
-Function GetPlayerMAGI(ByVal Index As Long) As Long
+Function GetPlayerMAGI(ByVal index As Long) As Long
 Dim add As Long
 add = 0
-    If GetPlayerWeaponSlot(Index) > 0 Then add = item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).AddMagi
-    If GetPlayerArmorSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).AddMagi
-    If GetPlayerShieldSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).AddMagi
-    If GetPlayerHelmetSlot(Index) > 0 Then add = add + item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).AddMagi
+    If GetPlayerWeaponSlot(index) > 0 Then add = item(GetPlayerInvItemNum(index, GetPlayerWeaponSlot(index))).AddMagi
+    If GetPlayerArmorSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerArmorSlot(index))).AddMagi
+    If GetPlayerShieldSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerShieldSlot(index))).AddMagi
+    If GetPlayerHelmetSlot(index) > 0 Then add = add + item(GetPlayerInvItemNum(index, GetPlayerHelmetSlot(index))).AddMagi
     
-    GetPlayerMAGI = Player(Index).Char(Player(Index).CharNum).magi + add
+    GetPlayerMAGI = Player(index).Char(Player(index).CharNum).magi + add
 End Function
 
-Sub SetPlayerMAGI(ByVal Index As Long, ByVal magi As Long)
-    Player(Index).Char(Player(Index).CharNum).magi = magi
+Sub SetPlayerMAGI(ByVal index As Long, ByVal magi As Long)
+    Player(index).Char(Player(index).CharNum).magi = magi
 End Sub
 
-Function GetPlayerPOINTS(ByVal Index As Long) As Long
-    GetPlayerPOINTS = Player(Index).Char(Player(Index).CharNum).POINTS
+Function GetPlayerPOINTS(ByVal index As Long) As Long
+    GetPlayerPOINTS = Player(index).Char(Player(index).CharNum).POINTS
 End Function
 
-Sub SetPlayerPOINTS(ByVal Index As Long, ByVal POINTS As Long)
-    Player(Index).Char(Player(Index).CharNum).POINTS = POINTS
+Sub SetPlayerPOINTS(ByVal index As Long, ByVal POINTS As Long)
+    Player(index).Char(Player(index).CharNum).POINTS = POINTS
 End Sub
 
-Function GetPlayerMap(ByVal Index As Long) As Long
-    GetPlayerMap = Player(Index).Char(Player(Index).CharNum).Map
+Function GetPlayerMap(ByVal index As Long) As Long
+    GetPlayerMap = Player(index).Char(Player(index).CharNum).Map
 End Function
 
-Sub SetPlayerMap(ByVal Index As Long, ByVal MapNum As Long)
-    If MapNum > 0 And MapNum <= MAX_MAPS Then Player(Index).Char(Player(Index).CharNum).Map = MapNum
+Sub SetPlayerMap(ByVal index As Long, ByVal MapNum As Long)
+    If MapNum > 0 And MapNum <= MAX_MAPS Then Player(index).Char(Player(index).CharNum).Map = MapNum
 End Sub
 
-Function GetPlayerX(ByVal Index As Long) As Long
-    GetPlayerX = Player(Index).Char(Player(Index).CharNum).X
+Function GetPlayerX(ByVal index As Long) As Long
+    GetPlayerX = Player(index).Char(Player(index).CharNum).X
 End Function
 
-Sub SetPlayerX(ByVal Index As Long, ByVal X As Long)
-    Player(Index).Char(Player(Index).CharNum).X = X
+Sub SetPlayerX(ByVal index As Long, ByVal X As Long)
+    Player(index).Char(Player(index).CharNum).X = X
 End Sub
 
-Function GetPlayerY(ByVal Index As Long) As Long
-    GetPlayerY = Player(Index).Char(Player(Index).CharNum).Y
+Function GetPlayerY(ByVal index As Long) As Long
+    GetPlayerY = Player(index).Char(Player(index).CharNum).Y
 End Function
 
-Sub SetPlayerY(ByVal Index As Long, ByVal Y As Long)
-    Player(Index).Char(Player(Index).CharNum).Y = Y
+Sub SetPlayerY(ByVal index As Long, ByVal Y As Long)
+    Player(index).Char(Player(index).CharNum).Y = Y
 End Sub
 
-Function GetPlayerSex(ByVal Index As Long) As Byte
-    GetPlayerSex = Player(Index).Char(Player(Index).CharNum).Sex
+Function GetPlayerSex(ByVal index As Long) As Byte
+    GetPlayerSex = Player(index).Char(Player(index).CharNum).Sex
 End Function
 
-Sub SetPlayerSex(ByVal Index As Long, ByVal Sex As Byte)
-    Player(Index).Char(Player(Index).CharNum).Sex = Sex
+Sub SetPlayerSex(ByVal index As Long, ByVal Sex As Byte)
+    Player(index).Char(Player(index).CharNum).Sex = Sex
 End Sub
 
-Function GetPlayerDir(ByVal Index As Long) As Long
-    GetPlayerDir = Player(Index).Char(Player(Index).CharNum).Dir
+Function GetPlayerDir(ByVal index As Long) As Long
+    GetPlayerDir = Player(index).Char(Player(index).CharNum).Dir
 End Function
 
-Sub SetPlayerDir(ByVal Index As Long, ByVal Dir As Long)
-    Player(Index).Char(Player(Index).CharNum).Dir = Dir
+Sub SetPlayerDir(ByVal index As Long, ByVal Dir As Long)
+    Player(index).Char(Player(index).CharNum).Dir = Dir
 End Sub
 
-Function GetPlayerIP(ByVal Index As Long) As String
-    GetPlayerIP = frmServer.Socket(Index).RemoteHostIP
+Function GetPlayerIP(ByVal index As Long) As String
+    GetPlayerIP = frmServer.Socket(index).RemoteHostIP
 End Function
 
-Function GetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemNum = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num
+Function GetPlayerInvItemNum(ByVal index As Long, ByVal InvSlot As Long) As Long
+    GetPlayerInvItemNum = Player(index).Char(Player(index).CharNum).Inv(InvSlot).num
 End Function
 
-Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNum As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num = ItemNum
+Sub SetPlayerInvItemNum(ByVal index As Long, ByVal InvSlot As Long, ByVal ItemNum As Long)
+    Player(index).Char(Player(index).CharNum).Inv(InvSlot).num = ItemNum
 End Sub
 
-Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value
+Function GetPlayerInvItemValue(ByVal index As Long, ByVal InvSlot As Long) As Long
+    GetPlayerInvItemValue = Player(index).Char(Player(index).CharNum).Inv(InvSlot).value
 End Function
 
-Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value = ItemValue
+Sub SetPlayerInvItemValue(ByVal index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
+    Player(index).Char(Player(index).CharNum).Inv(InvSlot).value = ItemValue
 End Sub
 
-Function GetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemDur = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Dur
+Function GetPlayerInvItemDur(ByVal index As Long, ByVal InvSlot As Long) As Long
+    GetPlayerInvItemDur = Player(index).Char(Player(index).CharNum).Inv(InvSlot).Dur
 End Function
 
-Sub SetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemDur As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Dur = ItemDur
+Sub SetPlayerInvItemDur(ByVal index As Long, ByVal InvSlot As Long, ByVal ItemDur As Long)
+    Player(index).Char(Player(index).CharNum).Inv(InvSlot).Dur = ItemDur
 End Sub
 
-Function GetPlayerSpell(ByVal Index As Long, ByVal SpellSlot As Long) As Long
-    GetPlayerSpell = Player(Index).Char(Player(Index).CharNum).Spell(SpellSlot)
+Function GetPlayerSpell(ByVal index As Long, ByVal SpellSlot As Long) As Long
+    GetPlayerSpell = Player(index).Char(Player(index).CharNum).Spell(SpellSlot)
 End Function
 
-Sub SetPlayerSpell(ByVal Index As Long, ByVal SpellSlot As Long, ByVal SpellNum As Long)
-    Player(Index).Char(Player(Index).CharNum).Spell(SpellSlot) = SpellNum
+Sub SetPlayerSpell(ByVal index As Long, ByVal SpellSlot As Long, ByVal SpellNum As Long)
+    Player(index).Char(Player(index).CharNum).Spell(SpellSlot) = SpellNum
 End Sub
 
-Function GetPlayerArmorSlot(ByVal Index As Long) As Long
-    GetPlayerArmorSlot = Player(Index).Char(Player(Index).CharNum).ArmorSlot
+Function GetPlayerArmorSlot(ByVal index As Long) As Long
+    GetPlayerArmorSlot = Player(index).Char(Player(index).CharNum).ArmorSlot
 End Function
 
-Sub SetPlayerArmorSlot(ByVal Index As Long, InvNum As Long)
-    Player(Index).Char(Player(Index).CharNum).ArmorSlot = InvNum
+Sub SetPlayerArmorSlot(ByVal index As Long, InvNum As Long)
+    Player(index).Char(Player(index).CharNum).ArmorSlot = InvNum
 End Sub
 
-Function GetPlayerWeaponSlot(ByVal Index As Long) As Long
-    GetPlayerWeaponSlot = Player(Index).Char(Player(Index).CharNum).WeaponSlot
+Function GetPlayerWeaponSlot(ByVal index As Long) As Long
+    GetPlayerWeaponSlot = Player(index).Char(Player(index).CharNum).WeaponSlot
 End Function
 
-Sub SetPlayerWeaponSlot(ByVal Index As Long, InvNum As Long)
-    Player(Index).Char(Player(Index).CharNum).WeaponSlot = InvNum
+Sub SetPlayerWeaponSlot(ByVal index As Long, InvNum As Long)
+    Player(index).Char(Player(index).CharNum).WeaponSlot = InvNum
 End Sub
 
-Function GetPlayerHelmetSlot(ByVal Index As Long) As Long
-    GetPlayerHelmetSlot = Player(Index).Char(Player(Index).CharNum).HelmetSlot
+Function GetPlayerHelmetSlot(ByVal index As Long) As Long
+    GetPlayerHelmetSlot = Player(index).Char(Player(index).CharNum).HelmetSlot
 End Function
 
-Sub SetPlayerHelmetSlot(ByVal Index As Long, InvNum As Long)
-    Player(Index).Char(Player(Index).CharNum).HelmetSlot = InvNum
+Sub SetPlayerHelmetSlot(ByVal index As Long, InvNum As Long)
+    Player(index).Char(Player(index).CharNum).HelmetSlot = InvNum
 End Sub
 
-Function GetPlayerShieldSlot(ByVal Index As Long) As Long
-    GetPlayerShieldSlot = Player(Index).Char(Player(Index).CharNum).ShieldSlot
+Function GetPlayerShieldSlot(ByVal index As Long) As Long
+    GetPlayerShieldSlot = Player(index).Char(Player(index).CharNum).ShieldSlot
 End Function
 
-Sub SetPlayerShieldSlot(ByVal Index As Long, InvNum As Long)
-    Player(Index).Char(Player(Index).CharNum).ShieldSlot = InvNum
+Sub SetPlayerShieldSlot(ByVal index As Long, InvNum As Long)
+    Player(index).Char(Player(index).CharNum).ShieldSlot = InvNum
 End Sub
 
-Function GetPlayerPetSlot(ByVal Index As Long) As Long
-    GetPlayerPetSlot = Player(Index).Char(Player(Index).CharNum).PetSlot
+Function GetPlayerPetSlot(ByVal index As Long) As Long
+    GetPlayerPetSlot = Player(index).Char(Player(index).CharNum).PetSlot
 End Function
 
-Sub SetPlayerPetSlot(ByVal Index As Long, InvNum As Long)
-    Player(Index).Char(Player(Index).CharNum).PetSlot = InvNum
+Sub SetPlayerPetSlot(ByVal index As Long, InvNum As Long)
+    Player(index).Char(Player(index).CharNum).PetSlot = InvNum
 End Sub
 
-Sub BattleMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
-    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
+Sub BattleMsg(ByVal index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
+    Call SendDataTo(index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
 End Sub
 
 Public Sub Attendre(ByVal temps As Long)

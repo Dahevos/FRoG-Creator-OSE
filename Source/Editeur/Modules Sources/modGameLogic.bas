@@ -120,7 +120,8 @@ Public EditorQueteIndex As Long
 Public InDefTel As Boolean
 Public InDefKey As Boolean
 Public InPetsEditor As Boolean
-
+Public InMetierEditor As Boolean
+Public InRecetteEditor As Boolean
 ' Game fps
 Public GameFPS As Long
 
@@ -969,10 +970,19 @@ rest:
                     ' Blit out players ,arrows and spells
                     For i = 1 To MAX_PLAYERS
                         If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                            Call BltPlayerOmbre(i)
-                            Call BltPlayer(i)
-                            Call BltArrow(i)
-                            If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                            If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                                If Player(MyIndex).guild = Player(i).guild Then
+                                    Call BltPlayerOmbre(i)
+                                    Call BltPlayer(i)
+                                    Call BltArrow(i)
+                                    If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                                End If
+                            Else
+                                Call BltPlayerOmbre(i)
+                                Call BltPlayer(i)
+                                Call BltArrow(i)
+                                If Player(i).PetSlot <> 0 Then Call BltPlayerPet(i)
+                            End If
                         End If
                     Next i
                 End If
@@ -991,7 +1001,15 @@ rest:
                 If Not InEditor Then
                     For i = 1 To MAX_PLAYERS
                         If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                            If PIC_PL > 1 Then Call BltPlayerTop(i)                     '<- pour 32*64
+                            If PIC_PL > 1 Then
+                                If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                                    If Player(MyIndex).guild = Player(i).guild Then
+                                        Call BltPlayerTop(i)
+                                    End If
+                                Else
+                                    Call BltPlayerTop(i)
+                                End If
+                            End If
 
                             Call BltBlood(i, PIC_X, PIC_Y, 40)
                             ' Call BltBlood(i) ferais aussi l'affaire car les autres paramètres peuvent être modifier selon le blood.png.
@@ -1024,8 +1042,15 @@ rest:
             TexthDC = DD_BackBuffer.GetDC
             For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) And Player(i).Map = Player(MyIndex).Map Then
-                    Call BltPlayerGuildName(i)
-                    Call BltPlayerName(i)
+                    If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                        If Player(MyIndex).guild = Player(i).guild Then
+                            Call BltPlayerGuildName(i)
+                            Call BltPlayerName(i)
+                        End If
+                    Else
+                        Call BltPlayerGuildName(i)
+                        Call BltPlayerName(i)
+                    End If
                 End If
             Next i
             Call DD_BackBuffer.ReleaseDC(TexthDC)
@@ -1148,6 +1173,8 @@ rest:
                                     Case TILE_TYPE_BLOCK_GUILDE: Call DrawText(TexthDC, XT, YT, "BG", QBColor(Red))
                                     Case TILE_TYPE_BLOCK_TOIT: Call DrawText(TexthDC, XT, YT, "BT", QBColor(BrightRed))
                                     Case TILE_TYPE_BLOCK_DIR: Call DrawText(TexthDC, XT, YT, "BD", QBColor(BrightRed))
+                                    Case TILE_TYPE_CRAFT: Call DrawText(TexthDC, XT, YT, "TC", QBColor(Yellow))
+                                    Case TILE_TYPE_METIER: Call DrawText(TexthDC, XT, YT, "M", QBColor(Yellow))
                                 End Select
                                 If .Light > 0 Then Call DrawText(TexthDC, x * PIC_X + sx + 18 - NewPlayerPOffsetX, y * PIC_Y + sy + 14 - NewPlayerPOffsetY, "L", QBColor(Yellow))
                             End With
@@ -1662,7 +1689,7 @@ If Not IsPlaying(Index) Then Exit Sub
     rec.Left = Anim * tx + tx
     rec.Right = rec.Left + tx
     
-    x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16) '(tx / 4) - ((tx / 4) / 2)
+    x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
     y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
     
     
@@ -1699,13 +1726,14 @@ End Sub
 
 Sub BltPlayerPet(ByVal Index As Long)
 Dim Anim As Byte
-Dim x As Long, y As Long
+Dim x As Long, y As Long, tx As Long, ty As Long
 Dim num As Long
 If Index <= 0 And Index >= MAX_PLAYERS Then Exit Sub
 If Player(Index).PetSlot <= 0 And Player(Index).PetSlot >= MAX_ITEMS Then Exit Sub
 
 If Not IsPlaying(Index) Then Exit Sub
-    
+If Map(Player(MyIndex).Map).petView = 1 Then Exit Sub
+
     Anim = 1
     If Player(Index).Attacking = 0 Or Player(Index).Moving > 0 Then
         Select Case Player(Index).pet.Dir
@@ -1720,22 +1748,24 @@ If Not IsPlaying(Index) Then Exit Sub
         End Select
     End If
        
-    rec.Top = Player(Index).pet.Dir * PIC_Y
-    rec.Bottom = rec.Top + PIC_Y
-    rec.Left = Anim * PIC_X + PIC_X
-    rec.Right = rec.Left + PIC_X
-    
-    x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset
-    If DDSD_Character(GetPlayerSprite(Index)).lHeight = 256 And DDSD_Character(GetPlayerSprite(Index)).lWidth = 128 Then
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset
-    Else
-        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (PIC_Y / 2)
-    End If
-   
-    If x < 0 Then x = 0
-    If y < 0 Then y = 0
-    
     num = Pets(Item(GetPlayerInvItemNum(Index, GetPlayerPetSlot(Index))).Data1).sprite
+    
+    ty = DDSD_Pets(num).lHeight / 4
+    tx = DDSD_Pets(num).lWidth / 4
+    
+    rec.Top = Player(Index).pet.Dir * ty
+    rec.Bottom = rec.Top + ty
+    rec.Left = Anim * tx + tx
+    rec.Right = rec.Left + tx
+
+        x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset - (tx / 2) + 16
+ 
+        y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (ty / 2) + 16
+
+
+    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
+   
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PetsSurf(num), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
 
@@ -2776,11 +2806,14 @@ If HORS_LIGNE < 1 Then Exit Sub
     If Val(ReadINI("INFO", "Maxnpcspell", App.Path & "\config.ini")) > 0 Then MAX_NPC_SPELLS = Val(ReadINI("INFO", "Maxnpcspell", App.Path & "\config.ini")) Else MAX_NPC_SPELLS = 10
     If Val(ReadINI("INFO", "Maxinv", App.Path & "\config.ini")) > 0 Then MAX_INV = Val(ReadINI("INFO", "Maxinv", App.Path & "\config.ini"))
     If Val(ReadINI("INFO", "Maxpets", App.Path & "\config.ini")) > 0 Then MAX_PETS = ReadINI("INFO", "Maxpets", App.Path & "\config.ini")
+    If Val(ReadINI("INFO", "Maxmetier", App.Path & "\config.ini")) > 0 Then MAX_METIER = ReadINI("INFO", "Maxmetier", App.Path & "\config.ini")
+    
     PIC_PL = Val(ReadINI("INFO", "PIC_PL", App.Path & "\config.ini"))
     PIC_NPC1 = Val(ReadINI("INFO", "PIC_NPC1", App.Path & "\config.ini"))
     PIC_NPC2 = Val(ReadINI("INFO", "PIC_NPC2", App.Path & "\config.ini"))
     'MAX_PLAYER_SPELLS = Val(ReadINI("INFO", "Maxpspel", App.Path & "\Editeur\config.ini"))
     ReDim Pets(1 To MAX_PETS) As PetsRec
+    ReDim Metier(1 To MAX_METIER) As MetierRec
     ReDim Class(0 To Max_Classes) As ClassRec
     ReDim quete(1 To MAX_QUETES) As QueteRec
     ReDim Map(1 To MAX_MAPS) As MapRec
@@ -2926,6 +2959,8 @@ Max_Classes = 3
 MAX_LEVEL = 100
 MAX_QUETES = 100
 MAX_PETS = 10
+MAX_METIER = 100
+MAX_RECETTE = 200
 End Sub
 Sub ChargerCartes()
 Dim filename As String
@@ -3583,12 +3618,28 @@ Dim Dire As Long
             For i = 1 To MAX_PLAYERS
                 If IsPlaying(i) Then
                     If Player(i).Map = Player(MyIndex).Map Then
-                        If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
-                            CanMove = False
-                        
-                            ' Set the new direction if they weren't facing that direction
-                            If d <> Dire Then Call SendPlayerDir
-                            Exit Function
+                        If Map(Player(MyIndex).Map).guildSoloView = 1 Then
+                            If Map(Player(MyIndex).Map).traversable = 1 Then
+                                If Player(MyIndex).guild = Player(i).guild Then
+                                    If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                        CanMove = False
+                                    
+                                        ' Set the new direction if they weren't facing that direction
+                                        If d <> Dire Then Call SendPlayerDir
+                                        Exit Function
+                                    End If
+                                End If
+                            End If
+                        Else
+                            If Map(Player(MyIndex).Map).traversable = 1 Then
+                                If (GetPlayerX(i) = GetPlayerX(MyIndex) + PX) And (GetPlayerY(i) = GetPlayerY(MyIndex) + PY) Then
+                                    CanMove = False
+                                
+                                    ' Set the new direction if they weren't facing that direction
+                                    If d <> Dire Then Call SendPlayerDir
+                                    Exit Function
+                                End If
+                            End If
                         End If
                     End If
                 End If
@@ -4352,7 +4403,7 @@ Dim i As Long
     If IsPlaying(MyIndex) = False Or ItemNum <= 0 Or ItemNum > MAX_ITEMS Then Exit Function
     
     If Item(ItemNum).Type = ITEM_TYPE_CURRENCY Then
-        ' If currency then check to see if they already have an instance of the item and add it to that
+        ' If currency then check to see if they already have an guildSoloView of the item and add it to that
         For i = 1 To MAX_INV
             If GetPlayerInvItemNum(MyIndex, i) = ItemNum Then FindOpenInvSlot = i: Exit Function
         Next i
@@ -4560,6 +4611,12 @@ End If
                     ElseIf .Type = TILE_TYPE_SCRIPTED Then
                         ScriptNum = .Data1
                         frmMirage.optScripted.value = True
+                    ElseIf .Type = TILE_TYPE_CRAFT Then
+                        ScriptNum = .Data1
+                        frmMirage.OptCraft.value = True
+                    ElseIf .Type = TILE_TYPE_METIER Then
+                        ScriptNum = .Data1
+                        frmMirage.OptMetier.value = True
                     ElseIf .Type = TILE_TYPE_BANK Then
                         frmMirage.OptBank.value = True
                         bankmsg = .String1
@@ -4850,6 +4907,22 @@ End If
                                 .Data1 = AccptDir1
                                 .Data2 = AccptDir2
                                 .Data3 = AccptDir3
+                                .String1 = vbNullString
+                                .String2 = vbNullString
+                                .String3 = vbNullString
+                            ElseIf frmMirage.OptCraft.value Then
+                                .Type = TILE_TYPE_CRAFT
+                                .Data1 = ScriptNum
+                                .Data2 = 0
+                                .Data3 = 0
+                                .String1 = vbNullString
+                                .String2 = vbNullString
+                                .String3 = vbNullString
+                            ElseIf frmMirage.OptMetier.value Then
+                                .Type = TILE_TYPE_METIER
+                                .Data1 = ScriptNum
+                                .Data2 = 0
+                                .Data3 = 0
                                 .String1 = vbNullString
                                 .String2 = vbNullString
                                 .String3 = vbNullString
@@ -5390,6 +5463,93 @@ Public Sub PetEditorCancel()
     frmIndex.SetFocus
 End Sub
 
+Public Sub MetierEditorInit()
+    ' EditorIndex
+    frmMetier.TxtNom = Metier(EditorIndex).nom
+    frmMetier.txtDesc = Metier(EditorIndex).desc
+    frmMetier.CMetier.ListIndex = Metier(EditorIndex).Type
+    If frmMetier.CMetier.ListIndex = METIER_CHASSEUR Then
+        frmMetier.frChasseur.Caption = "Tuer"
+        frmMetier.Label4.Caption = "Numéro PNJ"
+    ElseIf frmMetier.CMetier.ListIndex = METIER_CRAFT Then
+        frmMetier.frChasseur.Caption = "Craft"
+        frmMetier.Label4.Caption = "Numéro Recette"
+    End If
+    frmMetier.scrlCibleNPC.value = 0
+    frmMetier.scrlNPCNum.value = Metier(EditorIndex).data(0, 0)
+    frmMetier.scrlExpNPC.value = Metier(EditorIndex).data(0, 1)
+    frmMetier.Show vbModeless, frmMirage
+End Sub
+
+Public Sub MetierEditorOk()
+    Metier(EditorIndex).nom = frmMetier.TxtNom
+    Metier(EditorIndex).desc = frmMetier.txtDesc
+    Metier(EditorIndex).Type = frmMetier.CMetier.ListIndex
+    Call SendSaveMetier(EditorIndex)
+    Call MetierEditorCancel
+End Sub
+
+Public Sub MetierEditorCancel()
+    Dim i As Long
+    Unload frmMetier
+    frmIndex.lstIndex.Clear
+    ' Add the names
+    For i = 1 To MAX_METIER
+        frmIndex.lstIndex.AddItem i & " : " & Trim$(Metier(i).nom)
+    Next i
+    frmIndex.SetFocus
+End Sub
+
+Public Sub recetteEditorInit()
+Dim i As Long
+    frmRecette.TxtNom = recette(EditorIndex).nom
+    For i = 0 To 9
+        frmRecette.scrlItemNum1(i).value = recette(EditorIndex).InCraft(i, 0)
+        If recette(EditorIndex).InCraft(i, 1) > 0 Then frmRecette.scrlItemQ(i).value = recette(EditorIndex).InCraft(i, 1)
+        If recette(EditorIndex).InCraft(i, 0) > 0 Then
+            If Item(recette(EditorIndex).InCraft(i, 0)).Type = ITEM_TYPE_CURRENCY Or Item(recette(EditorIndex).InCraft(i, 0)).Empilable <> 0 Then
+                frmRecette.scrlItemQ(i).Enabled = True
+            Else
+                frmRecette.scrlItemQ(i).Enabled = False
+            End If
+        End If
+    Next i
+    frmRecette.scrlItemNum1(10).value = recette(EditorIndex).craft(0)
+    If recette(EditorIndex).craft(1) > 0 Then frmRecette.scrlItemQ(10).value = recette(EditorIndex).craft(1)
+    
+    If Item(frmRecette.scrlItemNum1(10).value).Type = ITEM_TYPE_CURRENCY Or Item(frmRecette.scrlItemNum1(10).value).Empilable <> 0 Then
+        frmRecette.scrlItemQ(10).Enabled = True
+    Else
+        frmRecette.scrlItemQ(10).Enabled = False
+    End If
+
+    frmRecette.Show vbModeless, frmMirage
+End Sub
+
+Public Sub recetteEditorOk()
+Dim i As Long
+    recette(EditorIndex).nom = frmRecette.TxtNom
+    For i = 0 To 9
+        recette(EditorIndex).InCraft(i, 0) = frmRecette.scrlItemNum1(i).value
+        recette(EditorIndex).InCraft(i, 1) = frmRecette.scrlItemQ(i).value
+    Next i
+    recette(EditorIndex).craft(0) = frmRecette.scrlItemNum1(10).value
+    recette(EditorIndex).craft(1) = frmRecette.scrlItemQ(10).value
+    Call SendSaverecette(EditorIndex)
+    Call recetteEditorCancel
+End Sub
+
+Public Sub recetteEditorCancel()
+    Dim i As Long
+    Unload frmRecette
+    frmIndex.lstIndex.Clear
+    ' Add the names
+    For i = 1 To MAX_RECETTE
+        frmIndex.lstIndex.AddItem i & " : " & Trim$(recette(i).nom)
+    Next i
+    frmIndex.SetFocus
+End Sub
+
 Public Sub ItemEditorInit()
 Dim i As Long
     EditorItemY = (Item(EditorIndex).Pic \ 6)
@@ -5524,7 +5684,8 @@ Public Sub ItemEditorOk()
     Item(EditorIndex).paperdollPic = 0
       
     Item(EditorIndex).Empilable = frmItemEditor.CheckEmpi.value
-    
+    Item(EditorIndex).tArme = 0
+
     If (frmItemEditor.cmbType.ListIndex >= ITEM_TYPE_WEAPON) And (frmItemEditor.cmbType.ListIndex <= ITEM_TYPE_SHIELD) Then
         Item(EditorIndex).Data1 = frmItemEditor.scrlDurability.value
         Item(EditorIndex).Data2 = frmItemEditor.scrlStrength.value
@@ -5551,6 +5712,9 @@ Public Sub ItemEditorOk()
         
         Item(EditorIndex).Empilable = 0
         Item(EditorIndex).Sex = frmItemEditor.scrlSexReq.value
+        If (frmItemEditor.cmbType.ListIndex = ITEM_TYPE_WEAPON) Then
+            Item(EditorIndex).tArme = frmItemEditor.CtArme.ListIndex
+        End If
     End If
     
     If (frmItemEditor.cmbType.ListIndex >= ITEM_TYPE_POTIONADDHP) And (frmItemEditor.cmbType.ListIndex <= ITEM_TYPE_POTIONSUBSP) Then
@@ -5694,8 +5858,14 @@ If Not FileExiste("pnjs\npc" & EditorIndex & ".fcp") And HORS_LIGNE = 1 Then Cal
     If MAX_ITEMS <= 32000 Then frmNpcEditor.scrlNum.Max = MAX_ITEMS
     frmNpcEditor.scrlNum.value = Npc(EditorIndex).ItemNPC(1).ItemNum
     frmNpcEditor.scrlValue.value = Npc(EditorIndex).ItemNPC(1).ItemValue
-    If Npc(EditorIndex).quetenum <= 0 Then Npc(EditorIndex).quetenum = 1
-    frmNpcEditor.quetenum.value = Npc(EditorIndex).quetenum
+    If frmNpcEditor.cmbBehavior.ListIndex >= 0 And frmNpcEditor.cmbBehavior.ListIndex <= 1 Then
+        If Npc(EditorIndex).quetenum < 0 Then Npc(EditorIndex).quetenum = 0
+        frmNpcEditor.quetenum.value = Npc(EditorIndex).quetenum
+    Else
+        If Npc(EditorIndex).quetenum <= 0 Then Npc(EditorIndex).quetenum = 1
+        frmNpcEditor.quetenum.value = Npc(EditorIndex).quetenum
+    End If
+    
     If Npc(EditorIndex).SpawnTime = 0 Then
         frmNpcEditor.chkDay.value = Checked
         frmNpcEditor.chkNight.value = Checked
@@ -5783,12 +5953,11 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scripting", frmoptions.script, App.Path & "\config.ini")
-    Call WriteINI("INFO", "GameName", GAME_NAME, App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxplayers", Val(frmoptions.mj), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxitems", Val(frmoptions.mo), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxnpcs", Val(frmoptions.mpnj), App.Path & "\config.ini")
@@ -5796,11 +5965,12 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxjguild", Val(frmoptions.mjg), App.Path & "\config.ini")
+    Call WriteINI("INFO", "GameName", GAME_NAME, App.Path & "\config.ini")
     Call WriteINI("INFO", "motd", frmoptions.motd, App.Path & "\config.ini")
     
     frmMirage.Caption = "Editeur pour le jeu : " & Trim$(GAME_NAME) & " Mettez votre souris sur un élément pour plus de détails."
@@ -5813,7 +5983,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -5826,7 +5996,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -5839,10 +6009,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -5856,7 +6026,7 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)
@@ -6744,6 +6914,8 @@ InSpellEditor = False
 InEmoticonEditor = False
 InArrowEditor = False
 InQuetesEditor = False
+InMetierEditor = False
+InRecetteEditor = False
 End Sub
 
 Sub CheckErr()

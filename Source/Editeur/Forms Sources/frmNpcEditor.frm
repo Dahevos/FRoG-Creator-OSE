@@ -149,7 +149,7 @@ Begin VB.Form frmNpcEditor
          Max             =   10000
          Min             =   1
          TabIndex        =   53
-         Top             =   3560
+         Top             =   3600
          Value           =   1
          Visible         =   0   'False
          Width           =   2655
@@ -317,7 +317,7 @@ Begin VB.Form frmNpcEditor
          ToolTipText     =   "Nombre d'objet donné"
          Top             =   3600
          Visible         =   0   'False
-         Width           =   75
+         Width           =   1395
       End
       Begin VB.Label Label18 
          Alignment       =   1  'Right Justify
@@ -1162,11 +1162,29 @@ If cmbBehavior.ListIndex = 5 Then
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Numéro de quête:"
+    quetenum.min = 1
+    quetenum.Max = MAX_QUETES
 ElseIf cmbBehavior.ListIndex = 6 Then
     qutn.Visible = True
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Case Script:"
+    quetenum.min = 1
+    quetenum.Max = 255
+ElseIf cmbBehavior.ListIndex = 3 Then
+    qutn.Visible = True
+    Label20.Visible = True
+    quetenum.Visible = True
+    Label20.Caption = "Magasin:"
+    quetenum.min = 1
+    quetenum.Max = MAX_SHOPS
+ElseIf cmbBehavior.ListIndex = 0 Or cmbBehavior.ListIndex = 1 Then
+    qutn.Visible = True
+    Label20.Visible = True
+    quetenum.Visible = True
+    Label20.Caption = "Type d'Arme:"
+    quetenum.min = 0
+    quetenum.Max = 11 + MAX_METIER
 Else
     qutn.Visible = False
     Label20.Visible = False
@@ -1241,7 +1259,37 @@ End Sub
 
 Private Sub quetenum_Change()
 Npc(EditorIndex).quetenum = quetenum.value
-qutn.Caption = quetenum.value
+If cmbBehavior.ListIndex = 0 Or cmbBehavior.ListIndex = 1 Then
+    If quetenum.value = 0 Then
+         qutn.Caption = "Toute Arme"
+    ElseIf quetenum.value = 1 Then
+         qutn.Caption = "Epées"
+    ElseIf quetenum.value = 2 Then
+         qutn.Caption = "Haches"
+    ElseIf quetenum.value = 3 Then
+         qutn.Caption = "Dagues"
+    ElseIf quetenum.value = 4 Then
+         qutn.Caption = "Faux"
+    ElseIf quetenum.value = 5 Then
+         qutn.Caption = "Marteaux"
+    ElseIf quetenum.value = 6 Then
+         qutn.Caption = "Pioches"
+    ElseIf quetenum.value = 7 Then
+         qutn.Caption = "Pelles"
+    ElseIf quetenum.value = 8 Then
+         qutn.Caption = "Batons"
+    ElseIf quetenum.value = 9 Then
+         qutn.Caption = "Baguettes"
+    ElseIf quetenum.value = 10 Then
+         qutn.Caption = "Outillages"
+    ElseIf quetenum.value = 11 Then
+         qutn.Caption = "Arc"
+    ElseIf quetenum.value > 11 Then
+        qutn.Caption = "Metier: " & Metier(quetenum.value - 11).nom
+    End If
+Else
+    qutn.Caption = quetenum.value
+End If
 End Sub
 
 Private Sub scrlDEF_Scroll()

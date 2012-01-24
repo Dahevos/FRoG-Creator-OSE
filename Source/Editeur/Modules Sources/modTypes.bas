@@ -34,9 +34,12 @@ Public Const MAX_PLAYER_SPELLS As Byte = 20
 Public Const MAX_TRADES As Byte = 66
 Public Const MAX_PLAYER_TRADES As Byte = 8
 Public Const MAX_NPC_DROPS As Byte = 10
+Public Const MAX_DATA_METIER = 100
 
 Public Const NO As Byte = 0
 Public Const YES As Byte = 1
+
+Public RecetteSelect As Integer
 
 ' Account constants
 Public Const NAME_LENGTH As Byte = 20
@@ -99,6 +102,8 @@ Public Const TILE_TYPE_TOIT As Byte = 26
 Public Const TILE_TYPE_BLOCK_GUILDE As Byte = 27
 Public Const TILE_TYPE_BLOCK_TOIT As Byte = 28
 Public Const TILE_TYPE_BLOCK_DIR As Byte = 29
+Public Const TILE_TYPE_CRAFT As Byte = 30
+Public Const TILE_TYPE_METIER As Byte = 31
 
 ' quetes constant
 Public Const QUETE_TYPE_AUCUN As Byte = 0
@@ -129,6 +134,23 @@ Public Const ITEM_TYPE_SPELL As Byte = 13
 Public Const ITEM_TYPE_MONTURE As Byte = 14
 Public Const ITEM_TYPE_SCRIPT As Byte = 15
 Public Const ITEM_TYPE_PET As Byte = 16
+
+Public Const ITEM_TYPEARME_NONE As Byte = 0
+Public Const ITEM_TYPEARME_EPEES As Byte = 1
+Public Const ITEM_TYPEARME_HACHES As Byte = 2
+Public Const ITEM_TYPEARME_DAGUES As Byte = 3
+Public Const ITEM_TYPEARME_FAUX As Byte = 4
+Public Const ITEM_TYPEARME_MARTEAUX As Byte = 5
+Public Const ITEM_TYPEARME_PIOCHES As Byte = 6
+Public Const ITEM_TYPEARME_PELLES As Byte = 7
+Public Const ITEM_TYPEARME_BATONS As Byte = 8
+Public Const ITEM_TYPEARME_BAGUETTES As Byte = 9
+Public Const ITEM_TYPEARME_OUTILLAGE As Byte = 10
+Public Const ITEM_TYPEARME_ARC As Byte = 11
+
+' Metier
+Public Const METIER_CHASSEUR As Byte = 0
+Public Const METIER_CRAFT As Byte = 1
 
 ' Direction constants
 Public Const DIR_UP As Byte = 3
@@ -330,6 +352,10 @@ Type PlayerRec
    arme As Long
    bouclier As Long
    'Fin paperdoll
+   
+   Metier As Long
+   MetierLvl As Long
+   MetierExp As Long
 End Type
     
 Type TileRec
@@ -416,6 +442,9 @@ Type MapRec
     TranSup As Byte
     Fog As Integer
     FogAlpha As Byte
+    guildSoloView As Byte
+    petView As Byte
+    traversable As Byte
 End Type
 
 Type RecompRec
@@ -494,6 +523,7 @@ Type ItemRec
     NCoul As Long
     
     Sex As Byte
+    tArme As Long
 End Type
 
 Type MapItemRec
@@ -640,6 +670,21 @@ Type Fichiers
     Chemins As String
 End Type
 
+Type MetierRec
+    nom As String
+    Type As Byte
+    desc As String
+    
+    Data(0 To MAX_DATA_METIER, 0 To 1) As Integer
+End Type
+
+Type RecetteRec
+    nom As String
+    InCraft(0 To 9, 0 To 1) As Integer
+    craft(0 To 1) As Integer
+End Type
+
+
 ' Bubble thing
 Public Bubble() As ChatBubble
 
@@ -667,7 +712,10 @@ Public MapReport() As MapRec
 Public Experience() As Long
 Public Pets() As PetsRec
 Public CoffreTmp(1 To 30) As CoffreTempRec 'coffre
-
+Public Metier() As MetierRec
+Public MAX_METIER As Long
+Public recette() As RecetteRec
+Public MAX_RECETTE As Long
 Public MAX_RAINDROPS As Long
 Public BLT_RAIN_DROPS As Long
 Public DropRain() As DropRainRec
@@ -994,6 +1042,7 @@ Sub ClearItem(ByVal Index As Long)
     Item(Index).AttackSpeed = 1000
     
     Item(Index).NCoul = 0
+    Item(Index).tArme = 0
 End Sub
 
 Sub ClearItems()
@@ -1171,6 +1220,9 @@ For i = 0 To 5
     TempMap(i).TranSup = 0
     TempMap(i).Fog = 0
     TempMap(i).FogAlpha = 0
+    TempMap(i).guildSoloView = 0
+    TempMap(i).petView = 0
+    TempMap(i).traversable = 0
 Next i
 End Sub
 
@@ -1244,6 +1296,9 @@ Dim y As Long
     TempMap(Index).TranSup = 0
     TempMap(Index).Fog = 0
     TempMap(Index).FogAlpha = 0
+    TempMap(Index).guildSoloView = 0
+    TempMap(Index).petView = 0
+    TempMap(Index).traversable = 0
 End Sub
 
 Sub VidercttMap(ByVal MapNum As Long)
@@ -1305,6 +1360,9 @@ i = MapNum
     Map(i).TranSup = 0
     Map(i).Fog = 0
     Map(i).FogAlpha = 0
+    Map(i).guildSoloView = 0
+    Map(i).petView = 0
+    Map(i).traversable = 0
 Call ClearMapItems
 Call ClearMapNpcs
 End Sub
@@ -1368,6 +1426,9 @@ i = MapNum
     Map(i).TranSup = 0
     Map(i).Fog = 0
     Map(i).FogAlpha = 0
+    Map(i).guildSoloView = 0
+    Map(i).petView = 0
+    Map(i).traversable = 0
 End Sub
 
 Sub ClearMapItems()

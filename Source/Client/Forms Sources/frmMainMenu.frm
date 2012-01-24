@@ -19,6 +19,144 @@ Begin VB.Form frmMainMenu
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   639
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Timer tmrPicChar 
+      Interval        =   500
+      Left            =   5760
+      Top             =   0
+   End
+   Begin VB.Frame fraPers 
+      Caption         =   "Frame1"
+      Height          =   3600
+      Left            =   5520
+      TabIndex        =   20
+      Top             =   600
+      Width           =   3390
+      Begin VB.PictureBox PicChar 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000006&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   960
+         Left            =   360
+         ScaleHeight     =   64
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   64
+         TabIndex        =   31
+         Top             =   1680
+         Width           =   960
+      End
+      Begin VB.ListBox lstChars 
+         Appearance      =   0  'Flat
+         BackColor       =   &H00FFFFFF&
+         BeginProperty Font 
+            Name            =   "Verdana"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00000000&
+         Height          =   930
+         ItemData        =   "frmMainMenu.frx":FD82D
+         Left            =   120
+         List            =   "frmMainMenu.frx":FD82F
+         TabIndex        =   6
+         Top             =   640
+         Width           =   3135
+      End
+      Begin VB.Label lblCharClasse 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label6"
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   30
+         Top             =   2280
+         Width           =   1335
+      End
+      Begin VB.Label lblCharLvl 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label6"
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   29
+         Top             =   2040
+         Width           =   1335
+      End
+      Begin VB.Label lblCharNom 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label6"
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   28
+         Top             =   1800
+         Width           =   1335
+      End
+      Begin VB.Label picUseChar 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Height          =   435
+         Left            =   1440
+         TabIndex        =   8
+         Top             =   3240
+         Width           =   1845
+      End
+      Begin VB.Label picDelChar 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Height          =   435
+         Left            =   240
+         TabIndex        =   9
+         Top             =   3240
+         Width           =   1245
+      End
+      Begin VB.Label picNewChar 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Height          =   375
+         Left            =   0
+         TabIndex        =   7
+         Top             =   2880
+         Width           =   3285
+      End
+      Begin VB.Label picCancel 
+         Alignment       =   2  'Center
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Height          =   315
+         Left            =   3000
+         TabIndex        =   21
+         Top             =   0
+         Width           =   420
+      End
+      Begin VB.Image imgPers 
+         Height          =   3600
+         Left            =   0
+         MousePointer    =   5  'Size
+         Picture         =   "frmMainMenu.frx":FD831
+         Top             =   0
+         Width           =   3390
+      End
+   End
+   Begin VB.CommandButton Cmd640 
+      Caption         =   "640x480"
+      Height          =   255
+      Left            =   120
+      TabIndex        =   27
+      Top             =   5760
+      Width           =   1095
+   End
+   Begin VB.CommandButton Cmd800 
+      Caption         =   "Original"
+      Enabled         =   0   'False
+      Height          =   255
+      Left            =   120
+      TabIndex        =   26
+      Top             =   5520
+      Width           =   1095
+   End
    Begin MSComctlLib.ImageList imgl 
       Left            =   9000
       Top             =   0
@@ -173,7 +311,7 @@ Begin VB.Form frmMainMenu
          Height          =   2265
          Left            =   0
          MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":FD82D
+         Picture         =   "frmMainMenu.frx":1255F3
          Top             =   0
          Width           =   3390
       End
@@ -221,80 +359,6 @@ Begin VB.Form frmMainMenu
       Interval        =   1000
       Left            =   6720
       Top             =   0
-   End
-   Begin VB.Frame fraPers 
-      Caption         =   "Frame1"
-      Height          =   2550
-      Left            =   5520
-      TabIndex        =   20
-      Top             =   600
-      Width           =   3385
-      Begin VB.ListBox lstChars 
-         Appearance      =   0  'Flat
-         BackColor       =   &H00FFFFFF&
-         BeginProperty Font 
-            Name            =   "Verdana"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00000000&
-         Height          =   930
-         ItemData        =   "frmMainMenu.frx":116987
-         Left            =   120
-         List            =   "frmMainMenu.frx":116989
-         TabIndex        =   6
-         Top             =   800
-         Width           =   3105
-      End
-      Begin VB.Label picUseChar 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         Height          =   435
-         Left            =   1440
-         TabIndex        =   8
-         Top             =   2160
-         Width           =   1845
-      End
-      Begin VB.Label picDelChar 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         Height          =   435
-         Left            =   120
-         TabIndex        =   9
-         Top             =   2160
-         Width           =   1245
-      End
-      Begin VB.Label picNewChar 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         Height          =   375
-         Left            =   0
-         TabIndex        =   7
-         Top             =   1800
-         Width           =   3285
-      End
-      Begin VB.Label picCancel 
-         Alignment       =   2  'Center
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         Height          =   315
-         Left            =   3000
-         TabIndex        =   21
-         Top             =   0
-         Width           =   420
-      End
-      Begin VB.Image imgPers 
-         Height          =   2550
-         Left            =   0
-         MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":11698B
-         Top             =   0
-         Width           =   3390
-      End
    End
    Begin VB.Frame fraNewAccount 
       Caption         =   "Frame2"
@@ -386,7 +450,7 @@ Begin VB.Form frmMainMenu
          Height          =   3150
          Left            =   0
          MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":132D5D
+         Picture         =   "frmMainMenu.frx":13E74D
          Top             =   0
          Width           =   3390
       End
@@ -471,6 +535,20 @@ If Check1.Value = "0" Then StopMidi Else If FileExiste("Music\mainmenu.mid") The
 Call WriteINI("CONFIG", "Music", STR$(Check1.Value), App.Path & "\Config\Client.ini")
 End Sub
 
+Private Sub Cmd640_Click()
+    notebook = True
+    Cmd640.Enabled = False
+    Cmd800.Enabled = True
+    Call notebook_change
+End Sub
+
+Private Sub Cmd800_Click()
+    notebook = False
+    Cmd640.Enabled = True
+    Cmd800.Enabled = False
+    Call notebook_change
+End Sub
+
 Private Sub Form_GotFocus()
 If frmNewChar.Visible Then Call frmNewChar.SetFocus
 End Sub
@@ -504,7 +582,7 @@ Dim Ending As String
        
     dragAndDrop = 0
     Call iniOptTouche
-    
+    charSelectNum = 1
     Check1.Value = Val(ReadINI("CONFIG", "Music", App.Path & "\Config\Client.ini"))
     
     For i = 1 To 4
@@ -517,6 +595,9 @@ Dim Ending As String
         If FileExiste(Rep_Theme & "\Login\nouveau" & Ending) Then imgNouveau.Picture = LoadPNG(App.Path & Rep_Theme & "\Login\nouveau" & Ending)
         If FileExiste(Rep_Theme & "\Login\personnage" & Ending) Then imgPers.Picture = LoadPNG(App.Path & Rep_Theme & "\Login\personnage" & Ending)
         If FileExiste(Rep_Theme & "\Login\fond" & Ending) Then Me.Picture = LoadPNG(App.Path & Rep_Theme & "\Login\fond" & Ending)
+        If FileExiste("GFX/Sprites/Sprites0" & Ending) Then
+            PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites0" & Ending)
+        End If
     Next i
         
     If Check1.Value = 1 Then If FileExiste("Music\mainmenu.mid") Then Call PlayMidi("mainmenu.mid") Else Call PlayMidi("mainmenu.mp3")
@@ -635,8 +716,47 @@ Private Sub lbl_creer_Click()
     fraLogin.Visible = False
 End Sub
 
+Private Sub lstChars_Click()
+Dim i As Byte
+Dim Ending As String
+    charSelectNum = lstChars.ListIndex + 1
+    For i = 1 To 4
+        If i = 1 Then Ending = ".gif"
+        If i = 2 Then Ending = ".jpg"
+        If i = 3 Then Ending = ".png"
+        If i = 4 Then Ending = ".bmp"
+        
+        If FileExiste("/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending) Then
+            PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending)
+        End If
+    Next i
+    PicChar.Height = PicChar.Height / 4
+    PicChar.Width = PicChar.Width / 4
+    If PicChar.Width > 960 Then
+        PicChar.Width = 960
+    End If
+    If PicChar.Height > 960 Then
+        PicChar.Height = 960
+    End If
+    If PicChar.Width > 480 Then
+        PicChar.Left = 840 - PicChar.Width + 480
+    Else
+        PicChar.Left = 840
+    End If
+
+    If charSelect(charSelectNum).name <> "" Then
+        lblCharNom.Caption = charSelect(charSelectNum).name
+        lblCharLvl.Caption = "Niv. " & charSelect(charSelectNum).level
+        lblCharClasse.Caption = charSelect(charSelectNum).classe
+    Else
+        lblCharNom.Caption = "Slot Libre"
+        lblCharLvl.Caption = ""
+        lblCharClasse.Caption = ""
+    End If
+End Sub
+
 Private Sub lstChars_DblClick()
-Call picUseChar_Click
+    Call picUseChar_Click
 End Sub
 
 Private Sub lstChars_KeyPress(KeyAscii As Integer)
@@ -730,6 +850,34 @@ If frmMirage.Mediaplayer.Controls.currentPosition = 200 Then
     If FileExiste("Music\mainmenu.mid") Then Call PlayMidi("mainmenu.mid") Else Call PlayMidi("mainmenu.mp3")
 End If
 If Me.Visible = False Then Tmrmusic.Enabled = False Else Tmrmusic.Enabled = True
+End Sub
+
+Private Sub tmrPicChar_Timer()
+Dim i As Byte
+Dim Ending As String
+    For i = 1 To 4
+        If i = 1 Then Ending = ".gif"
+        If i = 2 Then Ending = ".jpg"
+        If i = 3 Then Ending = ".png"
+        If i = 4 Then Ending = ".bmp"
+        
+        If FileExiste("/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending) Then
+            PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending)
+        End If
+    Next i
+    PicChar.Height = PicChar.Height / 4
+    PicChar.Width = PicChar.Width / 4
+    If PicChar.Width > 960 Then
+        PicChar.Width = 960
+    End If
+    If PicChar.Height > 960 Then
+        PicChar.Height = 960
+    End If
+    If PicChar.Width > 480 Then
+        PicChar.Left = 840 - PicChar.Width + 480
+    Else
+        PicChar.Left = 840
+    End If
 End Sub
 
 Private Sub txtName_GotFocus()

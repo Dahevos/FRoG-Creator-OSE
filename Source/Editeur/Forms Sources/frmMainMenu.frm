@@ -294,6 +294,19 @@ Private Sub Form_Load()
 Dim i As Long
 Dim Ending As String
 
+If LCase$(Dir(App.Path & "\maps", vbDirectory)) <> "maps" Then Call MkDir(App.Path & "\maps")
+If LCase$(Dir(App.Path & "\logs", vbDirectory)) <> "logs" Then Call MkDir(App.Path & "\Logs")
+If LCase$(Dir(App.Path & "\accounts", vbDirectory)) <> "accounts" Then Call MkDir(App.Path & "\accounts")
+If LCase$(Dir(App.Path & "\npcs", vbDirectory)) <> "npcs" Then Call MkDir(App.Path & "\Npcs")
+If LCase$(Dir(App.Path & "\items", vbDirectory)) <> "items" Then Call MkDir(App.Path & "\Items")
+If LCase$(Dir(App.Path & "\spells", vbDirectory)) <> "spells" Then Call MkDir(App.Path & "\Spells")
+If LCase$(Dir(App.Path & "\quetes", vbDirectory)) <> "quetes" Then Call MkDir(App.Path & "\Quetes")
+If LCase$(Dir(App.Path & "\shops", vbDirectory)) <> "shops" Then Call MkDir(App.Path & "\Shops")
+If LCase$(Dir(App.Path & "\classes", vbDirectory)) <> "classes" Then Call MkDir(App.Path & "\Classes")
+'If LCase$(Dir(App.Path & "\Pets", vbDirectory)) <> "Pets" Then Call MkDir(App.Path & "\Pets")
+If LCase$(Dir(App.Path & "\recettes", vbDirectory)) <> "recettes" Then Call MkDir(App.Path & "\recettes")
+'If LCase$(Dir(App.Path & "\Metiers", vbDirectory)) <> "Metiers" Then Call MkDir(App.Path & "\Metiers")
+
 txtName.Text = Trim$(ReadINI("INFO", "Account", App.Path & "\Config\Account.ini"))
 txtPassword.Text = Trim$(ReadINI("INFO", "Password", App.Path & "\Config\Account.ini"))
 If Trim$(txtPassword.Text) <> vbNullString Then Check1.value = Checked Else Check1.value = Unchecked

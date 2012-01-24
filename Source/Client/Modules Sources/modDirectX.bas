@@ -599,8 +599,8 @@ If GetPlayerExp(Index) <> 0 Then
     DrawTextInter TexthDC, 38, 79, Trim$(GetPlayerExp(Index) & " / " & nelvl)
     Call DD_BackBuffer.ReleaseDC(TexthDC)
 End If
-
 End Sub
+
 
 Sub BltSpell(ByVal Index As Long)
 Dim x As Long, y As Long, i As Long

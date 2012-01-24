@@ -188,6 +188,10 @@ Private Sub cmdOk_Click()
         If HORS_LIGNE = 1 Then Call ArrowEditorInit Else Call SendData("EDITARROW" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
     ElseIf InPetsEditor = True Then
         If HORS_LIGNE = 1 Then Call PetEditorInit Else Call SendData("EDITPET" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+    ElseIf InMetierEditor = True Then
+        If HORS_LIGNE = 1 Then Call MetierEditorInit Else Call SendData("EDITMETIER" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+    ElseIf InRecetteEditor = True Then
+        If HORS_LIGNE = 1 Then Call recetteEditorInit Else Call SendData("EDITrecette" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
     End If
 End Sub
 
@@ -205,16 +209,16 @@ Private Sub cmdCancel_Click()
 End Sub
 
 Private Sub coller_Click()
-Dim FileName As String
+Dim filename As String
 Dim f As Long
 If DonID = lstIndex.ListIndex + 1 Then Exit Sub
     If InQuetesEditor Then
         If FileExiste("quetes\quete" & DonID & ".fcq") Then Call FileCopy(App.Path & "\quetes\quete" & DonID & ".fcq", App.Path & "\quetes\quete" & lstIndex.ListIndex + 1 & ".fcq") Else Call SendSaveQuete(DonID): Call FileCopy(App.Path & "\quetes\quete" & DonID & ".fcq", App.Path & "\quetes\quete" & lstIndex.ListIndex + 1 & ".fcq")
         Call ClearQuete(lstIndex.ListIndex + 1)
         If FileExiste("quetes\quete" & lstIndex.ListIndex + 1 & ".fcq") Then
-            FileName = App.Path & "\quetes\quete" & lstIndex.ListIndex + 1 & ".fcq"
+            filename = App.Path & "\quetes\quete" & lstIndex.ListIndex + 1 & ".fcq"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open filename For Binary As #f
                 Get #f, , quete(lstIndex.ListIndex + 1)
             Close #f
         End If
@@ -224,9 +228,9 @@ If DonID = lstIndex.ListIndex + 1 Then Exit Sub
         If FileExiste("items\item" & DonID & ".fco") Then Call FileCopy(App.Path & "\items\item" & DonID & ".fco", App.Path & "\items\item" & lstIndex.ListIndex + 1 & ".fco") Else Call SendSaveItem(DonID): Call FileCopy(App.Path & "\items\item" & DonID & ".fco", App.Path & "\items\item" & lstIndex.ListIndex + 1 & ".fco")
         Call ClearItem(lstIndex.ListIndex + 1)
         If FileExiste("items\item" & lstIndex.ListIndex + 1 & ".fco") Then
-            FileName = App.Path & "\items\item" & lstIndex.ListIndex + 1 & ".fco"
+            filename = App.Path & "\items\item" & lstIndex.ListIndex + 1 & ".fco"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open filename For Binary As #f
                 Get #f, , Item(lstIndex.ListIndex + 1)
             Close #f
         End If
@@ -236,9 +240,9 @@ If DonID = lstIndex.ListIndex + 1 Then Exit Sub
         If FileExiste("pnjs\npc" & DonID & ".fcp") Then Call FileCopy(App.Path & "\pnjs\npc" & DonID & ".fcp", App.Path & "\pnjs\npc" & lstIndex.ListIndex + 1 & ".fcp") Else Call SendSaveNpc(DonID): Call FileCopy(App.Path & "\pnjs\npc" & DonID & ".fcp", App.Path & "\pnjs\npc" & lstIndex.ListIndex + 1 & ".fcp")
         Call ClearNpc(lstIndex.ListIndex + 1)
         If FileExiste("pnjs\npc" & lstIndex.ListIndex + 1 & ".fcp") Then
-            FileName = App.Path & "\pnjs\npc" & lstIndex.ListIndex + 1 & ".fcp"
+            filename = App.Path & "\pnjs\npc" & lstIndex.ListIndex + 1 & ".fcp"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open filename For Binary As #f
                 Get #f, , Npc(lstIndex.ListIndex + 1)
             Close #f
         End If
@@ -248,9 +252,9 @@ If DonID = lstIndex.ListIndex + 1 Then Exit Sub
         If FileExiste("shops\shop" & DonID & ".fcm") Then Call FileCopy(App.Path & "\shops\shop" & DonID & ".fcm", App.Path & "\shops\shop" & lstIndex.ListIndex + 1 & ".fcm") Else Call SendSaveShop(DonID): Call FileCopy(App.Path & "\shops\shop" & DonID & ".fcm", App.Path & "\shops\shop" & lstIndex.ListIndex + 1 & ".fcm")
         Call ClearShop(lstIndex.ListIndex + 1)
         If FileExiste("shops\shop" & lstIndex.ListIndex + 1 & ".fcm") Then
-            FileName = App.Path & "\shops\shop" & lstIndex.ListIndex + 1 & ".fcm"
+            filename = App.Path & "\shops\shop" & lstIndex.ListIndex + 1 & ".fcm"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open filename For Binary As #f
                 Get #f, , Shop(lstIndex.ListIndex + 1)
             Close #f
         End If
@@ -260,9 +264,9 @@ If DonID = lstIndex.ListIndex + 1 Then Exit Sub
         If FileExiste("spells\spells" & DonID & ".fcg") Then Call FileCopy(App.Path & "\spells\spells" & DonID & ".fcg", App.Path & "\spells\spells" & lstIndex.ListIndex + 1 & ".fcg") Else Call SendSaveSpell(DonID): Call FileCopy(App.Path & "\spells\spells" & DonID & ".fcg", App.Path & "\spells\spells" & lstIndex.ListIndex + 1 & ".fcg")
         Call ClearSpell(lstIndex.ListIndex + 1)
         If FileExiste("spells\spells" & lstIndex.ListIndex + 1 & ".fcg") Then
-            FileName = App.Path & "\spells\spells" & lstIndex.ListIndex + 1 & ".fcg"
+            filename = App.Path & "\spells\spells" & lstIndex.ListIndex + 1 & ".fcg"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open filename For Binary As #f
                 Get #f, , Spell(lstIndex.ListIndex + 1)
             Close #f
         End If

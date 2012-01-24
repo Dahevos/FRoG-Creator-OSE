@@ -71,53 +71,53 @@ Begin VB.Form frmMapProperties
       TabCaption(1)   =   "PNJ"
       TabPicture(1)   =   "frmMapProperties.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Command5"
-      Tab(1).Control(1)=   "Command4"
-      Tab(1).Control(2)=   "plus(15)"
-      Tab(1).Control(3)=   "plus(1)"
-      Tab(1).Control(4)=   "plus(2)"
-      Tab(1).Control(5)=   "plus(3)"
-      Tab(1).Control(6)=   "plus(4)"
-      Tab(1).Control(7)=   "plus(5)"
-      Tab(1).Control(8)=   "plus(6)"
-      Tab(1).Control(9)=   "plus(7)"
-      Tab(1).Control(10)=   "plus(8)"
-      Tab(1).Control(11)=   "plus(9)"
-      Tab(1).Control(12)=   "plus(11)"
-      Tab(1).Control(13)=   "plus(12)"
-      Tab(1).Control(14)=   "plus(13)"
-      Tab(1).Control(15)=   "plus(14)"
-      Tab(1).Control(16)=   "plus(10)"
-      Tab(1).Control(17)=   "Copy(9)"
-      Tab(1).Control(18)=   "Copy(13)"
-      Tab(1).Control(19)=   "Copy(12)"
-      Tab(1).Control(20)=   "Copy(11)"
-      Tab(1).Control(21)=   "Copy(10)"
-      Tab(1).Control(22)=   "Copy(8)"
+      Tab(1).Control(0)=   "cmbNpc(14)"
+      Tab(1).Control(1)=   "cmbNpc(13)"
+      Tab(1).Control(2)=   "cmbNpc(12)"
+      Tab(1).Control(3)=   "cmbNpc(11)"
+      Tab(1).Control(4)=   "cmbNpc(10)"
+      Tab(1).Control(5)=   "cmbNpc(9)"
+      Tab(1).Control(6)=   "cmbNpc(8)"
+      Tab(1).Control(7)=   "cmbNpc(7)"
+      Tab(1).Control(8)=   "cmbNpc(6)"
+      Tab(1).Control(9)=   "cmbNpc(5)"
+      Tab(1).Control(10)=   "cmbNpc(4)"
+      Tab(1).Control(11)=   "cmbNpc(3)"
+      Tab(1).Control(12)=   "cmbNpc(2)"
+      Tab(1).Control(13)=   "cmbNpc(1)"
+      Tab(1).Control(14)=   "cmbNpc(0)"
+      Tab(1).Control(15)=   "Command1"
+      Tab(1).Control(16)=   "Copy(0)"
+      Tab(1).Control(17)=   "Copy(1)"
+      Tab(1).Control(18)=   "Copy(2)"
+      Tab(1).Control(19)=   "Copy(3)"
+      Tab(1).Control(20)=   "Copy(4)"
+      Tab(1).Control(21)=   "Copy(5)"
+      Tab(1).Control(22)=   "Copy(6)"
       Tab(1).Control(23)=   "Copy(7)"
-      Tab(1).Control(24)=   "Copy(6)"
-      Tab(1).Control(25)=   "Copy(5)"
-      Tab(1).Control(26)=   "Copy(4)"
-      Tab(1).Control(27)=   "Copy(3)"
-      Tab(1).Control(28)=   "Copy(2)"
-      Tab(1).Control(29)=   "Copy(1)"
-      Tab(1).Control(30)=   "Copy(0)"
-      Tab(1).Control(31)=   "Command1"
-      Tab(1).Control(32)=   "cmbNpc(0)"
-      Tab(1).Control(33)=   "cmbNpc(1)"
-      Tab(1).Control(34)=   "cmbNpc(2)"
-      Tab(1).Control(35)=   "cmbNpc(3)"
-      Tab(1).Control(36)=   "cmbNpc(4)"
-      Tab(1).Control(37)=   "cmbNpc(5)"
-      Tab(1).Control(38)=   "cmbNpc(6)"
-      Tab(1).Control(39)=   "cmbNpc(7)"
-      Tab(1).Control(40)=   "cmbNpc(8)"
-      Tab(1).Control(41)=   "cmbNpc(9)"
-      Tab(1).Control(42)=   "cmbNpc(10)"
-      Tab(1).Control(43)=   "cmbNpc(11)"
-      Tab(1).Control(44)=   "cmbNpc(12)"
-      Tab(1).Control(45)=   "cmbNpc(13)"
-      Tab(1).Control(46)=   "cmbNpc(14)"
+      Tab(1).Control(24)=   "Copy(8)"
+      Tab(1).Control(25)=   "Copy(10)"
+      Tab(1).Control(26)=   "Copy(11)"
+      Tab(1).Control(27)=   "Copy(12)"
+      Tab(1).Control(28)=   "Copy(13)"
+      Tab(1).Control(29)=   "Copy(9)"
+      Tab(1).Control(30)=   "plus(10)"
+      Tab(1).Control(31)=   "plus(14)"
+      Tab(1).Control(32)=   "plus(13)"
+      Tab(1).Control(33)=   "plus(12)"
+      Tab(1).Control(34)=   "plus(11)"
+      Tab(1).Control(35)=   "plus(9)"
+      Tab(1).Control(36)=   "plus(8)"
+      Tab(1).Control(37)=   "plus(7)"
+      Tab(1).Control(38)=   "plus(6)"
+      Tab(1).Control(39)=   "plus(5)"
+      Tab(1).Control(40)=   "plus(4)"
+      Tab(1).Control(41)=   "plus(3)"
+      Tab(1).Control(42)=   "plus(2)"
+      Tab(1).Control(43)=   "plus(1)"
+      Tab(1).Control(44)=   "plus(15)"
+      Tab(1).Control(45)=   "Command4"
+      Tab(1).Control(46)=   "Command5"
       Tab(1).ControlCount=   47
       Begin VB.CommandButton Command5 
          Caption         =   "Annuler"
@@ -1283,11 +1283,65 @@ Begin VB.Form frmMapProperties
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   1995
+         Height          =   2115
          Left            =   360
          TabIndex        =   62
          Top             =   840
          Width           =   3615
+         Begin VB.CheckBox Ctraversable 
+            Caption         =   "Joueur Traversable"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   255
+            Left            =   1320
+            TabIndex        =   93
+            ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
+            Top             =   1800
+            Width           =   2055
+         End
+         Begin VB.CheckBox cPetView 
+            Caption         =   "Cacher Famillier sur la map"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   255
+            Left            =   1320
+            TabIndex        =   92
+            ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
+            Top             =   1560
+            Width           =   2200
+         End
+         Begin VB.CheckBox CGuild 
+            Caption         =   "Guilde Seule"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   255
+            Left            =   120
+            TabIndex        =   91
+            ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
+            Top             =   1800
+            Width           =   1455
+         End
          Begin VB.CheckBox chkIndoors 
             Caption         =   "Intérieur"
             BeginProperty Font 
@@ -1300,7 +1354,7 @@ Begin VB.Form frmMapProperties
                Strikethrough   =   0   'False
             EndProperty
             Height          =   255
-            Left            =   600
+            Left            =   120
             TabIndex        =   6
             ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
             Top             =   1560
@@ -1849,6 +1903,9 @@ Dim x As Long, y As Long, i As Long
     Map(Player(MyIndex).Map).TranSup = Val(TSup.value)
     Map(Player(MyIndex).Map).Fog = Val(cmbFog.Text)
     Map(Player(MyIndex).Map).FogAlpha = 100 - Val(prAlpha.value)
+    Map(Player(MyIndex).Map).guildSoloView = Val(CGuild.value)
+    Map(Player(MyIndex).Map).petView = Val(cPetView.value)
+    Map(Player(MyIndex).Map).traversable = Val(Ctraversable.value)
     
     For i = 1 To MAX_MAP_NPCS
         Map(Player(MyIndex).Map).Npc(i) = cmbNpc(i - 1).ListIndex
@@ -1889,6 +1946,9 @@ Dim x As Long, y As Long, i As Long
     lstMusic = Trim$(Map(Player(MyIndex).Map).Music)
     lstMusic.Text = Trim$(Map(Player(MyIndex).Map).Music)
     chkIndoors.value = CStr(Map(Player(MyIndex).Map).Indoors)
+    CGuild.value = CStr(Map(Player(MyIndex).Map).guildSoloView)
+    cPetView.value = CStr(Map(Player(MyIndex).Map).petView)
+    Ctraversable.value = CStr(Map(Player(MyIndex).Map).traversable)
     PanoInf.Text = Trim$(Map(Player(MyIndex).Map).PanoInf)
     TInf.value = Val(Map(Player(MyIndex).Map).TranInf)
     PanoSup.Text = Trim$(Map(Player(MyIndex).Map).PanoSup)
@@ -1943,6 +2003,9 @@ Dim x As Long, y As Long, i As Long
     Map(Player(MyIndex).Map).TranSup = Val(TSup.value)
     Map(Player(MyIndex).Map).Fog = Val(cmbFog.Text)
     Map(Player(MyIndex).Map).FogAlpha = 100 - Val(prAlpha.value)
+    Map(Player(MyIndex).Map).guildSoloView = Val(CGuild.value)
+    Map(Player(MyIndex).Map).petView = Val(cPetView.value)
+    Map(Player(MyIndex).Map).traversable = Val(Ctraversable.value)
     
     For i = 1 To MAX_MAP_NPCS
         Map(Player(MyIndex).Map).Npc(i) = cmbNpc(i - 1).ListIndex

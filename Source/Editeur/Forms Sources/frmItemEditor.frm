@@ -1,10 +1,10 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmItemEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditeur d'objets"
-   ClientHeight    =   6720
+   ClientHeight    =   6705
    ClientLeft      =   120
    ClientTop       =   285
    ClientWidth     =   11355
@@ -19,7 +19,7 @@ Begin VB.Form frmItemEditor
    EndProperty
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   448
+   ScaleHeight     =   447
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   757
    StartUpPosition =   2  'CenterScreen
@@ -107,17 +107,57 @@ Begin VB.Form frmItemEditor
       Tab(0).Control(16).Enabled=   0   'False
       Tab(0).Control(17)=   "cmbType"
       Tab(0).Control(17).Enabled=   0   'False
-      Tab(0).Control(18)=   "cmdCancel"
+      Tab(0).Control(18)=   "cmdOk"
       Tab(0).Control(18).Enabled=   0   'False
-      Tab(0).Control(19)=   "cmdOk"
+      Tab(0).Control(19)=   "FraOption"
       Tab(0).Control(19).Enabled=   0   'False
-      Tab(0).Control(20)=   "FraOption"
+      Tab(0).Control(20)=   "fraAttributes"
       Tab(0).Control(20).Enabled=   0   'False
-      Tab(0).Control(21)=   "fraAttributes"
+      Tab(0).Control(21)=   "fraEquipment"
       Tab(0).Control(21).Enabled=   0   'False
-      Tab(0).Control(22)=   "fraEquipment"
+      Tab(0).Control(22)=   "CtArme"
       Tab(0).Control(22).Enabled=   0   'False
-      Tab(0).ControlCount=   23
+      Tab(0).Control(23)=   "cmdCancel"
+      Tab(0).Control(23).Enabled=   0   'False
+      Tab(0).ControlCount=   24
+      Begin VB.CommandButton cmdCancel 
+         Caption         =   "Annuler"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   375
+         Left            =   6780
+         TabIndex        =   99
+         ToolTipText     =   "Quitte la fenêtre d'édition sans enregistrer l'objet"
+         Top             =   6120
+         Width           =   1155
+      End
+      Begin VB.ComboBox CtArme 
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   285
+         ItemData        =   "frmItemEditor.frx":001C
+         Left            =   8040
+         List            =   "frmItemEditor.frx":0044
+         Style           =   2  'Dropdown List
+         TabIndex        =   112
+         ToolTipText     =   "Sélectionner un type pour l'objet"
+         Top             =   540
+         Width           =   3195
+      End
       Begin VB.Frame fraEquipment 
          Caption         =   "Caractéristiques de l'objet"
          BeginProperty Font 
@@ -129,7 +169,7 @@ Begin VB.Form frmItemEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   5175
+         Height          =   5055
          Left            =   5580
          TabIndex        =   64
          Top             =   900
@@ -140,7 +180,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   2
             TabIndex        =   111
-            Top             =   4200
+            Top             =   4080
             Value           =   2
             Width           =   1875
          End
@@ -151,7 +191,7 @@ Begin VB.Form frmItemEditor
             Max             =   10000
             Min             =   -1
             TabIndex        =   71
-            Top             =   600
+            Top             =   480
             Value           =   -1
             Width           =   1875
          End
@@ -161,7 +201,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   10000
             TabIndex        =   70
-            Top             =   1200
+            Top             =   1080
             Value           =   1
             Width           =   1875
          End
@@ -171,7 +211,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   10000
             TabIndex        =   69
-            Top             =   1800
+            Top             =   1680
             Width           =   1875
          End
          Begin VB.HScrollBar scrlDefReq 
@@ -180,7 +220,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   10000
             TabIndex        =   68
-            Top             =   2400
+            Top             =   2280
             Width           =   1875
          End
          Begin VB.HScrollBar scrlSpeedReq 
@@ -189,7 +229,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   10000
             TabIndex        =   67
-            Top             =   3000
+            Top             =   2880
             Width           =   1875
          End
          Begin VB.HScrollBar scrlClassReq 
@@ -198,7 +238,7 @@ Begin VB.Form frmItemEditor
             Max             =   1
             Min             =   -1
             TabIndex        =   66
-            Top             =   3600
+            Top             =   3480
             Value           =   -1
             Width           =   1875
          End
@@ -207,7 +247,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             Max             =   4
             TabIndex        =   65
-            Top             =   4740
+            Top             =   4620
             Width           =   1875
          End
          Begin VB.Label Label35 
@@ -228,7 +268,7 @@ Begin VB.Form frmItemEditor
             Left            =   1890
             TabIndex        =   110
             ToolTipText     =   "Classe requise"
-            Top             =   3960
+            Top             =   3840
             Width           =   315
          End
          Begin VB.Label Label34 
@@ -248,7 +288,7 @@ Begin VB.Form frmItemEditor
             Left            =   120
             TabIndex        =   109
             ToolTipText     =   "Classe requise"
-            Top             =   3960
+            Top             =   3840
             Width           =   855
          End
          Begin VB.Label Label2 
@@ -266,7 +306,7 @@ Begin VB.Form frmItemEditor
             Height          =   255
             Left            =   300
             TabIndex        =   85
-            Top             =   360
+            Top             =   240
             Width           =   735
          End
          Begin VB.Label Label3 
@@ -285,7 +325,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             TabIndex        =   84
             ToolTipText     =   "Dommage infliger par l'objet"
-            Top             =   960
+            Top             =   840
             Width           =   735
          End
          Begin VB.Label lblDurability 
@@ -303,7 +343,7 @@ Begin VB.Form frmItemEditor
             Height          =   375
             Left            =   1500
             TabIndex        =   83
-            Top             =   360
+            Top             =   240
             Width           =   495
          End
          Begin VB.Label lblStrength 
@@ -322,7 +362,7 @@ Begin VB.Form frmItemEditor
             Left            =   1680
             TabIndex        =   82
             ToolTipText     =   "Dommage infliger par l'objet"
-            Top             =   960
+            Top             =   840
             Width           =   495
          End
          Begin VB.Label Label8 
@@ -342,7 +382,7 @@ Begin VB.Form frmItemEditor
             Left            =   300
             TabIndex        =   81
             ToolTipText     =   "Force requise"
-            Top             =   1560
+            Top             =   1440
             Width           =   735
          End
          Begin VB.Label Label9 
@@ -362,7 +402,7 @@ Begin VB.Form frmItemEditor
             Left            =   240
             TabIndex        =   80
             ToolTipText     =   "Défense requise"
-            Top             =   2160
+            Top             =   2040
             Width           =   975
          End
          Begin VB.Label Label11 
@@ -381,7 +421,7 @@ Begin VB.Form frmItemEditor
             Left            =   1680
             TabIndex        =   79
             ToolTipText     =   "Force requise"
-            Top             =   1560
+            Top             =   1440
             Width           =   495
          End
          Begin VB.Label Label12 
@@ -400,7 +440,7 @@ Begin VB.Form frmItemEditor
             Left            =   1680
             TabIndex        =   78
             ToolTipText     =   "Défense requise"
-            Top             =   2160
+            Top             =   2040
             Width           =   495
          End
          Begin VB.Label Label13 
@@ -419,7 +459,7 @@ Begin VB.Form frmItemEditor
             Left            =   1680
             TabIndex        =   77
             ToolTipText     =   "Vitesse requise"
-            Top             =   2760
+            Top             =   2640
             Width           =   495
          End
          Begin VB.Label Label10 
@@ -439,7 +479,7 @@ Begin VB.Form frmItemEditor
             Left            =   180
             TabIndex        =   76
             ToolTipText     =   "Vitesse requise"
-            Top             =   2760
+            Top             =   2640
             Width           =   975
          End
          Begin VB.Label Label14 
@@ -459,7 +499,7 @@ Begin VB.Form frmItemEditor
             Left            =   180
             TabIndex        =   75
             ToolTipText     =   "Classe requise"
-            Top             =   3360
+            Top             =   3240
             Width           =   975
          End
          Begin VB.Label Label15 
@@ -479,7 +519,7 @@ Begin VB.Form frmItemEditor
             Left            =   180
             TabIndex        =   74
             ToolTipText     =   "Accès requit"
-            Top             =   4500
+            Top             =   4380
             Width           =   975
          End
          Begin VB.Label Label16 
@@ -500,7 +540,7 @@ Begin VB.Form frmItemEditor
             Left            =   1080
             TabIndex        =   73
             ToolTipText     =   "Classe requise"
-            Top             =   3360
+            Top             =   3240
             Width           =   1125
          End
          Begin VB.Label Label17 
@@ -520,7 +560,7 @@ Begin VB.Form frmItemEditor
             Left            =   180
             TabIndex        =   72
             ToolTipText     =   "Accès requit"
-            Top             =   4500
+            Top             =   4380
             Width           =   1935
          End
       End
@@ -1020,28 +1060,10 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   5580
+         Left            =   5640
          TabIndex        =   100
          ToolTipText     =   "Quitte la fenêtre d'édition et enregistre l'objet"
-         Top             =   6180
-         Width           =   1155
-      End
-      Begin VB.CommandButton cmdCancel 
-         Caption         =   "Annuler"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   6780
-         TabIndex        =   99
-         ToolTipText     =   "Quitte la fenêtre d'édition sans enregistrer l'objet"
-         Top             =   6180
+         Top             =   6120
          Width           =   1155
       End
       Begin VB.ComboBox cmbType 
@@ -1055,9 +1077,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         ItemData        =   "frmItemEditor.frx":001C
+         ItemData        =   "frmItemEditor.frx":00AE
          Left            =   5580
-         List            =   "frmItemEditor.frx":0053
+         List            =   "frmItemEditor.frx":00E5
          Style           =   2  'Dropdown List
          TabIndex        =   98
          ToolTipText     =   "Sélectionner un type pour l'objet"
@@ -1321,9 +1343,9 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   315
-            ItemData        =   "frmItemEditor.frx":0136
+            ItemData        =   "frmItemEditor.frx":01C8
             Left            =   120
-            List            =   "frmItemEditor.frx":0138
+            List            =   "frmItemEditor.frx":01CA
             Style           =   2  'Dropdown List
             TabIndex        =   34
             ToolTipText     =   "Sélectionner une flèche"
@@ -1363,7 +1385,7 @@ Begin VB.Form frmItemEditor
             Left            =   660
             TabIndex        =   39
             ToolTipText     =   "Nom de la flèche"
-            Top             =   1380
+            Top             =   1080
             Width           =   1365
          End
          Begin VB.Label Label27 
@@ -1991,6 +2013,7 @@ End Sub
 Private Sub cmbType_Click()
     Call NetFra
     
+    CtArme.Visible = False
     FramePD.Visible = False
     CheckEmpi.Enabled = True
     fraBow.Visible = False
@@ -2003,6 +2026,7 @@ Private Sub cmbType_Click()
             Label3.ToolTipText = "Dommage infliger par l'objet"
             lblStrength.ToolTipText = "Dommage infliger par l'objet"
             fraBow.Visible = True
+            CtArme.Visible = True
         Else
             Label3.Caption = "Défense :"
             Label3.ToolTipText = "Défense de l'objet"

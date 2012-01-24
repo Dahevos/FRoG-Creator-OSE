@@ -60,7 +60,7 @@ Begin VB.Form frmoptions
       _ExtentY        =   10610
       _Version        =   393216
       Tabs            =   4
-      Tab             =   3
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   529
       TabMaxWidth     =   2778
@@ -77,45 +77,27 @@ Begin VB.Form frmoptions
       TabPicture(0)   =   "frmoptions.frx":0000
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label3"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Label4"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Label9"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Label6"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "lblLines"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "chkAutoScroll"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).Control(6)=   "scrlBltText"
-      Tab(0).Control(6).Enabled=   0   'False
       Tab(0).Control(7)=   "chksound"
-      Tab(0).Control(7).Enabled=   0   'False
       Tab(0).Control(8)=   "chkmusic"
-      Tab(0).Control(8).Enabled=   0   'False
       Tab(0).Control(9)=   "chknpcdamage"
-      Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "chkplayerdamage"
-      Tab(0).Control(10).Enabled=   0   'False
       Tab(0).Control(11)=   "chknpcbar"
-      Tab(0).Control(11).Enabled=   0   'False
       Tab(0).Control(12)=   "chkbubblebar"
-      Tab(0).Control(12).Enabled=   0   'False
       Tab(0).Control(13)=   "chknpcname"
-      Tab(0).Control(13).Enabled=   0   'False
       Tab(0).Control(14)=   "chkplayername"
-      Tab(0).Control(14).Enabled=   0   'False
       Tab(0).Control(15)=   "chkplayerbar"
-      Tab(0).Control(15).Enabled=   0   'False
       Tab(0).Control(16)=   "chknobj"
-      Tab(0).Control(16).Enabled=   0   'False
       Tab(0).Control(17)=   "chkLowEffect"
-      Tab(0).Control(17).Enabled=   0   'False
       Tab(0).ControlCount=   18
       TabCaption(1)   =   "Config. du Jeu"
       TabPicture(1)   =   "frmoptions.frx":001C
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "Label17"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "Label16"
@@ -150,72 +132,41 @@ Begin VB.Form frmoptions
       TabCaption(2)   =   "Config. du Serveur"
       TabPicture(2)   =   "frmoptions.frx":0038
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label34"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "Label30"
-      Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Label28"
-      Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "Label27"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "Label26"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "Label24"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "Label23"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "Label22"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "Label21"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "Label20"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "Label19"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "Label18"
-      Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "Label29"
-      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).Control(0)=   "motd"
+      Tab(2).Control(1)=   "mc"
+      Tab(2).Control(2)=   "mg"
+      Tab(2).Control(3)=   "moc"
+      Tab(2).Control(4)=   "mm"
+      Tab(2).Control(5)=   "mpnj"
+      Tab(2).Control(6)=   "mj"
+      Tab(2).Control(7)=   "mn"
+      Tab(2).Control(8)=   "me"
+      Tab(2).Control(9)=   "mjg"
+      Tab(2).Control(10)=   "mo"
+      Tab(2).Control(11)=   "ms"
+      Tab(2).Control(12)=   "mq"
       Tab(2).Control(13)=   "Label1"
-      Tab(2).Control(13).Enabled=   0   'False
-      Tab(2).Control(14)=   "mq"
-      Tab(2).Control(14).Enabled=   0   'False
-      Tab(2).Control(15)=   "ms"
-      Tab(2).Control(15).Enabled=   0   'False
-      Tab(2).Control(16)=   "mo"
-      Tab(2).Control(16).Enabled=   0   'False
-      Tab(2).Control(17)=   "mjg"
-      Tab(2).Control(17).Enabled=   0   'False
-      Tab(2).Control(18)=   "me"
-      Tab(2).Control(18).Enabled=   0   'False
-      Tab(2).Control(19)=   "mn"
-      Tab(2).Control(19).Enabled=   0   'False
-      Tab(2).Control(20)=   "mj"
-      Tab(2).Control(20).Enabled=   0   'False
-      Tab(2).Control(21)=   "mpnj"
-      Tab(2).Control(21).Enabled=   0   'False
-      Tab(2).Control(22)=   "mm"
-      Tab(2).Control(22).Enabled=   0   'False
-      Tab(2).Control(23)=   "moc"
-      Tab(2).Control(23).Enabled=   0   'False
-      Tab(2).Control(24)=   "mg"
-      Tab(2).Control(24).Enabled=   0   'False
-      Tab(2).Control(25)=   "mc"
-      Tab(2).Control(25).Enabled=   0   'False
-      Tab(2).Control(26)=   "motd"
-      Tab(2).Control(26).Enabled=   0   'False
+      Tab(2).Control(14)=   "Label29"
+      Tab(2).Control(15)=   "Label18"
+      Tab(2).Control(16)=   "Label19"
+      Tab(2).Control(17)=   "Label20"
+      Tab(2).Control(18)=   "Label21"
+      Tab(2).Control(19)=   "Label22"
+      Tab(2).Control(20)=   "Label23"
+      Tab(2).Control(21)=   "Label24"
+      Tab(2).Control(22)=   "Label26"
+      Tab(2).Control(23)=   "Label27"
+      Tab(2).Control(24)=   "Label28"
+      Tab(2).Control(25)=   "Label30"
+      Tab(2).Control(26)=   "Label34"
       Tab(2).ControlCount=   27
       TabCaption(3)   =   "Config. des Classes"
       TabPicture(3)   =   "frmoptions.frx":0054
-      Tab(3).ControlEnabled=   -1  'True
-      Tab(3).Control(0)=   "Label33"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "editcls"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "clase"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "nbcls"
-      Tab(3).Control(3).Enabled=   0   'False
+      Tab(3).ControlEnabled=   0   'False
+      Tab(3).Control(0)=   "nbcls"
+      Tab(3).Control(1)=   "clase"
+      Tab(3).Control(2)=   "editcls"
+      Tab(3).Control(3)=   "Label33"
       Tab(3).ControlCount=   4
       Begin VB.CheckBox chkLowEffect 
          Caption         =   "Désactiver les effets avancés"
@@ -447,7 +398,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox nbcls 
          Height          =   285
-         Left            =   2640
+         Left            =   -72360
          TabIndex        =   21
          Text            =   "3"
          ToolTipText     =   "Défaut = 3"
@@ -457,7 +408,7 @@ Begin VB.Form frmoptions
       Begin VB.ComboBox clase 
          Height          =   315
          ItemData        =   "frmoptions.frx":0070
-         Left            =   2040
+         Left            =   -72960
          List            =   "frmoptions.frx":0072
          Style           =   2  'Dropdown List
          TabIndex        =   22
@@ -467,7 +418,7 @@ Begin VB.Form frmoptions
       Begin VB.CommandButton editcls 
          Caption         =   "Editer la classe sélectionée"
          Height          =   300
-         Left            =   1920
+         Left            =   -73080
          TabIndex        =   23
          Top             =   1800
          Width           =   2295
@@ -592,7 +543,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox nom 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   1
          Text            =   "Frog creator"
          ToolTipText     =   "ex : Frog Creator"
@@ -601,7 +552,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox site 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   2
          Text            =   "www.frog-creator.new.fr"
          Top             =   1560
@@ -609,7 +560,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox pv 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   3
          Text            =   "1"
          ToolTipText     =   "Vitesse de régénération des points de vie"
@@ -618,7 +569,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox pm 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   4
          Text            =   "1"
          ToolTipText     =   "Vitesse de régénération des points de magie"
@@ -627,7 +578,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox defl 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   6
          Text            =   "1"
          ToolTipText     =   "1 = oui  0 = non"
@@ -636,7 +587,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox script 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   7
          Text            =   "1"
          ToolTipText     =   "1 = oui  0 = non"
@@ -645,7 +596,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox ps 
          Height          =   285
-         Left            =   -71280
+         Left            =   3720
          TabIndex        =   5
          Text            =   "1"
          ToolTipText     =   "Vitesse de régénération des points spéciale"
@@ -768,7 +719,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   615
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   48
          Top             =   480
          Width           =   5535
@@ -794,7 +745,7 @@ Begin VB.Form frmoptions
       Begin VB.Label Label33 
          Caption         =   "Maximum de classes (de 0 à .....)  :"
          Height          =   255
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   46
          Top             =   720
          Width           =   2535
@@ -918,7 +869,7 @@ Begin VB.Form frmoptions
       Begin VB.Label Label10 
          Caption         =   "Nom de votre jeu :"
          Height          =   255
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   32
          Top             =   1200
          Width           =   1455
@@ -927,7 +878,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Site de votre jeu (facultatif) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   31
          Top             =   1560
          Width           =   1980
@@ -936,7 +887,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Pv régénérés (toute les 3 secondes environ) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   30
          Top             =   1920
          Width           =   3210
@@ -945,7 +896,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Pm régénérés (toute les 3 secondes environ) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   29
          Top             =   2280
          Width           =   3240
@@ -954,7 +905,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Défilement des cartes (1 = oui, 0 = non) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   28
          Top             =   3000
          Width           =   2865
@@ -963,7 +914,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Activer les scripts (1 = oui, 0 = non) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   27
          Top             =   3360
          Width           =   2565
@@ -972,7 +923,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Ps régénérés (toute les 3 secondes environ) :"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   26
          Top             =   2640
          Width           =   3195
@@ -1097,7 +1048,7 @@ Private Sub editcls_Click()
     frmclasseseditor.cartem.Text = ReadINI("DEATH", "Map", App.Path & "\Classes\Class" & classe & ".ini")
     frmclasseseditor.xm.Text = ReadINI("DEATH", "x", App.Path & "\Classes\Class" & classe & ".ini")
     frmclasseseditor.ym.Text = ReadINI("DEATH", "y", App.Path & "\Classes\Class" & classe & ".ini")
-    frmclasseseditor.Lock.value = Val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & classe & ".ini"))
+    frmclasseseditor.lock.value = Val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & classe & ".ini"))
     frmclasseseditor.homme.Height = 48
     frmclasseseditor.femme.Height = 48
     If frmclasseseditor.homme.Height <= 0 Then frmclasseseditor.homme.Height = 48: frmclasseseditor.femme.Height = 48

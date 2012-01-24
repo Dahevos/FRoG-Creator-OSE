@@ -29,6 +29,89 @@ Begin VB.Form frmMirage
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   799
    Visible         =   0   'False
+   Begin VB.PictureBox pictMetier 
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000005&
+      ForeColor       =   &H80000008&
+      Height          =   1995
+      Left            =   0
+      Picture         =   "frmMirage.frx":1E928
+      ScaleHeight     =   1965
+      ScaleWidth      =   3600
+      TabIndex        =   241
+      Top             =   1320
+      Visible         =   0   'False
+      Width           =   3630
+      Begin VB.Label lblmetier 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label41"
+         Height          =   615
+         Index           =   3
+         Left            =   120
+         TabIndex        =   249
+         Top             =   1080
+         Width           =   3375
+      End
+      Begin VB.Label lblOublierMetier 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Oublier le Metier"
+         Height          =   255
+         Left            =   1440
+         TabIndex        =   248
+         Top             =   1680
+         Width           =   1335
+      End
+      Begin VB.Label lblendmetier 
+         Alignment       =   2  'Center
+         BackStyle       =   0  'Transparent
+         Height          =   255
+         Left            =   3240
+         TabIndex        =   247
+         Top             =   0
+         Width           =   375
+      End
+      Begin VB.Label lblmetierEnd 
+         Alignment       =   2  'Center
+         BackStyle       =   0  'Transparent
+         Caption         =   "Fermer"
+         Height          =   255
+         Left            =   2760
+         TabIndex        =   245
+         Top             =   1680
+         Width           =   735
+      End
+      Begin VB.Label lblmetier 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label41"
+         Height          =   255
+         Index           =   2
+         Left            =   120
+         TabIndex        =   244
+         Top             =   840
+         Width           =   3255
+      End
+      Begin VB.Label lblmetier 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label41"
+         Height          =   255
+         Index           =   1
+         Left            =   120
+         TabIndex        =   243
+         Top             =   600
+         Width           =   3375
+      End
+      Begin VB.Label lblmetier 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Label41"
+         Height          =   255
+         Index           =   0
+         Left            =   120
+         TabIndex        =   242
+         Top             =   360
+         Width           =   3375
+      End
+   End
    Begin VB.PictureBox PicMenuQuitter 
       Appearance      =   0  'Flat
       AutoRedraw      =   -1  'True
@@ -37,19 +120,19 @@ Begin VB.Form frmMirage
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   1965
-      Left            =   4080
-      Picture         =   "frmMirage.frx":1E928
+      Left            =   3480
+      Picture         =   "frmMirage.frx":359DA
       ScaleHeight     =   1965
       ScaleWidth      =   3600
-      TabIndex        =   234
-      Top             =   3240
+      TabIndex        =   212
+      Top             =   2640
       Visible         =   0   'False
       Width           =   3600
       Begin VB.Label lblCdP 
          BackStyle       =   0  'Transparent
          Height          =   495
          Left            =   0
-         TabIndex        =   238
+         TabIndex        =   216
          Top             =   360
          Width           =   3615
       End
@@ -57,7 +140,7 @@ Begin VB.Form frmMirage
          BackStyle       =   0  'Transparent
          Height          =   495
          Left            =   0
-         TabIndex        =   237
+         TabIndex        =   215
          Top             =   840
          Width           =   3615
       End
@@ -65,7 +148,7 @@ Begin VB.Form frmMirage
          BackStyle       =   0  'Transparent
          Height          =   495
          Left            =   0
-         TabIndex        =   236
+         TabIndex        =   214
          Top             =   1320
          Width           =   3615
       End
@@ -73,7 +156,7 @@ Begin VB.Form frmMirage
          BackStyle       =   0  'Transparent
          Height          =   255
          Left            =   3360
-         TabIndex        =   235
+         TabIndex        =   213
          Top             =   0
          Width           =   255
       End
@@ -82,20 +165,20 @@ Begin VB.Form frmMirage
       Appearance      =   0  'Flat
       BackColor       =   &H80000005&
       ForeColor       =   &H80000008&
-      Height          =   4065
-      Left            =   1680
-      ScaleHeight     =   269
+      Height          =   4035
+      Left            =   0
+      ScaleHeight     =   267
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   511
-      TabIndex        =   187
-      Top             =   0
+      TabIndex        =   165
+      Top             =   1320
       Visible         =   0   'False
       Width           =   7695
       Begin VB.CommandButton cmdOTA 
          Caption         =   "Annuler"
          Height          =   255
          Left            =   6840
-         TabIndex        =   207
+         TabIndex        =   185
          Top             =   3720
          Width           =   735
       End
@@ -111,7 +194,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   206
+         TabIndex        =   184
          Text            =   "Combo1"
          Top             =   240
          Width           =   2775
@@ -128,7 +211,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   205
+         TabIndex        =   183
          Text            =   "Combo1"
          Top             =   480
          Width           =   2775
@@ -145,7 +228,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   204
+         TabIndex        =   182
          Text            =   "Combo1"
          Top             =   720
          Width           =   2775
@@ -162,7 +245,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   203
+         TabIndex        =   181
          Text            =   "Combo1"
          Top             =   960
          Width           =   2775
@@ -179,7 +262,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   202
+         TabIndex        =   180
          Text            =   "Combo1"
          Top             =   1200
          Width           =   2775
@@ -196,7 +279,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   231
+         TabIndex        =   209
          Text            =   "Combo1"
          Top             =   1440
          Width           =   2775
@@ -205,7 +288,7 @@ Begin VB.Form frmMirage
          Caption         =   "Ok"
          Height          =   255
          Left            =   6120
-         TabIndex        =   208
+         TabIndex        =   186
          Top             =   3720
          Width           =   735
       End
@@ -222,7 +305,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   0
          Left            =   4905
-         TabIndex        =   201
+         TabIndex        =   179
          Text            =   "Combo1"
          Top             =   225
          Width           =   2655
@@ -240,7 +323,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   1
          Left            =   4905
-         TabIndex        =   200
+         TabIndex        =   178
          Text            =   "Combo1"
          Top             =   480
          Width           =   2655
@@ -258,7 +341,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   2
          Left            =   4905
-         TabIndex        =   199
+         TabIndex        =   177
          Text            =   "Combo1"
          Top             =   720
          Width           =   2655
@@ -276,7 +359,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   3
          Left            =   4905
-         TabIndex        =   198
+         TabIndex        =   176
          Text            =   "Combo1"
          Top             =   960
          Width           =   2655
@@ -294,7 +377,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   4
          Left            =   4905
-         TabIndex        =   197
+         TabIndex        =   175
          Text            =   "Combo1"
          Top             =   1200
          Width           =   2655
@@ -312,7 +395,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   5
          Left            =   4905
-         TabIndex        =   196
+         TabIndex        =   174
          Text            =   "Combo1"
          Top             =   1440
          Width           =   2655
@@ -330,7 +413,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   6
          Left            =   4905
-         TabIndex        =   195
+         TabIndex        =   173
          Text            =   "Combo1"
          Top             =   1695
          Width           =   2655
@@ -348,7 +431,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   7
          Left            =   4905
-         TabIndex        =   194
+         TabIndex        =   172
          Text            =   "Combo1"
          Top             =   1935
          Width           =   2655
@@ -366,7 +449,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   8
          Left            =   4905
-         TabIndex        =   193
+         TabIndex        =   171
          Text            =   "Combo1"
          Top             =   2175
          Width           =   2655
@@ -384,7 +467,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   9
          Left            =   4905
-         TabIndex        =   192
+         TabIndex        =   170
          Text            =   "Combo1"
          Top             =   2415
          Width           =   2655
@@ -402,7 +485,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   10
          Left            =   4905
-         TabIndex        =   191
+         TabIndex        =   169
          Text            =   "Combo1"
          Top             =   2640
          Width           =   2655
@@ -420,7 +503,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   11
          Left            =   4905
-         TabIndex        =   190
+         TabIndex        =   168
          Text            =   "Combo1"
          Top             =   2895
          Width           =   2655
@@ -438,7 +521,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   12
          Left            =   4905
-         TabIndex        =   189
+         TabIndex        =   167
          Text            =   "Combo1"
          Top             =   3135
          Width           =   2655
@@ -456,7 +539,7 @@ Begin VB.Form frmMirage
          Height          =   285
          Index           =   13
          Left            =   4905
-         TabIndex        =   188
+         TabIndex        =   166
          Text            =   "Combo1"
          Top             =   3375
          Width           =   2655
@@ -473,7 +556,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   233
+         TabIndex        =   211
          Text            =   "Combo1"
          Top             =   1680
          Width           =   2775
@@ -490,7 +573,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   285
          Left            =   930
-         TabIndex        =   240
+         TabIndex        =   218
          Text            =   "Combo1"
          Top             =   1920
          Width           =   2775
@@ -509,7 +592,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   239
+         TabIndex        =   217
          Top             =   1950
          Width           =   735
       End
@@ -527,7 +610,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   232
+         TabIndex        =   210
          Top             =   1710
          Width           =   735
       End
@@ -545,7 +628,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   230
+         TabIndex        =   208
          Top             =   1470
          Width           =   735
       End
@@ -566,7 +649,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00FF0000&
          Height          =   210
          Left            =   0
-         TabIndex        =   229
+         TabIndex        =   207
          Top             =   0
          Width           =   3735
       End
@@ -587,7 +670,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00FF0000&
          Height          =   210
          Left            =   3840
-         TabIndex        =   228
+         TabIndex        =   206
          Top             =   0
          Width           =   3735
       End
@@ -605,7 +688,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   227
+         TabIndex        =   205
          Top             =   270
          Width           =   735
       End
@@ -623,7 +706,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   226
+         TabIndex        =   204
          Top             =   510
          Width           =   735
       End
@@ -641,7 +724,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   225
+         TabIndex        =   203
          Top             =   750
          Width           =   735
       End
@@ -659,7 +742,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   224
+         TabIndex        =   202
          Top             =   990
          Width           =   735
       End
@@ -677,7 +760,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   223
+         TabIndex        =   201
          Top             =   1230
          Width           =   735
       End
@@ -695,7 +778,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   222
+         TabIndex        =   200
          Top             =   270
          Width           =   855
       End
@@ -713,7 +796,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   221
+         TabIndex        =   199
          Top             =   510
          Width           =   855
       End
@@ -731,7 +814,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   220
+         TabIndex        =   198
          Top             =   750
          Width           =   855
       End
@@ -749,7 +832,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   219
+         TabIndex        =   197
          Top             =   990
          Width           =   855
       End
@@ -767,7 +850,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   218
+         TabIndex        =   196
          Top             =   1950
          Width           =   855
       End
@@ -785,7 +868,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   217
+         TabIndex        =   195
          Top             =   1710
          Width           =   855
       End
@@ -803,7 +886,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   216
+         TabIndex        =   194
          Top             =   1470
          Width           =   855
       End
@@ -821,7 +904,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   215
+         TabIndex        =   193
          Top             =   1230
          Width           =   855
       End
@@ -839,7 +922,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   214
+         TabIndex        =   192
          Top             =   2910
          Width           =   855
       End
@@ -857,7 +940,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   213
+         TabIndex        =   191
          Top             =   2670
          Width           =   855
       End
@@ -875,7 +958,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   212
+         TabIndex        =   190
          Top             =   2430
          Width           =   855
       End
@@ -893,7 +976,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   211
+         TabIndex        =   189
          Top             =   2190
          Width           =   855
       End
@@ -911,7 +994,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   210
+         TabIndex        =   188
          Top             =   3390
          Width           =   855
       End
@@ -929,7 +1012,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   3960
-         TabIndex        =   209
+         TabIndex        =   187
          Top             =   3150
          Width           =   855
       End
@@ -939,11 +1022,11 @@ Begin VB.Form frmMirage
       BackColor       =   &H00FFFFFF&
       ForeColor       =   &H80000008&
       Height          =   5385
-      Left            =   9360
+      Left            =   0
       ScaleHeight     =   357
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   173
-      TabIndex        =   165
+      TabIndex        =   143
       Top             =   0
       Visible         =   0   'False
       Width           =   2625
@@ -960,7 +1043,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   166
+         TabIndex        =   144
          Top             =   5040
          Width           =   2415
       End
@@ -968,7 +1051,7 @@ Begin VB.Form frmMirage
          Caption         =   "Configurer les touches"
          Height          =   255
          Left            =   120
-         TabIndex        =   167
+         TabIndex        =   145
          Top             =   4800
          Width           =   2415
       End
@@ -986,7 +1069,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   315
          Left            =   120
-         TabIndex        =   181
+         TabIndex        =   159
          ToolTipText     =   "Petit barre afficher au dessu de vous"
          Top             =   960
          Value           =   1  'Checked
@@ -1006,7 +1089,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   180
+         TabIndex        =   158
          Top             =   720
          Value           =   1  'Checked
          Width           =   1440
@@ -1025,7 +1108,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   179
+         TabIndex        =   157
          Top             =   240
          Value           =   1  'Checked
          Width           =   765
@@ -1044,7 +1127,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   225
          Left            =   120
-         TabIndex        =   178
+         TabIndex        =   156
          Top             =   1440
          Value           =   1  'Checked
          Width           =   765
@@ -1063,7 +1146,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   177
+         TabIndex        =   155
          Top             =   3120
          Value           =   1  'Checked
          Width           =   1725
@@ -1082,7 +1165,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   225
          Left            =   120
-         TabIndex        =   176
+         TabIndex        =   154
          Top             =   1920
          Value           =   1  'Checked
          Width           =   2400
@@ -1101,7 +1184,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   175
+         TabIndex        =   153
          Top             =   480
          Value           =   1  'Checked
          Width           =   2565
@@ -1120,7 +1203,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   225
          Left            =   120
-         TabIndex        =   174
+         TabIndex        =   152
          Top             =   1680
          Value           =   1  'Checked
          Width           =   2595
@@ -1139,7 +1222,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   225
          Left            =   120
-         TabIndex        =   173
+         TabIndex        =   151
          Top             =   2400
          Value           =   1  'Checked
          Width           =   1335
@@ -1158,7 +1241,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   225
          Left            =   120
-         TabIndex        =   172
+         TabIndex        =   150
          Top             =   2640
          Value           =   1  'Checked
          Width           =   1365
@@ -1177,7 +1260,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   171
+         TabIndex        =   149
          Top             =   3960
          Value           =   1  'Checked
          Width           =   1845
@@ -1186,7 +1269,7 @@ Begin VB.Form frmMirage
          Caption         =   "Actualiser le thème"
          Height          =   255
          Left            =   120
-         TabIndex        =   170
+         TabIndex        =   148
          Top             =   4560
          Visible         =   0   'False
          Width           =   2415
@@ -1196,7 +1279,7 @@ Begin VB.Form frmMirage
          Left            =   240
          Max             =   20
          Min             =   4
-         TabIndex        =   169
+         TabIndex        =   147
          Top             =   3600
          Value           =   6
          Width           =   2055
@@ -1215,7 +1298,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   195
          Left            =   120
-         TabIndex        =   168
+         TabIndex        =   146
          Top             =   4245
          Width           =   2325
       End
@@ -1234,7 +1317,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   165
          Left            =   120
-         TabIndex        =   186
+         TabIndex        =   164
          Top             =   3420
          Width           =   2220
       End
@@ -1255,7 +1338,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00FF0000&
          Height          =   210
          Left            =   0
-         TabIndex        =   185
+         TabIndex        =   163
          Top             =   0
          Width           =   2655
       End
@@ -1275,8 +1358,8 @@ Begin VB.Form frmMirage
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   0
-         TabIndex        =   184
+         Left            =   -120
+         TabIndex        =   162
          Top             =   2160
          Width           =   2655
       End
@@ -1297,7 +1380,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00FF0000&
          Height          =   210
          Left            =   0
-         TabIndex        =   183
+         TabIndex        =   161
          Top             =   2880
          Width           =   2655
       End
@@ -1318,7 +1401,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00FF0000&
          Height          =   210
          Left            =   0
-         TabIndex        =   182
+         TabIndex        =   160
          Top             =   1275
          Width           =   2655
       End
@@ -1335,7 +1418,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   163
+      TabIndex        =   141
       Top             =   9315
       Width           =   480
    End
@@ -1351,7 +1434,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   162
+      TabIndex        =   140
       Top             =   9315
       Width           =   480
    End
@@ -1367,7 +1450,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   161
+      TabIndex        =   139
       Top             =   9315
       Width           =   480
    End
@@ -1383,7 +1466,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   160
+      TabIndex        =   138
       Top             =   9315
       Width           =   480
    End
@@ -1399,7 +1482,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   159
+      TabIndex        =   137
       Top             =   9315
       Width           =   480
    End
@@ -1415,7 +1498,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   158
+      TabIndex        =   136
       Top             =   9315
       Width           =   480
    End
@@ -1431,7 +1514,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   157
+      TabIndex        =   135
       Top             =   9315
       Width           =   480
    End
@@ -1447,7 +1530,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   156
+      TabIndex        =   134
       Top             =   9315
       Width           =   480
    End
@@ -1463,7 +1546,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   155
+      TabIndex        =   133
       Top             =   9315
       Width           =   480
    End
@@ -1479,7 +1562,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   154
+      TabIndex        =   132
       Top             =   9315
       Width           =   480
    End
@@ -1495,7 +1578,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   153
+      TabIndex        =   131
       Top             =   9315
       Width           =   480
    End
@@ -1511,7 +1594,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   152
+      TabIndex        =   130
       Top             =   9315
       Width           =   480
    End
@@ -1527,7 +1610,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   151
+      TabIndex        =   129
       Top             =   9315
       Width           =   480
    End
@@ -1543,17 +1626,18 @@ Begin VB.Form frmMirage
       ScaleHeight     =   32
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   32
-      TabIndex        =   150
+      TabIndex        =   128
       Top             =   9315
       Width           =   480
    End
    Begin VB.ComboBox Canal 
       Appearance      =   0  'Flat
       Height          =   315
-      ItemData        =   "frmMirage.frx":214DA
+      ItemData        =   "frmMirage.frx":3858C
       Left            =   120
-      List            =   "frmMirage.frx":214EA
-      TabIndex        =   142
+      List            =   "frmMirage.frx":3859C
+      Locked          =   -1  'True
+      TabIndex        =   120
       Text            =   "Carte"
       Top             =   8760
       Visible         =   0   'False
@@ -1577,7 +1661,7 @@ Begin VB.Form frmMirage
       Left            =   1335
       Locked          =   -1  'True
       MaxLength       =   255
-      TabIndex        =   133
+      TabIndex        =   111
       Top             =   8760
       Visible         =   0   'False
       Width           =   5325
@@ -1596,12 +1680,12 @@ Begin VB.Form frmMirage
       EndProperty
       ForeColor       =   &H80000008&
       Height          =   3735
-      Left            =   8640
+      Left            =   9360
       ScaleHeight     =   247
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   175
       TabIndex        =   98
-      Top             =   1920
+      Top             =   0
       Visible         =   0   'False
       Width           =   2655
       Begin VB.Label descName 
@@ -1803,1356 +1887,22 @@ Begin VB.Form frmMirage
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000008&
-      Height          =   9120
+      Height          =   7380
       Left            =   0
-      ScaleHeight     =   608
+      ScaleHeight     =   492
       ScaleMode       =   3  'Pixel
-      ScaleWidth      =   800
+      ScaleWidth      =   736
       TabIndex        =   0
       Top             =   0
       Visible         =   0   'False
-      Width           =   12000
-      Begin VB.Timer Timer2 
-         Enabled         =   0   'False
-         Interval        =   100
-         Left            =   6120
-         Top             =   0
-      End
-      Begin VB.Frame picParty 
-         BackColor       =   &H00004080&
-         BorderStyle     =   0  'None
-         Height          =   2985
-         Left            =   8640
-         TabIndex        =   111
-         Top             =   1320
-         Visible         =   0   'False
-         Width           =   2595
-         Begin VB.PictureBox backPPMana 
-            BackColor       =   &H00FF8080&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   2
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   130
-            Top             =   2205
-            Width           =   2175
-            Begin VB.Label lblPPMana 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PM : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000005&
-               Height          =   165
-               Index           =   2
-               Left            =   0
-               TabIndex        =   131
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPMana 
-               BackColor       =   &H00FF0000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   2
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.PictureBox backPPLife 
-            BackColor       =   &H0080FF80&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   2
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   128
-            Top             =   1995
-            Width           =   2175
-            Begin VB.Label lblPPLife 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PV : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   165
-               Index           =   2
-               Left            =   0
-               TabIndex        =   129
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPLife 
-               BackColor       =   &H0000C000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   2
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.PictureBox backPPMana 
-            BackColor       =   &H00FF8080&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   1
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   125
-            Top             =   1485
-            Width           =   2175
-            Begin VB.Label lblPPMana 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PM : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000005&
-               Height          =   165
-               Index           =   1
-               Left            =   0
-               TabIndex        =   126
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPMana 
-               BackColor       =   &H00FF0000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   1
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.PictureBox backPPLife 
-            BackColor       =   &H0080FF80&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   1
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   123
-            Top             =   1275
-            Width           =   2175
-            Begin VB.Label lblPPLife 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PV : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   165
-               Index           =   1
-               Left            =   0
-               TabIndex        =   124
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPLife 
-               BackColor       =   &H0000C000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   1
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.PictureBox Picture16 
-            BorderStyle     =   0  'None
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   960
-            Picture         =   "frmMirage.frx":2150A
-            ScaleHeight     =   270
-            ScaleWidth      =   270
-            TabIndex        =   122
-            Top             =   2400
-            Width           =   270
-         End
-         Begin VB.PictureBox Picture15 
-            BorderStyle     =   0  'None
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   270
-            Left            =   1320
-            Picture         =   "frmMirage.frx":21795
-            ScaleHeight     =   270
-            ScaleWidth      =   270
-            TabIndex        =   121
-            Top             =   2400
-            Width           =   270
-         End
-         Begin VB.PictureBox backPPMana 
-            BackColor       =   &H00FF8080&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   0
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   116
-            Top             =   800
-            Width           =   2175
-            Begin VB.Label lblPPMana 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PM : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000005&
-               Height          =   165
-               Index           =   0
-               Left            =   0
-               TabIndex        =   117
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPMana 
-               BackColor       =   &H00FF0000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   0
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.PictureBox backPPLife 
-            BackColor       =   &H0080FF80&
-            BorderStyle     =   0  'None
-            Height          =   170
-            Index           =   0
-            Left            =   240
-            ScaleHeight     =   165
-            ScaleWidth      =   2175
-            TabIndex        =   114
-            Top             =   600
-            Width           =   2175
-            Begin VB.Label lblPPLife 
-               Alignment       =   2  'Center
-               Appearance      =   0  'Flat
-               BackColor       =   &H80000005&
-               BackStyle       =   0  'Transparent
-               BorderStyle     =   1  'Fixed Single
-               Caption         =   "PV : "
-               BeginProperty Font 
-                  Name            =   "Tahoma"
-                  Size            =   5.25
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   165
-               Index           =   0
-               Left            =   0
-               TabIndex        =   115
-               Top             =   0
-               Width           =   2175
-            End
-            Begin VB.Shape shpPPLife 
-               BackColor       =   &H0000C000&
-               BackStyle       =   1  'Opaque
-               BorderStyle     =   0  'Transparent
-               Height          =   165
-               Index           =   0
-               Left            =   0
-               Top             =   0
-               Width           =   2175
-            End
-         End
-         Begin VB.Label lblPPName 
-            Alignment       =   2  'Center
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   180
-            Index           =   2
-            Left            =   240
-            TabIndex        =   132
-            Top             =   1800
-            Width           =   2175
-         End
-         Begin VB.Label lblPPName 
-            Alignment       =   2  'Center
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   180
-            Index           =   1
-            Left            =   240
-            TabIndex        =   127
-            Top             =   1080
-            Width           =   2175
-         End
-         Begin VB.Label Label19 
-            BackStyle       =   0  'Transparent
-            Caption         =   "                                   "
-            Height          =   375
-            Left            =   1920
-            TabIndex        =   120
-            Top             =   0
-            Width           =   255
-         End
-         Begin VB.Label lblPPName 
-            Alignment       =   2  'Center
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   180
-            Index           =   0
-            Left            =   240
-            TabIndex        =   119
-            Top             =   400
-            Width           =   2175
-         End
-         Begin VB.Label Label3 
-            Alignment       =   2  'Center
-            BackStyle       =   0  'Transparent
-            Caption         =   "Rejoindre/Quitter le groupe"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   180
-            Left            =   0
-            TabIndex        =   118
-            Top             =   2760
-            Visible         =   0   'False
-            Width           =   2535
-         End
-         Begin VB.Label Label8 
-            BackStyle       =   0  'Transparent
-            Caption         =   "                                   "
-            Height          =   375
-            Left            =   2280
-            TabIndex        =   113
-            Top             =   0
-            Width           =   255
-         End
-         Begin VB.Label Label4 
-            BackStyle       =   0  'Transparent
-            Caption         =   "                                   "
-            Height          =   375
-            Left            =   0
-            MousePointer    =   5  'Size
-            TabIndex        =   112
-            Top             =   0
-            Width           =   2655
-         End
-         Begin VB.Image Image5 
-            Height          =   2985
-            Left            =   0
-            Picture         =   "frmMirage.frx":21A2D
-            Top             =   0
-            Width           =   2595
-         End
-      End
-      Begin VB.PictureBox picquete 
-         Appearance      =   0  'Flat
-         BackColor       =   &H00FFFFFF&
-         BorderStyle     =   0  'None
-         ForeColor       =   &H80000008&
-         Height          =   4290
-         Left            =   480
-         Picture         =   "frmMirage.frx":3AEA7
-         ScaleHeight     =   286
-         ScaleMode       =   3  'Pixel
-         ScaleWidth      =   223
-         TabIndex        =   92
-         Top             =   960
-         Visible         =   0   'False
-         Width           =   3345
-         Begin VB.TextBox quetetxt 
-            Appearance      =   0  'Flat
-            Height          =   3015
-            Left            =   240
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   93
-            Top             =   480
-            Width           =   2895
-         End
-         Begin VB.Label qf 
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   285
-            Left            =   3045
-            TabIndex        =   97
-            Top             =   0
-            Width           =   285
-         End
-         Begin VB.Label av 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   " "
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   165
-            Left            =   1440
-            TabIndex        =   96
-            Top             =   2040
-            Width           =   45
-         End
-         Begin VB.Label qt 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   " "
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   210
-            Left            =   240
-            TabIndex        =   95
-            Top             =   3600
-            Width           =   1020
-         End
-         Begin VB.Label artquete 
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   405
-            Left            =   1440
-            TabIndex        =   94
-            Top             =   3840
-            Width           =   1845
-         End
-      End
-      Begin VB.Frame fra_info 
-         Appearance      =   0  'Flat
-         BackColor       =   &H000040C0&
-         BorderStyle     =   0  'None
-         Caption         =   "Frame1"
-         ForeColor       =   &H80000008&
-         Height          =   5250
-         Left            =   4050
-         TabIndex        =   1
-         Top             =   960
-         Width           =   4500
-         Begin VB.PictureBox Picture1 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   2520
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   143
-            Top             =   2640
-            Width           =   555
-            Begin VB.PictureBox PetImage 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   144
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.PictureBox Picture4 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   1920
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   83
-            Top             =   960
-            Width           =   555
-            Begin VB.PictureBox HelmetImage 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   84
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.PictureBox Picture7 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   2520
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   81
-            Top             =   1560
-            Width           =   555
-            Begin VB.PictureBox ShieldImage 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   82
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.PictureBox Picture5 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00FFFFFF&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   1920
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   79
-            Top             =   2640
-            Width           =   555
-            Begin VB.PictureBox ArmorImage 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   80
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.PictureBox Picture6 
-            Appearance      =   0  'Flat
-            BackColor       =   &H00FFFFFF&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   1320
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   77
-            Top             =   1560
-            Width           =   555
-            Begin VB.PictureBox WeaponImage 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   78
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.PictureBox Picsprt 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   555
-            Left            =   1920
-            ScaleHeight     =   35
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   35
-            TabIndex        =   75
-            Top             =   1560
-            Width           =   555
-            Begin VB.PictureBox Picsprts 
-               Appearance      =   0  'Flat
-               AutoRedraw      =   -1  'True
-               AutoSize        =   -1  'True
-               BackColor       =   &H00000000&
-               BorderStyle     =   0  'None
-               BeginProperty Font 
-                  Name            =   "MS Sans Serif"
-                  Size            =   9.75
-                  Charset         =   0
-                  Weight          =   400
-                  Underline       =   0   'False
-                  Italic          =   0   'False
-                  Strikethrough   =   0   'False
-               EndProperty
-               ForeColor       =   &H80000008&
-               Height          =   495
-               Left            =   15
-               ScaleHeight     =   495
-               ScaleWidth      =   495
-               TabIndex        =   76
-               Top             =   15
-               Width           =   495
-            End
-         End
-         Begin VB.Label ifermer 
-            BackStyle       =   0  'Transparent
-            Caption         =   "                                   "
-            Height          =   375
-            Left            =   4200
-            TabIndex        =   89
-            Top             =   0
-            Width           =   375
-         End
-         Begin VB.Label ireduire 
-            BackStyle       =   0  'Transparent
-            Caption         =   "                                   "
-            Height          =   375
-            Left            =   3840
-            TabIndex        =   88
-            Top             =   0
-            Width           =   375
-         End
-         Begin VB.Label fermer 
-            BackStyle       =   0  'Transparent
-            Height          =   255
-            Left            =   3720
-            TabIndex        =   85
-            Top             =   5040
-            Width           =   855
-         End
-         Begin VB.Label AddDef 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "+"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000C0&
-            Height          =   270
-            Left            =   2640
-            TabIndex        =   14
-            Top             =   3930
-            Width           =   165
-         End
-         Begin VB.Label AddMagi 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "+"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000C0&
-            Height          =   240
-            Left            =   2640
-            TabIndex        =   13
-            Top             =   4185
-            Width           =   165
-         End
-         Begin VB.Label AddSpeed 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "+"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000C0&
-            Height          =   240
-            Left            =   2640
-            TabIndex        =   12
-            Top             =   4425
-            Width           =   165
-         End
-         Begin VB.Label AddStr 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "+"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H000000C0&
-            Height          =   240
-            Left            =   2640
-            TabIndex        =   11
-            Top             =   3690
-            Width           =   165
-         End
-         Begin VB.Label lblSPEED 
-            Appearance      =   0  'Flat
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   195
-            Left            =   1560
-            TabIndex        =   10
-            ToolTipText     =   "Points permettant d'augmenter vos chances d'esquive"
-            Top             =   4455
-            Width           =   270
-         End
-         Begin VB.Label lblMAGI 
-            Appearance      =   0  'Flat
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   195
-            Left            =   1560
-            TabIndex        =   9
-            ToolTipText     =   "Points permettant d'augmenter vos sorts disponibles "
-            Top             =   4215
-            Width           =   270
-         End
-         Begin VB.Label lblDEF 
-            Appearance      =   0  'Flat
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000007&
-            Height          =   195
-            Left            =   1560
-            TabIndex        =   8
-            ToolTipText     =   "Points permettant d'augmenter votre résistance et vos chances de bloquer"
-            Top             =   3960
-            Width           =   270
-         End
-         Begin VB.Label lblSTR 
-            Appearance      =   0  'Flat
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   195
-            Left            =   1560
-            TabIndex        =   7
-            ToolTipText     =   "Points permettant d'augmenter vos dégâts et vos chances de coup critique"
-            Top             =   3720
-            Width           =   270
-         End
-         Begin VB.Label lblPoints 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   9.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000007&
-            Height          =   300
-            Left            =   1680
-            TabIndex        =   6
-            Top             =   4740
-            Width           =   435
-         End
-         Begin VB.Label lblLevel 
-            Appearance      =   0  'Flat
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Verdana"
-               Size            =   6
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000007&
-            Height          =   180
-            Left            =   1320
-            TabIndex        =   5
-            Top             =   480
-            Visible         =   0   'False
-            Width           =   555
-         End
-         Begin VB.Label maclasse 
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000007&
-            Height          =   210
-            Left            =   2400
-            TabIndex        =   4
-            Top             =   480
-            Visible         =   0   'False
-            Width           =   615
-         End
-         Begin VB.Label monnom 
-            AutoSize        =   -1  'True
-            BackColor       =   &H80000005&
-            BackStyle       =   0  'Transparent
-            Caption         =   "CC"
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   9
-               Charset         =   0
-               Weight          =   700
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   210
-            Left            =   600
-            TabIndex        =   3
-            Top             =   480
-            Width           =   240
-         End
-         Begin VB.Image Image4 
-            Appearance      =   0  'Flat
-            Height          =   315
-            Left            =   0
-            MousePointer    =   5  'Size
-            Top             =   0
-            Width           =   4545
-         End
-         Begin VB.Image Image1 
-            Height          =   5250
-            Left            =   0
-            Picture         =   "frmMirage.frx":69DA9
-            Top             =   0
-            Width           =   4500
-         End
-      End
-      Begin VB.PictureBox xp 
-         Appearance      =   0  'Flat
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
-         BorderStyle     =   0  'None
-         ForeColor       =   &H80000008&
-         Height          =   180
-         Left            =   10320
-         ScaleHeight     =   180
-         ScaleWidth      =   1425
-         TabIndex        =   73
-         Top             =   600
-         Visible         =   0   'False
-         Width           =   1425
-         Begin VB.Label lexp 
-            Alignment       =   2  'Center
-            Appearance      =   0  'Flat
-            BackColor       =   &H0000C000&
-            BackStyle       =   0  'Transparent
-            BorderStyle     =   1  'Fixed Single
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   180
-            Left            =   0
-            TabIndex        =   74
-            Top             =   0
-            Width           =   1425
-         End
-         Begin VB.Shape sexp 
-            BackColor       =   &H000000FF&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            FillColor       =   &H000000FF&
-            Height          =   180
-            Left            =   0
-            Top             =   0
-            Width           =   1425
-         End
-      End
-      Begin VB.PictureBox mana 
-         Appearance      =   0  'Flat
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
-         BorderStyle     =   0  'None
-         ForeColor       =   &H80000008&
-         Height          =   180
-         Left            =   10320
-         ScaleHeight     =   180
-         ScaleWidth      =   1425
-         TabIndex        =   71
-         Top             =   360
-         Visible         =   0   'False
-         Width           =   1425
-         Begin VB.Label lmana 
-            Alignment       =   2  'Center
-            Appearance      =   0  'Flat
-            BackColor       =   &H00CB884B&
-            BackStyle       =   0  'Transparent
-            BorderStyle     =   1  'Fixed Single
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   180
-            Left            =   0
-            TabIndex        =   72
-            Top             =   0
-            Width           =   1425
-         End
-         Begin VB.Shape smana 
-            BackColor       =   &H00CB884B&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            Height          =   180
-            Left            =   0
-            Top             =   0
-            Width           =   1425
-         End
-      End
-      Begin VB.PictureBox vie 
-         Appearance      =   0  'Flat
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
-         BorderStyle     =   0  'None
-         ForeColor       =   &H80000008&
-         Height          =   180
-         Left            =   10320
-         ScaleHeight     =   180
-         ScaleWidth      =   1425
-         TabIndex        =   69
-         Top             =   120
-         Visible         =   0   'False
-         Width           =   1425
-         Begin VB.Label lvie 
-            Alignment       =   2  'Center
-            Appearance      =   0  'Flat
-            BackColor       =   &H0000C000&
-            BackStyle       =   0  'Transparent
-            BorderStyle     =   1  'Fixed Single
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H80000008&
-            Height          =   180
-            Left            =   0
-            TabIndex        =   70
-            Top             =   0
-            Width           =   1425
-         End
-         Begin VB.Shape svie 
-            BackColor       =   &H0000C000&
-            BackStyle       =   1  'Opaque
-            BorderStyle     =   0  'Transparent
-            Height          =   180
-            Left            =   0
-            Top             =   0
-            Width           =   1425
-         End
-      End
-      Begin VB.PictureBox ObjNm 
-         Appearance      =   0  'Flat
-         AutoSize        =   -1  'True
-         BackColor       =   &H80000005&
-         BorderStyle     =   0  'None
-         ForeColor       =   &H80000008&
-         Height          =   255
-         Left            =   4440
-         ScaleHeight     =   255
-         ScaleWidth      =   1575
-         TabIndex        =   66
-         Top             =   2880
-         Visible         =   0   'False
-         Width           =   1575
-         Begin VB.Label OName 
-            AutoSize        =   -1  'True
-            BackStyle       =   0  'Transparent
-            Caption         =   "Label1"
-            Height          =   195
-            Left            =   120
-            TabIndex        =   67
-            Top             =   0
-            Width           =   465
-         End
-      End
-      Begin VB.Timer Timer1 
-         Left            =   7320
-         Top             =   0
-      End
-      Begin VB.Timer tmrSnowDrop 
-         Enabled         =   0   'False
-         Interval        =   100
-         Left            =   8760
-         Top             =   0
-      End
-      Begin VB.Timer tmrRainDrop 
-         Enabled         =   0   'False
-         Interval        =   100
-         Left            =   8280
-         Top             =   0
-      End
-      Begin VB.PictureBox ScreenShot 
-         Appearance      =   0  'Flat
-         BackColor       =   &H80000005&
-         BorderStyle     =   0  'None
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H80000008&
-         Height          =   495
-         Left            =   9240
-         ScaleHeight     =   495
-         ScaleWidth      =   615
-         TabIndex        =   55
-         Top             =   600
-         Visible         =   0   'False
-         Width           =   615
-      End
+      Width           =   11040
       Begin VB.Frame fra_fenetre 
          BackColor       =   &H00004080&
          BorderStyle     =   0  'None
          Height          =   2985
-         Left            =   8640
+         Left            =   8400
          TabIndex        =   2
-         Top             =   5640
+         Top             =   4320
          Width           =   2595
          Begin VB.PictureBox tmpsquete 
             Appearance      =   0  'Flat
@@ -3165,7 +1915,7 @@ Begin VB.Form frmMirage
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   81
             TabIndex        =   62
-            Top             =   1440
+            Top             =   1560
             Visible         =   0   'False
             Width           =   1215
             Begin VB.Label seconde 
@@ -3213,7 +1963,7 @@ Begin VB.Form frmMirage
             BorderStyle     =   0  'None
             ForeColor       =   &H80000008&
             Height          =   2535
-            Left            =   120
+            Left            =   480
             ScaleHeight     =   169
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   161
@@ -3234,7 +1984,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   720
-               Picture         =   "frmMirage.frx":B6C63
+               Picture         =   "frmMirage.frx":385BC
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   51
@@ -3254,7 +2004,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   1080
-               Picture         =   "frmMirage.frx":B6EFB
+               Picture         =   "frmMirage.frx":38854
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   50
@@ -3485,10 +2235,10 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   1200
-               Picture         =   "frmMirage.frx":B7186
+               Picture         =   "frmMirage.frx":38ADF
                ScaleHeight     =   270
                ScaleWidth      =   270
-               TabIndex        =   149
+               TabIndex        =   127
                Top             =   2250
                Width           =   270
             End
@@ -3505,10 +2255,10 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   840
-               Picture         =   "frmMirage.frx":B7411
+               Picture         =   "frmMirage.frx":38D6A
                ScaleHeight     =   270
                ScaleWidth      =   270
-               TabIndex        =   148
+               TabIndex        =   126
                Top             =   2250
                Width           =   270
             End
@@ -3521,7 +2271,7 @@ Begin VB.Form frmMirage
                Left            =   0
                ScaleHeight     =   2175
                ScaleWidth      =   2415
-               TabIndex        =   145
+               TabIndex        =   123
                Top             =   0
                Width           =   2415
                Begin VB.PictureBox Picture11 
@@ -3543,7 +2293,7 @@ Begin VB.Form frmMirage
                   ScaleHeight     =   529
                   ScaleMode       =   3  'Pixel
                   ScaleWidth      =   126
-                  TabIndex        =   146
+                  TabIndex        =   124
                   Top             =   0
                   Width           =   1890
                   Begin VB.PictureBox picspell 
@@ -3567,7 +2317,7 @@ Begin VB.Form frmMirage
                      ScaleHeight     =   32
                      ScaleMode       =   3  'Pixel
                      ScaleWidth      =   32
-                     TabIndex        =   147
+                     TabIndex        =   125
                      Top             =   120
                      Width           =   480
                   End
@@ -3620,9 +2370,9 @@ Begin VB.Form frmMirage
                   Strikethrough   =   0   'False
                EndProperty
                Height          =   2340
-               ItemData        =   "frmMirage.frx":B76A9
+               ItemData        =   "frmMirage.frx":39002
                Left            =   75
-               List            =   "frmMirage.frx":B76AB
+               List            =   "frmMirage.frx":39004
                TabIndex        =   45
                Top             =   75
                Width           =   2220
@@ -3969,7 +2719,7 @@ Begin VB.Form frmMirage
                ForeColor       =   &H80000008&
                Height          =   2.25000e5
                Left            =   2400
-               Picture         =   "frmMirage.frx":B76AD
+               Picture         =   "frmMirage.frx":39006
                ScaleHeight     =   2.23636e5
                ScaleMode       =   0  'User
                ScaleWidth      =   477.091
@@ -4329,22 +3079,1366 @@ Begin VB.Form frmMirage
          Begin VB.Image Image3 
             Height          =   2985
             Left            =   0
-            Picture         =   "frmMirage.frx":216FEF
+            Picture         =   "frmMirage.frx":198948
             Top             =   0
             Width           =   2595
          End
+      End
+      Begin VB.Frame picParty 
+         BackColor       =   &H00004080&
+         BorderStyle     =   0  'None
+         Height          =   2985
+         Left            =   120
+         TabIndex        =   219
+         Top             =   4440
+         Visible         =   0   'False
+         Width           =   2595
+         Begin VB.PictureBox backPPLife 
+            BackColor       =   &H0080FF80&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   0
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   232
+            Top             =   600
+            Width           =   2175
+            Begin VB.Shape shpPPLife 
+               BackColor       =   &H0000C000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   0
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPLife 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PV : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   165
+               Index           =   0
+               Left            =   0
+               TabIndex        =   233
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.PictureBox backPPMana 
+            BackColor       =   &H00FF8080&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   0
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   230
+            Top             =   800
+            Width           =   2175
+            Begin VB.Shape shpPPMana 
+               BackColor       =   &H00FF0000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   0
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPMana 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PM : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000005&
+               Height          =   165
+               Index           =   0
+               Left            =   0
+               TabIndex        =   231
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.PictureBox Picture15 
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   1320
+            Picture         =   "frmMirage.frx":1B1DC2
+            ScaleHeight     =   270
+            ScaleWidth      =   270
+            TabIndex        =   229
+            Top             =   2400
+            Width           =   270
+         End
+         Begin VB.PictureBox Picture16 
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   960
+            Picture         =   "frmMirage.frx":1B205A
+            ScaleHeight     =   270
+            ScaleWidth      =   270
+            TabIndex        =   228
+            Top             =   2400
+            Width           =   270
+         End
+         Begin VB.PictureBox backPPLife 
+            BackColor       =   &H0080FF80&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   1
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   226
+            Top             =   1275
+            Width           =   2175
+            Begin VB.Shape shpPPLife 
+               BackColor       =   &H0000C000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   1
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPLife 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PV : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   165
+               Index           =   1
+               Left            =   0
+               TabIndex        =   227
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.PictureBox backPPMana 
+            BackColor       =   &H00FF8080&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   1
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   224
+            Top             =   1485
+            Width           =   2175
+            Begin VB.Shape shpPPMana 
+               BackColor       =   &H00FF0000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   1
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPMana 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PM : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000005&
+               Height          =   165
+               Index           =   1
+               Left            =   0
+               TabIndex        =   225
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.PictureBox backPPLife 
+            BackColor       =   &H0080FF80&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   2
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   222
+            Top             =   1995
+            Width           =   2175
+            Begin VB.Shape shpPPLife 
+               BackColor       =   &H0000C000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   2
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPLife 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PV : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   165
+               Index           =   2
+               Left            =   0
+               TabIndex        =   223
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.PictureBox backPPMana 
+            BackColor       =   &H00FF8080&
+            BorderStyle     =   0  'None
+            Height          =   170
+            Index           =   2
+            Left            =   240
+            ScaleHeight     =   165
+            ScaleWidth      =   2175
+            TabIndex        =   220
+            Top             =   2205
+            Width           =   2175
+            Begin VB.Shape shpPPMana 
+               BackColor       =   &H00FF0000&
+               BackStyle       =   1  'Opaque
+               BorderStyle     =   0  'Transparent
+               Height          =   165
+               Index           =   2
+               Left            =   0
+               Top             =   0
+               Width           =   2175
+            End
+            Begin VB.Label lblPPMana 
+               Alignment       =   2  'Center
+               Appearance      =   0  'Flat
+               BackColor       =   &H80000005&
+               BackStyle       =   0  'Transparent
+               BorderStyle     =   1  'Fixed Single
+               Caption         =   "PM : "
+               BeginProperty Font 
+                  Name            =   "Tahoma"
+                  Size            =   5.25
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000005&
+               Height          =   165
+               Index           =   2
+               Left            =   0
+               TabIndex        =   221
+               Top             =   0
+               Width           =   2175
+            End
+         End
+         Begin VB.Image Image5 
+            Height          =   2985
+            Left            =   0
+            Picture         =   "frmMirage.frx":1B22E5
+            Top             =   0
+            Width           =   2595
+         End
+         Begin VB.Label Label4 
+            BackStyle       =   0  'Transparent
+            Caption         =   "                                   "
+            Height          =   375
+            Left            =   0
+            MousePointer    =   5  'Size
+            TabIndex        =   240
+            Top             =   0
+            Width           =   2655
+         End
+         Begin VB.Label Label8 
+            BackStyle       =   0  'Transparent
+            Caption         =   "                                   "
+            Height          =   375
+            Left            =   2280
+            TabIndex        =   239
+            Top             =   0
+            Width           =   255
+         End
+         Begin VB.Label Label3 
+            Alignment       =   2  'Center
+            BackStyle       =   0  'Transparent
+            Caption         =   "Rejoindre/Quitter le groupe"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   180
+            Left            =   0
+            TabIndex        =   238
+            Top             =   2760
+            Visible         =   0   'False
+            Width           =   2535
+         End
+         Begin VB.Label lblPPName 
+            Alignment       =   2  'Center
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   180
+            Index           =   0
+            Left            =   240
+            TabIndex        =   237
+            Top             =   400
+            Width           =   2175
+         End
+         Begin VB.Label Label19 
+            BackStyle       =   0  'Transparent
+            Caption         =   "                                   "
+            Height          =   375
+            Left            =   2040
+            TabIndex        =   236
+            Top             =   0
+            Width           =   255
+         End
+         Begin VB.Label lblPPName 
+            Alignment       =   2  'Center
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   180
+            Index           =   1
+            Left            =   240
+            TabIndex        =   235
+            Top             =   1080
+            Width           =   2175
+         End
+         Begin VB.Label lblPPName 
+            Alignment       =   2  'Center
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   180
+            Index           =   2
+            Left            =   240
+            TabIndex        =   234
+            Top             =   1800
+            Width           =   2175
+         End
+      End
+      Begin VB.Timer Timer2 
+         Enabled         =   0   'False
+         Interval        =   100
+         Left            =   6120
+         Top             =   0
+      End
+      Begin VB.PictureBox picquete 
+         Appearance      =   0  'Flat
+         BackColor       =   &H00FFFFFF&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   4290
+         Left            =   480
+         Picture         =   "frmMirage.frx":1CB75F
+         ScaleHeight     =   286
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   223
+         TabIndex        =   92
+         Top             =   960
+         Visible         =   0   'False
+         Width           =   3345
+         Begin VB.TextBox quetetxt 
+            Appearance      =   0  'Flat
+            Height          =   3015
+            Left            =   240
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   93
+            Top             =   480
+            Width           =   2895
+         End
+         Begin VB.Label qf 
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   285
+            Left            =   3045
+            TabIndex        =   97
+            Top             =   0
+            Width           =   285
+         End
+         Begin VB.Label av 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   " "
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   165
+            Left            =   1440
+            TabIndex        =   96
+            Top             =   2040
+            Width           =   45
+         End
+         Begin VB.Label qt 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   " "
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   210
+            Left            =   240
+            TabIndex        =   95
+            Top             =   3600
+            Width           =   1020
+         End
+         Begin VB.Label artquete 
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   405
+            Left            =   1440
+            TabIndex        =   94
+            Top             =   3840
+            Width           =   1845
+         End
+      End
+      Begin VB.Frame fra_info 
+         Appearance      =   0  'Flat
+         BackColor       =   &H000040C0&
+         BorderStyle     =   0  'None
+         Caption         =   "Frame1"
+         ForeColor       =   &H80000008&
+         Height          =   5250
+         Left            =   4050
+         TabIndex        =   1
+         Top             =   960
+         Width           =   4500
+         Begin VB.PictureBox Picture1 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   2520
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   121
+            Top             =   2640
+            Width           =   555
+            Begin VB.PictureBox PetImage 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   122
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.PictureBox Picture4 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   1920
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   83
+            Top             =   960
+            Width           =   555
+            Begin VB.PictureBox HelmetImage 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   84
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.PictureBox Picture7 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   2520
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   81
+            Top             =   1560
+            Width           =   555
+            Begin VB.PictureBox ShieldImage 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   82
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.PictureBox Picture5 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00FFFFFF&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   1920
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   79
+            Top             =   2640
+            Width           =   555
+            Begin VB.PictureBox ArmorImage 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   80
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.PictureBox Picture6 
+            Appearance      =   0  'Flat
+            BackColor       =   &H00FFFFFF&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   1320
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   77
+            Top             =   1560
+            Width           =   555
+            Begin VB.PictureBox WeaponImage 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   78
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.PictureBox Picsprt 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   555
+            Left            =   1920
+            ScaleHeight     =   35
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   35
+            TabIndex        =   75
+            Top             =   1560
+            Width           =   555
+            Begin VB.PictureBox Picsprts 
+               Appearance      =   0  'Flat
+               AutoRedraw      =   -1  'True
+               AutoSize        =   -1  'True
+               BackColor       =   &H00000000&
+               BorderStyle     =   0  'None
+               BeginProperty Font 
+                  Name            =   "MS Sans Serif"
+                  Size            =   9.75
+                  Charset         =   0
+                  Weight          =   400
+                  Underline       =   0   'False
+                  Italic          =   0   'False
+                  Strikethrough   =   0   'False
+               EndProperty
+               ForeColor       =   &H80000008&
+               Height          =   495
+               Left            =   15
+               ScaleHeight     =   495
+               ScaleWidth      =   495
+               TabIndex        =   76
+               Top             =   15
+               Width           =   495
+            End
+         End
+         Begin VB.Label lblMetierApl 
+            Alignment       =   2  'Center
+            BackStyle       =   0  'Transparent
+            Caption         =   "Metier"
+            Height          =   255
+            Left            =   2880
+            TabIndex        =   246
+            Top             =   5040
+            Width           =   735
+         End
+         Begin VB.Label ifermer 
+            BackStyle       =   0  'Transparent
+            Caption         =   "                                   "
+            Height          =   375
+            Left            =   4200
+            TabIndex        =   89
+            Top             =   0
+            Width           =   375
+         End
+         Begin VB.Label ireduire 
+            BackStyle       =   0  'Transparent
+            Caption         =   "                                   "
+            Height          =   375
+            Left            =   3840
+            TabIndex        =   88
+            Top             =   0
+            Width           =   375
+         End
+         Begin VB.Label fermer 
+            BackStyle       =   0  'Transparent
+            Height          =   255
+            Left            =   3720
+            TabIndex        =   85
+            Top             =   5040
+            Width           =   855
+         End
+         Begin VB.Label AddDef 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "+"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000C0&
+            Height          =   270
+            Left            =   2640
+            TabIndex        =   14
+            Top             =   3930
+            Width           =   165
+         End
+         Begin VB.Label AddMagi 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "+"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000C0&
+            Height          =   240
+            Left            =   2640
+            TabIndex        =   13
+            Top             =   4185
+            Width           =   165
+         End
+         Begin VB.Label AddSpeed 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "+"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000C0&
+            Height          =   240
+            Left            =   2640
+            TabIndex        =   12
+            Top             =   4425
+            Width           =   165
+         End
+         Begin VB.Label AddStr 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "+"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H000000C0&
+            Height          =   240
+            Left            =   2640
+            TabIndex        =   11
+            Top             =   3690
+            Width           =   165
+         End
+         Begin VB.Label lblSPEED 
+            Appearance      =   0  'Flat
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   195
+            Left            =   1560
+            TabIndex        =   10
+            ToolTipText     =   "Points permettant d'augmenter vos chances d'esquive"
+            Top             =   4455
+            Width           =   270
+         End
+         Begin VB.Label lblMAGI 
+            Appearance      =   0  'Flat
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   195
+            Left            =   1560
+            TabIndex        =   9
+            ToolTipText     =   "Points permettant d'augmenter vos sorts disponibles "
+            Top             =   4215
+            Width           =   270
+         End
+         Begin VB.Label lblDEF 
+            Appearance      =   0  'Flat
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000007&
+            Height          =   195
+            Left            =   1560
+            TabIndex        =   8
+            ToolTipText     =   "Points permettant d'augmenter votre résistance et vos chances de bloquer"
+            Top             =   3960
+            Width           =   270
+         End
+         Begin VB.Label lblSTR 
+            Appearance      =   0  'Flat
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   195
+            Left            =   1560
+            TabIndex        =   7
+            ToolTipText     =   "Points permettant d'augmenter vos dégâts et vos chances de coup critique"
+            Top             =   3720
+            Width           =   270
+         End
+         Begin VB.Label lblPoints 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   9.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000007&
+            Height          =   300
+            Left            =   1680
+            TabIndex        =   6
+            Top             =   4740
+            Width           =   435
+         End
+         Begin VB.Label lblLevel 
+            Appearance      =   0  'Flat
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Verdana"
+               Size            =   6
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000007&
+            Height          =   180
+            Left            =   1320
+            TabIndex        =   5
+            Top             =   480
+            Visible         =   0   'False
+            Width           =   555
+         End
+         Begin VB.Label maclasse 
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000007&
+            Height          =   210
+            Left            =   2400
+            TabIndex        =   4
+            Top             =   480
+            Visible         =   0   'False
+            Width           =   615
+         End
+         Begin VB.Label monnom 
+            AutoSize        =   -1  'True
+            BackColor       =   &H80000005&
+            BackStyle       =   0  'Transparent
+            Caption         =   "CC"
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   9
+               Charset         =   0
+               Weight          =   700
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   210
+            Left            =   600
+            TabIndex        =   3
+            Top             =   480
+            Width           =   240
+         End
+         Begin VB.Image Image4 
+            Appearance      =   0  'Flat
+            Height          =   315
+            Left            =   0
+            MousePointer    =   5  'Size
+            Top             =   0
+            Width           =   4545
+         End
+         Begin VB.Image Image1 
+            Height          =   5250
+            Left            =   0
+            Picture         =   "frmMirage.frx":1FA661
+            Top             =   0
+            Width           =   4500
+         End
+      End
+      Begin VB.PictureBox xp 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000005&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   180
+         Left            =   10320
+         ScaleHeight     =   180
+         ScaleWidth      =   1425
+         TabIndex        =   73
+         Top             =   600
+         Visible         =   0   'False
+         Width           =   1425
+         Begin VB.Label lexp 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000C000&
+            BackStyle       =   0  'Transparent
+            BorderStyle     =   1  'Fixed Single
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   180
+            Left            =   0
+            TabIndex        =   74
+            Top             =   0
+            Width           =   1425
+         End
+         Begin VB.Shape sexp 
+            BackColor       =   &H000000FF&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            FillColor       =   &H000000FF&
+            Height          =   180
+            Left            =   0
+            Top             =   0
+            Width           =   1425
+         End
+      End
+      Begin VB.PictureBox mana 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000005&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   180
+         Left            =   10320
+         ScaleHeight     =   180
+         ScaleWidth      =   1425
+         TabIndex        =   71
+         Top             =   360
+         Visible         =   0   'False
+         Width           =   1425
+         Begin VB.Label lmana 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BackColor       =   &H00CB884B&
+            BackStyle       =   0  'Transparent
+            BorderStyle     =   1  'Fixed Single
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   180
+            Left            =   0
+            TabIndex        =   72
+            Top             =   0
+            Width           =   1425
+         End
+         Begin VB.Shape smana 
+            BackColor       =   &H00CB884B&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            Height          =   180
+            Left            =   0
+            Top             =   0
+            Width           =   1425
+         End
+      End
+      Begin VB.PictureBox vie 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000005&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   180
+         Left            =   10320
+         ScaleHeight     =   180
+         ScaleWidth      =   1425
+         TabIndex        =   69
+         Top             =   120
+         Visible         =   0   'False
+         Width           =   1425
+         Begin VB.Label lvie 
+            Alignment       =   2  'Center
+            Appearance      =   0  'Flat
+            BackColor       =   &H0000C000&
+            BackStyle       =   0  'Transparent
+            BorderStyle     =   1  'Fixed Single
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H80000008&
+            Height          =   180
+            Left            =   0
+            TabIndex        =   70
+            Top             =   0
+            Width           =   1425
+         End
+         Begin VB.Shape svie 
+            BackColor       =   &H0000C000&
+            BackStyle       =   1  'Opaque
+            BorderStyle     =   0  'Transparent
+            Height          =   180
+            Left            =   0
+            Top             =   0
+            Width           =   1425
+         End
+      End
+      Begin VB.PictureBox ObjNm 
+         Appearance      =   0  'Flat
+         AutoSize        =   -1  'True
+         BackColor       =   &H80000005&
+         BorderStyle     =   0  'None
+         ForeColor       =   &H80000008&
+         Height          =   255
+         Left            =   4440
+         ScaleHeight     =   255
+         ScaleWidth      =   1575
+         TabIndex        =   66
+         Top             =   2880
+         Visible         =   0   'False
+         Width           =   1575
+         Begin VB.Label OName 
+            AutoSize        =   -1  'True
+            BackStyle       =   0  'Transparent
+            Caption         =   "Label1"
+            Height          =   195
+            Left            =   120
+            TabIndex        =   67
+            Top             =   0
+            Width           =   465
+         End
+      End
+      Begin VB.Timer Timer1 
+         Left            =   7320
+         Top             =   0
+      End
+      Begin VB.Timer tmrSnowDrop 
+         Enabled         =   0   'False
+         Interval        =   100
+         Left            =   8760
+         Top             =   0
+      End
+      Begin VB.Timer tmrRainDrop 
+         Enabled         =   0   'False
+         Interval        =   100
+         Left            =   8280
+         Top             =   0
+      End
+      Begin VB.PictureBox ScreenShot 
+         Appearance      =   0  'Flat
+         BackColor       =   &H80000005&
+         BorderStyle     =   0  'None
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H80000008&
+         Height          =   495
+         Left            =   9240
+         ScaleHeight     =   495
+         ScaleWidth      =   615
+         TabIndex        =   55
+         Top             =   600
+         Visible         =   0   'False
+         Width           =   615
       End
       Begin VB.PictureBox txtQ 
          Appearance      =   0  'Flat
          BackColor       =   &H80000005&
          ForeColor       =   &H80000008&
          Height          =   1575
-         Left            =   1080
-         Picture         =   "frmMirage.frx":230469
+         Left            =   0
+         Picture         =   "frmMirage.frx":24751B
          ScaleHeight     =   1545
          ScaleWidth      =   9510
          TabIndex        =   56
-         Top             =   7530
+         Top             =   7440
          Visible         =   0   'False
          Width           =   9540
          Begin VB.TextBox TxtQ2 
@@ -4356,7 +4450,7 @@ Begin VB.Form frmMirage
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
             TabIndex        =   57
-            Text            =   "frmMirage.frx":2602BB
+            Text            =   "frmMirage.frx":27736D
             Top             =   180
             Width           =   9160
          End
@@ -4377,9 +4471,9 @@ Begin VB.Form frmMirage
    End
    Begin VB.Label menu_quete 
       BackStyle       =   0  'Transparent
-      Height          =   495
+      Height          =   540
       Left            =   9240
-      TabIndex        =   164
+      TabIndex        =   142
       ToolTipText     =   "Quetes"
       Top             =   9240
       Width           =   375
@@ -4395,11 +4489,11 @@ Begin VB.Form frmMirage
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   495
+      Height          =   540
       Left            =   11640
-      TabIndex        =   141
+      TabIndex        =   119
       ToolTipText     =   "Quitter"
-      Top             =   9360
+      Top             =   9240
       Width           =   345
    End
    Begin VB.Label menu_equ 
@@ -4413,9 +4507,9 @@ Begin VB.Form frmMirage
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   555
+      Height          =   540
       Left            =   8760
-      TabIndex        =   140
+      TabIndex        =   118
       ToolTipText     =   "Equipements"
       Top             =   9240
       Width           =   345
@@ -4432,11 +4526,11 @@ Begin VB.Form frmMirage
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   405
+      Height          =   540
       Left            =   9840
-      TabIndex        =   139
+      TabIndex        =   117
       ToolTipText     =   "Guilde"
-      Top             =   9360
+      Top             =   9240
       Width           =   405
    End
    Begin VB.Label menu_opt 
@@ -4450,20 +4544,20 @@ Begin VB.Form frmMirage
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   435
+      Height          =   540
       Left            =   11160
-      TabIndex        =   138
+      TabIndex        =   116
       ToolTipText     =   "Options"
-      Top             =   9360
+      Top             =   9240
       Width           =   420
    End
    Begin VB.Label menu_tchat 
       BackStyle       =   0  'Transparent
-      Height          =   405
+      Height          =   540
       Left            =   10200
-      TabIndex        =   137
+      TabIndex        =   115
       ToolTipText     =   "Tchat"
-      Top             =   9360
+      Top             =   9240
       Width           =   375
    End
    Begin VB.Label menu_who 
@@ -4477,11 +4571,11 @@ Begin VB.Form frmMirage
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   405
+      Height          =   540
       Left            =   10560
-      TabIndex        =   136
+      TabIndex        =   114
       ToolTipText     =   "Qui est en ligne ?"
-      Top             =   9360
+      Top             =   9240
       Width           =   540
    End
    Begin VB.Label menu_sort 
@@ -4497,7 +4591,7 @@ Begin VB.Form frmMirage
       EndProperty
       Height          =   540
       Left            =   8280
-      TabIndex        =   135
+      TabIndex        =   113
       ToolTipText     =   "Sorts"
       Top             =   9240
       Width           =   465
@@ -4515,7 +4609,7 @@ Begin VB.Form frmMirage
       EndProperty
       Height          =   540
       Left            =   7920
-      TabIndex        =   134
+      TabIndex        =   112
       ToolTipText     =   "Inventaire"
       Top             =   9240
       Width           =   315
@@ -4523,7 +4617,7 @@ Begin VB.Form frmMirage
    Begin VB.Image Interface 
       Height          =   900
       Left            =   0
-      Picture         =   "frmMirage.frx":2602C1
+      Picture         =   "frmMirage.frx":277373
       Top             =   9120
       Width           =   12000
    End
@@ -4769,6 +4863,7 @@ Picsprt.Height = 48
 Picsprts.Height = 48
 On Error Resume Next
 txtMyTextBox.SetFocus
+
 End Sub
 
 Private Sub Form_Load()
@@ -4786,11 +4881,94 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Interface" & Ending) Then Interface.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Interface" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
         
     Next i
+
+
+    For i = 0 To 13
+        frmMirage.picRac(i).Visible = False
+    Next i
+    
+    If notebook = True Then
+        frmMirage.Interface.Width = 640
+        frmMirage.picScreen.Width = 640
+        frmMirage.picScreen.Height = 420
+        frmMirage.Height = 7665
+        frmMirage.Width = 9570
+        For i = 0 To 8
+            frmMirage.picRac(i).Visible = True
+            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).Top = 621 - 188
+        Next i
+        frmMirage.menu_inv.Left = 358
+        frmMirage.menu_sort.Left = 382
+        frmMirage.menu_equ.Left = 414
+        frmMirage.menu_quete.Left = 446
+        frmMirage.menu_guild.Left = 486
+        frmMirage.menu_tchat.Left = 510
+        frmMirage.menu_who.Left = 534
+        frmMirage.menu_opt.Left = 574
+        frmMirage.menu_quit.Left = 606
+        
+        frmMirage.menu_inv.Top = 616 - 188
+        frmMirage.menu_sort.Top = 616 - 188
+        frmMirage.menu_equ.Top = 616 - 188
+        frmMirage.menu_quete.Top = 616 - 188
+        frmMirage.menu_guild.Top = 616 - 188
+        frmMirage.menu_tchat.Top = 616 - 188
+        frmMirage.menu_who.Top = 616 - 188
+        frmMirage.menu_opt.Top = 616 - 188
+        frmMirage.menu_quit.Top = 616 - 188
+    Else
+        frmMirage.Interface.Width = 800
+        frmMirage.picScreen.Width = 800
+        frmMirage.picScreen.Height = 608
+        frmMirage.Height = 10500
+        frmMirage.Width = 12075
+        For i = 0 To 13
+            frmMirage.picRac(i).Visible = True
+            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).Top = 621
+        Next i
+        frmMirage.menu_inv.Left = 528
+        frmMirage.menu_sort.Left = 552
+        frmMirage.menu_equ.Left = 584
+        frmMirage.menu_quete.Left = 616
+        frmMirage.menu_guild.Left = 656
+        frmMirage.menu_tchat.Left = 680
+        frmMirage.menu_who.Left = 704
+        frmMirage.menu_opt.Left = 744
+        frmMirage.menu_quit.Left = 776
+        
+        frmMirage.menu_inv.Top = 616
+        frmMirage.menu_sort.Top = 616
+        frmMirage.menu_equ.Top = 616
+        frmMirage.menu_quete.Top = 616
+        frmMirage.menu_guild.Top = 616
+        frmMirage.menu_tchat.Top = 616
+        frmMirage.menu_who.Top = 616
+        frmMirage.menu_opt.Top = 616
+        frmMirage.menu_quit.Top = 616
+    End If
+    
+    frmMirage.Interface.Top = frmMirage.picScreen.Height
+    frmMirage.txtQ.Top = frmMirage.picScreen.Height - frmMirage.txtQ.Height
+    frmMirage.Canal.Top = frmMirage.picScreen.Height - frmMirage.Canal.Height
+    frmMirage.txtMyTextBox.Top = frmMirage.picScreen.Height - frmMirage.txtMyTextBox.Height
+    frmMirage.picParty.Top = frmMirage.picScreen.Height - frmMirage.picParty.Height
+    frmMirage.fra_fenetre.Top = frmMirage.picScreen.Height - frmMirage.fra_fenetre.Height - 10
+    frmMirage.fra_fenetre.Left = frmMirage.picScreen.Width - frmMirage.fra_fenetre.Width - 30
+    If notebook = True Then
+        frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+        frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+    Else
+        frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+        frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+    End If
     
     twippy = Screen.TwipsPerPixelY
     twippx = Screen.TwipsPerPixelX
@@ -4914,6 +5092,10 @@ Dim i As Integer
     frmMirage.Socket.Connect
 End Sub
 
+Private Sub lblendmetier_Click()
+pictMetier.Visible = False
+End Sub
+
 Private Sub lblmaskinvferm_Click()
 fra_fenetre.Visible = False
 End Sub
@@ -4952,6 +5134,19 @@ Private Sub lblmaskmenu_MouseUp(Button As Integer, Shift As Integer, x As Single
 DragImg = 0
 DragX = 0
 DragY = 0
+End Sub
+
+Private Sub lblMetierApl_Click()
+    Call SendData("playermetier" & SEP_CHAR & END_CHAR)
+End Sub
+
+Private Sub lblmetierEnd_Click()
+    pictMetier.Visible = False
+End Sub
+
+Private Sub lblOublierMetier_Click()
+    Call SendData("playermetieroublie" & SEP_CHAR & END_CHAR)
+    pictMetier.Visible = False
 End Sub
 
 Private Sub lblPoints_Change()
@@ -5147,16 +5342,37 @@ d = Index
         
         If Item(GetPlayerInvItemNum(MyIndex, d + 1)).Type = ITEM_TYPE_CURRENCY And Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
             itmDesc.Height = 17
-            itmDesc.Top = fra_fenetre.Top - itmDesc.Height
-            itmDesc.Left = fra_fenetre.Left
+            'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
+            'itmDesc.Left = fra_fenetre.Left
+            If notebook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+            Else
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+            End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
             itmDesc.Height = 161
-            itmDesc.Top = fra_fenetre.Top - itmDesc.Height
-            itmDesc.Left = fra_fenetre.Left
+            'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
+            'itmDesc.Left = fra_fenetre.Left
+            If notebook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+            Else
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+            End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) > vbNullString Then
             itmDesc.Height = 249
-            itmDesc.Top = fra_fenetre.Top - itmDesc.Height
-            itmDesc.Left = fra_fenetre.Left
+            'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
+            'itmDesc.Left = fra_fenetre.Left
+            If notebook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+            Else
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+            End If
         End If
                 
         If Item(GetPlayerInvItemNum(MyIndex, d + 1)).Type = ITEM_TYPE_CURRENCY Or Item(GetPlayerInvItemNum(MyIndex, d + 1)).Empilable <> 0 Then
@@ -5700,7 +5916,7 @@ End Sub
 Private Sub cmdTrainee_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "GUILDTRAINEE" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR
+    Packet = "guildtraineevbyesno" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR '"GUILDTRAINEE"
     Call SendData(Packet)
 End Sub
 

@@ -50,7 +50,7 @@ Dim Start As Long
     Loop
 End Sub
 
-Sub HandleData(ByVal data As String)
+Sub HandleData(ByVal Data As String)
 Dim Parse() As String
 Dim name As String
 Dim Password As String
@@ -75,7 +75,7 @@ Dim z As Long
 'On Error GoTo er:
     
     ' Handle Data
-    Parse = Split(data, SEP_CHAR)
+    Parse = Split(Data, SEP_CHAR)
     Call EcrireEtat("Analyse des données(" & Parse(0) & ")")
     
     ' :::::::::::::::::::::::
@@ -126,7 +126,8 @@ Dim z As Long
         MAX_INV = Val(Parse(14))
         MAX_NPC_SPELLS = Val(Parse(15))
         MAX_PETS = Val(Parse(16))
-        
+        MAX_METIER = Val(Parse(17))
+        MAX_RECETTE = Val(Parse(18))
         For i = 1 To MAX_INV - 1
             Load frmMirage.picInv(i)
             
@@ -158,6 +159,8 @@ Dim z As Long
         Call WriteINI("INFO", "Maxquet", Val(MAX_QUETES), App.Path & "\config.ini")
         Call WriteINI("INFO", "Maxnpcspell", Val(MAX_NPC_SPELLS), App.Path & "\config.ini")
         Call WriteINI("INFO", "Maxpets", Val(MAX_PETS), App.Path & "\config.ini")
+        Call WriteINI("INFO", "Maxmetier", Val(MAX_METIER), App.Path & "\config.ini")
+        Call WriteINI("INFO", "Maxrecette", Val(MAX_RECETTE), App.Path & "\config.ini")
         
         ReDim quete(1 To MAX_QUETES) As QueteRec
         ReDim Map(1 To MAX_MAPS) As MapRec
@@ -174,6 +177,8 @@ Dim z As Long
         ReDim Bubble(1 To MAX_PLAYERS) As ChatBubble
         ReDim SaveMapItem(1 To MAX_MAP_ITEMS) As MapItemRec
         ReDim Pets(1 To MAX_PETS) As PetsRec
+        ReDim Metier(1 To MAX_METIER) As MetierRec
+        ReDim recette(1 To MAX_RECETTE) As RecetteRec
         
         For i = 1 To MAX_MAPS
             ReDim Map(i).tile(0 To MAX_MAPX, 0 To MAX_MAPY) As TileRec
@@ -290,7 +295,7 @@ Dim z As Long
             
             If Trim$(name) = vbNullString Then frmChars.lstChars.AddItem "Emplacement libre" Else frmChars.lstChars.AddItem name & " - niveaux " & Level & " - " & Msg
             
-            n = n + 3
+            n = n + 4
         Next i
         
         frmChars.lstChars.ListIndex = 0
@@ -816,24 +821,27 @@ mont:
     If LCase$(Parse(0)) = "mapdatas" Then
         n = 1
         MapNumS = Val(Parse(1))
-        Map(Val(Parse(1))).name = Parse(n + 1)
-        Map(Val(Parse(1))).Revision = Val(Parse(n + 2))
-        Map(Val(Parse(1))).Moral = Val(Parse(n + 3))
-        Map(Val(Parse(1))).Up = Val(Parse(n + 4))
-        Map(Val(Parse(1))).Down = Val(Parse(n + 5))
-        Map(Val(Parse(1))).Left = Val(Parse(n + 6))
-        Map(Val(Parse(1))).Right = Val(Parse(n + 7))
-        Map(Val(Parse(1))).Music = Parse(n + 8)
-        Map(Val(Parse(1))).BootMap = Val(Parse(n + 9))
-        Map(Val(Parse(1))).BootX = Val(Parse(n + 10))
-        Map(Val(Parse(1))).BootY = Val(Parse(n + 11))
-        Map(Val(Parse(1))).Indoors = Val(Parse(n + 12))
-        Map(Val(Parse(1))).PanoInf = Parse(n + 13)
-        Map(Val(Parse(1))).TranInf = Val(Parse(n + 14))
-        Map(Val(Parse(1))).PanoSup = Parse(n + 15)
-        Map(Val(Parse(1))).TranSup = Val(Parse(n + 16))
-        Map(Val(Parse(1))).Fog = Val(Parse(n + 17))
-        Map(Val(Parse(1))).FogAlpha = Val(Parse(n + 18))
+        Map(MapNumS).name = Parse(n + 1)
+        Map(MapNumS).Revision = Val(Parse(n + 2))
+        Map(MapNumS).Moral = Val(Parse(n + 3))
+        Map(MapNumS).Up = Val(Parse(n + 4))
+        Map(MapNumS).Down = Val(Parse(n + 5))
+        Map(MapNumS).Left = Val(Parse(n + 6))
+        Map(MapNumS).Right = Val(Parse(n + 7))
+        Map(MapNumS).Music = Parse(n + 8)
+        Map(MapNumS).BootMap = Val(Parse(n + 9))
+        Map(MapNumS).BootX = Val(Parse(n + 10))
+        Map(MapNumS).BootY = Val(Parse(n + 11))
+        Map(MapNumS).Indoors = Val(Parse(n + 12))
+        Map(MapNumS).PanoInf = Parse(n + 13)
+        Map(MapNumS).TranInf = Val(Parse(n + 14))
+        Map(MapNumS).PanoSup = Parse(n + 15)
+        Map(MapNumS).TranSup = Val(Parse(n + 16))
+        Map(MapNumS).Fog = Val(Parse(n + 17))
+        Map(MapNumS).FogAlpha = Val(Parse(n + 18))
+        Map(MapNumS).guildSoloView = Parse(n + 19)
+        Map(MapNumS).petView = Parse(n + 20)
+        Map(MapNumS).traversable = Parse(n + 21)
         Exit Sub
     End If
     
@@ -1006,6 +1014,45 @@ mont:
         
     If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hwnd, "open", Parse(1), vbNullString, App.Path, 1): Exit Sub
     
+    If (LCase$(Parse(0)) = "craft") Then
+        RecetteSelect = Parse(1)
+        If Player(MyIndex).Metier > 0 Then
+            If Metier(Player(MyIndex).Metier).Type = METIER_CRAFT Then
+                frmcraft.Show
+                frmcraft.lblMetierNom.Caption = Metier(RecetteSelect).nom
+                frmcraft.lblNom.Caption = recette(Metier(RecetteSelect).Data(0, 0)).nom
+                frmcraft.scrlRecettes.value = 0
+                If Metier(RecetteSelect).Data(0, 0) > 0 Then
+                n = Metier(RecetteSelect).Data(0, 0)
+                    For i = 0 To 9
+                        If recette(n).InCraft(i, 0) > 0 Then
+                            frmcraft.lblNeedItem(i).Caption = Item(recette(n).InCraft(i, 0)).name & " (*" & recette(n).InCraft(i, 1) & ")"
+                        Else
+                            frmcraft.lblNeedItem(i).Caption = "Pas d'objet"
+                        End If
+                    Next i
+                End If
+                If recette(n).craft(0) > 0 Then
+                    frmcraft.lblObtenu.Caption = Item(recette(n).craft(0)).name & " (*" & recette(n).craft(1) & ")"
+                Else
+                    frmcraft.lblObtenu.Caption = "Pas de craft"
+                End If
+            End If
+        End If
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "newmetier") Then
+        i = MsgBox("Voulez vous apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
+        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "remplacemetier") Then
+        i = MsgBox("Voulez vous oublier votre métier et apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
+        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        Exit Sub
+    End If
     ' :::::::::::::::::::::::
     ' :: Item spawn packet ::
     ' :::::::::::::::::::::::
@@ -1069,6 +1116,7 @@ mont:
         Item(n).paperdollPic = Val(Parse(25))
         
         Item(n).Empilable = Val(Parse(26))
+        Item(n).tArme = Val(Parse(27))
         Exit Sub
     End If
               
@@ -1108,7 +1156,7 @@ mont:
         Item(n).Empilable = Val(Parse(26))
         
         Item(n).Sex = Val(Parse(27))
-        
+        Item(n).tArme = Val(Parse(28))
         ' Initialize the item editor
         Call ItemEditorInit
         Exit Sub
@@ -1142,6 +1190,113 @@ mont:
         Pets(n).addForce = Parse(4)
         Pets(n).addDefence = Parse(5)
         Call PetEditorInit
+    End If
+    
+    ' ::::::::::::
+    ' :: Metier ::
+    ' ::::::::::::
+    If (LCase$(Parse(0)) = "metiereditor") Then
+        InMetierEditor = True
+        frmIndex.Show vbModeless, frmMirage
+        DonID = 0
+        frmIndex.lstIndex.Clear
+        ' Add the names
+        For i = 1 To MAX_METIER
+            frmIndex.lstIndex.AddItem i & " : " & Trim$(Metier(i).nom)
+        Next i
+        frmIndex.lstIndex.ListIndex = 0
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "updatemetier") Then
+        n = Val(Parse(1))
+        Metier(n).nom = Parse(2)
+        Metier(n).Type = Val(Parse(3))
+        Metier(n).desc = Parse(4)
+        x = 5
+        For i = 0 To MAX_DATA_METIER
+            For z = 0 To 1
+                Metier(n).Data(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "editmetier") Then
+        n = Val(Parse(1))
+        Metier(n).nom = Parse(2)
+        Metier(n).Type = Val(Parse(3))
+        Metier(n).desc = Parse(4)
+        x = 5
+        For i = 0 To MAX_DATA_METIER
+            For z = 0 To 1
+                Metier(n).Data(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        Call MetierEditorInit
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "playermetier") Then
+        n = Val(Parse(1))
+        Player(n).Metier = Val(Parse(2))
+        Player(n).MetierLvl = Val(Parse(3))
+        Player(n).MetierExp = Val(Parse(4))
+    End If
+    
+    ' :::::::::::::
+    ' :: recette ::
+    ' :::::::::::::
+    If (LCase$(Parse(0)) = "recetteeditor") Then
+        InRecetteEditor = True
+        frmIndex.Show vbModeless, frmMirage
+        DonID = 0
+        frmIndex.lstIndex.Clear
+        ' Add the names
+        For i = 1 To MAX_RECETTE
+            frmIndex.lstIndex.AddItem i & " : " & Trim$(recette(i).nom)
+        Next i
+        frmIndex.lstIndex.ListIndex = 0
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "updaterecette") Then
+        n = Val(Parse(1))
+        recette(n).nom = Parse(2)
+        x = 3
+        For i = 0 To 9
+            For z = 0 To 1
+                recette(n).InCraft(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        For z = 0 To 1
+            recette(n).craft(z) = Val(Parse(x))
+            x = x + 1
+        Next z
+        
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "editrecette") Then
+        n = Val(Parse(1))
+        recette(n).nom = Parse(2)
+        x = 3
+        For i = 0 To 9
+            For z = 0 To 1
+                recette(n).InCraft(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        For z = 0 To 1
+            recette(n).craft(z) = Val(Parse(x))
+            x = x + 1
+        Next z
+        Call recetteEditorInit
+        Exit Sub
     End If
     
     ' ::::::::::::::::::::::
@@ -2124,9 +2279,9 @@ Function IsPlaying(ByVal Index As Long) As Boolean
     If GetPlayerName(Index) <> vbNullString Then IsPlaying = True Else IsPlaying = False
 End Function
 
-Sub SendData(ByVal data As String)
+Sub SendData(ByVal Data As String)
     Call EcrireEtat("Envoie des données")
-    If IsConnected Then frmMirage.Socket.SendData data
+    If IsConnected Then frmMirage.Socket.SendData Data
 End Sub
 
 Sub SendLogin(ByVal name As String, ByVal Password As String)
@@ -2265,7 +2420,7 @@ Dim y As Long
         Packet = Packet & Map(Player(MyIndex).Map).Npcs(x).Imobile & SEP_CHAR
         DoEvents
     Next x
-    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR
+    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR & Map(Player(MyIndex).Map).guildSoloView & SEP_CHAR & Map(Player(MyIndex).Map).petView & SEP_CHAR & Map(Player(MyIndex).Map).traversable & SEP_CHAR
     
     Packet = Packet & END_CHAR
     DoEvents
@@ -2310,7 +2465,7 @@ Dim y As Long
         Packet = Packet & Map(MapNum).Npcs(x).Imobile & SEP_CHAR
         DoEvents
     Next x
-    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR
+    Packet = Packet & Map(Player(MyIndex).Map).PanoInf & SEP_CHAR & Map(Player(MyIndex).Map).TranInf & SEP_CHAR & Map(Player(MyIndex).Map).PanoSup & SEP_CHAR & Map(Player(MyIndex).Map).TranSup & SEP_CHAR & Map(Player(MyIndex).Map).Fog & SEP_CHAR & Map(Player(MyIndex).Map).FogAlpha & SEP_CHAR & Map(Player(MyIndex).Map).guildSoloView & SEP_CHAR & Map(Player(MyIndex).Map).petView & SEP_CHAR
     
     Packet = Packet & END_CHAR
     DoEvents
@@ -2428,6 +2583,22 @@ Dim Packet As String
     Call SendData(Packet)
 End Sub
 
+Sub SendRequestEditMetier()
+Dim Packet As String
+
+    Call EcrireEtat("Edition des Metiers")
+    Packet = "REQUESTEDITMETIER" & SEP_CHAR & END_CHAR
+    Call SendData(Packet)
+End Sub
+
+Sub SendRequestEditRecette()
+Dim Packet As String
+
+    Call EcrireEtat("Edition des Recettes")
+    Packet = "REQUESTEDITRecette" & SEP_CHAR & END_CHAR
+    Call SendData(Packet)
+End Sub
+
 Sub SendRequestEditPet()
 Dim Packet As String
 
@@ -2455,7 +2626,7 @@ filename = App.Path & "\items\item" & ItemNum & ".fco"
     
     Packet = "SAVEITEM" & SEP_CHAR & ItemNum & SEP_CHAR & Trim$(Item(ItemNum).name) & SEP_CHAR & Item(ItemNum).Pic & SEP_CHAR & Item(ItemNum).Type & SEP_CHAR & Item(ItemNum).Data1 & SEP_CHAR & Item(ItemNum).Data2 & SEP_CHAR & Item(ItemNum).Data3 & SEP_CHAR & Item(ItemNum).StrReq & SEP_CHAR & Item(ItemNum).DefReq & SEP_CHAR & Item(ItemNum).SpeedReq & SEP_CHAR & Item(ItemNum).ClassReq & SEP_CHAR & Item(ItemNum).AccessReq & SEP_CHAR
     Packet = Packet & Item(ItemNum).AddHP & SEP_CHAR & Item(ItemNum).AddMP & SEP_CHAR & Item(ItemNum).AddSP & SEP_CHAR & Item(ItemNum).AddStr & SEP_CHAR & Item(ItemNum).AddDef & SEP_CHAR & Item(ItemNum).AddMagi & SEP_CHAR & Item(ItemNum).AddSpeed & SEP_CHAR & Item(ItemNum).AddEXP & SEP_CHAR & Item(ItemNum).desc & SEP_CHAR & Item(ItemNum).AttackSpeed
-    Packet = Packet & SEP_CHAR & Item(ItemNum).NCoul & SEP_CHAR & Item(ItemNum).paperdoll & SEP_CHAR & Item(ItemNum).paperdollPic & SEP_CHAR & Item(ItemNum).Empilable & SEP_CHAR & Item(EditorIndex).Sex & SEP_CHAR & END_CHAR
+    Packet = Packet & SEP_CHAR & Item(ItemNum).NCoul & SEP_CHAR & Item(ItemNum).paperdoll & SEP_CHAR & Item(ItemNum).paperdollPic & SEP_CHAR & Item(ItemNum).Empilable & SEP_CHAR & Item(EditorIndex).Sex & SEP_CHAR & Item(EditorIndex).tArme & SEP_CHAR & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des objets")
 End Sub
@@ -2480,6 +2651,67 @@ filename = App.Path & "\Pets\Pet" & PetNum & ".fcf"
     Packet = "SAVEPET" & SEP_CHAR & PetNum & SEP_CHAR & Pets(PetNum).nom & SEP_CHAR & Pets(PetNum).sprite & SEP_CHAR & Pets(PetNum).addForce & SEP_CHAR & Pets(PetNum).addDefence & SEP_CHAR & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des Familliés")
+End Sub
+                
+Sub SendSaveMetier(ByVal MetierNum As Long)
+Dim Packet As String
+Dim i As Long, z As Long
+
+Dim filename As String
+Dim f  As Long
+filename = App.Path & "\Metiers\Metier" & MetierNum & ".fcm"
+        
+    f = FreeFile
+    Open filename For Binary As #f
+        Put #f, , Metier(MetierNum)
+    Close #f
+    filename = ReadINI("modif", "Metier" & MetierNum, App.Path & "\config.ini")
+    
+    If "Metier" & MetierNum = filename Then Exit Sub
+    Call WriteINI("modif", "Metier" & MetierNum, "1", App.Path & "\config.ini")
+    If HORS_LIGNE = 1 Then Exit Sub
+    
+    Packet = "SAVEMETIER" & SEP_CHAR & MetierNum & SEP_CHAR & Metier(MetierNum).nom & SEP_CHAR & Metier(MetierNum).Type & SEP_CHAR & Metier(MetierNum).desc & SEP_CHAR
+    For i = 0 To MAX_DATA_METIER
+        For z = 0 To 1
+            Packet = Packet & Metier(MetierNum).Data(i, z) & SEP_CHAR
+        Next z
+    Next i
+    Packet = Packet & END_CHAR
+    Call SendData(Packet)
+    Call EcrireEtat("Sauvegarde des Metiers.")
+End Sub
+
+Sub SendSaverecette(ByVal recetteNum As Long)
+Dim Packet As String
+Dim i As Long, z As Long
+
+Dim filename As String
+Dim f  As Long
+filename = App.Path & "\recettes\recette" & recetteNum & ".fcr"
+        
+    f = FreeFile
+    Open filename For Binary As #f
+        Put #f, , recette(recetteNum)
+    Close #f
+    filename = ReadINI("modif", "recette" & recetteNum, App.Path & "\config.ini")
+    
+    If "recette" & recetteNum = filename Then Exit Sub
+    Call WriteINI("modif", "recette" & recetteNum, "1", App.Path & "\config.ini")
+    If HORS_LIGNE = 1 Then Exit Sub
+    
+    Packet = "SAVErecette" & SEP_CHAR & recetteNum & SEP_CHAR & recette(recetteNum).nom & SEP_CHAR
+    For i = 0 To 9
+        For z = 0 To 1
+            Packet = Packet & recette(recetteNum).InCraft(i, z) & SEP_CHAR
+        Next z
+    Next i
+    For z = 0 To 1
+        Packet = Packet & recette(recetteNum).craft(z) & SEP_CHAR
+    Next z
+    Packet = Packet & END_CHAR
+    Call SendData(Packet)
+    Call EcrireEtat("Sauvegarde des recettes.")
 End Sub
                 
 Sub SendRequestEditEmoticon()

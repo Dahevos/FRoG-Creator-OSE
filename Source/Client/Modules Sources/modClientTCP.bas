@@ -65,10 +65,11 @@ Dim Ammount As Long
 Dim Damage As Long
 Dim PointType As Long
 Dim BanPlayer As Long
-Dim Level As Long
+Dim level As Long
 Dim i As Long, n As Long, x As Long, y As Long
 Dim ShopNum As Long, GiveItem As Long, GiveValue As Long, GetItem As Long, GetValue As Long
 Dim z As Long
+Dim ending As String
 
 'On Error GoTo erreur:
 
@@ -119,6 +120,8 @@ Dim z As Long
         MAX_QUETES = Val(Parse(13))
         MAX_INV = Val(Parse(14))
         MAX_PETS = Val(Parse(16))
+        MAX_METIER = Val(Parse(17))
+        MAX_RECETTE = Val(Parse(18))
         
         For i = 1 To MAX_INV - 1
             If Loading = False Then Load frmMirage.picInv(i)
@@ -164,6 +167,9 @@ Dim z As Long
         ReDim Emoticons(0 To MAX_EMOTICONS) As EmoRec
         ReDim MapReport(1 To MAX_MAPS) As MapRec
         ReDim Pets(1 To MAX_PETS) As PetsRec
+        ReDim Metier(1 To MAX_METIER) As MetierRec
+        ReDim recette(1 To MAX_RECETTE) As RecetteRec
+        
         MAX_SPELL_ANIM = MAX_MAPX * MAX_MAPY
         
         MAX_BLT_LINE = 10
@@ -276,15 +282,55 @@ Dim z As Long
         
         frmMainMenu.lstChars.Clear
         
+        charSelectNum = 1
+        
         For i = 1 To MAX_CHARS
             name = Parse(n)
             Msg = Parse(n + 1)
-            Level = Val(Parse(n + 2))
+            level = Val(Parse(n + 2))
             
-            If Trim$(name) = vbNullString Then frmMainMenu.lstChars.AddItem "Emplacement libre" Else frmMainMenu.lstChars.AddItem name & " - niveaux " & Level & " - " & Msg
+            charSelect(i).name = Parse(n)
+            charSelect(i).classe = Parse(n + 1)
+            charSelect(i).level = Val(Parse(n + 2))
+            If charSelect(charSelectNum).name <> "" Then charSelect(i).sprt = Val(Parse(n + 3)) Else charSelect(i).sprt = 0
             
-            n = n + 3
+            If Trim$(name) = vbNullString Then frmMainMenu.lstChars.AddItem "Emplacement libre" Else frmMainMenu.lstChars.AddItem name '& " - niveaux " & level & " - " & Msg
+            
+            n = n + 4
         Next i
+        
+        For i = 1 To 4
+            If i = 1 Then ending = ".gif"
+            If i = 2 Then ending = ".jpg"
+            If i = 3 Then ending = ".png"
+            If i = 4 Then ending = ".bmp"
+            
+            If FileExiste("GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & ending) Then
+                frmMainMenu.PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & ending)
+            End If
+        Next i
+        frmMainMenu.PicChar.Height = frmMainMenu.PicChar.Height / 4
+        frmMainMenu.PicChar.Width = frmMainMenu.PicChar.Width / 4
+        If frmMainMenu.PicChar.Width > 960 Then
+            frmMainMenu.PicChar.Width = 960
+        End If
+        If frmMainMenu.PicChar.Height > 960 Then
+            frmMainMenu.PicChar.Height = 960
+        End If
+        If frmMainMenu.PicChar.Width > 480 Then
+            frmMainMenu.PicChar.Left = 840 - frmMainMenu.PicChar.Width + 480
+        Else
+            frmMainMenu.PicChar.Left = 840
+        End If
+        If charSelect(charSelectNum).name <> "" Then
+            frmMainMenu.lblCharNom.Caption = charSelect(charSelectNum).name
+            frmMainMenu.lblCharLvl.Caption = "Niv. " & charSelect(charSelectNum).level
+            frmMainMenu.lblCharClasse.Caption = charSelect(charSelectNum).classe
+        Else
+            frmMainMenu.lblCharNom.Caption = "Slot Libre"
+            frmMainMenu.lblCharLvl.Caption = ""
+            frmMainMenu.lblCharClasse.Caption = ""
+        End If
         
         frmMainMenu.lstChars.ListIndex = 0
         frmMainMenu.lstChars.SetFocus
@@ -502,6 +548,62 @@ Dim z As Long
         Pets(n).addDefence = Parse(5)
     End If
     
+    ' ::::::::::::
+    ' :: Metier ::
+    ' ::::::::::::
+    If (LCase$(Parse(0)) = "updatemetier") Then
+        n = Val(Parse(1))
+        Metier(n).nom = Parse(2)
+        Metier(n).Type = Val(Parse(3))
+        Metier(n).desc = Parse(4)
+        x = 5
+        For i = 0 To MAX_DATA_METIER
+            For z = 0 To 1
+                Metier(n).data(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "playermetier") Then
+        n = Val(Parse(1))
+        Player(n).Metier = Val(Parse(2))
+        Player(n).MetierLvl = Val(Parse(3))
+        Player(n).MetierExp = Val(Parse(4))
+    End If
+    
+    If (LCase$(Parse(0)) = "metier") Then
+        If Player(MyIndex).Metier > 0 Then
+            frmMirage.pictMetier.Visible = True
+            frmMirage.lblmetier(0).Caption = "Metier: " + Metier(Player(MyIndex).Metier).nom
+            frmMirage.lblmetier(1).Caption = "Niveau: " + CStr(Player(MyIndex).MetierLvl)
+            frmMirage.lblmetier(2).Caption = "Exp: " + CStr(Player(MyIndex).MetierExp) + "/" + CStr((Player(MyIndex).MetierLvl + 1) * 2)
+            frmMirage.lblmetier(3).Caption = "Description: " + Metier(Player(MyIndex).Metier).desc
+        End If
+    End If
+    
+    ' :::::::::::::
+    ' :: recette ::
+    ' :::::::::::::
+    If (LCase$(Parse(0)) = "updaterecette") Then
+        n = Val(Parse(1))
+        recette(n).nom = Parse(2)
+        x = 3
+        For i = 0 To 9
+            For z = 0 To 1
+                recette(n).InCraft(i, z) = Val(Parse(x))
+                x = x + 1
+            Next z
+        Next i
+        For z = 0 To 1
+            recette(n).craft(z) = Val(Parse(x))
+            x = x + 1
+        Next z
+        
+        Exit Sub
+    End If
+    
     ' ::::::::::::::::::::::::::
     ' :: Player points packet ::
     ' ::::::::::::::::::::::::::
@@ -532,14 +634,14 @@ Dim z As Long
         Player(n).HP = Val(Parse(4))
         Player(n).MaxMp = Val(Parse(5))
         Player(n).MP = Val(Parse(6))
-        With frmMirage
-            For i = 0 To 2
-                If Val(.lblPPName(i).Tag) = n Then
-                    .shpPPLife(i).Width = Player(n).HP / Player(n).MaxHp * .backPPLife(i).Width
-                    .shpPPMana(i).Width = Player(n).MP / Player(n).MaxMp * .backPPMana(i).Width
-                End If
-            Next
-        End With
+        'With frmMirage
+        '    For i = 0 To 2
+        '        If Val(.lblPPName(i).Tag) = n Then
+        '            .shpPPLife(i).Width = Player(n).HP / Player(n).MaxHp * .backPPLife(i).Width
+        '            .shpPPMana(i).Width = Player(n).MP / Player(n).MaxMp * .backPPMana(i).Width
+        '        End If
+        '    Next
+        'End With
         Exit Sub
     End If
     If LCase$(Parse(0)) = "partyindex" Then
@@ -633,7 +735,7 @@ mont:
         frmMirage.lexp.Caption = "EXP : " & Val(Parse(6)) & " / " & Val(Parse(5))
         frmMirage.sexp.Width = (((Val(Parse(6)) / 1425) / (Val(Parse(5)) / 1425)) * 1425)
         frmMirage.monnom.Caption = Trim$(Player(MyIndex).name) & " - " & Trim$(Class(Player(MyIndex).Class).name) & " - Niv" & Val(Parse(7))
-        Player(MyIndex).Level = Val(Parse(7))
+        Player(MyIndex).level = Val(Parse(7))
         Exit Sub
     End If
                 
@@ -917,6 +1019,9 @@ mont:
             .TranSup = Val(Parse(n + 16))
             .Fog = Val(Parse(n + 17))
             .FogAlpha = Val(Parse(n + 18))
+            .guildSoloView = Parse(n + 19)
+            .petView = Parse(n + 20)
+            .traversable = Parse(n + 21)
         End With
         
         GettingMap = True
@@ -1098,6 +1203,46 @@ mont:
         Exit Sub
     End If
     
+    If (LCase$(Parse(0)) = "craft") Then
+        RecetteSelect = Parse(1)
+        If Player(MyIndex).Metier > 0 Then
+            If Metier(Player(MyIndex).Metier).Type = METIER_CRAFT Then
+                frmcraft.Show
+                frmcraft.lblMetierNom.Caption = Metier(RecetteSelect).nom
+                frmcraft.lblNom.Caption = recette(Metier(RecetteSelect).data(0, 0)).nom
+                frmcraft.scrlRecettes.Value = 0
+                If Metier(RecetteSelect).data(0, 0) > 0 Then
+                n = Metier(RecetteSelect).data(0, 0)
+                    For i = 0 To 9
+                        If recette(n).InCraft(i, 0) > 0 Then
+                            frmcraft.lblNeedItem(i).Caption = Item(recette(n).InCraft(i, 0)).name & " (*" & recette(n).InCraft(i, 1) & ")"
+                        Else
+                            frmcraft.lblNeedItem(i).Caption = "Pas d'objet"
+                        End If
+                    Next i
+                End If
+                If recette(n).craft(0) > 0 Then
+                    frmcraft.lblObtenu.Caption = Item(recette(n).craft(0)).name & " (*" & recette(n).craft(1) & ")"
+                Else
+                    frmcraft.lblObtenu.Caption = "Pas de craft"
+                End If
+            End If
+        End If
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "newmetier") Then
+        i = MsgBox("Voulez vous apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
+        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        Exit Sub
+    End If
+    
+    If (LCase$(Parse(0)) = "remplacemetier") Then
+        i = MsgBox("Voulez vous oublier votre métier et apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
+        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        Exit Sub
+    End If
+    
     If (LCase$(Parse(0)) = "qmsg") Then
         frmMirage.txtQ.Visible = True
         frmMirage.TxtQ2.Text = Parse(1)
@@ -1105,6 +1250,15 @@ mont:
     End If
     
     If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hwnd, "open", Parse(1), "", App.Path, 1): Exit Sub
+    
+    ' ::::::::::::
+    ' :: Guilde ::
+    ' ::::::::::::
+    If (LCase$(Parse(0)) = "guildtraineevbyesno") Then
+        i = MsgBox("Voulez vous rentré dans la guilde? " & GetPlayerGuild(Val(Parse(2))), vbYesNo, GAME_NAME)
+        If i = vbYes Then SendData ("guildtrainee" & SEP_CHAR & Parse(1) & SEP_CHAR & Val(Parse(2)) & SEP_CHAR & END_CHAR)
+        Exit Sub
+    End If
     
     ' :::::::::::::::::::::::
     ' :: Item spawn packet ::
@@ -1156,6 +1310,7 @@ mont:
             .paperdoll = Val(Parse(24))
             .paperdollPic = Val(Parse(25))
             .Empilable = Val(Parse(26))
+            .tArme = Val(Parse(27))
         End With
         Exit Sub
     End If
