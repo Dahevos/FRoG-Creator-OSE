@@ -743,7 +743,7 @@ rest:
                  If MapNpc(i).num > 0 And MapNpc(i).num < MAX_NPCS Then
                      If CLng(Npc(MapNpc(i).num).Vol) = 0 Then
                          Call BltNpc(i)
-                         If AccOpt.NpcBar Then Call BltNpcBars(i)
+                         If AccOpt.NpcBar And MapNpc(i).AttackTimer > 0 Then Call BltNpcBars(i)
                      End If
                  End If
              Next i
