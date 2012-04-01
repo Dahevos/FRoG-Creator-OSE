@@ -1,0 +1,103 @@
+----------------
+0.6 Pré-Patch
+----------------
+Client & Editeur:
+-Correction orthographique.
+-Correction d'affichage d'orientation pnj.
+-Correction d'affichage du sang selon le pnj.
+
+Editeur:
+-Correction de valeur par défaud.
+-Correction d'erreur divers.
+
+Server:
+-Correction orthographique.
+-Ajout de FrogSecu.
+-Correction des familliers.
+
+Updater:
+-Correction de l'updater.
+
+----------------
+0.6
+----------------
+Client :
+-Refonte graphique
+-Systeme d'interface
+-Effet de sang
+-Canaux de discutions
+-Correction de divers bugs du thème
+-Nouveau thème
+-Correction orthographique
+
+Editeur:
+-Effet de sang
+-Correction de défauts techniques
+-Cannaux de discutions
+-Correction orthographique
+
+Serveur :
+-Correction orthographique
+-Accélération du chargement de la base de donnée
+-Accélération du traitement des packets (by koolgraph)
+-Accélération minime des performances (by Williams)
+
+
+Updater:
+-Entièrement recodé en VB.net (by Hugo-57)
+
+----------------
+0.5
+----------------
+Aucune information...
+----------------
+0.5
+----------------
+Aucune informations...
+----------------
+0.3
+----------------
+Le Client :
+- Traduction plus poussée
+- Correction de nombreux bug: Plantage, problème de connexion, et d'affichage
+- Correction de l'interface de guilde.
+- Modification du panneau d'administration.
+- Ajout du menu de téléportation de map via le menu d'administration.
+- Ajout de quelque commande pour les administrateurs
+- Ajout du Label qui affiche votre nom de personnage et votre classe sur
+le menu à droite pendant le jeu.
+- Ajout du menu d'aide via le panneau d'administration.
+- Ajout de la possibilité de lire des MID, MP3, WMA, OGG et WAV pour les musiques de votre jeu. (Merci Katsuo)
+- Ajout d'un menu d'aide au joueur (Touche F2) qui permet l'utilisateur des commandes facilement.
+- Ajout de la possibilité de modifier les crédits via le fichier Client.ini dans le répertoire de Config
+- Ajout de la possibilité de pouvoir mettre une version à votre jeu dans le fichier info.ini (Cette version est utilisé aussi pour les mise à jours de votre jeu)
+- Refonte du GUI
+- Refonte des dossiers Config.ini qui est maintenant divisés par plusieurs petit fichier.
+- Vous pouvez maintenant modifier la grosseur et les polices d'écritures des interfaces et du chats grâce au fichier Ecriture.ini dans le répertoire Config
+- Correction du bug qui fesait planter le jeu lorsque d'un kick
+- Système de mise à jours.
+- Interface pour le multi-serveur
+- Ajout du système de banque par GAK
+- Nouveau système de discutions avec les NPCs
+
+Le serveur:
+- Traduction plus poussées
+- Supporte maintenant les accent tel le é et ç (Merci Geo =D)
+- Traduction des tutoriaux
+- Ajout de divers possibilité.
+
+L'Éditeur:
+- Mise à jours de l'éditeur pour prendre en compte les modification apportés à FRoG
+- Ajout de l'interface pour la création des patchs de mise à jours. 
+
+
+----------------
+0.2
+----------------
+- Traduction plus poussé
+- Nouvelle interface de jeu
+- Amelioration du Main Menu
+- Bouton pour couper la musique et la remettre
+- Plus belle apparence du champ de server enligne/horsligne
+- Bouton Tchat remis
+- Bugs pour distribuer les points de competence reglé ;) 

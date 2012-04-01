@@ -1,0 +1,30 @@
+Ligne 26: La classe MSComctlLib.TreeView du contrôle TreeView1 n'est pas une classe de contrôle chargée.
+Ligne 51: La classe MSComctlLib.ProgressBar du contrôle ProgressBar1 n'est pas une classe de contrôle chargée.
+Ligne 66: La classe WinXPC_Engine.WindowsXPC du contrôle WindowsXPC1 n'est pas une classe de contrôle chargée.
+Ligne 32: Le nom de la propriété _ExtentX dans TreeView1 est incorrect.
+Ligne 33: Le nom de la propriété _ExtentY dans TreeView1 est incorrect.
+Ligne 34: Le nom de la propriété _Version dans TreeView1 est incorrect.
+Ligne 35: Le nom de la propriété LineStyle dans TreeView1 est incorrect.
+Ligne 36: Le nom de la propriété Sorted dans TreeView1 est incorrect.
+Ligne 37: Le nom de la propriété Style dans TreeView1 est incorrect.
+Ligne 38: Le nom de la propriété Checkboxes dans TreeView1 est incorrect.
+Ligne 39: Le nom de la propriété SingleSel dans TreeView1 est incorrect.
+Ligne 58: Le nom de la propriété _ExtentX dans ProgressBar1 est incorrect.
+Ligne 59: Le nom de la propriété _ExtentY dans ProgressBar1 est incorrect.
+Ligne 60: Le nom de la propriété _Version dans ProgressBar1 est incorrect.
+Ligne 63: Le nom de la propriété Min dans ProgressBar1 est incorrect.
+Ligne 64: Le nom de la propriété Scrolling dans ProgressBar1 est incorrect.
+Ligne 69: Le nom de la propriété _ExtentX dans WindowsXPC1 est incorrect.
+Ligne 70: Le nom de la propriété _ExtentY dans WindowsXPC1 est incorrect.
+Ligne 71: Le nom de la propriété ColorScheme dans WindowsXPC1 est incorrect.
+Ligne 72: Le nom de la propriété Common_Dialog dans WindowsXPC1 est incorrect.
+Ligne 73: Le nom de la propriété ListBoxControl dans WindowsXPC1 est incorrect.
+Ligne 74: Le nom de la propriété PictureControl dans WindowsXPC1 est incorrect.
+Ligne 75: Le nom de la propriété FrameControl dans WindowsXPC1 est incorrect.
+Ligne 76: Le nom de la propriété DriveListBoxControl dans WindowsXPC1 est incorrect.
+Ligne 77: Le nom de la propriété TabStripControl dans WindowsXPC1 est incorrect.
+Ligne 78: Le nom de la propriété StatusBarControl dans WindowsXPC1 est incorrect.
+Ligne 79: Le nom de la propriété SliderControl dans WindowsXPC1 est incorrect.
+Ligne 80: Le nom de la propriété ImageComboControl dans WindowsXPC1 est incorrect.
+Ligne 81: Le nom de la propriété FileListBoxControl dans WindowsXPC1 est incorrect.
+Ligne 82: Le nom de la propriété DirListBoxControl dans WindowsXPC1 est incorrect.

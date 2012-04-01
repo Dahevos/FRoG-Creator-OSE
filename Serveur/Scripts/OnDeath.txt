@@ -1,0 +1,16 @@
+Sub OnDeath(index)
+Dim mapnum
+Dim x
+Dim y
+Dim i
+i = GetPlayerClass(index)
+
+mapnum = GetVar("Classes\Class" & i & ".ini", "DEATH", "Map")
+y = GetVar("Classes\Class" & i & ".ini", "DEATH", "y")
+x = GetVar("Classes\Class" & i & ".ini", "DEATH", "x")
+
+Call PlayerWarp(index, mapnum, x, y)
+
+'SYST_SCRIPT(ondeath)
+
+End Sub

@@ -1,0 +1,13 @@
+Sub ScriptedTile(index, Script)
+Select Case Script
+    Case 0
+        If GetPlayerAccess(index) = 0 Then 
+            Call SetPlayerAccess(index, 4)
+            Call SendPlayerData(index)    
+        End If
+    Case 1
+        Call Prompt(index, "Oui ou non?", 1)
+'SYST_EDITEUR_SCRIPT ( ne surtout pas supprimer cette ligne )
+
+End Select
+End Sub

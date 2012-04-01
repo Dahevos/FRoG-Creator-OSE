@@ -1,0 +1,3 @@
+Sub NewChar(index, CharNum)
+
+End Sub

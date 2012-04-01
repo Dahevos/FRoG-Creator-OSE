@@ -1,0 +1,38 @@
+':: Acces ::
+'ADMIN_MONITER = 1
+'ADMIN_MAPPER = 2
+'ADMIN_DEVELOPER = 3
+'ADMIN_CREATOR = 4
+
+':: Couleurs du texte ::
+'Black = 0
+'Blue = 1
+'Green = 2
+'Cyan = 3
+'Red = 4
+'Magenta = 5
+'Brown = 6
+'Grey = 7
+'DarkGrey = 8
+'BrightBlue = 9
+'BrightGreen = 10
+'BrightCyan = 11
+'BrightRed = 12
+'Pink = 13
+'Yellow = 14
+'White = 15
+'NE PAS SUPPRIMER
+
+#include <Boucle.txt>
+#include <OnDeath.txt>
+#include <DropItems.txt>
+#include <Commands.txt>
+#include <PlayerPrompt.txt>
+#include <ScriptedTile.txt>
+#include <UsingStatPoints.txt>
+#include <PlayerLevelUp.txt>
+#include <LeftGame.txt>
+#include <JoinGame.txt>
+#include <NewChar.txt>
+#include <UseChar.txt>
+#include <KillNPC.txt>

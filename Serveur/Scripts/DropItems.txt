@@ -1,0 +1,21 @@
+Sub DropItems(index)  
+    If GetPlayerWeaponSlot(index) > 0 Then
+        Call PlayerMapDropItem(index, GetPlayerWeaponSlot(index), 0)
+    End If
+
+    If GetPlayerArmorSlot(index) > 0 Then
+        Call PlayerMapDropItem(index, GetPlayerArmorSlot(index), 0)
+    End If
+    
+    If GetPlayerHelmetSlot(index) > 0 Then
+        Call PlayerMapDropItem(index, GetPlayerHelmetSlot(index), 0)
+    End If
+
+    If GetPlayerShieldSlot(index) > 0 Then
+        Call PlayerMapDropItem(index, GetPlayerShieldSlot(index), 0)
+    End If
+'...........................................................................................................................Jusqu'à là pour empecher la perte d'objets à la mort
+
+'SYST_SCRIPT(dropitem)
+
+End Sub

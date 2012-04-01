@@ -1,0 +1,202 @@
+Sub Commands(index)
+On Error Resume Next 
+Dim Portal
+Dim mapnum
+Dim x
+Dim y
+Dim i
+Dim TextSay
+Dim n
+Dim m
+Dim C    
+m = GetVar("Data.ini", "MAX", "MAX_MAPS")
+TextSay = GetVar("Scripts\Command.ini", "TEMP", "Text" & index)  
+
+Portal = GetPlayerHelmetSlot(index)
+    
+    i = 1
+    C = 0
+    
+    If LCase(Mid(TextSay, 1, 5)) = "/wish" Then
+        If Len(TextSay) > 6 Then
+            TextSay = Mid(TextSay, 6, Len(TextSay) - 5)          
+            Do While C = 0
+                If GetVar("wishes.ini", "WISH", "Wish" & i) <> "" then
+                   i = i + 1
+                Else
+                   Call PutVar("wishes.ini", "WISH", "Wish" & i, Trim(TextSay))
+                   Call PlayerMsg(index, "Merci pour le souhait!", 6)
+                   C = 1
+                End if   
+            Loop
+        End If
+        Exit Sub
+    End If
+	
+    If LCase(Mid(TextSay, 1, 9)) = "/warpmeto" Then
+        If Len(TextSay) > 10 Then
+            TextSay = Mid(TextSay, 10, Len(TextSay) - 9)
+            
+            ' Prevent hacking
+            If GetPlayerAccess(index) < 2 Then
+                Call PlayerMsg(index, "Tu as besoin d'un access plus élevé!", 4)
+                Exit Sub
+            End If
+            
+            ' The player
+            n = FindPlayer(TextSay)
+            
+            If n <> index Then
+                If n > 0 Then
+                    Call PlayerWarp(index, GetPlayerMap(n), GetPlayerX(n), GetPlayerY(n))
+                    Call PlayerMsg(n, GetPlayerName(index) & " a été téléporté a toi.", 6)
+                    Call PlayerMsg(index, "Tu as été téléporté a " & GetPlayerName(n) & ".", 6)
+                    Call AddLog(GetPlayerName(index) & " a été téléporté a " & GetPlayerName(n) & ", map #" & GetPlayerMap(n) & ".", ADMIN_LOG)
+                Else
+                    Call PlayerMsg(index, "Joueur Hors-Ligne.", 15)
+                End If
+            Else
+                Call PlayerMsg(index, "Tu ne peux te téléporter toi même, idiot!", 15)
+            End If
+        End If
+        Exit Sub
+    End If
+
+    If LCase(Mid(TextSay, 1, 9)) = "/warptome" Then
+        If Len(TextSay) > 10 Then
+            If GetPlayerAccess(index) < 2 Then
+                Call PlayerMsg(index, "Tu as besoin d'un access plus élevé!", 4)
+                Exit Sub
+            End If
+                
+            n = Mid(TextSay, 10, Len(TextSay) - 9)
+            n = FindPlayer(n)
+            
+            If n <> index Then
+                If n > 0 Then
+                    Call PlayerWarp(n, GetPlayerMap(index), GetPlayerX(index), GetPlayerY(index))
+                    Call PlayerMsg(n, "tu as été téléporté par " & GetPlayerName(index) & ".", 9)
+                    Call PlayerMsg(index, GetPlayerName(n) & " a été téléporté.", 9)
+                    Call AddLog(GetPlayerName(index) & " a été téléporté par " & GetPlayerName(n) & " Carte #" & GetPlayerMap(index) & ".", ADMIN_LOG)
+                Else
+                    Call PlayerMsg(index, "Joueur Hors-Ligne.", 15)
+                End If
+            Else
+                Call PlayerMsg(index, "Tu ne peux te téléporter toi même, Imbécile!", 15)
+            End If
+        End If
+        Exit Sub
+    End If
+
+    If LCase(Mid(TextSay, 1, 7)) = "/warpto" Then
+        If Len(TextSay) > 8 Then
+            TextSay = Mid(TextSay, 8, Len(TextSay) - 7)
+            n = TextSay
+
+
+            If n > 0 And n <= m Then
+                If GetPlayerAccess(index) < 2 Then
+                    Call PlayerMsg(index, "Tu as besoin d'un access plus élevé!", 4)
+                    Exit Sub
+                End If
+                
+                Call PlayerWarp(index, n, GetPlayerX(index), GetPlayerY(index))
+                Call PlayerMsg(index, "Tu as été téléporté a la carte #" & n, 9)
+                Call AddLog(GetPlayerName(index) & " a été téléporté a la carte #" & n & ".", ADMIN_LOG)
+            Else
+                Call PlayerMsg(index, "Invalid map number.", 4)
+            End If
+        End If
+        Exit Sub
+    End If
+	
+    Dim TxtCommand
+    Dim TxtConf
+    TxtCommand = "/[commande]"
+
+    If LCase(Mid(TextSay, 1, len(TxtCommand))) = TxtCommand Then
+        If Len(TextSay) > len(TxtCommand) + 1 Then
+            TextSay = Trim(Mid(TextSay, len(TxtCommand) + 1, Len(TextSay) - len(TxtCommand)))
+            
+            TxtConf = Split(TextSay, " ")
+	    select case lcase(TxtConf(0))
+		case "achat"
+		    
+		    
+		case else
+		    Call PlayerMsg(index, "La configuration de " & Mid(TxtCommand, 2) & " est invalide, " & TxtConf(0) & " n'est pas une option disponible.", 4)
+	    end select
+        End If
+        Exit Sub
+    End If
+  
+'Script pour afficher l'heure, par antoine2tt 
+ If LCase(Trim(TextSay)) = "/heure" Then
+            Call PlayerMsg(index, "Heure du serveur : " & Hour(Now) & "h" & Minute(Now), 5)
+        Exit Sub
+        End If 
+
+    If LCase(Trim(TextSay)) = "/help" Then
+        Call PlayerMsg(index, "Commande de disuctions:", 15)
+        Call PlayerMsg(index, "'msghere = Broadcast Message", 15)
+        Call PlayerMsg(index, "-msghere = Emote Message", 15)
+        Call PlayerMsg(index, "!namehere msghere = Player Message", 15)
+        Call PlayerMsg(index, "Commandes disponibles: /help, /info, /who, /fps, /inv, /stats, /train, /party, /join, /leave, /refresh", 15)
+    Exit Sub
+    End If
+    
+    If LCase(Trim(TextSay)) = "/calladmins" Then
+        If GetPlayerAccess(index) = 0 Then
+            Call GlobalMsg(GetPlayerName(index) & " a besoin d'un admin!", 10)
+        Else
+            Call PlayerMsg(index, "Tu es un admin, crétin!", 10)
+        End If
+    Exit Sub
+    End If
+    
+    If LCase(Trim(TextSay)) = "/admin" Then
+        If GetPlayerAccess(index) > 0 Then
+            Call PlayerMsg(index, "Commandes de discutions:", 15)
+            Call PlayerMsg(index, """msghere = Global Admin Message", 15)
+            Call PlayerMsg(index, "=msghere = Private Admin Message", 15)
+            Call PlayerMsg(index, "Commandes disponibles: /admin, /loc, /mapeditor, /warpmeto, /warptome, /warpto, /setsprite, /mapreport, /kick, /ban, /edititem, /respawn, /editnpc, /motd, /editshop, /ban, /editspell", 15)
+        End If
+    Exit Sub
+    End If      
+    
+Select Case LCase(Trim(TextSay))    
+    Case "/absent"
+        'If GetPlayerAccess(index) >= 1 Then
+            If GetVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "Status") = 0 Then
+                Call GlobalMsg(GetPlayerName(index) & " est maintenant Absent.", 14)
+                Call PutVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "Status", 1)
+                Call PutVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "TempPlayerName", GetPlayerName(index))
+                Call SetPlayerName(index, GetPlayerName(index) & " - Absent")
+                Call SendPlayerData(index)
+                Exit Sub
+            ElseIf GetVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "Status") = 1 Then
+                Call SetPlayerName(index, GetVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "TempPlayerName"))
+                Call GlobalMsg(GetPlayerName(index) & " est de retour.", 14)
+                Call PutVar("accounts\" & GetPlayerLogin(index) & ".ini", "CHAR" & GetPlayerCharNum(index), "Status", 0)
+                Call SendPlayerData(index)
+                Exit Sub
+            End If
+        'End If
+    Case "/portal"
+        If Portal > 0 Then
+	        mapnum = GetVar("Stats.ini", GetPlayerName(index), "map")
+	        y = GetVar("Stats.ini", GetPlayerName(index), "y")
+	        x = GetVar("Stats.ini", GetPlayerName(index), "x")
+            If GetPlayerInvItemNum(index, Portal) = 18 Then
+                Call PlayerWarp(index, mapnum, x, y)
+            Else
+                Call PlayerMsg(index, "Tu n'as pas cette abilité.", 4)
+            End If
+            Exit Sub
+        End If 
+
+'SYST_EDITEUR_SCRIPT2 ( ne surtout pas supprimer cette ligne )
+End Select 
+    
+Call PlayerMsg(index, "Ceci n'est pas une commande valide!", 12)
+End Sub

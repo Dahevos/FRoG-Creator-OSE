@@ -1,0 +1,397 @@
+---- Les commandes pour scripter ----
+Avant de commencer à scripter en Visual basic, vous devez Obtenir les commandes supportées par FRoG Scripting qui vous aideront grandement (même que si vous ne les connaissez pas, vous n'irez pas très loin.)
+
+Voilà donc:
+
+GetVar("NOMDUFICHIER.ini", "HEADER", "VARIABLE")
+-Obtenir la variable du fichier .ini
+Exemple: MyVar = GetVar("Data.ini", "CONFIG", "GameName")
+
+PutVar("NOMDUFICHIER.ini", "HEADER", "VARIABLE", "VALUE TO PUT IN VARIABLE")
+-Inscrire une variable dans le fichier .ini
+Exemple: Call PutVar("Data.ini", "CUSTOM", "GameData1", 1)
+
+GlobalMsg("MESSAGE", COLOR NUMBER)
+-Envoyer un message à tout le monde sur le serveur.
+Exemple: Call GlobalMsg("Hello everyone!", 7)
+
+AdminMsg("MESSAGE", COLOR NUMBER)
+-Envoyer un message à tout les admins en ligne.
+Exemple: Call AdminMsg("MESSAGE", COLOR NUMBER)
+
+PlayerMsg(INDEX NUMBER, "MESSAGE", COLOR NUMBER)
+-Envoyer un message à un joueur spécifique.
+Exemple: Call PlayerMsg(index, "Welcome to the server.", 15)
+
+MapMsg(MAP NUMBER, "MESSAGE", COLOR NUMBER)
+-Envoyer un message aux joueurs sur une map particulière.
+Exemple: Call MapMsg(1, "You all are on the first map!", 15)
+
+AlertMsg(INDEX NUMBER, "MESSAGE")
+-Envoyer une alerte, et expulser le joueur du jeu.
+Exemple: Call AlertMsg(index, "You have been disconnected, you fool.")
+
+GetPlayerLogin(INDEX NUMBER)
+-Obtenir le nom de compte du joueur.
+Exemple: MyVar = GetPlayerLogin(index)
+
+GetPlayerName(INDEX NUMBER)
+-Obtenir le nom du personnage.
+Exemple: MyVar = GetPlayerName(index)
+
+SetPlayerName(INDEX NUMBER, "NAME")
+-Changerr le nom du personnage.
+Exemple: Call SetPlayerName(index, "Goofy")
+
+GetPlayerCharNum(INDEX NUMBER)
+-Obtenir le chiffre du personnage.
+Exemple: MyVar = GetPlayerCharNum(index)
+
+GetPlayerGuild(INDEX NUMBER)
+-Obtenir le nom de la guide dont le joueur fait partie.
+Exemple: MyVar = GetPlayerGuild(index)
+
+GetPlayerGuildAccess(INDEX NUMBER)
+-Obtenir le privilège (access) que le joueur possède dans la guilde.
+Exemple: MyVar = GetPlayerGuildAccess(index)
+
+SetPlayerGuildAccess(INDEX NUMBER, ACCESS LEVEL)
+-Changerr le privilège (access) que le joueur a dans la guilde.
+Exemple: Call SetPlayerGuildAccess(index, 4)
+
+GetPlayerClass(INDEX NUMBER)
+-Obtenir le numéro de Classe.
+Exemple: MyVar = GetPlayerClass(index)
+
+SetPlayerClass(INDEX NUMBER, CLASS NUMBER)
+-Changerr le numéro de la classe (donc Changer la classe au complet).
+Exemple: Call SetPlayerClass(index, 2)
+
+GetPlayerClassName(INDEX NUMBER)
+-Obtenir le nom de la classe du joueur.
+Exemple: MyVar = GetPlayerClassName(index)
+
+GetPlayerSprite(INDEX NUMBER)
+-Obtenir le numéro du sprite du joueur.
+Exemple: MyVar = GetPlayerSprite(index)
+
+SetPlayerSprite(INDEX NUMBER, SPRITE NUMBER)
+-Changerr le numéro du sprite (Changer donc le graphique du joueur).
+Exemple: Call SetPlayerSprite(index, 79)
+
+GetPlayerLevel(INDEX NUMBER)
+-Obtenir le niveau du joueur.
+Exemple: MyVar = GetPlayerLevel(index)
+
+SetPlayerLevel(INDEX NUMBER, LEVEL)
+-Changerr le niveau du joueur.
+Exemple: Call SetPlayerLevel(index, 10)
+
+GetPlayerNextLevel(INDEX NUMBER)
+-Obtenir le nombre d'expérience nécessaire pour monter d'un niveau.
+Exemple: MyVar = Get PlayerNextLevel(index)
+
+GetPlayerExp(INDEX NUMBER)
+-Obtenir le chiffre de l'expérience du joueur.
+Exemple: MyVar = GetPlayerExp(index)
+
+SetPlayerExp(INDEX NUMBER, EXPERIENCE)
+-Changerr l'expérience du joueur.
+Exemple: Call SetPlayerExp(index, 1500)
+
+GetPlayerAccess(INDEX NUMBER)
+-Obtenir le privilège (Access) que le joueur détient sur le serveur.
+Exemple: MyVar = GetPlayerAccess(index)
+
+SetPlayerAccess(INDEX NUMBER, ACCESS)
+-Changerr le privilège (Access) du joueur sur le serveur.
+Exemple: Call SetPlayerAccess(index, 4)
+
+GetPlayerPK(INDEX NUMBER)
+-Obtenir pour un joueur le nombre de joueurs qu'il a tués.
+Exemple: MyVar = GetPlayerPK(index)
+
+SetPlayerPK(INDEX NUMBER, PK NUMBER)
+-Changer le nombre de joueur qu'il a tués.
+Exemple: Call SetPlayerPK(index, 0)
+
+GetPlayerHP(INDEX NUMBER)
+-Obtenir le nombre de points de vie du joueur.
+Exemple: MyVar = GetPlayerHP(index)
+
+SetPlayerHP(INDEX NUMBER, HP)
+-Changer les points de vie du joueur.
+Exemple: Call SetPlayerHP(index, 50)
+
+GetPlayerMP(INDEX NUMBER)
+-Obtenir le nombre de points de Magie du joueur.
+Exemple: MyVar = GetPlayerMP(index)
+
+SetPlayerMP(INDEX NUMBER, MP)
+-Changer le nombre de points de Magie du joueur.
+Exemple: Call SetPlayerMP(index, 30)
+
+GetPlayerSP(INDEX NUMBER)
+-Obtenir le nombre de Points Spéciaux du joueur.
+Exemple: MyVar = GetPlayerSP(index)
+
+SetPlayerSP(INDEX NUMBER, SP)
+-Changer le nombre de Points Spéciaux du joueur.
+Exemple: Call SetPlayerSP(index, 15)
+
+GetPlayerMaxHP(INDEX NUMBER)
+-Obtenir le maximun de points de vie du joueur.
+Exemple: MyVar = GetPlayerMaxHP(index)
+
+GetPlayerMaxMP(INDEX NUMBER)
+-Obtenir le maximun de points de Magie du joueur.
+Exemple: MyVar = GetPlayerMaxMP(index)
+
+GetPlayerMaxSP(INDEX NUMBER)
+-Obtenir le maximun de Points Spéciaux du joueur.
+Exemple: MyVar = GetPlayerMaxSP(index)
+
+GetClassMaxHP(CLASS NUMBER)
+-Obtenir le maximun de points de vie de la classe.
+Exemple: MyVar = GetClassMaxHP(2)
+
+GetClassMaxMP(CLASS NUMBER)
+-Obtenir le maximun de points de magie de la classe
+Exemple: MyVar = GetClassMaxMP(1)
+
+GetClassMaxSP(CLASS NUMBER)
+-Obtenir le maximun de Points Spéciaux de la classe.
+Exemple: MyVar = GetClassMaxSP(3)
+
+GetClassSTR(CLASS NUMBER)
+-Obtenir le nombre de force par défaut.
+Exemple: MyVar = GetClassSTR(1)
+
+GetClassDEF(CLASS NUMBER)
+-Obtenir le nombre de défense par défaut.
+Exemple: MyVar = GetClassDEF(3)
+
+GetClassSPEED(CLASS NUMBER)
+-Obtenir le nombre de vitesse par défaut.
+Exemple: MyVar = GetClassSPEED(2)
+
+GetClassMAGI(CLASS NUMBER)
+-Obtenir le nombre de magie par défaut.
+Exemple: MyVar = GetClassMAGI(1)
+
+GetPlayerSTR(INDEX NUMBER)
+-Obtenir la force du joueur.
+Exemple: MyVar = GetPlayerSTR(index)
+
+SetPlayerSTR(INDEX NUMBER, STR)
+-Changer la force du joueur.
+Exemple: Call SetPlayerSTR(index, 40)
+
+GetPlayerDEF(INDEX NUMBER)
+-Obtenir la défense du joueur.
+Exemple: MyVar = GetPlayerDEF(index)
+
+SetPlayerDEF(INDEX NUMBER, DEF)
+-Changer la défense du joueur.
+Exemple: Call SetPlayerDEF(index, 25)
+
+GetPlayerSPEED(INDEX NUMBER)
+-Obtenir la vitesse du joueur.
+Exemple: MyVar = GetPlayerSPEED(index)
+
+SetPlayerSPEED(INDEX NUMBER, SPEED)
+-Changer la vitesse du joueur.
+Exemple: Call SetPlayerSPEED(index, 31)
+
+GetPlayerMAGI(INDEX NUMBER)
+-Obtenir la magie du joueur.
+Exemple: MyVar = GetPlayerMAGI(index)
+
+SetPlayerMAGI(INDEX NUMBER, MAGI)
+-Changer la magie du joueur.
+Exemple: Call SetPlayerMAGI(index, 27)
+
+GetPlayerPOINTS(INDEX NUMBER)
+-Obtenir les points de stats du joueur.
+Exemple: MyVar = GetPlayerPOINTS(index)
+
+SetPlayerPOINTS(INDEX NUMBER, POINTS)
+-Changer les points de stats du joueur.
+Exemple: Call SetPlayerPOINTS(index, 7)
+
+GetPlayerMap(INDEX NUMBER)
+-Obtenir le numéro de la map où se situe le joueur.
+Exemple: MyVar = GetPlayerMap(index)
+
+SetPlayerMap(INDEX NUMBER, MAP NUMBER)
+-Changer le joueur de map.
+Exemple: Call SetPlayerMap(index, 5)
+
+GetPlayerX(INDEX NUMBER)
+-Obtenir la coordonnée X du joueur.
+Exemple: MyVar = GetPlayerX(index)
+
+SetPlayerX(INDEX NUMBER, X COORDINATE)
+-Changer la coordonnée X du joueur.
+Exemple: Call SetPlayerX(index, 17)
+
+GetPlayerY(INDEX NUMBER)
+-Obtenir la coordonnée Y du joueur.
+Exemple: MyVar = GetPlayerY(index)
+
+SetPlayerY(INDEX NUMBER, Y COORDINATE)
+-Changer la coordonnée Y du joueur.
+Exemple: Call SetPlayerY(index, 22)
+
+GetPlayerDir(INDEX NUMBER)
+-Obtenir la direction à laquelle le joueur fait face.
+Exemple: MyVar = GetPlayerDir(index)
+
+SetPlayerDir(INDEX NUMBER, DIRECTION NUMBER)
+-Changer la direction à laquelle le joueur fait face.
+Exemple: Call SetPlayerDir(index, 3)
+
+GetPlayerIP(INDEX NUMBER)
+-Obtenir l'adresse IP du joueur.
+Exemple: MyVar = GetPlayerIP(index)
+
+GetPlayerInvItemNum(INDEX NUMBER, INVENTORY SLOT)
+-Obtenir le numéro de l'item dans l'inventaire
+Exemple: MyVar = GetPlayerInvItemNum(index, 4)
+
+SetPlayerInvItemNum(INDEX NUMBER, INVENTORY SLOT, ITEM NUMBER)
+-Changer le numéro de l'item dans l'inventaire
+Exemple: Call SetPlayerInvItemNum(index, 6, 3)
+
+GetPlayerInvItemValue(INDEX NUMBER, INVENTORY SLOT)
+-Obtenir la valeur de l'item dans l'inventaire.
+Exemple: MyVar = GetPlayerInvItemValue(index, 7)
+
+SetPlayerInvItemValue(INDEX NUMBER, INVENTORY SLOT, ITEM VALUE)
+-Changer la valeur de l'item dans l'inventaire
+Exemple: Call SetPlayerInvItemValue(index, 5, 400)
+
+GetPlayerInvItemDur(INDEX NUMBER, INVENTORY SLOT)
+-Obtenir la durabilité de l'item dans l'inventaire.
+Exemple: MyVar = GetPlayerInvItemDur(index, 9)
+
+SetPlayerInvItemDur(INDEX NUMBER, INVENTORY SLOT, ITEM DURABILITY)
+-Changer la durabilité de l'item dans l'inventaire.
+Exemple: Call SetPlayerInvItemDur(index, 2, 255)
+
+GetPlayerSpell(INDEX NUMBER, SPELL SLOT)
+-Obtenir le numéro de la magie dans la liste de sorts.
+Exemple: MyVar = GetPlayerSpell(index, 2)
+
+SetPlayerSpell(INDEX NUMBER, SPELL SLOT, SPELL NUMBER)
+-Changer le numéro de la magie dans la liste de sorts.
+Exemple: Call SetPlayerSpell(index, 3, 7)
+
+GetPlayerArmorSlot(INDEX NUMBER)
+-Obtenir le numéro de l'armure dans le slot de l'armure.
+Exemple: MyVar = GetPlayerArmorSlot(index)
+
+SetPlayerArmorSlot(INDEX NUMBER, INVENTORY SLOT)
+-Placer l'armure que le joueur porte dans une des fenêtres de l'inventaire.
+Exemple: Call SetPlayerArmorSlot(index, 3)
+
+GetPlayerWeaponSlot(INDEX NUMBER)
+-Option le numéro de le fenêtre pour l'arme du joueur.
+Exemple: MyVar = GetPlayerWeapon Slot(index)
+
+SetPlayerWeaponSlot(INDEX NUMBER, INVENTORY SLOT)
+-Placer l'arme que le joueur porte dans une des fenêtres de l'inventaire.
+Exemple: Call SetPlayerWeaponSlot(index, 9)
+
+
+GetPlayerHelmetSlot(INDEX NUMBER)
+-Obtenir le numéro du casque dans le slot du casque.
+Exemple: MyVar = GetPlayerHelmetSlot(index)
+
+SetPlayerHelmetSlot(INDEX NUMBER, INVENTORY SLOT)
+-Placer le casque que le joueur porte dans une des fenêtres de l'inventaire.
+Exemple: Call SetPlayerHelmetSlot(index, 10)
+
+GetPlayerShieldSlot(INDEX NUMBER)
+-Obtenir le numéro du bouclier dans le slot du bouclier.
+Exemple: MyVar = GetPlayerShieldSlot(index)
+
+SetPlayerShieldSlot(INDEX NUMBER, INVENTORY SLOT)
+-Placer le boucler que le joueur porte dans une des fenêtres de l'inventaire.
+Exemple: Call SetPlayerShieldSlot(index, 14)
+
+GetBootMap(INDEX NUMBER)
+-Obtenir la map de spawn du joueur.
+Exemple: MyVar = GetBootMap(index)
+
+PlayerMapDropItem(INDEX NUMBER, INVENTORY SLOT, AMOUNT)
+-Baisser la quantité de l'objet dans l'inventaire
+Exemple: Call PlayerMapDropItem(index, 5, 60)
+
+SpawnItemSlot()
+-Commande inconnue
+Exemple:
+
+IsConnected(INDEX NUMBER)
+-Indique ''True" Si le joueur est connecté, ou "False" s'il ne l'est pas.
+Exemple: MyVar = IsConnected(index)
+
+IsPlaying(INDEX NUMBER) -Indique "True" si le joueur joue, ou "False" sinon.
+Exemple: MyVar = IsPlaying(index)
+
+SendInventoryUpdate(INDEX NUMBER, INVENTORY SLOT)
+-Envoyer un rafraîchissement de l'inventaire. (Utile lorsque vous effectuez un modification de l'inventaire par scripts).
+Exemple: Call SendInventoryUpdate(index, 12)
+
+SendWornEquipment(INDEX NUMBER)
+-Envoyer un rafraîchissement de ce dont le joueur est équipé (Utile lorsque vous effectuez une modification de l'inventaire par scripts).
+Exemple: Call SendWornEquipment(index)
+
+SendHP(INDEX NUMBER)
+-Envoyer un rafraîchissement des points de vie.
+Exemple: Call SendHP(index)
+
+SendMP(INDEX NUMBER)
+-Envoyer un rafraîchissement des points de Magie.
+Exemple: Call SendMP(index)
+
+SendSP(INDEX NUMBER)
+-Envoyer un rafraîchissement des Points Spéciaux.
+Exemple: Call SendSP(index)
+
+SendStats(INDEX NUMBER)
+-Envoyer un rafraîchissement des stats du joueurs.
+Exemple: Call SendStats(index)
+
+Flash(INDEX NUMBER, "FLASH FILE")
+-Joue un film flash pouvant se trouver sur internet ou sur l'ordinateur.
+Exemple: Call Flash(index, "http://www.votresite.com/lenomdufilm.swf")
+
+Prompt(INDEX NUMBER, "QUESTION", SCRIPT NUMBER TO RUN)
+-Affiche une questions du type Yes/No.
+Exemple: Call Prompt(index, "Veux-tu des petits gateaux ?", 9)
+
+PlaySound(INDEX NUMBER, "SOUND FILE")
+-Joue un son pour un joueur.
+Exemple: Call PlaySound(index, "Shriek.wav")
+
+SendPlayerData(INDEX NUMBER)
+-Envoyer une update de la data's player à tous les joueurs.
+Exemple: Call SendPlayerData(index)
+
+SendDataTo(INDEX NUMBER, "DATA")
+-Envoyer des données brutes à un joueur.
+
+SendDataToAll("DATA")
+-Envoyer des données brutes à tous les joueurs
+
+SendDataToAllBut(INDEX NUMBER, "DATA")
+-Envoyer des données brutes sauf au joueur spécifié.
+
+SendDataToMap(MAP NUMBER, "DATA")
+-Envoyer des données brutes à tous les joueurs sauf ceux sur une map spécifique.
+
+SendDataToMapBut(INDEX NUMBER, MAP NUMBER, "DATA")
+-Envoyer des données brutes à tous les joueurs sur la map, sauf à un joueur spécifique.
+
+Ces commandes vous seront utiles.

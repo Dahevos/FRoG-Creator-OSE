@@ -1,0 +1,70 @@
+---- Édition des maps ----
+
+Tout d'abord ouvrez le panneau de controle avec f1.
+Face à vous s'affiche plusieurs options.
+Celle qui nous intéresse est map editor.
+Allez donc dessus et vous allez voir s'ouvrir une autre fenêtre.
+C'est a partir de là que le plus compliqué reste à faire.
+
+Pour mettre des éléments sur la map, il suffit de cliquer sur l'élément puis, à l'endroit où vous voulez le mettre sur la map (pour les nouvelles versions, maintenez shift appuyé puis selectionnez l'objet à prendre pour prendre plusieurs parties)
+Les couches :
+
+Alors on m'écoute bien :
+
+Sol : Pour faire un sol
+
+Masque 1  : Pour mettre un objet
+
+Masque 2 : Pour mettre un objet par-dessus un objet
+
+Masque 3 : Pour mettre un objet par-dessus les masques 1 et 2
+
+Frange 1 : Pour pouvoir passer derrière un objet au sol
+
+Frange 2 : Pour pouvoir passer derrière un objet en l'air
+
+Frange 3 : Pour mettre un objet par-dessus les franges 1 et 2
+
+Animation : Fait clignoter les objets
+
+fill : permet de remplir toute la map de l'objet selectionné (utile pour le sol surtout)
+
+Chapitre 3 : les attributs :
+
+-objet : pour qu'il y ait un objet par terre
+
+-porte à clé : crée une serrure bloquant une case, qui ne s'ouvre qu'en utilisant un objet bien précis
+
+-ouvrir une porte : crée des interrupteurs au sol debloquant des portes
+
+-soins : soigne les joueur
+
+-tuer : tue les joueur
+
+-case scriptée : active un script choisis
+
+-ch classe : change la classe de perso
+
+-avertissement : affiche un message et joue un son lorsque l'on passe dessus
+
+-porte : pour créer la porte qui va avec l'interrupteur au sol
+
+-ch sprite : change l'aspect du perso
+
+-magasin : les magasin
+
+-bloquer class : ne laisse passer que certaines classes de perso
+
+-arène : crée des arènes où y'a le droit de s'entretuer
+
+
+
+
+Chapitre 4 : le changement de map
+
+La question la plus courante : Comment crée-t-on une autre map ?
+
+Alors c'est tout bête ,il suffit d'aller dans le paneau d'administration (avec f1 pour les têtes en l'air) et de mettre le numéro de la map où l'on voudrait aller dans la case située tout en bas. Ensuite, il faut cliquer sur warp et puis voilà !
+
+
+Bon j'ai à peu près tout dit pour un début dans de bonnes conditions. Maintenant, bien sûr, que beaucoup d'autres options sont disponibles, mais ça s'apprend très vite !

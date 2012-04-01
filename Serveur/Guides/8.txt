@@ -1,0 +1,130 @@
+Message d'aide de KaTSuo :
+
+Avant de poser votre problème dans ce forum, vérifiez que la solution ne se trouve pas ici. Ces instructions ont été traduites du forum officiel de Konfuze.
+
+-Run-Time Error 5
+C'est une erreur assez fréquente qui survient de temps à autre. Toutes les tentatives de correction ont échoué. Il faut faire avec ! Relancez le jeu et reconnectez-vous sous votre compte, en général ça ne le refait pas. Pour éviter ceci, ne touchez plus à rien lorsque le jeu se charge.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 6- Dépassement de capacité
+Ceci arrive lorsque vous tentez de vous connecter sur un serveur avec un client d'une version différente de celle du serveur.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 7- Out of Memory
+Très peu fréquent mais cependant assez gênant. Il semble que ce bug ne survient que sur Windows XP et n'a rien a voir avec la RAM ou le nombre de programmes lancés sur votre machine. La seule solution permettant de résoudre se problème est de réinstaller votre système d'exploitation !
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 9- Script Out of Range
+Au même titre que l'erreur n°5, celle-ci survient de temps à autre. Relancez le jeu autant de fois que nécessaire, jusqu'à ce que cette erreur ne se manifeste plus.
+
+-------------------------------------------------------------------------------------
+
+-Run Time Error 11- Se déclenche lors d'un combat.
+c'est que le npc est configuré de façon à ce que son effet d'attaque soit divisible par zéro.
+Donc il faut changer les caracteristiques du npc: ça devrait passer.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 13- no data.ini
+Vous ne pouvez vous en prendre qu'à vous même ! Cela arrive lorsque vous mettez à jour votre version du programme. Vérifiez bien que le fichier data.ini se trouve dans le même répertoire que server.exe
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 16:
+Cette erreur est causée par la configuration de votre écran lorsque les couleurs sont en trop haute définition. Faites un clic droit sur votre bureau puis allez dans Propriétés. Dans l'onglet "Paramètres", choisissez Couleurs 16 Bits.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 53- Can not find Tiles.Bmp
+Cette erreur concerne principalement les utilisateurs de Windows 98. Dans ce cas, ouvrez le fichier Tiles.bmp se trouvant dans le dossier GFX du répertoire de jeu avec Paint. Faites CTRL + E et modifiez les propriétés suivantes :
+Largeur : 224
+Hauteur : 9728
+Unités : Pixels
+Couleurs : Couleurs
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 75-
+Lorsque vous gravez votre jeu sur un cd et que vous l'exécutez depuis ce cd, le programme ne peut pas enregistrer de map et génère donc cette erreur.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 76- Path Not Found
+Cette erreur survient vraisemblablement lorsque les fichiers graphiques ne se trouvent plus dans le répertoire GFX. La meilleure solution est de réinstaller le programme.
+
+-------------------------------------------------------------------------------------
+
+-Run-Time Error 339, Runtime error 372 - MSComm32.ocx, Run-Time Error 373 - TABCTL32.ocx, Run-Time Error 429- ActiveX Cannot Create Component, Run-Time Error 713
+Le lancement d'applications codées en VisualBasic requiert la présence des RunTime VB sur votre PC. Aussi, ces RunTime doivent être enregistrées sur votre PC. Procurez-vous les RunTime VisualBasic sur le site officiel de microsoft : www.microsoft.fr
+
+-------------------------------------------------------------------------------------
+
+Run-Time Error 429 - ActiveX Cannot Create Component:
+
+Vous devez faire trois choses :
+1.) Mettez les couleurs en 16 bit.
+2.) Démarrer > Executer > Regsvr32.exe Dao350.dll.
+3.) Démarrer > Executer > Regsvr32.exe dx7vb.dll.
+
+Cela devrait résoudre le problème mais, si ce n'est pas le cas, téléchargez DirectX.
+
+Si vous n'avez pas les dll requis, voici les liens :
+
+dx7vb: http://www.dlldump.com/cgi-bin/downloadcounts.cgi?
+Dao350: http://www.dll-files.com/dllindex/download.php?dao350
+
+-------------------------------------------------------------------------------------
+
+Run-Time Error 480:
+
+Cette erreur est facilement corrigeable. Tentez ces deux options :
+
+1.) Mettez les couleurs en 16 bit.
+2.) Essayez de remplacer les fichiers graphismes par d'autres graphismes (GFX).
+
+-------------------------------------------------------------------------------------
+
+Run-Time Error 713:
+
+MSSTDFMT.DLL doit être présent sur votre PC et enregistré !
+Téléchargez le fichier ici : http://www.dll-files.com/dllindex/download.php?msstdfmt
+Dézippez-le dans le répertoire system32 de votre windows.
+Puis faites ceci : Démarrer > Executer > Regsvr32.exe MSSTDFMT.DLL
+
+-------------------------------------------------------------------------------------
+
+Run-Time Error 10048 - Address In Use:
+
+Ceci signifie que votre serveur est déjà lancé. Lorsque explorer.exe crash et que vous le relancez par la suite, l'icone du serveur disparaît mais en réalité le serveur est toujours actif. Pour l'éteindre, procédez comme suit :
+
+1.) Ctrl + Alt + Delete.
+2.) Onglet Processus.
+3.) Trouvez et stoppez server.exe.
+
+-------------------------------------------------------------------------------------
+
+Run-Time Error -2147024770 (8007007e):
+
+Démarrer > Exécuter > Regsvr32.exe dx7vb.dll
+Ceci devrait résoudre le problème.
+
+Autrement,
+
+Téléchargez ce fichier : http://www.bzcg.gknetworks.net/downloads/dlls.zip puis dézippez-le.
+
+Trouvez "ActiveX right click". Double-cliquez.
+
+-------------------------------------------------------------------------------------
+
+Autres liens utiles :
+
+DLL Files:
+- http://www.dll-files.com/dllindex/index.shtml
+- http://www.useyourbrain.co.uk/computing-missing-files.htm
+
+OCX Files:
+- http://freeware.it-mate.co.uk/?Cat=OCX_Files
+- http://www.zerohack.it/downloads/ocx.htm

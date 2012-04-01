@@ -1,0 +1,27 @@
+Sub PlayerLevelUp(index)
+Dim I    
+Dim D
+Dim C
+    
+    C = 0
+    Do While GetPlayerExp(index) => GetPlayerNextLevel(index)    
+        D = GetPlayerExp(index) - GetPlayerNextLevel(index)
+        Call SetPlayerLevel(index, GetPlayerLevel(index) + 1)
+        I = Int(GetPlayerSPEED(index) / 10)
+        If I < 1 Then I = 1
+        If I > 3 Then I = 3
+            
+        Call SetPlayerPOINTS(index, GetPlayerPOINTS(index) + I)
+        Call SetPlayerExp(index, D)      
+        C = C + 1
+    Loop
+    If C > 1 Then 
+        'Call GlobalMsg(GetPlayerName(index) & " a gagné " & C & " niveaux!", 6)
+    Else
+        'Call GlobalMsg(GetPlayerName(index) & " a gagné un niveau!", 6)      
+    End If     
+    Call BattleMsg(index, "Tu as " & GetPlayerPOINTS(index) & " points de caractéristiques.", 9, 0)   
+
+'SYST_SCRIPT(levelup)
+
+End Sub

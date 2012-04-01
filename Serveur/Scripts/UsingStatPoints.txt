@@ -1,0 +1,37 @@
+Sub UsingStatPoints(index, PointType)
+Select Case PointType
+    Case 0
+    'Gives you a set max
+        If GetPlayerSTR(index) + 1 > 1000 Then
+           Call BattleMsg(index, "Ta force est au maximum!", 12, 0)
+           Exit Sub
+        End If
+        Call SetPlayerSTR(index, GetPlayerSTR(index) + 1)
+        Call BattleMsg(index, "Tu es devenu plus fort!", 15, 0)
+    Case 1
+    'Gives you a set max
+        If GetPlayerDEF(index) + 1 > 1000 Then
+           Call BattleMsg(index, "Ta défense est au maximum!", 12, 0)
+           Exit Sub
+        End If
+        Call SetPlayerDEF(index, GetPlayerDEF(index) + 1)
+        Call BattleMsg(index, "Tu es mieux protégé!", 15, 0)
+    Case 2
+    'Gives you a set max
+        If GetPlayerMAGI(index) + 1 > 1000 Then
+           Call BattleMsg(index, "Tu es au maximum de ta magie!", 12, 0)
+           Exit Sub
+        End If
+        Call SetPlayerMAGI(index, GetPlayerMAGI(index) + 1)
+        Call BattleMsg(index, "La magie circule mieux en toi!", 15, 0)
+    Case 3
+    'Gives you a set max
+        If GetPlayerSPEED(index) + 1 > 1000 Then
+           Call BattleMsg(index, "Ta vitesse est au maximum!", 12, 0)
+           Exit Sub
+        End If
+        Call SetPlayerSPEED(index, GetPlayerSPEED(index) + 1)
+        Call BattleMsg(index, "Tu es plus rapide!", 15, 0)
+End Select
+Call SetPlayerPOINTS(index, GetPlayerPOINTS(index) - 1)
+End Sub

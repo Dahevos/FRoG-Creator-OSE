@@ -1,0 +1,3 @@
+Sub KillNPC(index, pnjnum)
+
+end sub

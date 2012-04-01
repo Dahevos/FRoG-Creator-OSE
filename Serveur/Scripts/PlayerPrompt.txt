@@ -1,0 +1,19 @@
+Sub PlayerPrompt(index, Prompt, Value)
+If Prompt = 6 Then
+    Select Case Value
+        Case 0
+            Call GlobalMsg("Voilà la réponse oui!", 3)
+        Case 1
+            Call GlobalMsg("Ceci est la case 1?", 3)
+	    call PlayerAnimStart(index, 1)
+    End Select
+Else
+    Select Case Value
+        Case 0
+            Call GlobalMsg("Voilà la case non!", 4)
+        Case 1
+            Call GlobalMsg("Ceci n'est pas la case 1?", 4)
+	    call PlayerAnimStop(index)
+    End Select
+End If
+End Sub

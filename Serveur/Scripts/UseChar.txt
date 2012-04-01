@@ -1,0 +1,3 @@
+Sub UseChar(index, CharNum)
+
+End Sub

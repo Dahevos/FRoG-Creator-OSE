@@ -1,0 +1,6 @@
+---- Configuration du Serveur ----
+
+Vous pouvez configurer le serveur grâce à l’éditeur.
+Cependant, la configuration peut se faire aussi
+via le répertoire Server. Grâce au data.ini éditez
+le nom, adresse, et autres de votre serveur.

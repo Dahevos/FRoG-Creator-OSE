@@ -1,0 +1,19 @@
+---- Contrôle des joueurs
+Voici les contrôles utilisé en jeu :
+
+Flèche de direction - Bouge le personnage..
+Enter - Utilisé pour prendre des objets sur la carte, et pour chatter.
+Shift - Utiliser celui de gauche pour courir.
+Ctrl - Cette touche permet d'attaquer.
+Insert - Lorsque vous sélectionnez une cible et un sort, Insert permet de le lancer.
+F1 - Ouvre le panneau d'administration si vous êtes admin(s).
+F2 - Ouvre le panneau d'aide aux joueurs.
+F4 - Cela permet d'ouvrir le créateur de Guilde.
+F5 - Cela permet de gérer votre Guilde.
+F11 - Cela permet de prendre un screenshot de votre écran.
+F12 - Cela permet de prendre un screenshot de votre interface de jeu seulement.
+End - Vous faites tourner votre personnage sur lui-même.
+
+/heure - Affiche l'heure
+/hdv - Hotel de ventes
+/fps - Affiche les FPS

@@ -1,0 +1,24 @@
+---- Configuration du Client ----
+La configuration du Client est totalement différente de celle de la 0.2, mais semblable aux version 0.4 et 0.5
+Elle se fait via plusieurs fichiers dans le répertoire "Config"
+
+Le fichier Client.ini permet de modifier l'adresse de votre jeu, ainsi que les crédits.
+
+Ecriture.ini permet de modifier les polices d'écriture ainsi que les couleurs de vos texte.
+
+Updater.ini vous permet de modifier l'updater, voyez cela plus loin dans les tutoriaux.
+
+
+Serveur.ini permet de modifier l'IP de connexion, il gère aussi le Multi-Serveur.
+
+Pour ajouter un nouveau Serveur, vous n'avez qu'a rajouter ceci:
+
+[SERVER -------->X<---------]
+Name=Le Nom du Serveur
+IP=Votre IP
+Port=Le Port
+
+Les flèches qui indiquent le X signifient le numéro du Serveur, vous ne devez pas mettre les flèches Sinon cela ne fonctionne pas.
+
+Le fichier info.ini sert au patch, elle permet d'inscrire la version de votre jeu et de vos fichier.
+La version par défaut est 0.1..

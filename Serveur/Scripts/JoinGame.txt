@@ -1,0 +1,36 @@
+Sub JoinGame(index)
+On Error Resume Next
+Dim IPA
+Dim IP
+Dim GameName
+Dim MOTD
+
+
+GameName = Trim(GetVar("Data.ini", "CONFIG", "GameName"))
+MOTD = GetVar("motd.ini", "MOTD", "Msg")
+
+
+'SYST_SCRIPT(joingame)
+
+    ' Send a global message that he/she joined
+    If GetPlayerAccess(index) <= ADMIN_MONITER Then
+        Call GlobalMsg(GetPlayerName(index) & " rejoint " & GameName & "!", 7)
+    Else
+        Call GlobalMsg(GetPlayerName(index) & " rejoint " & GameName & "!", 15)
+    End If
+
+    ' Send them welcome
+    Call PlayerMsg(index, "Bienvenue sur " & GameName & "!", 15)
+
+    IPA = GetVar("accounts\" & GetPlayerLogin(index) & ".ini", "General", "IP") 'Récupération de l'IP. Cette opération n'est valide que si le joueur s'est connecté au moins une fois.
+    If (IPA <> "") then 'Vérification : Possédons nous l'IP ?
+    Call Playermsg(index, "Votre dernière IP était : " & GetVar("accounts\" & GetPlayerLogin(index) & ".ini", "General", "IP"), 11) 'Si oui, on la lui montre (11 est la couleur du text, CF voir en haut la liste des couleurs, pour la changer !)
+    End If
+    IP = GetplayerIp(index) ' Dans tous les cas, on récupert l'actuelle pour qu'ils puissent la voir à sa prochaine connection.
+    Call Putvar("accounts\" & GetPlayerLogin(index) & ".ini", "General", "IP", cstr(IP))
+    
+    ' Send motd
+    If Trim(MOTD) <> "" Then
+        Call PlayerMsg(index, "MOTD: " & MOTD, 11)
+    End If
+End Sub

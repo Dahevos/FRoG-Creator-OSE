@@ -1,0 +1,15 @@
+---- Configuration de l'Updater ----
+
+Le configuration d'un patch est très simple.
+Utiliser Patch.exe pour créer un patch, en remplissant bien les champs.
+Une fois ceci fait, Uploader info.ini et les fichiers des patchs sur un ftp.
+Une fois ceci fait, aller dans Updater.ini qui est dans le répertoire Config
+du client. à "Patch" indiquer le répertoire des patchs, exemple:
+http://roonline.free.fr/patch/
+
+Ensuite à WebNews, indiquer la page web qui affiche les nouvelles de vos patchs
+exmple:
+http://roonline.free.fr/patch/patch.html
+
+Ensuite, si vous avez bien configuré votre patch (Le patch doit avoir une version
+supérieure à celle de votre jeu) hé bien dès l'ouverture du client, la patch se télécharge.
