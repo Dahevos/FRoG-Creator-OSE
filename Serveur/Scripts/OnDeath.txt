@@ -9,7 +9,7 @@ mapnum = GetVar("Classes\Class" & i & ".ini", "DEATH", "Map")
 y = GetVar("Classes\Class" & i & ".ini", "DEATH", "y")
 x = GetVar("Classes\Class" & i & ".ini", "DEATH", "x")
 
-Call PlayerWarp(index, mapnum, x, y)
+Call PlayerWarp(index, CStr(mapnum), CStr(x), CStr(y))
 
 'SYST_SCRIPT(ondeath)
 
