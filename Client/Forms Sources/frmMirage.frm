@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmMirage 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  'Fixed Single
@@ -4705,40 +4705,40 @@ Private Sub cbtr1_Change()
 
 End Sub
 
-Private Sub cbth_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbth_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtb_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtb_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtg_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtg_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtd_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtd_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbta_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbta_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtra_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtra_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtc_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtc_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtac_keypress(keyascii As Integer)
-    keyascii = 0
+Private Sub cbtac_keypress(KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
-Private Sub cbtr_keypress(index As Integer, keyascii As Integer)
-    keyascii = 0
+Private Sub cbtr_keypress(Index As Integer, KeyAscii As Integer)
+    KeyAscii = 0
 End Sub
 
 Private Sub chkLowEffect_Click()
@@ -4917,7 +4917,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5130,6 +5130,10 @@ Private Sub lstOnline_DblClick()
 End Sub
 
 Private Sub menu_equ_Click()
+If fra_info.Visible = True Then
+    fra_info.Visible = False
+Else
+    fra_fenetre.Visible = False
     Call ClearPic
     Call UpdateVisInv
     fra_info.Visible = True
@@ -5138,6 +5142,8 @@ Private Sub menu_equ_Click()
     If Picsprts.Height <= 32 Then Picture5.Top = 2160 Else Picture5.Top = 2640
     Call AffSurfPic(DD_SpriteSurf(Player(MyIndex).sprite), Picsprts, 0, 0)
     'Call BitBlt(Picsprts.hDC, 0, 0, PIC_X, PIC_Y * PIC_NPC1, Picturesprite.hDC, 3 * PIC_X, Val(Player(MyIndex).Sprite) * (PIC_Y * PIC_NPC1), SRCCOPY)
+End If
+
 End Sub
 
 Private Sub menu_guild_Click()
@@ -5186,6 +5192,10 @@ Private Sub menu_opt_Click()
 End Sub
 
 Private Sub menu_quete_Click()
+If frmMirage.picquete.Visible = True Then
+    frmMirage.picquete.Visible = False
+Else
+
     If Player(MyIndex).QueteEnCour > 0 Then
         Call ClearPic
         fra_fenetre.Visible = False
@@ -5195,8 +5205,10 @@ Private Sub menu_quete_Click()
         Call ClearPic
         fra_fenetre.Visible = False
         frmMirage.picquete.Visible = True
-        frmMirage.quetetxt.Text = "Pas de Quête est en cour..."
+        frmMirage.quetetxt.Text = "Pas de quête en cours..."
     End If
+    
+End If
 End Sub
 
 Private Sub menu_quit_Click()
@@ -5208,13 +5220,14 @@ If PicMenuQuitter.Visible Then PicMenuQuitter.Visible = False Else PicMenuQuitte
 End Sub
 
 Private Sub menu_sort_Click()
-Call ClearPic
+
 If fra_fenetre.Visible = True And picPlayerSpells.Visible = True Then
     fra_fenetre.Visible = False
 Else
     fra_fenetre.Visible = True
+    picPlayerSpells.Visible = True
 End If
-
+Call ClearPic
 Call SendData("spells" & SEP_CHAR & END_CHAR)
 End Sub
 
@@ -5255,7 +5268,7 @@ End If
 txtQ.Visible = False
 End Sub
 
-Private Sub picInv_DblClick(index As Integer)
+Private Sub picInv_DblClick(Index As Integer)
 Dim d As Long
 
 If Player(MyIndex).Inv(Inventory).num <= 0 Or Player(MyIndex).Inv(Inventory).num > MAX_ITEMS Then Exit Sub
@@ -5270,8 +5283,8 @@ Next d
 Call UpdateVisInv
 End Sub
 
-Private Sub picInv_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    Inventory = index + 1
+Private Sub picInv_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+    Inventory = Index + 1
     frmMirage.SelectedItem.Top = frmMirage.picInv(Inventory - 1).Top - 1
     frmMirage.SelectedItem.Left = frmMirage.picInv(Inventory - 1).Left - 1
     
@@ -5300,9 +5313,9 @@ Private Sub picInv_MouseDown(index As Integer, Button As Integer, Shift As Integ
     End If
 End Sub
 
-Private Sub picInv_MouseMove(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picInv_MouseMove(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
 Dim d As Long
-d = index
+d = Index
 
     If Player(MyIndex).Inv(d + 1).num > 0 Then
         
@@ -5574,17 +5587,17 @@ DragX = 0
 DragY = 0
 End Sub
 
-Private Sub picRac_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picRac_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
 Dim Q As Long
 Dim Qq As Long
 Dim d As Byte
     If Button = 1 Then
-        Call useRac(index)
+        Call useRac(Index)
     End If
     If Button = 2 Then
         If dragAndDrop > 0 Then
-            rac(index, 0) = dragAndDrop
-            rac(index, 1) = dragAndDropT
+            rac(Index, 0) = dragAndDrop
+            rac(Index, 1) = dragAndDropT
         End If
         Call saveRac
     End If
@@ -5613,12 +5626,12 @@ If CurX <> OldPCX Or CurY <> OldPCY Then Call CaseChange(CurX, CurY): OldPCX = C
 itmDesc.Visible = False
 End Sub
 
-Private Sub picspell_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picspell_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
     If Button = 1 Then
-        If Player(MyIndex).Spell(index + 1) > 0 Then
+        If Player(MyIndex).Spell(Index + 1) > 0 Then
             If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                 If Player(MyIndex).Moving = 0 Then
-                    Call SendData("cast" & SEP_CHAR & index + 1 & SEP_CHAR & END_CHAR)
+                    Call SendData("cast" & SEP_CHAR & Index + 1 & SEP_CHAR & END_CHAR)
                     Player(MyIndex).Attacking = 1
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
@@ -5631,16 +5644,16 @@ Private Sub picspell_MouseDown(index As Integer, Button As Integer, Shift As Int
         End If
     End If
     If Button = 2 Then
-        If Player(MyIndex).Spell(index + 1) > 0 Then
-            If dragAndDrop = index + 1 Then
+        If Player(MyIndex).Spell(Index + 1) > 0 Then
+            If dragAndDrop = Index + 1 Then
                 dragAndDrop = 0
                 dragAndDropT = 0
                 SDAD.Visible = False
             Else
-                dragAndDrop = index + 1
+                dragAndDrop = Index + 1
                 dragAndDropT = 1
-                SDAD.Top = picspell(index).Top - 1
-                SDAD.Left = picspell(index).Left - 1
+                SDAD.Top = picspell(Index).Top - 1
+                SDAD.Left = picspell(Index).Left - 1
                 SDAD.Visible = True
             End If
         Else
@@ -5761,9 +5774,9 @@ End Sub
 Private Sub scrlBltText_Change()
 Dim i As Long
     For i = 1 To MAX_BLT_LINE
-        BattlePMsg(i).index = 1
+        BattlePMsg(i).Index = 1
         BattlePMsg(i).Time = i
-        BattleMMsg(i).index = 1
+        BattleMMsg(i).Index = 1
         BattleMMsg(i).Time = i
     Next i
     
@@ -5777,15 +5790,15 @@ Private Sub Socket_DataArrival(ByVal bytesTotal As Long)
     If IsConnected Then Call IncomingData(bytesTotal)
 End Sub
 
-Private Sub Form_KeyPress(keyascii As Integer)
+Private Sub Form_KeyPress(KeyAscii As Integer)
     If ConOff = True Then Exit Sub
-    Call HandleKeypresses(keyascii)
-    If (keyascii = vbKeyReturn) Then keyascii = 0
-    If (keyascii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then keyascii = 0
-    If keyascii = vbKeyEscape Then
+    Call HandleKeypresses(KeyAscii)
+    If (KeyAscii = vbKeyReturn) Then KeyAscii = 0
+    If (KeyAscii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then KeyAscii = 0
+    If KeyAscii = vbKeyEscape Then
         If fra_fenetre.Visible = True Then fra_fenetre.Visible = False
         If fra_info.Visible = True Then fra_info.Visible = False
-        keyascii = 0
+        KeyAscii = 0
         Exit Sub
     End If
 End Sub
@@ -5886,8 +5899,8 @@ Dim Packet As String
     Call SendData(Packet)
 End Sub
 
-Private Sub txtQ_KeyPress(keyascii As Integer)
-If keyascii = vbKeyReturn Then keyascii = 0: txtQ.Visible = False
+Private Sub txtQ_KeyPress(KeyAscii As Integer)
+If KeyAscii = vbKeyReturn Then KeyAscii = 0: txtQ.Visible = False
 End Sub
 
 Private Sub txtQ_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5906,8 +5919,8 @@ DragX = 0
 DragY = 0
 End Sub
 
-Private Sub TxtQ2_KeyPress(keyascii As Integer)
-If keyascii = vbKeyReturn Then keyascii = 0: txtQ.Visible = False
+Private Sub TxtQ2_KeyPress(KeyAscii As Integer)
+If KeyAscii = vbKeyReturn Then KeyAscii = 0: txtQ.Visible = False
 End Sub
 
 Private Sub Up_Click()
