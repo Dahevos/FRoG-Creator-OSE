@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
 Begin VB.Form frmMirage 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  'Fixed Single
@@ -4705,6 +4705,42 @@ Private Sub cbtr1_Change()
 
 End Sub
 
+Private Sub cbth_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtb_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtg_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtd_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbta_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtra_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtc_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtac_keypress(keyascii As Integer)
+    keyascii = 0
+End Sub
+
+Private Sub cbtr_keypress(index As Integer, keyascii As Integer)
+    keyascii = 0
+End Sub
+
 Private Sub chkLowEffect_Click()
     WriteINI "CONFIG", "LowEffect", chkLowEffect.Value, App.Path & "\Config\Account.ini"
 End Sub
@@ -5219,7 +5255,7 @@ End If
 txtQ.Visible = False
 End Sub
 
-Private Sub picInv_DblClick(Index As Integer)
+Private Sub picInv_DblClick(index As Integer)
 Dim d As Long
 
 If Player(MyIndex).Inv(Inventory).num <= 0 Or Player(MyIndex).Inv(Inventory).num > MAX_ITEMS Then Exit Sub
@@ -5234,8 +5270,8 @@ Next d
 Call UpdateVisInv
 End Sub
 
-Private Sub picInv_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
-    Inventory = Index + 1
+Private Sub picInv_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+    Inventory = index + 1
     frmMirage.SelectedItem.Top = frmMirage.picInv(Inventory - 1).Top - 1
     frmMirage.SelectedItem.Left = frmMirage.picInv(Inventory - 1).Left - 1
     
@@ -5264,9 +5300,9 @@ Private Sub picInv_MouseDown(Index As Integer, Button As Integer, Shift As Integ
     End If
 End Sub
 
-Private Sub picInv_MouseMove(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picInv_MouseMove(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
 Dim d As Long
-d = Index
+d = index
 
     If Player(MyIndex).Inv(d + 1).num > 0 Then
         
@@ -5538,17 +5574,17 @@ DragX = 0
 DragY = 0
 End Sub
 
-Private Sub picRac_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picRac_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
 Dim Q As Long
 Dim Qq As Long
 Dim d As Byte
     If Button = 1 Then
-        Call useRac(Index)
+        Call useRac(index)
     End If
     If Button = 2 Then
         If dragAndDrop > 0 Then
-            rac(Index, 0) = dragAndDrop
-            rac(Index, 1) = dragAndDropT
+            rac(index, 0) = dragAndDrop
+            rac(index, 1) = dragAndDropT
         End If
         Call saveRac
     End If
@@ -5577,12 +5613,12 @@ If CurX <> OldPCX Or CurY <> OldPCY Then Call CaseChange(CurX, CurY): OldPCX = C
 itmDesc.Visible = False
 End Sub
 
-Private Sub picspell_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub picspell_MouseDown(index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
     If Button = 1 Then
-        If Player(MyIndex).Spell(Index + 1) > 0 Then
+        If Player(MyIndex).Spell(index + 1) > 0 Then
             If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                 If Player(MyIndex).Moving = 0 Then
-                    Call SendData("cast" & SEP_CHAR & Index + 1 & SEP_CHAR & END_CHAR)
+                    Call SendData("cast" & SEP_CHAR & index + 1 & SEP_CHAR & END_CHAR)
                     Player(MyIndex).Attacking = 1
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
@@ -5595,16 +5631,16 @@ Private Sub picspell_MouseDown(Index As Integer, Button As Integer, Shift As Int
         End If
     End If
     If Button = 2 Then
-        If Player(MyIndex).Spell(Index + 1) > 0 Then
-            If dragAndDrop = Index + 1 Then
+        If Player(MyIndex).Spell(index + 1) > 0 Then
+            If dragAndDrop = index + 1 Then
                 dragAndDrop = 0
                 dragAndDropT = 0
                 SDAD.Visible = False
             Else
-                dragAndDrop = Index + 1
+                dragAndDrop = index + 1
                 dragAndDropT = 1
-                SDAD.Top = picspell(Index).Top - 1
-                SDAD.Left = picspell(Index).Left - 1
+                SDAD.Top = picspell(index).Top - 1
+                SDAD.Left = picspell(index).Left - 1
                 SDAD.Visible = True
             End If
         Else
@@ -5725,9 +5761,9 @@ End Sub
 Private Sub scrlBltText_Change()
 Dim i As Long
     For i = 1 To MAX_BLT_LINE
-        BattlePMsg(i).Index = 1
+        BattlePMsg(i).index = 1
         BattlePMsg(i).Time = i
-        BattleMMsg(i).Index = 1
+        BattleMMsg(i).index = 1
         BattleMMsg(i).Time = i
     Next i
     
@@ -5741,15 +5777,15 @@ Private Sub Socket_DataArrival(ByVal bytesTotal As Long)
     If IsConnected Then Call IncomingData(bytesTotal)
 End Sub
 
-Private Sub Form_KeyPress(KeyAscii As Integer)
+Private Sub Form_KeyPress(keyascii As Integer)
     If ConOff = True Then Exit Sub
-    Call HandleKeypresses(KeyAscii)
-    If (KeyAscii = vbKeyReturn) Then KeyAscii = 0
-    If (KeyAscii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then KeyAscii = 0
-    If KeyAscii = vbKeyEscape Then
+    Call HandleKeypresses(keyascii)
+    If (keyascii = vbKeyReturn) Then keyascii = 0
+    If (keyascii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then keyascii = 0
+    If keyascii = vbKeyEscape Then
         If fra_fenetre.Visible = True Then fra_fenetre.Visible = False
         If fra_info.Visible = True Then fra_info.Visible = False
-        KeyAscii = 0
+        keyascii = 0
         Exit Sub
     End If
 End Sub
@@ -5850,8 +5886,8 @@ Dim Packet As String
     Call SendData(Packet)
 End Sub
 
-Private Sub txtQ_KeyPress(KeyAscii As Integer)
-If KeyAscii = vbKeyReturn Then KeyAscii = 0: txtQ.Visible = False
+Private Sub txtQ_KeyPress(keyascii As Integer)
+If keyascii = vbKeyReturn Then keyascii = 0: txtQ.Visible = False
 End Sub
 
 Private Sub txtQ_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5870,8 +5906,8 @@ DragX = 0
 DragY = 0
 End Sub
 
-Private Sub TxtQ2_KeyPress(KeyAscii As Integer)
-If KeyAscii = vbKeyReturn Then KeyAscii = 0: txtQ.Visible = False
+Private Sub TxtQ2_KeyPress(keyascii As Integer)
+If keyascii = vbKeyReturn Then keyascii = 0: txtQ.Visible = False
 End Sub
 
 Private Sub Up_Click()
