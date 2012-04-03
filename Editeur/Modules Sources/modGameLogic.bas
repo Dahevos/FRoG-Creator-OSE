@@ -4451,7 +4451,7 @@ Dim x2 As Long, y2 As Long, PicX As Long
 On Error GoTo er:
 
 If InMouvEditor Then
-    If Map(Player(MyIndex).Map).tile((x \ 32 / VZoom * 3), (y \ 32 / VZoom * 3)).Type <> TILE_TYPE_WALKABLE Then If frmCpnjmouv.imob.value = Unchecked Then Call MsgBox("Le pnj ne peut pas marcher ou apparaître sur cette case veuillez en sélectionner une autre"): Exit Sub
+    If Map(Player(MyIndex).Map).tile((x \ 32 / VZoom * 3), (y \ 32 / VZoom * 3)).Type <> TILE_TYPE_WALKABLE And Map(Player(MyIndex).Map).tile((x \ 32 / VZoom * 3), (y \ 32 / VZoom * 3)).Type <> TILE_TYPE_TOIT Then If frmCpnjmouv.imob.value = Unchecked Then Call MsgBox("Le pnj ne peut pas marcher ou apparaître sur cette case veuillez en sélectionner une autre"): Exit Sub
     frmCpnjmouv.x(cordo).Text = (x \ 32 / VZoom * 3)
     frmCpnjmouv.y(cordo).Text = (y \ 32 / VZoom * 3)
     frmCpnjmouv.SetFocus
@@ -5974,7 +5974,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -5986,7 +5986,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6004,7 +6004,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6017,7 +6017,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6030,10 +6030,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -6047,7 +6047,7 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)
