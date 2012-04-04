@@ -1,2 +1,3 @@
 *.exe
 Serveur/Logs/*
+*.log

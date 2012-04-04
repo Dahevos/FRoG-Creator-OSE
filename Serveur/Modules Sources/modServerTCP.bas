@@ -394,7 +394,7 @@ Dim i As Integer, n As Integer, f As Integer
     
         Case "usagakarim"
                 
-                If Not FileExiste(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
+                If Not FileExist(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
                 Call HackingAttempt(Index, "Erreur : Vous avez tenté de surcharger le serveur")
                 Exit Sub
                 End If
@@ -448,7 +448,7 @@ Dim i As Integer, n As Integer, f As Integer
                     End If
                 Next i
                 
-                If Not FileExiste(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
+                If Not FileExist(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
                 Call HackingAttempt(Index, "Erreur : Vous avez tenté de surcharger le serveur")
                 Exit Sub
                 End If
