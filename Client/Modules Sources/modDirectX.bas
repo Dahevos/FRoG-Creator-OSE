@@ -117,57 +117,87 @@ Sub InitDirectX()
 End Sub
 Function LoadMaxSprite() As Long
 Dim i As Long
-    
-i = 0
-Do While FileExiste("\GFX\Sprites\Sprites" & i & ".png")
-LoadMaxSprite = i
-i = i + 1
-Loop
-
+    For i = 0 To 9999
+        If Not FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
+            If i < 1 Then
+                MsgBox "Erreur : Sprite introuvable !"
+                End
+            Else
+                LoadMaxSprite = i - 1
+            End If
+            Exit Function
+        Else
+            LoadMaxSprite = i + 1
+        End If
+    Next i
 End Function
 
 Function LoadMaxPaperdolls() As Long
 Dim i As Long
-    
-i = 0
-Do While FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png")
-LoadMaxPaperdolls = i
-i = i + 1
-Loop
-
+    For i = 0 To 9999
+        If Not FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
+            If i < 1 Then
+                MsgBox "Erreur : Paperdolls introuvable !"
+                End
+            Else
+                LoadMaxPaperdolls = i - 1
+            End If
+            Exit Function
+        Else
+            LoadMaxPaperdolls = i + 1
+        End If
+    Next i
 End Function
 
 Function LoadMaxSpells() As Long
 Dim i As Long
-    
-i = 0
-Do While FileExiste("\GFX\Spells\Spells" & i & ".png")
-LoadMaxSpells = i
-i = i + 1
-Loop
-
+    For i = 0 To 9999
+        If Not FileExiste("\GFX\Spells\Spells" & i & ".png") Then
+            If i < 1 Then
+                MsgBox "Erreur : Spells introuvable !"
+                End
+            Else
+                LoadMaxSpells = i - 1
+            End If
+            Exit Function
+        Else
+            LoadMaxSpells = i + 1
+        End If
+    Next i
 End Function
 
 Function LoadMaxBigSpells() As Long
 Dim i As Long
-
-i = 0
-Do While FileExiste("\GFX\BigSpells\BigSpells" & i & ".png")
-LoadMaxBigSpells = i
-i = i + 1
-Loop
-
+    For i = 0 To 9999
+        If Not FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
+            If i < 1 Then
+                MsgBox "Erreur : BigSpells introuvable !"
+                End
+            Else
+                LoadMaxBigSpells = i - 1
+            End If
+            Exit Function
+        Else
+            LoadMaxBigSpells = i + 1
+        End If
+    Next i
 End Function
 
 Function LoadMaxPet() As Long
 Dim i As Long
-
-i = 0
-Do While FileExiste("\GFX\Pets\Pet" & i & ".png")
-LoadMaxPet = i
-i = i + 1
-Loop
-    
+    For i = 0 To 9999
+        If Not FileExiste("\GFX\Pets\Pet" & i & ".png") Then
+            If i < 1 Then
+                MsgBox "Erreur : Famillier introuvable !"
+                End
+            Else
+                LoadMaxPet = i - 1
+            End If
+            Exit Function
+        Else
+             LoadMaxPet = i + 1
+        End If
+    Next i
     
 End Function
 

@@ -335,13 +335,9 @@ Dim i As Integer, n As Integer, f As Integer
                 
                 For i = 1 To Len(Name)
                     n = Asc(Mid$(Name, i, 1))
-                    If i >= 3 Then
+                    
                     If (n <= 65 And n >= 90) Or (n <= 97 And n >= 122) Or (n = 95) Or (n = 32) Or (n <= 48 And n >= 57) Then
                         Call PlainMsg(Index, "Nom invalide, il ne doit pas contenir des caractères spéciaux.", 1)
-                        Exit Sub
-                    End If
-                    Else
-                        Call PlainMsg(Index, "Votre pseudo est trop court", 1)
                         Exit Sub
                     End If
                 Next i
@@ -393,12 +389,6 @@ Dim i As Integer, n As Integer, f As Integer
             Exit Sub
     
         Case "usagakarim"
-                
-                If Not FileExiste(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
-                Call HackingAttempt(Index, "Erreur : Vous avez tenté de surcharger le serveur")
-                Exit Sub
-                End If
-                
                 CharNum = Val(Parse(1))
     
                 If CharNum < 1 Or CharNum > MAX_CHARS Then Call HackingAttempt(Index, "Numéro de personnage invalide!"): Exit Sub
@@ -447,12 +437,6 @@ Dim i As Integer, n As Integer, f As Integer
                         Exit Sub
                     End If
                 Next i
-                
-                If Not FileExiste(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini") Then
-                Call HackingAttempt(Index, "Erreur : Vous avez tenté de surcharger le serveur")
-                Exit Sub
-                End If
-                
                 
                 If CharNum < 1 Or CharNum > MAX_CHARS Then Call HackingAttempt(Index, "Numéros de personnage invalide!"): Exit Sub
             
