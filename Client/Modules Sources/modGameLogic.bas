@@ -161,6 +161,8 @@ Sub Main()
 Dim i As Long
 Dim Ending As String
 Dim t As Currency
+Dim max As Long
+
 On Error GoTo er:
     Rep_Theme = ReadINI("Themes", "Theme", App.Path & "\Themes.ini")
     dr = False
@@ -171,29 +173,42 @@ On Error GoTo er:
     If FileExiste("GFX\curseur.cur") Then Call frmMainMenu.imgl.ListImages.Add(1, , LoadPNG(App.Path & "\GFX\curseur.png")): frmMainMenu.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmMainMenu.MousePointer = 99: frmMirage.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmMirage.MousePointer = 99: frmNewChar.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmNewChar.MousePointer = 99
     frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
     
-    For i = 0 To 256
-        If Not FileExiste("GFX\Tiles" & i & ".png") Then ExtraSheets = i - 1: Exit For
-    Next i
+  '  For i = 0 To 256
+  '      If Not FileExiste("GFX\Tiles" & i & ".png") Then ExtraSheets = i - 1: Exit For
+  '  Next i
+    
+    i = 0
+    Do While FileExiste("GFX\Tiles" & i & ".png")
+    ExtraSheets = i
+    i = i + 1
+    Loop
+    i = 0
+    
     If ExtraSheets < 0 Then ExtraSheets = 0
     
     ReDim DD_TileSurf(0 To ExtraSheets) As DirectDrawSurface7
     ReDim DDSD_Tile(0 To ExtraSheets) As DDSURFACEDESC2
     ReDim TileFile(0 To ExtraSheets) As Boolean
     
-    ReDim DD_SpriteSurf(0 To LoadMaxSprite()) As DirectDrawSurface7
-    ReDim DDSD_Character(0 To LoadMaxSprite()) As DDSURFACEDESC2
+    max = LoadMaxSprite()
+    ReDim DD_SpriteSurf(0 To max) As DirectDrawSurface7
+    ReDim DDSD_Character(0 To max) As DDSURFACEDESC2
         
-    ReDim DD_PaperDollSurf(0 To LoadMaxPaperdolls()) As DirectDrawSurface7
-    ReDim DDSD_PaperDoll(0 To LoadMaxPaperdolls()) As DDSURFACEDESC2
+    max = LoadMaxPaperdolls()
+    ReDim DD_PaperDollSurf(0 To max) As DirectDrawSurface7
+    ReDim DDSD_PaperDoll(0 To max) As DDSURFACEDESC2
     
-    ReDim DD_SpellAnim(0 To LoadMaxSpells()) As DirectDrawSurface7
-    ReDim DDSD_SpellAnim(0 To LoadMaxSpells()) As DDSURFACEDESC2
+    max = LoadMaxSpells()
+    ReDim DD_SpellAnim(0 To max) As DirectDrawSurface7
+    ReDim DDSD_SpellAnim(0 To max) As DDSURFACEDESC2
     
-    ReDim DD_BigSpellAnim(0 To LoadMaxBigSpells()) As DirectDrawSurface7
-    ReDim DDSD_BigSpellAnim(0 To LoadMaxBigSpells()) As DDSURFACEDESC2
+    max = LoadMaxBigSpells()
+    ReDim DD_BigSpellAnim(0 To max) As DirectDrawSurface7
+    ReDim DDSD_BigSpellAnim(0 To max) As DDSURFACEDESC2
     
-    ReDim DD_PetsSurf(0 To LoadMaxPet) As DirectDrawSurface7
-    ReDim DDSD_Pets(0 To LoadMaxPet) As DDSURFACEDESC2
+    max = LoadMaxPet()
+    ReDim DD_PetsSurf(0 To max) As DirectDrawSurface7
+    ReDim DDSD_Pets(0 To max) As DDSURFACEDESC2
     
     
     ' Check if the maps directory is there, if its not make it
