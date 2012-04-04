@@ -4705,6 +4705,42 @@ Private Sub cbtr1_Change()
 
 End Sub
 
+Private Sub cbth_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtb_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtg_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtd_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbta_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtra_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtc_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtac_keypress(KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
+Private Sub cbtr_keypress(Index As Integer, KeyAscii As Integer)
+    KeyAscii = 0
+End Sub
+
 Private Sub chkLowEffect_Click()
     WriteINI "CONFIG", "LowEffect", chkLowEffect.Value, App.Path & "\Config\Account.ini"
 End Sub
@@ -4881,7 +4917,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5094,6 +5130,10 @@ Private Sub lstOnline_DblClick()
 End Sub
 
 Private Sub menu_equ_Click()
+If fra_info.Visible = True Then
+    fra_info.Visible = False
+Else
+    fra_fenetre.Visible = False
     Call ClearPic
     Call UpdateVisInv
     fra_info.Visible = True
@@ -5102,6 +5142,8 @@ Private Sub menu_equ_Click()
     If Picsprts.Height <= 32 Then Picture5.Top = 2160 Else Picture5.Top = 2640
     Call AffSurfPic(DD_SpriteSurf(Player(MyIndex).sprite), Picsprts, 0, 0)
     'Call BitBlt(Picsprts.hDC, 0, 0, PIC_X, PIC_Y * PIC_NPC1, Picturesprite.hDC, 3 * PIC_X, Val(Player(MyIndex).Sprite) * (PIC_Y * PIC_NPC1), SRCCOPY)
+End If
+
 End Sub
 
 Private Sub menu_guild_Click()
@@ -5150,6 +5192,10 @@ Private Sub menu_opt_Click()
 End Sub
 
 Private Sub menu_quete_Click()
+If frmMirage.picquete.Visible = True Then
+    frmMirage.picquete.Visible = False
+Else
+
     If Player(MyIndex).QueteEnCour > 0 Then
         Call ClearPic
         fra_fenetre.Visible = False
@@ -5159,8 +5205,10 @@ Private Sub menu_quete_Click()
         Call ClearPic
         fra_fenetre.Visible = False
         frmMirage.picquete.Visible = True
-        frmMirage.quetetxt.Text = "Pas de Quête est en cour..."
+        frmMirage.quetetxt.Text = "Pas de quête en cours..."
     End If
+    
+End If
 End Sub
 
 Private Sub menu_quit_Click()
@@ -5172,13 +5220,14 @@ If PicMenuQuitter.Visible Then PicMenuQuitter.Visible = False Else PicMenuQuitte
 End Sub
 
 Private Sub menu_sort_Click()
-Call ClearPic
+
 If fra_fenetre.Visible = True And picPlayerSpells.Visible = True Then
     fra_fenetre.Visible = False
 Else
     fra_fenetre.Visible = True
+    picPlayerSpells.Visible = True
 End If
-
+Call ClearPic
 Call SendData("spells" & SEP_CHAR & END_CHAR)
 End Sub
 
