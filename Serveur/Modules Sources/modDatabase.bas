@@ -140,81 +140,81 @@ Function FileExist(ByVal FileName As String, Optional dirapp As Boolean = True) 
     End If
 End Function
 
-Sub SavePlayer(ByVal index As Long)
+Sub SavePlayer(ByVal Index As Long)
 Dim FileName As String
 Dim i As Long
 Dim n As Long
 
-    FileName = App.Path & "\accounts\" & Trim$(Player(index).Login) & ".ini"
+    FileName = App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini"
     
-    Call PutVar(FileName, "GENERAL", "Login", Trim$(Player(index).Login))
-    Call PutVar(FileName, "GENERAL", "Password", Trim$(Player(index).Password))
+    Call PutVar(FileName, "GENERAL", "Login", Trim$(Player(Index).Login))
+    Call PutVar(FileName, "GENERAL", "Password", Trim$(Player(Index).Password))
 
     For i = 1 To MAX_CHARS
         ' General
-        Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(index).Char(i).Name))
-        Call PutVar(FileName, "CHAR" & i, "Class", STR$(Player(index).Char(i).Class))
-        Call PutVar(FileName, "CHAR" & i, "Sex", STR$(Player(index).Char(i).Sex))
-        Call PutVar(FileName, "CHAR" & i, "Sprite", STR$(Player(index).Char(i).sprite))
-        Call PutVar(FileName, "CHAR" & i, "Level", STR$(Player(index).Char(i).Level))
-        Call PutVar(FileName, "CHAR" & i, "Exp", STR$(Player(index).Char(i).Exp))
-        Call PutVar(FileName, "CHAR" & i, "Access", STR$(Player(index).Char(i).Access))
-        Call PutVar(FileName, "CHAR" & i, "PK", STR$(Player(index).Char(i).PK))
-        Call PutVar(FileName, "CHAR" & i, "Guild", Trim$(Player(index).Char(i).Guild))
-        Call PutVar(FileName, "CHAR" & i, "Guildaccess", STR$(Player(index).Char(i).Guildaccess))
+        Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(Index).Char(i).Name))
+        Call PutVar(FileName, "CHAR" & i, "Class", STR$(Player(Index).Char(i).Class))
+        Call PutVar(FileName, "CHAR" & i, "Sex", STR$(Player(Index).Char(i).Sex))
+        Call PutVar(FileName, "CHAR" & i, "Sprite", STR$(Player(Index).Char(i).sprite))
+        Call PutVar(FileName, "CHAR" & i, "Level", STR$(Player(Index).Char(i).Level))
+        Call PutVar(FileName, "CHAR" & i, "Exp", STR$(Player(Index).Char(i).Exp))
+        Call PutVar(FileName, "CHAR" & i, "Access", STR$(Player(Index).Char(i).Access))
+        Call PutVar(FileName, "CHAR" & i, "PK", STR$(Player(Index).Char(i).PK))
+        Call PutVar(FileName, "CHAR" & i, "Guild", Trim$(Player(Index).Char(i).Guild))
+        Call PutVar(FileName, "CHAR" & i, "Guildaccess", STR$(Player(Index).Char(i).Guildaccess))
 
         
         ' Vitals
-        Call PutVar(FileName, "CHAR" & i, "HP", STR$(Player(index).Char(i).HP))
-        Call PutVar(FileName, "CHAR" & i, "MP", STR$(Player(index).Char(i).MP))
-        Call PutVar(FileName, "CHAR" & i, "SP", STR$(Player(index).Char(i).SP))
+        Call PutVar(FileName, "CHAR" & i, "HP", STR$(Player(Index).Char(i).HP))
+        Call PutVar(FileName, "CHAR" & i, "MP", STR$(Player(Index).Char(i).MP))
+        Call PutVar(FileName, "CHAR" & i, "SP", STR$(Player(Index).Char(i).SP))
         
         ' Stats
-        Call PutVar(FileName, "CHAR" & i, "STR", STR$(Player(index).Char(i).STR))
-        Call PutVar(FileName, "CHAR" & i, "DEF", STR$(Player(index).Char(i).def))
-        Call PutVar(FileName, "CHAR" & i, "SPEED", STR$(Player(index).Char(i).Speed))
-        Call PutVar(FileName, "CHAR" & i, "MAGI", STR$(Player(index).Char(i).magi))
-        Call PutVar(FileName, "CHAR" & i, "POINTS", STR$(Player(index).Char(i).POINTS))
+        Call PutVar(FileName, "CHAR" & i, "STR", STR$(Player(Index).Char(i).STR))
+        Call PutVar(FileName, "CHAR" & i, "DEF", STR$(Player(Index).Char(i).def))
+        Call PutVar(FileName, "CHAR" & i, "SPEED", STR$(Player(Index).Char(i).Speed))
+        Call PutVar(FileName, "CHAR" & i, "MAGI", STR$(Player(Index).Char(i).magi))
+        Call PutVar(FileName, "CHAR" & i, "POINTS", STR$(Player(Index).Char(i).POINTS))
         
         ' Worn equipment
-        Call PutVar(FileName, "CHAR" & i, "ArmorSlot", STR$(Player(index).Char(i).ArmorSlot))
-        Call PutVar(FileName, "CHAR" & i, "WeaponSlot", STR$(Player(index).Char(i).WeaponSlot))
-        Call PutVar(FileName, "CHAR" & i, "HelmetSlot", STR$(Player(index).Char(i).HelmetSlot))
-        Call PutVar(FileName, "CHAR" & i, "ShieldSlot", STR$(Player(index).Char(i).ShieldSlot))
-        Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(index).Char(i).PetSlot))
+        Call PutVar(FileName, "CHAR" & i, "ArmorSlot", STR$(Player(Index).Char(i).ArmorSlot))
+        Call PutVar(FileName, "CHAR" & i, "WeaponSlot", STR$(Player(Index).Char(i).WeaponSlot))
+        Call PutVar(FileName, "CHAR" & i, "HelmetSlot", STR$(Player(Index).Char(i).HelmetSlot))
+        Call PutVar(FileName, "CHAR" & i, "ShieldSlot", STR$(Player(Index).Char(i).ShieldSlot))
+        Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(Index).Char(i).PetSlot))
         
-        Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(index).Char(i).pet.Dir))
-        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(index).Char(i).pet.X))
-        Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(index).Char(i).pet.Y))
+        Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(Index).Char(i).pet.Dir))
+        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.X))
+        Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.Y))
         
-        Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(index).Char(i).metier))
-        Call PutVar(FileName, "CHAR" & i, "MetierLvl", STR$(Player(index).Char(i).MetierLvl))
-        Call PutVar(FileName, "CHAR" & i, "MetierExp", STR$(Player(index).Char(i).MetierExp))
+        Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(Index).Char(i).metier))
+        Call PutVar(FileName, "CHAR" & i, "MetierLvl", STR$(Player(Index).Char(i).MetierLvl))
+        Call PutVar(FileName, "CHAR" & i, "MetierExp", STR$(Player(Index).Char(i).MetierExp))
         
         
         ' Check to make sure that they aren't on map 0, if so reset'm
-        If Player(index).Char(i).Map = 0 Then
-            Player(index).Char(i).Map = START_MAP
-            Player(index).Char(i).X = START_X
-            Player(index).Char(i).Y = START_Y
+        If Player(Index).Char(i).Map = 0 Then
+            Player(Index).Char(i).Map = START_MAP
+            Player(Index).Char(i).X = START_X
+            Player(Index).Char(i).Y = START_Y
         End If
             
         ' Position
-        Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(index).Char(i).Map))
-        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(index).Char(i).X))
-        Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(index).Char(i).Y))
-        Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(index).Char(i).Dir))
+        Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(Index).Char(i).Map))
+        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).X))
+        Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).Y))
+        Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(Index).Char(i).Dir))
         
         ' Inventory
         For n = 1 To MAX_INV
-            Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(index).Char(i).Inv(n).num))
-            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(index).Char(i).Inv(n).value))
-            Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(index).Char(i).Inv(n).Dur))
+            Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).num))
+            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
+            Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
         Next n
         
         ' Spells
         For n = 1 To MAX_PLAYER_SPELLS
-            Call PutVar(FileName, "CHAR" & i, "Spell" & n, STR$(Player(index).Char(i).Spell(n)))
+            Call PutVar(FileName, "CHAR" & i, "Spell" & n, STR$(Player(Index).Char(i).Spell(n)))
         Next n
         
         ' coffre
@@ -228,22 +228,22 @@ Dim n As Long
         Next cofr
         
         'Quete
-        Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(index).Char(i).QueteEnCour))
+        Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(Index).Char(i).QueteEnCour))
         For n = 1 To MAX_QUETES
             
-            Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(index).Char(i).QueteStatut(n)))
+            Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(Index).Char(i).QueteStatut(n)))
         Next
     Next i
 End Sub
 
-Sub LoadPlayer(ByVal index As Long, ByVal Name As String)
+Sub LoadPlayer(ByVal Index As Long, ByVal Name As String)
 Dim FileName As String
 Dim i As Long
 Dim n As Long
 On Error GoTo er:
-Call ClearPlayer(index)
+Call ClearPlayer(Index)
 
-With Player(index)
+With Player(Index)
     FileName = App.Path & "\accounts\" & Trim$(Name) & ".ini"
     .Login = GetVar(FileName, "GENERAL", "Login")
     .Password = GetVar(FileName, "GENERAL", "Password")
@@ -329,15 +329,15 @@ End With
 Exit Sub
 er:
 On Error Resume Next
-If index < 0 Or index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
+Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le chargement du joueur : " & Name, BrightRed, True)
-Call PlainMsg(index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
-Sub LoadPlayerQuete(ByVal index As Long)
+Sub LoadPlayerQuete(ByVal Index As Long)
 Dim FileName As String
-With Player(index)
+With Player(Index)
     FileName = App.Path & "\accounts\" & Trim$(.Login) & ".ini"
     .Char(.CharNum).QueteEnCour = Val(GetVar(FileName, "CHAR" & .CharNum, "QueteC"))
 End With
@@ -359,8 +359,8 @@ Dim FileName As String
     If FileExist(FileName) Then AccountExist = True Else AccountExist = False
 End Function
 
-Function CharExist(ByVal index As Long, ByVal CharNum As Long) As Boolean
-    If Trim$(Player(index).Char(CharNum).Name) <> vbNullString Then CharExist = True Else CharExist = False
+Function CharExist(ByVal Index As Long, ByVal CharNum As Long) As Boolean
+    If Trim$(Player(Index).Char(CharNum).Name) <> vbNullString Then CharExist = True Else CharExist = False
 End Function
 
 Function PasswordOK(ByVal Name As String, ByVal Password As String) As Boolean
@@ -382,24 +382,24 @@ Dim RightPassword As String
     End If
 End Function
 
-Sub AddAccount(ByVal index As Long, ByVal Name As String, ByVal Password As String)
+Sub AddAccount(ByVal Index As Long, ByVal Name As String, ByVal Password As String)
 Dim i As Long
 
-    Player(index).Login = Name
-    Player(index).Password = MD5String(Password)
+    Player(Index).Login = Name
+    Player(Index).Password = MD5String(Password)
     
     For i = 1 To MAX_CHARS
-        Call ClearChar(index, i)
+        Call ClearChar(Index, i)
     Next i
     
-    Call SavePlayer(index)
+    Call SavePlayer(Index)
 End Sub
 
-Sub AddChar(ByVal index As Long, ByVal Name As String, ByVal Sex As Byte, ByVal ClassNum As Byte, ByVal CharNum As Long)
+Sub AddChar(ByVal Index As Long, ByVal Name As String, ByVal Sex As Byte, ByVal ClassNum As Byte, ByVal CharNum As Long)
 Dim f As Long
 
-    If Trim$(Player(index).Char(CharNum).Name) = vbNullString Then
-    With Player(index)
+    If Trim$(Player(Index).Char(CharNum).Name) = vbNullString Then
+    With Player(Index)
         .CharNum = CharNum
         
         .Char(CharNum).Name = Name
@@ -426,44 +426,44 @@ Dim f As Long
         .Char(CharNum).X = Classe(ClassNum).X
         .Char(CharNum).Y = Classe(ClassNum).Y
             
-        .Char(CharNum).HP = GetPlayerMaxHP(index)
-        .Char(CharNum).MP = GetPlayerMaxMP(index)
-        .Char(CharNum).SP = GetPlayerMaxSP(index)
+        .Char(CharNum).HP = GetPlayerMaxHP(Index)
+        .Char(CharNum).MP = GetPlayerMaxMP(Index)
+        .Char(CharNum).SP = GetPlayerMaxSP(Index)
         
         'Objet de classe
         Dim ItemNum As Long
         Dim i As Long
             ItemNum = Val(GetVar(App.Path & "\" & "Classes\Class" & ClassNum & ".ini", "STARTUP", "Weapon"))
             If item(ItemNum).type = ITEM_TYPE_WEAPON Then
-                i = FindOpenInvSlot(index, ItemNum)
-                Call SetPlayerInvItemNum(index, i, ItemNum)
-                Call SetPlayerInvItemValue(index, i, GetPlayerInvItemValue(index, i) + 1)
-                Call SetPlayerInvItemDur(index, i, item(ItemNum).data1)
-                Call SetPlayerWeaponSlot(index, i)
+                i = FindOpenInvSlot(Index, ItemNum)
+                Call SetPlayerInvItemNum(Index, i, ItemNum)
+                Call SetPlayerInvItemValue(Index, i, GetPlayerInvItemValue(Index, i) + 1)
+                Call SetPlayerInvItemDur(Index, i, item(ItemNum).data1)
+                Call SetPlayerWeaponSlot(Index, i)
             End If
             ItemNum = Val(GetVar(App.Path & "\" & "Classes\Class" & ClassNum & ".ini", "STARTUP", "Shield"))
             If item(ItemNum).type = ITEM_TYPE_SHIELD Then
-                i = FindOpenInvSlot(index, ItemNum)
-                Call SetPlayerInvItemNum(index, i, ItemNum)
-                Call SetPlayerInvItemValue(index, i, GetPlayerInvItemValue(index, i) + 1)
-                Call SetPlayerInvItemDur(index, i, item(ItemNum).data1)
-                Call SetPlayerShieldSlot(index, i)
+                i = FindOpenInvSlot(Index, ItemNum)
+                Call SetPlayerInvItemNum(Index, i, ItemNum)
+                Call SetPlayerInvItemValue(Index, i, GetPlayerInvItemValue(Index, i) + 1)
+                Call SetPlayerInvItemDur(Index, i, item(ItemNum).data1)
+                Call SetPlayerShieldSlot(Index, i)
             End If
             ItemNum = Val(GetVar(App.Path & "\" & "Classes\Class" & ClassNum & ".ini", "STARTUP", "Armor"))
             If item(ItemNum).type = ITEM_TYPE_ARMOR Then
-                i = FindOpenInvSlot(index, ItemNum)
-                Call SetPlayerInvItemNum(index, i, ItemNum)
-                Call SetPlayerInvItemValue(index, i, GetPlayerInvItemValue(index, i) + 1)
-                Call SetPlayerInvItemDur(index, i, item(ItemNum).data1)
-                Call SetPlayerArmorSlot(index, i)
+                i = FindOpenInvSlot(Index, ItemNum)
+                Call SetPlayerInvItemNum(Index, i, ItemNum)
+                Call SetPlayerInvItemValue(Index, i, GetPlayerInvItemValue(Index, i) + 1)
+                Call SetPlayerInvItemDur(Index, i, item(ItemNum).data1)
+                Call SetPlayerArmorSlot(Index, i)
             End If
             ItemNum = Val(GetVar(App.Path & "\" & "Classes\Class" & ClassNum & ".ini", "STARTUP", "Helmet"))
             If item(ItemNum).type = ITEM_TYPE_HELMET Then
-                i = FindOpenInvSlot(index, ItemNum)
-                Call SetPlayerInvItemNum(index, i, ItemNum)
-                Call SetPlayerInvItemValue(index, i, GetPlayerInvItemValue(index, i) + 1)
-                Call SetPlayerInvItemDur(index, i, item(ItemNum).data1)
-                Call SetPlayerHelmetSlot(index, i)
+                i = FindOpenInvSlot(Index, ItemNum)
+                Call SetPlayerInvItemNum(Index, i, ItemNum)
+                Call SetPlayerInvItemValue(Index, i, GetPlayerInvItemValue(Index, i) + 1)
+                Call SetPlayerInvItemDur(Index, i, item(ItemNum).data1)
+                Call SetPlayerHelmetSlot(Index, i)
             End If
             
         ' Append name to file
@@ -472,20 +472,20 @@ Dim f As Long
             Print #f, Name
         Close #f
         
-        Call SavePlayer(index)
+        Call SavePlayer(Index)
             
         Exit Sub
     End With
     End If
 End Sub
 
-Sub DelChar(ByVal index As Long, ByVal CharNum As Long)
+Sub DelChar(ByVal Index As Long, ByVal CharNum As Long)
 Dim f1 As Long, f2 As Long
 Dim s As String
 
-    Call DeleteName(Player(index).Char(CharNum).Name)
-    Call ClearChar(index, CharNum)
-    Call SavePlayer(index)
+    Call DeleteName(Player(Index).Char(CharNum).Name)
+    Call ClearChar(Index, CharNum)
+    Call SavePlayer(Index)
 End Sub
 
 Function FindChar(ByVal Name As String) As Boolean
