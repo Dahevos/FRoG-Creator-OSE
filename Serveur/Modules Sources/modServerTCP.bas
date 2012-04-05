@@ -333,15 +333,15 @@ Dim i As Integer, n As Integer, f As Integer
                 Name = Parse(1)
                 Password = Parse(2)
                 
+                If Len(Name) < 3 Then
+                Call PlainMsg(Index, "Votre pseudo est trop court", 3)
+                Exit Sub
+                End If
+                
                 For i = 1 To Len(Name)
                     n = Asc(Mid$(Name, i, 1))
-                    If i >= 3 Then
                     If (n <= 65 And n >= 90) Or (n <= 97 And n >= 122) Or (n = 95) Or (n = 32) Or (n <= 48 And n >= 57) Then
-                        Call PlainMsg(Index, "Nom invalide, il ne doit pas contenir des caractères spéciaux.", 1)
-                        Exit Sub
-                    End If
-                    Else
-                        Call PlainMsg(Index, "Votre pseudo est trop court", 1)
+                        Call PlainMsg(Index, "Nom invalide, il ne doit pas contenir des caractères spéciaux.", 3)
                         Exit Sub
                     End If
                 Next i
