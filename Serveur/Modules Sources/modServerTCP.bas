@@ -325,7 +325,7 @@ Dim i As Integer, n As Integer, f As Integer
     On Error GoTo er:
     ' Handle Data
     Parse = Split(data, SEP_CHAR)
-    Call MsgBox(LCase$(Parse(0)))
+
     Select Case LCase$(Parse(0))
     
         Case "logination"
