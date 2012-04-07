@@ -42,7 +42,7 @@ Begin VB.Form frmMainMenu
          ScaleHeight     =   64
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   64
-         TabIndex        =   31
+         TabIndex        =   29
          Top             =   1680
          Width           =   960
       End
@@ -72,7 +72,7 @@ Begin VB.Form frmMainMenu
          Caption         =   "Label6"
          Height          =   255
          Left            =   1560
-         TabIndex        =   30
+         TabIndex        =   28
          Top             =   2280
          Width           =   1335
       End
@@ -81,7 +81,7 @@ Begin VB.Form frmMainMenu
          Caption         =   "Label6"
          Height          =   255
          Left            =   1560
-         TabIndex        =   29
+         TabIndex        =   27
          Top             =   2040
          Width           =   1335
       End
@@ -90,7 +90,7 @@ Begin VB.Form frmMainMenu
          Caption         =   "Label6"
          Height          =   255
          Left            =   1560
-         TabIndex        =   28
+         TabIndex        =   26
          Top             =   1800
          Width           =   1335
       End
@@ -139,23 +139,6 @@ Begin VB.Form frmMainMenu
          Top             =   0
          Width           =   3390
       End
-   End
-   Begin VB.CommandButton Cmd640 
-      Caption         =   "640x480"
-      Height          =   255
-      Left            =   120
-      TabIndex        =   27
-      Top             =   5760
-      Width           =   1095
-   End
-   Begin VB.CommandButton Cmd800 
-      Caption         =   "Original"
-      Enabled         =   0   'False
-      Height          =   255
-      Left            =   120
-      TabIndex        =   26
-      Top             =   5520
-      Width           =   1095
    End
    Begin MSComctlLib.ImageList imgl 
       Left            =   9000
@@ -584,6 +567,10 @@ Dim Ending As String
     Call iniOptTouche
     charSelectNum = 1
     Check1.Value = Val(ReadINI("CONFIG", "Music", App.Path & "\Config\Client.ini"))
+    
+    If getreselotionY < 768 Then
+    notebook = True
+    End If
     
     For i = 1 To 4
         If i = 1 Then Ending = ".gif"

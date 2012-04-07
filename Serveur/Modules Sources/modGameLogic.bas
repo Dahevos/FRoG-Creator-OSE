@@ -2745,7 +2745,8 @@ End Sub
 
 Sub LeftGame(ByVal Index As Long)
 Dim n As Long
-    
+
+If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
     On Error GoTo er:
         
     If bouclier(Index) Then bouclier(Index) = False: BouclierT(Index) = 0

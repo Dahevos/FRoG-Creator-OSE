@@ -144,7 +144,8 @@ Sub SavePlayer(ByVal Index As Long)
 Dim FileName As String
 Dim i As Long
 Dim n As Long
-
+  If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
+    
     FileName = App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini"
     
     Call PutVar(FileName, "GENERAL", "Login", Trim$(Player(Index).Login))
@@ -234,6 +235,7 @@ Dim n As Long
             Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(Index).Char(i).QueteStatut(n)))
         Next
     Next i
+    
 End Sub
 
 Sub LoadPlayer(ByVal Index As Long, ByVal Name As String)
@@ -241,6 +243,8 @@ Dim FileName As String
 Dim i As Long
 Dim n As Long
 On Error GoTo er:
+
+ If Len(Player(Index).Login) <= 1 Then Exit Sub
 Call ClearPlayer(Index)
 
 With Player(Index)
@@ -337,6 +341,7 @@ End Sub
 
 Sub LoadPlayerQuete(ByVal Index As Long)
 Dim FileName As String
+ If Len(Player(Index).Login) = 0 Then Exit Sub
 With Player(Index)
     FileName = App.Path & "\accounts\" & Trim$(.Login) & ".ini"
     .Char(.CharNum).QueteEnCour = Val(GetVar(FileName, "CHAR" & .CharNum, "QueteC"))

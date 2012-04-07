@@ -321,7 +321,8 @@ Dim Sex As Long
 Dim Class As Long
 Dim CharNum As Long
 Dim i As Integer, n As Integer, f As Integer
-    
+
+Player(Index).sync = True
     On Error GoTo er:
     ' Handle Data
     Parse = Split(data, SEP_CHAR)
@@ -548,7 +549,10 @@ Dim i As Integer, n As Integer, f As Integer
                 Call PlainMsg(Index, "Le personnage a été effacé!", 5)
                 Call IBMsg("Le personnage numéros " & CharNum & " a été suprimé du compte de " & GetPlayerLogin(Index) & ".", IBCJoueur)
             Exit Sub
-        
+         
+         Case "sync"
+                Player(Index).sync = True
+         Exit Sub
     End Select
     
     Call HackingAttempt(Index, "Erreur : Aucun Envoie ou envoie erroné(" & Parse(0) & ")")
@@ -599,6 +603,7 @@ Dim IDur As Long
 Dim PChar As String * 1
 
 On Error GoTo er:
+Player(Index).sync = True
     ' Handle Data
     Parse = Split(data, SEP_CHAR)
     Parse(0) = LCase$(Parse(0))
@@ -3304,7 +3309,13 @@ On Error GoTo er:
                     Call PlayerWarp(Index, Val(Parse(1)), GetPlayerX(Index), GetPlayerY(Index))
                     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_COFFRE Or Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_BLOCKED Or Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_SIGN Or Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_BLOCK_TOIT Then Call Debloque(Index)
                     Exit Sub
+                    
+                Case "sync"
+                Player(Index).sync = True
+                Exit Sub
+            
             End Select
+            
     End Select
 
 Call HackingAttempt(Index, "Erreur : Aucun Envoie ou envoie erroné(" & Parse(0) & ")")
@@ -3334,14 +3345,21 @@ End Sub
 Sub CloseSocket(ByVal Index As Long)
     ' Make sure player was/is playing the game, and if so, save'm.
     If Index > 0 Then
-        Call SavePlayer(Index)
-        Call LeftGame(Index)
-    
+       ' If frmServer.Socket(Index).State = 7 Then
+        
+        If Player(Index).sync = False Then
+        'Call SavePlayer(Index)
+        
+        'Call LeftGame(Index)
         Call TextAdd(frmServer.txtText(0), "Connexion de " & GetPlayerIP(Index) & " est terminer.", True)
         
         frmServer.Socket(Index).Close
             
         Call UpdateCaption
+        
+        End If
+        'End If
+        
     End If
 End Sub
 
@@ -3834,6 +3852,7 @@ Dim i As Long
 End Sub
 
 Sub SendLeftGame(ByVal Index As Long)
+
 Dim Packet As String
     Packet = "PLAYERDATA" & SEP_CHAR
     Packet = Packet & Index & SEP_CHAR

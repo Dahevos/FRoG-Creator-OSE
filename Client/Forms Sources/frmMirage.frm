@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
 Begin VB.Form frmMirage 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  'Fixed Single
@@ -1842,8 +1842,8 @@ Begin VB.Form frmMirage
       Top             =   0
    End
    Begin MSWinsockLib.Winsock Socket 
-      Left            =   8400
-      Top             =   360
+      Left            =   7800
+      Top             =   0
       _ExtentX        =   741
       _ExtentY        =   741
       _Version        =   393216
