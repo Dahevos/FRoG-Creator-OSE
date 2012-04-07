@@ -3345,16 +3345,18 @@ End Sub
 Sub CloseSocket(ByVal Index As Long)
     ' Make sure player was/is playing the game, and if so, save'm.
     If Index > 0 Then
-       ' If frmServer.Socket(Index).State = 7 Then
+
         
         If Player(Index).sync = False Then
-        'Call SavePlayer(Index)
         
-        'Call LeftGame(Index)
         Call TextAdd(frmServer.txtText(0), "Connexion de " & GetPlayerIP(Index) & " est terminer.", True)
         
+        'Call SavePlayer(Index)
+        
+        Call LeftGame(Index)
+        
         frmServer.Socket(Index).Close
-            
+        
         Call UpdateCaption
         
         End If

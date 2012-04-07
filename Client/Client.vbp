@@ -39,6 +39,7 @@ Form=Forms Sources\frmsplash.frm
 Form=Forms Sources\frmFixItem.frm
 Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
 Form=Forms Sources\frmcraft.frm
+Module=modXp; Modules Sources\modXp.bas
 IconForm="frmMirage"
 Startup="Sub Main"
 HelpFile=""

@@ -2747,6 +2747,7 @@ Sub LeftGame(ByVal Index As Long)
 Dim n As Long
 
 If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
+
     On Error GoTo er:
         
     If bouclier(Index) Then bouclier(Index) = False: BouclierT(Index) = 0
@@ -2803,14 +2804,15 @@ If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
         'Else
         '    Player(Index).Char(Player(Index).CharNum).QueteEnCour = 0
         'End If
+        
         Call SavePlayer(Index)
         
         Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " est déconnecté de " & GAME_NAME & ".", True)
         Call SendLeftGame(Index)
         'Call RemovePLR
-        'For N = 1 To MAX_PLAYERS
-        '   Call ShowPLR(N)
-        'Next N
+        For n = 1 To MAX_PLAYERS
+           Call ShowPLR(n)
+        Next n
     End If
     Call ClearPlayer(Index)
     Call SendOnlineList

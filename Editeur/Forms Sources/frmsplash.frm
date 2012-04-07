@@ -1,6 +1,5 @@
 VERSION 5.00
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{463051F7-93F6-433B-8C04-1B5EF7493179}#1.0#0"; "WinXPCEngine.ocx"
 Begin VB.Form frmsplash 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   0  'None
@@ -26,28 +25,6 @@ Begin VB.Form frmsplash
       _ExtentY        =   661
       _Version        =   393216
       Appearance      =   1
-   End
-   Begin WinXPC_Engine.WindowsXPC WindowsXPC1 
-      Left            =   0
-      Top             =   0
-      _ExtentX        =   6588
-      _ExtentY        =   1085
-      ColorScheme     =   2
-      ListBoxControl  =   0   'False
-      PictureControl  =   0   'False
-      FrameControl    =   0   'False
-      ButtonControl   =   0   'False
-      CheckControl    =   0   'False
-      OptionControl   =   0   'False
-      ComboBoxControl =   0   'False
-      DriveListBoxControl=   0   'False
-      TabStripControl =   0   'False
-      StatusBarControl=   0   'False
-      SliderControl   =   0   'False
-      ImageComboControl=   0   'False
-      ListViewControl =   0   'False
-      FileListBoxControl=   0   'False
-      DirListBoxControl=   0   'False
    End
    Begin VB.Label lblStatus 
       Alignment       =   2  'Center
@@ -96,6 +73,3 @@ Private Sub lblStatus_Click()
     End If
 End Sub
 
-Private Sub Form_Load()
-WindowsXPC1.InitSubClassing
-End Sub

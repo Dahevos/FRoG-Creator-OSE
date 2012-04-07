@@ -39,6 +39,7 @@ Class=clsHdVChild; Classes Sources\clsHdVChild.cls
 Class=clsMD5; Classes Sources\clsMD5.cls
 Module=modMD5; Modules Sources\modMD5.bas
 Module=ModMetier; Modules Sources\ModMetier.bas
+Module=modXp; Modules Sources\modXp.bas
 IconForm="frmServer"
 Startup="frmLoad"
 HelpFile=""

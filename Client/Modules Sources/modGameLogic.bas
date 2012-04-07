@@ -164,6 +164,7 @@ Dim t As Currency
 Dim max As Long
 
 On Error GoTo er:
+    Call InitXpStyle
     Rep_Theme = ReadINI("Themes", "Theme", App.Path & "\Themes.ini")
     dr = False
     frmsplash.Visible = True
@@ -467,6 +468,12 @@ End Sub
 Sub GameInit()
 Dim i As Integer, x As Integer
     Call StopMidi
+    
+    If notebook Then
+    frmMirage.Top = frmMainMenu.Top
+    frmMirage.Left = frmMainMenu.Left
+    End If
+    DoEvents
     frmMirage.Visible = True
     frmMainMenu.Visible = False
     frmsplash.Visible = False

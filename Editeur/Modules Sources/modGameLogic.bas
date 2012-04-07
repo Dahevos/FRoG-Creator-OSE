@@ -265,9 +265,10 @@ Dim Ending As String
 On Error GoTo er:
 
     If FileExiste("r.exe") Then Kill App.Path & "\r.exe"
-    
+    Call InitXpStyle
     Call EcrireEtat(vbNullString)
     Call EcrireEtat("Démarrage du logiciel")
+    
     save = 0
     VZoom = 3
     ScreenDC = False
@@ -2820,6 +2821,7 @@ If HORS_LIGNE < 1 Then Exit Sub
     PIC_NPC2 = Val(ReadINI("INFO", "PIC_NPC2", App.Path & "\config.ini"))
     'MAX_PLAYER_SPELLS = Val(ReadINI("INFO", "Maxpspel", App.Path & "\Editeur\config.ini"))
     ReDim Pets(1 To MAX_PETS) As PetsRec
+    ReDim recette(1 To MAX_RECETTE) As RecetteRec
     ReDim Metier(1 To MAX_METIER) As MetierRec
     ReDim Class(0 To Max_Classes) As ClassRec
     ReDim quete(1 To MAX_QUETES) As QueteRec

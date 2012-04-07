@@ -21,18 +21,18 @@ Dim szReturn As String  ' Return default value if not found
   
     sSpaces = Space$(5000)
   
-    Call GetPrivateProfileString(Header, Var, szReturn, sSpaces, Len(sSpaces), File)
+    Call GetPrivateProfileString$(Header, Var, szReturn, sSpaces, Len(sSpaces), File)
   
     GetVar = RTrim$(sSpaces)
     GetVar = Left$(GetVar, Len(GetVar) - 1)
 End Function
 
 Sub PutVar(File As String, Header As String, Var As String, value As String)
-    Call WritePrivateProfileString(Header, Var, value, File)
+    Call WritePrivateProfileString$(Header, Var, value, File)
 End Sub
 
 Public Sub WriteINI(INISection As String, INIKey As String, INIValue As String, INIFile As String)
-    Call WritePrivateProfileString(INISection, INIKey, INIValue, INIFile)
+    Call WritePrivateProfileString$(INISection, INIKey, INIValue, INIFile)
 End Sub
 
 Public Function ReadINI(INISection As String, INIKey As String, INIFile As String) As String
@@ -151,7 +151,7 @@ Dim n As Long
     Call PutVar(FileName, "GENERAL", "Login", Trim$(Player(Index).Login))
     Call PutVar(FileName, "GENERAL", "Password", Trim$(Player(Index).Password))
 
-    For i = 1 To MAX_CHARS
+    For i = 1 To 3
         ' General
         Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(Index).Char(i).Name))
         Call PutVar(FileName, "CHAR" & i, "Class", STR$(Player(Index).Char(i).Class))
@@ -219,7 +219,7 @@ Dim n As Long
         Next n
         
         ' coffre
-        Dim cofr As Long
+        Dim cofr As Byte
         For cofr = 1 To 30
             If Val(GetVar(FileName, "CHAR" & i, "cofitemnum" & cofr)) <= 0 Then
                 Call PutVar(FileName, "CHAR" & i, "cofitemnum" & cofr, " 0")

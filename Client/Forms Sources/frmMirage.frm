@@ -1896,6 +1896,11 @@ Begin VB.Form frmMirage
       Top             =   0
       Visible         =   0   'False
       Width           =   11040
+      Begin VB.Timer sync 
+         Interval        =   5000
+         Left            =   6720
+         Top             =   0
+      End
       Begin VB.Frame fra_fenetre 
          BackColor       =   &H00004080&
          BorderStyle     =   0  'None
@@ -4907,6 +4912,7 @@ Dim i As Long, x As Integer
 Dim Ending As String
 Dim Qq As Long
 
+        
     For i = 1 To 4
         If i = 1 Then Ending = ".gif"
         If i = 2 Then Ending = ".jpg"
@@ -5808,6 +5814,10 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
     Call CheckInput(1, KeyCode, Shift)
     On Error Resume Next
     txtMyTextBox.SetFocus
+End Sub
+
+Private Sub sync_Timer()
+SendData ("sync" & SEP_CHAR & END_CHAR)
 End Sub
 
 Private Sub Timer1_Timer()
