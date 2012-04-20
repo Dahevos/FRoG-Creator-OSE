@@ -25,6 +25,7 @@ Begin VB.Form frmPlayerChat
       _ExtentX        =   13150
       _ExtentY        =   9551
       _Version        =   393217
+      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       TextRTF         =   $"frmPlayerChat.frx":B6FEA
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -108,7 +109,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
         txtChat.SelText = s
         txtChat.SelStart = Len(txtChat.Text) - 1
                 
-        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & SEP_CHAR & END_CHAR)
+        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & END_CHAR)
         txtSay.Text = vbNullString
     End If
 End Sub
@@ -146,7 +147,7 @@ dry = 0
 End Sub
 
 Private Sub Label2_Click()
-    Call SendData("qchat" & SEP_CHAR & END_CHAR)
+    Call SendData("qchat" & END_CHAR)
 End Sub
 
 Private Sub txtChat_GotFocus()
@@ -187,7 +188,7 @@ Private Sub txtSay_KeyPress(KeyAscii As Integer)
         txtChat.SelText = s
         txtChat.SelStart = Len(txtChat.Text) - 1
         
-        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & SEP_CHAR & END_CHAR)
+        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & END_CHAR)
         txtSay.Text = vbNullString
     End If
 End Sub

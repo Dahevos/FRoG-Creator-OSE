@@ -86,7 +86,7 @@ Option Explicit
 Private Sub Command1_Click()
 Dim Packet As String
 
-Packet = "MAKEGUILD" & SEP_CHAR & txtName.Text & SEP_CHAR & txtGuild.Text & SEP_CHAR & END_CHAR
+Packet = "MAKEGUILD" & SEP_CHAR & txtName.Text & SEP_CHAR & txtGuild.Text & END_CHAR
 
 Call SendData(Packet)
 Unload Me

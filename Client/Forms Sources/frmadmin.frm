@@ -71,25 +71,25 @@ Begin VB.Form frmadmin
       TabCaption(1)   =   "Commande"
       TabPicture(1)   =   "frmadmin.frx":17D46
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label7"
+      Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame5"
+      Tab(1).Control(1)=   "Frame10"
       Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Frame9"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Frame10"
+      Tab(1).Control(3)=   "Frame5"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Frame3"
+      Tab(1).Control(4)=   "Label7"
       Tab(1).Control(4).Enabled=   0   'False
       Tab(1).ControlCount=   5
       TabCaption(2)   =   "Aide"
       TabPicture(2)   =   "frmadmin.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label16"
+      Tab(2).Control(0)=   "Frame8"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Frame8"
+      Tab(2).Control(2)=   "Label16"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       Begin VB.Frame Frame11 
@@ -1271,7 +1271,7 @@ End Sub
 
 Private Sub Command15_Click()
 If GetPlayerAccess(MyIndex) >= ADMIN_MAPPER Then
-    Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+    Call SendData("mapreport" & END_CHAR)
 Else
     Call AddText("Vous n'êtes pas autorisé à faire cette action.", BrightRed)
 End If

@@ -2282,9 +2282,9 @@ Next xx
 
     Trade(Index).Selected = YES
     
-    shopType.Left = label(Index).Left
-    shopType.Height = label(Index).Height
-    shopType.Width = label(Index).Width
+    shopType.Left = Label(Index).Left
+    shopType.Height = Label(Index).Height
+    shopType.Width = Label(Index).Width
     Trade(Index).SelectedItem = 1
     Call ItemSelected(1, Index)
     Call AffObj
@@ -2296,7 +2296,7 @@ End Sub
 
 Private Sub Label7_Click()
     If frmFixItem.Visible Then Call Unload(frmFixItem)
-    Call SendData("LEAVESHOP" & SEP_CHAR & NumShop & SEP_CHAR & END_CHAR)
+    Call SendData("LEAVESHOP" & SEP_CHAR & NumShop & END_CHAR)
     Unload Me
 End Sub
 
@@ -2308,7 +2308,7 @@ For i = 1 To 6
     If Trade(i).Selected = YES Then Selected = i: Exit For
 Next i
 
-    If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("traderequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & SEP_CHAR & END_CHAR)
+    If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("traderequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & END_CHAR)
 End Sub
 
 Private Sub lblVendre_Click()
@@ -2319,7 +2319,7 @@ For i = 1 To 6
     If Trade(i).Selected = YES Then Selected = i: Exit For
 Next i
 
-    If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("vendrerequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & SEP_CHAR & END_CHAR)
+    If Trade(Selected).Items(Trade(Selected).SelectedItem).ItemGetNum > 0 Then Call SendData("vendrerequest" & SEP_CHAR & Selected & SEP_CHAR & Trade(Selected).SelectedItem & END_CHAR)
 
 End Sub
 
@@ -2341,7 +2341,7 @@ End Sub
 
 Private Sub picCancel_Click()
     If frmFixItem.Visible Then Call Unload(frmFixItem)
-    If NumShop > 0 And NumShop < MAX_SHOPS Then Call SendData("LEAVESHOP" & SEP_CHAR & NumShop & SEP_CHAR & END_CHAR) 'Call PlayerMsg(Shop(NumShop).LeaveSay, MyIndex)
+    If NumShop > 0 And NumShop < MAX_SHOPS Then Call SendData("LEAVESHOP" & SEP_CHAR & NumShop & END_CHAR) 'Call PlayerMsg(Shop(NumShop).LeaveSay, MyIndex)
     Unload Me
 End Sub
 

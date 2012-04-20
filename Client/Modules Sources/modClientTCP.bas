@@ -949,7 +949,7 @@ mont:
                 ' Load the map
                 'Call LoadMap(X)
                 
-                Call SendData("needmap" & SEP_CHAR & "no" & SEP_CHAR & END_CHAR)
+                Call SendData("needmap" & SEP_CHAR & "no" & END_CHAR)
                 
                 Call InitPano(x)
                 Call InitNightAndFog(x)
@@ -959,7 +959,7 @@ mont:
         
         ' Either the revisions didn't match or we dont have the map, so we need it
         OldMap = GetPlayerMap(MyIndex)
-        Call SendData("needmap" & SEP_CHAR & "yes" & SEP_CHAR & END_CHAR)
+        Call SendData("needmap" & SEP_CHAR & "yes" & END_CHAR)
         Exit Sub
     End If
     
@@ -1233,13 +1233,13 @@ mont:
     
     If (LCase$(Parse(0)) = "newmetier") Then
         i = MsgBox("Voulez vous apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
-        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & END_CHAR)
         Exit Sub
     End If
     
     If (LCase$(Parse(0)) = "remplacemetier") Then
         i = MsgBox("Voulez vous oublier votre métier et apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
-        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & END_CHAR)
         Exit Sub
     End If
     
@@ -1256,7 +1256,7 @@ mont:
     ' ::::::::::::
     If (LCase$(Parse(0)) = "guildtraineevbyesno") Then
         i = MsgBox("Voulez vous rentré dans la guilde? " & GetPlayerGuild(Val(Parse(2))), vbYesNo, GAME_NAME)
-        If i = vbYes Then SendData ("guildtrainee" & SEP_CHAR & Parse(1) & SEP_CHAR & Val(Parse(2)) & SEP_CHAR & END_CHAR)
+        If i = vbYes Then SendData ("guildtrainee" & SEP_CHAR & Parse(1) & SEP_CHAR & Val(Parse(2)) & END_CHAR)
         Exit Sub
     End If
     
@@ -1418,7 +1418,7 @@ mont:
     ' ::::::::::::::::::::::::
     If (LCase$(Parse(0)) = "setquetecour") Then
         Player(MyIndex).QueteEnCour = Val(Parse(1))
-        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
     End If
     
     If (LCase$(Parse(0)) = "quetecour") Then
@@ -1807,9 +1807,9 @@ mont:
     If LCase$(Parse(0)) = "spritechange" Then
         If Val(Parse(1)) = 1 Then
             i = MsgBox("Êtes-vous sur de vouloir acheter ce sprite?", 4, "Achat de Sprite")
-            If i = 6 Then Call SendData("buysprite" & SEP_CHAR & END_CHAR)
+            If i = 6 Then Call SendData("buysprite" & END_CHAR)
         Else
-            Call SendData("buysprite" & SEP_CHAR & END_CHAR)
+            Call SendData("buysprite" & END_CHAR)
         End If
         Exit Sub
     End If
@@ -1850,7 +1850,7 @@ mont:
     ' :::::::::::::::::::
     ' :: Prompt Packet ::
     ' :::::::::::::::::::
-    If LCase$(Parse(0)) = "prompt" Then i = MsgBox(Trim$(Parse(1)), vbYesNo): Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & SEP_CHAR & END_CHAR): Exit Sub
+    If LCase$(Parse(0)) = "prompt" Then i = MsgBox(Trim$(Parse(1)), vbYesNo): Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & END_CHAR): Exit Sub
     
     If (LCase$(Parse(0)) = "updateemoticon") Then
         n = Val(Parse(1))
@@ -2144,126 +2144,126 @@ End Sub
 Sub SendNewAccount(ByVal name As String, ByVal Password As String)
 Dim Packet As String
 
-    Packet = "newfaccountied" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & END_CHAR
+    Packet = "newfaccountied" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDelAccount(ByVal name As String, ByVal Password As String)
 Dim Packet As String
     
-    Packet = "delimaccounted" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & END_CHAR
+    Packet = "delimaccounted" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendLogin(ByVal name As String, ByVal Password As String)
 Dim Packet As String
 
-    Packet = "logination" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & App.Major & SEP_CHAR & App.Minor & SEP_CHAR & App.Revision & SEP_CHAR & SEC_CODE1 & SEP_CHAR & SEC_CODE2 & SEP_CHAR & SEC_CODE3 & SEP_CHAR & SEC_CODE4 & SEP_CHAR & END_CHAR
+    Packet = "logination" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & App.Major & SEP_CHAR & App.Minor & SEP_CHAR & App.Revision & SEP_CHAR & SEC_CODE1 & SEP_CHAR & SEC_CODE2 & SEP_CHAR & SEC_CODE3 & SEP_CHAR & SEC_CODE4 & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendAddChar(ByVal name As String, ByVal Sex As Long, ByVal ClassNum As Long, ByVal Slot As Long)
 Dim Packet As String
 
-    Packet = "addachara" & SEP_CHAR & Trim$(name) & SEP_CHAR & Sex & SEP_CHAR & ClassNum & SEP_CHAR & Slot & SEP_CHAR & END_CHAR
+    Packet = "addachara" & SEP_CHAR & Trim$(name) & SEP_CHAR & Sex & SEP_CHAR & ClassNum & SEP_CHAR & Slot & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDelChar(ByVal Slot As Long)
 Dim Packet As String
     
-    Packet = "delimbocharu" & SEP_CHAR & Slot & SEP_CHAR & END_CHAR
+    Packet = "delimbocharu" & SEP_CHAR & Slot & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendGetClasses()
 Dim Packet As String
 
-    Packet = "gatglasses" & SEP_CHAR & END_CHAR
+    Packet = "gatglasses" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendUseChar(ByVal CharSlot As Long)
 Dim Packet As String
 
-    Packet = "usagakarim" & SEP_CHAR & CharSlot & SEP_CHAR & END_CHAR
+    Packet = "usagakarim" & SEP_CHAR & CharSlot & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SayMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "saymsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "saymsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub GlobalMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "globalmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "globalmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub BroadcastMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "broadcastmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "broadcastmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub EmoteMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "emotemsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "emotemsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub GuildeMsg(ByVal Text As String)
 Dim Packet As String
 
-   Packet = "guildemsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+   Packet = "guildemsg" & SEP_CHAR & Text & END_CHAR
    Call SendData(Packet)
 End Sub
 
 Sub MapMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "mapmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "mapmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub PlayerMsg(ByVal Text As String, ByVal MsgTo As String)
 Dim Packet As String
 
-    Packet = "playermsg" & SEP_CHAR & MsgTo & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "playermsg" & SEP_CHAR & MsgTo & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub AdminMsg(ByVal Text As String)
 Dim Packet As String
 
-    Packet = "adminmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "adminmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendPlayerMove()
 Dim Packet As String
 
-    Packet = "playermove" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & Player(MyIndex).Moving & SEP_CHAR & END_CHAR
+    Packet = "playermove" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & Player(MyIndex).Moving & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub Sendplayerdir()
 Dim Packet As String
 
-    Packet = "playerdir" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & END_CHAR
+    Packet = "playerdir" & SEP_CHAR & GetPlayerDir(MyIndex) & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendPlayerRequestNewMap()
 Dim Packet As String
     
-    Packet = "requestnewmap" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & END_CHAR
+    Packet = "requestnewmap" & SEP_CHAR & GetPlayerDir(MyIndex) & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2271,7 +2271,7 @@ Sub WarpMeTo(ByVal name As String)
 Dim Packet As String
 
     OldMap = GetPlayerMap(MyIndex)
-    Packet = "WARPMETO" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "WARPMETO" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2279,7 +2279,7 @@ Sub WarpToMe(ByVal name As String)
 Dim Packet As String
 
     OldMap = GetPlayerMap(MyIndex)
-    Packet = "WARPTOME" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "WARPTOME" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2287,223 +2287,223 @@ Sub WarpTo(ByVal MapNum As Long)
 Dim Packet As String
     
     OldMap = GetPlayerMap(MyIndex)
-    Packet = "WARPTO" & SEP_CHAR & MapNum & SEP_CHAR & END_CHAR
+    Packet = "WARPTO" & SEP_CHAR & MapNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetAccess(ByVal name As String, ByVal Access As Byte)
 Dim Packet As String
 
-    Packet = "SETACCESS" & SEP_CHAR & name & SEP_CHAR & Access & SEP_CHAR & END_CHAR
+    Packet = "SETACCESS" & SEP_CHAR & name & SEP_CHAR & Access & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetSprite(ByVal SpriteNum As Long)
 Dim Packet As String
 
-    Packet = "SETSPRITE" & SEP_CHAR & SpriteNum & SEP_CHAR & END_CHAR
+    Packet = "SETSPRITE" & SEP_CHAR & SpriteNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetName(ByVal nom As String)
 Dim Packet As String
 
-    Packet = "SETNAME" & SEP_CHAR & nom & SEP_CHAR & END_CHAR
+    Packet = "SETNAME" & SEP_CHAR & nom & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendGetStats()
 Dim Packet As String
 
-    Packet = "GETSTATS" & SEP_CHAR & END_CHAR
+    Packet = "GETSTATS" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendGetOtherStats(ByVal name As String)
 Dim Packet As String
 
-    Packet = "GETOTHERSTATS" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "GETOTHERSTATS" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendPlayerInfoRequest(ByVal name As String)
 Dim Packet As String
 
-    Packet = "PLAYERINFOREQUEST" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PLAYERINFOREQUEST" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendKick(ByVal name As String)
 Dim Packet As String
 
-    Packet = "KICKPLAYER" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "KICKPLAYER" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
     End Sub
 
 Sub SendBan(ByVal name As String)
 Dim Packet As String
 
-    Packet = "BANPLAYER" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "BANPLAYER" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendBanList()
 Dim Packet As String
 
-    Packet = "BANLIST" & SEP_CHAR & END_CHAR
+    Packet = "BANLIST" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendMapRespawn()
 Dim Packet As String
 
-    Packet = "MAPRESPAWN" & SEP_CHAR & END_CHAR
+    Packet = "MAPRESPAWN" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendUseItem(ByVal InvNum As Long)
 Dim Packet As String
 
-    Packet = "USEITEM" & SEP_CHAR & InvNum & SEP_CHAR & END_CHAR
+    Packet = "USEITEM" & SEP_CHAR & InvNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDropItem(ByVal InvNum, ByVal Ammount As Long)
 Dim Packet As String
 
-    Packet = "MAPDROPITEM" & SEP_CHAR & InvNum & SEP_CHAR & Ammount & SEP_CHAR & END_CHAR
+    Packet = "MAPDROPITEM" & SEP_CHAR & InvNum & SEP_CHAR & Ammount & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendWhosOnline()
 Dim Packet As String
 
-    Packet = "WHOSONLINE" & SEP_CHAR & END_CHAR
+    Packet = "WHOSONLINE" & END_CHAR
     Call SendData(Packet)
 End Sub
 Sub SendOnlineList()
 Dim Packet As String
 
-Packet = "ONLINELIST" & SEP_CHAR & END_CHAR
+Packet = "ONLINELIST" & END_CHAR
 Call SendData(Packet)
 End Sub
             
 Sub SendMOTDChange(ByVal motd As String)
 Dim Packet As String
 
-    Packet = "SETMOTD" & SEP_CHAR & motd & SEP_CHAR & END_CHAR
+    Packet = "SETMOTD" & SEP_CHAR & motd & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendTradeRequest(ByVal name As String)
 Dim Packet As String
 
-    Packet = "PPTRADE" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PPTRADE" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendAcceptTrade()
 Dim Packet As String
 
-    Packet = "ATRADE" & SEP_CHAR & END_CHAR
+    Packet = "ATRADE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDeclineTrade()
 Dim Packet As String
 
-    Packet = "DTRADE" & SEP_CHAR & END_CHAR
+    Packet = "DTRADE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendPartyRequest(ByVal name As String)
 Dim Packet As String
 
-    Packet = "PARTY" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PARTY" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendJoinParty()
 Dim Packet As String
 
-    Packet = "JOINPARTY" & SEP_CHAR & END_CHAR
+    Packet = "JOINPARTY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendLeaveParty()
 Dim Packet As String
 
-    Packet = "LEAVEPARTY" & SEP_CHAR & END_CHAR
+    Packet = "LEAVEPARTY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendBanDestroy()
 Dim Packet As String
     
-    Packet = "BANDESTROY" & SEP_CHAR & END_CHAR
+    Packet = "BANDESTROY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendRequestLocation()
 Dim Packet As String
 
-    Packet = "REQUESTLOCATION" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTLOCATION" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerSprite(ByVal name As String, ByVal SpriteNum As Byte)
 Dim Packet As String
 
-    Packet = "SETPLAYERSPRITE" & SEP_CHAR & name & SEP_CHAR & SpriteNum & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERSPRITE" & SEP_CHAR & name & SEP_CHAR & SpriteNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerName(ByVal name As String, ByVal Nouveau As String)
 Dim Packet As String
 
-    Packet = "SETPLAYERNAME" & SEP_CHAR & name & SEP_CHAR & Nouveau & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERNAME" & SEP_CHAR & name & SEP_CHAR & Nouveau & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerstr(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERSTR" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERSTR" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerDef(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERDEF" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERDEF" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerVit(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERVIT" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERVIT" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMagi(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAGI" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAGI" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerPk(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERPK" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERPK" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerNiveau(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERNIVEAU" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERNIVEAU" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2511,34 +2511,34 @@ End Sub
 Sub SendSetPlayerExp(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYEREXP" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYEREXP" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerPoint(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERPOINT" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERPOINT" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMaxPv(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAXPV" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAXPV" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMaxPm(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAXPM" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAXPM" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendGetAdminHelp()
 Dim Packet As String
 
-    Packet = "GETADMINHELP" & SEP_CHAR & END_CHAR
+    Packet = "GETADMINHELP" & END_CHAR
     Call SendData(Packet)
 End Sub

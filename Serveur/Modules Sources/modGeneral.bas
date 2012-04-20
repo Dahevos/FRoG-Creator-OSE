@@ -664,12 +664,12 @@ Dim SpellSlot As Byte
                     For x1 = 0 To MAX_MAPX
                         If Map(Y).Tile(x1, y1).type = TILE_TYPE_KEY And TempTile(Y).DoorOpen(x1, y1) = YES Then
                             TempTile(Y).DoorOpen(x1, y1) = NO
-                            Call SendDataToMap(Y, "MAPKEY" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+                            Call SendDataToMap(Y, "MAPKEY" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & 0 & END_CHAR)
                         End If
                         
                         If Map(Y).Tile(x1, y1).type = TILE_TYPE_DOOR Or Map(Y).Tile(x1, y1).type = TILE_TYPE_COFFRE Or Map(Y).Tile(x1, y1).type = TILE_TYPE_PORTE_CODE And TempTile(Y).DoorOpen(x1, y1) = YES Then
                             TempTile(Y).DoorOpen(x1, y1) = NO
-                            Call SendDataToMap(Y, "MAPKEY" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+                            Call SendDataToMap(Y, "MAPKEY" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & 0 & END_CHAR)
                         End If
                     Next x1
                 Next y1
@@ -881,8 +881,8 @@ Dim SpellSlot As Byte
                 ' //////////////////////////////////////
                 ' Check if we are supposed to spawn an npc or not
                 If MapNpc(Y, X).num = 0 And Map(Y).Npc(X) > 0 Then If TickCount > MapNpc(Y, X).SpawnWait + (Npc(Map(Y).Npc(X)).SpawnSecs * 1000) Then Call SpawnNpc(X, Y)
-                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npchp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(Y, X).num) & SEP_CHAR & END_CHAR)
-                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npcmp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).MP & SEP_CHAR & GetNpcMaxMP(MapNpc(Y, X).num) & SEP_CHAR & END_CHAR)
+                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npchp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(Y, X).num) & END_CHAR)
+                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npcmp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).MP & SEP_CHAR & GetNpcMaxMP(MapNpc(Y, X).num) & END_CHAR)
             Next X
             
         End If
@@ -1271,7 +1271,7 @@ Dim AttNpcNum As Integer, DefNpcNum As Integer
     If MapNpc(MapNum, MapNpcNumDef).num <= 0 Or MapNpc(MapNum, MapNpcNumAtt).num <= 0 Then Exit Sub
 
     ' Send this packet so they can see the person attacking
-    Call SendDataToMap(MapNum, "NPCATTACKNPC" & SEP_CHAR & MapNpcNumAtt & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(MapNum, "NPCATTACKNPC" & SEP_CHAR & MapNpcNumAtt & END_CHAR)
     
     If Damage >= MapNpc(MapNum, MapNpcNumDef).HP Then
         
@@ -1279,7 +1279,7 @@ Dim AttNpcNum As Integer, DefNpcNum As Integer
         MapNpc(MapNum, MapNpcNumDef).num = 0
         MapNpc(MapNum, MapNpcNumDef).SpawnWait = GetTickCount
         MapNpc(MapNum, MapNpcNumDef).HP = 0
-        Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNumDef & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNumDef & END_CHAR)
         
         ' Set NPC target to 0
         MapNpc(MapNum, MapNpcNumDef).Target = 0
@@ -1291,8 +1291,8 @@ Dim AttNpcNum As Integer, DefNpcNum As Integer
         If MapNpc(MapNum, MapNpcNumDef).Target <> MapNpcNumAtt Then MapNpc(MapNum, MapNpcNumDef).Target = MapNpcNumAtt: MapNpc(MapNum, MapNpcNumDef).TargetType = TARGET_TYPE_NPC
     End If
     
-    'Call SendDataTomap(mapnum, "NPCBLITNPCDMG" & SEP_CHAR & mapnpcnumdef & sep_char & Damage & SEP_CHAR & END_CHAR) ' --> <--
-    'Call SendDataToMap(MapNum, "sound" & SEP_CHAR & "pain" & SEP_CHAR & END_CHAR)
+    'Call SendDataTomap(mapnum, "NPCBLITNPCDMG" & SEP_CHAR & mapnpcnumdef & sep_char & Damage & END_CHAR) ' --> <--
+    'Call SendDataToMap(MapNum, "sound" & SEP_CHAR & "pain" & END_CHAR)
 
 Exit Sub
 er:

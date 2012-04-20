@@ -215,7 +215,7 @@ If GetPlayerInvItemNum(MyIndex, i) > 0 And GetPlayerInvItemNum(MyIndex, i) <= MA
                     Trading(n).InvNum = i
                     Trading(n).InvName = Trim$(Item(GetPlayerInvItemNum(MyIndex, i)).name)
                     Trading(n).InvVal = nb
-                    Call SendData("updatetradeinv" & SEP_CHAR & n & SEP_CHAR & Trading(n).InvNum & SEP_CHAR & Trading(n).InvName & SEP_CHAR & Trading(n).InvVal & SEP_CHAR & END_CHAR)
+                    Call SendData("updatetradeinv" & SEP_CHAR & n & SEP_CHAR & Trading(n).InvNum & SEP_CHAR & Trading(n).InvName & SEP_CHAR & Trading(n).InvVal & END_CHAR)
                     Exit Sub
                 End If
             Else
@@ -228,7 +228,7 @@ If GetPlayerInvItemNum(MyIndex, i) > 0 And GetPlayerInvItemNum(MyIndex, i) <= MA
                     Trading(n).InvNum = i
                     Trading(n).InvName = Trim$(Item(GetPlayerInvItemNum(MyIndex, i)).name)
                     Trading(n).InvVal = 1
-                    Call SendData("updatetradeinv" & SEP_CHAR & n & SEP_CHAR & Trading(n).InvNum & SEP_CHAR & Trading(n).InvName & SEP_CHAR & Trading(n).InvVal & SEP_CHAR & END_CHAR)
+                    Call SendData("updatetradeinv" & SEP_CHAR & n & SEP_CHAR & Trading(n).InvNum & SEP_CHAR & Trading(n).InvName & SEP_CHAR & Trading(n).InvVal & END_CHAR)
                     Exit Sub
                 End If
             End If
@@ -250,11 +250,11 @@ i = Items1.ListIndex + 1
     Items1.List(i - 1) = n & ": <Aucun>"
     Trading(i).InvNum = 0
     Trading(i).InvName = vbNullString
-    Call SendData("updatetradeinv" & SEP_CHAR & i & SEP_CHAR & 0 & SEP_CHAR & vbNullString & SEP_CHAR & END_CHAR)
+    Call SendData("updatetradeinv" & SEP_CHAR & i & SEP_CHAR & 0 & SEP_CHAR & vbNullString & END_CHAR)
 End Sub
 
 Private Sub Command5_Click()
-    Call SendData("qtrade" & SEP_CHAR & END_CHAR)
+    Call SendData("qtrade" & END_CHAR)
 End Sub
 
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -280,7 +280,7 @@ Call Command4_Click
 End Sub
 
 Private Sub Label1_Click()
-    Call SendData("qtrade" & SEP_CHAR & END_CHAR)
+    Call SendData("qtrade" & END_CHAR)
 End Sub
 
 Private Sub PlayerInv1_DblClick()

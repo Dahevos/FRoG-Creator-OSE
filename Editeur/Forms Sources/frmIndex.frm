@@ -173,25 +173,25 @@ Private Sub cmdOk_Click()
     If EditorIndex <= 0 Then Exit Sub
     
     If InQuetesEditor = True Then
-        If HORS_LIGNE = 1 Then Call QuetesEditorInit Else Call SendData("EDITQUETES" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call QuetesEditorInit Else Call SendData("EDITQUETES" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InItemsEditor = True Then
-        If HORS_LIGNE = 1 Then Call ItemEditorInit Else Call SendData("EDITITEM" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call ItemEditorInit Else Call SendData("EDITITEM" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InNpcEditor = True Then
-        If HORS_LIGNE = 1 Then Call NpcEditorInit Else Call SendData("EDITNPC" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call NpcEditorInit Else Call SendData("EDITNPC" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InShopEditor = True Then
-        If HORS_LIGNE = 1 Then Call ShopEditorInit Else Call SendData("EDITSHOP" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call ShopEditorInit Else Call SendData("EDITSHOP" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InSpellEditor = True Then
-        If HORS_LIGNE = 1 Then Call SpellEditorInit Else Call SendData("EDITSPELL" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call SpellEditorInit Else Call SendData("EDITSPELL" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InEmoticonEditor = True Then
-        If HORS_LIGNE = 1 Then Call EmoticonEditorInit Else Call SendData("EDITEMOTICON" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call EmoticonEditorInit Else Call SendData("EDITEMOTICON" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InArrowEditor = True Then
-        If HORS_LIGNE = 1 Then Call ArrowEditorInit Else Call SendData("EDITARROW" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call ArrowEditorInit Else Call SendData("EDITARROW" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InPetsEditor = True Then
-        If HORS_LIGNE = 1 Then Call PetEditorInit Else Call SendData("EDITPET" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call PetEditorInit Else Call SendData("EDITPET" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InMetierEditor = True Then
-        If HORS_LIGNE = 1 Then Call MetierEditorInit Else Call SendData("EDITMETIER" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call MetierEditorInit Else Call SendData("EDITMETIER" & SEP_CHAR & EditorIndex & END_CHAR)
     ElseIf InRecetteEditor = True Then
-        If HORS_LIGNE = 1 Then Call recetteEditorInit Else Call SendData("EDITrecette" & SEP_CHAR & EditorIndex & SEP_CHAR & END_CHAR)
+        If HORS_LIGNE = 1 Then Call recetteEditorInit Else Call SendData("EDITrecette" & SEP_CHAR & EditorIndex & END_CHAR)
     End If
 End Sub
 
@@ -367,7 +367,7 @@ End Sub
 Private Sub lstIndex_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 2 Then
     If DonID > 0 Then coller.Enabled = True Else coller.Enabled = False
-    Call PopupMenu(edit)
+    Call PopupMenu(Edit)
 End If
 End Sub
 

@@ -484,7 +484,7 @@ On Error GoTo er:
     If Val(ReadINI("CONFIG", "auto-maj", App.Path & "\Config\Client.ini")) = 1 Then Call Updater
     frmMainMenu.Show
     ConOff = False
-    Call SendData("PICVALUE" & SEP_CHAR & END_CHAR)
+    Call SendData("PICVALUE" & END_CHAR)
     frmsplash.Hide
     frmMirage.Timer2.Enabled = False
     frmMainMenu.Timer2.Enabled = False
@@ -695,7 +695,7 @@ Dim Ending As String
     End If
     
     ConOff = False
-    Call SendData("PICVALUE" & SEP_CHAR & END_CHAR)
+    Call SendData("PICVALUE" & END_CHAR)
     frmsplash.chrg.value = 100
     frmsplash.Visible = False
     frmMirage.Timer2.Enabled = False
@@ -748,7 +748,7 @@ Sub GameInit()
 Dim i As Long
     Call StopMidi
     frmMirage.Visible = True
-    Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+    Call SendData("mapreport" & END_CHAR)
     frmsplash.Visible = False
     Call InitDirectX
     Call SendRequestEditMap
@@ -2339,7 +2339,7 @@ End If
                 Cod = InputBox("Veuillez entre le mot de passe :", "Code")
                 If Cod = .String1 Then
                     TempTile(GetPlayerX(MyIndex) + PX, GetPlayerY(MyIndex) + PY).DoorOpen = YES
-                    Packet = "OUVRIRE" & SEP_CHAR & GetPlayerX(MyIndex) + PX & SEP_CHAR & GetPlayerY(MyIndex) + PY & SEP_CHAR & END_CHAR
+                    Packet = "OUVRIRE" & SEP_CHAR & GetPlayerX(MyIndex) + PX & SEP_CHAR & GetPlayerY(MyIndex) + PY & END_CHAR
                     Call SendData(Packet)
                     If .Type = TILE_TYPE_COFFRE Then
                         i = FindOpenInvSlot(Val(.Data3))
@@ -2348,7 +2348,7 @@ End If
                             Call SetPlayerInvItemValue(MyIndex, i, GetPlayerInvItemValue(MyIndex, i) + 1)
                             Call SetPlayerInvItemDur(MyIndex, i, Item(Val(.Data3)).Data1)
                             Call UpdateVisInv
-                            Packet = "ACOFFRE" & SEP_CHAR & i & SEP_CHAR & Val(.Data3) & SEP_CHAR & 1 & SEP_CHAR & Item(Val(.Data3)).Data1 & SEP_CHAR & END_CHAR
+                            Packet = "ACOFFRE" & SEP_CHAR & i & SEP_CHAR & Val(.Data3) & SEP_CHAR & 1 & SEP_CHAR & Item(Val(.Data3)).Data1 & END_CHAR
                             Call SendData(Packet)
                         End If
                     End If
@@ -2422,7 +2422,7 @@ End If
         ' Verification User
         If LCase$(Mid$(MyText, 1, 5)) = "/info" Then
             ChatText = Mid$(MyText, 6, Len(MyText) - 5)
-            Call SendData("playerinforequest" & SEP_CHAR & ChatText & SEP_CHAR & END_CHAR)
+            Call SendData("playerinforequest" & SEP_CHAR & ChatText & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2450,7 +2450,7 @@ End If
         
         ' Request stats
         If LCase$(Mid$(MyText, 1, 6)) = "/stats" Then
-            Call SendData("getstats" & SEP_CHAR & END_CHAR)
+            Call SendData("getstats" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2458,21 +2458,21 @@ End If
         ' Refresh Player
         If LCase$(Mid$(MyText, 1, 8)) = "/refresh" Then
             ConOff = True
-            Call SendData("refresh" & SEP_CHAR & END_CHAR)
+            Call SendData("refresh" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
         
         ' Decline Chat
         If LCase$(Mid$(MyText, 1, 12)) = "/chatdecline" Or LCase$(Mid$(MyText, 1, 12)) = "/chatrefu" Then
-            Call SendData("dchat" & SEP_CHAR & END_CHAR)
+            Call SendData("dchat" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
         
         ' Accept Chat
         If LCase$(Mid$(MyText, 1, 5)) = "/chat" Then
-            Call SendData("achat" & SEP_CHAR & END_CHAR)
+            Call SendData("achat" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2557,13 +2557,13 @@ End If
                 If Len(MyText) > 8 Then
                     MyText = Mid$(MyText, 9, Len(MyText) - 8)
                     If IsNumeric(MyText) Then
-                        Call SendData("weather" & SEP_CHAR & Val(MyText) & SEP_CHAR & END_CHAR)
+                        Call SendData("weather" & SEP_CHAR & Val(MyText) & END_CHAR)
                     Else
                         If Trim$(LCase$(MyText)) = "none" Then i = 0
                         If Trim$(LCase$(MyText)) = "rain" Then i = 1
                         If Trim$(LCase$(MyText)) = "snow" Then i = 2
                         If Trim$(LCase$(MyText)) = "thunder" Then i = 3
-                        Call SendData("weather" & SEP_CHAR & i & SEP_CHAR & END_CHAR)
+                        Call SendData("weather" & SEP_CHAR & i & END_CHAR)
                     End If
                 End If
                 MyText = vbNullString
@@ -2733,12 +2733,12 @@ End If
         If Left$(Trim$(MyText), 1) = "/" Then
             For i = 0 To MAX_EMOTICONS
                 If Trim$(Emoticons(i).Command) = Trim$(MyText) And Trim$(Emoticons(i).Command) <> "/" Then
-                    Call SendData("checkemoticons" & SEP_CHAR & i & SEP_CHAR & END_CHAR)
+                    Call SendData("checkemoticons" & SEP_CHAR & i & END_CHAR)
                     MyText = vbNullString
                 Exit Sub
                 End If
             Next i
-            Call SendData("checkcommands" & SEP_CHAR & MyText & SEP_CHAR & END_CHAR)
+            Call SendData("checkcommands" & SEP_CHAR & MyText & END_CHAR)
             MyText = vbNullString
         Exit Sub
         End If
@@ -3384,7 +3384,7 @@ End Sub
 Sub CheckMapGetItem()
     If GetTickCount > Player(MyIndex).MapGetTimer + 250 And Trim$(MyText) = vbNullString Then
         Player(MyIndex).MapGetTimer = GetTickCount
-        Call SendData("mapgetitem" & SEP_CHAR & END_CHAR)
+        Call SendData("mapgetitem" & END_CHAR)
     End If
 End Sub
 
@@ -3395,7 +3395,7 @@ Dim AttackSpeed As Long
     If ControlDown = True And Player(MyIndex).AttackTimer + AttackSpeed < GetTickCount And Player(MyIndex).Attacking = 0 Then
         Player(MyIndex).Attacking = 1
         Player(MyIndex).AttackTimer = GetTickCount
-        Call SendData("attack" & SEP_CHAR & END_CHAR)
+        Call SendData("attack" & END_CHAR)
     End If
 End Sub
 
@@ -5077,7 +5077,7 @@ Public Sub EditorSend()
 save = 0
 Call WriteINI("modif", "carte" & Player(MyIndex).Map, "0", App.Path & "\config.ini")
 If CarteFTP Then
-    Call SendData("ENVMAP" & SEP_CHAR & END_CHAR)
+    Call SendData("ENVMAP" & END_CHAR)
 Else
     frmmsg.Show
     Call SendMap
@@ -5976,7 +5976,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -5988,7 +5988,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6006,7 +6006,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6019,7 +6019,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6032,10 +6032,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -6049,12 +6049,12 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)
     
-    Call SendData("CHGCLASSES" & SEP_CHAR & END_CHAR)
+    Call SendData("CHGCLASSES" & END_CHAR)
 
     Call Unload(frmmsg)
 End If
@@ -6393,11 +6393,11 @@ If test = 0 Then
     frmMirage.picScreen.SetFocus
     frmMirage.test.Caption = "Quitter le teste"
     ConOff = True
-    Call SendData("refresh" & SEP_CHAR & END_CHAR)
+    Call SendData("refresh" & END_CHAR)
     test = 1
     Call InitNightAndFog(Player(MyIndex).Map)
 Else
-    Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+    Call SendData("mapreport" & END_CHAR)
     If frmMirage.tp(2).Checked Then
         For i = 2 To 22
             If (i < 4 Or i > 19) And i <> 20 And i <> 21 Then frmMirage.Toolbar1.buttons(i).Enabled = True
@@ -6461,7 +6461,7 @@ Dim x1 As Long, y1 As Long
     x1 = (x \ PIC_X / VZoom * 3)
     y1 = (y \ PIC_Y / VZoom * 3)
     
-    If (x1 >= 0) And (x1 <= MAX_MAPX) And (y1 >= 0) And (y1 <= MAX_MAPY) Then Call SendData("search" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & END_CHAR)
+    If (x1 >= 0) And (x1 <= MAX_MAPX) And (y1 >= 0) And (y1 <= MAX_MAPY) Then Call SendData("search" & SEP_CHAR & x1 & SEP_CHAR & y1 & END_CHAR)
     MouseDownX = x1
     MouseDownY = y1
 End Sub
@@ -6791,7 +6791,7 @@ End Sub
 Sub SendGameTime()
 Dim Packet As String
 
-Packet = "GmTime" & SEP_CHAR & GameTime & SEP_CHAR & END_CHAR
+Packet = "GmTime" & SEP_CHAR & GameTime & END_CHAR
 Call SendData(Packet)
 End Sub
 

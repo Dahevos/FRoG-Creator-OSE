@@ -93,7 +93,7 @@ Unload Me
 End Sub
 
 Private Sub bt_Click()
-If memo.value = Checked Then
+If Memo.value = Checked Then
     WriteINI "FTP", "NOM", nom.Text, App.Path & "\Config.ini"
     WriteINI "FTP", "MDP", mdp.Text, App.Path & "\Config.ini"
     WriteINI "FTP", "AUTO", coauto.value, App.Path & "\Config.ini"
@@ -104,12 +104,12 @@ Else
 End If
 frmmsg.Show
 Call Envoi(bt.Tag, nom.Text, mdp.Text, "Maps\map" & Player(MyIndex).Map & ".fcc", "map" & Player(MyIndex).Map & ".fcc", annul.Tag)
-Call SendData("MAPDOWN" & SEP_CHAR & END_CHAR)
+Call SendData("MAPDOWN" & END_CHAR)
 Unload Me
 End Sub
 
-Private Sub form_Load()
-If ReadINI("FTP", "NOM", App.Path & "\Config.ini") <> vbNullString Then memo.value = Checked
+Private Sub Form_Load()
+If ReadINI("FTP", "NOM", App.Path & "\Config.ini") <> vbNullString Then Memo.value = Checked
 coauto.value = Val(ReadINI("FTP", "AUTO", App.Path & "\Config.ini"))
 nom.Text = ReadINI("FTP", "NOM", App.Path & "\Config.ini")
 mdp.Text = ReadINI("FTP", "MDP", App.Path & "\Config.ini")

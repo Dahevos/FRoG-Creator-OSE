@@ -390,7 +390,7 @@ Dim i As Long
         MapItem(MapNum, i).X = X
         MapItem(MapNum, i).Y = Y
             
-        Packet = "SPAWNITEM" & SEP_CHAR & i & SEP_CHAR & ItemNum & SEP_CHAR & ItemVal & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & END_CHAR
+        Packet = "SPAWNITEM" & SEP_CHAR & i & SEP_CHAR & ItemNum & SEP_CHAR & ItemVal & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & X & SEP_CHAR & Y & END_CHAR
         Call SendDataToMap(MapNum, Packet)
     End If
 End Sub
@@ -636,7 +636,7 @@ Next i
 
 If n = 15 And Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 0 Then
     Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 1
-    Call SendDataTo(Index, "FINQUETE" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "FINQUETE" & END_CHAR)
 End If
 
 End Sub
@@ -665,7 +665,7 @@ Next i
 If n = 1 And Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 0 Then
     Call QueteMsg(Index, Trim$(quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).String1))
     Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 1
-    Call SendDataTo(Index, "FINQUETE" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "FINQUETE" & END_CHAR)
 Else
     Call QueteMsg(Index, "Je suis désolé tu n'as pas l'objet que je cherche.")
 End If
@@ -685,7 +685,7 @@ For i = 1 To 15
     If NpcTnum = quete(Queteec).indexe(i).data1 And quete(Queteec).indexe(i).data2 > 0 And Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2 < quete(Queteec).indexe(i).data2 Then
         Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data1 = 1
         Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2 = Val(Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2) + 1
-        Call SendDataTo(Index, "TUERQUETE" & SEP_CHAR & END_CHAR)
+        Call SendDataTo(Index, "TUERQUETE" & END_CHAR)
     End If
     
     If quete(Queteec).indexe(i).data2 <= 0 Then
@@ -703,7 +703,7 @@ Next i
 
 If n = 15 And Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 0 Then
     Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 1
-    Call SendDataTo(Index, "FINQUETE" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "FINQUETE" & END_CHAR)
 End If
 
 End Sub
@@ -719,11 +719,11 @@ If GetPlayerQueteEtat(Index, Queteec) = True Then Exit Sub
 If Xp > GetPlayerExp(Index) Then Xp = Xp - GetPlayerExp(Index)
 
 Player(Index).Char(Player(Index).CharNum).Quetep.data1 = Val(Player(Index).Char(Player(Index).CharNum).Quetep.data1) + Val(Xp)
-Call SendDataTo(Index, "XPQUETE" & SEP_CHAR & Player(Index).Char(Player(Index).CharNum).Quetep.data1 & SEP_CHAR & END_CHAR)
+Call SendDataTo(Index, "XPQUETE" & SEP_CHAR & Player(Index).Char(Player(Index).CharNum).Quetep.data1 & END_CHAR)
 
 If Val(Player(Index).Char(Player(Index).CharNum).Quetep.data1) >= Val(quete(Queteec).data1) And Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 0 Then
     Player(Index).Char(Player(Index).CharNum).QueteStatut(Queteec) = 1
-    Call SendDataTo(Index, "FINQUETE" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "FINQUETE" & END_CHAR)
 End If
 
 End Sub
@@ -766,7 +766,7 @@ If quete(QueteTindex).Case > 0 Then MyScript.ExecuteStatement "Scripts\Main.txt"
 
 Player(Index).Char(Player(Index).CharNum).QueteStatut(QueteTindex) = 2
 
-Packet = "TERMINEQUETE" & SEP_CHAR & END_CHAR
+Packet = "TERMINEQUETE" & END_CHAR
 Call SendDataTo(Index, Packet)
 
 End Sub
@@ -790,7 +790,7 @@ Dim Spawned As Boolean
                 MapNpc(MapNum, MapNpcNum).num = 0
                 MapNpc(MapNum, MapNpcNum).SpawnWait = GetTickCount
                 MapNpc(MapNum, MapNpcNum).HP = 0
-                Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & END_CHAR)
                 Exit Sub
             End If
         Else
@@ -798,7 +798,7 @@ Dim Spawned As Boolean
                 MapNpc(MapNum, MapNpcNum).num = 0
                 MapNpc(MapNum, MapNpcNum).SpawnWait = GetTickCount
                 MapNpc(MapNum, MapNpcNum).HP = 0
-                Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & END_CHAR)
                 Exit Sub
             End If
         End If
@@ -849,17 +849,17 @@ Dim Spawned As Boolean
              
         ' If we suceeded in spawning then send it to everyone
         If Spawned Then
-            Packet = "SPAWNNPC" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).num & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & END_CHAR
+            Packet = "SPAWNNPC" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).num & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & END_CHAR
             Call SendDataToMap(MapNum, Packet)
         End If
     Else
         MapNpc(MapNum, MapNpcNum).num = 0
         
-        Packet = "SPAWNNPC" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).num & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & END_CHAR
+        Packet = "SPAWNNPC" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).num & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & END_CHAR
         Call SendDataToMap(MapNum, Packet)
     End If
     
-    'Call SendDataToMap(MapNum, "npchp" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(MapNum, MapNpcNum).num) & SEP_CHAR & END_CHAR)
+    'Call SendDataToMap(MapNum, "npchp" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(MapNum, MapNpcNum).num) & END_CHAR)
 End Sub
 
 Sub SpawnMapNpcs(ByVal MapNum As Long)
@@ -1119,7 +1119,7 @@ If IsPlaying(Attacker) Then
                             End If
                             Call TerminerPlayerQuete(Attacker, Npc(npcnum).QueteNum)
                         Else
-                            Call SendDataTo(Attacker, "QUETECOUR" & SEP_CHAR & Npc(npcnum).QueteNum & SEP_CHAR & END_CHAR)
+                            Call SendDataTo(Attacker, "QUETECOUR" & SEP_CHAR & Npc(npcnum).QueteNum & END_CHAR)
                             Player(Attacker).Char(Player(Attacker).CharNum).QueteEnCour = Npc(npcnum).QueteNum
                             Call QueteMsg(Attacker, Trim$(quete(Npc(npcnum).QueteNum).nom) & " : " & Trim$(quete(Npc(npcnum).QueteNum).description))
                         End If
@@ -1143,7 +1143,7 @@ If IsPlaying(Attacker) Then
                             If Player(Attacker).Char(Player(Attacker).CharNum).QueteStatut(Npc(npcnum).QueteNum) > 0 Then Exit Function
                             Player(Attacker).Char(Player(Attacker).CharNum).QueteStatut(Npc(npcnum).QueteNum) = 1
                             Call QueteMsg(Attacker, Trim$(Npc(npcnum).Name) & " : " & Trim$(Npc(npcnum).AttackSay))
-                            Call SendDataTo(Attacker, "FINQUETE" & SEP_CHAR & END_CHAR)
+                            Call SendDataTo(Attacker, "FINQUETE" & END_CHAR)
                         End If
                     End If
                 End If
@@ -1237,10 +1237,10 @@ Dim i As Long
     If GetPlayerWeaponSlot(Attacker) > 0 Then n = GetPlayerInvItemNum(Attacker, GetPlayerWeaponSlot(Attacker)) Else n = 0
     
     ' Send this packet so they can see the person attacking
-    Call SendDataToMapBut(Attacker, GetPlayerMap(Attacker), "ATTACK" & SEP_CHAR & Attacker & SEP_CHAR & END_CHAR)
+    Call SendDataToMapBut(Attacker, GetPlayerMap(Attacker), "ATTACK" & SEP_CHAR & Attacker & END_CHAR)
     
     ' Effet de sang
-    Call SendDataToMap(GetPlayerMap(Attacker), "BloodAnim" & SEP_CHAR & Attacker & SEP_CHAR & Victim & SEP_CHAR & TARGET_TYPE_PLAYER & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Attacker), "BloodAnim" & SEP_CHAR & Attacker & SEP_CHAR & Victim & SEP_CHAR & TARGET_TYPE_PLAYER & END_CHAR)
 
 If Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).type <> TILE_TYPE_ARENA And Map(GetPlayerMap(Victim)).Tile(GetPlayerX(Victim), GetPlayerY(Victim)).type <> TILE_TYPE_ARENA Then
     If Damage >= GetPlayerHP(Victim) Then
@@ -1377,7 +1377,7 @@ End If
     
     ' Reset timer for attacking
     Player(Attacker).AttackTimer = GetTickCount
-    Call SendDataToMap(GetPlayerMap(Victim), "sound" & SEP_CHAR & "pain" & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Victim), "sound" & SEP_CHAR & "pain" & END_CHAR)
 
 Exit Sub
 er:
@@ -1407,7 +1407,7 @@ Dim MapNum As Long
     If MapNpc(GetPlayerMap(Victim), MapNpcNum).num <= 0 Then Exit Sub
             
     ' Send this packet so they can see the person attacking
-    Call SendDataToMap(GetPlayerMap(Victim), "NPCATTACK" & SEP_CHAR & MapNpcNum & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Victim), "NPCATTACK" & SEP_CHAR & MapNpcNum & END_CHAR)
     
     MapNum = GetPlayerMap(Victim)
     
@@ -1425,7 +1425,7 @@ Dim MapNum As Long
         'If GetPlayerY(Victim) + 1 = MapNpc(MapNum, MapNpcNum).Y Then
             'Call SetPlayerDir(Victim, DIR_DOWN)
         'End If
-        'Call SendDataToMap(GetPlayerMap(Victim), "changedir" & SEP_CHAR & GetPlayerDir(Victim) & SEP_CHAR & Victim & SEP_CHAR & END_CHAR)
+        'Call SendDataToMap(GetPlayerMap(Victim), "changedir" & SEP_CHAR & GetPlayerDir(Victim) & SEP_CHAR & Victim & END_CHAR)
     'End If
     ':: END AUTO TURN ::
     
@@ -1497,8 +1497,8 @@ Dim MapNum As Long
         Call BattleMsg(Victim, "Vous avez subi " & Damage & " dommage.", BrightRed, 1)
     End If
     
-    Call SendDataTo(Victim, "BLITNPCDMG" & SEP_CHAR & Damage & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
-    Call SendDataToMap(GetPlayerMap(Victim), "sound" & SEP_CHAR & "pain" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Victim, "BLITNPCDMG" & SEP_CHAR & Damage & SEP_CHAR & 0 & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Victim), "sound" & SEP_CHAR & "pain" & END_CHAR)
 
 Exit Sub
 er:
@@ -1528,10 +1528,10 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
     End If
     
     ' Send this packet so they can see the person attacking
-    Call SendDataToMapBut(Attacker, GetPlayerMap(Attacker), "ATTACK" & SEP_CHAR & Attacker & SEP_CHAR & END_CHAR)
+    Call SendDataToMapBut(Attacker, GetPlayerMap(Attacker), "ATTACK" & SEP_CHAR & Attacker & END_CHAR)
     
     ' Effet de sang
-    Call SendDataToMap(GetPlayerMap(Attacker), "BloodAnim" & SEP_CHAR & Attacker & SEP_CHAR & MapNpcNum & SEP_CHAR & TARGET_TYPE_NPC & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Attacker), "BloodAnim" & SEP_CHAR & Attacker & SEP_CHAR & MapNpcNum & SEP_CHAR & TARGET_TYPE_NPC & END_CHAR)
     
     MapNum = GetPlayerMap(Attacker)
     npcnum = MapNpc(MapNum, MapNpcNum).num
@@ -1665,7 +1665,7 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
         MapNpc(MapNum, MapNpcNum).num = 0
         MapNpc(MapNum, MapNpcNum).SpawnWait = GetTickCount
         MapNpc(MapNum, MapNpcNum).HP = 0
-        Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & END_CHAR)
         
         If Val(Scripting) = 1 Then
             MyScript.ExecuteStatement "Scripts\Main.txt", "KillNPC " & Attacker & "," & npcnum
@@ -1756,8 +1756,8 @@ Dim OldMap As Long
     PlayersOnMap(MapNum) = YES
 
     Player(Index).GettingMap = YES
-    Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "warp" & SEP_CHAR & END_CHAR)
-    Call SendDataTo(Index, "CHECKFORMAP" & SEP_CHAR & MapNum & SEP_CHAR & Map(MapNum).Revision & SEP_CHAR & END_CHAR)
+    Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "warp" & END_CHAR)
+    Call SendDataTo(Index, "CHECKFORMAP" & SEP_CHAR & MapNum & SEP_CHAR & Map(MapNum).Revision & END_CHAR)
     
     Call SendInventory(Index)
     'Call SendWornEquipment(Index)
@@ -1841,7 +1841,7 @@ Dim Moved As Byte
             .Dir = GetPlayerDir(Index)
             Moved = 0
         End If
-        Call SendDataToMap(GetPlayerMap(Index), "PLAYERPET" & SEP_CHAR & Index & SEP_CHAR & .Dir & SEP_CHAR & .X & SEP_CHAR & .Y & SEP_CHAR & Moved & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(GetPlayerMap(Index), "PLAYERPET" & SEP_CHAR & Index & SEP_CHAR & .Dir & SEP_CHAR & .X & SEP_CHAR & .Y & SEP_CHAR & Moved & END_CHAR)
     End With
 End Sub
 
@@ -1887,7 +1887,7 @@ Dim Moved As Byte
                         Call PetMove(Index)
                         Call SetPlayerY(Index, GetPlayerY(Index) - 1)
                                                 
-                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & END_CHAR
                         Call SendDataToMapBut(Index, GetPlayerMap(Index), Packet)
                         Moved = YES
                     End If
@@ -1900,7 +1900,7 @@ Dim Moved As Byte
                         Call PlayerWarp(Index, Map(GetPlayerMap(Index)).Up, GetPlayerX(Index), MAX_MAPY)
                         Moved = YES
                     Else
-                        Call SendDataTo(Index, "NOTWARP" & SEP_CHAR & END_CHAR)
+                        Call SendDataTo(Index, "NOTWARP" & END_CHAR)
                     End If
                 End If
             End If
@@ -1932,7 +1932,7 @@ Dim Moved As Byte
                         Call PetMove(Index)
                         Call SetPlayerY(Index, GetPlayerY(Index) + 1)
                                                 
-                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & END_CHAR
                         Call SendDataToMapBut(Index, GetPlayerMap(Index), Packet)
                         Moved = YES
                     End If
@@ -1945,7 +1945,7 @@ Dim Moved As Byte
                         Call PlayerWarp(Index, Map(GetPlayerMap(Index)).Down, GetPlayerX(Index), 0)
                         Moved = YES
                     Else
-                        Call SendDataTo(Index, "NOTWARP" & SEP_CHAR & END_CHAR)
+                        Call SendDataTo(Index, "NOTWARP" & END_CHAR)
                     End If
                 End If
             End If
@@ -1977,7 +1977,7 @@ Dim Moved As Byte
                         Call PetMove(Index)
                         Call SetPlayerX(Index, GetPlayerX(Index) - 1)
                                                                             
-                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & END_CHAR
                         Call SendDataToMapBut(Index, GetPlayerMap(Index), Packet)
                         Moved = YES
                     End If
@@ -1990,7 +1990,7 @@ Dim Moved As Byte
                         Call PlayerWarp(Index, Map(GetPlayerMap(Index)).Left, MAX_MAPX, GetPlayerY(Index))
                         Moved = YES
                     Else
-                        Call SendDataTo(Index, "NOTWARP" & SEP_CHAR & END_CHAR)
+                        Call SendDataTo(Index, "NOTWARP" & END_CHAR)
                     End If
                 End If
             End If
@@ -2022,7 +2022,7 @@ Dim Moved As Byte
                         Call PetMove(Index)
                         Call SetPlayerX(Index, GetPlayerX(Index) + 1)
                                                                             
-                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+                        Packet = "PLAYERMOVE" & SEP_CHAR & Index & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & GetPlayerDir(Index) & SEP_CHAR & Movement & END_CHAR
                         Call SendDataToMapBut(Index, GetPlayerMap(Index), Packet)
                         Moved = YES
                     End If
@@ -2035,7 +2035,7 @@ Dim Moved As Byte
                         Call PlayerWarp(Index, Map(GetPlayerMap(Index)).Right, 0, GetPlayerY(Index))
                         Moved = YES
                     Else
-                        Call SendDataTo(Index, "NOTWARP" & SEP_CHAR & END_CHAR)
+                        Call SendDataTo(Index, "NOTWARP" & END_CHAR)
                     End If
                 End If
             End If
@@ -2088,8 +2088,8 @@ Dim Moved As Byte
                 TempTile(GetPlayerMap(Index)).DoorOpen(X, Y) = YES
                 TempTile(GetPlayerMap(Index)).DoorTimer = GetTickCount
                                 
-                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
-                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & END_CHAR)
             End If
         End If
     End If
@@ -2102,8 +2102,8 @@ Dim Moved As Byte
                 TempTile(GetPlayerMap(Index)).DoorOpen(X, Y) = YES
                 TempTile(GetPlayerMap(Index)).DoorTimer = GetTickCount
                                 
-                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
-                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & END_CHAR)
             End If
         End If
     End If
@@ -2116,8 +2116,8 @@ Dim Moved As Byte
                 TempTile(GetPlayerMap(Index)).DoorOpen(X, Y) = YES
                 TempTile(GetPlayerMap(Index)).DoorTimer = GetTickCount
                                 
-                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
-                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & END_CHAR)
             End If
         End If
     End If
@@ -2130,8 +2130,8 @@ Dim Moved As Byte
                 TempTile(GetPlayerMap(Index)).DoorOpen(X, Y) = YES
                 TempTile(GetPlayerMap(Index)).DoorTimer = GetTickCount
                                 
-                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
-                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & SEP_CHAR & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & END_CHAR)
+                Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "door" & END_CHAR)
             End If
         End If
     End If
@@ -2156,13 +2156,13 @@ Dim Moved As Byte
             TempTile(GetPlayerMap(Index)).DoorOpen(X, Y) = YES
             TempTile(GetPlayerMap(Index)).DoorTimer = GetTickCount
                             
-            Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+            Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & X & SEP_CHAR & Y & SEP_CHAR & 1 & END_CHAR)
             If Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1) = vbNullString Then
                 Call MapMsg(GetPlayerMap(Index), "La porte a été ouverte par un mécanisme!", White)
             Else
                 Call MapMsg(GetPlayerMap(Index), Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1), White)
             End If
-            Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "key" & SEP_CHAR & END_CHAR)
+            Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "key" & END_CHAR)
         End If
     End If
         
@@ -2183,7 +2183,7 @@ Dim Moved As Byte
             Exit Sub
         Else
             If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2 = 0 Then
-                Call SendDataTo(Index, "spritechange" & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+                Call SendDataTo(Index, "spritechange" & SEP_CHAR & 0 & END_CHAR)
             Else
                 If item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).type = ITEM_TYPE_CURRENCY Then
                     Call PlayerMsg(Index, "Ce sprite vous coûte " & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data3 & " " & Trim$(item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).Name) & "!", Yellow)
@@ -2195,7 +2195,7 @@ Dim Moved As Byte
                     Call SendInventory(Index)
                 End If
                 
-                Call SendDataTo(Index, "spritechange" & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+                Call SendDataTo(Index, "spritechange" & SEP_CHAR & 1 & END_CHAR)
             End If
         End If
     End If
@@ -2293,7 +2293,7 @@ Dim Moved As Byte
             Call SendMP(Index)
             Call SendSP(Index)
             Call SendWornEquipment(Index)
-            Call SendDataToMap(GetPlayerMap(Index), "checksprite" & SEP_CHAR & Index & SEP_CHAR & GetPlayerSprite(Index) & SEP_CHAR & END_CHAR)
+            Call SendDataToMap(GetPlayerMap(Index), "checksprite" & SEP_CHAR & Index & SEP_CHAR & GetPlayerSprite(Index) & END_CHAR)
         End If
     End If
     
@@ -2304,12 +2304,12 @@ Dim Moved As Byte
         ElseIf Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String2) <> vbNullString Then
             Call QueteMsg(Index, Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String2))
         End If
-        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "soundattribute" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String3 & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "soundattribute" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String3 & END_CHAR)
     End If
     
     ' Check if player stepped on sound tile
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_SOUND Then
-        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "soundattribute" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1 & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "soundattribute" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1 & END_CHAR)
     End If
     
     If Scripting = 1 And Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_SCRIPTED Then
@@ -2319,7 +2319,7 @@ Dim Moved As Byte
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_CRAFT Then
         If Player(Index).Char(Player(Index).CharNum).metier > 0 Then
             If metier(Player(Index).Char(Player(Index).CharNum).metier).type = METIER_CRAFT Then
-                Packet = "CRAFT" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & SEP_CHAR & END_CHAR
+                Packet = "CRAFT" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
                 Call SendDataTo(Index, Packet)
             Else
                 Call PlayerMsg(Index, "Votre métier n'est pas un métier de craft!", Red)
@@ -2331,10 +2331,10 @@ Dim Moved As Byte
     
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_METIER Then
         If Player(Index).Char(Player(Index).CharNum).metier = 0 Then
-            Packet = "NEWMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & SEP_CHAR & END_CHAR
+            Packet = "NEWMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
         Else
             If Player(Index).Char(Player(Index).CharNum).metier <> Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 Then
-                Packet = "REMPLACEMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & SEP_CHAR & END_CHAR
+                Packet = "REMPLACEMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
             Else
                 Call PlayerMsg(Index, "Vous avez déjà ce métier !", Red)
             End If
@@ -2345,7 +2345,7 @@ Dim Moved As Byte
     ' verifier si le joueure marche sur une case bank
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_BANK Then
         Call QueteMsg(Index, Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1))
-        Packet = "BANK" & SEP_CHAR & END_CHAR
+        Packet = "BANK" & END_CHAR
         Call SendDataTo(Index, Packet)
     End If
         
@@ -2354,7 +2354,7 @@ Dim Moved As Byte
         If quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).type = QUETE_TYPE_FINIR And Player(Index).Char(Player(Index).CharNum).QueteStatut(Player(Index).Char(Player(Index).CharNum).QueteEnCour) = 0 Then
             If GetPlayerMap(Index) = quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).data3 And GetPlayerX(Index) = quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).data1 And GetPlayerY(Index) = quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).data2 Then
                 Player(Index).Char(Player(Index).CharNum).QueteStatut(Player(Index).Char(Player(Index).CharNum).QueteEnCour) = 1
-                Call SendDataTo(Index, "FINQUETE" & SEP_CHAR & END_CHAR)
+                Call SendDataTo(Index, "FINQUETE" & END_CHAR)
             End If
         End If
     End If
@@ -2482,22 +2482,22 @@ Dim i As Long
     Select Case Dir
         Case DIR_UP
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
     
         Case DIR_DOWN
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
     
         Case DIR_LEFT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
     
         Case DIR_RIGHT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
     End Select
 Exit Sub
@@ -2528,7 +2528,7 @@ If Map(MapNum).Npcs(MapNpcNum).boucle = 0 Or Map(MapNum).Npcs(MapNpcNum).Axy = T
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_RIGHT) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_RIGHT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2542,7 +2542,7 @@ If Map(MapNum).Npcs(MapNpcNum).boucle = 0 Or Map(MapNum).Npcs(MapNpcNum).Axy = T
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_LEFT) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_LEFT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2556,7 +2556,7 @@ If Map(MapNum).Npcs(MapNpcNum).boucle = 0 Or Map(MapNum).Npcs(MapNpcNum).Axy = T
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_DOWN) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_DOWN
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2570,7 +2570,7 @@ If Map(MapNum).Npcs(MapNpcNum).boucle = 0 Or Map(MapNum).Npcs(MapNpcNum).Axy = T
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_UP) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_UP
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2585,7 +2585,7 @@ Else
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_DOWN) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_DOWN
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2599,7 +2599,7 @@ Else
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_UP) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_UP
             MapNpc(MapNum, MapNpcNum).Y = MapNpc(MapNum, MapNpcNum).Y - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2613,7 +2613,7 @@ Else
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_RIGHT) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_RIGHT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X + 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2627,7 +2627,7 @@ Else
             If Not CanNpcMove(MapNum, MapNpcNum, DIR_LEFT) Then Exit Sub
             MapNpc(MapNum, MapNpcNum).Dir = DIR_LEFT
             MapNpc(MapNum, MapNpcNum).X = MapNpc(MapNum, MapNpcNum).X - 1
-            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & SEP_CHAR & END_CHAR
+            Packet = "NPCMOVE" & SEP_CHAR & MapNpcNum & SEP_CHAR & MapNpc(MapNum, MapNpcNum).X & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Y & SEP_CHAR & MapNpc(MapNum, MapNpcNum).Dir & SEP_CHAR & Movement & END_CHAR
             Call SendDataToMap(MapNum, Packet)
             Exit Sub
         End If
@@ -2650,7 +2650,7 @@ Dim Packet As String
     End If
     
     MapNpc(MapNum, MapNpcNum).Dir = Dir
-    Packet = "NPCDIR" & SEP_CHAR & MapNpcNum & SEP_CHAR & Dir & SEP_CHAR & END_CHAR
+    Packet = "NPCDIR" & SEP_CHAR & MapNpcNum & SEP_CHAR & Dir & END_CHAR
     Call SendDataToMap(MapNum, Packet)
 End Sub
 
@@ -2664,7 +2664,7 @@ Dim f As Long
     Player(Index).InGame = True
     
     ' Send an ok to client to start receiving in game data
-    Call SendDataTo(Index, "LOGINOK" & SEP_CHAR & Index & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "LOGINOK" & SEP_CHAR & Index & END_CHAR)
     
     ' Send some more little goodies, no need to explain these
     Call CheckEquippedItems(Index)
@@ -2688,7 +2688,7 @@ Dim f As Long
     Call SendWeatherTo(Index)
     Call SendTimeTo(Index)
     Call SendOnlineList
-    Call SendDataTo(Index, "PICVALUE" & SEP_CHAR & PIC_PL & SEP_CHAR & PIC_NPC1 & SEP_CHAR & PIC_NPC2 & SEP_CHAR & AccModo & SEP_CHAR & AccMapeur & SEP_CHAR & AccDevelopeur & SEP_CHAR & AccAdmin & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "PICVALUE" & SEP_CHAR & PIC_PL & SEP_CHAR & PIC_NPC1 & SEP_CHAR & PIC_NPC2 & SEP_CHAR & AccModo & SEP_CHAR & AccMapeur & SEP_CHAR & AccDevelopeur & SEP_CHAR & AccAdmin & END_CHAR)
     Call LoadPlayerQuete(Index)
     Call SendPlayerQuete(Index)
     Call SendPlayerSpells(Index)
@@ -2733,7 +2733,7 @@ Dim f As Long
     'FIN PAPERDOLL
 
     ' Send the flag so they know they can start doing stuff
-    Call SendDataTo(Index, "INGAME" & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "INGAME" & END_CHAR)
 Exit Sub
 er:
 On Error Resume Next
@@ -2955,7 +2955,7 @@ Dim C As Long
                 End If
                 Call BattleMsg(Index, "Vous avez " & GetPlayerPOINTS(Index) & " points de stats.", 9, 0)
             End If
-            Call SendDataToMap(GetPlayerMap(Index), "levelup" & SEP_CHAR & Index & SEP_CHAR & END_CHAR)
+            Call SendDataToMap(GetPlayerMap(Index), "levelup" & SEP_CHAR & Index & END_CHAR)
         End If
         
         If GetPlayerLevel(Index) = MAX_LEVEL Then
@@ -3135,7 +3135,7 @@ If Spell(SpellNum).AE = 1 Then
                                 
                                     Case SPELL_TYPE_ADDHP
                                         Call SetPlayerHP(n, GetPlayerHP(n) + Spell(SpellNum).data1)
-                                        Call SendDataTo(n, "BLITNPCDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 0 & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+                                        Call SendDataTo(n, "BLITNPCDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 0 & SEP_CHAR & 1 & END_CHAR)
                                         Call SendHP(n)
                                                 
                                     Case SPELL_TYPE_ADDMP
@@ -3252,8 +3252,8 @@ If Spell(SpellNum).AE = 1 Then
             End If
         End If
         If Casted Then
-            Call SendDataToMap(GetPlayerMap(Index), "spellanim" & SEP_CHAR & SpellNum & SEP_CHAR & Spell(SpellNum).SpellAnim & SEP_CHAR & Spell(SpellNum).SpellTime & SEP_CHAR & Spell(SpellNum).SpellDone & SEP_CHAR & Index & SEP_CHAR & Player(Index).TargetType & SEP_CHAR & Player(Index).Target & SEP_CHAR & END_CHAR)
-            'Call SendDataToMap(GetPlayerMap(index), "sound" & SEP_CHAR & "magic" & SEP_CHAR & Spell(SpellNum).Sound & SEP_CHAR & END_CHAR)
+            Call SendDataToMap(GetPlayerMap(Index), "spellanim" & SEP_CHAR & SpellNum & SEP_CHAR & Spell(SpellNum).SpellAnim & SEP_CHAR & Spell(SpellNum).SpellTime & SEP_CHAR & Spell(SpellNum).SpellDone & SEP_CHAR & Index & SEP_CHAR & Player(Index).TargetType & SEP_CHAR & Player(Index).Target & END_CHAR)
+            'Call SendDataToMap(GetPlayerMap(index), "sound" & SEP_CHAR & "magic" & SEP_CHAR & Spell(SpellNum).Sound & END_CHAR)
         End If
         Next X
     Next Y
@@ -3338,7 +3338,7 @@ Else
                     
                         Case SPELL_TYPE_ADDHP
                             Call SetPlayerHP(n, GetPlayerHP(n) + Spell(SpellNum).data1)
-                            Call SendDataTo(n, "BLITNPCDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 0 & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+                            Call SendDataTo(n, "BLITNPCDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 0 & SEP_CHAR & 1 & END_CHAR)
                             Call SendHP(n)
                                     
                         Case SPELL_TYPE_ADDMP
@@ -3407,7 +3407,7 @@ Else
             Select Case Spell(SpellNum).type
                 Case SPELL_TYPE_ADDHP
                     MapNpc(GetPlayerMap(Index), n).HP = MapNpc(GetPlayerMap(Index), n).HP + Spell(SpellNum).data1
-                    Call SendDataTo(n, "BLITPLAYERDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+                    Call SendDataTo(n, "BLITPLAYERDMG" & SEP_CHAR & Spell(SpellNum).data1 & SEP_CHAR & 1 & END_CHAR)
                 
                 Case SPELL_TYPE_SUBHP
                     Damage = ((GetPlayerMAGI(Index) \ 4) + Spell(SpellNum).data1) - (Npc(MapNpc(GetPlayerMap(Index), n).num).def \ 2)
@@ -3445,8 +3445,8 @@ End If
     If Casted Then
         Player(Index).AttackTimer = GetTickCount
         Player(Index).CastedSpell = YES
-        Call SendDataToMap(GetPlayerMap(Index), "spellanim" & SEP_CHAR & SpellNum & SEP_CHAR & Spell(SpellNum).SpellAnim & SEP_CHAR & Spell(SpellNum).SpellTime & SEP_CHAR & Spell(SpellNum).SpellDone & SEP_CHAR & Index & SEP_CHAR & Player(Index).TargetType & SEP_CHAR & Player(Index).Target & SEP_CHAR & Player(Index).CastedSpell & SEP_CHAR & END_CHAR)
-        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "magic" & SEP_CHAR & Spell(SpellNum).Sound & SEP_CHAR & END_CHAR)
+        Call SendDataToMap(GetPlayerMap(Index), "spellanim" & SEP_CHAR & SpellNum & SEP_CHAR & Spell(SpellNum).SpellAnim & SEP_CHAR & Spell(SpellNum).SpellTime & SEP_CHAR & Spell(SpellNum).SpellDone & SEP_CHAR & Index & SEP_CHAR & Player(Index).TargetType & SEP_CHAR & Player(Index).Target & SEP_CHAR & Player(Index).CastedSpell & END_CHAR)
+        Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "magic" & SEP_CHAR & Spell(SpellNum).Sound & END_CHAR)
     End If
 Exit Sub
 er:
@@ -3748,7 +3748,7 @@ Else
     Call SetPlayerY(Index, MAX_MAPY / 2)
 End If
 
-Packet = "PLAYERXY" & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & SEP_CHAR & END_CHAR
+Packet = "PLAYERXY" & SEP_CHAR & GetPlayerX(Index) & SEP_CHAR & GetPlayerY(Index) & END_CHAR
 Call SendDataToMap(GetPlayerMap(Index), Packet)
 
 End Sub

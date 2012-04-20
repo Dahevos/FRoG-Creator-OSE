@@ -1023,9 +1023,9 @@ If ival <= 0 Then ival = 1
 
 cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(CoffreTmp(SCof).Numeros).name) & " du coffre?? il sera supprimé définitivement!!", vbYesNo, "Demande")
 
-If cont = vbYes Then Packet = "MODIFCOFFRE" & SEP_CHAR & SCof & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & END_CHAR: Call SendData(Packet)
+If cont = vbYes Then Packet = "MODIFCOFFRE" & SEP_CHAR & SCof & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & END_CHAR: Call SendData(Packet)
 
-Packet = "COFFREITEM" & SEP_CHAR & END_CHAR
+Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
 End Sub
@@ -1044,9 +1044,9 @@ If ival <= 0 Then ival = 1
 
 cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(GetPlayerInvItemNum(MyIndex, SInv)).name) & " de l'inventaire?? il sera supprimer définitivement!!", vbYesNo, "Demande")
 
-If cont = vbYes Then Packet = "MODIFINV" & SEP_CHAR & SInv & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SCof & SEP_CHAR & END_CHAR: Call SendData(Packet)
+If cont = vbYes Then Packet = "MODIFINV" & SEP_CHAR & SInv & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SCof & END_CHAR: Call SendData(Packet)
 
-Packet = "COFFREITEM" & SEP_CHAR & END_CHAR
+Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
 End Sub
@@ -1057,7 +1057,7 @@ Dim Packet As String
 inve.Caption = "Inventaire de " & GetPlayerName(MyIndex) & " :"
 coffre.Caption = "Coffre de " & GetPlayerName(MyIndex) & " :"
 
-Packet = "COFFREITEM" & SEP_CHAR & END_CHAR
+Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
 DInv = False
@@ -1120,7 +1120,7 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
 
     If Inum = Cnum Or Inum = 0 Then
 
-        Packet = "DANSINV" & SEP_CHAR & SlotI & SEP_CHAR & Cnum & SEP_CHAR & ival + Val(Nbi) & SEP_CHAR & Cdur & SEP_CHAR & SlotC & SEP_CHAR & END_CHAR
+        Packet = "DANSINV" & SEP_CHAR & SlotI & SEP_CHAR & Cnum & SEP_CHAR & ival + Val(Nbi) & SEP_CHAR & Cdur & SEP_CHAR & SlotC & END_CHAR
 
         Call SendData(Packet)
         
@@ -1133,7 +1133,7 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
             CoffreTmp(SlotC).Valeur = Cval - Val(Nbi)
             CoffreTmp(SlotC).Durabiliter = Cdur
             
-            Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & Cnum & SEP_CHAR & Cval - Val(Nbi) & SEP_CHAR & Cdur & SEP_CHAR & SlotI & SEP_CHAR & END_CHAR
+            Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & Cnum & SEP_CHAR & Cval - Val(Nbi) & SEP_CHAR & Cdur & SEP_CHAR & SlotI & END_CHAR
         
             Call SendData(Packet)
         Else
@@ -1141,7 +1141,7 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
             CoffreTmp(SlotC).Valeur = 0
             CoffreTmp(SlotC).Durabiliter = 0
             
-            Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotI & SEP_CHAR & END_CHAR
+            Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotI & END_CHAR
         
             Call SendData(Packet)
         End If
@@ -1149,7 +1149,7 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
 
 Else
 
-    Packet = "DANSINV" & SEP_CHAR & SlotI & SEP_CHAR & Cnum & SEP_CHAR & Cval & SEP_CHAR & Cdur & SEP_CHAR & SlotC & SEP_CHAR & END_CHAR
+    Packet = "DANSINV" & SEP_CHAR & SlotI & SEP_CHAR & Cnum & SEP_CHAR & Cval & SEP_CHAR & Cdur & SEP_CHAR & SlotC & END_CHAR
 
     Call SendData(Packet)
     
@@ -1161,12 +1161,12 @@ Else
     CoffreTmp(SlotC).Valeur = 0
     CoffreTmp(SlotC).Durabiliter = 0
             
-    Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotI & SEP_CHAR & END_CHAR
+    Packet = "MODIFCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotI & END_CHAR
     
     Call SendData(Packet)
 End If
 
-Packet = "COFFREITEM" & SEP_CHAR & END_CHAR
+Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
 
@@ -1229,7 +1229,7 @@ End If
 If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
     If Inum = Cnum Or Cnum = 0 Then
 
-        Packet = "DANSCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & GetPlayerInvItemNum(MyIndex, SlotI) & SEP_CHAR & Cval + Val(Nbi) & SEP_CHAR & GetPlayerInvItemDur(MyIndex, SlotI) & SEP_CHAR & SlotI & SEP_CHAR & END_CHAR
+        Packet = "DANSCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & GetPlayerInvItemNum(MyIndex, SlotI) & SEP_CHAR & Cval + Val(Nbi) & SEP_CHAR & GetPlayerInvItemDur(MyIndex, SlotI) & SEP_CHAR & SlotI & END_CHAR
 
         Call SendData(Packet)
         
@@ -1239,7 +1239,7 @@ If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
 
         If Val(GetPlayerInvItemValue(MyIndex, SlotI)) - Val(Nbi) > 0 Then
 
-            Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & Inum & SEP_CHAR & (Val(GetPlayerInvItemValue(MyIndex, SlotI)) - Val(Nbi)) & SEP_CHAR & Idur & SEP_CHAR & SlotC & SEP_CHAR & END_CHAR
+            Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & Inum & SEP_CHAR & (Val(GetPlayerInvItemValue(MyIndex, SlotI)) - Val(Nbi)) & SEP_CHAR & Idur & SEP_CHAR & SlotC & END_CHAR
         
             Call SendData(Packet)
             
@@ -1250,7 +1250,7 @@ If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
             Call SetPlayerInvItemNum(MyIndex, SlotI, 0)
             Call SetPlayerInvItemDur(MyIndex, SlotI, 0)
             
-            Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotC & SEP_CHAR & END_CHAR
+            Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotC & END_CHAR
         
             Call SendData(Packet)
         End If
@@ -1258,7 +1258,7 @@ If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
 
 Else
 
-    Packet = "DANSCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & GetPlayerInvItemNum(MyIndex, SlotI) & SEP_CHAR & GetPlayerInvItemValue(MyIndex, SlotI) & SEP_CHAR & GetPlayerInvItemDur(MyIndex, SlotI) & SEP_CHAR & SlotI & SEP_CHAR & END_CHAR
+    Packet = "DANSCOFFRE" & SEP_CHAR & SlotC & SEP_CHAR & GetPlayerInvItemNum(MyIndex, SlotI) & SEP_CHAR & GetPlayerInvItemValue(MyIndex, SlotI) & SEP_CHAR & GetPlayerInvItemDur(MyIndex, SlotI) & SEP_CHAR & SlotI & END_CHAR
 
     Call SendData(Packet)
     
@@ -1270,12 +1270,12 @@ Else
     Call SetPlayerInvItemNum(MyIndex, SlotI, 0)
     Call SetPlayerInvItemDur(MyIndex, SlotI, 0)
     
-    Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotC & SEP_CHAR & END_CHAR
+    Packet = "MODIFINV" & SEP_CHAR & SlotI & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SlotC & END_CHAR
     
     Call SendData(Packet)
 End If
 
-Packet = "COFFREITEM" & SEP_CHAR & END_CHAR
+Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
 

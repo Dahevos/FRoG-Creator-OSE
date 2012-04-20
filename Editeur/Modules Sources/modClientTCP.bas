@@ -14,11 +14,11 @@ Sub TcpInit()
     END_CHAR = Chr$(237)
     PlayerBuffer = vbNullString
     
-    Dim filename As String
-    filename = App.Path & "\Config\Serveur.ini"
+    Dim FileName As String
+    FileName = App.Path & "\Config\Serveur.ini"
 
-    frmMirage.Socket.RemoteHost = ReadINI("SERVER0", "IP", filename)
-    frmMirage.Socket.RemotePort = Val(ReadINI("SERVER0", "Port", filename))
+    frmMirage.Socket.RemoteHost = ReadINI("SERVER0", "IP", FileName)
+    frmMirage.Socket.RemotePort = Val(ReadINI("SERVER0", "Port", FileName))
 End Sub
 
 Sub TcpDestroy()
@@ -756,7 +756,7 @@ mont:
             ' Check to see if the revisions match
             If GetMapRevision(x) = y Then
                 ' We do so we dont need the map
-                Call SendData("needsmap" & SEP_CHAR & FileDateTime(App.Path & "\maps\map" & x & ".fcc") & SEP_CHAR & END_CHAR)
+                Call SendData("needsmap" & SEP_CHAR & FileDateTime(App.Path & "\maps\map" & x & ".fcc") & END_CHAR)
                 OldMap = Player(MyIndex).Map
                 
                 Call InitPano(x)
@@ -767,7 +767,7 @@ mont:
         End If
                 
         ' Either the revisions didn't match or we dont have the map, so we need it
-        Call SendData("needmap" & SEP_CHAR & "yes" & SEP_CHAR & END_CHAR)
+        Call SendData("needmap" & SEP_CHAR & "yes" & END_CHAR)
         OldMap = Player(MyIndex).Map
         Exit Sub
     End If
@@ -803,7 +803,7 @@ mont:
         If Val(ReadINI("FTP", "AUTO", App.Path & "\Config.ini")) = 1 Then
             frmmsg.Show
             Call Envoi(Parse(1), ReadINI("FTP", "NOM", App.Path & "\Config.ini"), ReadINI("FTP", "MDP", App.Path & "\Config.ini"), "Maps\map" & Player(MyIndex).Map & ".fcc", "map" & Player(MyIndex).Map & ".fcc", Parse(2))
-            Call SendData("MAPDOWN" & SEP_CHAR & END_CHAR)
+            Call SendData("MAPDOWN" & END_CHAR)
         Else
             frmCoFTP.bt.Tag = Parse(1)
             frmCoFTP.annul.Tag = Parse(2)
@@ -1044,13 +1044,13 @@ mont:
     
     If (LCase$(Parse(0)) = "newmetier") Then
         i = MsgBox("Voulez vous apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
-        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & END_CHAR)
         Exit Sub
     End If
     
     If (LCase$(Parse(0)) = "remplacemetier") Then
         i = MsgBox("Voulez vous oublier votre métier et apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
-        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & SEP_CHAR & END_CHAR)
+        If i = vbYes Then SendData ("remplacemetier" & SEP_CHAR & Val(Parse(1)) & END_CHAR)
         Exit Sub
     End If
     ' :::::::::::::::::::::::
@@ -1568,7 +1568,7 @@ mont:
             frmMirage.quetetimersec.Interval = 1000
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = (Val(Parse(1)) \ 60)
-            If Len(CStr(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
+            If Len(CStr(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
             If Len(CStr(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1719,10 +1719,10 @@ mont:
             Trade(xx).Selected = NO
         Next xx
         Trade(1).Selected = YES
-        frmTrade.shopType.Top = frmTrade.label(1).Top
-        frmTrade.shopType.Left = frmTrade.label(1).Left
-        frmTrade.shopType.Height = frmTrade.label(1).Height
-        frmTrade.shopType.Width = frmTrade.label(1).Width
+        frmTrade.shopType.Top = frmTrade.Label(1).Top
+        frmTrade.shopType.Left = frmTrade.Label(1).Left
+        frmTrade.shopType.Height = frmTrade.Label(1).Height
+        frmTrade.shopType.Width = frmTrade.Label(1).Width
         Trade(1).SelectedItem = 1
         NumShop = ShopNum
         
@@ -1939,9 +1939,9 @@ mont:
     If LCase$(Parse(0)) = "spritechange" Then
         If Val(Parse(1)) = 1 Then
             i = MsgBox("Êtes-vous sur de vouloir acheter ce sprite?", 4, "Acheter un Sprite")
-            If i = 6 Then Call SendData("buysprite" & SEP_CHAR & END_CHAR)
+            If i = 6 Then Call SendData("buysprite" & END_CHAR)
         Else
-            Call SendData("buysprite" & SEP_CHAR & END_CHAR)
+            Call SendData("buysprite" & END_CHAR)
         End If
         Exit Sub
     End If
@@ -1984,7 +1984,7 @@ mont:
     ' :::::::::::::::::::
     ' :: Prompt Packet ::
     ' :::::::::::::::::::
-    If LCase$(Parse(0)) = "prompt" Then i = MsgBox(Trim$(Parse(1)), vbYesNo): Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & SEP_CHAR & END_CHAR): Exit Sub
+    If LCase$(Parse(0)) = "prompt" Then i = MsgBox(Trim$(Parse(1)), vbYesNo): Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & END_CHAR): Exit Sub
 
     ' ::::::::::::::::::::::::::::
     ' :: Emoticon editor packet ::
@@ -2288,7 +2288,7 @@ Sub SendLogin(ByVal name As String, ByVal Password As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie du login")
-    Packet = "logination" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & App.Major & SEP_CHAR & App.Minor & SEP_CHAR & App.Revision & SEP_CHAR & SEC_CODE1 & SEP_CHAR & SEC_CODE2 & SEP_CHAR & SEC_CODE3 & SEP_CHAR & SEC_CODE4 & SEP_CHAR & END_CHAR
+    Packet = "logination" & SEP_CHAR & Trim$(name) & SEP_CHAR & Trim$(Password) & SEP_CHAR & App.Major & SEP_CHAR & App.Minor & SEP_CHAR & App.Revision & SEP_CHAR & SEC_CODE1 & SEP_CHAR & SEC_CODE2 & SEP_CHAR & SEC_CODE3 & SEP_CHAR & SEC_CODE4 & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2296,7 +2296,7 @@ Sub SendUseChar(ByVal CharSlot As Long)
 Dim Packet As String
 
     Call EcrireEtat("Utilisation d'un personnage")
-    Packet = "usagakarim" & SEP_CHAR & CharSlot & SEP_CHAR & END_CHAR
+    Packet = "usagakarim" & SEP_CHAR & CharSlot & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2304,7 +2304,7 @@ Sub SayMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message(parler)")
-    Packet = "saymsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "saymsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2312,7 +2312,7 @@ Sub GlobalMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message a tout le monde")
-    Packet = "globalmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "globalmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2320,7 +2320,7 @@ Sub BroadcastMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message(spéciale)")
-    Packet = "broadcastmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "broadcastmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2328,7 +2328,7 @@ Sub EmoteMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un émoticons")
-    Packet = "emotemsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "emotemsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2336,7 +2336,7 @@ Sub GuildeMsg(ByVal Text As String)
 Dim Packet As String
 
    Call EcrireEtat("Envoie d'un message a la guilde")
-   Packet = "guildemsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+   Packet = "guildemsg" & SEP_CHAR & Text & END_CHAR
    Call SendData(Packet)
 End Sub
 
@@ -2344,7 +2344,7 @@ Sub MapMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message a tout ceux de la carte")
-    Packet = "mapmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "mapmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2352,7 +2352,7 @@ Sub PlayerMsg(ByVal Text As String, ByVal MsgTo As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message à un joueur")
-    Packet = "playermsg" & SEP_CHAR & MsgTo & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "playermsg" & SEP_CHAR & MsgTo & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2360,7 +2360,7 @@ Sub AdminMsg(ByVal Text As String)
 Dim Packet As String
 
     Call EcrireEtat("Envoie d'un message au admins")
-    Packet = "adminmsg" & SEP_CHAR & Text & SEP_CHAR & END_CHAR
+    Packet = "adminmsg" & SEP_CHAR & Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2368,7 +2368,7 @@ Sub SendPlayerMove()
 Dim Packet As String
 
     Call EcrireEtat("Envoie du déplacement du joueur")
-    Packet = "playermove" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & Player(MyIndex).Moving & SEP_CHAR & END_CHAR
+    Packet = "playermove" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & Player(MyIndex).Moving & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2376,7 +2376,7 @@ Sub SendPlayerDir()
 Dim Packet As String
 
     Call EcrireEtat("Envoie de la direction du joueur")
-    Packet = "playerdir" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & END_CHAR
+    Packet = "playerdir" & SEP_CHAR & GetPlayerDir(MyIndex) & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2384,7 +2384,7 @@ Sub SendPlayerRequestNewMap()
 Dim Packet As String
     
     Call EcrireEtat("Demande de réception d'une carte")
-    Packet = "requestnewmap" & SEP_CHAR & GetPlayerDir(MyIndex) & SEP_CHAR & END_CHAR
+    Packet = "requestnewmap" & SEP_CHAR & GetPlayerDir(MyIndex) & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2481,7 +2481,7 @@ Dim Packet As String
 
     OldMap = Player(MyIndex).Map
     Call EcrireEtat("Téléportation j'usqua " & name)
-    Packet = "WARPMETO" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "WARPMETO" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2490,7 +2490,7 @@ Dim Packet As String
 
     OldMap = Player(MyIndex).Map
     Call EcrireEtat("Téléporattion de " & name & " vers le joueur")
-    Packet = "WARPTOME" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "WARPTOME" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2499,7 +2499,7 @@ Dim Packet As String
         
     OldMap = Player(MyIndex).Map
     Call EcrireEtat("Téléportation à la carte " & MapNum)
-    Packet = "WARPTO" & SEP_CHAR & MapNum & SEP_CHAR & END_CHAR
+    Packet = "WARPTO" & SEP_CHAR & MapNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2507,7 +2507,7 @@ Sub SendSetAccess(ByVal name As String, ByVal Access As Byte)
 Dim Packet As String
 
     Call EcrireEtat("Changement d'acces de " & name & ". Nouvelle acces : " & Access)
-    Packet = "SETACCESS" & SEP_CHAR & name & SEP_CHAR & Access & SEP_CHAR & END_CHAR
+    Packet = "SETACCESS" & SEP_CHAR & name & SEP_CHAR & Access & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2515,7 +2515,7 @@ Sub SendSetSprite(ByVal SpriteNum As Long)
 Dim Packet As String
 
     Call EcrireEtat("Changement de sprite/skin")
-    Packet = "SETSPRITE" & SEP_CHAR & SpriteNum & SEP_CHAR & END_CHAR
+    Packet = "SETSPRITE" & SEP_CHAR & SpriteNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2523,7 +2523,7 @@ Sub SendSetName(ByVal nom As String)
 Dim Packet As String
 
     Call EcrireEtat("Changement de nom")
-    Packet = "SETNAME" & SEP_CHAR & nom & SEP_CHAR & END_CHAR
+    Packet = "SETNAME" & SEP_CHAR & nom & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2531,7 +2531,7 @@ Sub SendGetStats()
 Dim Packet As String
 
     Call EcrireEtat("Demande des stats")
-    Packet = "GETSTATS" & SEP_CHAR & END_CHAR
+    Packet = "GETSTATS" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2539,7 +2539,7 @@ Sub SendGetOtherStats(ByVal name As String)
 Dim Packet As String
 
     Call EcrireEtat("Demande des stats de" & name)
-    Packet = "GETOTHERSTATS" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "GETOTHERSTATS" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2547,7 +2547,7 @@ Sub SendPlayerInfoRequest(ByVal name As String)
 Dim Packet As String
 
     Call EcrireEtat("demande d'info sur " & name)
-    Packet = "PLAYERINFOREQUEST" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PLAYERINFOREQUEST" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2555,7 +2555,7 @@ Sub SendKick(ByVal name As String)
 Dim Packet As String
 
     Call EcrireEtat("Kick de " & name)
-    Packet = "KICKPLAYER" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "KICKPLAYER" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2563,7 +2563,7 @@ Sub SendBan(ByVal name As String)
 Dim Packet As String
 
     Call EcrireEtat("Banissement de " & name)
-    Packet = "BANPLAYER" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "BANPLAYER" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2571,7 +2571,7 @@ Sub SendBanList()
 Dim Packet As String
 
     Call EcrireEtat("Envoie de la banliste")
-    Packet = "BANLIST" & SEP_CHAR & END_CHAR
+    Packet = "BANLIST" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2579,7 +2579,7 @@ Sub SendRequestEditItem()
 Dim Packet As String
 
     Call EcrireEtat("Edition des objets")
-    Packet = "REQUESTEDITITEM" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITITEM" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2587,7 +2587,7 @@ Sub SendRequestEditMetier()
 Dim Packet As String
 
     Call EcrireEtat("Edition des Metiers")
-    Packet = "REQUESTEDITMETIER" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITMETIER" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2595,7 +2595,7 @@ Sub SendRequestEditRecette()
 Dim Packet As String
 
     Call EcrireEtat("Edition des Recettes")
-    Packet = "REQUESTEDITRecette" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITRecette" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2603,30 +2603,30 @@ Sub SendRequestEditPet()
 Dim Packet As String
 
     Call EcrireEtat("Edition des famillier")
-    Packet = "REQUESTEDITPET" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITPET" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSaveItem(ByVal ItemNum As Long)
 Dim Packet As String
 
-Dim filename As String
+Dim FileName As String
 Dim f  As Long
-filename = App.Path & "\items\item" & ItemNum & ".fco"
+FileName = App.Path & "\items\item" & ItemNum & ".fco"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Item(ItemNum)
     Close #f
-    filename = ReadINI("modif", "objet" & ItemNum, App.Path & "\config.ini")
+    FileName = ReadINI("modif", "objet" & ItemNum, App.Path & "\config.ini")
     
-    If "objet" & ItemNum = filename Then Exit Sub
+    If "objet" & ItemNum = FileName Then Exit Sub
     Call WriteINI("modif", "objet" & ItemNum, "1", App.Path & "\config.ini")
     If HORS_LIGNE = 1 Then Exit Sub
     
     Packet = "SAVEITEM" & SEP_CHAR & ItemNum & SEP_CHAR & Trim$(Item(ItemNum).name) & SEP_CHAR & Item(ItemNum).Pic & SEP_CHAR & Item(ItemNum).Type & SEP_CHAR & Item(ItemNum).Data1 & SEP_CHAR & Item(ItemNum).Data2 & SEP_CHAR & Item(ItemNum).Data3 & SEP_CHAR & Item(ItemNum).StrReq & SEP_CHAR & Item(ItemNum).DefReq & SEP_CHAR & Item(ItemNum).SpeedReq & SEP_CHAR & Item(ItemNum).ClassReq & SEP_CHAR & Item(ItemNum).AccessReq & SEP_CHAR
     Packet = Packet & Item(ItemNum).AddHP & SEP_CHAR & Item(ItemNum).AddMP & SEP_CHAR & Item(ItemNum).AddSP & SEP_CHAR & Item(ItemNum).AddStr & SEP_CHAR & Item(ItemNum).AddDef & SEP_CHAR & Item(ItemNum).AddMagi & SEP_CHAR & Item(ItemNum).AddSpeed & SEP_CHAR & Item(ItemNum).AddEXP & SEP_CHAR & Item(ItemNum).desc & SEP_CHAR & Item(ItemNum).AttackSpeed
-    Packet = Packet & SEP_CHAR & Item(ItemNum).NCoul & SEP_CHAR & Item(ItemNum).paperdoll & SEP_CHAR & Item(ItemNum).paperdollPic & SEP_CHAR & Item(ItemNum).Empilable & SEP_CHAR & Item(EditorIndex).Sex & SEP_CHAR & Item(EditorIndex).tArme & SEP_CHAR & END_CHAR
+    Packet = Packet & SEP_CHAR & Item(ItemNum).NCoul & SEP_CHAR & Item(ItemNum).paperdoll & SEP_CHAR & Item(ItemNum).paperdollPic & SEP_CHAR & Item(ItemNum).Empilable & SEP_CHAR & Item(EditorIndex).Sex & SEP_CHAR & Item(EditorIndex).tArme & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des objets")
 End Sub
@@ -2634,21 +2634,21 @@ End Sub
 Sub SendSavePet(ByVal PetNum As Long)
 Dim Packet As String
 
-Dim filename As String
+Dim FileName As String
 Dim f  As Long
-filename = App.Path & "\Pets\Pet" & PetNum & ".fcf"
+FileName = App.Path & "\Pets\Pet" & PetNum & ".fcf"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Item(PetNum)
     Close #f
-    filename = ReadINI("modif", "Pet" & PetNum, App.Path & "\config.ini")
+    FileName = ReadINI("modif", "Pet" & PetNum, App.Path & "\config.ini")
     
-    If "Pet" & PetNum = filename Then Exit Sub
+    If "Pet" & PetNum = FileName Then Exit Sub
     Call WriteINI("modif", "Pet" & PetNum, "1", App.Path & "\config.ini")
     If HORS_LIGNE = 1 Then Exit Sub
     
-    Packet = "SAVEPET" & SEP_CHAR & PetNum & SEP_CHAR & Pets(PetNum).nom & SEP_CHAR & Pets(PetNum).sprite & SEP_CHAR & Pets(PetNum).addForce & SEP_CHAR & Pets(PetNum).addDefence & SEP_CHAR & END_CHAR
+    Packet = "SAVEPET" & SEP_CHAR & PetNum & SEP_CHAR & Pets(PetNum).nom & SEP_CHAR & Pets(PetNum).sprite & SEP_CHAR & Pets(PetNum).addForce & SEP_CHAR & Pets(PetNum).addDefence & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des Familliés")
 End Sub
@@ -2657,17 +2657,17 @@ Sub SendSaveMetier(ByVal MetierNum As Long)
 Dim Packet As String
 Dim i As Long, z As Long
 
-Dim filename As String
+Dim FileName As String
 Dim f  As Long
-filename = App.Path & "\Metiers\Metier" & MetierNum & ".fcm"
+FileName = App.Path & "\Metiers\Metier" & MetierNum & ".fcm"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Metier(MetierNum)
     Close #f
-    filename = ReadINI("modif", "Metier" & MetierNum, App.Path & "\config.ini")
+    FileName = ReadINI("modif", "Metier" & MetierNum, App.Path & "\config.ini")
     
-    If "Metier" & MetierNum = filename Then Exit Sub
+    If "Metier" & MetierNum = FileName Then Exit Sub
     Call WriteINI("modif", "Metier" & MetierNum, "1", App.Path & "\config.ini")
     If HORS_LIGNE = 1 Then Exit Sub
     
@@ -2686,17 +2686,17 @@ Sub SendSaverecette(ByVal recetteNum As Long)
 Dim Packet As String
 Dim i As Long, z As Long
 
-Dim filename As String
+Dim FileName As String
 Dim f  As Long
-filename = App.Path & "\recettes\recette" & recetteNum & ".fcr"
+FileName = App.Path & "\recettes\recette" & recetteNum & ".fcr"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , recette(recetteNum)
     Close #f
-    filename = ReadINI("modif", "recette" & recetteNum, App.Path & "\config.ini")
+    FileName = ReadINI("modif", "recette" & recetteNum, App.Path & "\config.ini")
     
-    If "recette" & recetteNum = filename Then Exit Sub
+    If "recette" & recetteNum = FileName Then Exit Sub
     Call WriteINI("modif", "recette" & recetteNum, "1", App.Path & "\config.ini")
     If HORS_LIGNE = 1 Then Exit Sub
     
@@ -2718,26 +2718,26 @@ Sub SendRequestEditEmoticon()
 Dim Packet As String
 
     Call EcrireEtat("Edition émoticons")
-    Packet = "REQUESTEDITEMOTICON" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITEMOTICON" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSaveEmoticon(ByVal EmoNum As Long)
 Dim Packet As String
 
-Dim filename As String
-    filename = App.Path & "\emoticons.ini"
+Dim FileName As String
+    FileName = App.Path & "\emoticons.ini"
     
-    Call WriteINI("EMOTICONS", "EmoticonC" & EmoNum, Trim$(Emoticons(EmoNum).Command), filename)
-    Call WriteINI("EMOTICONS", "Emoticon" & EmoNum, Val(Emoticons(EmoNum).Pic), filename)
+    Call WriteINI("EMOTICONS", "EmoticonC" & EmoNum, Trim$(Emoticons(EmoNum).Command), FileName)
+    Call WriteINI("EMOTICONS", "Emoticon" & EmoNum, Val(Emoticons(EmoNum).Pic), FileName)
     
-    filename = ReadINI("modif", "emot" & EmoNum, App.Path & "\config.ini")
-    If "emot" & EmoNum = filename Then Exit Sub
+    FileName = ReadINI("modif", "emot" & EmoNum, App.Path & "\config.ini")
+    If "emot" & EmoNum = FileName Then Exit Sub
     Call WriteINI("modif", "emot" & EmoNum, "1", App.Path & "\config.ini")
     
     If HORS_LIGNE = 1 Then Exit Sub
     
-    Packet = "SAVEEMOTICON" & SEP_CHAR & EmoNum & SEP_CHAR & Trim$(Emoticons(EmoNum).Command) & SEP_CHAR & Emoticons(EmoNum).Pic & SEP_CHAR & END_CHAR
+    Packet = "SAVEEMOTICON" & SEP_CHAR & EmoNum & SEP_CHAR & Trim$(Emoticons(EmoNum).Command) & SEP_CHAR & Emoticons(EmoNum).Pic & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des émoticons")
 End Sub
@@ -2746,28 +2746,28 @@ Sub SendRequestEditArrow()
 Dim Packet As String
 
     Call EcrireEtat("Edition des flêches")
-    Packet = "REQUESTEDITARROW" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITARROW" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSaveArrow(ByVal ArrowNum As Long)
 Dim Packet As String
 
-Dim filename As String
+Dim FileName As String
 
-    filename = App.Path & "\Arrows.ini"
+    FileName = App.Path & "\Arrows.ini"
     
-    Call WriteINI("Arrow" & ArrowNum, "ArrowName", Trim$(Arrows(ArrowNum).name), filename)
-    Call WriteINI("Arrow" & ArrowNum, "ArrowPic", Val(Arrows(ArrowNum).Pic), filename)
-    Call WriteINI("Arrow" & ArrowNum, "ArrowRange", Val(Arrows(ArrowNum).Range), filename)
+    Call WriteINI("Arrow" & ArrowNum, "ArrowName", Trim$(Arrows(ArrowNum).name), FileName)
+    Call WriteINI("Arrow" & ArrowNum, "ArrowPic", Val(Arrows(ArrowNum).Pic), FileName)
+    Call WriteINI("Arrow" & ArrowNum, "ArrowRange", Val(Arrows(ArrowNum).Range), FileName)
     
-    filename = ReadINI("modif", "flêche" & ArrowNum, App.Path & "\config.ini")
-    If "flêche" & ArrowNum = filename Then Exit Sub
+    FileName = ReadINI("modif", "flêche" & ArrowNum, App.Path & "\config.ini")
+    If "flêche" & ArrowNum = FileName Then Exit Sub
     Call WriteINI("modif", "flêche" & ArrowNum, "1", App.Path & "\config.ini")
     
     If HORS_LIGNE = 1 Then Exit Sub
     
-    Packet = "SAVEARROW" & SEP_CHAR & ArrowNum & SEP_CHAR & Trim$(Arrows(ArrowNum).name) & SEP_CHAR & Arrows(ArrowNum).Pic & SEP_CHAR & Arrows(ArrowNum).Range & SEP_CHAR & END_CHAR
+    Packet = "SAVEARROW" & SEP_CHAR & ArrowNum & SEP_CHAR & Trim$(Arrows(ArrowNum).name) & SEP_CHAR & Arrows(ArrowNum).Pic & SEP_CHAR & Arrows(ArrowNum).Range & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des flêches")
 End Sub
@@ -2776,7 +2776,7 @@ Sub SendRequestEditNpc()
 Dim Packet As String
 
     Call EcrireEtat("Edition des PNJ")
-    Packet = "REQUESTEDITNPC" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITNPC" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2784,17 +2784,17 @@ Sub SendSaveNpc(ByVal NpcNum As Long)
 Dim Packet As String
 Dim i As Long
 
-    Dim filename As String
+    Dim FileName As String
     Dim f As Long
-    filename = App.Path & "\pnjs\npc" & NpcNum & ".fcp"
+    FileName = App.Path & "\pnjs\npc" & NpcNum & ".fcp"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Npc(NpcNum)
     Close #f
     
-    filename = ReadINI("modif", "pnj" & NpcNum, App.Path & "\config.ini")
-    If "pnj" & NpcNum = filename Then Exit Sub
+    FileName = ReadINI("modif", "pnj" & NpcNum, App.Path & "\config.ini")
+    If "pnj" & NpcNum = FileName Then Exit Sub
     Call WriteINI("modif", "pnj" & NpcNum, "1", App.Path & "\config.ini")
     If HORS_LIGNE = 1 Then Exit Sub
     
@@ -2816,35 +2816,35 @@ Sub SendMapRespawn()
 Dim Packet As String
 
     Call EcrireEtat("Actualisation de la map")
-    Packet = "MAPRESPAWN" & SEP_CHAR & END_CHAR
+    Packet = "MAPRESPAWN" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendUseItem(ByVal InvNum As Long)
 Dim Packet As String
 
-    Packet = "USEITEM" & SEP_CHAR & InvNum & SEP_CHAR & END_CHAR
+    Packet = "USEITEM" & SEP_CHAR & InvNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDropItem(ByVal InvNum, ByVal Ammount As Long)
 Dim Packet As String
 
-    Packet = "MAPDROPITEM" & SEP_CHAR & InvNum & SEP_CHAR & Ammount & SEP_CHAR & END_CHAR
+    Packet = "MAPDROPITEM" & SEP_CHAR & InvNum & SEP_CHAR & Ammount & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendWhosOnline()
 Dim Packet As String
 
-    Packet = "WHOSONLINE" & SEP_CHAR & END_CHAR
+    Packet = "WHOSONLINE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendOnlineList()
 Dim Packet As String
 
-Packet = "ONLINELIST" & SEP_CHAR & END_CHAR
+Packet = "ONLINELIST" & END_CHAR
 Call SendData(Packet)
 End Sub
             
@@ -2852,7 +2852,7 @@ Sub SendMOTDChange(ByVal motd As String)
 Dim Packet As String
 
     Call EcrireEtat("Changement du MOTD en : " & motd)
-    Packet = "SETMOTD" & SEP_CHAR & motd & SEP_CHAR & END_CHAR
+    Packet = "SETMOTD" & SEP_CHAR & motd & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2860,7 +2860,7 @@ Sub SendRequestEditShop()
 Dim Packet As String
 
     Call EcrireEtat("Edition des magasins")
-    Packet = "REQUESTEDITSHOP" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITSHOP" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2868,18 +2868,18 @@ Sub SendSaveShop(ByVal ShopNum As Long)
 Dim Packet As String
 Dim i As Long, z As Long
 
-Dim filename As String
+Dim FileName As String
 Dim f As Long
 
-    filename = App.Path & "\shops\shop" & ShopNum & ".fcm"
+    FileName = App.Path & "\shops\shop" & ShopNum & ".fcm"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Shop(ShopNum)
     Close #f
     
-    filename = ReadINI("modif", "magasin" & ShopNum, App.Path & "\config.ini")
-    If "magasin" & ShopNum = filename Then Exit Sub
+    FileName = ReadINI("modif", "magasin" & ShopNum, App.Path & "\config.ini")
+    If "magasin" & ShopNum = FileName Then Exit Sub
     Call WriteINI("modif", "magasin" & ShopNum, "1", App.Path & "\config.ini")
     
     If HORS_LIGNE = 1 Then Exit Sub
@@ -2899,7 +2899,7 @@ Sub SendRequestEditQuetes()
 Dim Packet As String
 
     Call EcrireEtat("Edition des quêtes")
-    Packet = "REQUESTEDITQUETES" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITQUETES" & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -2907,25 +2907,25 @@ Sub SendRequestEditSpell()
 Dim Packet As String
 
     Call EcrireEtat("Edition des sorts")
-    Packet = "REQUESTEDITSPELL" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITSPELL" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSaveSpell(ByVal SpellNum As Long)
 Dim Packet As String
 
-Dim filename As String
+Dim FileName As String
 Dim f As Long
 
-    filename = App.Path & "\spells\spells" & SpellNum & ".fcg"
+    FileName = App.Path & "\spells\spells" & SpellNum & ".fcg"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Spell(SpellNum)
     Close #f
     
-    filename = ReadINI("modif", "sort" & SpellNum, App.Path & "\config.ini")
-    If "sort" & SpellNum = filename Then Exit Sub
+    FileName = ReadINI("modif", "sort" & SpellNum, App.Path & "\config.ini")
+    If "sort" & SpellNum = FileName Then Exit Sub
     Call WriteINI("modif", "sort" & SpellNum, "1", App.Path & "\config.ini")
     
     If HORS_LIGNE = 1 Then Exit Sub
@@ -2938,18 +2938,18 @@ End Sub
 Sub SendSaveQuete(ByVal quetenum As Long)
 Dim Packet As String
 Dim i As Long
-Dim filename As String
+Dim FileName As String
 Dim f As Long
 
-    filename = App.Path & "\quetes\quete" & quetenum & ".fcq"
+    FileName = App.Path & "\quetes\quete" & quetenum & ".fcq"
         
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , quete(quetenum)
     Close #f
     
-    filename = ReadINI("modif", "quête" & quetenum, App.Path & "\config.ini")
-    If "quete" & quetenum = filename Then Exit Sub
+    FileName = ReadINI("modif", "quête" & quetenum, App.Path & "\config.ini")
+    If "quete" & quetenum = FileName Then Exit Sub
     Call WriteINI("modif", "quête" & quetenum, "1", App.Path & "\config.ini")
     
     If HORS_LIGNE = 1 Then Exit Sub
@@ -2959,7 +2959,7 @@ Dim f As Long
         Packet = Packet & SEP_CHAR & quete(quetenum).indexe(i).Data1 & SEP_CHAR & quete(quetenum).indexe(i).Data2 & SEP_CHAR & quete(quetenum).indexe(i).Data3 & SEP_CHAR & quete(quetenum).indexe(i).String1
     Next i
     Packet = Packet & SEP_CHAR & quete(quetenum).Recompence.exp & SEP_CHAR & quete(quetenum).Recompence.objn1 & SEP_CHAR & quete(quetenum).Recompence.objn2 & SEP_CHAR & quete(quetenum).Recompence.objn3 & SEP_CHAR & quete(quetenum).Recompence.objq1 & SEP_CHAR & quete(quetenum).Recompence.objq2 & SEP_CHAR & quete(quetenum).Recompence.objq3 & SEP_CHAR & quete(quetenum).Case
-    Packet = Packet & SEP_CHAR & END_CHAR
+    Packet = Packet & END_CHAR
     Call SendData(Packet)
     Call EcrireEtat("Sauvegarde des quêtes")
 End Sub
@@ -2968,118 +2968,118 @@ Sub SendRequestEditMap()
 Dim Packet As String
 
     Call EcrireEtat("Edition d'une carte")
-    Packet = "REQUESTEDITMAP" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTEDITMAP" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendTradeRequest(ByVal name As String)
 Dim Packet As String
 
-    Packet = "PPTRADE" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PPTRADE" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendAcceptTrade()
 Dim Packet As String
 
-    Packet = "ATRADE" & SEP_CHAR & END_CHAR
+    Packet = "ATRADE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendDeclineTrade()
 Dim Packet As String
 
-    Packet = "DTRADE" & SEP_CHAR & END_CHAR
+    Packet = "DTRADE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendPartyRequest(ByVal name As String)
 Dim Packet As String
 
-    Packet = "PARTY" & SEP_CHAR & name & SEP_CHAR & END_CHAR
+    Packet = "PARTY" & SEP_CHAR & name & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendJoinParty()
 Dim Packet As String
 
-    Packet = "JOINPARTY" & SEP_CHAR & END_CHAR
+    Packet = "JOINPARTY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendLeaveParty()
 Dim Packet As String
 
-    Packet = "LEAVEPARTY" & SEP_CHAR & END_CHAR
+    Packet = "LEAVEPARTY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendBanDestroy()
 Dim Packet As String
     
-    Packet = "BANDESTROY" & SEP_CHAR & END_CHAR
+    Packet = "BANDESTROY" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendRequestLocation()
 Dim Packet As String
 
-    Packet = "REQUESTLOCATION" & SEP_CHAR & END_CHAR
+    Packet = "REQUESTLOCATION" & END_CHAR
     Call SendData(Packet)
 End Sub
 Sub SendSetPlayerSprite(ByVal name As String, ByVal SpriteNum As Byte)
 Dim Packet As String
 
-    Packet = "SETPLAYERSPRITE" & SEP_CHAR & name & SEP_CHAR & SpriteNum & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERSPRITE" & SEP_CHAR & name & SEP_CHAR & SpriteNum & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerName(ByVal name As String, ByVal Nouveau As String)
 Dim Packet As String
 
-    Packet = "SETPLAYERNAME" & SEP_CHAR & name & SEP_CHAR & Nouveau & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERNAME" & SEP_CHAR & name & SEP_CHAR & Nouveau & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetplayerstr(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERSTR" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERSTR" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerDef(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERDEF" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERDEF" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerVit(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERVIT" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERVIT" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMagi(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAGI" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAGI" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerPk(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERPK" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERPK" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerNiveau(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERNIVEAU" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERNIVEAU" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -3087,34 +3087,34 @@ End Sub
 Sub SendSetPlayerExp(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYEREXP" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYEREXP" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerPoint(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERPOINT" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERPOINT" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMaxPv(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAXPV" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAXPV" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendSetPlayerMaxPm(ByVal name As String, ByVal num As Long)
 Dim Packet As String
 
-    Packet = "SETPLAYERMAXPM" & SEP_CHAR & name & SEP_CHAR & num & SEP_CHAR & END_CHAR
+    Packet = "SETPLAYERMAXPM" & SEP_CHAR & name & SEP_CHAR & num & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Sub SendGetAdminHelp()
 Dim Packet As String
 
-    Packet = "GETADMINHELP" & SEP_CHAR & END_CHAR
+    Packet = "GETADMINHELP" & END_CHAR
     Call SendData(Packet)
 End Sub

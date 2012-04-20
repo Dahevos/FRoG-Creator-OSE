@@ -783,7 +783,7 @@ End Sub
 
 Private Sub picNewChar_Click()
     If lstChars.List(lstChars.ListIndex) <> "Emplacement libre" Then MsgBox "Il y a déjà un personnage à cette emplacement!": Exit Sub
-    Call SendData("PICVALUE" & SEP_CHAR & END_CHAR)
+    Call SendData("PICVALUE" & END_CHAR)
     Call MenuState(MENU_STATE_NEWCHAR)
 End Sub
 
@@ -796,7 +796,7 @@ End Sub
 
 Private Sub picUseChar_Click()
     If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then MsgBox "Il n'y a pas de personnage à cette emplacement!": Exit Sub
-    Call SendData("PICVALUE" & SEP_CHAR & END_CHAR)
+    Call SendData("PICVALUE" & END_CHAR)
     Call MenuState(MENU_STATE_USECHAR)
 End Sub
 

@@ -142,7 +142,7 @@ Dim Ending As String
 End Sub
 
 Private Sub chkFix_Click()
-    Call SendData("fixitem" & SEP_CHAR & cmbItem.ListIndex + 1 & SEP_CHAR & frmTrade.picFixItems.Tag & SEP_CHAR & END_CHAR)
+    Call SendData("fixitem" & SEP_CHAR & cmbItem.ListIndex + 1 & SEP_CHAR & frmTrade.picFixItems.Tag & END_CHAR)
     Call cmbItem_Click
 End Sub
 

@@ -509,7 +509,7 @@ Dim x As Long, y As Long
             PlayerAnim(Index, 2) = 0
             PlayerAnim(Index, 3) = 0
             If PlayerAnim(Index, 4) > 0 Then
-                Call SendData("exscript" & SEP_CHAR & PlayerAnim(Index, 4) - 1 & SEP_CHAR & END_CHAR)
+                Call SendData("exscript" & SEP_CHAR & PlayerAnim(Index, 4) - 1 & END_CHAR)
             End If
             PlayerAnim(Index, 4) = 0
          End If
@@ -770,7 +770,7 @@ For z = 1 To MAX_PLAYER_ARROWS
         For i = 1 To MAX_PLAYERS
            If IsPlaying(i) And GetPlayerMap(i) = GetPlayerMap(MyIndex) Then
                 If GetPlayerX(i) = x And GetPlayerY(i) = y Then
-                    If Index = MyIndex Then Call SendData("arrowhit" & SEP_CHAR & 0 & SEP_CHAR & i & SEP_CHAR & x & SEP_CHAR & y & SEP_CHAR & END_CHAR)
+                    If Index = MyIndex Then Call SendData("arrowhit" & SEP_CHAR & 0 & SEP_CHAR & i & SEP_CHAR & x & SEP_CHAR & y & END_CHAR)
                     If Index <> i Then .Arrow = 0
                     Exit Sub
                 End If
@@ -780,7 +780,7 @@ For z = 1 To MAX_PLAYER_ARROWS
         For i = 1 To MAX_MAP_NPCS
             If MapNpc(i).num > 0 Then
                 If MapNpc(i).x = x And MapNpc(i).y = y Then
-                    If Index = MyIndex Then Call SendData("arrowhit" & SEP_CHAR & 1 & SEP_CHAR & i & SEP_CHAR & x & SEP_CHAR & y & SEP_CHAR & END_CHAR)
+                    If Index = MyIndex Then Call SendData("arrowhit" & SEP_CHAR & 1 & SEP_CHAR & i & SEP_CHAR & x & SEP_CHAR & y & END_CHAR)
                     .Arrow = 0
                     Exit Sub
                 End If

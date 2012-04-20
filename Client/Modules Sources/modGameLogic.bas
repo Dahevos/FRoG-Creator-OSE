@@ -532,7 +532,7 @@ Dim d As Byte
             If Player(MyIndex).Spell(Val(rac(Index, 0))) > 0 Then
                 If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                     If Player(MyIndex).Moving = 0 Then
-                        Call SendData("cast" & SEP_CHAR & Val(rac(Index, 0)) & SEP_CHAR & END_CHAR)
+                        Call SendData("cast" & SEP_CHAR & Val(rac(Index, 0)) & END_CHAR)
                         Player(MyIndex).Attacking = 1
                         Player(MyIndex).AttackTimer = GetTickCount
                         Player(MyIndex).CastedSpell = YES
@@ -2222,7 +2222,7 @@ End If
         ' Verification User
         If LCase$(Mid$(MyText, 1, 5)) = "/info" Then
             ChatText = Mid$(MyText, 6, Len(MyText) - 5)
-            Call SendData("playerinforequest" & SEP_CHAR & ChatText & SEP_CHAR & END_CHAR)
+            Call SendData("playerinforequest" & SEP_CHAR & ChatText & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2263,7 +2263,7 @@ End If
         
         ' Request stats
         If LCase$(Mid$(MyText, 1, 6)) = "/stats" Then
-            Call SendData("getstats" & SEP_CHAR & END_CHAR)
+            Call SendData("getstats" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2271,21 +2271,21 @@ End If
         ' Refresh Player
         If LCase$(Mid$(MyText, 1, 8)) = "/refresh" Then
             ConOff = True
-            Call SendData("refresh" & SEP_CHAR & END_CHAR)
+            Call SendData("refresh" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
         
         ' Decline Chat
         If LCase$(Mid$(MyText, 1, 12)) = "/chatdecline" Or LCase$(Mid$(MyText, 1, 12)) = "/chatrefu" Then
-            Call SendData("dchat" & SEP_CHAR & END_CHAR)
+            Call SendData("dchat" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
         
         ' Accept Chat
         If LCase$(Mid$(MyText, 1, 5)) = "/chat" Then
-            Call SendData("achat" & SEP_CHAR & END_CHAR)
+            Call SendData("achat" & END_CHAR)
             MyText = vbNullString
             Exit Sub
         End If
@@ -2370,13 +2370,13 @@ End If
                 If Len(MyText) > 8 Then
                     MyText = Mid$(MyText, 9, Len(MyText) - 8)
                     If IsNumeric(MyText) = True Then
-                        Call SendData("weather" & SEP_CHAR & Val(MyText) & SEP_CHAR & END_CHAR)
+                        Call SendData("weather" & SEP_CHAR & Val(MyText) & END_CHAR)
                     Else
                         If Trim$(LCase$(MyText)) = "none" Or Trim$(LCase$(MyText)) = "rien" Then i = 0
                         If Trim$(LCase$(MyText)) = "rain" Or Trim$(LCase$(MyText)) = "pluie" Then i = 1
                         If Trim$(LCase$(MyText)) = "snow" Or Trim$(LCase$(MyText)) = "neige" Then i = 2
                         If Trim$(LCase$(MyText)) = "thunder" Or Trim$(LCase$(MyText)) = "orage" Then i = 3
-                        Call SendData("weather" & SEP_CHAR & i & SEP_CHAR & END_CHAR)
+                        Call SendData("weather" & SEP_CHAR & i & END_CHAR)
                     End If
                 End If
                 MyText = vbNullString
@@ -2411,7 +2411,7 @@ End If
             
             ' Map report
             If LCase$(Mid$(MyText, 1, 10)) = "/mapreport" Then
-                Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+                Call SendData("mapreport" & END_CHAR)
                 MyText = vbNullString
                 Exit Sub
             End If
@@ -2527,12 +2527,12 @@ End If
         If Left$(Trim$(MyText), 1) = "/" Then
             For i = 0 To MAX_EMOTICONS
                 If Trim$(Emoticons(i).Command) = Trim$(MyText) And Trim$(Emoticons(i).Command) <> "/" Then
-                    Call SendData("checkemoticons" & SEP_CHAR & i & SEP_CHAR & END_CHAR)
+                    Call SendData("checkemoticons" & SEP_CHAR & i & END_CHAR)
                     MyText = vbNullString
                 Exit Sub
                 End If
             Next i
-            Call SendData("checkcommands" & SEP_CHAR & MyText & SEP_CHAR & END_CHAR)
+            Call SendData("checkcommands" & SEP_CHAR & MyText & END_CHAR)
             MyText = vbNullString
         Exit Sub
         End If
@@ -2585,7 +2585,7 @@ End Sub
 Sub CheckMapGetItem()
     If GetTickCount > Player(MyIndex).MapGetTimer + 250 And Trim$(MyText) = vbNullString Then
         Player(MyIndex).MapGetTimer = GetTickCount
-        Call SendData("mapgetitem" & SEP_CHAR & END_CHAR)
+        Call SendData("mapgetitem" & END_CHAR)
     End If
 End Sub
 
@@ -2596,7 +2596,7 @@ Dim AttackSpeed As Long
     If ControlDown = True And Player(MyIndex).AttackTimer + AttackSpeed < GetTickCount And Player(MyIndex).Attacking = 0 Then
         Player(MyIndex).Attacking = 1
         Player(MyIndex).AttackTimer = GetTickCount
-        Call SendData("attack" & SEP_CHAR & END_CHAR)
+        Call SendData("attack" & END_CHAR)
     End If
 End Sub
 
@@ -3689,7 +3689,7 @@ Dim x1 As Long, y1 As Long
     y1 = (y \ PIC_Y)
     
     If (x1 >= 0) And (x1 <= MAX_MAPX) And (y1 >= 0) And (y1 <= MAX_MAPY) Then
-        Call SendData("search" & SEP_CHAR & x1 & SEP_CHAR & y1 & SEP_CHAR & END_CHAR)
+        Call SendData("search" & SEP_CHAR & x1 & SEP_CHAR & y1 & END_CHAR)
     End If
     MouseDownX = x1
     MouseDownY = y1
@@ -3976,7 +3976,7 @@ End Sub
 Sub SendGameTime()
 Dim Packet As String
 
-Packet = "GmTime" & SEP_CHAR & GameTime & SEP_CHAR & END_CHAR
+Packet = "GmTime" & SEP_CHAR & GameTime & END_CHAR
 Call SendData(Packet)
 End Sub
 

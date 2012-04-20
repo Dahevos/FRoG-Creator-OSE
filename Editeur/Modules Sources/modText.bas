@@ -72,8 +72,8 @@ Dim z As Long
 t = 0
        For i = 1 To MAX_BLT_LINE
             If t = 0 Then
-                If BattlePMsg(i).index <= 0 Then
-                    BattlePMsg(i).index = 1
+                If BattlePMsg(i).Index <= 0 Then
+                    BattlePMsg(i).Index = 1
                     BattlePMsg(i).Msg = Msg
                     BattlePMsg(i).Color = Color
                     BattlePMsg(i).Time = GetTickCount
@@ -84,8 +84,8 @@ t = 0
                     BattlePMsg(i).y = BattlePMsg(i).y - 15
                 End If
             Else
-                If BattleMMsg(i).index <= 0 Then
-                    BattleMMsg(i).index = 1
+                If BattleMMsg(i).Index <= 0 Then
+                    BattleMMsg(i).Index = 1
                     BattleMMsg(i).Msg = Msg
                     BattleMMsg(i).Color = Color
                     BattleMMsg(i).Time = GetTickCount
@@ -104,7 +104,7 @@ t = 0
                 If i < MAX_BLT_LINE Then If BattlePMsg(i).y < BattlePMsg(i + 1).y Then z = i Else If BattlePMsg(i).y < BattlePMsg(1).y Then z = i
             Next i
                         
-            BattlePMsg(z).index = 1
+            BattlePMsg(z).Index = 1
             BattlePMsg(z).Msg = Msg
             BattlePMsg(z).Color = Color
             BattlePMsg(z).Time = GetTickCount
@@ -115,7 +115,7 @@ t = 0
                 If i < MAX_BLT_LINE Then If BattleMMsg(i).y < BattleMMsg(i + 1).y Then z = i Else If BattleMMsg(i).y < BattleMMsg(1).y Then z = i
             Next i
                         
-            BattleMMsg(z).index = 1
+            BattleMMsg(z).Index = 1
             BattleMMsg(z).Msg = Msg
             BattleMMsg(z).Color = Color
             BattleMMsg(z).Time = GetTickCount
@@ -125,7 +125,7 @@ t = 0
         Exit Sub
 End Sub
 
-Function Parse(ByVal num As Long, ByVal data As String)
+Function Parse(ByVal num As Long, ByVal Data As String)
 Dim i As Long
 Dim n As Long
 Dim sChar As Long
@@ -134,9 +134,9 @@ Dim eChar As Long
     n = 0
     sChar = 1
     
-    For i = 1 To Len(data)
-        If Mid$(data, i, 1) = SEP_CHAR Then
-            If n = num Then eChar = i: Parse = Mid$(data, sChar, eChar - sChar): Exit For
+    For i = 1 To Len(Data)
+        If Mid$(Data, i, 1) = SEP_CHAR Then
+            If n = num Then eChar = i: Parse = Mid$(Data, sChar, eChar - sChar): Exit For
             
             sChar = i + 1
             n = n + 1

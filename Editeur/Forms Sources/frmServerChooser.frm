@@ -82,7 +82,7 @@ Public Extension As String
     Dim i As Long, c As Long
         frmServerChooser.Visible = True
 
-        filename = App.Path & "\Config\Serveur.ini"
+        FileName = App.Path & "\Config\Serveur.ini"
         i = 0
         c = 0
         CHECK_WAIT = False
@@ -93,10 +93,10 @@ Public Extension As String
         Do Until c = 1
             DoEvents
             If CHECK_WAIT = False Then
-                If ReadINI("SERVER" & i, "IP", filename) <> vbNullString And ReadINI("SERVER" & i, "PORT", filename) <> vbNullString Then
-                    GAME_IP = ReadINI("SERVER" & i, "IP", filename)
-                    GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", filename))
-                    If CheckServerStatus = True Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & SEP_CHAR & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", filename) & " - Fermé!"
+                If ReadINI("SERVER" & i, "IP", FileName) <> vbNullString And ReadINI("SERVER" & i, "PORT", FileName) <> vbNullString Then
+                    GAME_IP = ReadINI("SERVER" & i, "IP", FileName)
+                    GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", FileName))
+                    If CheckServerStatus = True Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé!"
                     i = i + 1
                 Else
                     c = 1

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmOptCoul 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Options des couleurs"
@@ -494,7 +494,7 @@ Call PutVar(App.Path & "\Data.ini", "COULEURS", "AccAdmin", adm.BackColor)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "AccDevelopeur", dev.BackColor)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "AccModo", modo.BackColor)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "AccMapeur", mapp.BackColor)
-Call SendDataToAll("PICVALUE" & SEP_CHAR & PIC_PL & SEP_CHAR & PIC_NPC1 & SEP_CHAR & PIC_NPC2 & SEP_CHAR & AccModo & SEP_CHAR & AccMapeur & SEP_CHAR & AccDevelopeur & SEP_CHAR & AccAdmin & SEP_CHAR & END_CHAR)
+Call SendDataToAll("PICVALUE" & SEP_CHAR & PIC_PL & SEP_CHAR & PIC_NPC1 & SEP_CHAR & PIC_NPC2 & SEP_CHAR & AccModo & SEP_CHAR & AccMapeur & SEP_CHAR & AccDevelopeur & SEP_CHAR & AccAdmin & END_CHAR)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "MsgDiscu", MsgC(0).BackColor)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "MsgGlob", MsgC(1).BackColor)
 Call PutVar(App.Path & "\Data.ini", "COULEURS", "MsgDist", MsgC(2).BackColor)

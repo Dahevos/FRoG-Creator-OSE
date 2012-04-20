@@ -2875,6 +2875,11 @@ Begin VB.Form frmMirage
          EndProperty
       EndProperty
       MouseIcon       =   "frmMirage.frx":1C748
+      Begin VB.Timer sync 
+         Interval        =   5000
+         Left            =   14040
+         Top             =   0
+      End
    End
    Begin VB.VScrollBar scrlPicture 
       Height          =   6480
@@ -3633,19 +3638,19 @@ Dim Couche As String
 Dim CTRLDOWN As Boolean
 
 Private Sub AddDef_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 1 & END_CHAR)
 End Sub
 
 Private Sub AddMagi_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 2 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 2 & END_CHAR)
 End Sub
 
 Private Sub AddSpeed_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 3 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 3 & END_CHAR)
 End Sub
 
 Private Sub AddStr_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 0 & END_CHAR)
 End Sub
 
 Private Sub adminiguild_Click()
@@ -3656,7 +3661,7 @@ End Sub
 
 Private Sub artquete_Click()
     Player(MyIndex).QueteEnCour = 0
-    Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+    Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
     picquete.Visible = False
 End Sub
 
@@ -3681,14 +3686,14 @@ End Sub
 
 Private Sub cmdLeave_Click()
 Dim Packet As String
-    Packet = "GUILDLEAVE" & SEP_CHAR & END_CHAR
+    Packet = "GUILDLEAVE" & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Private Sub cmdMember_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "GUILDMEMBER" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDMEMBER" & SEP_CHAR & txtName.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -3698,9 +3703,9 @@ Dim f As Long
         If FileExiste("Maps\map" & DonID & ".fcc") Then Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Else Call SaveMap(DonID): Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc")
         Call ViderTMap(lstIndex.ListIndex + 1)
         If FileExiste("Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Then
-            filename = App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc"
+            FileName = App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc"
             f = FreeFile
-            Open filename For Binary As #f
+            Open FileName For Binary As #f
                 Get #f, , Map(lstIndex.ListIndex + 1)
             Close #f
         End If
@@ -3756,7 +3761,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -3769,7 +3774,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4164,7 +4169,7 @@ If HORS_LIGNE = 1 Then
 Else
     GettingMap = True
     Call LoadMap(lstIndex.ListIndex + 1)
-    Call SendData("WARPTO" & SEP_CHAR & lstIndex.ListIndex + 1 & SEP_CHAR & END_CHAR)
+    Call SendData("WARPTO" & SEP_CHAR & lstIndex.ListIndex + 1 & END_CHAR)
     frmMirage.SetFocus
     For i = 0 To 5
         Call NetTempMap(i)
@@ -4179,12 +4184,12 @@ End Sub
 Private Sub lstIndex_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 2 Then
     If DonID > 0 Then colle.Enabled = True Else colle.Enabled = False
-    Call PopupMenu(edit)
+    Call PopupMenu(Edit)
 End If
 End Sub
 
 Private Sub lstOnline_DblClick()
-    Call SendData("playerchat" & SEP_CHAR & Trim$(lstOnline.Text) & SEP_CHAR & END_CHAR)
+    Call SendData("playerchat" & SEP_CHAR & Trim$(lstOnline.Text) & END_CHAR)
 End Sub
 
 Private Sub lstSpells_DblClick()
@@ -4216,11 +4221,11 @@ Dim msgb As String
 If Player(MyIndex).QueteEnCour > 0 And Accepter = False Then
     msgb = MsgBox("Voulez-vous faire la quête proposée?", vbYesNo, "quête")
     If msgb = vbYes Then
-        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
         Accepter = True
     Else
         Player(MyIndex).QueteEnCour = 0
-        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+        Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
         Accepter = False
     End If
 End If
@@ -4229,7 +4234,7 @@ End Sub
 
 Private Sub opt_Click()
 frmoptions.SSTab1.Tab = 0
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4242,7 +4247,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4335,7 +4340,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4348,7 +4353,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4534,7 +4539,7 @@ If ConOff = True And Not InEditor Then Exit Sub
         If SpellMemorized > 0 Then
             If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                 If Player(MyIndex).Moving = 0 Then
-                    Call SendData("cast" & SEP_CHAR & SpellMemorized & SEP_CHAR & END_CHAR)
+                    Call SendData("cast" & SEP_CHAR & SpellMemorized & END_CHAR)
                     Player(MyIndex).Attacking = 1
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
@@ -4666,7 +4671,7 @@ If quete(Queten).Temps > 0 And Player(MyIndex).QueteEnCour > 0 Then
         Seco = 59
         seconde.Caption = Seco
         Minu = Minu - 1
-        If Len(CStr(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
+        If Len(CStr(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
     End If
 
     If Seco <= 0 And Minu <= 0 Then
@@ -4730,19 +4735,25 @@ If Player(MyIndex).QueteEnCour > 0 Then Call NetPic: frmMirage.picquete.Visible 
 End Sub
 
 Private Sub rempli_Click()
-Dim y As Long
-Dim x As Long
+Dim y As Integer
+Dim x As Integer
+Dim y2 As Integer
+Dim x2 As Integer
 
 x = MsgBox("Es-tu sur de vouloir remplir la carte?", vbYesNo)
 If x = vbNo Then Exit Sub
 
 Call SauvTemp
 If frmMirage.tp(1).Checked = True Then
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            With Map(Player(MyIndex).Map).tile(x, y)
+For y2 = 0 To Int(frmMirage.shpSelected.Height / PIC_Y) - 1
+For x2 = 0 To Int(frmMirage.shpSelected.Width / PIC_X) - 1
+For y = 0 To (MAX_MAPY / Int(frmMirage.shpSelected.Height / PIC_Y))
+For x = 0 To (MAX_MAPX / Int(frmMirage.shpSelected.Width / PIC_X))
+
+            
+            With Map(Player(MyIndex).Map).tile(x2 + x, y2 + y)
                 If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
-                    .Ground = EditorTileY * TilesInSheets + EditorTileX
+                    .Ground = (EditorTileY + y2) * TilesInSheets + EditorTileX + x2
                     .GroundSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(6).value = tbrPressed Then
                     .Mask = EditorTileY * TilesInSheets + EditorTileX
@@ -4782,8 +4793,10 @@ If frmMirage.tp(1).Checked = True Then
                     .F3AnimSet = EditorSet
                 End If
             End With
-        Next x
-    Next y
+Next x
+Next y
+Next x2
+Next y2
 ElseIf frmMirage.tp(2).Checked = True Then
     For y = 0 To MAX_MAPY
         For x = 0 To MAX_MAPX
@@ -5096,11 +5109,15 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub sort_Click()
-    Call SendData("spells" & SEP_CHAR & END_CHAR)
+    Call SendData("spells" & END_CHAR)
 End Sub
 
 Private Sub stopmusic_Click()
 Call StopMidi
+End Sub
+
+Private Sub sync_Timer()
+Call SendData("sync" & END_CHAR)
 End Sub
 
 Private Sub test_Click()
@@ -5194,7 +5211,7 @@ If Numbut = 1 Then Call Tester
 If Numbut = 2 Then
     If GettingMap Then Exit Sub
     If HORS_LIGNE = 1 Then Call enregcarte_Click Else Call envoicarte_Click
-    Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+    Call SendData("mapreport" & END_CHAR)
     Exit Sub
 End If
 
@@ -5403,7 +5420,7 @@ Private Sub lblCast_Click()
     If Player(MyIndex).Spell(lstSpells.ListIndex + 1) > 0 Then
         If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
             If Player(MyIndex).Moving = 0 Then
-                Call SendData("cast" & SEP_CHAR & lstSpells.ListIndex + 1 & SEP_CHAR & END_CHAR)
+                Call SendData("cast" & SEP_CHAR & lstSpells.ListIndex + 1 & END_CHAR)
                 Player(MyIndex).Attacking = 1
                 Player(MyIndex).AttackTimer = GetTickCount
                 Player(MyIndex).CastedSpell = YES
@@ -5419,21 +5436,21 @@ End Sub
 Private Sub cmdAccess_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Or txtAccess.Text = vbNullString Or Not IsNumeric(txtAccess.Text) Then Exit Sub
-    Packet = "GUILDCHANGEACCESS" & SEP_CHAR & txtName.Text & SEP_CHAR & txtAccess.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDCHANGEACCESS" & SEP_CHAR & txtName.Text & SEP_CHAR & txtAccess.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Private Sub cmdDisown_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "GUILDDISOWN" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDDISOWN" & SEP_CHAR & txtName.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Private Sub cmdTrainee_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "guildtraineevbyesno" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR '"GUILDTRAINEE"
+    Packet = "guildtraineevbyesno" & SEP_CHAR & txtName.Text & END_CHAR '"GUILDTRAINEE"
     Call SendData(Packet)
 End Sub
 

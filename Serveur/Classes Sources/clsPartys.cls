@@ -43,51 +43,51 @@ Public Function AddMember(ByVal Index As Integer) As Byte
     Player(Index).InParty = PartyIndex
     
     ' Partage des barres de vie
-    Dim X As Byte, I As Byte
-    For I = 1 To CountMember
+    Dim X As Byte, i As Byte
+    For i = 1 To CountMember
         For X = 1 To CountMember
-            Call SendDataTo(Member(I), "partyhp" & SEP_CHAR & Member(X) & SEP_CHAR & Player(Member(X)).InParty & SEP_CHAR & GetPlayerMaxHP(Member(X)) & SEP_CHAR & Player(Member(X)).Char(Player(Member(X)).CharNum).HP & SEP_CHAR & GetPlayerMaxMP(Member(X)) & SEP_CHAR & Player(Member(X)).Char(Player(Member(X)).CharNum).MP & SEP_CHAR & END_CHAR)
+            Call SendDataTo(Member(i), "partyhp" & SEP_CHAR & Member(X) & SEP_CHAR & Player(Member(X)).InParty & SEP_CHAR & GetPlayerMaxHP(Member(X)) & SEP_CHAR & Player(Member(X)).Char(Player(Member(X)).CharNum).HP & SEP_CHAR & GetPlayerMaxMP(Member(X)) & SEP_CHAR & Player(Member(X)).Char(Player(Member(X)).CharNum).MP & END_CHAR)
         Next X
-    Next I
+    Next i
     
     AddMember = CountMember
 End Function
 
 Public Sub RemoveMember(ByVal MIndex As Byte, Optional ByVal PIndex As Integer)
-Dim I As Byte, X As Byte
+Dim i As Byte, X As Byte
 
     If CountMember > 0 Then
         If MIndex = 0 And PIndex > 0 And PIndex < MAX_PLAYERS Then
-            For I = 1 To CountMember
-                If Member(I) = PIndex Then
+            For i = 1 To CountMember
+                If Member(i) = PIndex Then
                     'If i <> Leader Then
                         For X = 1 To CountMember
-                            'If X <> i Then Call SendDataTo(Member(i), "partyindex" & SEP_CHAR & Member(X) & SEP_CHAR & Player(Member(X)).InParty & SEP_CHAR & END_CHAR)
-                            Call SendDataTo(Member(X), "partyindex" & SEP_CHAR & Member(I) & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+                            'If X <> i Then Call SendDataTo(Member(i), "partyindex" & SEP_CHAR & Member(X) & SEP_CHAR & Player(Member(X)).InParty & END_CHAR)
+                            Call SendDataTo(Member(X), "partyindex" & SEP_CHAR & Member(i) & SEP_CHAR & 0 & END_CHAR)
                         Next X
-                        Player(Member(I)).InParty = 0
-                        Player(Member(I)).PartyPlayer = 0
-                        Player(Member(I)).InvitedBy = 0
+                        Player(Member(i)).InParty = 0
+                        Player(Member(i)).PartyPlayer = 0
+                        Player(Member(i)).InvitedBy = 0
                         
-                        If I < CountMember Then
-                            For X = I + 1 To CountMember
+                        If i < CountMember Then
+                            For X = i + 1 To CountMember
                                 Member(X - 1) = Member(X)
                                 
                                 Player(Member(X)).PartyPlayer = X - 1
                             Next X
                             Member(X - 1) = 0
                         Else
-                            Member(I) = 0
+                            Member(i) = 0
                         End If
                         
                         CountMember = CountMember - 1
                     'End If
                 End If
-            Next I
+            Next i
         'ElseIf MIndex > 0 And MIndex <= CountMember And MIndex <> Leader Then
         ElseIf MIndex > 0 And MIndex <= CountMember Then
             For X = 1 To CountMember
-                Call SendDataTo(Member(X), "partyindex" & SEP_CHAR & Member(MIndex) & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+                Call SendDataTo(Member(X), "partyindex" & SEP_CHAR & Member(MIndex) & SEP_CHAR & 0 & END_CHAR)
             Next X
             
             Player(Member(MIndex)).InParty = 0
@@ -111,11 +111,11 @@ Dim I As Byte, X As Byte
 End Sub
 
 Public Function MemberIndex(ByVal PIndex As Integer) As Byte
-Dim I As Byte
+Dim i As Byte
     
-    For I = 1 To CountMember
-        If Member(I) = PIndex Then MemberIndex = I: Exit Function
-    Next I
+    For i = 1 To CountMember
+        If Member(i) = PIndex Then MemberIndex = i: Exit Function
+    Next i
 End Function
 
 Public Property Get PlayerIndex(ByVal MIndex As Byte) As Integer

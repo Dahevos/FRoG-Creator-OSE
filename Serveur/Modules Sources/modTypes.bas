@@ -773,7 +773,7 @@ End Sub
 Public Sub ContrOnOff(ByVal Index As Long)
 Dim Packet As String
 
-Packet = "CONOFF" & SEP_CHAR & END_CHAR
+Packet = "CONOFF" & END_CHAR
 
 Call SendDataTo(Index, Packet)
 End Sub
@@ -1764,7 +1764,7 @@ Sub SetPlayerPetSlot(ByVal Index As Long, InvNum As Long)
 End Sub
 
 Sub BattleMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
-    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
+    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR)
 End Sub
 
 Public Sub Attendre(ByVal temps As Long)

@@ -184,7 +184,7 @@ Attribute VB_Exposed = False
 Private Sub CmdCrafter_Click()
     If RecetteSelect = Player(MyIndex).Metier Then
         If Metier(RecetteSelect).Data(scrlRecettes.value, 0) > 0 Then
-            Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).Data(scrlRecettes.value, 0) & SEP_CHAR & END_CHAR)
+            Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).Data(scrlRecettes.value, 0) & END_CHAR)
         Else
             MsgBox ("Pas de recettes !")
         End If

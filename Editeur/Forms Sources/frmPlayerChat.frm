@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "Richtx32.ocx"
+Object = "{3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0"; "RICHTX32.OCX"
 Begin VB.Form frmPlayerChat 
    BorderStyle     =   0  'None
    Caption         =   "Discutions"
@@ -25,7 +25,6 @@ Begin VB.Form frmPlayerChat
       _ExtentX        =   13150
       _ExtentY        =   9551
       _Version        =   393217
-      Enabled         =   -1  'True
       ReadOnly        =   -1  'True
       Appearance      =   0
       TextRTF         =   $"frmPlayerChat.frx":148A8
@@ -102,7 +101,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
         txtChat.SelText = s
         txtChat.SelStart = Len(txtChat.Text) - 1
         
-        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & SEP_CHAR & END_CHAR)
+        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & END_CHAR)
         txtSay.Text = vbNullString
     End If
 End Sub
@@ -126,7 +125,7 @@ dry = 0
 End Sub
 
 Private Sub Label2_Click()
-    Call SendData("qchat" & SEP_CHAR & END_CHAR)
+    Call SendData("qchat" & END_CHAR)
 End Sub
 
 Private Sub txtChat_GotFocus()
@@ -149,7 +148,7 @@ Private Sub txtSay_KeyPress(KeyAscii As Integer)
         txtChat.SelText = s
         txtChat.SelStart = Len(txtChat.Text) - 1
         
-        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & SEP_CHAR & END_CHAR)
+        Call SendData("sendchat" & SEP_CHAR & txtSay.Text & END_CHAR)
         txtSay.Text = vbNullString
     End If
 End Sub

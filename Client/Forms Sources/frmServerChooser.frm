@@ -122,7 +122,7 @@ End Sub
                 If ReadINI("SERVER" & i, "IP", filename) <> vbNullString And ReadINI("SERVER" & i, "PORT", filename) <> vbNullString Then
                     GAME_IP = ReadINI("SERVER" & i, "IP", filename)
                     GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", filename))
-                    If CheckServerStatus Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & SEP_CHAR & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", filename) & " - Fermé!"
+                    If CheckServerStatus Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", filename) & " - Fermé!"
                     i = i + 1
                 Else
                     C = 1

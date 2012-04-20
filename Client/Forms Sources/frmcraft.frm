@@ -184,7 +184,7 @@ Attribute VB_Exposed = False
 Private Sub CmdCrafter_Click()
     If RecetteSelect = Player(MyIndex).Metier Then
         If Metier(RecetteSelect).data(scrlRecettes.Value, 0) > 0 Then
-            Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).data(scrlRecettes.Value, 0) & SEP_CHAR & END_CHAR)
+            Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).data(scrlRecettes.Value, 0) & END_CHAR)
         Else
             MsgBox ("Pas de recettes !")
         End If
@@ -204,7 +204,7 @@ Dim i As Byte
         If FileExiste(Rep_Theme & "\Jeu\craft" & Ending) Then Me.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\craft" & Ending)
         
     Next i
-    scrlRecettes.Max = MAX_DATA_METIER
+    scrlRecettes.max = MAX_DATA_METIER
 End Sub
 
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)

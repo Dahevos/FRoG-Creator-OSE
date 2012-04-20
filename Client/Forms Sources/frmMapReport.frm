@@ -38,5 +38,5 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub lstIndex_DblClick()
-    Call SendData("WARPTO" & SEP_CHAR & lstIndex.ListIndex + 1 & SEP_CHAR & END_CHAR)
+    Call SendData("WARPTO" & SEP_CHAR & lstIndex.ListIndex + 1 & END_CHAR)
 End Sub

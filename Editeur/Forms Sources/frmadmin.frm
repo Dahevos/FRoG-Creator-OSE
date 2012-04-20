@@ -56,33 +56,33 @@ Begin VB.Form frmadmin
       TabCaption(0)   =   "Commande"
       TabPicture(0)   =   "frmadmin.frx":08CA
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label5"
+      Tab(0).Control(0)=   "Frame11"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "Line1"
+      Tab(0).Control(1)=   "Frame7"
       Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "Frame1"
+      Tab(0).Control(2)=   "Frame4"
       Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Frame2"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "Frame4"
+      Tab(0).Control(4)=   "Frame1"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "Frame7"
+      Tab(0).Control(5)=   "Line1"
       Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "Frame11"
+      Tab(0).Control(6)=   "Label5"
       Tab(0).Control(6).Enabled=   0   'False
       Tab(0).ControlCount=   7
       TabCaption(1)   =   "Commande"
       TabPicture(1)   =   "frmadmin.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label7"
+      Tab(1).Control(0)=   "Frame3"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame5"
+      Tab(1).Control(1)=   "Frame10"
       Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Frame9"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Frame10"
+      Tab(1).Control(3)=   "Frame5"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Frame3"
+      Tab(1).Control(4)=   "Label7"
       Tab(1).Control(4).Enabled=   0   'False
       Tab(1).ControlCount=   5
       TabCaption(2)   =   "Aide"
@@ -1363,7 +1363,7 @@ Call SendMOTDChange(Trim$(motd.Text))
 End Sub
 
 Private Sub Command15_Click()
-Call SendData("mapreport" & SEP_CHAR & END_CHAR)
+Call SendData("mapreport" & END_CHAR)
 End Sub
 
 Private Sub Command2_Click()

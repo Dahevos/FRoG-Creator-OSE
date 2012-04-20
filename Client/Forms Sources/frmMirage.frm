@@ -4680,25 +4680,25 @@ Private Lon As Long
 Private Hau As Long
 
 Private Sub AddDef_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 1 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 1 & END_CHAR)
 End Sub
 
 Private Sub AddMagi_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 2 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 2 & END_CHAR)
 End Sub
 
 Private Sub AddSpeed_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 3 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 3 & END_CHAR)
 End Sub
 
 Private Sub AddStr_Click()
-    Call SendData("usestatpoint" & SEP_CHAR & 0 & SEP_CHAR & END_CHAR)
+    Call SendData("usestatpoint" & SEP_CHAR & 0 & END_CHAR)
 End Sub
 
 Private Sub artquete_Click()
     Player(MyIndex).QueteEnCour = 0
     Accepter = False
-    Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+    Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
     frmMirage.picquete.Visible = False
     If quetetimersec.Enabled Then
         quetetimersec.Enabled = False
@@ -4798,7 +4798,7 @@ End Sub
 
 Private Sub cmdLeave_Click()
 Dim Packet As String
-    Packet = "GUILDLEAVE" & SEP_CHAR & END_CHAR
+    Packet = "GUILDLEAVE" & END_CHAR
     Call SendData(Packet)
     lblGuild.Caption = vbNullString
     lblRank.Caption = 0
@@ -4807,7 +4807,7 @@ End Sub
 Private Sub cmdMember_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "GUILDMEMBER" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDMEMBER" & SEP_CHAR & txtName.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
@@ -4923,7 +4923,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5024,7 +5024,7 @@ DragY = 0
 End Sub
 
 Private Sub Label6_Click()
-    Call SendData("getstats" & SEP_CHAR & END_CHAR)
+    Call SendData("getstats" & END_CHAR)
 End Sub
 
 Private Sub Label8_Click()
@@ -5032,7 +5032,7 @@ Private Sub Label8_Click()
 End Sub
 
 Private Sub lblCdP_Click()
-    Call SendData("CHANGECHAR" & SEP_CHAR & END_CHAR)
+    Call SendData("CHANGECHAR" & END_CHAR)
     frmMirage.Visible = False
     frmMainMenu.Visible = True
     frmMainMenu.fraPers.Visible = True
@@ -5042,7 +5042,7 @@ End Sub
 
 Private Sub lblDeco_Click()
 Dim i As Integer
-    Call SendData("CHANGECHAR" & SEP_CHAR & END_CHAR)
+    Call SendData("CHANGECHAR" & END_CHAR)
     InGame = False
     deco = True
     PicMenuQuitter.Visible = False
@@ -5099,7 +5099,7 @@ DragY = 0
 End Sub
 
 Private Sub lblMetierApl_Click()
-    Call SendData("playermetier" & SEP_CHAR & END_CHAR)
+    Call SendData("playermetier" & END_CHAR)
 End Sub
 
 Private Sub lblmetierEnd_Click()
@@ -5107,7 +5107,7 @@ Private Sub lblmetierEnd_Click()
 End Sub
 
 Private Sub lblOublierMetier_Click()
-    Call SendData("playermetieroublie" & SEP_CHAR & END_CHAR)
+    Call SendData("playermetieroublie" & END_CHAR)
     pictMetier.Visible = False
 End Sub
 
@@ -5132,7 +5132,7 @@ Private Sub lblQuitter_Click()
 End Sub
 
 Private Sub lstOnline_DblClick()
-    Call SendData("playerchat" & SEP_CHAR & Trim$(lstOnline.Text) & SEP_CHAR & END_CHAR)
+    Call SendData("playerchat" & SEP_CHAR & Trim$(lstOnline.Text) & END_CHAR)
 End Sub
 
 Private Sub menu_equ_Click()
@@ -5234,7 +5234,7 @@ Else
     picPlayerSpells.Visible = True
 End If
 Call ClearPic
-Call SendData("spells" & SEP_CHAR & END_CHAR)
+Call SendData("spells" & END_CHAR)
 End Sub
 
 Private Sub menu_tchat_Click()
@@ -5242,7 +5242,7 @@ Dim i As Long
 
 fra_info.Visible = False
 For i = 1 To MAX_PLAYERS
-    If IsPlaying(i) = True Then If MouseDownX = GetPlayerX(i) And MouseDownY = GetPlayerY(i) Then Call SendData("playerchat" & SEP_CHAR & GetPlayerName(i) & SEP_CHAR & END_CHAR): Exit Sub
+    If IsPlaying(i) = True Then If MouseDownX = GetPlayerX(i) And MouseDownY = GetPlayerY(i) Then Call SendData("playerchat" & SEP_CHAR & GetPlayerName(i) & END_CHAR): Exit Sub
 Next i
 
 End Sub
@@ -5263,11 +5263,11 @@ Dim msgb As String
 If Player(MyIndex).QueteEnCour > 0 And Accepter = False Then
     msgb = MsgBox("Voulez-vous faire la Quete proposer?", vbYesNo, "Quete")
         If msgb = vbYes Then
-            Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+            Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
             Accepter = True
         Else
             Player(MyIndex).QueteEnCour = 0
-            Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & SEP_CHAR & END_CHAR)
+            Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
             Accepter = False
         End If
 End If
@@ -5440,7 +5440,7 @@ Dim tp As Long
                 Cod = InputBox("Veuillez entre le mot de passe :", "Code")
                 If Cod = .String1 Then
                     TempTile(GetPlayerX(MyIndex) + PX, GetPlayerY(MyIndex) + PY).DoorOpen = YES
-                    Packet = "OUVRIRE" & SEP_CHAR & GetPlayerX(MyIndex) + PX & SEP_CHAR & GetPlayerY(MyIndex) + PY & SEP_CHAR & END_CHAR
+                    Packet = "OUVRIRE" & SEP_CHAR & GetPlayerX(MyIndex) + PX & SEP_CHAR & GetPlayerY(MyIndex) + PY & END_CHAR
                     Call SendData(Packet)
                     If .Type = TILE_TYPE_COFFRE Then
                         i = FindOpenInvSlot(Val(.Data3))
@@ -5449,7 +5449,7 @@ Dim tp As Long
                             Call SetPlayerInvItemValue(MyIndex, i, GetPlayerInvItemValue(MyIndex, i) + 1)
                             Call SetPlayerInvItemDur(MyIndex, i, Item(Val(.Data3)).Data1)
                             Call UpdateVisInv
-                            Packet = "ACOFFRE" & SEP_CHAR & i & SEP_CHAR & Val(.Data3) & SEP_CHAR & 1 & SEP_CHAR & Item(Val(.Data3)).Data1 & SEP_CHAR & END_CHAR
+                            Packet = "ACOFFRE" & SEP_CHAR & i & SEP_CHAR & Val(.Data3) & SEP_CHAR & 1 & SEP_CHAR & Item(Val(.Data3)).Data1 & END_CHAR
                             Call SendData(Packet)
                         End If
                     End If
@@ -5512,7 +5512,7 @@ Dim tp As Long
         If SpellMemorized > 0 Then
             If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                 If Player(MyIndex).Moving = 0 Then
-                    Call SendData("cast" & SEP_CHAR & SpellMemorized & SEP_CHAR & END_CHAR)
+                    Call SendData("cast" & SEP_CHAR & SpellMemorized & END_CHAR)
                     Player(MyIndex).Attacking = 1
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
@@ -5637,7 +5637,7 @@ Private Sub picspell_MouseDown(Index As Integer, Button As Integer, Shift As Int
         If Player(MyIndex).Spell(Index + 1) > 0 Then
             If GetTickCount > Player(MyIndex).AttackTimer + 1000 Then
                 If Player(MyIndex).Moving = 0 Then
-                    Call SendData("cast" & SEP_CHAR & Index + 1 & SEP_CHAR & END_CHAR)
+                    Call SendData("cast" & SEP_CHAR & Index + 1 & END_CHAR)
                     Player(MyIndex).Attacking = 1
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
@@ -5817,7 +5817,7 @@ Private Sub Form_KeyDown(KeyCode As Integer, Shift As Integer)
 End Sub
 
 Private Sub sync_Timer()
-SendData ("sync" & SEP_CHAR & END_CHAR)
+SendData ("sync" & END_CHAR)
 End Sub
 
 Private Sub Timer1_Timer()
@@ -5891,21 +5891,21 @@ End Sub
 Private Sub cmdAccess_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Or txtAccess.Text = vbNullString Or Not IsNumeric(txtAccess.Text) Then Exit Sub
-    Packet = "GUILDCHANGEACCESS" & SEP_CHAR & txtName.Text & SEP_CHAR & txtAccess.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDCHANGEACCESS" & SEP_CHAR & txtName.Text & SEP_CHAR & txtAccess.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Private Sub cmdDisown_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "GUILDDISOWN" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR
+    Packet = "GUILDDISOWN" & SEP_CHAR & txtName.Text & END_CHAR
     Call SendData(Packet)
 End Sub
 
 Private Sub cmdTrainee_Click()
 Dim Packet As String
     If txtName.Text = vbNullString Then Exit Sub
-    Packet = "guildtraineevbyesno" & SEP_CHAR & txtName.Text & SEP_CHAR & END_CHAR '"GUILDTRAINEE"
+    Packet = "guildtraineevbyesno" & SEP_CHAR & txtName.Text & END_CHAR '"GUILDTRAINEE"
     Call SendData(Packet)
 End Sub
 
