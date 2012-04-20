@@ -1636,6 +1636,7 @@ Begin VB.Form frmMirage
       ItemData        =   "frmMirage.frx":3858C
       Left            =   120
       List            =   "frmMirage.frx":3859C
+      Locked          =   -1  'True
       TabIndex        =   120
       Text            =   "Carte"
       Top             =   8760
@@ -5757,7 +5758,7 @@ If Seco <= 0 And Minu > 0 Then
     Seco = 59
     seconde.Caption = Seco
     Minu = Minu - 1
-    If Len(STR$(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
+    If Len(STR$(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0

@@ -880,7 +880,7 @@ rest:
         TexthDC = DD_BackBuffer.GetDC
         If Not GettingMap Then
             If notebook = True Then
-                cychat = 200
+                cychat = 130
             Else
                 cychat = 0
             End If
@@ -2135,16 +2135,19 @@ End If
 ' Handle when the player presses the return key
     
     If (KeyAscii = vbKeyReturn) Then
-        If frmMirage.txtMyTextBox.Locked = False Then
+        If frmMirage.txtMyTextBox.Visible = True Then
             frmMirage.txtMyTextBox.Text = vbNullString
             frmMirage.txtMyTextBox.Locked = True
             frmMirage.txtMyTextBox.Visible = False
             frmMirage.Canal.Visible = False
+            frmMirage.Canal.Locked = True
         Else
-            frmMirage.txtMyTextBox.Text = vbNullString
             frmMirage.txtMyTextBox.Locked = False
+            frmMirage.txtMyTextBox.Text = vbNullString
             frmMirage.txtMyTextBox.Visible = True
+            frmMirage.txtMyTextBox.SetFocus
             frmMirage.Canal.Visible = True
+            frmMirage.Canal.Locked = False
             Exit Sub
         End If
     
@@ -4090,7 +4093,7 @@ Dim Ending As String
         frmMirage.Interface.Width = 640
         frmMirage.picScreen.Width = 640
         frmMirage.picScreen.Height = 420
-        frmMirage.Height = 7660
+        frmMirage.Height = 7630
         frmMirage.Width = 9570
         For i = 0 To 8
             frmMirage.picRac(i).Visible = True
