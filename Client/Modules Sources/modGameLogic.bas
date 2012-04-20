@@ -4090,7 +4090,7 @@ Dim Ending As String
         frmMirage.Interface.Width = 640
         frmMirage.picScreen.Width = 640
         frmMirage.picScreen.Height = 420
-        frmMirage.Height = 7665
+        frmMirage.Height = 7660
         frmMirage.Width = 9570
         For i = 0 To 8
             frmMirage.picRac(i).Visible = True

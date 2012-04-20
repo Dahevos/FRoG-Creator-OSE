@@ -3761,7 +3761,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -3774,7 +3774,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4184,7 +4184,7 @@ End Sub
 Private Sub lstIndex_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 2 Then
     If DonID > 0 Then colle.Enabled = True Else colle.Enabled = False
-    Call PopupMenu(Edit)
+    Call PopupMenu(edit)
 End If
 End Sub
 
@@ -4234,7 +4234,7 @@ End Sub
 
 Private Sub opt_Click()
 frmoptions.SSTab1.Tab = 0
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4247,7 +4247,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4316,7 +4316,7 @@ End Sub
 Private Sub OptCraft_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Table de Craft"
-    frmScript.Label1.Caption = "Métier N°"
+    frmScript.label1.Caption = "Métier N°"
     frmScript.scrlScript.min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_RECETTE
@@ -4340,7 +4340,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
-If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.PV = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")
 If Len(ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")) > 0 Then frmoptions.defl = ReadINI("CONFIG", "Scrolling", App.Path & "\config.ini")
@@ -4353,7 +4353,7 @@ If Len(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then frmoption
 If Len(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then frmoptions.ms = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then frmoptions.mc = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then frmoptions.moc = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.Me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
+If Len(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then frmoptions.me = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then frmoptions.mn = ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then frmoptions.mq = ReadINI("INFO", "Maxquet", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")) > 0 Then frmoptions.mg = ReadINI("INFO", "Maxguilds", App.Path & "\config.ini")
@@ -4369,7 +4369,7 @@ End Sub
 Private Sub OptMetier_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Apprendre Metier"
-    frmScript.Label1.Caption = "Métier N°"
+    frmScript.label1.Caption = "Métier N°"
     frmScript.scrlScript.min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_METIER
@@ -4414,7 +4414,7 @@ End Sub
 Private Sub optScripted_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Case Script"
-    frmScript.Label1.Caption = "Numéro case"
+    frmScript.label1.Caption = "Numéro case"
     frmScript.scrlScript.min = 0
     frmScript.scrlScript.Max = 1000
 End Sub
@@ -4671,7 +4671,7 @@ If quete(Queten).Temps > 0 And Player(MyIndex).QueteEnCour > 0 Then
         Seco = 59
         seconde.Caption = Seco
         Minu = Minu - 1
-        If Len(CStr(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
+        If Len(CStr(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
     End If
 
     If Seco <= 0 And Minu <= 0 Then
@@ -5062,7 +5062,7 @@ ScreenDC = True
 End Sub
 
 Private Sub site_Click()
-ShellExecute Me.hwnd, "open", "http://frogcreator.legtux.org/ose/", vbNullString, App.Path, 1
+ShellExecute Me.hwnd, "open", "http://frogcreator.fr", vbNullString, App.Path, 1
 End Sub
 
 Private Sub siteequp_Click()
