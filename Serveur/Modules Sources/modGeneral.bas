@@ -9,7 +9,7 @@ Public Declare Function GetTickCount Lib "kernel32" () As Long
 
 Public Const CLIENT_MAJOR As String * 1 = "0"
 Public Const CLIENT_MINOR As String * 1 = "6"
-Public Const CLIENT_REVISION As String * 1 = "0"
+Public Const CLIENT_REVISION As String * 1 = "2"
 
 'SCRIPTING
 'Our dll cls
