@@ -1859,6 +1859,8 @@ Dim Moved As Byte
     Call SetPlayerDir(Index, Dir)
     
     Moved = NO
+    Player(Index).Char(Player(Index).CharNum).LastX = GetPlayerX(Index)
+    Player(Index).Char(Player(Index).CharNum).LastY = GetPlayerY(Index)
 '    Stop
     Select Case Dir
         Case DIR_UP
@@ -2169,8 +2171,10 @@ Dim Moved As Byte
     ' Check for shop
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_SHOP Then
        If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 > 0 Then
-            Call QueteMsg(Index, Shop(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1).JoinSay)
-            Call SendTrade(Index, Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1)
+            If (GetPlayerX(Index) = Player(Index).Char(Player(Index).CharNum).LastX) And (GetPlayerY(Index) <> Player(Index).Char(Player(Index).CharNum).Y) Then
+                Call QueteMsg(Index, Shop(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1).JoinSay)
+                Call SendTrade(Index, Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1)
+            End If
         Else
             Call PlayerMsg(Index, "Il n'y a pas de magasin ici.", BrightRed)
         End If

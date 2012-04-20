@@ -279,7 +279,7 @@ Type PlayerRec
     Y As Integer
     Dir As Byte
     
-    QueteEnCour As Long
+    QueteEnCour As Integer
     Quetep As PlayerQueteRec
     
     'PAPERDOLL
@@ -293,9 +293,11 @@ Type PlayerRec
     vendeur As Long
     
     metier As Long
-    MetierLvl As Long
+    MetierLvl As Integer
     MetierExp As Long
     
+    LastX As Integer
+    LastY As Integer
 End Type
 
 Type PlayerTradeRec
