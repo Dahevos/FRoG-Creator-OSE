@@ -3,7 +3,7 @@ Option Explicit
 
 Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
 Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nsize As Long, ByVal lpfilename As String) As Long
-
+Declare Sub ZeroMemory Lib "kernel32" Alias "RtlZeroMemory" (dst As Any, ByVal iLen&)
 Public START_MAP As Long
 Public START_X As Long
 Public START_Y As Long
@@ -79,7 +79,8 @@ Sub ClearExps()
 Dim i As Long
 
     For i = 1 To MAX_LEVEL
-        experience(i) = 0
+        'experience(i) = 0
+        Call ZeroMemory(experience(i), Len(experience(i)))
     Next i
 End Sub
 
@@ -120,6 +121,7 @@ Dim i As Long
     For i = 0 To MAX_EMOTICONS
         Emoticons(i).Pic = 0
         Emoticons(i).Command = vbNullString
+        Call ZeroMemory(Emoticons(i), Len(Emoticons(i)))
     Next i
 End Sub
 
@@ -960,7 +962,7 @@ Dim FileName As String
 Dim f As Long
 
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
-        
+    
     f = FreeFile
     Open FileName For Binary As #f
         Put #f, , Map(MapNum)
@@ -972,7 +974,7 @@ Dim FileName As String
 Dim i As Long
 Dim f As Long
 
-    'Call CheckMaps
+    Call CheckMaps
     Call ClearMaps
     
     For i = 1 To MAX_MAPS
@@ -1000,6 +1002,7 @@ Dim f As Long
     Open FileName For Binary As #f
         Get #f, , Map(MapNum)
     Close #f
+    
 End Sub
 
 Sub CheckMaps()
@@ -1008,7 +1011,7 @@ Dim X As Long
 Dim Y As Long
 Dim i As Long
 Dim n As Long
-
+Dim f As Long
     Call ClearMaps
         
     For i = 1 To MAX_MAPS
@@ -1018,7 +1021,6 @@ Dim n As Long
         If Not FileExist(FileName) Then
             Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
             DoEvents
-            
             Call SaveMap(i)
         End If
     Next i
