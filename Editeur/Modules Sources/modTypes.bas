@@ -787,101 +787,20 @@ Type TpAccOpt
 End Type
 Public AccOpt As TpAccOpt
 
+
 Sub ClearSpell(ByVal Index As Long)
-    Spell(Index).name = vbNullString
-    Spell(Index).ClassReq = 0
-    Spell(Index).LevelReq = 0
-    Spell(Index).Type = 0
-    Spell(Index).Data1 = 0
-    Spell(Index).Data2 = 0
-    Spell(Index).Data3 = 0
-    Spell(Index).MPCost = 0
-    Spell(Index).Sound = 0
-    Spell(Index).Range = 0
-    
-    Spell(Index).Big = 0
-    
-    Spell(Index).SpellAnim = 0
-    Spell(Index).SpellTime = 40
-    Spell(Index).SpellDone = 1
-    
-    Spell(Index).SpellIco = 0
-    
-    Spell(Index).AE = 0
+Call ZeroMemory(Spell(Index), Len(Spell(Index)))
 End Sub
-
 Sub ClearShop(ByVal Index As Long)
-Dim i As Long
-Dim z As Long
-
-    Shop(Index).name = vbNullString
-    Shop(Index).JoinSay = vbNullString
-    Shop(Index).LeaveSay = vbNullString
-    Shop(Index).FixesItems = 0
-    Shop(Index).FixObjet = -1
-    
-    For z = 1 To 6
-        For i = 1 To MAX_TRADES
-            Shop(Index).TradeItem(z).value(i).GiveItem = 0
-            Shop(Index).TradeItem(z).value(i).GiveValue = 0
-            Shop(Index).TradeItem(z).value(i).GetItem = 0
-            Shop(Index).TradeItem(z).value(i).GetValue = 0
-        Next i
-    Next z
+Call ZeroMemory(Shop(Index), Len(Shop(Index)))
 End Sub
 
 Sub ClearNpc(ByVal Index As Long)
-Dim i As Long
-With Npc(Index)
-    .name = vbNullString
-    .AttackSay = vbNullString
-    .sprite = 0
-    .SpawnSecs = 0
-    .Behavior = 0
-    .Range = 0
-    .STR = 0
-    .def = 0
-    .speed = 0
-    .magi = 0
-    .MaxHp = 0
-    .exp = 0
-    .SpawnTime = 0
-    .quetenum = 0
-    .inv = 0
-    .vol = 0
-    For i = 1 To MAX_NPC_DROPS
-        .ItemNPC(i).Chance = 0
-        .ItemNPC(i).ItemNum = 0
-        .ItemNPC(i).ItemValue = 0
-    Next i
-End With
+Call ZeroMemory(Npc(Index), Len(Npc(Index)))
 End Sub
 
 Sub ClearQuete(ByVal Index As Long)
-    quete(Index).nom = vbNullString
-    quete(Index).Data1 = 0
-    quete(Index).Data2 = 0
-    quete(Index).Data2 = 0
-    quete(Index).description = vbNullString
-    quete(Index).reponse = vbNullString
-    quete(Index).String1 = vbNullString
-    quete(Index).Temps = 0
-    quete(Index).Type = 0
-    Dim i As Long
-    For i = 1 To 15
-        quete(Index).indexe(i).Data1 = 1
-        quete(Index).indexe(i).Data2 = 0
-        quete(Index).indexe(i).Data3 = 0
-        quete(Index).indexe(i).String1 = vbNullString
-    Next i
-    quete(Index).Recompence.exp = 0
-    quete(Index).Recompence.objn1 = 1
-    quete(Index).Recompence.objn2 = 1
-    quete(Index).Recompence.objn3 = 1
-    quete(Index).Recompence.objq1 = 0
-    quete(Index).Recompence.objq2 = 0
-    quete(Index).Recompence.objq3 = 0
-    quete(Index).Case = 0
+Call ZeroMemory(quete(Index), Len(quete(Index)))
 End Sub
 
 Sub ClearTempTile()
@@ -989,70 +908,19 @@ Dim n As Long
 End Sub
 
 Sub ClearPlayerQuete(ByVal Index As Long)
-Dim i As Long
-        Player(MyIndex).QueteEnCour = 0
-        Player(MyIndex).Quetep.Data1 = 0
-        Player(MyIndex).Quetep.Data2 = 0
-        Player(MyIndex).Quetep.Data3 = 0
-        Player(MyIndex).Quetep.String1 = vbNullString
-        Accepter = False
-        
-        For i = 1 To 15
-            Player(MyIndex).Quetep.indexe(i).Data1 = 0
-            Player(MyIndex).Quetep.indexe(i).Data2 = 0
-            Player(MyIndex).Quetep.indexe(i).Data3 = 0
-            Player(MyIndex).Quetep.indexe(i).String1 = 0
-        Next i
+Call ZeroMemory(Player(Index).Char(Player(Index).CharNum), Len(Player(Index).Char(Player(Index).CharNum)))
 End Sub
 
 Sub ClearPet(ByVal Index As Long)
-    Pets(Index).nom = ""
-    Pets(Index).sprite = 0
-    Pets(Index).addForce = 0
-    Pets(Index).addDefence = 0
+Call ZeroMemory(Pets(Index), Len(Pets(Index)))
 End Sub
 
 Sub ClearRecette(ByVal Index As Long)
-    recette(Index).nom = vbNullString
-    For i = 0 To 9
-        recette(Index).InCraft(i, 0) = 0
-        recette(Index).InCraft(i, 1) = 0
-    Next i
-    recette(Index).craft(0) = 0
-    recette(Index).craft(1) = 0
+Call ZeroMemory(recette(Index), Len(recette(Index)))
 End Sub
 
 Sub ClearItem(ByVal Index As Long)
-    Item(Index).name = vbNullString
-    Item(Index).desc = vbNullString
-    
-    Item(Index).Type = 0
-    Item(Index).Data1 = 0
-    Item(Index).Data2 = 0
-    Item(Index).Data3 = 0
-    Item(Index).StrReq = 0
-    Item(Index).DefReq = 0
-    Item(Index).SpeedReq = 0
-    Item(Index).ClassReq = -1
-    Item(Index).AccessReq = 0
-    
-    Item(Index).paperdoll = 0
-    Item(Index).paperdollPic = 0
-    
-    Item(Index).Empilable = 0
-    
-    Item(Index).AddHP = 0
-    Item(Index).AddMP = 0
-    Item(Index).AddSP = 0
-    Item(Index).AddStr = 0
-    Item(Index).AddDef = 0
-    Item(Index).AddMagi = 0
-    Item(Index).AddSpeed = 0
-    Item(Index).AddEXP = 0
-    Item(Index).AttackSpeed = 1000
-    
-    Item(Index).NCoul = 0
-    Item(Index).tArme = 0
+Call ZeroMemory(Item(Index), Len(Item(Index)))
 End Sub
 
 Sub ClearItems()
@@ -1064,11 +932,7 @@ Dim i As Long
 End Sub
 
 Sub ClearMapItem(ByVal Index As Long)
-    MapItem(Index).num = 0
-    MapItem(Index).value = 0
-    MapItem(Index).dur = 0
-    MapItem(Index).x = 0
-    MapItem(Index).y = 0
+Call ZeroMemory(MapItem(Index), Len(MapItem(Index)))
 End Sub
 
 Sub ClearMap()
@@ -1077,368 +941,46 @@ Dim x As Long
 Dim y As Long
 
 For i = 1 To MAX_MAPS
-    Map(i).name = vbNullString
-    Map(i).Revision = 0
-    Map(i).Moral = 0
-    Map(i).Up = 0
-    Map(i).Down = 0
-    Map(i).Left = 0
-    Map(i).Right = 0
-    Map(i).Indoors = 0
-        
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            Map(i).tile(x, y).Ground = 0
-            Map(i).tile(x, y).Mask = 0
-            Map(i).tile(x, y).Anim = 0
-            Map(i).tile(x, y).Mask2 = 0
-            Map(i).tile(x, y).M2Anim = 0
-            Map(i).tile(x, y).Mask3 = 0 '<--
-            Map(i).tile(x, y).M3Anim = 0 '<--
-            Map(i).tile(x, y).Fringe = 0
-            Map(i).tile(x, y).FAnim = 0
-            Map(i).tile(x, y).Fringe2 = 0
-            Map(i).tile(x, y).F2Anim = 0
-            Map(i).tile(x, y).Fringe3 = 0 '<--
-            Map(i).tile(x, y).F3Anim = 0 '<--
-            Map(i).tile(x, y).Type = 0
-            Map(i).tile(x, y).Data1 = 0
-            Map(i).tile(x, y).Data2 = 0
-            Map(i).tile(x, y).Data3 = 0
-            Map(i).tile(x, y).String1 = vbNullString
-            Map(i).tile(x, y).String2 = vbNullString
-            Map(i).tile(x, y).String3 = vbNullString
-            Map(i).tile(x, y).Light = 0
-            Map(i).tile(x, y).GroundSet = 0
-            Map(i).tile(x, y).MaskSet = 0
-            Map(i).tile(x, y).AnimSet = 0
-            Map(i).tile(x, y).Mask2Set = 0
-            Map(i).tile(x, y).M2AnimSet = 0
-            Map(i).tile(x, y).Mask3Set = 0 '<--
-            Map(i).tile(x, y).M3AnimSet = 0 '<--
-            Map(i).tile(x, y).FringeSet = 0
-            Map(i).tile(x, y).FAnimSet = 0
-            Map(i).tile(x, y).Fringe2Set = 0
-            Map(i).tile(x, y).F2AnimSet = 0
-            Map(i).tile(x, y).Fringe3Set = 0 '<--
-            Map(i).tile(x, y).F3AnimSet = 0 '<--
-        Next x
-    Next y
-    For x = 1 To MAX_MAP_NPCS
-        Map(i).Npc(x) = 0
-        Map(i).Npcs(x).Axy = False
-        Map(i).Npcs(x).Axy1 = False
-        Map(i).Npcs(x).Axy2 = False
-        Map(i).Npcs(x).boucle = 0
-        Map(i).Npcs(x).Hasardm = 1
-        Map(i).Npcs(x).Hasardp = 1
-        Map(i).Npcs(x).Imobile = 0
-        Map(i).Npcs(x).x = 0
-        Map(i).Npcs(x).x1 = 0
-        Map(i).Npcs(x).x2 = 0
-        Map(i).Npcs(x).x3 = 0
-        Map(i).Npcs(x).x4 = 0
-        Map(i).Npcs(x).x5 = 0
-        Map(i).Npcs(x).x6 = 0
-        Map(i).Npcs(x).y = 0
-        Map(i).Npcs(x).y2 = 0
-        Map(i).Npcs(x).y3 = 0
-        Map(i).Npcs(x).y4 = 0
-        Map(i).Npcs(x).y5 = 0
-        Map(i).Npcs(x).y6 = 0
-    Next x
-    Map(i).PanoInf = vbNullString
-    Map(i).TranInf = 0
-    Map(i).PanoSup = vbNullString
-    Map(i).TranSup = 0
+Call ZeroMemory(Map(i), Len(Map(i)))
 Next i
 
 For i = 0 To 5
-    TempMap(i).name = vbNullString
+    Call ZeroMemory(TempMap(i), Len(TempMap(i)))
     TempMap(i).Revision = -1
-    TempMap(i).Moral = 0
-    TempMap(i).Up = 0
-    TempMap(i).Down = 0
-    TempMap(i).Left = 0
-    TempMap(i).Right = 0
-    TempMap(i).Indoors = 0
-        
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            TempMap(i).tile(x, y).Ground = 0
-            TempMap(i).tile(x, y).Mask = 0
-            TempMap(i).tile(x, y).Anim = 0
-            TempMap(i).tile(x, y).Mask2 = 0
-            TempMap(i).tile(x, y).M2Anim = 0
-            TempMap(i).tile(x, y).Mask3 = 0 '<--
-            TempMap(i).tile(x, y).M3Anim = 0 '<--
-            TempMap(i).tile(x, y).Fringe = 0
-            TempMap(i).tile(x, y).FAnim = 0
-            TempMap(i).tile(x, y).Fringe2 = 0
-            TempMap(i).tile(x, y).F2Anim = 0
-            TempMap(i).tile(x, y).Fringe3 = 0 '<--
-            TempMap(i).tile(x, y).F3Anim = 0 '<--
-            TempMap(i).tile(x, y).Type = 0
-            TempMap(i).tile(x, y).Data1 = 0
-            TempMap(i).tile(x, y).Data2 = 0
-            TempMap(i).tile(x, y).Data3 = 0
-            TempMap(i).tile(x, y).String1 = vbNullString
-            TempMap(i).tile(x, y).String2 = vbNullString
-            TempMap(i).tile(x, y).String3 = vbNullString
-            TempMap(i).tile(x, y).Light = 0
-            TempMap(i).tile(x, y).GroundSet = 0
-            TempMap(i).tile(x, y).MaskSet = 0
-            TempMap(i).tile(x, y).AnimSet = 0
-            TempMap(i).tile(x, y).Mask2Set = 0
-            TempMap(i).tile(x, y).M2AnimSet = 0
-            TempMap(i).tile(x, y).Mask3Set = 0 '<--
-            TempMap(i).tile(x, y).M3AnimSet = 0 '<--
-            TempMap(i).tile(x, y).FringeSet = 0
-            TempMap(i).tile(x, y).FAnimSet = 0
-            TempMap(i).tile(x, y).Fringe2Set = 0
-            TempMap(i).tile(x, y).F2AnimSet = 0
-            TempMap(i).tile(x, y).Fringe3Set = 0 '<--
-            TempMap(i).tile(x, y).F3AnimSet = 0 '<--
-        Next x
-    Next y
     For x = 1 To MAX_MAP_NPCS
-        TempMap(i).Npc(x) = 0
-        TempMap(i).Npcs(x).Axy = False
-        TempMap(i).Npcs(x).Axy1 = False
-        TempMap(i).Npcs(x).Axy2 = False
-        TempMap(i).Npcs(x).boucle = 0
         TempMap(i).Npcs(x).Hasardm = 1
         TempMap(i).Npcs(x).Hasardp = 1
-        TempMap(i).Npcs(x).Imobile = 0
-        TempMap(i).Npcs(x).x = 0
-        TempMap(i).Npcs(x).x1 = 0
-        TempMap(i).Npcs(x).x2 = 0
-        TempMap(i).Npcs(x).x3 = 0
-        TempMap(i).Npcs(x).x4 = 0
-        TempMap(i).Npcs(x).x5 = 0
-        TempMap(i).Npcs(x).x6 = 0
-        TempMap(i).Npcs(x).y = 0
-        TempMap(i).Npcs(x).y2 = 0
-        TempMap(i).Npcs(x).y3 = 0
-        TempMap(i).Npcs(x).y4 = 0
-        TempMap(i).Npcs(x).y5 = 0
-        TempMap(i).Npcs(x).y6 = 0
     Next x
-    TempMap(i).PanoInf = vbNullString
-    TempMap(i).TranInf = 0
-    TempMap(i).PanoSup = vbNullString
-    TempMap(i).TranSup = 0
-    TempMap(i).Fog = 0
-    TempMap(i).FogAlpha = 0
-    TempMap(i).guildSoloView = 0
-    TempMap(i).petView = 0
-    TempMap(i).traversable = 0
 Next i
 End Sub
 
 Sub NetQueteType(ByVal Index As Integer)
-    quete(Index).Data1 = 0
-    quete(Index).Data2 = 0
-    quete(Index).Data2 = 0
-    quete(Index).String1 = vbNullString
+    Call ZeroMemory(quete(i), Len(quete(i)))
     Dim i As Long
     For i = 1 To 15
         quete(Index).indexe(i).Data1 = 1
-        quete(Index).indexe(i).Data2 = 0
-        quete(Index).indexe(i).Data3 = 0
-        quete(Index).indexe(i).String1 = vbNullString
     Next i
 End Sub
 
 Sub NetTempMap(ByVal Index As Byte)
 Dim x As Long
-Dim y As Long
-    TempMap(Index).name = vbNullString
+   Call ZeroMemory(TempMap(Index), Len(TempMap(Index)))
     TempMap(Index).Revision = -1
-    TempMap(Index).Moral = 0
-    TempMap(Index).Up = 0
-    TempMap(Index).Down = 0
-    TempMap(Index).Left = 0
-    TempMap(Index).Right = 0
-    TempMap(Index).Indoors = 0
-        
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            TempMap(Index).tile(x, y).Ground = 0
-            TempMap(Index).tile(x, y).Mask = 0
-            TempMap(Index).tile(x, y).Anim = 0
-            TempMap(Index).tile(x, y).Mask2 = 0
-            TempMap(Index).tile(x, y).M2Anim = 0
-            TempMap(Index).tile(x, y).Mask3 = 0 '<--
-            TempMap(Index).tile(x, y).M3Anim = 0 '<--
-            TempMap(Index).tile(x, y).Fringe = 0
-            TempMap(Index).tile(x, y).FAnim = 0
-            TempMap(Index).tile(x, y).Fringe2 = 0
-            TempMap(Index).tile(x, y).F2Anim = 0
-            TempMap(Index).tile(x, y).Fringe3 = 0 '<--
-            TempMap(Index).tile(x, y).F3Anim = 0 '<--
-            TempMap(Index).tile(x, y).Type = 0
-            TempMap(Index).tile(x, y).Data1 = 0
-            TempMap(Index).tile(x, y).Data2 = 0
-            TempMap(Index).tile(x, y).Data3 = 0
-            TempMap(Index).tile(x, y).String1 = vbNullString
-            TempMap(Index).tile(x, y).String2 = vbNullString
-            TempMap(Index).tile(x, y).String3 = vbNullString
-            TempMap(Index).tile(x, y).Light = 0
-            TempMap(Index).tile(x, y).GroundSet = 0
-            TempMap(Index).tile(x, y).MaskSet = 0
-            TempMap(Index).tile(x, y).AnimSet = 0
-            TempMap(Index).tile(x, y).Mask2Set = 0
-            TempMap(Index).tile(x, y).M2AnimSet = 0
-            TempMap(Index).tile(x, y).Mask3Set = 0 '<--
-            TempMap(Index).tile(x, y).M3AnimSet = 0 '<--
-            TempMap(Index).tile(x, y).FringeSet = 0
-            TempMap(Index).tile(x, y).FAnimSet = 0
-            TempMap(Index).tile(x, y).Fringe2Set = 0
-            TempMap(Index).tile(x, y).F2AnimSet = 0
-            TempMap(Index).tile(x, y).Fringe3Set = 0 '<--
-            TempMap(Index).tile(x, y).F3AnimSet = 0 '<--
-        Next x
-    Next y
-    TempMap(Index).PanoInf = vbNullString
-    TempMap(Index).TranInf = 0
-    TempMap(Index).PanoSup = vbNullString
-    TempMap(Index).TranSup = 0
-    TempMap(Index).Fog = 0
-    TempMap(Index).FogAlpha = 0
-    TempMap(Index).guildSoloView = 0
-    TempMap(Index).petView = 0
-    TempMap(Index).traversable = 0
+    For x = 1 To MAX_MAP_NPCS
+        TempMap(Index).Npcs(x).Hasardm = 1
+        TempMap(Index).Npcs(x).Hasardp = 1
+    Next x
 End Sub
 
 Sub VidercttMap(ByVal MapNum As Long)
-Dim i As Long
-Dim x As Long
-Dim y As Long
 
-i = MapNum
-    Map(i).name = vbNullString
-    Map(i).Revision = 0
-    Map(i).Moral = 0
-    Map(i).Up = 0
-    Map(i).Down = 0
-    Map(i).Left = 0
-    Map(i).Right = 0
-    Map(i).Indoors = 0
-        
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            Map(i).tile(x, y).Ground = 0
-            Map(i).tile(x, y).Mask = 0
-            Map(i).tile(x, y).Anim = 0
-            Map(i).tile(x, y).Mask2 = 0
-            Map(i).tile(x, y).M2Anim = 0
-            Map(i).tile(x, y).Mask3 = 0 '<--
-            Map(i).tile(x, y).M3Anim = 0 '<--
-            Map(i).tile(x, y).Fringe = 0
-            Map(i).tile(x, y).FAnim = 0
-            Map(i).tile(x, y).Fringe2 = 0
-            Map(i).tile(x, y).F2Anim = 0
-            Map(i).tile(x, y).Fringe3 = 0 '<--
-            Map(i).tile(x, y).F3Anim = 0 '<--
-            Map(i).tile(x, y).Type = 0
-            Map(i).tile(x, y).Data1 = 0
-            Map(i).tile(x, y).Data2 = 0
-            Map(i).tile(x, y).Data3 = 0
-            Map(i).tile(x, y).String1 = vbNullString
-            Map(i).tile(x, y).String2 = vbNullString
-            Map(i).tile(x, y).String3 = vbNullString
-            Map(i).tile(x, y).Light = 0
-            Map(i).tile(x, y).GroundSet = 0
-            Map(i).tile(x, y).MaskSet = 0
-            Map(i).tile(x, y).AnimSet = 0
-            Map(i).tile(x, y).Mask2Set = 0
-            Map(i).tile(x, y).M2AnimSet = 0
-            Map(i).tile(x, y).Mask3Set = 0 '<--
-            Map(i).tile(x, y).M3AnimSet = 0 '<--
-            Map(i).tile(x, y).FringeSet = 0
-            Map(i).tile(x, y).FAnimSet = 0
-            Map(i).tile(x, y).Fringe2Set = 0
-            Map(i).tile(x, y).F2AnimSet = 0
-            Map(i).tile(x, y).Fringe3Set = 0 '<--
-            Map(i).tile(x, y).F3AnimSet = 0 '<--
-        Next x
-    Next y
-    Map(i).PanoInf = vbNullString
-    Map(i).TranInf = 0
-    Map(i).PanoSup = vbNullString
-    Map(i).TranSup = 0
-    Map(i).Fog = 0
-    Map(i).FogAlpha = 0
-    Map(i).guildSoloView = 0
-    Map(i).petView = 0
-    Map(i).traversable = 0
+Call ZeroMemory(Map(MapNum), Len(Map(MapNum)))
 Call ClearMapItems
 Call ClearMapNpcs
 End Sub
 
 Sub ViderTMap(ByVal MapNum As Long)
-Dim i As Long
-Dim x As Long
-Dim y As Long
-
-i = MapNum
-    Map(i).name = vbNullString
-    Map(i).Revision = 0
-    Map(i).Moral = 0
-    Map(i).Up = 0
-    Map(i).Down = 0
-    Map(i).Left = 0
-    Map(i).Right = 0
-    Map(i).Indoors = 0
-        
-    For y = 0 To MAX_MAPY
-        For x = 0 To MAX_MAPX
-            Map(i).tile(x, y).Ground = 0
-            Map(i).tile(x, y).Mask = 0
-            Map(i).tile(x, y).Anim = 0
-            Map(i).tile(x, y).Mask2 = 0
-            Map(i).tile(x, y).M2Anim = 0
-            Map(i).tile(x, y).Mask3 = 0 '<--
-            Map(i).tile(x, y).M3Anim = 0 '<--
-            Map(i).tile(x, y).Fringe = 0
-            Map(i).tile(x, y).FAnim = 0
-            Map(i).tile(x, y).Fringe2 = 0
-            Map(i).tile(x, y).F2Anim = 0
-            Map(i).tile(x, y).Fringe3 = 0 '<--
-            Map(i).tile(x, y).F3Anim = 0 '<--
-            Map(i).tile(x, y).Type = 0
-            Map(i).tile(x, y).Data1 = 0
-            Map(i).tile(x, y).Data2 = 0
-            Map(i).tile(x, y).Data3 = 0
-            Map(i).tile(x, y).String1 = vbNullString
-            Map(i).tile(x, y).String2 = vbNullString
-            Map(i).tile(x, y).String3 = vbNullString
-            Map(i).tile(x, y).Light = 0
-            Map(i).tile(x, y).GroundSet = 0
-            Map(i).tile(x, y).MaskSet = 0
-            Map(i).tile(x, y).AnimSet = 0
-            Map(i).tile(x, y).Mask2Set = 0
-            Map(i).tile(x, y).M2AnimSet = 0
-            Map(i).tile(x, y).Mask3Set = 0 '<--
-            Map(i).tile(x, y).M3AnimSet = 0 '<--
-            Map(i).tile(x, y).FringeSet = 0
-            Map(i).tile(x, y).FAnimSet = 0
-            Map(i).tile(x, y).Fringe2Set = 0
-            Map(i).tile(x, y).F2AnimSet = 0
-            Map(i).tile(x, y).Fringe3Set = 0 '<--
-            Map(i).tile(x, y).F3AnimSet = 0 '<--
-        Next x
-    Next y
-    Map(i).PanoInf = vbNullString
-    Map(i).TranInf = 0
-    Map(i).PanoSup = vbNullString
-    Map(i).TranSup = 0
-    Map(i).Fog = 0
-    Map(i).FogAlpha = 0
-    Map(i).guildSoloView = 0
-    Map(i).petView = 0
-    Map(i).traversable = 0
+Call ZeroMemory(Map(MapNum), Len(Map(MapNum)))
 End Sub
 
 Sub ClearMapItems()
@@ -1450,22 +992,7 @@ Dim x As Long
 End Sub
 
 Sub ClearMapNpc(ByVal Index As Long)
-    MapNpc(Index).num = 0
-    MapNpc(Index).Target = 0
-    MapNpc(Index).HP = 0
-    MapNpc(Index).MP = 0
-    MapNpc(Index).SP = 0
-    MapNpc(Index).Map = 0
-    MapNpc(Index).x = 0
-    MapNpc(Index).y = 0
-    MapNpc(Index).Dir = 0
-    
-    ' Client use only
-    MapNpc(Index).XOffset = 0
-    MapNpc(Index).YOffset = 0
-    MapNpc(Index).Moving = 0
-    MapNpc(Index).Attacking = 0
-    MapNpc(Index).AttackTimer = 0
+    Call ZeroMemory(MapNpc(Index), Len(MapNpc(Index)))
     PNJAnim(Index) = 1
 End Sub
 

@@ -119,90 +119,56 @@ Sub InitDirectX()
     frmMirage.Show
 End Sub
 
-Sub LoadMaxSprite()
+
+Function LoadMaxSprite()
 Dim i As Long
-    For i = 0 To 9999
-        If Not FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
-            If i < 1 Then
-                MsgBox "Erreur : Sprite introuvable !"
-                End
-            Else
-                MAX_DX_SPRITE = i - 1
-            End If
-            Exit Sub
-        Else
-            MAX_DX_SPRITE = i + 1
-        End If
-    Next i
-End Sub
+    
+i = 0
+Do While FileExiste("\GFX\Sprites\Sprites" & i & ".png")
+LoadMaxSprite = i
+i = i + 1
+Loop
+MAX_DX_SPRITE = i - 1
+End Function
 
 Sub LoadMaxPet()
 Dim i As Long
-    For i = 0 To 9999
-        If Not FileExiste("\GFX\Pets\Pet" & i & ".png") Then
-            If i < 1 Then
-                MsgBox "Erreur : Famillier introuvable !"
-                End
-            Else
-                MAX_DX_PETS = i - 1
-            End If
-            Exit Sub
-        Else
-            MAX_DX_PETS = i + 1
-        End If
-    Next i
     
+i = 0
+Do While FileExiste("\GFX\Pets\Pet" & i & ".png")
+i = i + 1
+Loop
+MAX_DX_PETS = i - 1
 End Sub
 
 Sub LoadMaxPaperdolls()
 Dim i As Long
-    For i = 0 To 9999
-        If Not FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
-            If i < 1 Then
-                MsgBox "Erreur : Paperdoll introuvable !"
-                End
-            Else
-                MAX_DX_PAPERDOLL = i - 1
-            End If
-            Exit Sub
-        Else
-            MAX_DX_PAPERDOLL = i + 1
-        End If
-    Next i
+    
+i = 0
+Do While FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png")
+i = i + 1
+Loop
+MAX_DX_PAPERDOLL = i - 1
 End Sub
 
 Sub LoadMaxSpells()
 Dim i As Long
-    For i = 0 To 9999
-        If Not FileExiste("\GFX\Spells\Spells" & i & ".png") Then
-            If i < 1 Then
-                MsgBox "Erreur : Spells introuvable !"
-                End
-            Else
-                MAX_DX_SPELLS = i - 1
-            End If
-            Exit Sub
-        Else
-            MAX_DX_SPELLS = i + 1
-        End If
-    Next i
+
+i = 0
+Do While FileExiste("\GFX\Spells\Spells" & i & ".png")
+i = i + 1
+Loop
+MAX_DX_SPELLS = i - 1
 End Sub
 
 Sub LoadMaxBigSpells()
 Dim i As Long
-    For i = 0 To 9999
-        If Not FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
-            If i < 1 Then
-                MsgBox "Erreur : BigSpells introuvable !"
-                End
-            Else
-                MAX_DX_BIGSPELLS = i - 1
-            End If
-            Exit Sub
-        Else
-            MAX_DX_BIGSPELLS = i + 1
-        End If
-    Next i
+
+i = 0
+Do While FileExiste("\GFX\BigSpells\BigSpells" & i & ".png")
+i = i + 1
+Loop
+MAX_DX_BIGSPELLS = i - 1
 End Sub
 
 Sub InitSurfaces()
@@ -367,7 +333,7 @@ With TmpR
     .Bottom = y
 End With
 
-TheSurface.Lock TmpR, TmpDDSD, DDLOCK_WAIT Or DDLOCK_READONLY, 0
+TheSurface.lock TmpR, TmpDDSD, DDLOCK_WAIT Or DDLOCK_READONLY, 0
 
 With TmpColorKey
     .low = TheSurface.GetLockedPixel(x, y)

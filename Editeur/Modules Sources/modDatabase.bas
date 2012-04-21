@@ -29,16 +29,16 @@ End Type
 Private Declare Function FindFirstFile Lib "kernel32" Alias "FindFirstFileA" (ByVal lpfilename As String, lpFindFileData As WIN32_FIND_DATA) As Long
 Private Declare Function FindClose Lib "kernel32" (ByVal hFindFile As Long) As Long
 Private Declare Function FindNextFile Lib "kernel32" Alias "FindNextFileA" (ByVal hFindFile As Long, lpFindFileData As WIN32_FIND_DATA) As Long
-
+Declare Sub ZeroMemory Lib "kernel32" Alias "RtlZeroMemory" (dst As Any, ByVal iLen&)
 Function StripTerminator(ByVal strString As String) As String
     Dim intZeroPos As Integer
     intZeroPos = InStr(strString, Chr$(0))
     If intZeroPos > 0 Then StripTerminator = Left$(strString, intZeroPos - 1) Else StripTerminator = strString
 End Function
 
-Function FileExiste(ByVal filename As String) As Boolean
+Function FileExiste(ByVal FileName As String) As Boolean
     On Error GoTo er:
-    If Dir$(App.Path & "\" & filename) = vbNullString Then FileExiste = False Else FileExiste = True
+    If Dir$(App.Path & "\" & FileName) = vbNullString Then FileExiste = False Else FileExiste = True
     Exit Function
 er:
 FileExiste = False
@@ -53,38 +53,38 @@ FileExistes = False
 End Function
 
 Sub SaveLocalMap(ByVal MapNum As Long)
-Dim filename As String
+Dim FileName As String
 Dim f As Long
-    filename = App.Path & "\maps\map" & MapNum & ".fcc"
+    FileName = App.Path & "\maps\map" & MapNum & ".fcc"
                             
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Map(MapNum)
     Close #f
 End Sub
 
 Sub LoadMap(ByVal MapNum As Long)
-Dim filename As String
+Dim FileName As String
 Dim f As Long
-    filename = App.Path & "\maps\map" & MapNum & ".fcc"
+    FileName = App.Path & "\maps\map" & MapNum & ".fcc"
         
     If Not FileExiste("maps\map" & MapNum & ".fcc") Then Exit Sub
     
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Get #f, , Map(MapNum)
     Close #f
 End Sub
 
 Sub LoadQuete(ByVal QIndex As Long)
-Dim filename As String
+Dim FileName As String
 Dim f As Long
-    filename = App.Path & "\quetes\quete" & QIndex & ".fcq"
+    FileName = App.Path & "\quetes\quete" & QIndex & ".fcq"
         
     If Not FileExiste("quetes\quete" & QIndex & ".fcq") Then Exit Sub
     
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Get #f, , quete(QIndex)
     Close #f
 End Sub

@@ -793,8 +793,6 @@ Dim i As Long
 End Sub
 
 Sub ClearPlayer(ByVal Index As Long)
-Dim i As Long
-Dim n As Long
 Call ZeroMemory(Player(Index), Len(Player(Index)))
 End Sub
 
@@ -851,7 +849,6 @@ Dim i As Long
 End Sub
 
 Sub ClearRecette(ByVal Index As Long)
-Dim i As Long, z As Long
 Call ZeroMemory(recette(Index), Len(recette(Index)))
 End Sub
 
