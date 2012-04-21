@@ -644,7 +644,7 @@ Dim f As Long
         FileName = App.Path & "\Items\Item" & i & ".fco"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , item(i)
             Close #f
         End If
@@ -694,7 +694,7 @@ Dim f  As Long
         FileName = App.Path & "\Pets\Pet" & i & ".fcf"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Pets(i)
             Close #f
         End If
@@ -740,7 +740,7 @@ Dim f  As Long
         FileName = App.Path & "\Metiers\Metier" & i & ".fcm"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , metier(i)
             Close #f
         End If
@@ -786,7 +786,7 @@ Dim f  As Long
         FileName = App.Path & "\recettes\recette" & i & ".fcr"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , recette(i)
             Close #f
         End If
@@ -831,7 +831,7 @@ Dim i As Long, f As Long
         FileName = App.Path & "\shops\shop" & i & ".fcm"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Shop(i)
             Close #f
         End If
@@ -894,7 +894,7 @@ Dim f As Long
         FileName = App.Path & "\spells\spells" & i & ".fcg"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Spell(i)
             Close #f
         End If
@@ -973,18 +973,21 @@ Sub LoadMaps()
 Dim FileName As String
 Dim i As Long
 Dim f As Long
-
-    Call CheckMaps
+    
     Call ClearMaps
     
     For i = 1 To MAX_MAPS
-        Call SetStatus("Chargement des maps " & i & "/" & MAX_MAPS)
         FileName = App.Path & "\maps\map" & i & ".fcc"
         If FileExist(FileName, False) Then
+            Call SetStatus("Chargement des maps " & i & "/" & MAX_MAPS)
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Map(i)
             Close #f
+            Else
+            Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
+            DoEvents
+            Call SaveMap(i)
         End If
         DoEvents
     Next i
@@ -999,32 +1002,12 @@ Dim f As Long
     If Not FileExist("\maps\map" & MapNum & ".fcc") Then Exit Sub
     
     f = FreeFile
-    Open FileName For Binary As #f
+    Open FileName For Binary Access Read As #f
         Get #f, , Map(MapNum)
     Close #f
     
 End Sub
 
-Sub CheckMaps()
-Dim FileName As String
-Dim X As Long
-Dim Y As Long
-Dim i As Long
-Dim n As Long
-Dim f As Long
-    Call ClearMaps
-        
-    For i = 1 To MAX_MAPS
-        FileName = "maps\map" & i & ".fcc"
-        
-        ' Check to see if map exists, if it doesn't, create it.
-        If Not FileExist(FileName) Then
-            Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
-            DoEvents
-            Call SaveMap(i)
-        End If
-    Next i
-End Sub
 
 Sub LoadQuetes()
 Dim FileName As String
@@ -1039,7 +1022,7 @@ Dim f As Long
         FileName = App.Path & "\quetes\quete" & i & ".fcq"
         If FileExist(FileName, False) Then
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , quete(i)
             Close #f
         End If

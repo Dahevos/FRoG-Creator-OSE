@@ -73,7 +73,7 @@ Dim s As Byte, i As Integer
                 If ObjChild.UnitPrice <= UnitPrice And ItemVal > 0 Then
                     s = CByte(FindOpenInvSlot(Index, ItemNum))
                     If s = 0 Then PlayerMsg Index, "Certaines ventes correspondent, mais vous n'avez plus d'espace libre.", 4: Exit Do
-                    If item(ItemNum).Type = ITEM_TYPE_CURRENCY Then
+                    If item(ItemNum).type = ITEM_TYPE_CURRENCY Then
                         If ItemVal >= ObjChild.ItemVal Then
                             ItemVal = ItemVal - ObjChild.ItemVal
                             If ObjChild.UnitPrice < UnitPrice Then GiveItem Index, TradingItemIndex, UnitPrice - ObjChild.UnitPrice
@@ -123,7 +123,7 @@ Dim s As Byte, i As Integer
     ObjChild.ItemDurMin = ItemDurMin
     ObjChild.Actif = True
     
-    Achats.Add ObjChild
+    Achats.add ObjChild
     
     Set ObjChild = Nothing
     AddAchat = Achats.Count
@@ -148,7 +148,7 @@ Dim s As Byte, i As Integer
                 If ObjChild.UnitPrice >= UnitPrice Then
                     s = CByte(FindOpenInvSlot(Index, TradingItemIndex))
                     If s = 0 Then PlayerMsg Index, "Certains achats correspondent, mais vous n'avez plus d'espace libre.", 4: Exit Do
-                    If item(ItemNum).Type = ITEM_TYPE_CURRENCY Then
+                    If item(ItemNum).type = ITEM_TYPE_CURRENCY Then
                         If ItemVal >= ObjChild.ItemVal Then
                             ItemVal = ItemVal - ObjChild.ItemVal
                             If ObjChild.UnitPrice > UnitPrice Then GiveItem ObjChild.Index, TradingItemIndex, ObjChild.UnitPrice - UnitPrice
@@ -202,7 +202,7 @@ Dim s As Byte, i As Integer
     ObjChild.ItemDurMin = ItemDurMin
     ObjChild.Actif = True
     
-    Ventes.Add ObjChild
+    Ventes.add ObjChild
     
     Set ObjChild = Nothing
     AddVente = Ventes.Count
@@ -455,7 +455,7 @@ Dim f As Long
     Do While FileExist(FileName)
         f = FreeFile
         ReDim Preserve ObjChildLS(1 To i) As ObjChildRec
-        Open App.Path & "\" & FileName For Binary As #f
+        Open FileName For Binary Access Read As #f
             Get #f, , ObjChildLS(i)
         Close #f
         Set ObjChild = New clsHdVChild
@@ -466,7 +466,7 @@ Dim f As Long
         ObjChild.ItemNum = ObjChildLS(i).ItemNum
         ObjChild.ItemVal = ObjChildLS(i).ItemVal
         ObjChild.UnitPrice = ObjChildLS(i).UnitPrice
-        Achats.Add ObjChild
+        Achats.add ObjChild
         
         i = i + 1
         FileName = "Achats\" & i & ".hdv"
@@ -487,7 +487,7 @@ Dim f As Long
         ObjChild.ItemNum = ObjChildLS(i).ItemNum
         ObjChild.ItemVal = ObjChildLS(i).ItemVal
         ObjChild.UnitPrice = ObjChildLS(i).UnitPrice
-        Ventes.Add ObjChild
+        Ventes.add ObjChild
         
         i = i + 1
         FileName = "Ventes\" & i & ".hdv"

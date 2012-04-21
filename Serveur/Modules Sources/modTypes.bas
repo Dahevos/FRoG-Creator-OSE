@@ -757,7 +757,6 @@ Public AccDevelopeur As Long
 Public AccAdmin As Long
 
 Public HotelDeVente As clsHdV
-
 Sub ClearTempTile()
 Dim i As Long, Y As Long, X As Long
 
@@ -775,7 +774,7 @@ End Sub
 Public Sub ContrOnOff(ByVal Index As Long)
 Dim Packet As String
 
-Packet = "CONOFF" & END_CHAR
+Packet = "CONOFF" & SEP_CHAR & END_CHAR
 
 Call SendDataTo(Index, Packet)
 End Sub
@@ -788,20 +787,219 @@ Sub ClearClasses()
 Dim i As Long
 
     For i = 0 To Max_Classes
-        Call ZeroMemory(Classe(i), Len(Classe(i)))
+        Classe(i).Name = vbNullString
+        Classe(i).AdvanceFrom = 0
+        Classe(i).LevelReq = 0
+        Classe(i).type = 1
+        Classe(i).STR = 0
+        Classe(i).def = 0
+        Classe(i).Speed = 0
+        Classe(i).magi = 0
+        Classe(i).FemaleSprite = 0
+        Classe(i).MaleSprite = 0
+        Classe(i).Map = 0
+        Classe(i).X = 0
+        Classe(i).Y = 0
     Next i
 End Sub
 
 Sub ClearPlayer(ByVal Index As Long)
-Call ZeroMemory(Player(Index), Len(Player(Index)))
+Dim i As Long
+Dim n As Long
+With Player(Index)
+    .Login = vbNullString
+    .Password = vbNullString
+    
+    For i = 1 To MAX_CHARS
+        .Char(i).Name = vbNullString
+        .Char(i).Class = 0
+        .Char(i).Level = 0
+        .Char(i).sprite = 0
+        .Char(i).Exp = 0
+        .Char(i).Access = 0
+        .Char(i).PK = NO
+        .Char(i).POINTS = 0
+        .Char(i).Guild = vbNullString
+        
+        .Char(i).HP = 0
+        .Char(i).MP = 0
+        .Char(i).SP = 0
+        
+        .Char(i).STR = 0
+        .Char(i).def = 0
+        .Char(i).Speed = 0
+        .Char(i).magi = 0
+        
+        For n = 1 To MAX_INV
+            .Char(i).Inv(n).num = 0
+            .Char(i).Inv(n).value = 0
+            .Char(i).Inv(n).Dur = 0
+        Next n
+        
+        For n = 1 To MAX_PLAYER_SPELLS
+            .Char(i).Spell(n) = 0
+        Next n
+        
+        .Char(i).ArmorSlot = 0
+        .Char(i).WeaponSlot = 0
+        .Char(i).HelmetSlot = 0
+        .Char(i).ShieldSlot = 0
+        .Char(i).PetSlot = 0
+        
+        .Char(i).Map = 0
+        .Char(i).X = 0
+        .Char(i).Y = 0
+        .Char(i).Dir = 0
+        
+        .Char(i).pet.Dir = 0
+        .Char(i).pet.X = 0
+        .Char(i).pet.Y = 0
+        
+        .Char(i).vendeur = 0
+        
+        .Char(i).QueteEnCour = 0
+        .Char(i).Quetep.data1 = 0
+        .Char(i).Quetep.data2 = 0
+        .Char(i).Quetep.data3 = 0
+        .Char(i).Quetep.String1 = vbNullString
+        
+        .Char(i).metier = 0
+        .Char(i).MetierLvl = 1
+        .Char(i).MetierExp = 0
+        
+        For n = 1 To 15
+        .Char(i).Quetep.indexe(n).data1 = 0
+        .Char(i).Quetep.indexe(n).data2 = 0
+        .Char(i).Quetep.indexe(n).data3 = 0
+        .Char(i).Quetep.indexe(n).String1 = vbNullString
+        Next n
+        
+        ' Temporary vars
+        .Buffer = vbNullString
+        .IncBuffer = vbNullString
+        .CharNum = 0
+        .InGame = False
+        .AttackTimer = 0
+        .DataTimer = 0
+        .DataBytes = 0
+        .DataPackets = 0
+        .PartyPlayer = 0
+        .InParty = 0
+        .Target = -1
+        .TargetType = 0
+        .CastedSpell = NO
+        .GettingMap = NO
+        .Emoticon = -1
+        .InTrade = 0
+        .TradePlayer = 0
+        .TradeOk = 0
+        .TradeItemMax = 0
+        .TradeItemMax2 = 0
+        For n = 1 To MAX_PLAYER_TRADES
+            .Trading(n).InvName = vbNullString
+            .Trading(n).InvNum = 0
+        Next n
+        .ChatPlayer = 0
+    Next i
+End With
+    
+    bouclier(Index) = False
+    BouclierT(Index) = 0
+    Para(Index) = False
+    ParaT(Index) = 0
+    Point(Index) = 0
+    PointT(Index) = 0
+    
 End Sub
 
 Sub ClearChar(ByVal Index As Long, ByVal CharNum As Long)
-Call ZeroMemory(Player(Index).Char(CharNum), Len(Player(Index).Char(CharNum)))
+Dim n As Long
+With Player(Index)
+    .Char(CharNum).Name = vbNullString
+    .Char(CharNum).Class = 0
+    .Char(CharNum).sprite = 0
+    .Char(CharNum).Level = 0
+    .Char(CharNum).Exp = 0
+    .Char(CharNum).Access = 0
+    .Char(CharNum).PK = NO
+    .Char(CharNum).POINTS = 0
+    .Char(CharNum).Guild = vbNullString
+    
+    .Char(CharNum).HP = 0
+    .Char(CharNum).MP = 0
+    .Char(CharNum).SP = 0
+    
+    .Char(CharNum).STR = 0
+    .Char(CharNum).def = 0
+    .Char(CharNum).Speed = 0
+    .Char(CharNum).magi = 0
+    
+    For n = 1 To MAX_INV
+        .Char(CharNum).Inv(n).num = 0
+        .Char(CharNum).Inv(n).value = 0
+        .Char(CharNum).Inv(n).Dur = 0
+    Next n
+    
+    For n = 1 To MAX_PLAYER_SPELLS
+        .Char(CharNum).Spell(n) = 0
+    Next n
+    
+    For n = 1 To MAX_QUETES
+        .Char(CharNum).QueteStatut(n) = 0
+        
+    Next
+    .Char(CharNum).QueteEnCour = 0
+    
+    .Char(CharNum).ArmorSlot = 0
+    .Char(CharNum).WeaponSlot = 0
+    .Char(CharNum).HelmetSlot = 0
+    .Char(CharNum).ShieldSlot = 0
+    .Char(CharNum).PetSlot = 0
+    
+    .Char(CharNum).Map = 0
+    .Char(CharNum).X = 0
+    .Char(CharNum).Y = 0
+    .Char(CharNum).Dir = 0
+    
+    .Char(CharNum).pet.Dir = 0
+    .Char(CharNum).pet.X = 0
+    .Char(CharNum).pet.Y = 0
+End With
 End Sub
     
 Sub ClearItem(ByVal Index As Long)
-Call ZeroMemory(item(Index), Len(item(Index)))
+With item(Index)
+    .Name = vbNullString
+    .desc = vbNullString
+    
+    .type = 0
+    .data1 = 0
+    .data2 = 0
+    .data3 = 0
+    .StrReq = 0
+    .DefReq = 0
+    .SpeedReq = 0
+    .ClassReq = -1
+    .AccessReq = 0
+    
+    .paperdoll = 0
+    .paperdollPic = 0
+    
+    .Empilable = 0
+    
+    .AddHP = 0
+    .AddMP = 0
+    .AddSP = 0
+    .AddStr = 0
+    .AddDef = 0
+    .AddMagi = 0
+    .AddSpeed = 0
+    .AddEXP = 0
+    .AttackSpeed = 1000
+    
+    .NCoul = 0
+    .tArme = 0
+End With
 End Sub
 
 Sub ClearItems()
@@ -813,7 +1011,33 @@ Dim i As Long
 End Sub
 
 Sub ClearNpc(ByVal Index As Long)
-Call ZeroMemory(Npc(Index), Len(Npc(Index)))
+Dim i As Long
+With Npc(Index)
+    .Name = vbNullString
+    .AttackSay = vbNullString
+    .sprite = 0
+    .SpawnSecs = 0
+    .Behavior = 0
+    .Range = 0
+    .STR = 0
+    .def = 0
+    .Speed = 0
+    .magi = 0
+    .MaxHp = 0
+    .Exp = 0
+    .SpawnTime = 0
+    .QueteNum = 0
+    .Inv = 0
+    .Vol = 0
+    For i = 1 To MAX_NPC_DROPS
+        .ItemNPC(i).chance = 0
+        .ItemNPC(i).ItemNum = 0
+        .ItemNPC(i).ItemValue = 0
+    Next i
+    For i = 1 To MAX_NPC_SPELLS
+        .Spell(i) = 0
+    Next
+End With
 End Sub
 
 Sub ClearNpcs()
@@ -825,11 +1049,17 @@ Dim i As Long
 End Sub
 
 Sub ClearPet(ByVal Index As Long)
-Call ZeroMemory(Pets(Index), Len(Pets(Index)))
+With Pets(Index)
+    .nom = ""
+    .sprite = 0
+    .addForce = 0
+    .addDefence = 0
+End With
 End Sub
 
 Sub ClearPets()
 Dim i As Long
+
     For i = 1 To MAX_PETS
         Call ClearPet(i)
     Next i
@@ -837,7 +1067,15 @@ End Sub
 
 Sub ClearMetier(ByVal Index As Long)
 Dim i As Long
-Call ZeroMemory(metier(Index), Len(metier(Index)))
+With metier(Index)
+    .nom = ""
+    .type = 0
+    .desc = ""
+    For i = 0 To MAX_DATA_METIER
+        .data(i, 0) = 0
+        .data(i, 1) = 1
+    Next i
+End With
 End Sub
 
 Sub ClearMetiers()
@@ -849,7 +1087,17 @@ Dim i As Long
 End Sub
 
 Sub ClearRecette(ByVal Index As Long)
-Call ZeroMemory(recette(Index), Len(recette(Index)))
+Dim i As Long, z As Long
+With recette(Index)
+    .nom = ""
+    For i = 0 To 9
+        .InCraft(i, 0) = 0
+        .InCraft(i, 1) = 0
+    Next i
+    For z = 0 To 1
+        .craft(z) = 0
+    Next z
+End With
 End Sub
 
 Sub ClearRecettes()
@@ -861,7 +1109,11 @@ Dim i As Long
 End Sub
 
 Sub ClearMapItem(ByVal Index As Long, ByVal MapNum As Long)
-    Call ZeroMemory(MapItem(MapNum, Index), Len(MapItem(MapNum, Index)))
+    MapItem(MapNum, Index).num = 0
+    MapItem(MapNum, Index).value = 0
+    MapItem(MapNum, Index).Dur = 0
+    MapItem(MapNum, Index).X = 0
+    MapItem(MapNum, Index).Y = 0
 End Sub
 
 Sub ClearMapItems()
@@ -876,7 +1128,26 @@ Dim Y As Long
 End Sub
 
 Sub ClearMapNpc(ByVal Index As Long, ByVal MapNum As Long)
-Call ZeroMemory(MapNpc(MapNum, Index), Len(MapNpc(MapNum, Index)))
+With MapNpc(MapNum, Index)
+    .num = 0
+    .Target = 0
+    .TargetType = 0
+    .Immune = 0
+    .SpellTimer = 0
+    .Amelio.Power = 0
+    .Amelio.Timer = 0
+    .HP = 0
+    .MP = 0
+    .SP = 0
+    .X = 0
+    .Y = 0
+    .Dir = 0
+    PnjMove(Index, MapNum) = True
+    
+    ' Server use only
+    .SpawnWait = 0
+    .AttackTimer = 0
+End With
 End Sub
 
 Sub ClearMapNpcs()
@@ -891,15 +1162,135 @@ Dim Y As Long
 End Sub
 
 Sub ClearMap(ByVal MapNum As Long)
-Call ZeroMemory(Map(MapNum), Len(Map(MapNum)))
+Dim i As Long
+Dim X As Long
+Dim Y As Long
+
+With Map(MapNum)
+    .Name = vbNullString
+    .Revision = 0
+    .Moral = 0
+    .Up = 0
+    .Down = 0
+    .Left = 0
+    .Right = 0
+    .Indoors = 0
+        
+    For Y = 0 To MAX_MAPY
+        For X = 0 To MAX_MAPX
+            .Tile(X, Y).Ground = 0
+            .Tile(X, Y).Mask = 0
+            .Tile(X, Y).Anim = 0
+            .Tile(X, Y).Mask2 = 0
+            .Tile(X, Y).M2Anim = 0
+            .Tile(X, Y).Fringe = 0
+            .Tile(X, Y).FAnim = 0
+            .Tile(X, Y).Fringe2 = 0
+            .Tile(X, Y).F2Anim = 0
+            .Tile(X, Y).type = 0
+            .Tile(X, Y).data1 = 0
+            .Tile(X, Y).data2 = 0
+            .Tile(X, Y).data3 = 0
+            .Tile(X, Y).String1 = vbNullString
+            .Tile(X, Y).String2 = vbNullString
+            .Tile(X, Y).String3 = vbNullString
+            .Tile(X, Y).Light = 0
+            .Tile(X, Y).GroundSet = 0
+            .Tile(X, Y).MaskSet = 0
+            .Tile(X, Y).AnimSet = 0
+            .Tile(X, Y).Mask2Set = 0
+            .Tile(X, Y).M2AnimSet = 0
+            .Tile(X, Y).FringeSet = 0
+            .Tile(X, Y).FAnimSet = 0
+            .Tile(X, Y).Fringe2Set = 0
+            .Tile(X, Y).F2AnimSet = 0
+        Next X
+    Next Y
+    
+    For i = 1 To MAX_MAP_NPCS
+    .Npc(i) = 0
+    .Npcs(i).Axy = False
+    .Npcs(i).Axy1 = False
+    .Npcs(i).Axy2 = False
+    .Npcs(i).boucle = 0
+    .Npcs(i).Hasardm = 1
+    .Npcs(i).Hasardp = 1
+    .Npcs(i).Imobile = 0
+    .Npcs(i).X = 0
+    .Npcs(i).x1 = 0
+    .Npcs(i).x2 = 0
+    .Npcs(i).x3 = 0
+    .Npcs(i).x4 = 0
+    .Npcs(i).x5 = 0
+    .Npcs(i).x6 = 0
+    .Npcs(i).Y = 0
+    .Npcs(i).y2 = 0
+    .Npcs(i).y3 = 0
+    .Npcs(i).y4 = 0
+    .Npcs(i).y5 = 0
+    .Npcs(i).y6 = 0
+    Next i
+    .PanoInf = vbNullString
+    .TranInf = 0
+    .PanoSup = vbNullString
+    .TranSup = 0
+    .Fog = 0
+    .FogAlpha = 0
+    .guildSoloView = 0
+    .petView = 0
+    .traversable = 0
+    ' Reset the values for if a player is on the map or not
+    PlayersOnMap(MapNum) = NO
+End With
 End Sub
 
 Sub ClearQuete(ByVal Index As Long)
-Call ZeroMemory(quete(Index), Len(quete(Index)))
+Dim i As Long
+With quete(Index)
+    .nom = vbNullString
+    .data1 = 0
+    .data2 = 0
+    .data2 = 0
+    .description = vbNullString
+    .reponse = vbNullString
+    .String1 = vbNullString
+    .temps = 0
+    .type = 0
+    
+    For i = 1 To 15
+        .indexe(i).data1 = 1
+        .indexe(i).data2 = 0
+        .indexe(i).data3 = 0
+        .indexe(i).String1 = vbNullString
+    Next i
+    
+    .Recompence.Exp = 0
+    .Recompence.objn1 = 1
+    .Recompence.objn2 = 1
+    .Recompence.objn3 = 1
+    .Recompence.objq1 = 0
+    .Recompence.objq2 = 0
+    .Recompence.objq3 = 0
+    .Case = 0
+End With
 End Sub
 
 Sub ClearPlayerQuete(ByVal Index As Long)
-Call ZeroMemory(Player(Index).Char(Player(Index).CharNum), Len(Player(Index).Char(Player(Index).CharNum)))
+Dim i As Long
+With Player(Index).Char(Player(Index).CharNum)
+    .QueteEnCour = 0
+    .Quetep.data1 = 0
+    .Quetep.data2 = 0
+    .Quetep.data3 = 0
+    .Quetep.String1 = vbNullString
+            
+    For i = 1 To 15
+        .Quetep.indexe(i).data1 = 0
+        .Quetep.indexe(i).data2 = 0
+        .Quetep.indexe(i).data3 = 0
+        .Quetep.indexe(i).String1 = 0
+    Next i
+End With
 End Sub
 
 Sub ClearMaps()
@@ -919,7 +1310,23 @@ Dim i As Long
 End Sub
 
 Sub ClearShop(ByVal Index As Long)
-Call ZeroMemory(Shop(Index), Len(Shop(Index)))
+Dim i As Long
+Dim z As Long
+
+    Shop(Index).Name = vbNullString
+    Shop(Index).JoinSay = vbNullString
+    Shop(Index).LeaveSay = vbNullString
+    Shop(Index).FixesItems = 0
+    Shop(Index).FixObjet = -1
+    
+    For z = 1 To 6
+        For i = 1 To MAX_TRADES
+            Shop(Index).TradeItem(z).value(i).GiveItem = 0
+            Shop(Index).TradeItem(z).value(i).GiveValue = 0
+            Shop(Index).TradeItem(z).value(i).GetItem = 0
+            Shop(Index).TradeItem(z).value(i).GetValue = 0
+        Next i
+    Next z
 End Sub
 
 Sub ClearShops()
@@ -931,7 +1338,28 @@ Dim i As Long
 End Sub
 
 Sub ClearSpell(ByVal Index As Long)
-Call ZeroMemory(Spell(Index), Len(Spell(Index)))
+With Spell(Index)
+    .Name = vbNullString
+    .ClassReq = 0
+    .LevelReq = 0
+    .type = 0
+    .data1 = 0
+    .data2 = 0
+    .data3 = 0
+    .MPCost = 0
+    .Sound = 0
+    .Range = 0
+    
+    .Big = 0
+    
+    .SpellAnim = 0
+    .SpellTime = 40
+    .SpellDone = 1
+    
+    .SpellIco = 0
+    
+    .AE = 0
+End With
 End Sub
 
 Sub ClearSpells()
@@ -1337,7 +1765,7 @@ Sub SetPlayerPetSlot(ByVal Index As Long, InvNum As Long)
 End Sub
 
 Sub BattleMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
-    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR)
+    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
 End Sub
 
 Public Sub Attendre(ByVal temps As Long)
