@@ -92,7 +92,7 @@ Private Sub CmdRafraichir_Click()
 End Sub
 
     Private Sub Form_Load()
-    Dim filename As String
+    Dim FileName As String
     Dim i As Long, C As Long
     Dim Ending As String
     
@@ -106,7 +106,7 @@ End Sub
     Next i
         frmServerChooser.Visible = True
 
-        filename = App.Path & "\Config\Serveur.ini"
+        FileName = App.Path & "\Config\Serveur.ini"
         i = 0
         C = 0
         CHECK_WAIT = False
@@ -119,10 +119,10 @@ End Sub
         Do Until C = 1
             DoEvents
             If Not CHECK_WAIT Then
-                If ReadINI("SERVER" & i, "IP", filename) <> vbNullString And ReadINI("SERVER" & i, "PORT", filename) <> vbNullString Then
-                    GAME_IP = ReadINI("SERVER" & i, "IP", filename)
-                    GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", filename))
-                    If CheckServerStatus Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", filename) & " - Fermé!"
+                If ReadINI("SERVER" & i, "IP", FileName) <> vbNullString And ReadINI("SERVER" & i, "PORT", FileName) <> vbNullString Then
+                    GAME_IP = ReadINI("SERVER" & i, "IP", FileName)
+                    GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", FileName))
+                    If CheckServerStatus Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé!"
                     i = i + 1
                 Else
                     C = 1
@@ -151,19 +151,19 @@ End Sub
         End If
     End Function
 
-Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Form_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 dr = True
-drx = x
-dry = y
+drx = X
+dry = Y
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
 On Error Resume Next
-If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.Height Then Me.Top = Screen.Height \ 2: Me.Left = Screen.Width \ 2
+If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (X - drx), Me.Top + (Y - dry))
+If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
 End Sub
 
-Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub Form_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 dr = False
 drx = 0
 dry = 0

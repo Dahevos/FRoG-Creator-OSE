@@ -453,9 +453,9 @@ Dim Ending As String
     ' :: In game packet ::
     ' ::::::::::::::::::::
     If LCase$(Parse(0)) = "ingame" Then
-        InGame = True
         Call InitSurfaces
         Call GameInit
+        InGame = True
         Call GameLoop
         If Parse(1) = END_CHAR Then MsgBox ("here"): End
         Exit Sub

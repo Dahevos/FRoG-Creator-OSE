@@ -28,8 +28,8 @@ Dim szReturn As String  ' Return default value if not found
     GetVar = Left$(GetVar, Len(GetVar) - 1)
 End Function
 
-Public Sub PutVar(File As String, Header As String, Var As String, Value As String)
-    Call WritePrivateProfileString$(Header, Var, Value, File)
+Public Sub PutVar(File As String, Header As String, Var As String, value As String)
+    Call WritePrivateProfileString$(Header, Var, value, File)
 End Sub
 
 Public Sub WriteINI(INISection As String, INIKey As String, INIValue As String, INIFile As String)
@@ -188,7 +188,7 @@ Dim n As Long
         Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(Index).Char(i).PetSlot))
         
         Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(Index).Char(i).pet.Dir))
-        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.X))
+        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.x))
         Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.Y))
         
         Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(Index).Char(i).metier))
@@ -199,20 +199,20 @@ Dim n As Long
         ' Check to make sure that they aren't on map 0, if so reset'm
         If Player(Index).Char(i).Map = 0 Then
             Player(Index).Char(i).Map = START_MAP
-            Player(Index).Char(i).X = START_X
+            Player(Index).Char(i).x = START_X
             Player(Index).Char(i).Y = START_Y
         End If
             
         ' Position
         Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(Index).Char(i).Map))
-        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).X))
+        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).x))
         Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).Y))
         Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(Index).Char(i).Dir))
         
         ' Inventory
         For n = 1 To MAX_INV
-            Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).num))
-            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).Value))
+            Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).Num))
+            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
             Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
         Next n
         
@@ -291,12 +291,12 @@ With Player(Index)
         
         ' Position
         .Map = Val(GetVar(FileName, "CHAR" & i, "Map"))
-        .X = Val(GetVar(FileName, "CHAR" & i, "X"))
+        .x = Val(GetVar(FileName, "CHAR" & i, "X"))
         .Y = Val(GetVar(FileName, "CHAR" & i, "Y"))
         .Dir = Val(GetVar(FileName, "CHAR" & i, "Dir"))
         
         .pet.Dir = Val(GetVar(FileName, "CHAR" & i, "PetDir"))
-        .pet.X = Val(GetVar(FileName, "CHAR" & i, "PetX"))
+        .pet.x = Val(GetVar(FileName, "CHAR" & i, "PetX"))
         .pet.Y = Val(GetVar(FileName, "CHAR" & i, "PetY"))
         
         .metier = Val(GetVar(FileName, "CHAR" & i, "Metier"))
@@ -306,14 +306,14 @@ With Player(Index)
         ' Check to make sure that they aren't on map 0, if so reset'm
         If .Map = 0 Then
             .Map = START_MAP
-            .X = START_X
+            .x = START_X
             .Y = START_Y
         End If
         
         ' Inventory
         For n = 1 To MAX_INV
-            .Inv(n).num = Val(GetVar(FileName, "CHAR" & i, "InvItemNum" & n))
-            .Inv(n).Value = Val(GetVar(FileName, "CHAR" & i, "InvItemVal" & n))
+            .Inv(n).Num = Val(GetVar(FileName, "CHAR" & i, "InvItemNum" & n))
+            .Inv(n).value = Val(GetVar(FileName, "CHAR" & i, "InvItemVal" & n))
             .Inv(n).Dur = Val(GetVar(FileName, "CHAR" & i, "InvItemDur" & n))
         Next n
         
@@ -374,14 +374,14 @@ End Function
 Function PasswordOK(ByVal Name As String, ByVal Password As String) As Boolean
 Dim FileName As String
 Dim RightPassword As String
-
+Dim hash As New clsMD5
     PasswordOK = False
     
     If AccountExist(Name) Then
         FileName = App.Path & "\accounts\" & Trim$(Name) & ".ini"
         RightPassword = GetVar(FileName, "GENERAL", "Password")
         
-        If UCase$(Trim$(MD5String(Password))) = UCase$(Trim$(RightPassword)) Then
+        If UCase$(Trim$(hash.MD5StrToHexStr(Password))) = UCase$(Trim$(RightPassword)) Then
             PasswordOK = True
         Else
             Password = Password
@@ -392,9 +392,9 @@ End Function
 
 Sub AddAccount(ByVal Index As Long, ByVal Name As String, ByVal Password As String)
 Dim i As Long
-
+Dim hash As New clsMD5
     Player(Index).Login = Name
-    Player(Index).Password = MD5String(Password)
+    Player(Index).Password = hash.MD5StrToHexStr(Password)
     
     For i = 1 To MAX_CHARS
         Call ClearChar(Index, i)
@@ -428,10 +428,10 @@ Dim f As Long
         .Char(CharNum).magi = Classe(ClassNum).magi
         
         If Classe(ClassNum).Map <= 0 Then Classe(ClassNum).Map = 1
-        If Classe(ClassNum).X < 0 Or Classe(ClassNum).X > MAX_MAPX Then Classe(ClassNum).X = Int(Classe(ClassNum).X / 2)
+        If Classe(ClassNum).x < 0 Or Classe(ClassNum).x > MAX_MAPX Then Classe(ClassNum).x = Int(Classe(ClassNum).x / 2)
         If Classe(ClassNum).Y < 0 Or Classe(ClassNum).Y > MAX_MAPY Then Classe(ClassNum).Y = Int(Classe(ClassNum).Y / 2)
         .Char(CharNum).Map = Classe(ClassNum).Map
-        .Char(CharNum).X = Classe(ClassNum).X
+        .Char(CharNum).x = Classe(ClassNum).x
         .Char(CharNum).Y = Classe(ClassNum).Y
             
         .Char(CharNum).HP = GetPlayerMaxHP(Index)
@@ -559,7 +559,7 @@ Dim i As Long
             Classe(i).Speed = Val(GetVar(FileName, "CLASS", "SPEED"))
             Classe(i).magi = Val(GetVar(FileName, "CLASS", "MAGI"))
             Classe(i).Map = Val(GetVar(FileName, "CLASS", "MAP"))
-            Classe(i).X = Val(GetVar(FileName, "CLASS", "X"))
+            Classe(i).x = Val(GetVar(FileName, "CLASS", "X"))
             Classe(i).Y = Val(GetVar(FileName, "CLASS", "Y"))
             Classe(i).Locked = Val(GetVar(FileName, "CLASS", "Locked"))
         End If
@@ -596,7 +596,7 @@ Dim i As Long
             Call PutVar(FileName, "CLASS", "SPEED", STR$(Classe(i).Speed))
             Call PutVar(FileName, "CLASS", "MAGI", STR$(Classe(i).magi))
             Call PutVar(FileName, "CLASS", "MAP", STR$(Classe(i).Map))
-            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).X))
+            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).x))
             Call PutVar(FileName, "CLASS", "Y", STR$(Classe(i).Y))
             Call PutVar(FileName, "CLASS", "Locked", STR$(Classe(i).Locked))
         End If
@@ -1033,7 +1033,7 @@ End Sub
 
 Sub CheckQuetes()
 Dim FileName As String
-Dim X As Long
+Dim x As Long
 Dim Y As Long
 Dim i As Long
 Dim n As Long
@@ -1176,14 +1176,14 @@ End Function
 
 Sub SaveLogs()
 Dim FileName As String
-Dim i As String, C As String
+Dim i As String, c As String
 
     If LCase$(Dir(App.Path & "\logs", vbDirectory)) <> "logs" Then Call MkDir(App.Path & "\Logs")
     
-    C = Time
-    C = Replace(C, ":", ".", 1)
-    C = Replace(C, ":", ".", 1)
-    C = Replace(C, ":", ".", 1)
+    c = Time
+    c = Replace(c, ":", ".", 1)
+    c = Replace(c, ":", ".", 1)
+    c = Replace(c, ":", ".", 1)
     
     i = Date
     i = Replace(i, "/", ".", 1)
@@ -1192,40 +1192,40 @@ Dim i As String, C As String
     
     If LCase$(Dir(App.Path & "\logs\" & i, vbDirectory)) <> i Then Call MkDir(App.Path & "\Logs\" & i & "\")
     
-    If LCase$(Dir(App.Path & "\logs\" & i & "\" & C, vbDirectory)) <> C Then Call MkDir(App.Path & "\Logs\" & i & "\" & C & "\")
+    If LCase$(Dir(App.Path & "\logs\" & i & "\" & c, vbDirectory)) <> c Then Call MkDir(App.Path & "\Logs\" & i & "\" & c & "\")
         
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Main.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Main.txt"
     Close
     Open FileName For Output As #1
         Print #1, frmServer.txtText(0).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Broadcast.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Broadcast.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(1).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Global.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Global.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(2).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Map.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Map.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(3).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Private.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Private.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(4).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Admin.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Admin.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(5).text
     Close #1
     
-    FileName = App.Path & "\Logs\" & i & "\" & C & "\Emote.txt"
+    FileName = App.Path & "\Logs\" & i & "\" & c & "\Emote.txt"
     Open FileName For Output As #1
         Print #1, frmServer.txtText(6).text
     Close #1

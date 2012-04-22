@@ -509,27 +509,13 @@ Public Function getreselotionX()
 End Function
 
 Public Function getreselotionY()
-    getreselotionY = Screen.Height \ Screen.TwipsPerPixelY
+    getreselotionY = Screen.height \ Screen.TwipsPerPixelY
 End Function
 
 Private Sub Check1_Click()
 If Check1.Value = "0" Then StopMidi Else If FileExiste("Music\mainmenu.mid") Then Call PlayMidi("mainmenu.mid") Else Call PlayMidi("mainmenu.mp3")
 
 Call WriteINI("CONFIG", "Music", STR$(Check1.Value), App.Path & "\Config\Client.ini")
-End Sub
-
-Private Sub Cmd640_Click()
-    notebook = True
-    Cmd640.Enabled = False
-    Cmd800.Enabled = True
-    Call notebook_change
-End Sub
-
-Private Sub Cmd800_Click()
-    notebook = False
-    Cmd640.Enabled = True
-    Cmd800.Enabled = False
-    Call notebook_change
 End Sub
 
 Private Sub Form_GotFocus()
@@ -628,49 +614,49 @@ Private Sub Form_Unload(Cancel As Integer)
     Call GameDestroy
 End Sub
 
-Private Sub imgLogin_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgLogin_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 DragImg = 1
-DragX = x
-DragY = y
+DragX = X
+DragY = Y
 End Sub
 
-Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((x / twippx) - (DragX / twippx))
+Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((Y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((X / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 DragImg = 0
 DragX = 0
 DragY = 0
 End Sub
 
-Private Sub imgNouveau_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgNouveau_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
 DragImg = 2
-DragX = x
-DragY = y
+DragX = X
+DragY = Y
 End Sub
 
-Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((x / twippx) - (DragX / twippx))
+Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((Y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((X / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
 DragImg = 0
 DragX = 0
 DragY = 0
 End Sub
 
-Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
     DragImg = 3
-    DragX = x
-    DragY = y
+    DragX = X
+    DragY = Y
 End Sub
 
-Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((x / twippx) - (DragX / twippx))
+Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+If DragImg = 3 Then fraPers.Top = fraPers.Top + ((Y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((X / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
+Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     DragImg = 0
     DragX = 0
     DragY = 0
@@ -720,13 +706,13 @@ Dim Ending As String
             PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending)
         End If
     Next i
-    PicChar.Height = PicChar.Height / 4
+    PicChar.height = PicChar.height / 4
     PicChar.Width = PicChar.Width / 4
     If PicChar.Width > 960 Then
         PicChar.Width = 960
     End If
-    If PicChar.Height > 960 Then
-        PicChar.Height = 960
+    If PicChar.height > 960 Then
+        PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
         PicChar.Left = 840 - PicChar.Width + 480
@@ -855,13 +841,13 @@ Dim Ending As String
             PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites" & charSelect(charSelectNum).sprt & Ending)
         End If
     Next i
-    PicChar.Height = PicChar.Height / 4
+    PicChar.height = PicChar.height / 4
     PicChar.Width = PicChar.Width / 4
     If PicChar.Width > 960 Then
         PicChar.Width = 960
     End If
-    If PicChar.Height > 960 Then
-        PicChar.Height = 960
+    If PicChar.height > 960 Then
+        PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
         PicChar.Left = 840 - PicChar.Width + 480
