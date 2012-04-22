@@ -156,12 +156,18 @@ Public PNJAnim(1 To MAX_MAP_NPCS) As Byte
 'Variables pour FrmMirage
 Public PicScWidth As Single
 Public PicScHeight As Single
+
+Public MaxSprite As Integer
+Public MaxPaperdoll As Integer
+Public MaxSpell As Integer
+Public MaxBigSpell As Integer
+Public MaxPet As Integer
+
                     
 Sub Main()
 Dim i As Long
 Dim Ending As String
 Dim t As Currency
-Dim max As Long
 
 On Error GoTo er:
     Call InitXpStyle
@@ -191,25 +197,25 @@ On Error GoTo er:
     ReDim DDSD_Tile(0 To ExtraSheets) As DDSURFACEDESC2
     ReDim TileFile(0 To ExtraSheets) As Boolean
     
-    max = LoadMaxSprite()
-    ReDim DD_SpriteSurf(0 To max) As DirectDrawSurface7
-    ReDim DDSD_Character(0 To max) As DDSURFACEDESC2
+    MaxSprite = LoadMaxSprite()
+    ReDim DD_SpriteSurf(0 To MaxSprite) As DirectDrawSurface7
+    ReDim DDSD_Character(0 To MaxSprite) As DDSURFACEDESC2
         
-    max = LoadMaxPaperdolls()
-    ReDim DD_PaperDollSurf(0 To max) As DirectDrawSurface7
-    ReDim DDSD_PaperDoll(0 To max) As DDSURFACEDESC2
+    MaxPaperdoll = LoadMaxPaperdolls()
+    ReDim DD_PaperDollSurf(0 To MaxPaperdoll) As DirectDrawSurface7
+    ReDim DDSD_PaperDoll(0 To MaxPaperdoll) As DDSURFACEDESC2
     
-    max = LoadMaxSpells()
-    ReDim DD_SpellAnim(0 To max) As DirectDrawSurface7
-    ReDim DDSD_SpellAnim(0 To max) As DDSURFACEDESC2
+    MaxSpell = LoadMaxSpells()
+    ReDim DD_SpellAnim(0 To MaxSpell) As DirectDrawSurface7
+    ReDim DDSD_SpellAnim(0 To MaxSpell) As DDSURFACEDESC2
     
-    max = LoadMaxBigSpells()
-    ReDim DD_BigSpellAnim(0 To max) As DirectDrawSurface7
-    ReDim DDSD_BigSpellAnim(0 To max) As DDSURFACEDESC2
+    MaxBigSpell = LoadMaxBigSpells()
+    ReDim DD_BigSpellAnim(0 To MaxBigSpell) As DirectDrawSurface7
+    ReDim DDSD_BigSpellAnim(0 To MaxBigSpell) As DDSURFACEDESC2
     
-    max = LoadMaxPet()
-    ReDim DD_PetsSurf(0 To max) As DirectDrawSurface7
-    ReDim DDSD_Pets(0 To max) As DDSURFACEDESC2
+    MaxPet = LoadMaxPet()
+    ReDim DD_PetsSurf(0 To MaxPet) As DirectDrawSurface7
+    ReDim DDSD_Pets(0 To MaxPet) As DDSURFACEDESC2
     
     
     ' Check if the maps directory is there, if its not make it
@@ -372,7 +378,9 @@ On Error GoTo er:
     End If
     Call InitAccountOpt
     Call InitMirageVars
-    
+    'On initialise dès maintenant DirectX
+    Call SetStatus("Initialisation de DirectX...")
+    Call InitDirectX
     Call SetStatus("Initialisation du protocole TCP...")
         
     frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
@@ -396,6 +404,7 @@ On Error GoTo er:
     
     ConOff = False
     frmsplash.Visible = False
+
 Exit Sub
 er:
 Call MsgBox("Une erreur d'initialisation du logiciel c'est produite(Numéros de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "). Si le probléme pérsiste veulliez contacter un administrateur.", vbCritical, "Erreur")
@@ -462,7 +471,7 @@ Sub MenuState(ByVal State As Long)
     If Not IsConnected And Connucted = True Then
         frmMainMenu.Visible = True
         frmsplash.Visible = False
-        Call MsgBox("Désoler, le serveur semble être indisponible, réessayer dans quelque minute ou visiter" & WEBSITE, vbOKOnly, GAME_NAME)
+        Call MsgBox("Désolé, le serveur semble être indisponible, réessayer dans quelque minute ou visiter" & WEBSITE, vbOKOnly, GAME_NAME)
     End If
 End Sub
 Sub GameInit()
@@ -473,13 +482,17 @@ Dim i As Integer, x As Integer
     frmMirage.Top = frmMainMenu.Top
     frmMirage.Left = frmMainMenu.Left
     End If
-    DoEvents
+    
     frmMirage.Visible = True
     frmMainMenu.Visible = False
     frmsplash.Visible = False
-    Call InitDirectX
+    
+    ' Initialize all surfaces
+    'Call InitSurfaces
+    
     frmMirage.picScreen.Visible = True
     Call initRac
+    frmMirage.Show
 End Sub
 
 Sub initRac()

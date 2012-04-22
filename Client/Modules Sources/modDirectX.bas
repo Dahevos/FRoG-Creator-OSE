@@ -106,14 +106,10 @@ Sub InitDirectX()
         
     ' Have the blits to the screen clipped to the picture box
     DD_PrimarySurf.SetClipper DD_Clip
-
-    ' Initialize all surfaces
-    Call InitSurfaces
     
     'Initisalisation de D3D
     Set D3D = DD.GetDirect3D
     
-    frmMirage.Show
 End Sub
 Function LoadMaxSprite() As Long
 Dim i As Long
@@ -195,12 +191,13 @@ Dim i As Long
     Set DD_OutilSurf = LoadImage(App.Path & "\GFX\Outils.png", DD, DDSD_Outil)
     SetMaskColorFromPixel DD_OutilSurf, 0, 0
     
-    For i = 0 To LoadMaxSprite()
+    For i = 0 To MaxSprite
         DDSD_Character(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_Character(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
         Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
         SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
-    Next i
+        DoEvents
+    Next
     
     ' Init tiles ddsd type and load the bitmap
     For i = 0 To ExtraSheets
@@ -213,7 +210,8 @@ Dim i As Long
         Else
             TileFile(i) = False
         End If
-    Next i
+        DoEvents
+    Next
     
     ' Init items ddsd type and load the bitmap
     DDSD_Item.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -228,19 +226,21 @@ Dim i As Long
     SetMaskColorFromPixel DD_EmoticonSurf, 0, 0
     
     ' Init spells ddsd type and load the bitmap
-    For i = 0 To LoadMaxSpells()
+    For i = 0 To MaxSpell
         DDSD_SpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_SpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
         Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
         SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
-    Next i
+        DoEvents
+    Next
         
-    For i = 0 To LoadMaxBigSpells()
+    For i = 0 To MaxBigSpell
         DDSD_BigSpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_BigSpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
         Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
         SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
-    Next i
+        DoEvents
+    Next
         
     ' Init arrows ddsd type and load the bitmap
     DDSD_ArrowAnim.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -265,20 +265,22 @@ Dim i As Long
     Call DD_TmpSurf.setDrawStyle(5)
     
     'PAPERDOLL
-    For i = 0 To LoadMaxPaperdolls()
+    For i = 0 To MaxPaperdoll
         DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
         Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
         SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
-    Next i
+        DoEvents
+    Next
     'FIN PAPERDOLL
     
-    For i = 0 To LoadMaxPet
+    For i = 0 To MaxPet
         DDSD_Pets(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_Pets(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
         Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
         SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
-    Next i
+        DoEvents
+    Next
     
 End Sub
 

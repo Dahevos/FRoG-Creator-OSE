@@ -586,7 +586,7 @@ Dim Ending As String
             PicChar.Picture = LoadPNG(App.Path & "/GFX/Sprites/Sprites0" & Ending)
         End If
     Next i
-        
+    
     If Check1.Value = 1 Then If FileExiste("Music\mainmenu.mid") Then Call PlayMidi("mainmenu.mid") Else Call PlayMidi("mainmenu.mp3")
             
     'Picsprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png", True)
@@ -621,6 +621,7 @@ Dim Ending As String
     fraLogin.Visible = True
     
     Call notebook_change
+        
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)

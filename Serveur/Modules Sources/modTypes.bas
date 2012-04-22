@@ -216,7 +216,7 @@ End Type
 
 Type PlayerInvRec
     num As Long
-    value As Long
+    Value As Long
     Dur As Long
 End Type
 
@@ -528,7 +528,7 @@ End Type
 
 Type MapItemRec
     num As Long
-    value As Long
+    Value As Long
     Dur As Long
     
     X As Byte
@@ -601,7 +601,7 @@ Type TradeItemRec
 End Type
 
 Type TradeItemsRec
-    value(1 To MAX_TRADES) As TradeItemRec
+    Value(1 To MAX_TRADES) As TradeItemRec
 End Type
 
 Type ShopRec
@@ -787,19 +787,7 @@ Sub ClearClasses()
 Dim i As Long
 
     For i = 0 To Max_Classes
-        Classe(i).Name = vbNullString
-        Classe(i).AdvanceFrom = 0
-        Classe(i).LevelReq = 0
-        Classe(i).type = 1
-        Classe(i).STR = 0
-        Classe(i).def = 0
-        Classe(i).Speed = 0
-        Classe(i).magi = 0
-        Classe(i).FemaleSprite = 0
-        Classe(i).MaleSprite = 0
-        Classe(i).Map = 0
-        Classe(i).X = 0
-        Classe(i).Y = 0
+       Call ZeroMemory(ByVal VarPtr(Classe(i)), LenB(Classe(i)))
     Next i
 End Sub
 
@@ -832,7 +820,7 @@ With Player(Index)
         
         For n = 1 To MAX_INV
             .Char(i).Inv(n).num = 0
-            .Char(i).Inv(n).value = 0
+            .Char(i).Inv(n).Value = 0
             .Char(i).Inv(n).Dur = 0
         Next n
         
@@ -936,7 +924,7 @@ With Player(Index)
     
     For n = 1 To MAX_INV
         .Char(CharNum).Inv(n).num = 0
-        .Char(CharNum).Inv(n).value = 0
+        .Char(CharNum).Inv(n).Value = 0
         .Char(CharNum).Inv(n).Dur = 0
     Next n
     
@@ -1110,7 +1098,7 @@ End Sub
 
 Sub ClearMapItem(ByVal Index As Long, ByVal MapNum As Long)
     MapItem(MapNum, Index).num = 0
-    MapItem(MapNum, Index).value = 0
+    MapItem(MapNum, Index).Value = 0
     MapItem(MapNum, Index).Dur = 0
     MapItem(MapNum, Index).X = 0
     MapItem(MapNum, Index).Y = 0
@@ -1160,7 +1148,6 @@ Dim Y As Long
         Next X
     Next Y
 End Sub
-
 Sub ClearMap(ByVal MapNum As Long)
 Dim i As Long
 Dim X As Long
@@ -1242,8 +1229,8 @@ With Map(MapNum)
     ' Reset the values for if a player is on the map or not
     PlayersOnMap(MapNum) = NO
 End With
-End Sub
 
+End Sub
 Sub ClearQuete(ByVal Index As Long)
 Dim i As Long
 With quete(Index)
@@ -1298,7 +1285,7 @@ Dim i As Long
 
     For i = 1 To MAX_MAPS
         Call ClearMap(i)
-    Next i
+    Next
 End Sub
 
 Sub ClearQuetes()
@@ -1321,10 +1308,10 @@ Dim z As Long
     
     For z = 1 To 6
         For i = 1 To MAX_TRADES
-            Shop(Index).TradeItem(z).value(i).GiveItem = 0
-            Shop(Index).TradeItem(z).value(i).GiveValue = 0
-            Shop(Index).TradeItem(z).value(i).GetItem = 0
-            Shop(Index).TradeItem(z).value(i).GetValue = 0
+            Shop(Index).TradeItem(z).Value(i).GiveItem = 0
+            Shop(Index).TradeItem(z).Value(i).GiveValue = 0
+            Shop(Index).TradeItem(z).Value(i).GetItem = 0
+            Shop(Index).TradeItem(z).Value(i).GetValue = 0
         Next i
     Next z
 End Sub
@@ -1701,11 +1688,11 @@ Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNu
 End Sub
 
 Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value
+    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value
 End Function
 
 Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value = ItemValue
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value = ItemValue
 End Sub
 
 Function GetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long) As Long

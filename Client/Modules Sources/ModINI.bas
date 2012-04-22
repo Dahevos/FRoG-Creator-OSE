@@ -8,15 +8,17 @@ Public Sub WriteINI(INISection As String, INIKey As String, INIValue As String, 
 End Sub
 
 Public Function ReadINI(INISection As String, INIKey As String, INIFile As String) As String
-    Dim StringBuffer As String
-    Dim StringBufferSize As Long
-    
-    StringBuffer = Space$(255)
-    StringBufferSize = Len(StringBuffer)
-    
-    StringBufferSize = GetPrivateProfileString(INISection, INIKey, "", StringBuffer, StringBufferSize, INIFile)
-    
-    If StringBufferSize > 0 Then ReadINI = Left$(StringBuffer, StringBufferSize) Else ReadINI = vbNullString
+Dim sSpaces As String   ' Max string length
+Dim szReturn As String  ' Return default value if not found
+  
+    szReturn = vbNullString
+  
+    sSpaces = Space$(5000)
+  
+    Call GetPrivateProfileString$(INISection, INIKey, szReturn, sSpaces, Len(sSpaces), INIFile)
+  
+    ReadINI = RTrim$(sSpaces)
+    ReadINI = Left$(ReadINI, Len(ReadINI) - 1)
 End Function
 
 Public Sub InitAccountOpt()

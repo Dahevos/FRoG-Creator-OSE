@@ -1,9 +1,10 @@
 Attribute VB_Name = "modDatabase"
 Option Explicit
 
-Declare Function WritePrivateProfileString Lib "kernel32" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
-Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nsize As Long, ByVal lpfilename As String) As Long
+Private Declare Function WritePrivateProfileString Lib "kernel32.dll" Alias "WritePrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpString As String, ByVal lpfilename As String) As Long
+Private Declare Function GetPrivateProfileString Lib "kernel32.dll" Alias "GetPrivateProfileStringA" (ByVal lpApplicationname As String, ByVal lpKeyname As Any, ByVal lpdefault As String, ByVal lpreturnedstring As String, ByVal nsize As Long, ByVal lpfilename As String) As Long
 Declare Sub ZeroMemory Lib "kernel32" Alias "RtlZeroMemory" (dst As Any, ByVal iLen&)
+
 Public START_MAP As Long
 Public START_X As Long
 Public START_Y As Long
@@ -13,7 +14,7 @@ Public Const PLAYER_LOG = "logs\player.txt"
 Public Const GUILDE_LOG = "logs\guildes.txt"
 
 
-Function GetVar(File As String, Header As String, Var As String) As String
+Public Function GetVar(File As String, Header As String, Var As String) As String
 Dim sSpaces As String   ' Max string length
 Dim szReturn As String  ' Return default value if not found
   
@@ -27,8 +28,8 @@ Dim szReturn As String  ' Return default value if not found
     GetVar = Left$(GetVar, Len(GetVar) - 1)
 End Function
 
-Sub PutVar(File As String, Header As String, Var As String, value As String)
-    Call WritePrivateProfileString$(Header, Var, value, File)
+Public Sub PutVar(File As String, Header As String, Var As String, Value As String)
+    Call WritePrivateProfileString$(Header, Var, Value, File)
 End Sub
 
 Public Sub WriteINI(INISection As String, INIKey As String, INIValue As String, INIFile As String)
@@ -211,7 +212,7 @@ Dim n As Long
         ' Inventory
         For n = 1 To MAX_INV
             Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).num))
-            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
+            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).Value))
             Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
         Next n
         
@@ -312,7 +313,7 @@ With Player(Index)
         ' Inventory
         For n = 1 To MAX_INV
             .Inv(n).num = Val(GetVar(FileName, "CHAR" & i, "InvItemNum" & n))
-            .Inv(n).value = Val(GetVar(FileName, "CHAR" & i, "InvItemVal" & n))
+            .Inv(n).Value = Val(GetVar(FileName, "CHAR" & i, "InvItemVal" & n))
             .Inv(n).Dur = Val(GetVar(FileName, "CHAR" & i, "InvItemDur" & n))
         Next n
         
@@ -990,7 +991,7 @@ Dim f As Long
             Call SaveMap(i)
         End If
         DoEvents
-    Next i
+    Next
 End Sub
 
 Sub LoadMap(ByVal MapNum As Long)

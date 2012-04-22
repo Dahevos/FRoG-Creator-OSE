@@ -319,11 +319,11 @@ Dim f As Long
     If Trim$(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde")) <> vbNullString Then CouleurDesGuilde = Val(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde"))
         
     If PIC_PL = 1 And PIC_NPC1 = 1 And PIC_NPC2 = 0 Then
-    frmServer.petit.value = True
-    frmServer.grand.value = False
+    frmServer.petit.Value = True
+    frmServer.grand.Value = False
     Else
-    frmServer.grand.value = True
-    frmServer.petit.value = False
+    frmServer.grand.Value = True
+    frmServer.petit.Value = False
     End If
     
     'Scripting
@@ -387,8 +387,6 @@ Dim f As Long
     
     Call SetStatus("Nettoyage des tile temporaire...")
     Call ClearTempTile
-    Call SetStatus("Nettoyage des cartes...")
-    Call ClearMaps
     Call SetStatus("Nettoyage des objets des cartes...")
     Call ClearMapItems
     Call SetStatus("Nettoyage des PNJ des cartes...")
@@ -551,7 +549,7 @@ Dim i As Long
     Next i
 sock:
     
-    If frmServer.chkChat.value = Checked Then
+    If frmServer.chkChat.Value = Checked Then
         Call SetStatus("Sauvegarde des logs de tchat...")
         Call SaveLogs
     End If
@@ -985,11 +983,11 @@ If Trim$(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde")) <> vbNullStrin
 frmOptCoul.Show vbModeless, frmServer
 End Sub
 
-Public Function ValidTarget(ByVal value As Long, ByVal MapNum As Long, ByVal TType As Byte) As Boolean
+Public Function ValidTarget(ByVal Value As Long, ByVal MapNum As Long, ByVal TType As Byte) As Boolean
     Select Case TType
-        Case TARGET_TYPE_PLAYER: If value > 0 And value <= MAX_PLAYERS Then If IsPlaying(value) And GetPlayerMap(value) = MapNum Then ValidTarget = True
-        Case TARGET_TYPE_NPC: If value > 0 And value < MAX_MAP_NPCS Then If MapNpc(MapNum, value).num > 0 Then ValidTarget = True
-        Case TARGET_TYPE_CASE: If value >= 0 And value <= (MAX_MAPX + 1) * (MAX_MAPY + 1) Then ValidTarget = True
+        Case TARGET_TYPE_PLAYER: If Value > 0 And Value <= MAX_PLAYERS Then If IsPlaying(Value) And GetPlayerMap(Value) = MapNum Then ValidTarget = True
+        Case TARGET_TYPE_NPC: If Value > 0 And Value < MAX_MAP_NPCS Then If MapNpc(MapNum, Value).num > 0 Then ValidTarget = True
+        Case TARGET_TYPE_CASE: If Value >= 0 And Value <= (MAX_MAPX + 1) * (MAX_MAPY + 1) Then ValidTarget = True
     End Select
 End Function
 
@@ -1005,9 +1003,9 @@ If MapNpc(Map, MapNpc1).X = MapNpc(Map, MapNpc2).X And MapNpc(Map, MapNpc1).Y + 
 If MapNpc(Map, MapNpc1).X + 1 = MapNpc(Map, MapNpc2).X And MapNpc(Map, MapNpc1).Y = MapNpc(Map, MapNpc2).Y Then NpcBeside = True: Exit Function
 End Function
 
-Public Sub SelectMoveNpc(ByVal value As Byte, ByVal MapNum As Long, ByVal MapNpcNum As Long, ByVal Index As Long, ByVal IndexType As Long, DidWalk As Boolean)
+Public Sub SelectMoveNpc(ByVal Value As Byte, ByVal MapNum As Long, ByVal MapNpcNum As Long, ByVal Index As Long, ByVal IndexType As Long, DidWalk As Boolean)
 Dim i As Byte, TmpX As Byte, TmpY As Byte
-Select Case value
+Select Case Value
     Case 0
         If IndexType = TARGET_TYPE_PLAYER Then
             ' Up
@@ -1339,7 +1337,7 @@ Dim Parse() As String, Answer As Integer
                         End If
                     Else
                         If Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).num > 0 Then
-                            Answer = HotelDeVente.AddVente(Index, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).num, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).value, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Dur, True)
+                            Answer = HotelDeVente.AddVente(Index, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).num, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Value, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Dur, True)
                             PlayerMsg Index, "Votre vente a bien été effectué.", Green
                             PlayerMsg Index, "Veuillez prendre note du numéro " & Answer, White
                             PlayerMsg Index, "Il sera utile si vous souhaitez annuler votre vente.", White
