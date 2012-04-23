@@ -66,8 +66,8 @@ Dim Damage As Long
 Dim PointType As Long
 Dim BanPlayer As Long
 Dim level As Long
-Dim i As Long, n As Long, X As Long, Y As Long
-Dim ShopNum As Long, GiveItem As Long, GiveValue As Long, GetItem As Long, GetValue As Long
+Dim i As Long, n As Long, x As Long, y As Long
+Dim ShopNum As Long, GiveItem As Long, GiveValue As Long, GetItem As Long, getValue As Long
 Dim z As Long
 Dim Ending As String
 
@@ -126,9 +126,9 @@ Dim Ending As String
         For i = 1 To MAX_INV - 1
             If Loading = False Then Load frmMirage.picInv(i)
             
-            X = Int(i / 3)
-            frmMirage.picInv(i).Top = 8 + 40 * X
-            frmMirage.picInv(i).Left = 8 + (i - X * 3) * 40
+            x = Int(i / 3)
+            frmMirage.picInv(i).Top = 8 + 40 * x
+            frmMirage.picInv(i).Left = 8 + (i - x * 3) * 40
             frmMirage.picInv(i).Visible = True
         Next
         
@@ -137,9 +137,9 @@ Dim Ending As String
         For i = 1 To MAX_PLAYER_SPELLS - 1
             If Loading = False Then Load frmMirage.picspell(i)
             
-            X = Int(i / 3)
-            frmMirage.picspell(i).Top = 8 + 40 * X
-            frmMirage.picspell(i).Left = 8 + (i - X * 3) * 40
+            x = Int(i / 3)
+            frmMirage.picspell(i).Top = 8 + 40 * x
+            frmMirage.picspell(i).Left = 8 + (i - x * 3) * 40
             frmMirage.picspell(i).Visible = True
         Next
         
@@ -453,7 +453,7 @@ Dim Ending As String
     ' :: In game packet ::
     ' ::::::::::::::::::::
     If LCase$(Parse(0)) = "ingame" Then
-        Call InitSurfaces
+        Call InitBackBuffer
         Call GameInit
         InGame = True
         Call GameLoop
@@ -520,8 +520,8 @@ Dim Ending As String
     If (LCase$(Parse(0)) = "playerpet") Then
         i = Val(Parse(1))
         Player(i).pet.Dir = Val(Parse(2))
-        Player(i).pet.X = Val(Parse(3))
-        Player(i).pet.Y = Val(Parse(4))
+        Player(i).pet.x = Val(Parse(3))
+        Player(i).pet.y = Val(Parse(4))
 
         'If Player(i).pet.x = Player(i).x And Player(i).pet.y = Player(i).y Then Exit Sub
 
@@ -544,7 +544,7 @@ Dim Ending As String
     If (LCase$(Parse(0)) = "updatepet") Then
         n = Val(Parse(1))
         Pets(n).nom = Parse(2)
-        Pets(n).sprite = Parse(3)
+        Pets(n).Sprite = Parse(3)
         Pets(n).addForce = Parse(4)
         Pets(n).addDefence = Parse(5)
     End If
@@ -557,11 +557,11 @@ Dim Ending As String
         Metier(n).nom = Parse(2)
         Metier(n).Type = Val(Parse(3))
         Metier(n).desc = Parse(4)
-        X = 5
+        x = 5
         For i = 0 To MAX_DATA_METIER
             For z = 0 To 1
-                Metier(n).data(i, z) = Val(Parse(X))
-                X = X + 1
+                Metier(n).data(i, z) = Val(Parse(x))
+                x = x + 1
             Next z
         Next i
         Exit Sub
@@ -590,16 +590,16 @@ Dim Ending As String
     If (LCase$(Parse(0)) = "updaterecette") Then
         n = Val(Parse(1))
         recette(n).nom = Parse(2)
-        X = 3
+        x = 3
         For i = 0 To 9
             For z = 0 To 1
-                recette(n).InCraft(i, z) = Val(Parse(X))
-                X = X + 1
+                recette(n).InCraft(i, z) = Val(Parse(x))
+                x = x + 1
             Next z
         Next i
         For z = 0 To 1
-            recette(n).craft(z) = Val(Parse(X))
-            X = X + 1
+            recette(n).craft(z) = Val(Parse(x))
+            x = x + 1
         Next z
         
         Exit Sub
@@ -776,15 +776,15 @@ mont:
     ' ::::::::::::::::::::::::::::
     If (LCase$(Parse(0)) = "playermove") Then
         i = Val(Parse(1))
-        X = Val(Parse(2))
-        Y = Val(Parse(3))
+        x = Val(Parse(2))
+        y = Val(Parse(3))
         Dir = Val(Parse(4))
         n = Val(Parse(5))
 
         If Dir < DIR_DOWN Or Dir > DIR_UP Then Exit Sub
 
-        Call SetPlayerX(i, X)
-        Call SetPlayerY(i, Y)
+        Call SetPlayerX(i, x)
+        Call SetPlayerY(i, y)
         Call SetPlayerDir(i, Dir)
                 
         Player(i).XOffset = 0
@@ -810,13 +810,13 @@ mont:
     ' :::::::::::::::::::::::::
     If (LCase$(Parse(0)) = "npcmove") Then
         i = Val(Parse(1))
-        X = Val(Parse(2))
-        Y = Val(Parse(3))
+        x = Val(Parse(2))
+        y = Val(Parse(3))
         Dir = Val(Parse(4))
         n = Val(Parse(5))
 
-        MapNpc(i).X = X
-        MapNpc(i).Y = Y
+        MapNpc(i).x = x
+        MapNpc(i).y = y
         MapNpc(i).Dir = Dir
         MapNpc(i).XOffset = 0
         MapNpc(i).YOffset = 0
@@ -874,14 +874,14 @@ mont:
     ' :: Player XY location packet ::
     ' :::::::::::::::::::::::::::::::
     If (LCase$(Parse(0)) = "playerxy") Then
-        X = Val(Parse(1))
-        Y = Val(Parse(2))
+        x = Val(Parse(1))
+        y = Val(Parse(2))
         
-        If X > MAX_MAPX Or X < 0 Then Exit Sub
-        If Y > MAX_MAPY Or Y < 0 Then Exit Sub
+        If x > MAX_MAPX Or x < 0 Then Exit Sub
+        If y > MAX_MAPY Or y < 0 Then Exit Sub
         
-        Call SetPlayerX(MyIndex, X)
-        Call SetPlayerY(MyIndex, Y)
+        Call SetPlayerX(MyIndex, x)
+        Call SetPlayerY(MyIndex, y)
         
         ' Make sure they aren't walking
         Player(MyIndex).Moving = 0
@@ -937,14 +937,14 @@ mont:
         Call ClearTempTile
 
         ' Get map num
-        X = Val(Parse(1))
+        x = Val(Parse(1))
         
         ' Get revision
-        Y = Val(Parse(2))
+        y = Val(Parse(2))
         
-        If FileExiste("maps\map" & X & ".fcc") Then
+        If FileExiste("maps\map" & x & ".fcc") Then
             ' Check to see if the revisions match
-            If GetMapRevision(X) = Y Then
+            If GetMapRevision(x) = y Then
                 ' We do so we dont need the map
                 
                 ' Load the map
@@ -952,8 +952,8 @@ mont:
                 
                 Call SendData("needmap" & SEP_CHAR & "no" & END_CHAR)
                 
-                Call InitPano(X)
-                Call InitNightAndFog(X)
+                Call InitPano(x)
+                Call InitNightAndFog(x)
                 Exit Sub
             End If
         End If
@@ -987,8 +987,8 @@ mont:
             Call URLDownloadToFile(0, URL & rep & "map" & z & ".fcc", App.Path & "\Maps\map" & z & ".fcc", &O10, 0)
         End If
         Call LoadMap(z)
-        Call InitPano(X)
-        Call InitNightAndFog(X)
+        Call InitPano(x)
+        Call InitNightAndFog(x)
     End If
     
     If LCase$(Parse(0)) = "notwarp" Then If (GetPlayerY(MyIndex) <= 0 Or GetPlayerY(MyIndex) >= MAX_MAPY Or GetPlayerX(MyIndex) <= 0 Or GetPlayerX(MyIndex) >= MAX_MAPX) And GettingMap Then GettingMap = False
@@ -1032,9 +1032,9 @@ mont:
     If LCase$(Parse(0)) = "maptiles" Then
         n = 1
         
-        For Y = 0 To MAX_MAPY
-            For X = 0 To MAX_MAPX
-                With Map(MapNumS).Tile(X, Y)
+        For y = 0 To MAX_MAPY
+            For x = 0 To MAX_MAPX
+                With Map(MapNumS).Tile(x, y)
                     .Ground = Val(Parse(n))
                     .Mask = Val(Parse(n + 1))
                     .Anim = Val(Parse(n + 2))
@@ -1072,40 +1072,40 @@ mont:
                 End With
                 
                 n = n + 34
-            Next X
-        Next Y
+            Next x
+        Next y
         'GettingMap = True
         Exit Sub
     End If
     
     If LCase$(Parse(0)) = "mapnpcs" Then
         n = 1
-        For X = 1 To MAX_MAP_NPCS
+        For x = 1 To MAX_MAP_NPCS
             With Map(MapNumS)
-                .Npc(X) = Val(Parse(n))
+                .Npc(x) = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).X = Val(Parse(n))
+                .Npcs(x).x = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).Y = Val(Parse(n))
+                .Npcs(x).y = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).x1 = Val(Parse(n))
+                .Npcs(x).x1 = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).y1 = Val(Parse(n))
+                .Npcs(x).y1 = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).x2 = Val(Parse(n))
+                .Npcs(x).x2 = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).y2 = Val(Parse(n))
+                .Npcs(x).y2 = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).Hasardm = Val(Parse(n))
+                .Npcs(x).Hasardm = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).Hasardp = Val(Parse(n))
+                .Npcs(x).Hasardp = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).boucle = Val(Parse(n))
+                .Npcs(x).boucle = Val(Parse(n))
                 n = n + 1
-                .Npcs(X).Imobile = Val(Parse(n))
+                .Npcs(x).Imobile = Val(Parse(n))
                 n = n + 1
             End With
-        Next X
+        Next x
                 
         ' Save the map
         Call SaveLocalMap(MapNumS)
@@ -1124,8 +1124,8 @@ mont:
             SaveMapItem(i).num = Val(Parse(n))
             SaveMapItem(i).Value = Val(Parse(n + 1))
             SaveMapItem(i).dur = Val(Parse(n + 2))
-            SaveMapItem(i).X = Val(Parse(n + 3))
-            SaveMapItem(i).Y = Val(Parse(n + 4))
+            SaveMapItem(i).x = Val(Parse(n + 3))
+            SaveMapItem(i).y = Val(Parse(n + 4))
             
             n = n + 5
         Next i
@@ -1141,8 +1141,8 @@ mont:
         
         For i = 1 To MAX_MAP_NPCS
             SaveMapNpc(i).num = Val(Parse(n))
-            SaveMapNpc(i).X = Val(Parse(n + 1))
-            SaveMapNpc(i).Y = Val(Parse(n + 2))
+            SaveMapNpc(i).x = Val(Parse(n + 1))
+            SaveMapNpc(i).y = Val(Parse(n + 2))
             SaveMapNpc(i).Dir = Val(Parse(n + 3))
             
             n = n + 4
@@ -1270,8 +1270,8 @@ mont:
         MapItem(n).num = Val(Parse(2))
         MapItem(n).Value = Val(Parse(3))
         MapItem(n).dur = Val(Parse(4))
-        MapItem(n).X = Val(Parse(5))
-        MapItem(n).Y = Val(Parse(6))
+        MapItem(n).x = Val(Parse(5))
+        MapItem(n).y = Val(Parse(6))
         Exit Sub
     End If
     
@@ -1324,8 +1324,8 @@ mont:
         
         With MapNpc(n)
             .num = Val(Parse(2))
-            .X = Val(Parse(3))
-            .Y = Val(Parse(4))
+            .x = Val(Parse(3))
+            .y = Val(Parse(4))
             .Dir = Val(Parse(5))
         
             ' Client use only
@@ -1344,8 +1344,8 @@ mont:
         
         With MapNpc(n)
             .num = 0
-            .X = 0
-            .Y = 0
+            .x = 0
+            .y = 0
             .Dir = 0
         
             ' Client use only
@@ -1366,7 +1366,7 @@ mont:
         ' Update the item
             .name = Parse(2)
             .AttackSay = vbNullString
-            .sprite = Val(Parse(3))
+            .Sprite = Val(Parse(3))
             .SpawnSecs = 0
             .Behavior = Val(Parse(6))
             .Range = 0
@@ -1394,11 +1394,11 @@ mont:
     ' :: Map key packet ::
     ' ::::::::::::::::::::
     If (LCase$(Parse(0)) = "mapkey") Then
-        X = Val(Parse(1))
-        Y = Val(Parse(2))
+        x = Val(Parse(1))
+        y = Val(Parse(2))
         n = Val(Parse(3))
                 
-        TempTile(X, Y).DoorOpen = n
+        TempTile(x, y).DoorOpen = n
         
         Exit Sub
     End If
@@ -1564,12 +1564,12 @@ mont:
                 GiveItem = Val(Parse(n))
                 GiveValue = Val(Parse(n + 1))
                 GetItem = Val(Parse(n + 2))
-                GetValue = Val(Parse(n + 3))
+                getValue = Val(Parse(n + 3))
                 
                 With Trade(z).Items(i)
                     .ItemGetNum = GetItem
                     .ItemGiveNum = GiveItem
-                    .ItemGetVal = GetValue
+                    .ItemGetVal = getValue
                     .ItemGiveVal = GiveValue
                 End With
                 
@@ -1653,10 +1653,10 @@ mont:
     
         n = 2
         z = Val(Parse(1))
-        For X = n To (z + 1)
+        For x = n To (z + 1)
             frmMirage.lstOnline.AddItem Trim$(Parse(n))
             n = n + 2
-        Next X
+        Next x
         Exit Sub
     End If
     
@@ -1763,12 +1763,12 @@ mont:
     End If
     
     If LCase$(Parse(0)) = "sendchat" Then
-        Dim s As String
+        Dim S As String
   
-        s = vbNewLine & GetPlayerName(Val(Parse(2))) & "> " & Trim$(Parse(1))
+        S = vbNewLine & GetPlayerName(Val(Parse(2))) & "> " & Trim$(Parse(1))
         frmPlayerChat.txtChat.SelStart = Len(frmPlayerChat.txtChat.Text)
         frmPlayerChat.txtChat.SelColor = QBColor(Brown)
-        frmPlayerChat.txtChat.SelText = s
+        frmPlayerChat.txtChat.SelText = S
         frmPlayerChat.txtChat.SelStart = Len(frmPlayerChat.txtChat.Text) - 1
         Exit Sub
     End If
@@ -1780,8 +1780,8 @@ mont:
     ' :: Play Sound Packet ::
     ' :::::::::::::::::::::::
     If LCase$(Parse(0)) = "sound" Then
-        s = LCase$(Parse(1))
-        Select Case Trim$(s)
+        S = LCase$(Parse(1))
+        Select Case Trim$(S)
             Case "attack"
                 Call PlaySound("sword.wav")
             Case "critical"
@@ -1893,8 +1893,8 @@ mont:
         z = Val(Parse(2))
         i = Val(Parse(3))
         
-        For X = 1 To MAX_PLAYER_ARROWS
-            With Player(n).Arrow(X)
+        For x = 1 To MAX_PLAYER_ARROWS
+            With Player(n).Arrow(x)
                 If .Arrow = 0 Then
                     .Arrow = 1
                     .ArrowNum = z
@@ -1928,11 +1928,11 @@ mont:
                     Exit For
                 End If
             End With
-        Next X
+        Next x
         Exit Sub
     End If
 
-    If (LCase$(Parse(0)) = "checksprite") Then Player(Val(Parse(1))).sprite = Val(Parse(2)): Exit Sub
+    If (LCase$(Parse(0)) = "checksprite") Then Player(Val(Parse(1))).Sprite = Val(Parse(2)): Exit Sub
     
     If (LCase$(Parse(0)) = "mapreport") Then
         n = 1
@@ -2017,10 +2017,10 @@ mont:
                     BattlePMsg(i).Color = Val(Parse(3))
                     BattlePMsg(i).Time = GetTickCount
                     BattlePMsg(i).Done = 1
-                    BattlePMsg(i).Y = 0
+                    BattlePMsg(i).y = 0
                     Exit Sub
                 Else
-                    BattlePMsg(i).Y = BattlePMsg(i).Y - 15
+                    BattlePMsg(i).y = BattlePMsg(i).y - 15
                 End If
             Else
                 If BattleMMsg(i).Index <= 0 Then
@@ -2029,10 +2029,10 @@ mont:
                     BattleMMsg(i).Color = Val(Parse(3))
                     BattleMMsg(i).Time = GetTickCount
                     BattleMMsg(i).Done = 1
-                    BattleMMsg(i).Y = 0
+                    BattleMMsg(i).y = 0
                     Exit Sub
                 Else
-                    BattleMMsg(i).Y = BattleMMsg(i).Y - 15
+                    BattleMMsg(i).y = BattleMMsg(i).y - 15
                 End If
             End If
         Next i
@@ -2040,7 +2040,7 @@ mont:
         z = 1
         If Val(Parse(1)) = 0 Then
             For i = 1 To MAX_BLT_LINE
-                If i < MAX_BLT_LINE Then If BattlePMsg(i).Y < BattlePMsg(i + 1).Y Then z = i Else If BattlePMsg(i).Y < BattlePMsg(1).Y Then z = i
+                If i < MAX_BLT_LINE Then If BattlePMsg(i).y < BattlePMsg(i + 1).y Then z = i Else If BattlePMsg(i).y < BattlePMsg(1).y Then z = i
             Next i
                         
             BattlePMsg(z).Index = 1
@@ -2048,17 +2048,17 @@ mont:
             BattlePMsg(z).Color = Val(Parse(3))
             BattlePMsg(z).Time = GetTickCount
             BattlePMsg(z).Done = 1
-            BattlePMsg(z).Y = 0
+            BattlePMsg(z).y = 0
         Else
             For i = 1 To MAX_BLT_LINE
-                If i < MAX_BLT_LINE Then If BattleMMsg(i).Y < BattleMMsg(i + 1).Y Then z = i Else If BattleMMsg(i).Y < BattleMMsg(1).Y Then z = i
+                If i < MAX_BLT_LINE Then If BattleMMsg(i).y < BattleMMsg(i + 1).y Then z = i Else If BattleMMsg(i).y < BattleMMsg(1).y Then z = i
             Next i
             BattleMMsg(z).Index = 1
             BattleMMsg(z).Msg = Parse(2)
             BattleMMsg(z).Color = Val(Parse(3))
             BattleMMsg(z).Time = GetTickCount
             BattleMMsg(z).Done = 1
-            BattleMMsg(z).Y = 0
+            BattleMMsg(z).y = 0
         End If
         Exit Sub
     End If

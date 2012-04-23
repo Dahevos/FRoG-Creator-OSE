@@ -495,7 +495,7 @@ End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
 If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.Height Then Me.Top = Screen.Height \ 2: Me.Left = Screen.Width \ 2
+If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
 End Sub
 
 Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -578,9 +578,11 @@ Private Sub Timer2_Timer()
     animi = animi + 1
 If animi > 3 Then animi = 0
 If l < 0 Or cmbClass.ListIndex < 0 Then Exit Sub
-If optMale.value = True Then
+If optMale.Value = True Then
+    PrepareSprite (Class(l).MaleSprite)
     Call AffSurfPic(DD_SpriteSurf(Class(l).MaleSprite), Picpic, animi * PIC_X, 0)
 Else
+    PrepareSprite (Class(l).FemaleSprite)
     Call AffSurfPic(DD_SpriteSurf(Class(l).FemaleSprite), Picpic, animi * PIC_X, 0)
 End If
 End Sub

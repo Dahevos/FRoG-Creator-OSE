@@ -145,8 +145,9 @@ End Function
 
 Sub SavePlayer(ByVal Index As Long)
 Dim FileName As String
-Dim i As Long
-Dim n As Long
+Dim i As Integer
+Dim n As Integer
+
   If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
     
     FileName = App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini"
@@ -188,7 +189,7 @@ Dim n As Long
         Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(Index).Char(i).PetSlot))
         
         Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(Index).Char(i).pet.Dir))
-        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.x))
+        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.X))
         Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.Y))
         
         Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(Index).Char(i).metier))
@@ -199,13 +200,13 @@ Dim n As Long
         ' Check to make sure that they aren't on map 0, if so reset'm
         If Player(Index).Char(i).Map = 0 Then
             Player(Index).Char(i).Map = START_MAP
-            Player(Index).Char(i).x = START_X
+            Player(Index).Char(i).X = START_X
             Player(Index).Char(i).Y = START_Y
         End If
             
         ' Position
         Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(Index).Char(i).Map))
-        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).x))
+        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).X))
         Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).Y))
         Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(Index).Char(i).Dir))
         
@@ -214,30 +215,34 @@ Dim n As Long
             Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).Num))
             Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
             Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
-        Next n
+        DoEvents
+        Next
         
         ' Spells
         For n = 1 To MAX_PLAYER_SPELLS
             Call PutVar(FileName, "CHAR" & i, "Spell" & n, STR$(Player(Index).Char(i).Spell(n)))
-        Next n
+        DoEvents
+        Next
         
         ' coffre
-        Dim cofr As Byte
-        For cofr = 1 To 30
-            If Val(GetVar(FileName, "CHAR" & i, "cofitemnum" & cofr)) <= 0 Then
-                Call PutVar(FileName, "CHAR" & i, "cofitemnum" & cofr, " 0")
-                Call PutVar(FileName, "CHAR" & i, "cofitemval" & cofr, " 0")
-                Call PutVar(FileName, "CHAR" & i, "cofitemdur" & cofr, " 0")
+
+        For n = 1 To 30
+            If Val(GetVar(FileName, "CHAR" & i, "cofitemnum" & n)) <= 0 Then
+                Call PutVar(FileName, "CHAR" & i, "cofitemnum" & n, " 0")
+                Call PutVar(FileName, "CHAR" & i, "cofitemval" & n, " 0")
+                Call PutVar(FileName, "CHAR" & i, "cofitemdur" & n, " 0")
             End If
-        Next cofr
+        DoEvents
+        Next
         
         'Quete
         Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(Index).Char(i).QueteEnCour))
         For n = 1 To MAX_QUETES
-            
             Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(Index).Char(i).QueteStatut(n)))
+        DoEvents
         Next
-    Next i
+        
+    Next
     
 End Sub
 
@@ -291,12 +296,12 @@ With Player(Index)
         
         ' Position
         .Map = Val(GetVar(FileName, "CHAR" & i, "Map"))
-        .x = Val(GetVar(FileName, "CHAR" & i, "X"))
+        .X = Val(GetVar(FileName, "CHAR" & i, "X"))
         .Y = Val(GetVar(FileName, "CHAR" & i, "Y"))
         .Dir = Val(GetVar(FileName, "CHAR" & i, "Dir"))
         
         .pet.Dir = Val(GetVar(FileName, "CHAR" & i, "PetDir"))
-        .pet.x = Val(GetVar(FileName, "CHAR" & i, "PetX"))
+        .pet.X = Val(GetVar(FileName, "CHAR" & i, "PetX"))
         .pet.Y = Val(GetVar(FileName, "CHAR" & i, "PetY"))
         
         .metier = Val(GetVar(FileName, "CHAR" & i, "Metier"))
@@ -306,7 +311,7 @@ With Player(Index)
         ' Check to make sure that they aren't on map 0, if so reset'm
         If .Map = 0 Then
             .Map = START_MAP
-            .x = START_X
+            .X = START_X
             .Y = START_Y
         End If
         
@@ -428,10 +433,10 @@ Dim f As Long
         .Char(CharNum).magi = Classe(ClassNum).magi
         
         If Classe(ClassNum).Map <= 0 Then Classe(ClassNum).Map = 1
-        If Classe(ClassNum).x < 0 Or Classe(ClassNum).x > MAX_MAPX Then Classe(ClassNum).x = Int(Classe(ClassNum).x / 2)
+        If Classe(ClassNum).X < 0 Or Classe(ClassNum).X > MAX_MAPX Then Classe(ClassNum).X = Int(Classe(ClassNum).X / 2)
         If Classe(ClassNum).Y < 0 Or Classe(ClassNum).Y > MAX_MAPY Then Classe(ClassNum).Y = Int(Classe(ClassNum).Y / 2)
         .Char(CharNum).Map = Classe(ClassNum).Map
-        .Char(CharNum).x = Classe(ClassNum).x
+        .Char(CharNum).X = Classe(ClassNum).X
         .Char(CharNum).Y = Classe(ClassNum).Y
             
         .Char(CharNum).HP = GetPlayerMaxHP(Index)
@@ -559,7 +564,7 @@ Dim i As Long
             Classe(i).Speed = Val(GetVar(FileName, "CLASS", "SPEED"))
             Classe(i).magi = Val(GetVar(FileName, "CLASS", "MAGI"))
             Classe(i).Map = Val(GetVar(FileName, "CLASS", "MAP"))
-            Classe(i).x = Val(GetVar(FileName, "CLASS", "X"))
+            Classe(i).X = Val(GetVar(FileName, "CLASS", "X"))
             Classe(i).Y = Val(GetVar(FileName, "CLASS", "Y"))
             Classe(i).Locked = Val(GetVar(FileName, "CLASS", "Locked"))
         End If
@@ -596,7 +601,7 @@ Dim i As Long
             Call PutVar(FileName, "CLASS", "SPEED", STR$(Classe(i).Speed))
             Call PutVar(FileName, "CLASS", "MAGI", STR$(Classe(i).magi))
             Call PutVar(FileName, "CLASS", "MAP", STR$(Classe(i).Map))
-            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).x))
+            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).X))
             Call PutVar(FileName, "CLASS", "Y", STR$(Classe(i).Y))
             Call PutVar(FileName, "CLASS", "Locked", STR$(Classe(i).Locked))
         End If
@@ -1033,7 +1038,7 @@ End Sub
 
 Sub CheckQuetes()
 Dim FileName As String
-Dim x As Long
+Dim X As Long
 Dim Y As Long
 Dim i As Long
 Dim n As Long

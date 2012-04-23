@@ -4899,8 +4899,8 @@ fra_fenetre.Visible = False
 End Sub
 
 Private Sub Form_GotFocus()
-Picsprt.Height = 48
-Picsprts.Height = 48
+Picsprt.height = 48
+Picsprts.height = 48
 On Error Resume Next
 txtMyTextBox.SetFocus
 
@@ -4963,7 +4963,7 @@ Private Sub Form_Unload(Cancel As Integer)
 End Sub
 
 Private Sub freduire_Click()
-    If fra_fenetre.Height >= 2985 / 15 Then fra_fenetre.Height = 315 / 15 Else fra_fenetre.Height = 2985 / 15
+    If fra_fenetre.height >= 2985 / 15 Then fra_fenetre.height = 315 / 15 Else fra_fenetre.height = 2985 / 15
 End Sub
 
 Private Sub ifermer_Click()
@@ -4991,11 +4991,11 @@ DragY = 0
 End Sub
 
 Private Sub ireduire_Click()
-    If fra_info.Height >= 350 Then fra_info.Height = 315 / twippy Else fra_info.Height = 350
+    If fra_info.height >= 350 Then fra_info.height = 315 / twippy Else fra_info.height = 350
 End Sub
 
 Private Sub Label19_Click()
-    If picParty.Height >= 2985 / twippy Then picParty.Height = 315 / twippy Else picParty.Height = 2985 / twippy
+    If picParty.height >= 2985 / twippy Then picParty.height = 315 / twippy Else picParty.height = 2985 / twippy
 End Sub
 
 Private Sub Label27_Click()
@@ -5062,7 +5062,7 @@ fra_fenetre.Visible = False
 End Sub
 
 Private Sub lblmaskinvmin_Click()
-    If fra_fenetre.Height >= 2985 / twippy Then fra_fenetre.Height = 315 / twippy Else fra_fenetre.Height = 2985 / twippy
+    If fra_fenetre.height >= 2985 / twippy Then fra_fenetre.height = 315 / twippy Else fra_fenetre.height = 2985 / twippy
 End Sub
 
 Private Sub lblmaskinv_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5141,11 +5141,12 @@ Else
     fra_fenetre.Visible = False
     Call ClearPic
     Call UpdateVisInv
+    PrepareSprite (Player(MyIndex).Sprite)
     fra_info.Visible = True
-    Picsprt.Height = (48 + 4) * twippy
-    Picsprts.Height = (48)
-    If Picsprts.Height <= 32 Then Picture5.Top = 2160 Else Picture5.Top = 2640
-    Call AffSurfPic(DD_SpriteSurf(Player(MyIndex).sprite), Picsprts, 0, 0)
+    Picsprt.height = (48 + 4) * twippy
+    Picsprts.height = (48)
+    If Picsprts.height <= 32 Then Picture5.Top = 2160 Else Picture5.Top = 2640
+    Call AffSurfPic(DD_SpriteSurf(Player(MyIndex).Sprite), Picsprts, 0, 0)
     'Call BitBlt(Picsprts.hDC, 0, 0, PIC_X, PIC_Y * PIC_NPC1, Picturesprite.hDC, 3 * PIC_X, Val(Player(MyIndex).Sprite) * (PIC_Y * PIC_NPC1), SRCCOPY)
 End If
 
@@ -5325,37 +5326,37 @@ d = Index
     If Player(MyIndex).Inv(d + 1).num > 0 Then
         
         If Item(GetPlayerInvItemNum(MyIndex, d + 1)).Type = ITEM_TYPE_CURRENCY And Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
-            itmDesc.Height = 17
+            itmDesc.height = 17
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
             If notebook = True Then
                 frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
-                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+                frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
                 frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
-                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
-            itmDesc.Height = 161
+            itmDesc.height = 161
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
             If notebook = True Then
                 frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
-                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+                frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
                 frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
-                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) > vbNullString Then
-            itmDesc.Height = 249
+            itmDesc.height = 249
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
             If notebook = True Then
                 frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
-                frmMirage.itmDesc.Top = frmMirage.picScreen.Height - frmMirage.itmDesc.Height - 10
+                frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
                 frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
-                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.Height
+                frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         End If
                 

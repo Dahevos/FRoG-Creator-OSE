@@ -96,61 +96,55 @@ Begin VB.Form frmServer
       TabCaption(1)   =   "Joueur"
       TabPicture(1)   =   "frmServer.frx":17D46
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "TPO"
-      Tab(1).Control(1)=   "lvUsers"
-      Tab(1).Control(2)=   "Command66"
-      Tab(1).Control(3)=   "Check1"
-      Tab(1).Control(4)=   "Command13"
-      Tab(1).Control(5)=   "Command14"
-      Tab(1).Control(6)=   "Command15"
-      Tab(1).Control(7)=   "Command16"
-      Tab(1).Control(8)=   "Command17"
-      Tab(1).Control(9)=   "Command18"
-      Tab(1).Control(10)=   "Command19"
-      Tab(1).Control(11)=   "Command21"
-      Tab(1).Control(12)=   "Command22"
-      Tab(1).Control(13)=   "Command23"
-      Tab(1).Control(14)=   "Command24"
-      Tab(1).Control(15)=   "Command3"
-      Tab(1).Control(16)=   "picJail"
-      Tab(1).Control(17)=   "Command45"
-      Tab(1).Control(18)=   "Command51"
-      Tab(1).Control(19)=   "picStats"
-      Tab(1).Control(20)=   "Picskint"
-      Tab(1).Control(21)=   "picReason"
+      Tab(1).Control(0)=   "picReason"
+      Tab(1).Control(1)=   "Picskint"
+      Tab(1).Control(2)=   "picStats"
+      Tab(1).Control(3)=   "Command51"
+      Tab(1).Control(4)=   "Command45"
+      Tab(1).Control(5)=   "picJail"
+      Tab(1).Control(6)=   "Command3"
+      Tab(1).Control(7)=   "Command24"
+      Tab(1).Control(8)=   "Command23"
+      Tab(1).Control(9)=   "Command22"
+      Tab(1).Control(10)=   "Command21"
+      Tab(1).Control(11)=   "Command19"
+      Tab(1).Control(12)=   "Command18"
+      Tab(1).Control(13)=   "Command17"
+      Tab(1).Control(14)=   "Command16"
+      Tab(1).Control(15)=   "Command15"
+      Tab(1).Control(16)=   "Command14"
+      Tab(1).Control(17)=   "Command13"
+      Tab(1).Control(18)=   "Check1"
+      Tab(1).Control(19)=   "Command66"
+      Tab(1).Control(20)=   "lvUsers"
+      Tab(1).Control(21)=   "TPO"
       Tab(1).ControlCount=   22
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "picMap"
-      Tab(2).Control(1)=   "picWeather"
-      Tab(2).Control(2)=   "picWarp"
-      Tab(2).Control(3)=   "picExp"
-      Tab(2).Control(4)=   "Frame9"
-      Tab(2).Control(5)=   "Frame6"
+      Tab(2).Control(0)=   "lblPort"
+      Tab(2).Control(1)=   "lblIP"
+      Tab(2).Control(2)=   "Label7"
+      Tab(2).Control(3)=   "Frame7"
+      Tab(2).Control(4)=   "Frame1"
+      Tab(2).Control(5)=   "Frame2"
       Tab(2).Control(6)=   "Frame3"
-      Tab(2).Control(7)=   "Frame2"
-      Tab(2).Control(8)=   "Frame1"
-      Tab(2).Control(9)=   "Frame7"
-      Tab(2).Control(10)=   "Label7"
-      Tab(2).Control(11)=   "lblIP"
-      Tab(2).Control(12)=   "lblPort"
+      Tab(2).Control(7)=   "Frame6"
+      Tab(2).Control(8)=   "Frame9"
+      Tab(2).Control(9)=   "picExp"
+      Tab(2).Control(10)=   "picWarp"
+      Tab(2).Control(11)=   "picWeather"
+      Tab(2).Control(12)=   "picMap"
       Tab(2).ControlCount=   13
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "CharInfo(21)"
-      Tab(3).Control(0).Enabled=   0   'False
-      Tab(3).Control(1)=   "CharInfo(22)"
-      Tab(3).Control(1).Enabled=   0   'False
-      Tab(3).Control(2)=   "CharInfo(23)"
-      Tab(3).Control(2).Enabled=   0   'False
-      Tab(3).Control(3)=   "lstTopics"
-      Tab(3).Control(3).Enabled=   0   'False
-      Tab(3).Control(4)=   "TopicTitle"
-      Tab(3).Control(4).Enabled=   0   'False
-      Tab(3).Control(5)=   "sync"
-      Tab(3).Control(5).Enabled=   0   'False
+      Tab(3).Control(0)=   "sync"
+      Tab(3).Control(1)=   "TopicTitle"
+      Tab(3).Control(2)=   "lstTopics"
+      Tab(3).Control(3)=   "CharInfo(23)"
+      Tab(3).Control(4)=   "CharInfo(22)"
+      Tab(3).Control(5)=   "CharInfo(21)"
       Tab(3).ControlCount=   6
       Begin VB.Timer sync 
          Interval        =   10000
@@ -1066,7 +1060,6 @@ Begin VB.Form frmServer
          Top             =   -14
       End
       Begin VB.Timer PlayerTimer 
-         Enabled         =   0   'False
          Interval        =   5000
          Left            =   7920
          Top             =   -14
@@ -2301,7 +2294,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Private Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
 Dim CM As Long
-Dim num As Long
+Dim Num As Long
 Dim Random As Long
 Dim minuteJN As Long
 Dim minuteR As Long
@@ -2341,13 +2334,13 @@ picJail.Visible = False
 Exit Sub
 End If
     
-If num = 3 Then
+If Num = 3 Then
     If Index > 0 Then
         If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été emprisonné par l'admin du serveur!", White)
         
         Call PlayerWarp(Index, scrlMap.value, scrlX.value, scrlY.value)
     End If
-ElseIf num = 4 Then
+ElseIf Num = 4 Then
     If txtReason.text = vbNullString Then MsgBox "Ecrire une raison SVP!!": Exit Sub
     
     If Index > 0 Then
@@ -2389,7 +2382,7 @@ End If
 End Sub
 
 Private Sub Command14_Click()
-num = 1
+Num = 1
 Command7.Caption = "Déconnexion"
 Label4.Caption = "Raison :"
 picReason.Height = 1335
@@ -2402,7 +2395,7 @@ Private Sub Command15_Click()
 End Sub
 
 Private Sub Command16_Click()
-num = 2
+Num = 2
 Command7.Caption = "Bannir"
 Label4.Caption = "Raison :"
 picReason.Height = 1335
@@ -2411,7 +2404,7 @@ picReason.Visible = True
 End Sub
 
 Private Sub Command17_Click()
-num = 3
+Num = 3
 Command10.Caption = "Prison"
 picReason.Height = 750
 scrlMap.Max = MAX_MAPS
@@ -2422,7 +2415,7 @@ picJail.Visible = True
 End Sub
 
 Private Sub Command18_Click()
-num = 4
+Num = 4
 Label4.Caption = "Raison :"
 Command10.Caption = "Prison"
 picReason.Height = 750
@@ -2472,7 +2465,7 @@ HotelDeVente.AddAchat 1, 1, 1, 1, 1
 End Sub
 
 Private Sub Command21_Click()
-num = 5
+Num = 5
 Command7.Caption = "Envoyer"
 Label4.Caption = "Message :"
 picReason.Height = 1335
@@ -2499,7 +2492,7 @@ Index = lvUsers.ListItems(lvUsers.SelectedItem.Index).text
 End Sub
 
 Private Sub Command24_Click()
-num = 6
+Num = 6
 Command7.Caption = "Tuer"
 Label4.Caption = "Dire :"
 picReason.Height = 1335
@@ -2554,7 +2547,7 @@ Private Sub Command29_Click()
 End Sub
 
 Private Sub Command3_Click()
-num = 7
+Num = 7
 Command7.Caption = "Soin"
 Label4.Caption = "Dire :"
 picReason.Height = 1335
@@ -2923,17 +2916,17 @@ If txtReason.text = vbNullString Then MsgBox "Ecrire une raison SVP!": Exit Sub
 
 Index = lvUsers.ListItems(lvUsers.SelectedItem.Index).text
 
-If num = 1 Then
+If Num = 1 Then
     If Index > 0 Then
         If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été déconnecté par l'admin du serveur! Raison:(" & txtReason.text & ")", White)
             
         Call AlertMsg(Index, "Tu as été déconnecté par l'admin du serveur! Raison:(" & txtReason.text & ")")
     End If
-ElseIf num = 2 Then
+ElseIf Num = 2 Then
     Call BanByServer(Index, txtReason.text)
-ElseIf num = 5 Then
+ElseIf Num = 5 Then
     Call PlayerMsg(Index, "Message privé de l'admin du serveur: -- " & Trim$(txtReason.text), BrightGreen)
-ElseIf num = 6 Then
+ElseIf Num = 6 Then
     Call SetPlayerHP(Index, 0)
     Call PlayerMsg(Index, txtReason.text, BrightRed)
     
@@ -2946,7 +2939,7 @@ ElseIf num = 6 Then
     Call SendHP(Index)
     Call SendMP(Index)
     Call SendSP(Index)
-ElseIf num = 7 Then
+ElseIf Num = 7 Then
     Call SetPlayerHP(Index, GetPlayerMaxHP(Index))
     Call SendHP(Index)
     Call PlayerMsg(Index, txtReason.text, BrightGreen)

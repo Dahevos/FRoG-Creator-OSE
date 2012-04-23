@@ -10,35 +10,35 @@ Function StripTerminator(ByVal strString As String) As String
     If intZeroPos > 0 Then StripTerminator = Left$(strString, intZeroPos - 1) Else StripTerminator = strString
 End Function
 
-Function FileExiste(ByVal filename As String) As Boolean
-On Error GoTo er:
-    If Dir$(App.Path & "\" & filename) = vbNullString Then FileExiste = False Else FileExiste = True
-    Exit Function
-er:
-FileExiste = False
+Public Function FileExiste(ByVal FileName As String, Optional RAW As Boolean = False) As Boolean
+    FileExiste = True
+    If Not RAW Then
+        If LenB(Dir$(App.Path & "\" & FileName)) = 0 Then FileExiste = False
+    Else
+        If LenB(Dir$(FileName)) = 0 Then FileExiste = False
+    End If
 End Function
-
 Sub SaveLocalMap(ByVal MapNum As Long)
-Dim filename As String
+Dim FileName As String
 Dim f As Long
 
-    filename = App.Path & "\maps\map" & MapNum & ".fcc"
+    FileName = App.Path & "\maps\map" & MapNum & ".fcc"
                             
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Put #f, , Map(MapNum)
     Close #f
 End Sub
 
 Sub LoadMap(ByVal MapNum As Long)
-Dim filename As String
+Dim FileName As String
 Dim f As Long
 
-    filename = App.Path & "\maps\map" & MapNum & ".fcc"
+    FileName = App.Path & "\maps\map" & MapNum & ".fcc"
         
     If Not FileExiste("maps\map" & MapNum & ".fcc") Then Exit Sub
     f = FreeFile
-    Open filename For Binary As #f
+    Open FileName For Binary As #f
         Get #f, , Map(MapNum)
     Close #f
 End Sub

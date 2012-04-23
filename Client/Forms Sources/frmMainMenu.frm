@@ -614,49 +614,49 @@ Private Sub Form_Unload(Cancel As Integer)
     Call GameDestroy
 End Sub
 
-Private Sub imgLogin_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgLogin_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 DragImg = 1
-DragX = X
-DragY = Y
+DragX = x
+DragY = y
 End Sub
 
-Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((Y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((X / twippx) - (DragX / twippx))
+Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 DragImg = 0
 DragX = 0
 DragY = 0
 End Sub
 
-Private Sub imgNouveau_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgNouveau_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 DragImg = 2
-DragX = X
-DragY = Y
+DragX = x
+DragY = y
 End Sub
 
-Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((Y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((X / twippx) - (DragX / twippx))
+Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
 DragImg = 0
 DragX = 0
 DragY = 0
 End Sub
 
-Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
     DragImg = 3
-    DragX = X
-    DragY = Y
+    DragX = x
+    DragY = y
 End Sub
 
-Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If DragImg = 3 Then fraPers.Top = fraPers.Top + ((Y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((X / twippx) - (DragX / twippx))
+Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
+If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
-Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
     DragImg = 0
     DragX = 0
     DragY = 0
