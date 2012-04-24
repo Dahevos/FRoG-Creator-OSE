@@ -4130,7 +4130,7 @@ Dim Ending As String
     If notebook = True Then
         frmMirage.Interface.Width = 640
         frmMirage.picScreen.Width = 640
-        frmMirage.picScreen.height = 420
+        frmMirage.picScreen.height = 416
         frmMirage.height = 7630
         frmMirage.Width = 9570
         For i = 0 To 8

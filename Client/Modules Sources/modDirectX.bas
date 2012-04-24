@@ -187,7 +187,7 @@ Dim i As Long
 
     ' Check for files existing
     'If Not FileExiste("\GFX\sprites.png") Or Not
-    If Not FileExiste("\GFX\items.png") Or Not FileExiste("\GFX\emoticons.png") Or Not FileExiste("\GFX\Outils.png") Or Not FileExiste("\GFX\arrows.png") Then Call MsgBox("Plusieur fichier manquants", vbOKOnly, GAME_NAME): Call GameDestroy
+   
     
     ' Set the key for masks
     Key.low = 0
@@ -302,6 +302,7 @@ PetTimer(i) = GetTickCount
 End Sub
 Sub InitSurfaces()
 Dim i As Integer
+ If Not FileExiste("\GFX\items.png") Or Not FileExiste("\GFX\emoticons.png") Or Not FileExiste("\GFX\Outils.png") Or Not FileExiste("\GFX\arrows.png") Then Call MsgBox("Plusieur fichier manquants", vbOKOnly, GAME_NAME): Call GameDestroy
     DDSD_Outil.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
     DDSD_Outil.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
     Set DD_OutilSurf = LoadImage(App.Path & "\GFX\Outils.png", DD, DDSD_Outil)
