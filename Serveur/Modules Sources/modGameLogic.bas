@@ -1634,7 +1634,11 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
                       
         For i = 1 To MAX_NPC_DROPS
             ' Drop the goods if they get it
-            n = Int(Rnd * Npc(npcnum).ItemNPC(i).chance) + 1
+            Randomize
+            n = Int(Rnd * Npc(npcnum).ItemNPC(i).chance + 1)
+            If Npc(npcnum).ItemNPC(i).chance = 1 Then n = 1
+            If Npc(npcnum).ItemNPC(i).chance = 0 Then n = 0
+            
             If n = 1 Then
                 'Call SpawnItem(Npc(npcnum).ItemNPC(i).ItemNum, Npc(npcnum).ItemNPC(i).ItemValue, MapNum, MapNpc(MapNum, MapNpcNum).X, MapNpc(MapNum, MapNpcNum).Y)
                 If Player(Attacker).Char(Player(Attacker).CharNum).metier > 0 Then
