@@ -2741,7 +2741,7 @@ Dim f As Long
     'FIN PAPERDOLL
 
     ' Send the flag so they know they can start doing stuff
-    Call SendDataTo(Index, "INGAME" & END_CHAR)
+    Call SendDataTo(Index, "INGAME" & SEP_CHAR & END_CHAR)
 Exit Sub
 er:
 On Error Resume Next

@@ -980,8 +980,7 @@ Dim FileName As String
 Dim i As Long
 Dim f As Long
     
-    Call ClearMaps
-    
+    'Call ClearMaps
     For i = 1 To MAX_MAPS
         FileName = App.Path & "\maps\map" & i & ".fcc"
         If FileExist(FileName, False) Then
@@ -990,10 +989,12 @@ Dim f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , Map(i)
             Close #f
-            Else
-            Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
-            DoEvents
-            Call SaveMap(i)
+            
+        Else
+            'Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
+            'DoEvents
+            'Call SaveMap(i)
+            ClearMap (i)
         End If
         DoEvents
     Next
