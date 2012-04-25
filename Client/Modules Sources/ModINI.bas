@@ -38,5 +38,10 @@ On Error Resume Next
     AccOpt.Autoscroll = CBool(ReadINI("CONFIG", "AutoScroll", App.Path & "\Config\Account.ini"))
     AccOpt.NomObjet = CBool(ReadINI("CONFIG", "NomObjet", App.Path & "\Config\Account.ini"))
     AccOpt.LowEffect = CBool(ReadINI("CONFIG", "LowEffect", App.Path & "\Config\Account.ini"))
+    DISPLAY_BUBBLE_TIME = ReadINI("CONFIG", "bubbletime", App.Path & "\Config\Client.ini")
+    If (Not IsNumeric(DISPLAY_BUBBLE_TIME)) And (Not DISPLAY_BUBBLE_TIME > 0) Then
+    DISPLAY_BUBBLE_TIME = 4000
+    End If
+    frmMirage.txtTempsBulles.Text = DISPLAY_BUBBLE_TIME
 End Sub
 

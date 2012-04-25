@@ -185,7 +185,7 @@ Public Const NPC_BEHAVIOR_GUARD As Byte = 4
 Public Const NPC_BEHAVIOR_QUETEUR As Byte = 5
 
 ' Speach bubble constants
-Public Const DISPLAY_BUBBLE_TIME As Integer = 4000 ' In milliseconds.
+Public DISPLAY_BUBBLE_TIME ' In milliseconds.
 Public DISPLAY_BUBBLE_WIDTH As Byte
 Public Const MAX_BUBBLE_WIDTH As Byte = 16 ' In tiles. Includes corners.
 Public Const MAX_LINE_LENGTH As Byte = 20 ' In characters.
@@ -281,7 +281,7 @@ Type PlayerRec
     Guild As String
     Guildaccess As Byte
     Class As Long
-    sprite As Long
+    Sprite As Long
     level As Long
     exp As Long
     Access As Byte
@@ -543,7 +543,7 @@ Type NpcRec
     name As String * NAME_LENGTH
     AttackSay As String
     
-    sprite As Long
+    Sprite As Long
     SpawnSecs As Long
     Behavior As Byte
     Range As Byte
@@ -600,7 +600,7 @@ Type TradeItemRec
     GiveItem As Long
     GiveValue As Long
     GetItem As Long
-    GetValue As Long
+    getValue As Long
 End Type
 
 Type TradeItemsRec
@@ -665,7 +665,7 @@ End Type
 
 Type PetsRec
     nom As String
-    sprite As Long
+    Sprite As Long
     addForce As Byte
     addDefence As Byte
 End Type
@@ -935,7 +935,7 @@ With Player(Index)
     .Guildaccess = 0
     .Class = 0
     .level = 0
-    .sprite = 0
+    .Sprite = 0
     .exp = 0
     .Access = 0
     .PK = NO
@@ -1236,11 +1236,11 @@ Sub SetPlayerClass(ByVal Index As Long, ByVal ClassNum As Long)
 End Sub
 
 Function GetPlayerSprite(ByVal Index As Long) As Long
-    GetPlayerSprite = Player(Index).sprite
+    GetPlayerSprite = Player(Index).Sprite
 End Function
 
-Sub SetPlayerSprite(ByVal Index As Long, ByVal sprite As Long)
-    Player(Index).sprite = sprite
+Sub SetPlayerSprite(ByVal Index As Long, ByVal Sprite As Long)
+    Player(Index).Sprite = Sprite
 End Sub
 
 Function GetPlayerLevel(ByVal Index As Long) As Long
@@ -1450,7 +1450,7 @@ End Sub
 
 Sub ClearPet(ByVal Index As Long)
     Pets(Index).nom = ""
-    Pets(Index).sprite = 0
+    Pets(Index).Sprite = 0
     Pets(Index).addForce = 0
     Pets(Index).addDefence = 0
 End Sub

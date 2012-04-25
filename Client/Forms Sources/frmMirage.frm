@@ -28,18 +28,433 @@ Begin VB.Form frmMirage
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   799
    Visible         =   0   'False
+   Begin VB.PictureBox picOptions 
+      Appearance      =   0  'Flat
+      BackColor       =   &H00FFFFFF&
+      ForeColor       =   &H80000008&
+      Height          =   5745
+      Left            =   0
+      ScaleHeight     =   381
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   173
+      TabIndex        =   143
+      Top             =   0
+      Visible         =   0   'False
+      Width           =   2625
+      Begin VB.TextBox txtTempsBulles 
+         Appearance      =   0  'Flat
+         Height          =   285
+         Left            =   120
+         TabIndex        =   251
+         Top             =   3600
+         Width           =   2295
+      End
+      Begin VB.CommandButton Command1 
+         Caption         =   "Ok"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   120
+         TabIndex        =   144
+         Top             =   5400
+         Width           =   2415
+      End
+      Begin VB.CommandButton CmdoptTouche 
+         Caption         =   "Configurer les touches"
+         Height          =   255
+         Left            =   120
+         TabIndex        =   145
+         Top             =   5160
+         Width           =   2415
+      End
+      Begin VB.CheckBox chknobj 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Nom des objets aux sol (quand la souris le survole)"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   315
+         Left            =   120
+         TabIndex        =   159
+         ToolTipText     =   "Petit barre afficher au dessu de vous"
+         Top             =   960
+         Value           =   1  'Checked
+         Width           =   2400
+      End
+      Begin VB.CheckBox chkplayerbar 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Mini barre de vie"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   158
+         Top             =   720
+         Value           =   1  'Checked
+         Width           =   1440
+      End
+      Begin VB.CheckBox chkplayername 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Nom"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   157
+         Top             =   240
+         Value           =   1  'Checked
+         Width           =   765
+      End
+      Begin VB.CheckBox chknpcname 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Noms"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   225
+         Left            =   120
+         TabIndex        =   156
+         Top             =   1440
+         Value           =   1  'Checked
+         Width           =   765
+      End
+      Begin VB.CheckBox chkbubblebar 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Bulles de dialogue"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   155
+         Top             =   3120
+         Value           =   1  'Checked
+         Width           =   1725
+      End
+      Begin VB.CheckBox chknpcbar 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Affichés leur mini barre de vie"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   225
+         Left            =   120
+         TabIndex        =   154
+         Top             =   1920
+         Value           =   1  'Checked
+         Width           =   2400
+      End
+      Begin VB.CheckBox chkplayerdamage 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Dégâts affichés au dessus de la tête"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   153
+         Top             =   480
+         Value           =   1  'Checked
+         Width           =   2565
+      End
+      Begin VB.CheckBox chknpcdamage 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Dégâts affichés au dessus de la tête"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   225
+         Left            =   120
+         TabIndex        =   152
+         Top             =   1680
+         Value           =   1  'Checked
+         Width           =   2595
+      End
+      Begin VB.CheckBox chkmusic 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Musique"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   225
+         Left            =   120
+         TabIndex        =   151
+         Top             =   2400
+         Value           =   1  'Checked
+         Width           =   1335
+      End
+      Begin VB.CheckBox chksound 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Effets sonores"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   225
+         Left            =   120
+         TabIndex        =   150
+         Top             =   2640
+         Value           =   1  'Checked
+         Width           =   1365
+      End
+      Begin VB.CheckBox chkAutoScroll 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Défilement automatique"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   149
+         Top             =   4440
+         Value           =   1  'Checked
+         Width           =   1845
+      End
+      Begin VB.CommandButton Command2 
+         Caption         =   "Actualiser le thème"
+         Height          =   255
+         Left            =   120
+         TabIndex        =   148
+         Top             =   4920
+         Visible         =   0   'False
+         Width           =   2415
+      End
+      Begin VB.HScrollBar scrlBltText 
+         Height          =   255
+         Left            =   240
+         Max             =   20
+         Min             =   4
+         TabIndex        =   147
+         Top             =   4125
+         Value           =   6
+         Width           =   2055
+      End
+      Begin VB.CheckBox chkLowEffect 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Désactiver les effets avancé"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   120
+         TabIndex        =   146
+         Top             =   4680
+         Width           =   2325
+      End
+      Begin VB.Label lblBulle 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Temps d'affichage des bulles:"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   120
+         TabIndex        =   250
+         Top             =   3360
+         Width           =   2175
+      End
+      Begin VB.Label lblLines 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Nombre de ligne écrite sur l'écran: 6"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   165
+         Left            =   120
+         TabIndex        =   164
+         Top             =   3960
+         Width           =   2220
+      End
+      Begin VB.Label Label6 
+         Alignment       =   2  'Center
+         BackColor       =   &H00808080&
+         BackStyle       =   0  'Transparent
+         Caption         =   "-Affichage du Joueur-"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FF0000&
+         Height          =   210
+         Left            =   -120
+         TabIndex        =   163
+         Top             =   0
+         Width           =   2655
+      End
+      Begin VB.Label Label14 
+         Alignment       =   2  'Center
+         BackColor       =   &H00808080&
+         BackStyle       =   0  'Transparent
+         Caption         =   "-Musique/Sons-"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FF0000&
+         Height          =   210
+         Left            =   -120
+         TabIndex        =   162
+         Top             =   2160
+         Width           =   2655
+      End
+      Begin VB.Label Label18 
+         Alignment       =   2  'Center
+         BackColor       =   &H00808080&
+         BackStyle       =   0  'Transparent
+         Caption         =   "-Affichage du Chat-"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FF0000&
+         Height          =   210
+         Left            =   0
+         TabIndex        =   161
+         Top             =   2880
+         Width           =   2655
+      End
+      Begin VB.Label Label9 
+         Alignment       =   2  'Center
+         BackColor       =   &H00808080&
+         BackStyle       =   0  'Transparent
+         Caption         =   "-Affichage des NPCs-"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FF0000&
+         Height          =   210
+         Left            =   0
+         TabIndex        =   160
+         Top             =   1275
+         Width           =   2655
+      End
+   End
    Begin VB.PictureBox pictMetier 
       Appearance      =   0  'Flat
       AutoSize        =   -1  'True
       BackColor       =   &H80000005&
       ForeColor       =   &H80000008&
       Height          =   1995
-      Left            =   0
+      Left            =   3960
       Picture         =   "frmMirage.frx":17D2A
       ScaleHeight     =   1965
       ScaleWidth      =   3600
       TabIndex        =   241
-      Top             =   1320
+      Top             =   600
       Visible         =   0   'False
       Width           =   3630
       Begin VB.Label lblmetier 
@@ -1014,395 +1429,6 @@ Begin VB.Form frmMirage
          TabIndex        =   187
          Top             =   3150
          Width           =   855
-      End
-   End
-   Begin VB.PictureBox picOptions 
-      Appearance      =   0  'Flat
-      BackColor       =   &H00FFFFFF&
-      ForeColor       =   &H80000008&
-      Height          =   5385
-      Left            =   0
-      ScaleHeight     =   357
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   173
-      TabIndex        =   143
-      Top             =   0
-      Visible         =   0   'False
-      Width           =   2625
-      Begin VB.CommandButton Command1 
-         Caption         =   "Ok"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   120
-         TabIndex        =   144
-         Top             =   5040
-         Width           =   2415
-      End
-      Begin VB.CommandButton CmdoptTouche 
-         Caption         =   "Configurer les touches"
-         Height          =   255
-         Left            =   120
-         TabIndex        =   145
-         Top             =   4800
-         Width           =   2415
-      End
-      Begin VB.CheckBox chknobj 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Nom des objets aux sol (quand la souris le survole)"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   315
-         Left            =   120
-         TabIndex        =   159
-         ToolTipText     =   "Petit barre afficher au dessu de vous"
-         Top             =   960
-         Value           =   1  'Checked
-         Width           =   2400
-      End
-      Begin VB.CheckBox chkplayerbar 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Mini barre de vie"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   158
-         Top             =   720
-         Value           =   1  'Checked
-         Width           =   1440
-      End
-      Begin VB.CheckBox chkplayername 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Nom"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   157
-         Top             =   240
-         Value           =   1  'Checked
-         Width           =   765
-      End
-      Begin VB.CheckBox chknpcname 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Noms"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   120
-         TabIndex        =   156
-         Top             =   1440
-         Value           =   1  'Checked
-         Width           =   765
-      End
-      Begin VB.CheckBox chkbubblebar 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Bulles de dialogue"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   155
-         Top             =   3120
-         Value           =   1  'Checked
-         Width           =   1725
-      End
-      Begin VB.CheckBox chknpcbar 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Affichés leur mini barre de vie"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   120
-         TabIndex        =   154
-         Top             =   1920
-         Value           =   1  'Checked
-         Width           =   2400
-      End
-      Begin VB.CheckBox chkplayerdamage 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Dégâts affichés au dessus de la tête"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   153
-         Top             =   480
-         Value           =   1  'Checked
-         Width           =   2565
-      End
-      Begin VB.CheckBox chknpcdamage 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Dégâts affichés au dessus de la tête"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   120
-         TabIndex        =   152
-         Top             =   1680
-         Value           =   1  'Checked
-         Width           =   2595
-      End
-      Begin VB.CheckBox chkmusic 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Musique"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   120
-         TabIndex        =   151
-         Top             =   2400
-         Value           =   1  'Checked
-         Width           =   1335
-      End
-      Begin VB.CheckBox chksound 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Effets sonores"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   225
-         Left            =   120
-         TabIndex        =   150
-         Top             =   2640
-         Value           =   1  'Checked
-         Width           =   1365
-      End
-      Begin VB.CheckBox chkAutoScroll 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Défilement automatique"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   149
-         Top             =   3960
-         Value           =   1  'Checked
-         Width           =   1845
-      End
-      Begin VB.CommandButton Command2 
-         Caption         =   "Actualiser le thème"
-         Height          =   255
-         Left            =   120
-         TabIndex        =   148
-         Top             =   4560
-         Visible         =   0   'False
-         Width           =   2415
-      End
-      Begin VB.HScrollBar scrlBltText 
-         Height          =   255
-         Left            =   240
-         Max             =   20
-         Min             =   4
-         TabIndex        =   147
-         Top             =   3600
-         Value           =   6
-         Width           =   2055
-      End
-      Begin VB.CheckBox chkLowEffect 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Désactiver les effets avancé"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   195
-         Left            =   120
-         TabIndex        =   146
-         Top             =   4245
-         Width           =   2325
-      End
-      Begin VB.Label lblLines 
-         AutoSize        =   -1  'True
-         BackStyle       =   0  'Transparent
-         Caption         =   "Nombre de ligne écrite sur l'écran: 6"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   165
-         Left            =   120
-         TabIndex        =   164
-         Top             =   3420
-         Width           =   2220
-      End
-      Begin VB.Label Label6 
-         Alignment       =   2  'Center
-         BackColor       =   &H00808080&
-         BackStyle       =   0  'Transparent
-         Caption         =   "-Affichage du Joueur-"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FF0000&
-         Height          =   210
-         Left            =   0
-         TabIndex        =   163
-         Top             =   0
-         Width           =   2655
-      End
-      Begin VB.Label Label14 
-         Alignment       =   2  'Center
-         BackColor       =   &H00808080&
-         BackStyle       =   0  'Transparent
-         Caption         =   "-Musique/Sons-"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FF0000&
-         Height          =   210
-         Left            =   -120
-         TabIndex        =   162
-         Top             =   2160
-         Width           =   2655
-      End
-      Begin VB.Label Label18 
-         Alignment       =   2  'Center
-         BackColor       =   &H00808080&
-         BackStyle       =   0  'Transparent
-         Caption         =   "-Affichage du Chat-"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FF0000&
-         Height          =   210
-         Left            =   0
-         TabIndex        =   161
-         Top             =   2880
-         Width           =   2655
-      End
-      Begin VB.Label Label9 
-         Alignment       =   2  'Center
-         BackColor       =   &H00808080&
-         BackStyle       =   0  'Transparent
-         Caption         =   "-Affichage des NPCs-"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         ForeColor       =   &H00FF0000&
-         Height          =   210
-         Left            =   0
-         TabIndex        =   160
-         Top             =   1275
-         Width           =   2655
       End
    End
    Begin VB.PictureBox picRac 
@@ -4922,7 +4948,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5931,6 +5957,12 @@ End Sub
 
 Private Sub TxtQ2_KeyPress(KeyAscii As Integer)
 If KeyAscii = vbKeyReturn Then KeyAscii = 0: txtQ.Visible = False
+End Sub
+
+Private Sub txtTempsBulles_Change()
+If IsNumeric(txtTempsBulles.Text) Then
+WriteINI "CONFIG", "bubbletime", txtTempsBulles, App.Path & "\Config\Client.ini"
+End If
 End Sub
 
 Private Sub Up_Click()
