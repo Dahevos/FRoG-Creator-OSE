@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmKeyOpen 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Ouverture de la porte"
@@ -181,7 +181,7 @@ Begin VB.Form frmKeyOpen
       Begin VB.Label Label3 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
-         Caption         =   "Message de la clée(Laisser vide pour message par défaut.) :"
+         Caption         =   "Message de la clé (Laisser vide pour message par défaut.) :"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -195,7 +195,7 @@ Begin VB.Form frmKeyOpen
          Left            =   240
          TabIndex        =   10
          Top             =   1680
-         Width           =   3690
+         Width           =   3660
       End
       Begin VB.Label Label1 
          Alignment       =   1  'Right Justify
@@ -304,12 +304,12 @@ Private Sub defxy1_Click()
     frmMirage.SetFocus
 End Sub
 
-Private Sub form_Load()
+Private Sub Form_Load()
     scrlX.Max = MAX_MAPX
     scrlY.Max = MAX_MAPY
-    If KeyOpenEditorX < scrlX.min Then KeyOpenEditorX = scrlX.min
+    If KeyOpenEditorX < scrlX.Min Then KeyOpenEditorX = scrlX.Min
     scrlX.value = KeyOpenEditorX
-    If KeyOpenEditorY < scrlY.min Then KeyOpenEditorY = scrlY.min
+    If KeyOpenEditorY < scrlY.Min Then KeyOpenEditorY = scrlY.Min
     scrlY.value = KeyOpenEditorY
     txtMsg.Text = KeyOpenEditorMsg
 End Sub

@@ -71,53 +71,53 @@ Begin VB.Form frmMapProperties
       TabCaption(1)   =   "PNJ"
       TabPicture(1)   =   "frmMapProperties.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmbNpc(14)"
-      Tab(1).Control(1)=   "cmbNpc(13)"
-      Tab(1).Control(2)=   "cmbNpc(12)"
-      Tab(1).Control(3)=   "cmbNpc(11)"
-      Tab(1).Control(4)=   "cmbNpc(10)"
-      Tab(1).Control(5)=   "cmbNpc(9)"
-      Tab(1).Control(6)=   "cmbNpc(8)"
-      Tab(1).Control(7)=   "cmbNpc(7)"
-      Tab(1).Control(8)=   "cmbNpc(6)"
-      Tab(1).Control(9)=   "cmbNpc(5)"
-      Tab(1).Control(10)=   "cmbNpc(4)"
-      Tab(1).Control(11)=   "cmbNpc(3)"
-      Tab(1).Control(12)=   "cmbNpc(2)"
-      Tab(1).Control(13)=   "cmbNpc(1)"
-      Tab(1).Control(14)=   "cmbNpc(0)"
-      Tab(1).Control(15)=   "Command1"
-      Tab(1).Control(16)=   "Copy(0)"
-      Tab(1).Control(17)=   "Copy(1)"
-      Tab(1).Control(18)=   "Copy(2)"
-      Tab(1).Control(19)=   "Copy(3)"
-      Tab(1).Control(20)=   "Copy(4)"
-      Tab(1).Control(21)=   "Copy(5)"
-      Tab(1).Control(22)=   "Copy(6)"
+      Tab(1).Control(0)=   "Command5"
+      Tab(1).Control(1)=   "Command4"
+      Tab(1).Control(2)=   "plus(15)"
+      Tab(1).Control(3)=   "plus(1)"
+      Tab(1).Control(4)=   "plus(2)"
+      Tab(1).Control(5)=   "plus(3)"
+      Tab(1).Control(6)=   "plus(4)"
+      Tab(1).Control(7)=   "plus(5)"
+      Tab(1).Control(8)=   "plus(6)"
+      Tab(1).Control(9)=   "plus(7)"
+      Tab(1).Control(10)=   "plus(8)"
+      Tab(1).Control(11)=   "plus(9)"
+      Tab(1).Control(12)=   "plus(11)"
+      Tab(1).Control(13)=   "plus(12)"
+      Tab(1).Control(14)=   "plus(13)"
+      Tab(1).Control(15)=   "plus(14)"
+      Tab(1).Control(16)=   "plus(10)"
+      Tab(1).Control(17)=   "Copy(9)"
+      Tab(1).Control(18)=   "Copy(13)"
+      Tab(1).Control(19)=   "Copy(12)"
+      Tab(1).Control(20)=   "Copy(11)"
+      Tab(1).Control(21)=   "Copy(10)"
+      Tab(1).Control(22)=   "Copy(8)"
       Tab(1).Control(23)=   "Copy(7)"
-      Tab(1).Control(24)=   "Copy(8)"
-      Tab(1).Control(25)=   "Copy(10)"
-      Tab(1).Control(26)=   "Copy(11)"
-      Tab(1).Control(27)=   "Copy(12)"
-      Tab(1).Control(28)=   "Copy(13)"
-      Tab(1).Control(29)=   "Copy(9)"
-      Tab(1).Control(30)=   "plus(10)"
-      Tab(1).Control(31)=   "plus(14)"
-      Tab(1).Control(32)=   "plus(13)"
-      Tab(1).Control(33)=   "plus(12)"
-      Tab(1).Control(34)=   "plus(11)"
-      Tab(1).Control(35)=   "plus(9)"
-      Tab(1).Control(36)=   "plus(8)"
-      Tab(1).Control(37)=   "plus(7)"
-      Tab(1).Control(38)=   "plus(6)"
-      Tab(1).Control(39)=   "plus(5)"
-      Tab(1).Control(40)=   "plus(4)"
-      Tab(1).Control(41)=   "plus(3)"
-      Tab(1).Control(42)=   "plus(2)"
-      Tab(1).Control(43)=   "plus(1)"
-      Tab(1).Control(44)=   "plus(15)"
-      Tab(1).Control(45)=   "Command4"
-      Tab(1).Control(46)=   "Command5"
+      Tab(1).Control(24)=   "Copy(6)"
+      Tab(1).Control(25)=   "Copy(5)"
+      Tab(1).Control(26)=   "Copy(4)"
+      Tab(1).Control(27)=   "Copy(3)"
+      Tab(1).Control(28)=   "Copy(2)"
+      Tab(1).Control(29)=   "Copy(1)"
+      Tab(1).Control(30)=   "Copy(0)"
+      Tab(1).Control(31)=   "Command1"
+      Tab(1).Control(32)=   "cmbNpc(0)"
+      Tab(1).Control(33)=   "cmbNpc(1)"
+      Tab(1).Control(34)=   "cmbNpc(2)"
+      Tab(1).Control(35)=   "cmbNpc(3)"
+      Tab(1).Control(36)=   "cmbNpc(4)"
+      Tab(1).Control(37)=   "cmbNpc(5)"
+      Tab(1).Control(38)=   "cmbNpc(6)"
+      Tab(1).Control(39)=   "cmbNpc(7)"
+      Tab(1).Control(40)=   "cmbNpc(8)"
+      Tab(1).Control(41)=   "cmbNpc(9)"
+      Tab(1).Control(42)=   "cmbNpc(10)"
+      Tab(1).Control(43)=   "cmbNpc(11)"
+      Tab(1).Control(44)=   "cmbNpc(12)"
+      Tab(1).Control(45)=   "cmbNpc(13)"
+      Tab(1).Control(46)=   "cmbNpc(14)"
       Tab(1).ControlCount=   47
       Begin VB.CommandButton Command5 
          Caption         =   "Annuler"
@@ -1084,7 +1084,7 @@ Begin VB.Form frmMapProperties
             Width           =   855
          End
          Begin VB.Label Label7 
-            Caption         =   "Numéros de la carte :"
+            Caption         =   "Numéro de la carte :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -1221,7 +1221,7 @@ Begin VB.Form frmMapProperties
             Width           =   4695
          End
          Begin VB.Label Label5 
-            Caption         =   "Numéros :"
+            Caption         =   "Numéro :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -1437,7 +1437,7 @@ Begin VB.Form frmMapProperties
             Width           =   855
          End
          Begin VB.Label Label16 
-            Caption         =   "Ouest(Gauche) :"
+            Caption         =   "Ouest (Gauche) :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -1454,7 +1454,7 @@ Begin VB.Form frmMapProperties
             Width           =   1365
          End
          Begin VB.Label Label15 
-            Caption         =   "Sud(Bas) :"
+            Caption         =   "Sud (Bas) :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -1471,7 +1471,7 @@ Begin VB.Form frmMapProperties
             Width           =   1155
          End
          Begin VB.Label Label2 
-            Caption         =   "Est(Droite) :"
+            Caption         =   "Est (Droite) :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25
@@ -1488,7 +1488,7 @@ Begin VB.Form frmMapProperties
             Width           =   1095
          End
          Begin VB.Label Label14 
-            Caption         =   "Nord(Haut) :"
+            Caption         =   "Nord (Haut) :"
             BeginProperty Font 
                Name            =   "Tahoma"
                Size            =   8.25

@@ -54,7 +54,6 @@ Public DDSD_PaperDoll() As DDSURFACEDESC2
 Public DD_PetsSurf() As DirectDrawSurface7
 Public DDSD_Pets() As DDSURFACEDESC2
 
-
 'EFFET DE SANG
 Public DDSD_Blood As DDSURFACEDESC2
 Public DD_Blood As DirectDrawSurface7
@@ -88,6 +87,8 @@ Public ABDXWidth As Integer
 Public ABDXHeight As Integer
 Public ABDXAlpha As Single
 
+Public Declare Sub CopyMemory Lib "kernel32.dll" Alias "RtlMoveMemory" (Destination As Any, Source As Any, ByVal Length As Long)
+
 Sub InitDirectX()
     Set DD = Dx.DirectDrawCreate(vbNullString)
         
@@ -111,14 +112,11 @@ Sub InitDirectX()
     DD_PrimarySurf.SetClipper DD_Clip
 
     ' Initialize all surfaces
-    Call InitSurfaces
     
     'Initisalisation de D3D
     Set D3D = DD.GetDirect3D
     
-    frmMirage.Show
 End Sub
-
 
 Function LoadMaxSprite()
 Dim i As Long
@@ -172,15 +170,15 @@ MAX_DX_BIGSPELLS = i - 1
 End Sub
 
 Sub InitSurfaces()
-Dim key As DDCOLORKEY
+Dim Key As DDCOLORKEY
 Dim i As Long
 
     ' Check for files existing
     If FileExiste("\GFX\items.png") = False Or FileExiste("\GFX\emoticons.png") = False Or FileExiste("\GFX\Outils.png") = False Or FileExiste("\GFX\arrows.png") = False Then Call MsgBox("Plusieurs fichiers manquants", vbOKOnly, GAME_NAME): Call GameDestroy
     
     ' Set the key for masks
-    key.low = 0
-    key.high = 0
+    Key.low = 0
+    Key.high = 0
     
     ' Initialize back buffer
     DDSD_BackBuffer.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -264,7 +262,7 @@ Dim i As Long
     ' Init temp ddsd type and load the bitmap
     DDSD_Temp.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
     DDSD_Temp.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_Temp = LoadImage(App.Path & "\GFX\tiles0.png", DD, DDSD_Temp)
+    Call CopyMemory(DD_Temp, DD_TileSurf(0), Len(DDSD_Tile(i)))
     SetMaskColorFromPixel DD_Temp, 0, 0
 
     'Initisialisation de la surface temporaire

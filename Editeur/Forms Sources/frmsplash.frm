@@ -67,9 +67,3 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     End If
 End Sub
 
-Private Sub lblStatus_Click()
-    If lblStatus.Caption = "Recherche des mises à jour..." Then
-        'frmUpdate.DL.EndDownload
-    End If
-End Sub
-

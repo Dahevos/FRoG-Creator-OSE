@@ -6,7 +6,7 @@ Object = "{984C2AF5-D8F3-11D7-8532-00E07DD46690}#1.0#0"; "HookMenuPlus.ocx"
 Begin VB.Form frmMirage 
    BorderStyle     =   1  'Fixed Single
    Caption         =   " "
-   ClientHeight    =   10260
+   ClientHeight    =   8115
    ClientLeft      =   2805
    ClientTop       =   -45
    ClientWidth     =   15270
@@ -26,8 +26,9 @@ Begin VB.Form frmMirage
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
+   MinButton       =   0   'False
    MouseIcon       =   "frmMirage.frx":17D2A
-   ScaleHeight     =   684
+   ScaleHeight     =   541
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1018
    StartUpPosition =   2  'CenterScreen
@@ -189,7 +190,7 @@ Begin VB.Form frmMirage
          Alignment       =   2  'Center
          BackColor       =   &H00808080&
          BackStyle       =   0  'Transparent
-         Caption         =   "-Requière-"
+         Caption         =   "-Requiert-"
          ForeColor       =   &H00000080&
          Height          =   210
          Left            =   360
@@ -1893,9 +1894,9 @@ Begin VB.Form frmMirage
       Appearance      =   0  'Flat
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
-      Height          =   6810
+      Height          =   6930
       Left            =   0
-      ScaleHeight     =   454
+      ScaleHeight     =   462
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   236
       TabIndex        =   26
@@ -3675,7 +3676,7 @@ End Sub
 Private Sub Attributs_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
 If dr Then Attributs.Refresh: DoEvents: If dr Then Call Attributs.Move(Attributs.Left + (x - drx), Attributs.Top + (y - dry))
-If Attributs.Left > Me.Width Or Attributs.Top > Me.Height Then Attributs.Top = 33: Attributs.Left = 0: Exit Sub
+If Attributs.Left > Me.Width Or Attributs.Top > Me.height Then Attributs.Top = 33: Attributs.Left = 0: Exit Sub
 End Sub
 
 Private Sub Attributs_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -3699,6 +3700,7 @@ End Sub
 
 Private Sub colle_Click()
 Dim f As Long
+Dim FileName As String
     If DonID <> lstIndex.ListIndex + 1 And lstIndex.ListIndex <> -1 Then
         If FileExiste("Maps\map" & DonID & ".fcc") Then Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Else Call SaveMap(DonID): Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc")
         Call ViderTMap(lstIndex.ListIndex + 1)
@@ -4004,7 +4006,7 @@ picBack.Width = (scrlPicture.Left + 17)
 gauchedroite.min = 0
 gauchedroite.Max = Int(30 - (picScreen.Width / 32)) + 1
 hautbas.min = -1
-hautbas.Max = Int(30 - (picScreen.Height / 32))
+hautbas.Max = Int(30 - (picScreen.height / 32))
 Call NetPic
 Couche = "Sol"
 End Sub
@@ -4013,7 +4015,7 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y A
 If Toolbar1.buttons(1).Image = 19 Then Exit Sub
     itmDesc.Visible = False
     InEditor = True
-    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = frmMirage.picBackSelect.Width
 End Sub
 
@@ -4076,17 +4078,17 @@ End Sub
 
 Private Sub hautbas_Change()
 If Not InEditor Then Exit Sub
-Call SetPlayerY(MyIndex, (Int(picScreen.Height / 32) / 2) + hautbas.value)
+Call SetPlayerY(MyIndex, (Int(picScreen.height / 32) / 2) + hautbas.value)
 End Sub
 
 Private Sub hautbas_GotFocus()
 If Not InEditor Then Exit Sub
-Call SetPlayerY(MyIndex, (Int(picScreen.Height / 32) / 2) + hautbas.value)
+Call SetPlayerY(MyIndex, (Int(picScreen.height / 32) / 2) + hautbas.value)
 End Sub
 
 Private Sub hautbas_Scroll()
 If Not InEditor Then Exit Sub
-Call SetPlayerY(MyIndex, (Int(picScreen.Height / 32) / 2) + hautbas.value)
+Call SetPlayerY(MyIndex, (Int(picScreen.height / 32) / 2) + hautbas.value)
 End Sub
 
 Private Sub hscript_Click()
@@ -4316,7 +4318,7 @@ End Sub
 Private Sub OptCraft_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Table de Craft"
-    frmScript.label1.Caption = "Métier N°"
+    frmScript.Label1.Caption = "Métier N°"
     frmScript.scrlScript.min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_RECETTE
@@ -4369,7 +4371,7 @@ End Sub
 Private Sub OptMetier_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Apprendre Metier"
-    frmScript.label1.Caption = "Métier N°"
+    frmScript.Label1.Caption = "Métier N°"
     frmScript.scrlScript.min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_METIER
@@ -4414,7 +4416,7 @@ End Sub
 Private Sub optScripted_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Case Script"
-    frmScript.label1.Caption = "Numéro case"
+    frmScript.Label1.Caption = "Numéro case"
     frmScript.scrlScript.min = 0
     frmScript.scrlScript.Max = 1000
 End Sub
@@ -4478,19 +4480,19 @@ d = Index
     If Player(MyIndex).inv(d + 1).num > 0 Then
         If Item(GetPlayerInvItemNum(MyIndex, d + 1)).Type = ITEM_TYPE_CURRENCY Then
             If Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
-                itmDesc.Height = 17
+                itmDesc.height = 17
                 itmDesc.Top = 224
             Else
-                itmDesc.Height = 249
+                itmDesc.height = 249
                 itmDesc.Top = 8
             End If
             descName.Caption = Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).name) & " (" & GetPlayerInvItemValue(MyIndex, d + 1) & ")"
         Else
             If Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
-                itmDesc.Height = 161
+                itmDesc.height = 161
                 itmDesc.Top = 96
             Else
-                itmDesc.Height = 249
+                itmDesc.height = 249
                 itmDesc.Top = 8
             End If
             If GetPlayerWeaponSlot(MyIndex) = d + 1 Then
@@ -4745,9 +4747,9 @@ If x = vbNo Then Exit Sub
 
 Call SauvTemp
 If frmMirage.tp(1).Checked = True Then
-For y2 = 0 To Int(frmMirage.shpSelected.Height / PIC_Y) - 1
+For y2 = 0 To Int(frmMirage.shpSelected.height / PIC_Y) - 1
 For x2 = 0 To Int(frmMirage.shpSelected.Width / PIC_X) - 1
-For y = 0 To (MAX_MAPY / Int(frmMirage.shpSelected.Height / PIC_Y))
+For y = 0 To (MAX_MAPY / Int(frmMirage.shpSelected.height / PIC_Y))
 For x = 0 To (MAX_MAPX / Int(frmMirage.shpSelected.Width / PIC_X))
 
             
@@ -5130,7 +5132,7 @@ Private Sub Tiles_Click(Index As Integer)
         'frmMirage.picBackSelect.Picture = LoadPNG(App.Path & "\GFX\Tiles" & index & ".png")
         EditorSet = Index
         Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
-        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
         HScroll1.Max = frmMirage.picBackSelect.Width / 32
         frmMirage.picBack.Width = frmMirage.picBackSelect.Width
         frmMirage.tilescmb.ListIndex = Index
@@ -5171,10 +5173,10 @@ End Sub
 Private Sub timerbar_Timer()
 If frmMirage.Visible = True Then
     
-    If Player(MyIndex).y < ((picScreen.Height / 32) \ 2) Then
+    If Player(MyIndex).y < ((picScreen.height / 32) \ 2) Then
         hautbas.value = hautbas.min
     Else
-        If ((picScreen.Height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.Height \ 32)) < hautbas.Max Then hautbas.value = ((picScreen.Height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.Height \ 32)) Else hautbas.value = hautbas.Max
+        If ((picScreen.height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.height \ 32)) < hautbas.Max Then hautbas.value = ((picScreen.height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.height \ 32)) Else hautbas.value = hautbas.Max
     End If
     
     If Player(MyIndex).x < ((picScreen.Width \ 32) \ 2) Then
@@ -5316,7 +5318,7 @@ Dim i As Byte
             EditorSet = OldTiles
             Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
             tilescmb.ListIndex = OldTiles
-            frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+            frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
             frmMirage.picBack.Width = frmMirage.picBackSelect.Width
             tile.Enabled = True
             For i = 5 To 18
@@ -5330,7 +5332,7 @@ Dim i As Byte
         If tp(2).Checked = True Then
             Attributs.Visible = True
             frmMirage.shpSelected.Width = 32
-            frmMirage.shpSelected.Height = 32
+            frmMirage.shpSelected.height = 32
             tile.Enabled = True
             For i = 5 To 30
                 If i <> 20 And i <> 21 And i <> 23 And i <> 24 And i <> 25 And i <> 27 And i <> 28 And i <> 29 Then Toolbar1.buttons(i).Enabled = False
@@ -5352,7 +5354,7 @@ Dim i As Byte
             'frmMirage.picBackSelect.Picture = LoadPNG(App.Path & "\GFX\Tiles" & 6 & ".png")
             EditorSet = ExtraSheets
             Call AffOutilPic(frmMirage.scrlPicture.value * PIC_Y)
-            frmMirage.scrlPicture.Max = ((DDSD_Outil.lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+            frmMirage.scrlPicture.Max = ((DDSD_Outil.lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
             frmMirage.picBack.Width = frmMirage.picBackSelect.Width
             tile.Enabled = False
             For i = 5 To 18
@@ -5501,7 +5503,7 @@ On Error Resume Next
         If KeyShift = False Then
             Call EditorChooseTile(Button, Shift, x, y)
             shpSelected.Width = 32
-            shpSelected.Height = 32
+            shpSelected.height = 32
         Else
             EditorTileX = (x \ PIC_X)
             EditorTileY = (y \ PIC_Y)
@@ -5518,14 +5520,14 @@ On Error Resume Next
                 End If
             End If
             
-            If Int(EditorTileY * PIC_Y) >= shpSelected.Top + shpSelected.Height Then
-                EditorTileY = Int(EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.Height)
-                shpSelected.Height = shpSelected.Height + Int(EditorTileY)
+            If Int(EditorTileY * PIC_Y) >= shpSelected.Top + shpSelected.height Then
+                EditorTileY = Int(EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.height)
+                shpSelected.height = shpSelected.height + Int(EditorTileY)
             Else
-                If shpSelected.Height > PIC_Y Then
+                If shpSelected.height > PIC_Y Then
                     If Int(EditorTileY * PIC_Y) >= shpSelected.Top Then
-                        EditorTileY = (EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.Height)
-                        shpSelected.Height = shpSelected.Height + Int(EditorTileY)
+                        EditorTileY = (EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.height)
+                        shpSelected.height = shpSelected.height + Int(EditorTileY)
                     End If
                 End If
             End If
@@ -5534,9 +5536,9 @@ On Error Resume Next
         End If
     End If
     
-    If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.Height = 32
+    If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.height = 32
     If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
-    If Button = 2 And Not frmTile.Visible Then Call AffSurfPic(DD_TileSurf(EditorSet), frmTile.picTile, 0, 0): frmTile.Defile.Max = Int((DDSD_Tile(EditorSet).lHeight - frmTile.picTile.Height) \ PIC_Y): frmTile.Defile.value = scrlPicture.value: frmTile.shpSelected.Width = shpSelected.Width: frmTile.shpSelected.Height = shpSelected.Height: frmTile.Show vbModeless, frmMirage
+    If Button = 2 And Not frmTile.Visible Then Call AffSurfPic(DD_TileSurf(EditorSet), frmTile.picTile, 0, 0): frmTile.Defile.Max = Int((DDSD_Tile(EditorSet).lHeight - frmTile.picTile.height) \ PIC_Y): frmTile.Defile.value = scrlPicture.value: frmTile.shpSelected.Width = shpSelected.Width: frmTile.shpSelected.height = shpSelected.height: frmTile.Show vbModeless, frmMirage
     'EditorTileX = ((shpSelected.Left + PIC_X) \ PIC_X)
     'EditorTileY = ((shpSelected.Top + PIC_Y) \ PIC_Y)
 End Sub
@@ -5564,14 +5566,14 @@ Private Sub picBackSelect_MouseMove(Button As Integer, Shift As Integer, x As Si
                 End If
             End If
             
-            If Int(EditorTileY * PIC_Y) >= shpSelected.Top + shpSelected.Height Then
-                EditorTileY = Int(EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.Height)
-                shpSelected.Height = shpSelected.Height + Int(EditorTileY)
+            If Int(EditorTileY * PIC_Y) >= shpSelected.Top + shpSelected.height Then
+                EditorTileY = Int(EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.height)
+                shpSelected.height = shpSelected.height + Int(EditorTileY)
             Else
-                If shpSelected.Height > PIC_Y Then
+                If shpSelected.height > PIC_Y Then
                     If Int(EditorTileY * PIC_Y) >= shpSelected.Top Then
-                        EditorTileY = (EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.Height)
-                        shpSelected.Height = shpSelected.Height + Int(EditorTileY)
+                        EditorTileY = (EditorTileY * PIC_Y + PIC_Y) - (shpSelected.Top + shpSelected.height)
+                        shpSelected.height = shpSelected.height + Int(EditorTileY)
                     End If
                 End If
             End If
@@ -5581,7 +5583,7 @@ Private Sub picBackSelect_MouseMove(Button As Integer, Shift As Integer, x As Si
         'End If
     End If
     
-    If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.Height = 32
+    If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.height = 32
 End Sub
 
 Private Sub vies_Click()

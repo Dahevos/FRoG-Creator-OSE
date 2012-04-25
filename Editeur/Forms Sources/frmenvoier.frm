@@ -91,7 +91,7 @@ If r = Val(TreeView1.Nodes.Count) Then MsgBox "Aucun éléments sélectionés!!": Ex
 
 Command1.Visible = False
 ProgressBar1.Visible = True
-ProgressBar1.value = ProgressBar1.min
+ProgressBar1.value = ProgressBar1.Min
 i = TreeView1.Nodes.Count
 r = (100 \ i) - 1
 For n = 1 To i

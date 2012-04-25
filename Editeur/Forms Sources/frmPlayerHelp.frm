@@ -58,8 +58,10 @@ Begin VB.Form frmPlayerHelp
       TabCaption(1)   =   "Aide"
       TabPicture(1)   =   "frmPlayerHelp.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame8"
-      Tab(1).Control(1)=   "Label1(1)"
+      Tab(1).Control(0)=   "Label1(1)"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "Frame8"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
       Begin VB.Frame Frame8 
          Caption         =   "Conseil"
@@ -144,7 +146,7 @@ Begin VB.Form frmPlayerHelp
          End
       End
       Begin VB.Label Label1 
-         Caption         =   "Panneau d'aide au Joueur 0.4"
+         Caption         =   "Panneau d'aide au Joueur"
          Height          =   135
          Index           =   1
          Left            =   -74880
@@ -153,7 +155,7 @@ Begin VB.Form frmPlayerHelp
          Width           =   2055
       End
       Begin VB.Label Label1 
-         Caption         =   "Panneau d'aide au Joueur 0.4"
+         Caption         =   "Panneau d'aide au Joueur"
          Height          =   135
          Index           =   0
          Left            =   120

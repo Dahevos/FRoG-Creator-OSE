@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmclasseseditor 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Editeur de Classes de Frog Creator"
+   Caption         =   "Editeur de Classes de FRoG Creator"
    ClientHeight    =   8220
    ClientLeft      =   45
    ClientTop       =   435
@@ -654,7 +654,7 @@ Call WriteINI("CLASSCHANGE", "AddMagi", frmclasseseditor.ajm.Text, PathServ & "\
 Call WriteINI("DEATH", "Map", frmclasseseditor.cartem.Text, PathServ & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "x", frmclasseseditor.xm.Text, PathServ & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "y", frmclasseseditor.ym.Text, PathServ & "\Classes\Class" & classe & ".ini")
-Call WriteINI("CLASS", "Locked", frmclasseseditor.lock.value, PathServ & "\Classes\Class" & classe & ".ini")
+Call WriteINI("CLASS", "Locked", frmclasseseditor.Lock.value, PathServ & "\Classes\Class" & classe & ".ini")
 hl:
 Call WriteINI("CLASS", "Name", frmclasseseditor.nom.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("CLASS", "MaleSprite", frmclasseseditor.scrlhom.value, App.Path & "\Classes\Class" & classe & ".ini")
@@ -677,7 +677,7 @@ Call WriteINI("CLASSCHANGE", "AddMagi", frmclasseseditor.ajm.Text, App.Path & "\
 Call WriteINI("DEATH", "Map", frmclasseseditor.cartem.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "x", frmclasseseditor.xm.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "y", frmclasseseditor.ym.Text, App.Path & "\Classes\Class" & classe & ".ini")
-Call WriteINI("CLASS", "Locked", frmclasseseditor.lock.value, App.Path & "\Classes\Class" & classe & ".ini")
+Call WriteINI("CLASS", "Locked", frmclasseseditor.Lock.value, App.Path & "\Classes\Class" & classe & ".ini")
 Call Unload(frmmsg)
 Call ChargerClasses
 Me.Hide

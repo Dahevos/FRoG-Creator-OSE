@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmMapKey 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Clée de la Maps"
+   Caption         =   "Clé de la Maps"
    ClientHeight    =   2640
    ClientLeft      =   120
    ClientTop       =   285
@@ -203,10 +203,10 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub form_Load()
+Private Sub Form_Load()
     scrlItem.Max = MAX_ITEMS
     lblName.Caption = Trim$(Item(scrlItem.value).name)
-    If KeyEditorNum < scrlItem.min Then KeyEditorNum = scrlItem.min
+    If KeyEditorNum < scrlItem.Min Then KeyEditorNum = scrlItem.Min
     scrlItem.value = KeyEditorNum
     chkTake.value = KeyEditorTake
     End Sub

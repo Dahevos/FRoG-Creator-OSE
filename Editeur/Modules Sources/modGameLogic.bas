@@ -258,10 +258,18 @@ Public CarteFTP As Boolean
 'Variables de FrmMirage
 Public PicScWidth As Single
 Public PicScHeight As Single
+Public Function getreselotionX()
+    getreselotionX = Screen.Width \ Screen.TwipsPerPixelX
+End Function
+
+Public Function getreselotionY()
+    getreselotionY = Screen.height \ Screen.TwipsPerPixelY
+End Function
 
 Sub Main()
 Dim i As Long
 Dim Ending As String
+Dim FileName As String
 On Error GoTo er:
 
     If FileExiste("r.exe") Then Kill App.Path & "\r.exe"
@@ -269,6 +277,7 @@ On Error GoTo er:
     Call EcrireEtat(vbNullString)
     Call EcrireEtat("Démarrage du logiciel")
     
+    frmMirage.Font = "Segoe UI"
     save = 0
     VZoom = 3
     ScreenDC = False
@@ -284,6 +293,9 @@ On Error GoTo er:
     Call SetStatus("Vérification des dossiers...")
     DoEvents
     ExtraSheets = 0
+    
+    Call SetStatus("Initialisation de DirectX")
+    Call InitDirectX
     
     Dim PathSource As String, Part() As String
     Part = Split(App.Path, "\")
@@ -390,7 +402,6 @@ On Error GoTo er:
     End If
     frmsplash.chrg.value = 20
     
-    Dim FileName As String
     FileName = App.Path & "\Config\Account.ini"
     
     If FileExiste("Config\Account.ini") Then
@@ -478,6 +489,7 @@ On Error GoTo er:
     DoEvents
     
     Call TcpInit
+    
     frmsplash.Show
     DoEvents
     Call Sleep(1)
@@ -486,7 +498,6 @@ On Error GoTo er:
         Shell (Mid$(App.Path, 1, Len(App.Path) - Len(Dir$(App.Path, vbDirectory))) & "Assistant.exe")
         Call GameDestroy
     End If
-    If Val(ReadINI("CONFIG", "auto-maj", App.Path & "\Config\Client.ini")) = 1 Then Call Updater
     frmMainMenu.Show
     ConOff = False
     Call SendData("PICVALUE" & END_CHAR)
@@ -504,6 +515,7 @@ End Sub
 Sub Main2()
 Dim i As Long
 Dim Ending As String
+Dim FileName As String
     Call EcrireEtat(vbNullString)
     save = 0
     InProprieter = False
@@ -588,7 +600,6 @@ Dim Ending As String
     End If
     frmsplash.chrg.value = 20
     
-    Dim FileName As String
     FileName = App.Path & "\Config\Account.ini"
     If FileExiste("Config\Account.ini") Then
         frmoptions.chkbubblebar.value = ReadINI("CONFIG", "SpeechBubbles", FileName)
@@ -690,14 +701,8 @@ Dim Ending As String
     Call Sleep(1)
     frmsplash.chrg.value = 80
     
-    If Val(ReadINI("CONFIG", "jeu", App.Path & "\Config\Client.ini")) = 0 Then
-        Shell (Mid$(App.Path, 1, Len(App.Path) - Len(Dir$(App.Path, vbDirectory))) & "Assistant.exe")
-        Call GameDestroy
-    Else
-        Update = False
-        Call Updater
-        If Update = False Then frmMainMenu.Show
-    End If
+    frmMainMenu.Show
+    
     
     ConOff = False
     Call SendData("PICVALUE" & END_CHAR)
@@ -752,10 +757,10 @@ End Sub
 Sub GameInit()
 Dim i As Long
     Call StopMidi
+    Call InitSurfaces
     frmMirage.Visible = True
     Call SendData("mapreport" & END_CHAR)
     frmsplash.Visible = False
-    Call InitDirectX
     Call SendRequestEditMap
     Call ChargerObjets(MyIndex)
     Call ChargerFleche
@@ -822,8 +827,8 @@ On Error GoTo er:
     For i = 3 To 9 Step 3
         screen_xg(i) = ((frmMirage.picScreen.Width * i / 3) / 64) - 1
         screen_xd(i) = ((frmMirage.picScreen.Width * i / 3) / 32) - screen_xg(i) - 1
-        screen_yh(i) = ((frmMirage.picScreen.Height * i / 3) / 64) - 1
-        screen_yb(i) = ((frmMirage.picScreen.Height * i / 3) / 32) - screen_yh(i) - 1
+        screen_yh(i) = ((frmMirage.picScreen.height * i / 3) / 64) - 1
+        screen_yb(i) = ((frmMirage.picScreen.height * i / 3) / 32) - screen_yh(i) - 1
     Next i
     
     Do While InGame
@@ -1611,7 +1616,7 @@ If ScreenDC Then Exit Sub
     If Visu > 0 Then
         If Not TileFile(VisuTileSet) Then Exit Sub
         rec.Top = (Visu \ TilesInSheets) * PIC_Y
-        rec.Bottom = rec.Top + frmMirage.shpSelected.Height
+        rec.Bottom = rec.Top + frmMirage.shpSelected.height
         rec.Left = (Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X
         rec.Right = rec.Left + frmMirage.shpSelected.Width
         'Set DD_Temp = DD_TileSurf(VisuTileSet)
@@ -1629,7 +1634,7 @@ If ScreenDC Then Exit Sub
     VisuTileSet = EditorSet
     
     Call DD_Temp.SetForeColor(RGB(0, 0, 0))
-    For i = ((Visu \ TilesInSheets) * PIC_Y) To ((Visu \ TilesInSheets) * PIC_Y) + frmMirage.shpSelected.Height - 1 Step 2
+    For i = ((Visu \ TilesInSheets) * PIC_Y) To ((Visu \ TilesInSheets) * PIC_Y) + frmMirage.shpSelected.height - 1 Step 2
         For t = (Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X To ((Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X) + frmMirage.shpSelected.Width - 1 Step 2
             Call DD_Temp.DrawLine(t, i, t + 1, i)
             Call DD_Temp.DrawLine(t + 1, i + 1, t + 2, i + 1)
@@ -2876,11 +2881,6 @@ If HORS_LIGNE < 1 Then Exit Sub
         Call ClearPlayer(i)
     Next i
     
-    For i = 1 To MAX_MAPS
-        DoEvents
-        Call LoadMap(i)
-    Next i
-    
     frmMirage.Caption = "Editeur pour le jeu : " & Trim$(GAME_NAME) & " Mettez votre souris sur un élément pour plus de détails."
     App.Title = GAME_NAME
     If Not FileExiste("Stats.ini") Then
@@ -2921,11 +2921,12 @@ End Sub
 
 Public Sub InitMirageVars()
     PicScWidth = frmMirage.picScreen.Width
-    PicScHeight = frmMirage.picScreen.Height
+    PicScHeight = frmMirage.picScreen.height
 End Sub
 
 Sub InitMirage()
 Dim i As Long
+    Call InitSurfaces
     frmMirage.Toolbar1.buttons(1).Enabled = False
     frmMirage.test.Enabled = False
     frmMirage.envoicarte.Enabled = False
@@ -2942,7 +2943,6 @@ Dim i As Long
     Next i
     frmsplash.Visible = False
     InGame = True
-    Call InitDirectX
     Call EditorInit
     If ExtraSheets < frmMirage.Tiles.Count - 1 Then
         For i = ExtraSheets To 5
@@ -2980,18 +2980,23 @@ End Sub
 Sub ChargerCartes()
 Dim FileName As String
 Dim f As Long
-Dim MapNum As Long
+Dim MapNum As Integer
+
+Call ClearTempMaps
+
+For MapNum = 1 To MAX_MAPS
+    FileName = App.Path & "\maps\map" & MapNum & ".fcc"
+    If FileExiste("maps\map" & MapNum & ".fcc") Then
+        f = FreeFile
+        Open FileName For Binary As #f
+            Get #f, , Map(MapNum)
+        Close #f
+    Else
+            Call ClearMap(MapNum)
+    End If
+Next MapNum
+    
 If HORS_LIGNE = 1 Then
-    Call ClearMap
-    For MapNum = 1 To MAX_MAPS
-        FileName = App.Path & "\maps\map" & MapNum & ".fcc"
-        If FileExiste("maps\map" & MapNum & ".fcc") Then
-            f = FreeFile
-            Open FileName For Binary As #f
-                Get #f, , Map(MapNum)
-            Close #f
-        End If
-    Next MapNum
     
     Call InitPano(Player(MyIndex).Map)
     Call InitNightAndFog(Player(MyIndex).Map)
@@ -3015,16 +3020,6 @@ If HORS_LIGNE = 1 Then
     Else
         If Trim$(Map(Player(MyIndex).Map).Music) <> "Aucune" Then Call PlayMidi(Trim$(Map(Player(MyIndex).Map).Music)) Else Call StopMidi
     End If
-Else
-    For MapNum = 1 To MAX_MAPS
-        FileName = App.Path & "\maps\map" & MapNum & ".fcc"
-        If FileExiste("maps\map" & MapNum & ".fcc") Then
-            f = FreeFile
-            Open FileName For Binary As #f
-                Get #f, , Map(MapNum)
-            Close #f
-        End If
-    Next MapNum
 End If
 End Sub
 Sub ChargerCarte(ByVal MapNum As Long)
@@ -3284,7 +3279,9 @@ Dim FileName As String
 End Sub
 
 Sub ChargerEmots()
- Dim i As Long
+Dim i As Long
+Dim FileName As String
+
     If Not FileExiste("emoticons.ini") Then
         For i = 0 To MAX_EMOTICONS
             DoEvents
@@ -3293,12 +3290,10 @@ Sub ChargerEmots()
         Next i
     End If
 
-Dim FileName As String
     FileName = App.Path & "\emoticons.ini"
-    
     For i = 0 To MAX_EMOTICONS
-        Emoticons(i).Pic = Val(GetVar(FileName, "EMOTICONS", "Emoticon" & i))
-        Emoticons(i).Command = GetVar(FileName, "EMOTICONS", "EmoticonC" & i)
+        Emoticons(i).Pic = Val(ReadINI("EMOTICONS", "Emoticon" & i, FileName))
+        Emoticons(i).Command = ReadINI("EMOTICONS", "EmoticonC" & i, FileName)
         DoEvents
     Next i
 End Sub
@@ -3368,20 +3363,20 @@ Dim i As Long
         
     FileName = App.Path & "\Classes\info.ini"
     
-    Max_Classes = Val(GetVar(FileName, "INFO", "MaxClasses"))
+    Max_Classes = Val(ReadINI("INFO", "MaxClasses", FileName))
     
     ReDim Class(0 To Max_Classes) As ClassRec
     
     For i = 0 To Max_Classes
         FileName = App.Path & "\Classes\Class" & i & ".ini"
-        Class(i).name = GetVar(FileName, "CLASS", "Name")
-        Class(i).MaleSprite = Val(GetVar(FileName, "CLASS", "MaleSprite"))
-        Class(i).FemaleSprite = Val(GetVar(FileName, "CLASS", "FemaleSprite"))
-        Class(i).STR = Val(GetVar(FileName, "CLASS", "STR"))
-        Class(i).def = Val(GetVar(FileName, "CLASS", "DEF"))
-        Class(i).speed = Val(GetVar(FileName, "CLASS", "SPEED"))
-        Class(i).magi = Val(GetVar(FileName, "CLASS", "MAGI"))
-        Class(i).Locked = Val(GetVar(FileName, "CLASS", "Locked"))
+        Class(i).name = ReadINI("CLASS", "Name", FileName)
+        Class(i).MaleSprite = Val(ReadINI("CLASS", "MaleSprite", FileName))
+        Class(i).FemaleSprite = Val(ReadINI("CLASS", "FemaleSprite", FileName))
+        Class(i).STR = Val(ReadINI("CLASS", "STR", FileName))
+        Class(i).def = Val(ReadINI("CLASS", "DEF", FileName))
+        Class(i).speed = Val(ReadINI("CLASS", "SPEED", FileName))
+        Class(i).magi = Val(ReadINI("CLASS", "MAGI", FileName))
+        Class(i).Locked = Val(ReadINI("CLASS", "Locked", FileName))
         DoEvents
     Next i
 End Sub
@@ -4447,7 +4442,7 @@ Public Sub EditorInit()
     Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
     frmMirage.picBackSelect.Refresh
     'frmMirage.picBackSelect.Picture = LoadPNG(App.Path + "\GFX\tiles0.png")
-    frmMirage.scrlPicture.Max = Int((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = frmMirage.picBackSelect.Width
     Call EcrireEtat("Initialisation de l'éditeur : Terminer")
 End Sub
@@ -4547,12 +4542,12 @@ End If
                     EditorTileX = (PicX - (PicX \ TilesInSheets) * TilesInSheets)
                     frmMirage.shpSelected.Top = Int(EditorTileY * PIC_Y)
                     frmMirage.shpSelected.Left = Int(EditorTileX * PIC_Y)
-                    frmMirage.shpSelected.Height = PIC_Y
+                    frmMirage.shpSelected.height = PIC_Y
                     frmMirage.shpSelected.Width = PIC_X
                     If frmMirage.Tiles(EditorSet).Checked = False Then
                         frmMirage.Tiles(EditorSet).Checked = True
                         Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
-                        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+                        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
                         frmMirage.HScroll1.Max = frmMirage.picBackSelect.Width / 32
                         frmMirage.picBack.Width = frmMirage.picBackSelect.Width
                         frmMirage.tilescmb.ListIndex = EditorSet
@@ -4569,7 +4564,7 @@ End If
                 EditorTileX = (Map(Player(MyIndex).Map).tile(x1, y1).Light - (Map(Player(MyIndex).Map).tile(x1, y1).Light \ TilesInSheets) * TilesInSheets)
                 frmMirage.shpSelected.Top = Int(EditorTileY * PIC_Y)
                 frmMirage.shpSelected.Left = Int(EditorTileX * PIC_Y)
-                frmMirage.shpSelected.Height = PIC_Y
+                frmMirage.shpSelected.height = PIC_Y
                 frmMirage.shpSelected.Width = PIC_X
             ElseIf frmMirage.tp(2).Checked Then
                 With Map(Player(MyIndex).Map).tile(x1, y1)
@@ -4677,7 +4672,7 @@ End If
             frmMirage.Toolbar1.buttons(32).value = tbrUnpressed
         Else
             If (Button = 1) And (x1 >= 0) And (x1 <= MAX_MAPX) And (y1 >= 0) And (y1 <= MAX_MAPY) Then
-                If frmMirage.shpSelected.Height <= PIC_Y And frmMirage.shpSelected.Width <= PIC_X Then
+                If frmMirage.shpSelected.height <= PIC_Y And frmMirage.shpSelected.Width <= PIC_X Then
                     If frmMirage.tp(1).Checked Then
                         With Map(Player(MyIndex).Map).tile(x1, y1)
                             If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
@@ -4954,7 +4949,7 @@ End If
                         End With
                     End If
                 Else
-                    For y2 = 0 To (frmMirage.shpSelected.Height \ PIC_Y) - 1
+                    For y2 = 0 To (frmMirage.shpSelected.height \ PIC_Y) - 1
                         For x2 = 0 To (frmMirage.shpSelected.Width \ PIC_X) - 1
                             If x1 + x2 <= MAX_MAPX Then
                                 If y1 + y2 <= MAX_MAPY Then
@@ -5072,8 +5067,8 @@ End Sub
 
 Public Sub EditorTileScroll()
 On Error Resume Next
-frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
-If (EditorTileY * PIC_Y) < frmMirage.picBack.Height + (frmMirage.scrlPicture.value * PIC_Y) And (EditorTileY * PIC_Y) > ((frmMirage.scrlPicture.value - 1) * PIC_Y) Then frmMirage.shpSelected.Top = Int((EditorTileY - frmMirage.scrlPicture.value) * PIC_Y): frmMirage.shpSelected.Visible = True Else frmMirage.shpSelected.Visible = False
+frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+If (EditorTileY * PIC_Y) < frmMirage.picBack.height + (frmMirage.scrlPicture.value * PIC_Y) And (EditorTileY * PIC_Y) > ((frmMirage.scrlPicture.value - 1) * PIC_Y) Then frmMirage.shpSelected.Top = Int((EditorTileY - frmMirage.scrlPicture.value) * PIC_Y): frmMirage.shpSelected.Visible = True Else frmMirage.shpSelected.Visible = False
 If frmMirage.scrlPicture.value = 0 Then frmMirage.picBackSelect.Top = 55
 Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
 End Sub
@@ -6174,14 +6169,14 @@ If Not FileExiste("spells\spells" & EditorIndex & ".fcg") And HORS_LIGNE = 1 The
         frmSpellEditor.CheckSpell.value = Checked
         frmSpellEditor.scrlSpellAnim.Max = MAX_DX_BIGSPELLS
         frmSpellEditor.picSpell.Width = 960
-        frmSpellEditor.picSpell.Height = 960
+        frmSpellEditor.picSpell.height = 960
         frmSpellEditor.picSpell.Left = 10680
         frmSpellEditor.picSpell.Top = 3540
     Else
         frmSpellEditor.CheckSpell.value = Unchecked
         frmSpellEditor.scrlSpellAnim.Max = MAX_DX_SPELLS
         frmSpellEditor.picSpell.Width = 480
-        frmSpellEditor.picSpell.Height = 480
+        frmSpellEditor.picSpell.height = 480
         frmSpellEditor.picSpell.Left = 10920
         frmSpellEditor.picSpell.Top = 3720
     End If
@@ -6415,7 +6410,7 @@ Else
     frmMirage.test.Caption = "Tester"
     frmMirage.itmDesc.Visible = False
     InEditor = True
-    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = frmMirage.picBackSelect.Width
     frmMirage.carte.Enabled = True
     frmMirage.comtest.Enabled = False
@@ -6869,17 +6864,17 @@ Dim sRECT As RECT
 Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
     frmMirage.picBackSelect.Width = Int(DDSD_Tile(Tnum).lWidth)
-    frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)
     With dRECT
         .Top = 0
-        .Bottom = frmMirage.picBackSelect.Height
+        .Bottom = frmMirage.picBackSelect.height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
     With sRECT
         .Top = AScr
-        .Bottom = .Top + frmMirage.picBackSelect.Height
+        .Bottom = .Top + frmMirage.picBackSelect.height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
@@ -6892,17 +6887,17 @@ Dim sRECT As RECT
 Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
     frmMirage.picBackSelect.Width = Int(DDSD_Outil.lWidth)
-    frmMirage.scrlPicture.Max = Int((DDSD_Outil.lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Outil.lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)
     With dRECT
         .Top = 0
-        .Bottom = frmMirage.picBackSelect.Height
+        .Bottom = frmMirage.picBackSelect.height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
     With sRECT
         .Top = AScr
-        .Bottom = .Top + frmMirage.picBackSelect.Height
+        .Bottom = .Top + frmMirage.picBackSelect.height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
@@ -6919,13 +6914,13 @@ If Not (DD_Surf Is Nothing) Then
     PicBox.Picture = LoadPicture()
     With dRECT
         .Top = 0
-        .Bottom = PicBox.Height
+        .Bottom = PicBox.height
         .Left = 0
         .Right = PicBox.Width
     End With
     With sRECT
         .Top = y
-        .Bottom = .Top + PicBox.Height
+        .Bottom = .Top + PicBox.height
         .Left = x
         .Right = .Left + PicBox.Width
     End With

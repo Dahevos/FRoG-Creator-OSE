@@ -908,7 +908,7 @@ Dim n As Long
 End Sub
 
 Sub ClearPlayerQuete(ByVal Index As Long)
-Call ZeroMemory(Player(Index).Char(Player(Index).CharNum), Len(Player(Index).Char(Player(Index).CharNum)))
+Player(Index).QueteEnCour = 0
 End Sub
 
 Sub ClearPet(ByVal Index As Long)
@@ -934,12 +934,10 @@ End Sub
 Sub ClearMapItem(ByVal Index As Long)
 Call ZeroMemory(MapItem(Index), Len(MapItem(Index)))
 End Sub
-Sub ClearMap()
-Dim i As Long
+Sub ClearMap(i As Integer)
 Dim x As Long
 Dim y As Long
 
-For i = 1 To MAX_MAPS
     Map(i).name = vbNullString
     Map(i).Revision = 0
     Map(i).Moral = 0
@@ -1014,8 +1012,12 @@ For i = 1 To MAX_MAPS
     Map(i).TranInf = 0
     Map(i).PanoSup = vbNullString
     Map(i).TranSup = 0
-Next i
 
+
+End Sub
+
+Sub ClearTempMaps()
+Dim i As Integer
 For i = 0 To 5
     TempMap(i).name = vbNullString
     TempMap(i).Revision = -1
@@ -1096,12 +1098,12 @@ For i = 0 To 5
     TempMap(i).guildSoloView = 0
     TempMap(i).petView = 0
     TempMap(i).traversable = 0
-Next i
+Next
 End Sub
 
 Sub NetQueteType(ByVal Index As Integer)
+Dim i As Long
     Call ZeroMemory(quete(i), Len(quete(i)))
-    Dim i As Long
     For i = 1 To 15
         quete(Index).indexe(i).Data1 = 1
     Next i

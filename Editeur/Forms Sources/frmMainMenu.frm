@@ -244,10 +244,8 @@ Begin VB.Form frmMainMenu
       Width           =   1170
    End
    Begin VB.Label version 
-      Alignment       =   1  'Right Justify
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
-      Caption         =   "Version de l'éditeur : 0.6"
       BeginProperty Font 
          Name            =   "Verdana"
          Size            =   6.75
@@ -258,10 +256,10 @@ Begin VB.Form frmMainMenu
          Strikethrough   =   0   'False
       EndProperty
       Height          =   180
-      Left            =   0
+      Left            =   150
       TabIndex        =   8
       Top             =   4800
-      Width           =   1875
+      Width           =   4005
    End
    Begin VB.Label status 
       Alignment       =   2  'Center
@@ -313,6 +311,7 @@ If Trim$(txtPassword.Text) <> vbNullString Then Check1.value = Checked Else Chec
 txtName.SelStart = Len(txtName.Text)
 status.ForeColor = vbRed
 status.Caption = "Recherche en cours..."
+version.Caption = "Version de l'éditeur : " & App.Major & "." & App.Minor & "." & App.Revision
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)

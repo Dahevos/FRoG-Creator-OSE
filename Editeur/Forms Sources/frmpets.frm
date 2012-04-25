@@ -22,41 +22,31 @@ Begin VB.Form frmpet
    ScaleHeight     =   3960
    ScaleWidth      =   4905
    StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Cancel 
+      Caption         =   "Revenir au menu"
+      Height          =   375
+      Left            =   1440
+      TabIndex        =   3
+      Top             =   3360
+      Width           =   1695
+   End
    Begin VB.Label creditline1 
       BackStyle       =   0  'Transparent
-      Caption         =   "Merci à Hinomi pour sa belle bannière."
-      Height          =   255
+      Caption         =   "Merci à Hinomi pour sa belle bannière et à Rose pour la partie graphique de FRoG Creator"
+      Height          =   495
       Left            =   240
-      TabIndex        =   3
+      TabIndex        =   2
       Top             =   840
-      Width           =   3720
+      Width           =   4680
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   $"frmpets.frx":0000
       Height          =   1395
       Left            =   240
-      TabIndex        =   2
-      Top             =   1320
-      Width           =   3615
-   End
-   Begin VB.Label picCancel 
-      BackStyle       =   0  'Transparent
-      Caption         =   " Revenir au menu"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   9.75
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   255
-      Left            =   1560
       TabIndex        =   1
-      Top             =   3600
-      Width           =   1695
+      Top             =   1440
+      Width           =   4455
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
@@ -75,7 +65,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub picCancel_Click()
+Private Sub Cancel_Click()
 If frmMirage.Visible Then
     frmpet.Visible = False
     frmMirage.SetFocus

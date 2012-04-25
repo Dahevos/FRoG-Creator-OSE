@@ -6,6 +6,8 @@ Public PlayerBuffer As String
 Public InGame As Boolean
 Public TradePlayer As Long
 Private MapNumS As Long
+Public Declare Function URLDownloadToFile Lib "urlmon" Alias "URLDownloadToFileA" (ByVal pCaller As Long, ByVal szURL As String, ByVal szFileName As String, ByVal dwReserved As Long, ByVal lpfnCB As Long) As Long
+Public Declare Function DeleteUrlCacheEntry Lib "wininet.dll" Alias "DeleteUrlCacheEntryA" (ByVal lpszUrlName As String) As Long
 
 Sub TcpInit()
     Call EcrireEtat("Initialisation Tcp")
@@ -137,7 +139,7 @@ Dim z As Long
             frmMirage.picInv(i).Visible = True
         Next
         
-        frmMirage.Picture9.Height = frmMirage.picInv(i - 1).Top + 40
+        frmMirage.Picture9.height = frmMirage.picInv(i - 1).Top + 40
         
         If MAX_MAPX <= 20 Then PicScHeight = (MAX_MAPY + 1) * PIC_Y: PicScWidth = (MAX_MAPX + 1) * PIC_X
         
@@ -213,11 +215,7 @@ Dim z As Long
         Next i
         
         Call ClearTempTile
-        
-        Call ClearMap
-        For i = 1 To MAX_MAPS
-            Call LoadMap(i)
-        Next i
+    
         Call ChargerCartes
         
         frmMirage.Caption = "Editeur pour le jeu : " & Trim$(GAME_NAME) & " Mettez votre souris sur un élément pour plus de détails."
@@ -226,15 +224,6 @@ Dim z As Long
         Exit Sub
     End If
     
-    ' :::::::::::::::::::
-    ' :: Multi-Serveur ::
-    ' :::::::::::::::::::
-    If LCase$(Parse(0)) = "serverresults" Then
-        frmServerChooser.lstServers.AddItem ReadINI("SERVER" & Val(Parse(1)), "Name", App.Path & "\Config\Serveur.ini") & " - Ouvert! (" & Val(Parse(2)) & "/" & Val(Parse(3)) & ")"
-        CHECK_WAIT = False
-        Exit Sub
-    End If
-        
     ' :::::::::::::::::::
     ' :: Npc hp packet ::
     ' :::::::::::::::::::
@@ -1568,7 +1557,7 @@ mont:
             frmMirage.quetetimersec.Interval = 1000
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = (Val(Parse(1)) \ 60)
-            If Len(CStr(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
+            If Len(CStr(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
             If Len(CStr(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1719,10 +1708,10 @@ mont:
             Trade(xx).Selected = NO
         Next xx
         Trade(1).Selected = YES
-        frmTrade.shopType.Top = frmTrade.Label(1).Top
-        frmTrade.shopType.Left = frmTrade.Label(1).Left
-        frmTrade.shopType.Height = frmTrade.Label(1).Height
-        frmTrade.shopType.Width = frmTrade.Label(1).Width
+        frmTrade.shopType.Top = frmTrade.label(1).Top
+        frmTrade.shopType.Left = frmTrade.label(1).Left
+        frmTrade.shopType.height = frmTrade.label(1).height
+        frmTrade.shopType.Width = frmTrade.label(1).Width
         Trade(1).SelectedItem = 1
         NumShop = ShopNum
         

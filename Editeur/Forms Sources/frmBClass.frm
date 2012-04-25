@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmBClass 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Bloquer une Classe"
@@ -159,7 +159,7 @@ Begin VB.Form frmBClass
       Begin VB.Label Label3 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Classe accepté:"
+         Caption         =   "Classe acceptée:"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -170,15 +170,15 @@ Begin VB.Form frmBClass
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   180
+         Left            =   105
          TabIndex        =   7
          Top             =   1560
-         Width           =   960
+         Width           =   1035
       End
       Begin VB.Label Label2 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Classe accepté:"
+         Caption         =   "Classe acceptée:"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -189,15 +189,15 @@ Begin VB.Form frmBClass
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   180
+         Left            =   105
          TabIndex        =   6
          Top             =   960
-         Width           =   960
+         Width           =   1035
       End
       Begin VB.Label Label1 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Classe accepté:"
+         Caption         =   "Classe acceptée:"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -208,10 +208,10 @@ Begin VB.Form frmBClass
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   180
+         Left            =   105
          TabIndex        =   5
          Top             =   360
-         Width           =   960
+         Width           =   1035
       End
       Begin VB.Label lblNum1 
          AutoSize        =   -1  'True
@@ -255,7 +255,7 @@ Private Sub cmdOk_Click()
 frmMirage.txtMyTextBox.SetFocus
 End Sub
 
-Private Sub form_Load()
+Private Sub Form_Load()
     lblNum1.Caption = scrlNum1.value & " - " & Trim$(Class(scrlNum1.value).name)
     lblNum2.Caption = scrlNum2.value & " - " & Trim$(Class(scrlNum2.value).name)
     lblNum3.Caption = scrlNum3.value & " - " & Trim$(Class(scrlNum3.value).name)

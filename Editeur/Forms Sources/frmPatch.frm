@@ -148,14 +148,14 @@ For i = 1 To 3000
     If Trim$(Fichier(i).nom) <= vbNullString Then MaxF = i - 1: Exit For
 Next i
 
-Call EcrireINI("VERSION", "Version", Trim$(vp.Text), App.Path & "\info.ini")
-Call EcrireINI("VERSION", "GameFileName", Trim$(nexe.Text), App.Path & "\info.ini")
-Call EcrireINI("VERSION", "Max", Trim$(CStr(MaxF)), App.Path & "\info.ini")
+Call WriteINI("VERSION", "Version", Trim$(vp.Text), App.Path & "\info.ini")
+Call WriteINI("VERSION", "GameFileName", Trim$(nexe.Text), App.Path & "\info.ini")
+Call WriteINI("VERSION", "Max", Trim$(CStr(MaxF)), App.Path & "\info.ini")
 
 For i = 1 To MaxF
-    Call EcrireINI("FILES", "FileName" & i, Fichier(i).nom, App.Path & "\info.ini")
-    Call EcrireINI("FILES", "FileVersion" & i, Fichier(i).version, App.Path & "\info.ini")
-    Call EcrireINI("FILES", "FilePath" & i, Fichier(i).Chemins, App.Path & "\info.ini")
+    Call WriteINI("FILES", "FileName" & i, Fichier(i).nom, App.Path & "\info.ini")
+    Call WriteINI("FILES", "FileVersion" & i, Fichier(i).version, App.Path & "\info.ini")
+    Call WriteINI("FILES", "FilePath" & i, Fichier(i).Chemins, App.Path & "\info.ini")
 Next i
 
 Unload Me

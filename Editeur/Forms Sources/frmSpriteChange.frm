@@ -141,7 +141,7 @@ Begin VB.Form frmSpriteChange
       End
       Begin VB.Label lblItem 
          AutoSize        =   -1  'True
-         Caption         =   "Aucuns Prix"
+         Caption         =   "Aucun Prix"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -155,7 +155,7 @@ Begin VB.Form frmSpriteChange
          Left            =   660
          TabIndex        =   11
          Top             =   780
-         Width           =   1200
+         Width           =   660
       End
       Begin VB.Label Label3 
          Alignment       =   1  'Right Justify
@@ -279,11 +279,11 @@ End Sub
 
 Private Sub Form_Load()
     scrlSprite.Max = MAX_DX_SPRITE
-    If SpritePic < scrlSprite.min Then SpritePic = scrlSprite.min
+    If SpritePic < scrlSprite.Min Then SpritePic = scrlSprite.Min
     scrlSprite.value = SpritePic
-    If SpriteItem < scrlItem.min Then SpriteItem = scrlItem.min
+    If SpriteItem < scrlItem.Min Then SpriteItem = scrlItem.Min
     scrlItem.value = SpriteItem
-    If SpritePrice < scrlCost.min Then SpritePrice = scrlCost.min
+    If SpritePrice < scrlCost.Min Then SpritePrice = scrlCost.Min
     scrlCost.value = SpritePrice
     
     Call scrlSprite_Change

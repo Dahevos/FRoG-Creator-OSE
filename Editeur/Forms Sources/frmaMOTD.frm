@@ -26,7 +26,6 @@ Begin VB.Form frmaMOTD
       MultiLine       =   -1  'True
       ScrollBars      =   2  'Vertical
       TabIndex        =   0
-      Text            =   "frmaMOTD.frx":0000
       Top             =   120
       Width           =   7815
    End
@@ -44,5 +43,10 @@ Call SendMOTDChange(motd.Text)
 Unload Me
 End Sub
 
+Private Sub Form_Load()
+motd.Text = "Bienvenue dans la version " & App.Major & "." & App.Minor & "." & App.Revision & " de FRoG Creator, si vous rencontrez un problème ou un bug veuillez le rapporter sur frogcreator.fr"
+End Sub
 
+Private Sub motd_Change()
 
+End Sub
