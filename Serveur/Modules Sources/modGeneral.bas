@@ -319,11 +319,11 @@ Dim f As Long
     If Trim$(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde")) <> vbNullString Then CouleurDesGuilde = Val(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde"))
         
     If PIC_PL = 1 And PIC_NPC1 = 1 And PIC_NPC2 = 0 Then
-    frmServer.petit.Value = True
-    frmServer.grand.Value = False
+    frmServer.petit.value = True
+    frmServer.grand.value = False
     Else
-    frmServer.grand.Value = True
-    frmServer.petit.Value = False
+    frmServer.grand.value = True
+    frmServer.petit.value = False
     End If
     
     'Scripting
@@ -526,6 +526,9 @@ Dim i As Long
     
     Call SetStatus("Sauvegarde des joueurs en ligne...")
     Call SaveAllPlayersOnline
+    
+    'Call SetStatus("Création d'un cache...")
+    'Call CacheCreate
     Call SetStatus("Nettoyage des cartes...")
     Call ClearMaps
     Call SetStatus("Nettoyage des objets sur les cartes...")
@@ -549,7 +552,7 @@ Dim i As Long
     Next i
 sock:
     
-    If frmServer.chkChat.Value = Checked Then
+    If frmServer.chkChat.value = Checked Then
         Call SetStatus("Sauvegarde des logs de tchat...")
         Call SaveLogs
     End If
@@ -674,13 +677,13 @@ Dim SpellSlot As Byte
             End If
             
             For X = 1 To MAX_MAP_NPCS
-                npcnum = MapNpc(Y, X).num
+                npcnum = MapNpc(Y, X).Num
                 
                 ' /////////////////////////////////////////
                 ' // This is used for ATTACKING ON SIGHT //
                 ' /////////////////////////////////////////
                 ' Make sure theres a npc with the map
-                If MapNpc(Y, X).num > 0 And PnjMove(X, Y) = True Then
+                If MapNpc(Y, X).Num > 0 And PnjMove(X, Y) = True Then
                     ' If the npc is a attack on sight, search for a player on the map
                     If Npc(npcnum).Behavior = NPC_BEHAVIOR_ATTACKONSIGHT Or Npc(npcnum).Behavior = NPC_BEHAVIOR_GUARD Then
                     
@@ -715,12 +718,12 @@ Dim SpellSlot As Byte
                             End If
                         Next i
                         For i = 1 To MAX_MAP_NPCS
-                            If MapNpc(Y, i).num > 0 And i <> X Then
-                                If Npc(MapNpc(Y, i).num).Behavior = IIf(Npc(MapNpc(Y, X).num).Behavior = NPC_BEHAVIOR_ATTACKONSIGHT, NPC_BEHAVIOR_GUARD, NPC_BEHAVIOR_ATTACKONSIGHT) Then
+                            If MapNpc(Y, i).Num > 0 And i <> X Then
+                                If Npc(MapNpc(Y, i).Num).Behavior = IIf(Npc(MapNpc(Y, X).Num).Behavior = NPC_BEHAVIOR_ATTACKONSIGHT, NPC_BEHAVIOR_GUARD, NPC_BEHAVIOR_ATTACKONSIGHT) Then
                                     DistanceX = Abs(MapNpc(Y, X).X - MapNpc(Y, i).X)
                                     DistanceY = Abs(MapNpc(Y, X).Y - MapNpc(Y, i).Y)
                                     
-                                    If DistanceX <= Npc(MapNpc(Y, X).num).Range And DistanceY <= Npc(MapNpc(Y, X).num).Range Then
+                                    If DistanceX <= Npc(MapNpc(Y, X).Num).Range And DistanceY <= Npc(MapNpc(Y, X).Num).Range Then
                                         MapNpc(Y, X).Target = i
                                         MapNpc(Y, X).TargetType = TARGET_TYPE_NPC
                                     End If
@@ -734,7 +737,7 @@ Dim SpellSlot As Byte
                 ' // This is used for NPC walking/targetting //
                 ' /////////////////////////////////////////////
                 ' Make sure theres a npc with the map
-                If MapNpc(Y, X).num > 0 And PnjMove(X, Y) = True Then
+                If MapNpc(Y, X).Num > 0 And PnjMove(X, Y) = True Then
                     Target = MapNpc(Y, X).Target
                     
                     ' Check to see if we are following a player or not
@@ -797,7 +800,7 @@ Dim SpellSlot As Byte
                 ' // This is used for npcs to attack players //
                 ' /////////////////////////////////////////////
                 ' Make sure theres a npc with the map
-                If MapNpc(Y, X).num > 0 And PnjMove(X, Y) = True Then
+                If MapNpc(Y, X).Num > 0 And PnjMove(X, Y) = True Then
                     Target = MapNpc(Y, X).Target
                     
                     ' Check if the npc can attack the targeted player player
@@ -818,17 +821,17 @@ Dim SpellSlot As Byte
                                         Call BattleMsg(Target, "Tu bloques/esquives le coup de " & Trim$(Npc(npcnum).Name), BrightCyan, 1)
                                     End If
                                 ElseIf CanNpcAttackPlayerWithSpell(X, Target, SpellSlot) Then
-                                    Call CastSpellTo(Target, Npc(MapNpc(Y, X).num).Spell(SpellSlot), X)
+                                    Call CastSpellTo(Target, Npc(MapNpc(Y, X).Num).Spell(SpellSlot), X)
                                 End If
                             Else
                                 ' Player left map or game, set target to 0
                                 MapNpc(Y, X).Target = 0
                             End If
                         ElseIf MapNpc(Y, X).TargetType = TARGET_TYPE_NPC Then
-                            If MapNpc(Y, X).num > 0 Then
+                            If MapNpc(Y, X).Num > 0 Then
                                 ' Can the npc attack the npc?
                                 If CanNPCAttackNPC(Y, X, Target) Then
-                                    Damage = Npc(npcnum).STR - Npc(MapNpc(Y, Target).num).def
+                                    Damage = Npc(npcnum).STR - Npc(MapNpc(Y, Target).Num).def
                                     If Damage > 0 Then Call NPCAttackNPC(Y, Damage, X, Target)
                                 End If
                             Else
@@ -843,7 +846,7 @@ Dim SpellSlot As Byte
                 ' // This is used for regenerating NPC's HP //
                 ' ////////////////////////////////////////////
                 ' Check to see if we want to regen some of the npc's hp
-                If MapNpc(Y, X).num > 0 And TickCount > GiveNPCHPTimer + 10000 Then
+                If MapNpc(Y, X).Num > 0 And TickCount > GiveNPCHPTimer + 10000 Then
                     If MapNpc(Y, X).HP > 0 Then
                         MapNpc(Y, X).HP = MapNpc(Y, X).HP + GetNpcHPRegen(npcnum)
                         MapNpc(Y, X).MP = MapNpc(Y, X).MP + GetNpcMPRegen(npcnum) + IIf(MapNpc(Y, X).Amelio.Timer >= GetTickCount, MapNpc(Y, X).Amelio.Power / 3, 0)
@@ -878,9 +881,9 @@ Dim SpellSlot As Byte
                 ' // This is used for spawning an NPC //
                 ' //////////////////////////////////////
                 ' Check if we are supposed to spawn an npc or not
-                If MapNpc(Y, X).num = 0 And Map(Y).Npc(X) > 0 Then If TickCount > MapNpc(Y, X).SpawnWait + (Npc(Map(Y).Npc(X)).SpawnSecs * 1000) Then Call SpawnNpc(X, Y)
-                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npchp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(Y, X).num) & END_CHAR)
-                If MapNpc(Y, X).num > 0 Then Call SendDataToMap(Y, "npcmp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).MP & SEP_CHAR & GetNpcMaxMP(MapNpc(Y, X).num) & END_CHAR)
+                If MapNpc(Y, X).Num = 0 And Map(Y).Npc(X) > 0 Then If TickCount > MapNpc(Y, X).SpawnWait + (Npc(Map(Y).Npc(X)).SpawnSecs * 1000) Then Call SpawnNpc(X, Y)
+                If MapNpc(Y, X).Num > 0 Then Call SendDataToMap(Y, "npchp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).HP & SEP_CHAR & GetNpcMaxHP(MapNpc(Y, X).Num) & END_CHAR)
+                If MapNpc(Y, X).Num > 0 Then Call SendDataToMap(Y, "npcmp" & SEP_CHAR & X & SEP_CHAR & MapNpc(Y, X).MP & SEP_CHAR & GetNpcMaxMP(MapNpc(Y, X).Num) & END_CHAR)
             Next X
             
         End If
@@ -983,11 +986,11 @@ If Trim$(GetVar(App.Path & "\Data.ini", "COULEURS", "MsgGuilde")) <> vbNullStrin
 frmOptCoul.Show vbModeless, frmServer
 End Sub
 
-Public Function ValidTarget(ByVal Value As Long, ByVal MapNum As Long, ByVal TType As Byte) As Boolean
+Public Function ValidTarget(ByVal value As Long, ByVal MapNum As Long, ByVal TType As Byte) As Boolean
     Select Case TType
-        Case TARGET_TYPE_PLAYER: If Value > 0 And Value <= MAX_PLAYERS Then If IsPlaying(Value) And GetPlayerMap(Value) = MapNum Then ValidTarget = True
-        Case TARGET_TYPE_NPC: If Value > 0 And Value < MAX_MAP_NPCS Then If MapNpc(MapNum, Value).num > 0 Then ValidTarget = True
-        Case TARGET_TYPE_CASE: If Value >= 0 And Value <= (MAX_MAPX + 1) * (MAX_MAPY + 1) Then ValidTarget = True
+        Case TARGET_TYPE_PLAYER: If value > 0 And value <= MAX_PLAYERS Then If IsPlaying(value) And GetPlayerMap(value) = MapNum Then ValidTarget = True
+        Case TARGET_TYPE_NPC: If value > 0 And value < MAX_MAP_NPCS Then If MapNpc(MapNum, value).Num > 0 Then ValidTarget = True
+        Case TARGET_TYPE_CASE: If value >= 0 And value <= (MAX_MAPX + 1) * (MAX_MAPY + 1) Then ValidTarget = True
     End Select
 End Function
 
@@ -1003,9 +1006,9 @@ If MapNpc(Map, MapNpc1).X = MapNpc(Map, MapNpc2).X And MapNpc(Map, MapNpc1).Y + 
 If MapNpc(Map, MapNpc1).X + 1 = MapNpc(Map, MapNpc2).X And MapNpc(Map, MapNpc1).Y = MapNpc(Map, MapNpc2).Y Then NpcBeside = True: Exit Function
 End Function
 
-Public Sub SelectMoveNpc(ByVal Value As Byte, ByVal MapNum As Long, ByVal MapNpcNum As Long, ByVal Index As Long, ByVal IndexType As Long, DidWalk As Boolean)
+Public Sub SelectMoveNpc(ByVal value As Byte, ByVal MapNum As Long, ByVal MapNpcNum As Long, ByVal Index As Long, ByVal IndexType As Long, DidWalk As Boolean)
 Dim i As Byte, TmpX As Byte, TmpY As Byte
-Select Case Value
+Select Case value
     Case 0
         If IndexType = TARGET_TYPE_PLAYER Then
             ' Up
@@ -1223,12 +1226,12 @@ Dim npcnum As Integer
     If MapNpcNumAtt <= 0 Or MapNpcNumAtt > MAX_MAP_NPCS Or MapNpcNumDef <= 0 Or MapNpcNumDef > MAX_MAP_NPCS Then Exit Function
         
     ' Check for subscript out of range
-    If MapNpc(MapNum, MapNpcNumAtt).num <= 0 Or MapNpc(MapNum, MapNpcNumAtt).num > MAX_NPCS Or MapNpc(MapNum, MapNpcNumDef).num <= 0 Or MapNpc(MapNum, MapNpcNumDef).num > MAX_NPCS Then Exit Function
+    If MapNpc(MapNum, MapNpcNumAtt).Num <= 0 Or MapNpc(MapNum, MapNpcNumAtt).Num > MAX_NPCS Or MapNpc(MapNum, MapNpcNumDef).Num <= 0 Or MapNpc(MapNum, MapNpcNumDef).Num > MAX_NPCS Then Exit Function
     
-    npcnum = MapNpc(MapNum, MapNpcNumAtt).num
+    npcnum = MapNpc(MapNum, MapNpcNumAtt).Num
     
     ' Make sure the npc isn't already dead
-    If MapNpc(MapNum, MapNpcNumAtt).HP <= 0 And CLng(Npc(npcnum).Inv) = 0 Or MapNpc(MapNum, MapNpcNumDef).HP <= 0 And CLng(Npc(MapNpc(MapNum, MapNpcNumDef).num).Inv) = 0 Then Exit Function
+    If MapNpc(MapNum, MapNpcNumAtt).HP <= 0 And CLng(Npc(npcnum).Inv) = 0 Or MapNpc(MapNum, MapNpcNumDef).HP <= 0 And CLng(Npc(MapNpc(MapNum, MapNpcNumDef).Num).Inv) = 0 Then Exit Function
         
     ' Make sure npcs dont attack more then once a second
     If GetTickCount < MapNpc(MapNum, MapNpcNumAtt).AttackTimer + 1000 Then Exit Function
@@ -1255,8 +1258,8 @@ Exit Function
 er:
 CanNPCAttackNPC = False
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).num & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
-If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).num & ")par un PNJ(" & npcnum & ")", BrightRed, True)
+Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & npcnum & ")", BrightRed, True)
 End Function
 
 Sub NPCAttackNPC(ByVal MapNum As Integer, ByVal Damage As Integer, ByVal MapNpcNumAtt As Byte, ByVal MapNpcNumDef As Byte)
@@ -1266,7 +1269,7 @@ Dim AttNpcNum As Integer, DefNpcNum As Integer
     
     ' Check for subscript out of range
     If MapNpcNumDef <= 0 Or MapNpcNumDef > MAX_MAP_NPCS Or MapNpcNumAtt <= 0 Or MapNpcNumAtt > MAX_MAP_NPCS Or Damage < 0 Then Exit Sub
-    If MapNpc(MapNum, MapNpcNumDef).num <= 0 Or MapNpc(MapNum, MapNpcNumAtt).num <= 0 Then Exit Sub
+    If MapNpc(MapNum, MapNpcNumDef).Num <= 0 Or MapNpc(MapNum, MapNpcNumAtt).Num <= 0 Then Exit Sub
 
     ' Send this packet so they can see the person attacking
     Call SendDataToMap(MapNum, "NPCATTACKNPC" & SEP_CHAR & MapNpcNumAtt & END_CHAR)
@@ -1274,7 +1277,7 @@ Dim AttNpcNum As Integer, DefNpcNum As Integer
     If Damage >= MapNpc(MapNum, MapNpcNumDef).HP Then
         
         ' Now set HP to 0 so we know to actually kill them in the server loop (this prevents subscript out of range)
-        MapNpc(MapNum, MapNpcNumDef).num = 0
+        MapNpc(MapNum, MapNpcNumDef).Num = 0
         MapNpc(MapNum, MapNpcNumDef).SpawnWait = GetTickCount
         MapNpc(MapNum, MapNpcNumDef).HP = 0
         Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNumDef & END_CHAR)
@@ -1296,8 +1299,8 @@ Exit Sub
 er:
 On Error Resume Next
 
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
-If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).num & ")", BrightRed, True)
+Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).Num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).Num & ")", BrightRed, True)
 End Sub
 'Script Hotel de ventes par Horace
 Public Sub HdvCmd(ByVal Index As Long, ByVal s As String)
@@ -1336,8 +1339,8 @@ Dim Parse() As String, Answer As Integer
                             PlayerMsg Index, "Le nombre d'arguments fournit à " & Parse(0) & " n'est pas bon.", 4
                         End If
                     Else
-                        If Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).num > 0 Then
-                            Answer = HotelDeVente.AddVente(Index, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).num, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Value, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Dur, True)
+                        If Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Num > 0 Then
+                            Answer = HotelDeVente.AddVente(Index, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Num, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).value, Player(Index).Char(Player(Index).CharNum).Inv(Val(Parse(1))).Dur, True)
                             PlayerMsg Index, "Votre vente a bien été effectué.", Green
                             PlayerMsg Index, "Veuillez prendre note du numéro " & Answer, White
                             PlayerMsg Index, "Il sera utile si vous souhaitez annuler votre vente.", White

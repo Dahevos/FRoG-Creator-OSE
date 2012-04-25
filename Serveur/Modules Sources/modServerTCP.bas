@@ -203,10 +203,10 @@ Dim Packet As String
     If Index > 0 And Index < MAX_PLAYERS Then If IsPlaying(Index) Then Call AffIBMsg(Index, "ATTENTION : Un joueur a reçu un message d'alerte!!(Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & " Message : " & Msg & ").", BrightRed, True)
 End Sub
 
-Sub PlainMsg(ByVal Index As Long, ByVal Msg As String, ByVal num As Long)
+Sub PlainMsg(ByVal Index As Long, ByVal Msg As String, ByVal Num As Long)
 Dim Packet As String
 
-    Packet = "PLAINMSG" & SEP_CHAR & Msg & SEP_CHAR & num & END_CHAR
+    Packet = "PLAINMSG" & SEP_CHAR & Msg & SEP_CHAR & Num & END_CHAR
     
     Call SendDataTo(Index, Packet)
 End Sub
@@ -921,18 +921,18 @@ Player(Index).sync = True
                         If CanAttackNpc(Index, i) Then
                             ' Get the damage we can do
                             If Not CanPlayerCriticalHit(Index) Then
-                                Damage = GetPlayerDamage(Index) - (Npc(MapNpc(GetPlayerMap(Index), i).num).def \ 2)
+                                Damage = GetPlayerDamage(Index) - (Npc(MapNpc(GetPlayerMap(Index), i).Num).def \ 2)
                                 Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "attack" & END_CHAR)
                             Else
                                 n = GetPlayerDamage(Index)
-                                Damage = n + Int(Rnd * (n \ 2)) + 1 - (Npc(MapNpc(GetPlayerMap(Index), i).num).def \ 2)
+                                Damage = n + Int(Rnd * (n \ 2)) + 1 - (Npc(MapNpc(GetPlayerMap(Index), i).Num).def \ 2)
                                 Call BattleMsg(Index, "Vous faîtes un coup critique !", BrightCyan, 0)
                                 Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "critical" & END_CHAR)
                             End If
                             
                             If Damage > 0 Then
                                 Call AttackNpc(Index, i, Damage)
-                                If CLng(Npc(MapNpc(GetPlayerMap(Index), i).num).Inv) = 0 Then Call SendDataTo(Index, "BLITPLAYERDMG" & SEP_CHAR & Damage & SEP_CHAR & i & SEP_CHAR & 0 & END_CHAR)
+                                If CLng(Npc(MapNpc(GetPlayerMap(Index), i).Num).Inv) = 0 Then Call SendDataTo(Index, "BLITPLAYERDMG" & SEP_CHAR & Damage & SEP_CHAR & i & SEP_CHAR & 0 & END_CHAR)
                             Else
                                 Call BattleMsg(Index, "Votre attaque n'occasionne aucun dégât.", BrightRed, 0)
                                 Call SendDataTo(Index, "BLITPLAYERDMG" & SEP_CHAR & Damage & SEP_CHAR & i & SEP_CHAR & 0 & END_CHAR)
@@ -992,11 +992,11 @@ Player(Index).sync = True
                         If CanAttackNpcWithArrow(Index, z) Then
                             ' Quels dommages peut on faire ?
                             If Not CanPlayerCriticalHit(Index) Then
-                                Damage = GetPlayerDamage(Index) - Int(Npc(MapNpc(GetPlayerMap(Index), z).num).def / 2)
+                                Damage = GetPlayerDamage(Index) - Int(Npc(MapNpc(GetPlayerMap(Index), z).Num).def / 2)
                                 Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "attack" & END_CHAR)
                             Else
                                 n = GetPlayerDamage(Index)
-                                Damage = n + Int(Rnd * Int(n / 2)) + 1 - Int(Npc(MapNpc(GetPlayerMap(Index), z).num).def / 2)
+                                Damage = n + Int(Rnd * Int(n / 2)) + 1 - Int(Npc(MapNpc(GetPlayerMap(Index), z).Num).def / 2)
                                 Call BattleMsg(Index, "Vous sentez une grande énergie quand vous tirez!", BrightCyan, 0)
                                 Call SendDataToMap(GetPlayerMap(Index), "sound" & SEP_CHAR & "critical" & END_CHAR)
                             End If
@@ -1527,6 +1527,7 @@ Player(Index).sync = True
                                         Call PlayerMsg(Index, "Votre vitesse n'est pas suffisante pour ceci!  Vitesse requise (" & n3 & ")", BrightRed)
                                         Exit Sub
                                     End If
+                                    Call MyScript.ExecuteStatement("Scripts\Main.txt", "OnArmorUse" & Index)
                                     Call SetPlayerArmorSlot(Index, InvNum)
                                 Else
                                     Call SetPlayerArmorSlot(Index, 0)
@@ -1553,6 +1554,7 @@ Player(Index).sync = True
                                     Call PutVar(App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini", "CHAR" & Player(Index).CharNum, "monture", GetPlayerSprite(Index))
                                     n = item(GetPlayerInvItemNum(Index, InvNum)).data1
                                     Call SetPlayerSprite(Index, n)
+                                    Call MyScript.ExecuteStatement("Scripts\Main.txt", "OnMontureUse" & Index)
                                     Call SendPlayerData(Index)
                                 Else
                                     Call SetPlayerArmorSlot(Index, 0)
@@ -1577,6 +1579,7 @@ Player(Index).sync = True
                                         Exit Sub
                                     End If
                                     Call SetPlayerWeaponSlot(Index, InvNum)
+                                    Call MyScript.ExecuteStatement("Scripts\Main.txt", "OnWeaponUse" & Index)
                                 Else
                                     Call SetPlayerWeaponSlot(Index, 0)
                                 End If
@@ -1599,6 +1602,7 @@ Player(Index).sync = True
                                         Exit Sub
                                     End If
                                     Call SetPlayerHelmetSlot(Index, InvNum)
+                                    Call MyScript.ExecuteStatement("Scripts\Main.txt", "OnHelmetUse" & Index)
                                 Else
                                     Call SetPlayerHelmetSlot(Index, 0)
                                 End If
@@ -1621,6 +1625,7 @@ Player(Index).sync = True
                                         Exit Sub
                                     End If
                                     Call SetPlayerShieldSlot(Index, InvNum)
+                                    Call MyScript.ExecuteStatement("Scripts\Main.txt", "OnShieldUse" & Index)
                                 Else
                                     Call SetPlayerShieldSlot(Index, 0)
                                 End If
@@ -1629,7 +1634,7 @@ Player(Index).sync = True
                         
                             Case ITEM_TYPE_SCRIPT
                                 n = item(GetPlayerInvItemNum(Index, InvNum)).data1
-                                If item(Player(Index).Char(CharNum).Inv(InvNum).num).data2 = 1 Then Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                If item(Player(Index).Char(CharNum).Inv(InvNum).Num).data2 = 1 Then Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 MyScript.ExecuteStatement "Scripts\Main.txt", "ScriptedTile " & Index & "," & Val(n)
                             
                             Case ITEM_TYPE_PET
@@ -1644,33 +1649,33 @@ Player(Index).sync = True
                                 Call SendWornEquipment(Index)
                                 
                             Case ITEM_TYPE_POTIONADDHP
-                                Call SetPlayerHP(Index, GetPlayerHP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerHP(Index, GetPlayerHP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendHP(Index)
                             
                             Case ITEM_TYPE_POTIONADDMP
-                                Call SetPlayerMP(Index, GetPlayerMP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerMP(Index, GetPlayerMP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendMP(Index)
                     
                             Case ITEM_TYPE_POTIONADDSP
-                                Call SetPlayerSP(Index, GetPlayerSP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerSP(Index, GetPlayerSP(Index) + item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendSP(Index)
             
                             Case ITEM_TYPE_POTIONSUBHP
-                                Call SetPlayerHP(Index, GetPlayerHP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerHP(Index, GetPlayerHP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendHP(Index)
                             
                             Case ITEM_TYPE_POTIONSUBMP
-                                Call SetPlayerMP(Index, GetPlayerMP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerMP(Index, GetPlayerMP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendMP(Index)
                     
                             Case ITEM_TYPE_POTIONSUBSP
-                                Call SetPlayerSP(Index, GetPlayerSP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).num).data1)
-                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).num, mi)
+                                Call SetPlayerSP(Index, GetPlayerSP(Index) - item(Player(Index).Char(CharNum).Inv(InvNum).Num).data1)
+                                Call TakeItem(Index, Player(Index).Char(CharNum).Inv(InvNum).Num, mi)
                                 Call SendSP(Index)
                                 
                             Case ITEM_TYPE_KEY
@@ -2895,7 +2900,7 @@ Player(Index).sync = True
                     End If
                     Exit Sub
                 Case "fixitem"
-                    Dim D As Currency
+                    Dim d As Currency
                     ' Inv num
                     n = Val(Parse(1))
                     ' Make sure its a equipable item
@@ -2905,16 +2910,16 @@ Player(Index).sync = True
                     End If
                     ' Now check the rate of pay
                     ItemNum = GetPlayerInvItemNum(Index, n)
-                    D = item(GetPlayerInvItemNum(Index, n)).data2 / 5
+                    d = item(GetPlayerInvItemNum(Index, n)).data2 / 5
                     DurNeeded = item(ItemNum).data1 - GetPlayerInvItemDur(Index, n)
-                    GoldNeeded = (DurNeeded * D \ 2)
+                    GoldNeeded = (DurNeeded * d \ 2)
                     If GoldNeeded <= 0 Then GoldNeeded = 1
                     
                     ' Check if they even need it repaired
                     If DurNeeded <= 0 Then Call PlainMsg(Index, "Cette objets est en parfait état!", 6): Exit Sub
                             
                     ' Check if they have enough for at least one point
-                    If HasItem(Index, Val(Parse(2))) >= D Then
+                    If HasItem(Index, Val(Parse(2))) >= d Then
                         ' Check if they have enough for a total restoration
                         If HasItem(Index, Val(Parse(2))) >= GoldNeeded Then
                             Call TakeItem(Index, Val(Parse(2)), GoldNeeded)
@@ -2922,8 +2927,8 @@ Player(Index).sync = True
                             Call PlainMsg(Index, "Cette objet a totalement été réparé pour " & GoldNeeded & Trim$(item(Val(Parse(2))).Name), 6)
                         Else
                             ' They dont so restore as much as we can
-                            DurNeeded = (HasItem(Index, Val(Parse(2))) \ D)
-                            GoldNeeded = Int(DurNeeded * D \ 2)
+                            DurNeeded = (HasItem(Index, Val(Parse(2))) \ d)
+                            GoldNeeded = Int(DurNeeded * d \ 2)
                             If GoldNeeded <= 0 Then GoldNeeded = 1
                             Call TakeItem(Index, Val(Parse(2)), GoldNeeded)
                             Call SetPlayerInvItemDur(Index, n, GetPlayerInvItemDur(Index, n) + DurNeeded)
@@ -2971,12 +2976,12 @@ Player(Index).sync = True
                     
                     ' Check for an npc
                     For i = 1 To MAX_MAP_NPCS
-                        If MapNpc(GetPlayerMap(Index), i).num > 0 Then
+                        If MapNpc(GetPlayerMap(Index), i).Num > 0 Then
                             If MapNpc(GetPlayerMap(Index), i).X = X And MapNpc(GetPlayerMap(Index), i).Y = Y Then
                                 ' Change target
                                 Player(Index).Target = i
                                 Player(Index).TargetType = TARGET_TYPE_NPC
-                                Call PlayerMsg(Index, "Votre cible est maintenant " & Trim$(Npc(MapNpc(GetPlayerMap(Index), i).num).Name) & ".", Yellow)
+                                Call PlayerMsg(Index, "Votre cible est maintenant " & Trim$(Npc(MapNpc(GetPlayerMap(Index), i).Num).Name) & ".", Yellow)
                                 Exit Sub
                             End If
                         End If
@@ -2984,9 +2989,9 @@ Player(Index).sync = True
                     
                     ' Check for an item
                     For i = 1 To MAX_MAP_ITEMS
-                        If MapItem(GetPlayerMap(Index), i).num > 0 Then
+                        If MapItem(GetPlayerMap(Index), i).Num > 0 Then
                             If MapItem(GetPlayerMap(Index), i).X = X And MapItem(GetPlayerMap(Index), i).Y = Y Then
-                                Call PlayerMsg(Index, "Vous voyez un " & Trim$(item(MapItem(GetPlayerMap(Index), i).num).Name) & ".", Yellow)
+                                Call PlayerMsg(Index, "Vous voyez un " & Trim$(item(MapItem(GetPlayerMap(Index), i).Num).Name) & ".", Yellow)
                                 Exit Sub
                             End If
                         End If
@@ -3650,7 +3655,7 @@ Dim i As Long
 
     Packet = "MAPITEMDATA" & SEP_CHAR
     For i = 1 To MAX_MAP_ITEMS
-        If MapNum > 0 Then Packet = Packet & MapItem(MapNum, i).num & SEP_CHAR & MapItem(MapNum, i).value & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & MapItem(MapNum, i).X & SEP_CHAR & MapItem(MapNum, i).Y & SEP_CHAR
+        If MapNum > 0 Then Packet = Packet & MapItem(MapNum, i).Num & SEP_CHAR & MapItem(MapNum, i).value & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & MapItem(MapNum, i).X & SEP_CHAR & MapItem(MapNum, i).Y & SEP_CHAR
     Next i
     Packet = Packet & END_CHAR
     
@@ -3663,7 +3668,7 @@ Dim i As Long
 
     Packet = "MAPITEMDATA" & SEP_CHAR
     For i = 1 To MAX_MAP_ITEMS
-        Packet = Packet & MapItem(MapNum, i).num & SEP_CHAR & MapItem(MapNum, i).value & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & MapItem(MapNum, i).X & SEP_CHAR & MapItem(MapNum, i).Y & SEP_CHAR
+        Packet = Packet & MapItem(MapNum, i).Num & SEP_CHAR & MapItem(MapNum, i).value & SEP_CHAR & MapItem(MapNum, i).Dur & SEP_CHAR & MapItem(MapNum, i).X & SEP_CHAR & MapItem(MapNum, i).Y & SEP_CHAR
     Next i
     Packet = Packet & END_CHAR
     
@@ -3676,7 +3681,7 @@ Dim i As Long
 
     Packet = "MAPNPCDATA" & SEP_CHAR
     For i = 1 To MAX_MAP_NPCS
-        If MapNum > 0 Then Packet = Packet & MapNpc(MapNum, i).num & SEP_CHAR & MapNpc(MapNum, i).X & SEP_CHAR & MapNpc(MapNum, i).Y & SEP_CHAR & MapNpc(MapNum, i).Dir & SEP_CHAR
+        If MapNum > 0 Then Packet = Packet & MapNpc(MapNum, i).Num & SEP_CHAR & MapNpc(MapNum, i).X & SEP_CHAR & MapNpc(MapNum, i).Y & SEP_CHAR & MapNpc(MapNum, i).Dir & SEP_CHAR
     Next i
     Packet = Packet & END_CHAR
     
@@ -3689,7 +3694,7 @@ Dim i As Long
 
     Packet = "MAPNPCDATA" & SEP_CHAR
     For i = 1 To MAX_MAP_NPCS
-        Packet = Packet & MapNpc(MapNum, i).num & SEP_CHAR & MapNpc(MapNum, i).X & SEP_CHAR & MapNpc(MapNum, i).Y & SEP_CHAR & MapNpc(MapNum, i).Dir & SEP_CHAR
+        Packet = Packet & MapNpc(MapNum, i).Num & SEP_CHAR & MapNpc(MapNum, i).X & SEP_CHAR & MapNpc(MapNum, i).Y & SEP_CHAR & MapNpc(MapNum, i).Dir & SEP_CHAR
     Next i
     Packet = Packet & END_CHAR
     

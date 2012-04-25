@@ -36,3 +36,4 @@
 #include <NewChar.txt>
 #include <UseChar.txt>
 #include <KillNPC.txt>
+#include <UseItem.txt>

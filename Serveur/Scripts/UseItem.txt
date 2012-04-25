@@ -1,0 +1,19 @@
+Sub OnArmorUse(index)
+
+End Sub
+
+Sub OnMontureUse(index)
+
+End Sub
+
+Sub OnWeaponUse(index)
+
+End Sub
+
+Sub OnHelmetUse(index)
+
+End Sub
+
+Sub OnShieldUse(index)
+
+End Sub
