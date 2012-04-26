@@ -262,41 +262,51 @@ Public Sub UnloadTextures()
 End Sub
 Sub PrepareSprite(i As Long)
 If SpriteUsed(i) = False Then
+If FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
 Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
 SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
 SpriteUsed(i) = True
+End If
 End If
 SpriteTimer(i) = GetTickCount
 End Sub
 Sub PrepareSpell(i As Long)
 If SpellUsed(i) = False Then
+If FileExiste("\GFX\Spells\Spells" & i & ".png") Then
 Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
 SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
 SpellUsed(i) = True
+End If
 End If
 SpellTimer(i) = GetTickCount
 End Sub
 Sub PrepareBigSpell(i As Long)
 If BigSpellUsed(i) = False Then
+If FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
 Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
 SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
 BigSpellUsed(i) = True
+End If
 End If
 BigSpellTimer(i) = GetTickCount
 End Sub
 Sub PreparePaperDoll(i As Long)
 If PaperDollUsed(i) = False Then
+If FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
 Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
 SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
 PaperDollUsed(i) = True
+End If
 End If
 PaperDollTimer(i) = GetTickCount
 End Sub
 Sub PreparePet(i As Long)
 If PetUsed(i) = False Then
+If FileExiste("\GFX\Pets\Pet" & i & ".png") Then
 Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
 SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
 PetUsed(i) = True
+End If
 End If
 PetTimer(i) = GetTickCount
 End Sub

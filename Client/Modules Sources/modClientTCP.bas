@@ -1455,7 +1455,7 @@ mont:
     End If
     
     If (LCase$(Parse(0)) = "finquete") Then
-        Call MsgBox("Bravo!! vous venez de finir la quete : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourner voir celui qui vous la donnez pour avoir vos récompenses")
+        Call MsgBox("Bravo! vous venez de finir la quete : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourner voir celui qui vous la donnez pour avoir vos récompenses")
         frmMirage.quetetimersec.Enabled = False
         frmMirage.tmpsquete.Visible = False
         Exit Sub
@@ -1469,7 +1469,7 @@ mont:
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = Val(Parse(1)) \ 60
             frmMirage.tmpsquete.Visible = True
-            If Len(STR$(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
+            If Len(STR$(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
             If Len(STR$(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1763,12 +1763,12 @@ mont:
     End If
     
     If LCase$(Parse(0)) = "sendchat" Then
-        Dim S As String
+        Dim s As String
   
-        S = vbNewLine & GetPlayerName(Val(Parse(2))) & "> " & Trim$(Parse(1))
+        s = vbNewLine & GetPlayerName(Val(Parse(2))) & "> " & Trim$(Parse(1))
         frmPlayerChat.txtChat.SelStart = Len(frmPlayerChat.txtChat.Text)
         frmPlayerChat.txtChat.SelColor = QBColor(Brown)
-        frmPlayerChat.txtChat.SelText = S
+        frmPlayerChat.txtChat.SelText = s
         frmPlayerChat.txtChat.SelStart = Len(frmPlayerChat.txtChat.Text) - 1
         Exit Sub
     End If
@@ -1780,8 +1780,8 @@ mont:
     ' :: Play Sound Packet ::
     ' :::::::::::::::::::::::
     If LCase$(Parse(0)) = "sound" Then
-        S = LCase$(Parse(1))
-        Select Case Trim$(S)
+        s = LCase$(Parse(1))
+        Select Case Trim$(s)
             Case "attack"
                 Call PlaySound("sword.wav")
             Case "critical"
