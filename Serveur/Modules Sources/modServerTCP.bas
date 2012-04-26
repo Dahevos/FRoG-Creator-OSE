@@ -1807,16 +1807,16 @@ Player(Index).sync = True
                             Select Case PointType
                                 Case 0
                                     Call SetPlayerStr(Index, Player(Index).Char(Player(Index).CharNum).STR + 1)
-                                    Call BattleMsg(Index, "Vous avez gagner plus de force!", 15, 0)
+                                    Call BattleMsg(Index, "Vous avez gagné plus de force!", 15, 0)
                                 Case 1
                                     Call SetPlayerDEF(Index, Player(Index).Char(Player(Index).CharNum).def + 1)
-                                    Call BattleMsg(Index, "Vous avez gagner plus de défense!", 15, 0)
+                                    Call BattleMsg(Index, "Vous avez gagné plus de défense!", 15, 0)
                                 Case 2
                                     Call SetPlayerMAGI(Index, Player(Index).Char(Player(Index).CharNum).magi + 1)
-                                    Call BattleMsg(Index, "Vous avez gagner plus de magie!", 15, 0)
+                                    Call BattleMsg(Index, "Vous avez gagné plus de magie!", 15, 0)
                                 Case 3
                                     Call SetPlayerSPEED(Index, Player(Index).Char(Player(Index).CharNum).Speed + 1)
-                                    Call BattleMsg(Index, "Vous avez gagner plus de vitesse!", 15, 0)
+                                    Call BattleMsg(Index, "Vous avez gagné plus de vitesse!", 15, 0)
                             End Select
                             Call SetPlayerPOINTS(Index, GetPlayerPOINTS(Index) - 1)
                         End If
@@ -2314,7 +2314,7 @@ Player(Index).sync = True
                     Player(Index).Char(Player(Index).CharNum).metier = Val(Parse(1))
                     Player(Index).Char(Player(Index).CharNum).MetierLvl = 1
                     Player(Index).Char(Player(Index).CharNum).MetierExp = 0
-                    Call PlayerMsg(Index, "Vous avez oublier votre métier puis appris un nouveau métier.", Green)
+                    Call PlayerMsg(Index, "Vous avez oublié votre métier puis appris un nouveau métier.", Green)
                     Exit Sub
                     
                 Case "envmap"
@@ -2333,7 +2333,7 @@ Player(Index).sync = True
                             If GetPlayerAccess(n) <= GetPlayerAccess(Index) Then
                                 Call GlobalMsg(GetPlayerName(n) & " a été deconnecté de " & GAME_NAME & " par " & GetPlayerName(Index) & "!", White)
                                 Call AddLog(GetPlayerName(Index) & " a déconnecté(kicker) " & GetPlayerName(n) & ".", ADMIN_LOG)
-                                Call AlertMsg(n, "Vous avez été kicker par " & GetPlayerName(Index) & "!")
+                                Call AlertMsg(n, "Vous avez été banni par " & GetPlayerName(Index) & "!")
                                 Call IBMsg(GetPlayerName(Index) & " a déconnecté(kicker) " & GetPlayerName(n) & ".", IBCAdmin)
                             Else
                                 Call PlayerMsg(Index, "Cette personne possède un accès supérieur au votre!", White)

@@ -1494,7 +1494,7 @@ Dim MapNum As Long
         Call SendHP(Victim)
         
         ' Say damage
-        Call BattleMsg(Victim, "Vous avez subi " & Damage & " dommage.", BrightRed, 1)
+        Call BattleMsg(Victim, "Vous avez subi " & Damage & " dommages.", BrightRed, 1)
     End If
     
     Call SendDataTo(Victim, "BLITNPCDMG" & SEP_CHAR & Damage & SEP_CHAR & 0 & END_CHAR)
@@ -1579,7 +1579,7 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
                         Player(Attacker).Char(Player(Attacker).CharNum).MetierExp = Player(Attacker).Char(Player(Attacker).CharNum).MetierExp + metier(n).data(InMetier(n, npcnum), 1)
                         Call BattleMsg(Attacker, "(Metier) Vous avez gagné " & metier(n).data(InMetier(n, npcnum), 1) & " pts d'expérience.", BrightBlue, 0)
                     Else
-                        Call BattleMsg(Attacker, "(Metier) Vous ne pouver plus gagnez d'expérience", BrightBlue, 0)
+                        Call BattleMsg(Attacker, "(Metier) Vous ne pouver plus gagner d'expérience", BrightBlue, 0)
                     End If
                 End If
             End If
@@ -1627,7 +1627,7 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
                     Call BattleMsg(n, "Vous ne pouvez pas gagner plus d'expérience!", BrightBlue, 0)
                 Else
                     Call SetPlayerExp(n, GetPlayerExp(n) + ExpG)
-                    Call BattleMsg(n, "Vous avez gagné " & ExpG & " pts d'expérience (groupe).", BrightBlue, 0)
+                    Call BattleMsg(n, "Vous avez gagné " & ExpG & " points d'expérience (groupe).", BrightBlue, 0)
                 End If
             Next X
         End If

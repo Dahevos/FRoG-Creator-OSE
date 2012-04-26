@@ -215,8 +215,8 @@ Type IndRec
 End Type
 
 Type PlayerInvRec
-    num As Long
-    Value As Long
+    Num As Long
+    value As Long
     Dur As Long
 End Type
 
@@ -527,8 +527,8 @@ Type ItemRec
 End Type
 
 Type MapItemRec
-    num As Long
-    Value As Long
+    Num As Long
+    value As Long
     Dur As Long
     
     X As Byte
@@ -571,7 +571,7 @@ Type AmelioRec
 End Type
 
 Type MapNpcRec
-    num As Long
+    Num As Long
     
     Target As Long
     TargetType As Byte
@@ -601,7 +601,7 @@ Type TradeItemRec
 End Type
 
 Type TradeItemsRec
-    Value(1 To MAX_TRADES) As TradeItemRec
+    value(1 To MAX_TRADES) As TradeItemRec
 End Type
 
 Type ShopRec
@@ -819,8 +819,8 @@ With Player(Index)
         .Char(i).magi = 0
         
         For n = 1 To MAX_INV
-            .Char(i).Inv(n).num = 0
-            .Char(i).Inv(n).Value = 0
+            .Char(i).Inv(n).Num = 0
+            .Char(i).Inv(n).value = 0
             .Char(i).Inv(n).Dur = 0
         Next n
         
@@ -923,8 +923,8 @@ With Player(Index)
     .Char(CharNum).magi = 0
     
     For n = 1 To MAX_INV
-        .Char(CharNum).Inv(n).num = 0
-        .Char(CharNum).Inv(n).Value = 0
+        .Char(CharNum).Inv(n).Num = 0
+        .Char(CharNum).Inv(n).value = 0
         .Char(CharNum).Inv(n).Dur = 0
     Next n
     
@@ -1097,8 +1097,8 @@ Dim i As Long
 End Sub
 
 Sub ClearMapItem(ByVal Index As Long, ByVal MapNum As Long)
-    MapItem(MapNum, Index).num = 0
-    MapItem(MapNum, Index).Value = 0
+    MapItem(MapNum, Index).Num = 0
+    MapItem(MapNum, Index).value = 0
     MapItem(MapNum, Index).Dur = 0
     MapItem(MapNum, Index).X = 0
     MapItem(MapNum, Index).Y = 0
@@ -1117,7 +1117,7 @@ End Sub
 
 Sub ClearMapNpc(ByVal Index As Long, ByVal MapNum As Long)
 With MapNpc(MapNum, Index)
-    .num = 0
+    .Num = 0
     .Target = 0
     .TargetType = 0
     .Immune = 0
@@ -1308,10 +1308,10 @@ Dim z As Long
     
     For z = 1 To 6
         For i = 1 To MAX_TRADES
-            Shop(Index).TradeItem(z).Value(i).GiveItem = 0
-            Shop(Index).TradeItem(z).Value(i).GiveValue = 0
-            Shop(Index).TradeItem(z).Value(i).GetItem = 0
-            Shop(Index).TradeItem(z).Value(i).GetValue = 0
+            Shop(Index).TradeItem(z).value(i).GiveItem = 0
+            Shop(Index).TradeItem(z).value(i).GiveValue = 0
+            Shop(Index).TradeItem(z).value(i).GetItem = 0
+            Shop(Index).TradeItem(z).value(i).GetValue = 0
         Next i
     Next z
 End Sub
@@ -1680,19 +1680,19 @@ Function GetPlayerIP(ByVal Index As Long) As String
 End Function
 
 Function GetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemNum = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num
+    GetPlayerInvItemNum = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Num
 End Function
 
 Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNum As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num = ItemNum
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Num = ItemNum
 End Sub
 
 Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value
+    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value
 End Function
 
 Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value = ItemValue
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value = ItemValue
 End Sub
 
 Function GetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long) As Long
