@@ -47,6 +47,3 @@ Private Sub Form_Load()
 motd.Text = "Bienvenue dans la version " & App.Major & "." & App.Minor & "." & App.Revision & " de FRoG Creator, si vous rencontrez un problème ou un bug veuillez le rapporter sur frogcreator.fr"
 End Sub
 
-Private Sub motd_Change()
-
-End Sub

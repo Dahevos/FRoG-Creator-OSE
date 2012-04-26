@@ -35,7 +35,7 @@ Begin VB.Form frmNpcEditor
       EndProperty
       Height          =   2175
       Left            =   5400
-      TabIndex        =   58
+      TabIndex        =   57
       Top             =   5520
       Width           =   6015
       Begin VB.ComboBox cmbSpellType 
@@ -52,7 +52,7 @@ Begin VB.Form frmNpcEditor
          ItemData        =   "frmNpcEditor.frx":0000
          Left            =   120
          List            =   "frmNpcEditor.frx":0025
-         TabIndex        =   63
+         TabIndex        =   62
          Text            =   "Type de Sort"
          Top             =   240
          Width           =   2655
@@ -70,7 +70,7 @@ Begin VB.Form frmNpcEditor
          Height          =   1425
          IntegralHeight  =   0   'False
          Left            =   120
-         TabIndex        =   62
+         TabIndex        =   61
          Top             =   600
          Width           =   2655
       End
@@ -87,7 +87,7 @@ Begin VB.Form frmNpcEditor
          Height          =   1785
          IntegralHeight  =   0   'False
          Left            =   3240
-         TabIndex        =   61
+         TabIndex        =   60
          Top             =   240
          Width           =   2655
       End
@@ -104,7 +104,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   2880
-         TabIndex        =   60
+         TabIndex        =   59
          Top             =   720
          Width           =   255
       End
@@ -121,7 +121,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   2880
-         TabIndex        =   59
+         TabIndex        =   58
          Top             =   1200
          Width           =   255
       End
@@ -139,7 +139,7 @@ Begin VB.Form frmNpcEditor
       EndProperty
       Height          =   4335
       Left            =   5400
-      TabIndex        =   32
+      TabIndex        =   31
       Top             =   1200
       Width           =   6015
       Begin VB.HScrollBar quetenum 
@@ -148,7 +148,7 @@ Begin VB.Form frmNpcEditor
          Left            =   1560
          Max             =   10000
          Min             =   1
-         TabIndex        =   53
+         TabIndex        =   52
          Top             =   3600
          Value           =   1
          Visible         =   0   'False
@@ -167,7 +167,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   2760
-         TabIndex        =   51
+         TabIndex        =   50
          Text            =   "0"
          ToolTipText     =   "Temps mit par le PNJ pour ressusciter après sa mort"
          Top             =   3240
@@ -188,7 +188,7 @@ Begin VB.Form frmNpcEditor
          Left            =   960
          List            =   "frmNpcEditor.frx":00E5
          Style           =   2  'Dropdown List
-         TabIndex        =   49
+         TabIndex        =   48
          ToolTipText     =   "Aptitude que doit avoir le PNJ face aux joueurs"
          Top             =   2760
          Width           =   3615
@@ -206,7 +206,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   270
          Left            =   5160
-         TabIndex        =   46
+         TabIndex        =   45
          ToolTipText     =   "Si cette case est cochée le PNJ apparaîtras le jour"
          Top             =   2760
          Value           =   1  'Checked
@@ -225,7 +225,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   270
          Left            =   5160
-         TabIndex        =   47
+         TabIndex        =   46
          ToolTipText     =   "Si cette case est cochée le PNJ apparaîtras la nuit"
          Top             =   2520
          Value           =   1  'Checked
@@ -244,7 +244,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   2640
-         TabIndex        =   36
+         TabIndex        =   35
          Text            =   "0"
          ToolTipText     =   "Chance pour le joueur d'avoir l'objet quand il tue le PNJ"
          Top             =   2280
@@ -254,7 +254,7 @@ Begin VB.Form frmNpcEditor
          Height          =   255
          Left            =   960
          Max             =   10000
-         TabIndex        =   35
+         TabIndex        =   34
          Top             =   1800
          Value           =   1
          Width           =   3255
@@ -263,7 +263,7 @@ Begin VB.Form frmNpcEditor
          Height          =   255
          Left            =   960
          Max             =   500
-         TabIndex        =   34
+         TabIndex        =   33
          Top             =   1320
          Value           =   1
          Width           =   3255
@@ -273,7 +273,7 @@ Begin VB.Form frmNpcEditor
          Left            =   960
          Max             =   5
          Min             =   1
-         TabIndex        =   33
+         TabIndex        =   32
          Top             =   360
          Value           =   1
          Width           =   3255
@@ -293,7 +293,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   180
-         TabIndex        =   55
+         TabIndex        =   54
          ToolTipText     =   "Nombre d'objet donné"
          Top             =   3600
          Visible         =   0   'False
@@ -313,7 +313,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   4320
-         TabIndex        =   54
+         TabIndex        =   53
          ToolTipText     =   "Nombre d'objet donné"
          Top             =   3600
          Visible         =   0   'False
@@ -334,7 +334,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   4800
-         TabIndex        =   52
+         TabIndex        =   51
          ToolTipText     =   "Moment ou le PNJ apparaîtras sur la carte"
          Top             =   2280
          Width           =   720
@@ -353,7 +353,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   360
-         TabIndex        =   50
+         TabIndex        =   49
          Top             =   3240
          Width           =   2295
       End
@@ -371,7 +371,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   375
          Left            =   120
-         TabIndex        =   48
+         TabIndex        =   47
          Top             =   2760
          Width           =   735
       End
@@ -389,7 +389,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   375
          Left            =   720
-         TabIndex        =   45
+         TabIndex        =   44
          Top             =   2280
          Width           =   1815
       End
@@ -407,7 +407,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   4320
-         TabIndex        =   44
+         TabIndex        =   43
          ToolTipText     =   "Nombre d'objet donné"
          Top             =   1800
          Width           =   75
@@ -426,7 +426,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   43
+         TabIndex        =   42
          ToolTipText     =   "Nombre d'objet donné"
          Top             =   1800
          Width           =   735
@@ -445,7 +445,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   4320
-         TabIndex        =   42
+         TabIndex        =   41
          ToolTipText     =   "Numéros de l'objet donné"
          Top             =   1320
          Width           =   75
@@ -464,7 +464,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   41
+         TabIndex        =   40
          ToolTipText     =   "Numéros de l'objet donné"
          Top             =   1320
          Width           =   735
@@ -481,7 +481,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   960
-         TabIndex        =   40
+         TabIndex        =   39
          ToolTipText     =   "Nom de l'objet donné"
          Top             =   845
          Width           =   3495
@@ -500,7 +500,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   375
          Left            =   120
-         TabIndex        =   39
+         TabIndex        =   38
          ToolTipText     =   "Nom de l'objet donné"
          Top             =   840
          Width           =   735
@@ -519,7 +519,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   165
          Left            =   4320
-         TabIndex        =   38
+         TabIndex        =   37
          ToolTipText     =   "Numéros de l'objet donné par le PNJ a sa mort : un PNJ peut donner 10 objet différent au maximum"
          Top             =   360
          Width           =   75
@@ -538,7 +538,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   375
          Left            =   120
-         TabIndex        =   37
+         TabIndex        =   36
          ToolTipText     =   "Numéros de l'objet donné par le PNJ a sa mort : un PNJ peut donner 10 objet différent au maximum"
          Top             =   240
          Width           =   735
@@ -560,11 +560,47 @@ Begin VB.Form frmNpcEditor
       TabIndex        =   6
       Top             =   1200
       Width           =   5175
+      Begin VB.PictureBox Picture1 
+         Appearance      =   0  'Flat
+         BackColor       =   &H80000005&
+         ForeColor       =   &H80000008&
+         Height          =   1275
+         Left            =   1080
+         ScaleHeight     =   83
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   93
+         TabIndex        =   65
+         Top             =   660
+         Width           =   1425
+         Begin VB.PictureBox picSprite 
+            AutoRedraw      =   -1  'True
+            BackColor       =   &H00000000&
+            BorderStyle     =   0  'None
+            BeginProperty Font 
+               Name            =   "MS Sans Serif"
+               Size            =   8.25
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   480
+            Left            =   0
+            ScaleHeight     =   32
+            ScaleMode       =   3  'Pixel
+            ScaleWidth      =   32
+            TabIndex        =   66
+            ToolTipText     =   "Sprite du PNJ"
+            Top             =   0
+            Width           =   480
+         End
+      End
       Begin VB.VScrollBar scrlSpriteY 
          Height          =   1275
          Left            =   2580
          Max             =   1
-         TabIndex        =   66
+         TabIndex        =   64
          Top             =   660
          Width           =   255
       End
@@ -572,7 +608,7 @@ Begin VB.Form frmNpcEditor
          Height          =   255
          Left            =   1080
          Max             =   1
-         TabIndex        =   65
+         TabIndex        =   63
          Top             =   1980
          Width           =   1455
       End
@@ -580,7 +616,7 @@ Begin VB.Form frmNpcEditor
          Height          =   255
          LargeChange     =   100
          Left            =   1080
-         TabIndex        =   27
+         TabIndex        =   26
          Top             =   5400
          Width           =   2895
       End
@@ -597,7 +633,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   270
          Left            =   3060
-         TabIndex        =   57
+         TabIndex        =   56
          ToolTipText     =   "Si cette case est cochée les PNJ pouront passer à travers toutes les cases bloquer sauf celle pour les PNJs"
          Top             =   660
          Width           =   1095
@@ -615,7 +651,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   270
          Left            =   1080
-         TabIndex        =   56
+         TabIndex        =   55
          ToolTipText     =   "Si cette case est cochée le PNJ ne pourat pas être tuer"
          Top             =   5640
          Width           =   1095
@@ -624,7 +660,7 @@ Begin VB.Form frmNpcEditor
          Height          =   255
          LargeChange     =   100
          Left            =   1080
-         TabIndex        =   31
+         TabIndex        =   30
          Top             =   6000
          Width           =   2895
       End
@@ -683,42 +719,6 @@ Begin VB.Form frmNpcEditor
          Top             =   4800
          Width           =   2895
       End
-      Begin VB.PictureBox Picture1 
-         Appearance      =   0  'Flat
-         BackColor       =   &H80000005&
-         ForeColor       =   &H80000008&
-         Height          =   1275
-         Left            =   1080
-         ScaleHeight     =   83
-         ScaleMode       =   3  'Pixel
-         ScaleWidth      =   93
-         TabIndex        =   25
-         Top             =   660
-         Width           =   1425
-         Begin VB.PictureBox picSprite 
-            AutoRedraw      =   -1  'True
-            BackColor       =   &H00000000&
-            BorderStyle     =   0  'None
-            BeginProperty Font 
-               Name            =   "MS Sans Serif"
-               Size            =   8.25
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   480
-            Left            =   0
-            ScaleHeight     =   32
-            ScaleMode       =   3  'Pixel
-            ScaleWidth      =   32
-            TabIndex        =   64
-            ToolTipText     =   "Sprite du PNJ"
-            Top             =   0
-            Width           =   480
-         End
-      End
       Begin VB.Label lblExpGiven 
          Caption         =   "0"
          BeginProperty Font 
@@ -732,7 +732,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   4080
-         TabIndex        =   30
+         TabIndex        =   29
          ToolTipText     =   "Expérience donnée aux joueurs quand ils tuent le PNJ"
          Top             =   6000
          Width           =   495
@@ -751,7 +751,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   120
-         TabIndex        =   29
+         TabIndex        =   28
          ToolTipText     =   "Expérience donnée aux joueurs quand ils tuent le PNJ"
          Top             =   6000
          Width           =   855
@@ -769,7 +769,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   4080
-         TabIndex        =   28
+         TabIndex        =   27
          ToolTipText     =   "Point de vie du PNJ"
          Top             =   5400
          Width           =   495
@@ -788,7 +788,7 @@ Begin VB.Form frmNpcEditor
          EndProperty
          Height          =   255
          Left            =   50
-         TabIndex        =   26
+         TabIndex        =   25
          ToolTipText     =   "Point de vie du PNJ"
          Top             =   5400
          Width           =   975
@@ -1162,28 +1162,28 @@ If cmbBehavior.ListIndex = 5 Then
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Numéro de quête:"
-    quetenum.min = 1
+    quetenum.Min = 1
     quetenum.Max = MAX_QUETES
 ElseIf cmbBehavior.ListIndex = 6 Then
     qutn.Visible = True
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Case Script:"
-    quetenum.min = 1
+    quetenum.Min = 1
     quetenum.Max = 255
 ElseIf cmbBehavior.ListIndex = 3 Then
     qutn.Visible = True
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Magasin:"
-    quetenum.min = 1
+    quetenum.Min = 1
     quetenum.Max = MAX_SHOPS
 ElseIf cmbBehavior.ListIndex = 0 Or cmbBehavior.ListIndex = 1 Then
     qutn.Visible = True
     Label20.Visible = True
     quetenum.Visible = True
     Label20.Caption = "Type d'Arme:"
-    quetenum.min = 0
+    quetenum.Min = 0
     quetenum.Max = 11 + MAX_METIER
 Else
     qutn.Visible = False
@@ -1244,7 +1244,7 @@ Private Sub Form_Load()
     'picSprite.Left = Picture1.Left + 30
     'Picture1.Height = (48 * Screen.TwipsPerPixelY) + 44
     'Picture1.Width = (32 * Screen.TwipsPerPixelY) + 44
-    scrlSpriteY.Max = picSprite.Height - Picture1.Height
+    scrlSpriteY.Max = picSprite.height - Picture1.height
     scrlSpriteX.Max = picSprite.Width - Picture1.Width
     Call AffSprites
 End Sub
@@ -1395,10 +1395,21 @@ End Sub
 
 Private Sub AffSprites()
 On Error Resume Next
-picSprite.Height = DDSD_Character(scrlSprite.value).lHeight
-picSprite.Width = DDSD_Character(scrlSprite.value).lWidth
-scrlSpriteY.Max = picSprite.Height - Picture1.Height
+Call PrepareSprite(scrlSprite.value)
+picSprite.height = (DDSD_Character(scrlSprite.value).lHeight) / 4
+picSprite.Width = (DDSD_Character(scrlSprite.value).lWidth) / 4
+If picSprite.height > 96 Then
+scrlSpriteY.Max = picSprite.height - Picture1.height
+scrlSpriteY.Visible = True
+Else
+scrlSpriteY.Visible = False
+End If
+If picSprite.Width > 96 Then
 scrlSpriteX.Max = picSprite.Width - Picture1.Width
+scrlSpriteX.Visible = True
+Else
+scrlSpriteX.Visible = False
+End If
 'Picture1.Height = picSprite.Height + 60
 'Picture1.Width = picSprite.Width + 60
 Call AffSurfPic(DD_SpriteSurf(scrlSprite.value), picSprite, 0, 0)

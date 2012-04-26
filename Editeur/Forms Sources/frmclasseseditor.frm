@@ -654,7 +654,7 @@ Call WriteINI("CLASSCHANGE", "AddMagi", frmclasseseditor.ajm.Text, PathServ & "\
 Call WriteINI("DEATH", "Map", frmclasseseditor.cartem.Text, PathServ & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "x", frmclasseseditor.xm.Text, PathServ & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "y", frmclasseseditor.ym.Text, PathServ & "\Classes\Class" & classe & ".ini")
-Call WriteINI("CLASS", "Locked", frmclasseseditor.Lock.value, PathServ & "\Classes\Class" & classe & ".ini")
+Call WriteINI("CLASS", "Locked", frmclasseseditor.lock.value, PathServ & "\Classes\Class" & classe & ".ini")
 hl:
 Call WriteINI("CLASS", "Name", frmclasseseditor.nom.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("CLASS", "MaleSprite", frmclasseseditor.scrlhom.value, App.Path & "\Classes\Class" & classe & ".ini")
@@ -677,7 +677,7 @@ Call WriteINI("CLASSCHANGE", "AddMagi", frmclasseseditor.ajm.Text, App.Path & "\
 Call WriteINI("DEATH", "Map", frmclasseseditor.cartem.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "x", frmclasseseditor.xm.Text, App.Path & "\Classes\Class" & classe & ".ini")
 Call WriteINI("DEATH", "y", frmclasseseditor.ym.Text, App.Path & "\Classes\Class" & classe & ".ini")
-Call WriteINI("CLASS", "Locked", frmclasseseditor.Lock.value, App.Path & "\Classes\Class" & classe & ".ini")
+Call WriteINI("CLASS", "Locked", frmclasseseditor.lock.value, App.Path & "\Classes\Class" & classe & ".ini")
 Call Unload(frmmsg)
 Call ChargerClasses
 Me.Hide
@@ -691,12 +691,14 @@ End Sub
 Private Sub scrlfem_Change()
 On Error Resume Next
     numsf.Caption = scrlfem.value
+    Call PrepareSprite(scrlfem.value)
     Call AffSurfPic(DD_SpriteSurf(scrlfem.value), femme, 0, 0)
 End Sub
 
 Private Sub scrlhom_Change()
 On Error Resume Next
     numsh.Caption = scrlhom.value
+    Call PrepareSprite(scrlhom.value)
     Call AffSurfPic(DD_SpriteSurf(scrlhom.value), homme, 0, 0)
 End Sub
 

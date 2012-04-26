@@ -301,6 +301,7 @@ End Sub
 Private Sub scrlSprite_Change()
 On Error Resume Next
     lblSprite.Caption = scrlSprite.value
+    Call PrepareSprite(scrlSprite.value)
     Call AffSurfPic(DD_SpriteSurf(scrlSprite.value), picSprite, 0, 0)
     'Call BitBlt(picSprite.hDC, 0, 0, PIC_X, PIC_Y * PIC_NPC1, picSprites.hDC, 3 * PIC_X, scrlSprite.value * (PIC_Y * PIC_NPC1), SRCCOPY)
 End Sub

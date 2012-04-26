@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmItemEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditeur d'objets"
@@ -2053,6 +2053,7 @@ Private Sub cmbType_Click()
     On Error Resume Next
         Call NetFra
         framonture.Visible = True
+        Call PrepareSprite(skin.value)
         Call AffSurfPic(DD_SpriteSurf(skin.value), imgmont, 0, 0)
         CheckEmpi.value = 0
         CheckEmpi.Enabled = False
@@ -2081,7 +2082,7 @@ Private Sub Form_Load()
     'Call BitBlt(picSelect.hDC, 0, 0, PIC_X, PIC_Y, picItems.hDC, EditorItemX * PIC_X, EditorItemY * PIC_Y, SRCCOPY)
     'picBow.Picture = LoadPNG(App.Path & "\GFX\arrows.png")
 '    picSprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png")
-    Picture4.Height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY) + 60
+    Picture4.height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY) + 60
     'imgmont.Height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY)
 End Sub
 
@@ -2122,7 +2123,7 @@ Private Sub scrlAccessReq_Change()
             Case 2
                 Label17.Caption = "Mappeur"
             Case 3
-                Label17.Caption = "Dévellopeur"
+                Label17.Caption = "Développeur"
             Case 4
                 Label17.Caption = "Administrateur"
             End Select
@@ -2179,8 +2180,8 @@ End Sub
 
 Private Sub scrlPD_Change()
     PicPD.Picture = LoadPNG(App.Path & "\GFX\Paperdolls\Paperdolls" & scrlPD.value & ".png")
-    PicPD.Height = 64
-    Pic.Height = 1020
+    PicPD.height = 64
+    Pic.height = 1020
     lblpaper.Caption = scrlPD.value
 End Sub
 
@@ -2224,6 +2225,7 @@ End Sub
 Private Sub skin_Change()
 On Error Resume Next
     numskin.Caption = skin.value
+    Call PrepareSprite(skin.value)
     Call AffSurfPic(DD_SpriteSurf(skin.value), imgmont, 0, 0)
 End Sub
 

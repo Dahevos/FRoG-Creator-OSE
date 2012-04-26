@@ -833,14 +833,14 @@ Private Sub CheckSpell_Click()
     If CheckSpell.value = Checked Then
         scrlSpellAnim.Max = MAX_DX_BIGSPELLS
         picSpell.Width = 960
-        picSpell.Height = 960
+        picSpell.height = 960
         picSpell.Left = 10680
         picSpell.Top = 3540
         scrlSpellAnim.value = 0
     Else
         scrlSpellAnim.Max = MAX_DX_SPELLS
         picSpell.Width = 480
-        picSpell.Height = 480
+        picSpell.height = 480
         picSpell.Left = 10920
         picSpell.Top = 3720
         scrlSpellAnim.value = 0
@@ -889,7 +889,7 @@ End Sub
 
 Private Sub Form_Load()
     picSpell.Width = 480
-    picSpell.Height = 480
+    picSpell.height = 480
     picSpell.Left = 10920
     picSpell.Top = 3720
     Call AffSurfPic(DD_ItemSurf, picSpellIco, EditorItemX * PIC_X, EditorItemY * PIC_Y)
@@ -983,6 +983,7 @@ If Done = SpellDone Then Exit Sub
     If SpellVar > 10 Then Done = Done + 1: SpellVar = 0
     If GetTickCount > Time + SpellTime Then Time = GetTickCount: SpellVar = SpellVar + 1
     If CheckSpell.value = Checked Then
+        Call PrepareBigSpell(SpellAnim)
         If DD_BigSpellAnim(SpellAnim) Is Nothing Then
         Else
             With dRECT
@@ -997,10 +998,12 @@ If Done = SpellDone Then Exit Sub
                 .Left = SpellVar * (PIC_X * 2)
                 .Right = .Left + (PIC_X * 2)
             End With
+            Call PrepareBigSpell(SpellAnim)
             Call DD_BigSpellAnim(SpellAnim).BltToDC(picSpell.hDC, sRECT, dRECT)
             picSpell.Refresh
         End If
     Else
+        Call PrepareSpell(SpellAnim)
         If DD_SpellAnim(SpellAnim) Is Nothing Then
         Else
             With dRECT
@@ -1015,6 +1018,7 @@ If Done = SpellDone Then Exit Sub
                 .Left = SpellVar * PIC_X
                 .Right = .Left + PIC_X
             End With
+            Call PrepareSpell(SpellAnim)
             Call DD_SpellAnim(SpellAnim).BltToDC(picSpell.hDC, sRECT, dRECT)
             picSpell.Refresh
         End If

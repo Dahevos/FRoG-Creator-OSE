@@ -384,7 +384,10 @@ Dim sprt As Long
 On Error Resume Next
 sprt = Npc(PNJNum).sprite
 DIRC = DIR_DOWN
-If PNJNum > 0 And PNJNum < MAX_NPCS Then Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_DOWN * (DDSD_Character(sprt).lHeight / 4))
+If PNJNum > 0 And PNJNum < MAX_NPCS Then
+Call PrepareSprite(sprt)
+Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_DOWN * (DDSD_Character(sprt).lHeight / 4))
+End If
 End Sub
 
 
@@ -422,7 +425,10 @@ Dim sprt As Long
 On Error Resume Next
 sprt = Npc(PNJNum).sprite
 DIRC = DIR_RIGHT
-If PNJNum > 0 And PNJNum < MAX_NPCS Then Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_RIGHT * (DDSD_Character(sprt).lHeight / 4))
+If PNJNum > 0 And PNJNum < MAX_NPCS Then
+Call PrepareSprite(sprt)
+Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_RIGHT * (DDSD_Character(sprt).lHeight / 4))
+End If
 End Sub
 
 Private Sub Form_Load()
@@ -447,12 +453,13 @@ End If
 PNJNum = frmMapProperties.cmbNpc(EditorMouvIndex - 1).ListIndex
 On Error Resume Next
 sprt = Npc(PNJNum).sprite
-skin.Height = (DDSD_Character(sprt).lHeight / 4) '* Screen.TwipsPerPixelY
+Call PrepareSprite(sprt)
+skin.height = (DDSD_Character(sprt).lHeight / 4) '* Screen.TwipsPerPixelY
 skin.Width = (DDSD_Character(sprt).lWidth / 4) '* Screen.TwipsPerPixelX
 
-If skin.Height > Picture1.Height Then
+If skin.height > Picture1.height Then
     scrlSkinX.Enabled = True
-    scrlSkinX.Max = Picture1.Height - skin.Height
+    scrlSkinX.Max = Picture1.height - skin.height
 Else
     scrlSkinX.Enabled = False
 End If
@@ -464,7 +471,9 @@ Else
     scrlSkinY.Enabled = False
 End If
 
-If PNJNum > 0 And PNJNum < MAX_NPCS Then Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIRC * (DDSD_Character(sprt).lHeight / 4))
+If PNJNum > 0 And PNJNum < MAX_NPCS Then
+Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIRC * (DDSD_Character(sprt).lHeight / 4))
+End If
 
 If mvh.value = Checked Then
     boucle.Enabled = False
@@ -506,7 +515,10 @@ Dim sprt As Long
 On Error Resume Next
 sprt = Npc(PNJNum).sprite
 DIRC = DIR_LEFT
-If PNJNum > 0 And PNJNum < MAX_NPCS Then Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_LEFT * (DDSD_Character(sprt).lHeight / 4))
+If PNJNum > 0 And PNJNum < MAX_NPCS Then
+Call PrepareSprite(sprt)
+Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_LEFT * (DDSD_Character(sprt).lHeight / 4))
+End If
 End Sub
 
 Private Sub haut_Click()
@@ -514,7 +526,10 @@ Dim sprt As Long
 On Error Resume Next
 sprt = Npc(PNJNum).sprite
 DIRC = DIR_UP
-If PNJNum > 0 And PNJNum < MAX_NPCS Then Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_UP * (DDSD_Character(sprt).lHeight / 4))
+If PNJNum > 0 And PNJNum < MAX_NPCS Then
+Call PrepareSprite(sprt)
+Call AffSurfPic(DD_SpriteSurf(sprt), frmCpnjmouv.skin, 0, DIR_UP * (DDSD_Character(sprt).lHeight / 4))
+End If
 End Sub
 
 Private Sub imob_Click()

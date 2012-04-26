@@ -60,7 +60,6 @@ Begin VB.Form frmoptions
       _ExtentY        =   10610
       _Version        =   393216
       Tabs            =   4
-      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   529
       TabMaxWidth     =   2778
@@ -75,7 +74,7 @@ Begin VB.Form frmoptions
       EndProperty
       TabCaption(0)   =   "Options Générales"
       TabPicture(0)   =   "frmoptions.frx":0000
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Label3"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Label4"
@@ -116,102 +115,60 @@ Begin VB.Form frmoptions
       TabCaption(1)   =   "Config. du Jeu"
       TabPicture(1)   =   "frmoptions.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label17"
-      Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Label16"
-      Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "Label15"
-      Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Label14"
-      Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Label13"
-      Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "Label11"
-      Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "Label10"
-      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(0)=   "nom"
+      Tab(1).Control(1)=   "site"
+      Tab(1).Control(2)=   "pv"
+      Tab(1).Control(3)=   "pm"
+      Tab(1).Control(4)=   "defl"
+      Tab(1).Control(5)=   "script"
+      Tab(1).Control(6)=   "ps"
       Tab(1).Control(7)=   "Label2"
-      Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "ps"
-      Tab(1).Control(8).Enabled=   0   'False
-      Tab(1).Control(9)=   "script"
-      Tab(1).Control(9).Enabled=   0   'False
-      Tab(1).Control(10)=   "defl"
-      Tab(1).Control(10).Enabled=   0   'False
-      Tab(1).Control(11)=   "pm"
-      Tab(1).Control(11).Enabled=   0   'False
-      Tab(1).Control(12)=   "pv"
-      Tab(1).Control(12).Enabled=   0   'False
-      Tab(1).Control(13)=   "site"
-      Tab(1).Control(13).Enabled=   0   'False
-      Tab(1).Control(14)=   "nom"
-      Tab(1).Control(14).Enabled=   0   'False
+      Tab(1).Control(8)=   "Label10"
+      Tab(1).Control(9)=   "Label11"
+      Tab(1).Control(10)=   "Label13"
+      Tab(1).Control(11)=   "Label14"
+      Tab(1).Control(12)=   "Label15"
+      Tab(1).Control(13)=   "Label16"
+      Tab(1).Control(14)=   "Label17"
       Tab(1).ControlCount=   15
       TabCaption(2)   =   "Config. du Serveur"
       TabPicture(2)   =   "frmoptions.frx":0038
-      Tab(2).ControlEnabled=   -1  'True
-      Tab(2).Control(0)=   "Label34"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "Label30"
-      Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Label28"
-      Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "Label27"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "Label26"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "Label24"
-      Tab(2).Control(5).Enabled=   0   'False
-      Tab(2).Control(6)=   "Label23"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "Label22"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "Label21"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "Label20"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "Label19"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "Label18"
-      Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "Label29"
-      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).ControlEnabled=   0   'False
+      Tab(2).Control(0)=   "motd"
+      Tab(2).Control(1)=   "mc"
+      Tab(2).Control(2)=   "mg"
+      Tab(2).Control(3)=   "moc"
+      Tab(2).Control(4)=   "mm"
+      Tab(2).Control(5)=   "mpnj"
+      Tab(2).Control(6)=   "mj"
+      Tab(2).Control(7)=   "mn"
+      Tab(2).Control(8)=   "me"
+      Tab(2).Control(9)=   "mjg"
+      Tab(2).Control(10)=   "mo"
+      Tab(2).Control(11)=   "ms"
+      Tab(2).Control(12)=   "mq"
       Tab(2).Control(13)=   "Label1"
-      Tab(2).Control(13).Enabled=   0   'False
-      Tab(2).Control(14)=   "mq"
-      Tab(2).Control(14).Enabled=   0   'False
-      Tab(2).Control(15)=   "ms"
-      Tab(2).Control(15).Enabled=   0   'False
-      Tab(2).Control(16)=   "mo"
-      Tab(2).Control(16).Enabled=   0   'False
-      Tab(2).Control(17)=   "mjg"
-      Tab(2).Control(17).Enabled=   0   'False
-      Tab(2).Control(18)=   "me"
-      Tab(2).Control(18).Enabled=   0   'False
-      Tab(2).Control(19)=   "mn"
-      Tab(2).Control(19).Enabled=   0   'False
-      Tab(2).Control(20)=   "mj"
-      Tab(2).Control(20).Enabled=   0   'False
-      Tab(2).Control(21)=   "mpnj"
-      Tab(2).Control(21).Enabled=   0   'False
-      Tab(2).Control(22)=   "mm"
-      Tab(2).Control(22).Enabled=   0   'False
-      Tab(2).Control(23)=   "moc"
-      Tab(2).Control(23).Enabled=   0   'False
-      Tab(2).Control(24)=   "mg"
-      Tab(2).Control(24).Enabled=   0   'False
-      Tab(2).Control(25)=   "mc"
-      Tab(2).Control(25).Enabled=   0   'False
-      Tab(2).Control(26)=   "motd"
-      Tab(2).Control(26).Enabled=   0   'False
+      Tab(2).Control(14)=   "Label29"
+      Tab(2).Control(15)=   "Label18"
+      Tab(2).Control(16)=   "Label19"
+      Tab(2).Control(17)=   "Label20"
+      Tab(2).Control(18)=   "Label21"
+      Tab(2).Control(19)=   "Label22"
+      Tab(2).Control(20)=   "Label23"
+      Tab(2).Control(21)=   "Label24"
+      Tab(2).Control(22)=   "Label26"
+      Tab(2).Control(23)=   "Label27"
+      Tab(2).Control(24)=   "Label28"
+      Tab(2).Control(25)=   "Label30"
+      Tab(2).Control(26)=   "Label34"
       Tab(2).ControlCount=   27
       TabCaption(3)   =   "Config. des Classes"
       TabPicture(3)   =   "frmoptions.frx":0054
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "Label33"
-      Tab(3).Control(1)=   "editcls"
-      Tab(3).Control(2)=   "clase"
-      Tab(3).Control(3)=   "nbcls"
+      Tab(3).Control(0)=   "nbcls"
+      Tab(3).Control(1)=   "clase"
+      Tab(3).Control(2)=   "editcls"
+      Tab(3).Control(3)=   "Label33"
       Tab(3).ControlCount=   4
       Begin VB.CheckBox chkLowEffect 
          Caption         =   "Désactiver les effets avancés"
@@ -225,7 +182,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   66
          Top             =   4800
          Width           =   2325
@@ -242,7 +199,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   65
          ToolTipText     =   "Petit barre afficher au dessus de vous"
          Top             =   1560
@@ -261,7 +218,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   59
          ToolTipText     =   "Petit barre afficher au dessu de vous"
          Top             =   1320
@@ -280,7 +237,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   58
          Top             =   840
          Value           =   1  'Checked
@@ -298,7 +255,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   57
          Top             =   2040
          Value           =   1  'Checked
@@ -316,7 +273,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   56
          Top             =   3720
          Value           =   1  'Checked
@@ -334,7 +291,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   55
          ToolTipText     =   "Petit barre afficher au dessu des PNJ"
          Top             =   2520
@@ -353,7 +310,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   54
          Top             =   1080
          Value           =   1  'Checked
@@ -371,7 +328,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   53
          Top             =   2280
          Value           =   1  'Checked
@@ -389,7 +346,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   52
          Top             =   3000
          Value           =   1  'Checked
@@ -407,7 +364,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   51
          Top             =   3240
          Value           =   1  'Checked
@@ -415,7 +372,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.HScrollBar scrlBltText 
          Height          =   255
-         Left            =   -73680
+         Left            =   1320
          Max             =   20
          Min             =   4
          TabIndex        =   50
@@ -435,7 +392,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   195
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   49
          Top             =   4560
          Value           =   1  'Checked
@@ -470,7 +427,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox motd 
          Height          =   1575
-         Left            =   120
+         Left            =   -74880
          MultiLine       =   -1  'True
          ScrollBars      =   2  'Vertical
          TabIndex        =   20
@@ -480,7 +437,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mc 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   13
          Text            =   "255"
          ToolTipText     =   "Défaut = 255"
@@ -489,7 +446,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mg 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   15
          Text            =   "20"
          ToolTipText     =   "Défaut = 20"
@@ -498,7 +455,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox moc 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   14
          Text            =   "20"
          ToolTipText     =   "Défaut = 20"
@@ -507,7 +464,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mm 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   11
          Text            =   "1000"
          ToolTipText     =   "Défaut = 1000"
@@ -516,7 +473,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mpnj 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   10
          Text            =   "1000"
          ToolTipText     =   "Défaut = 1000"
@@ -525,7 +482,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mj 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   8
          Text            =   "50"
          ToolTipText     =   "Défaut = 50"
@@ -534,7 +491,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mn 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   18
          Text            =   "100"
          ToolTipText     =   "Défaut = 500"
@@ -543,7 +500,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox me 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   17
          Text            =   "10"
          ToolTipText     =   "Défaut = 10"
@@ -552,7 +509,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mjg 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   16
          Text            =   "20"
          ToolTipText     =   "Défaut = 20"
@@ -561,7 +518,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mo 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   9
          Text            =   "1000"
          ToolTipText     =   "Défaut = 1000"
@@ -570,7 +527,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox ms 
          Height          =   285
-         Left            =   1680
+         Left            =   -73320
          TabIndex        =   12
          Text            =   "1000"
          ToolTipText     =   "Défaut = 1000"
@@ -579,7 +536,7 @@ Begin VB.Form frmoptions
       End
       Begin VB.TextBox mq 
          Height          =   285
-         Left            =   4800
+         Left            =   -70200
          TabIndex        =   19
          Text            =   "100"
          ToolTipText     =   "Défaut = 500"
@@ -662,7 +619,7 @@ Begin VB.Form frmoptions
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   -73680
+         Left            =   1320
          TabIndex        =   64
          Top             =   4020
          Width           =   2220
@@ -683,7 +640,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   63
          Top             =   480
          Width           =   2655
@@ -704,7 +661,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   62
          Top             =   1800
          Width           =   2655
@@ -725,7 +682,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   61
          Top             =   2760
          Width           =   2655
@@ -746,7 +703,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   -73320
+         Left            =   1680
          TabIndex        =   60
          Top             =   3480
          Width           =   2655
@@ -782,7 +739,7 @@ Begin VB.Form frmoptions
          EndProperty
          ForeColor       =   &H000000FF&
          Height          =   615
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   47
          Top             =   480
          Width           =   5535
@@ -798,7 +755,7 @@ Begin VB.Form frmoptions
       Begin VB.Label Label29 
          Caption         =   "Message envoyé aux joueurs quand ils se connecteront sur le jeu :"
          Height          =   375
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   45
          Top             =   3360
          Width           =   6015
@@ -807,7 +764,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de Cartes :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   44
          Top             =   3000
          Width           =   1110
@@ -816,7 +773,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de Guildes :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   43
          Top             =   1560
          Width           =   1185
@@ -825,7 +782,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max d'Objets/Carte :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   42
          Top             =   1200
          Width           =   1455
@@ -834,7 +791,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de Magasins :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   41
          Top             =   2280
          Width           =   1335
@@ -843,7 +800,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de PNJ :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   40
          Top             =   1920
          Width           =   960
@@ -852,7 +809,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max d'Objets :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   39
          Top             =   1560
          Width           =   1005
@@ -861,7 +818,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de joueurs :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   38
          Top             =   1200
          Width           =   1170
@@ -870,7 +827,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max joueurs/Guilde :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   37
          Top             =   1920
          Width           =   1470
@@ -879,7 +836,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max Emoticones :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   36
          Top             =   2280
          Width           =   1260
@@ -888,7 +845,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max Niveaux :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   35
          Top             =   2640
          Width           =   1020
@@ -897,7 +854,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max de Sorts :"
          Height          =   195
-         Left            =   240
+         Left            =   -74760
          TabIndex        =   34
          Top             =   2640
          Width           =   1020
@@ -906,7 +863,7 @@ Begin VB.Form frmoptions
          AutoSize        =   -1  'True
          Caption         =   "Max Quêtes :"
          Height          =   195
-         Left            =   3120
+         Left            =   -71880
          TabIndex        =   33
          Top             =   3000
          Width           =   945
@@ -1100,6 +1057,7 @@ Private Sub editcls_Click()
     frmclasseseditor.mal.height = (48 * Screen.TwipsPerPixelY) + 44
     frmclasseseditor.fem.height = (48 * Screen.TwipsPerPixelY) + 44
 On Error Resume Next
+    Call PrepareSprite(frmclasseseditor.scrlfem.value)
     Call AffSurfPic(DD_SpriteSurf(frmclasseseditor.scrlfem.value), frmclasseseditor.femme, 0, 0)
     Call AffSurfPic(DD_SpriteSurf(frmclasseseditor.scrlhom.value), frmclasseseditor.homme, 0, 0)
     frmclasseseditor.Show
