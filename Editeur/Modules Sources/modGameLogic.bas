@@ -328,18 +328,28 @@ On Error GoTo er:
     
     ReDim DD_SpriteSurf(0 To MAX_DX_SPRITE) As DirectDrawSurface7
     ReDim DDSD_Character(0 To MAX_DX_SPRITE) As DDSURFACEDESC2
-        
+    ReDim SpriteTimer(0 To MAX_DX_SPRITE) As Long
+    ReDim SpriteUsed(0 To MAX_DX_SPRITE) As Boolean
+    
     ReDim DD_PaperDollSurf(0 To MAX_DX_PAPERDOLL) As DirectDrawSurface7
     ReDim DDSD_PaperDoll(0 To MAX_DX_PAPERDOLL) As DDSURFACEDESC2
+    ReDim PaperDollTimer(0 To MAX_DX_PAPERDOLL) As Long
+    ReDim PaperDollUsed(0 To MAX_DX_PAPERDOLL) As Boolean
     
     ReDim DD_SpellAnim(0 To MAX_DX_SPELLS) As DirectDrawSurface7
     ReDim DDSD_SpellAnim(0 To MAX_DX_SPELLS) As DDSURFACEDESC2
+    ReDim SpellTimer(0 To MAX_DX_SPELLS) As Long
+    ReDim SpellUsed(0 To MAX_DX_SPELLS) As Boolean
     
     ReDim DD_BigSpellAnim(0 To MAX_DX_BIGSPELLS) As DirectDrawSurface7
     ReDim DDSD_BigSpellAnim(0 To MAX_DX_BIGSPELLS) As DDSURFACEDESC2
+    ReDim BigSpellTimer(0 To MAX_DX_BIGSPELLS) As Long
+    ReDim BigSpellUsed(0 To MAX_DX_BIGSPELLS) As Boolean
     
     ReDim DD_PetsSurf(0 To MAX_DX_PETS) As DirectDrawSurface7
     ReDim DDSD_Pets(0 To MAX_DX_PETS) As DDSURFACEDESC2
+    ReDim PetTimer(0 To MAX_DX_PETS) As Long
+    ReDim PetUsed(0 To MAX_DX_PETS) As Boolean
     
     ' Check if the maps directory is there, if its not make it
     If LCase$(Dir$(App.Path & "\Classes", vbDirectory)) <> "classes" Then Call MkDir$(App.Path & "\Classes")
@@ -1293,6 +1303,9 @@ rest:
             If TickFPS >= 33 Then TickFPS = 0: GameFPS = FPS: FPS = 0
         End If
         
+        'Déchargement de textures en RAM
+        UnloadTextures
+        
         'Bloquer les FPS a 30 pour éviter de surcharger le processeur
         Do While GetTickCount < Tick + 30
             DoEvents
@@ -1715,29 +1728,33 @@ If Not IsPlaying(Index) Then Exit Sub
     
     If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
-   
+    Call PrepareSprite(GetPlayerSprite(Index))
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpriteSurf(GetPlayerSprite(Index)), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
     'PAPERDOLL
     If GetPlayerArmorSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic))
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerHelmetSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic))
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerWeaponSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic))
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerShieldSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic))
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
@@ -1783,7 +1800,7 @@ If Map(Player(MyIndex).Map).petView = 1 Then Exit Sub
         
     If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
-   
+    Call PreparePet(num)
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PetsSurf(num), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
 
@@ -1841,28 +1858,33 @@ Dim AttackSpeed As Long
     If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
     
-     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpriteSurf(GetPlayerSprite(Index)), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
+    Call PrepareSprite(GetPlayerSprite(Index))
+    Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpriteSurf(GetPlayerSprite(Index)), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
     'PAPERDOLL
     If GetPlayerArmorSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerHelmetSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerWeaponSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerShieldSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdoll = 1 Then
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
@@ -1910,6 +1932,7 @@ Dim tx As Long, ty As Long
     
     ' Check for animation
     Anim = 1
+    Call PrepareSprite(Npc(MapNpc(MapNpcNum).num).sprite)
     If MapNpc(MapNpcNum).Attacking = 0 Then
         Select Case MapNpc(MapNpcNum).Dir
             Case DIR_UP
@@ -1963,6 +1986,7 @@ Dim tx As Long, ty As Long
     
     ' Check for animation
     Anim = 1
+    Call PrepareSprite(Npc(MapNpc(MapNpcNum).num).sprite)
     If MapNpc(MapNpcNum).Attacking = 0 Then
         Select Case MapNpc(MapNpcNum).Dir
             Case DIR_UP
@@ -2939,7 +2963,7 @@ Dim i As Long
     Call StopMidi
     frmMirage.lstIndex.Clear
     For i = 1 To MAX_MAPS
-        frmMirage.lstIndex.AddItem i & " : " & Map(i).name
+        'frmMirage.lstIndex.AddItem i & " : " & Map(i).name
     Next i
     frmsplash.Visible = False
     InGame = True
@@ -3015,6 +3039,7 @@ If HORS_LIGNE = 1 Then
         
     ' Play music
     If OldMap > 0 Then
+    
         If Trim$(Map(Player(MyIndex).Map).Music) = Trim$(Map(OldMap).Music) Then Exit Sub
         If Trim$(Map(Player(MyIndex).Map).Music) <> "Aucune" Then Call PlayMidi(Trim$(Map(Player(MyIndex).Map).Music)) Else Call StopMidi
     Else
@@ -6675,7 +6700,7 @@ Dim x2 As Long, y2 As Long
         '.Left = x * PIC_X
         '.Right = .Left + PIC_X
     'End With
-                                    
+    Call PrepareSprite(GetPlayerSprite(MyIndex))
     rec.Top = Map(Player(MyIndex).Map).tile(x, y).Data1 * (PIC_NPC1 * 32) + PIC_NPC2
     rec.Bottom = rec.Top + PIC_Y
     rec.Left = 128
@@ -6697,7 +6722,7 @@ Dim x2 As Long, y2 As Long
         '.Left = x * PIC_X
         '.Right = .Left + PIC_X
     'End With
-                                    
+    Call PrepareSprite(GetPlayerSprite(MyIndex))
     rec.Top = Map(Player(MyIndex).Map).tile(x, y).Data1 * 64
     rec.Bottom = rec.Top + PIC_Y
     rec.Left = 128

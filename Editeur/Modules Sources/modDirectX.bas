@@ -23,6 +23,8 @@ Public DD_OutilSurf As DirectDrawSurface7
 
 Public DD_SpriteSurf() As DirectDrawSurface7
 Public DDSD_Character() As DDSURFACEDESC2
+Public SpriteTimer() As Long
+Public SpriteUsed() As Boolean
 
 Public DD_ItemSurf As DirectDrawSurface7
 Public DDSD_Item As DDSURFACEDESC2
@@ -35,9 +37,13 @@ Public DDSD_BackBuffer As DDSURFACEDESC2
 
 Public DD_SpellAnim() As DirectDrawSurface7
 Public DDSD_SpellAnim() As DDSURFACEDESC2
+Public SpellTimer() As Long
+Public SpellUsed() As Boolean
 
 Public DD_BigSpellAnim() As DirectDrawSurface7
 Public DDSD_BigSpellAnim() As DDSURFACEDESC2
+Public BigSpellTimer() As Long
+Public BigSpellUsed() As Boolean
 
 Public DD_TileSurf() As DirectDrawSurface7
 Public DDSD_Tile() As DDSURFACEDESC2
@@ -49,10 +55,14 @@ Public DD_ArrowAnim As DirectDrawSurface7
 'PAPERDOLL
 Public DD_PaperDollSurf() As DirectDrawSurface7
 Public DDSD_PaperDoll() As DDSURFACEDESC2
+Public PaperDollTimer() As Long
+Public PaperDollUsed() As Boolean
 'FIN PAPERDOLL
 
 Public DD_PetsSurf() As DirectDrawSurface7
 Public DDSD_Pets() As DDSURFACEDESC2
+Public PetTimer() As Long
+Public PetUsed() As Boolean
 
 'EFFET DE SANG
 Public DDSD_Blood As DDSURFACEDESC2
@@ -86,7 +96,7 @@ Public AlphaBlendDXIsInit As Boolean
 Public ABDXWidth As Integer
 Public ABDXHeight As Integer
 Public ABDXAlpha As Single
-
+Public Const SurfaceTimerMax As Long = 30000
 Public Declare Sub CopyMemory Lib "kernel32.dll" Alias "RtlMoveMemory" (Destination As Any, Source As Any, ByVal Length As Long)
 
 Sub InitDirectX()
@@ -117,7 +127,103 @@ Sub InitDirectX()
     Set D3D = DD.GetDirect3D
     
 End Sub
-
+Public Sub UnloadTextures()
+    Dim i As Long
+    For i = 1 To MAX_DX_SPRITE
+            If SpriteTimer(i) > GetTickCount + SurfaceTimerMax Then
+                Set DD_SpriteSurf(i) = Nothing
+                Call ZeroMemory(DDSD_Character(i), Len(DDSD_Character(i)))
+                SpriteTimer(i) = 0
+                SpriteUsed(i) = False
+            End If
+    Next
+    
+    For i = 1 To MAX_DX_SPELLS
+            If SpellTimer(i) > GetTickCount + SurfaceTimerMax Then
+                Set DD_SpellAnim(i) = Nothing
+                Call ZeroMemory(DDSD_SpellAnim(i), Len(DDSD_SpellAnim(i)))
+                SpellTimer(i) = 0
+                SpellUsed(i) = False
+            End If
+    Next
+    
+    For i = 1 To MAX_DX_BIGSPELLS
+            If BigSpellTimer(i) > GetTickCount + SurfaceTimerMax Then
+                Set DD_BigSpellAnim(i) = Nothing
+                Call ZeroMemory(DDSD_BigSpellAnim(i), Len(DDSD_BigSpellAnim(i)))
+                BigSpellTimer(i) = 0
+                BigSpellUsed(i) = False
+            End If
+    Next
+    For i = 1 To MAX_DX_PAPERDOLL
+            If PaperDollTimer(i) > GetTickCount + SurfaceTimerMax Then
+                Set DD_PaperDollSurf(i) = Nothing
+                Call ZeroMemory(DDSD_PaperDoll(i), Len(DDSD_PaperDoll(i)))
+                PaperDollTimer(i) = 0
+                PaperDollUsed(i) = False
+            End If
+    Next
+    
+    For i = 1 To MAX_DX_PETS
+            If PetTimer(i) > GetTickCount + SurfaceTimerMax Then
+                Set DD_PetsSurf(i) = Nothing
+                Call ZeroMemory(DDSD_Pets(i), Len(DDSD_Pets(i)))
+                PetTimer(i) = 0
+                PetUsed(i) = False
+            End If
+    Next
+    
+End Sub
+Sub PrepareSprite(i As Long)
+If SpriteUsed(i) = False Then
+If FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
+Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
+SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
+SpriteUsed(i) = True
+End If
+End If
+SpriteTimer(i) = GetTickCount
+End Sub
+Sub PrepareSpell(i As Long)
+If SpellUsed(i) = False Then
+If FileExiste("\GFX\Spells\Spells" & i & ".png") Then
+Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
+SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
+SpellUsed(i) = True
+End If
+End If
+SpellTimer(i) = GetTickCount
+End Sub
+Sub PrepareBigSpell(i As Long)
+If BigSpellUsed(i) = False Then
+If FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
+Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
+SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
+BigSpellUsed(i) = True
+End If
+End If
+BigSpellTimer(i) = GetTickCount
+End Sub
+Sub PreparePaperDoll(i As Long)
+If PaperDollUsed(i) = False Then
+If FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
+Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
+SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
+PaperDollUsed(i) = True
+End If
+End If
+PaperDollTimer(i) = GetTickCount
+End Sub
+Sub PreparePet(i As Long)
+If PetUsed(i) = False Then
+If FileExiste("\GFX\Pets\Pet" & i & ".png") Then
+Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
+SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
+PetUsed(i) = True
+End If
+End If
+PetTimer(i) = GetTickCount
+End Sub
 Function LoadMaxSprite()
 Dim i As Long
     
@@ -196,8 +302,8 @@ Dim i As Long
     For i = 0 To MAX_DX_SPRITE
         DDSD_Character(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_Character(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
-        SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
+        'Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
+        'SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
     Next i
     
     ' Init tiles ddsd type and load the bitmap
@@ -229,22 +335,22 @@ Dim i As Long
     For i = 0 To MAX_DX_SPELLS
         DDSD_SpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_SpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\spells\spells" & i & ".png", DD, DDSD_SpellAnim(i))
-        SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
+        'Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\spells\spells" & i & ".png", DD, DDSD_SpellAnim(i))
+        'SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
     Next i
     
     For i = 0 To MAX_DX_BIGSPELLS
         DDSD_BigSpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_BigSpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
-        SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
+        'Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
+        'SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
     Next i
     
     For i = 0 To MAX_DX_PETS
         DDSD_Pets(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
         DDSD_Pets(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
-        SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
+        'Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
+        'SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
     Next i
     
     ' Init arrows ddsd type and load the bitmap
@@ -265,6 +371,15 @@ Dim i As Long
     Call CopyMemory(DD_Temp, DD_TileSurf(0), Len(DDSD_Tile(i)))
     SetMaskColorFromPixel DD_Temp, 0, 0
 
+    
+    'Paperdoll
+    For i = 0 To MAX_DX_PAPERDOLL
+        DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+        DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
+        'Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
+        'SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
+    Next i
+    
     'Initisialisation de la surface temporaire
     DDSD_Tmp.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
     DDSD_Tmp.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_3DDEVICE  'Or DDSCAPS_OPTIMIZED 'DDSCAPS_TEXTURE 'DDSCAPS_OPTIMIZED
@@ -274,14 +389,7 @@ Dim i As Long
     Set DD_TmpSurf = DD.CreateSurface(DDSD_Tmp)
     Call DD_TmpSurf.SetForeColor(0)
     Call DD_TmpSurf.setDrawStyle(5)
-    
-    'Paperdoll
-    For i = 0 To MAX_DX_PAPERDOLL
-        DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-        DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
-        Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
-        SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
-    Next i
+
     
 End Sub
 
@@ -514,6 +622,7 @@ Dim x As Long, y As Long
     rec.Left = PlayerAnim(Index, 2) * PIC_X
     rec.Right = rec.Left + PIC_X
     
+    Call PrepareSpell(PlayerAnim(Index, 0) - 1)
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpellAnim(PlayerAnim(Index, 0) - 1), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
     If PlayerAnim(Index, 3) <> 0 Then
          If PlayerAnim(Index, 1) > PlayerAnim(Index, 3) Then
@@ -534,7 +643,8 @@ Dim x As Long, y As Long, i As Long
 
 If Player(Index).SpellNum <= 0 Or Player(Index).SpellNum > MAX_SPELLS Then Exit Sub
 If Spell(Player(Index).SpellNum).SpellAnim < 0 Then Exit Sub
-
+Call PrepareSpell(Spell(Player(Index).SpellNum).SpellAnim)
+Call PrepareBigSpell(Spell(Player(Index).SpellNum).SpellAnim)
 For i = 1 To MAX_SPELL_ANIM
     With Player(Index).SpellAnim(i)
     If .CastedSpell = YES Then

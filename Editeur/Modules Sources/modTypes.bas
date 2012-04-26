@@ -789,18 +789,100 @@ Public AccOpt As TpAccOpt
 
 
 Sub ClearSpell(ByVal Index As Long)
-Call ZeroMemory(Spell(Index), Len(Spell(Index)))
+    Spell(Index).name = vbNullString
+    Spell(Index).ClassReq = 0
+    Spell(Index).LevelReq = 0
+    Spell(Index).Type = 0
+    Spell(Index).Data1 = 0
+    Spell(Index).Data2 = 0
+    Spell(Index).Data3 = 0
+    Spell(Index).MPCost = 0
+    Spell(Index).Sound = 0
+    Spell(Index).Range = 0
+    
+    Spell(Index).Big = 0
+    
+    Spell(Index).SpellAnim = 0
+    Spell(Index).SpellTime = 40
+    Spell(Index).SpellDone = 1
+    
+    Spell(Index).SpellIco = 0
+    
+    Spell(Index).AE = 0
 End Sub
+
 Sub ClearShop(ByVal Index As Long)
-Call ZeroMemory(Shop(Index), Len(Shop(Index)))
+Dim i As Long
+Dim z As Long
+
+    Shop(Index).name = vbNullString
+    Shop(Index).JoinSay = vbNullString
+    Shop(Index).LeaveSay = vbNullString
+    Shop(Index).FixesItems = 0
+    Shop(Index).FixObjet = -1
+    
+    For z = 1 To 6
+        For i = 1 To MAX_TRADES
+            Shop(Index).TradeItem(z).value(i).GiveItem = 0
+            Shop(Index).TradeItem(z).value(i).GiveValue = 0
+            Shop(Index).TradeItem(z).value(i).GetItem = 0
+            Shop(Index).TradeItem(z).value(i).GetValue = 0
+        Next i
+    Next z
 End Sub
 
 Sub ClearNpc(ByVal Index As Long)
-Call ZeroMemory(Npc(Index), Len(Npc(Index)))
+Dim i As Long
+With Npc(Index)
+    .name = vbNullString
+    .AttackSay = vbNullString
+    .sprite = 0
+    .SpawnSecs = 0
+    .Behavior = 0
+    .Range = 0
+    .STR = 0
+    .def = 0
+    .speed = 0
+    .magi = 0
+    .MaxHp = 0
+    .exp = 0
+    .SpawnTime = 0
+    .quetenum = 0
+    .inv = 0
+    .vol = 0
+    For i = 1 To MAX_NPC_DROPS
+        .ItemNPC(i).Chance = 0
+        .ItemNPC(i).ItemNum = 0
+        .ItemNPC(i).ItemValue = 0
+    Next i
+End With
 End Sub
 
 Sub ClearQuete(ByVal Index As Long)
-Call ZeroMemory(quete(Index), Len(quete(Index)))
+    quete(Index).nom = vbNullString
+    quete(Index).Data1 = 0
+    quete(Index).Data2 = 0
+    quete(Index).Data2 = 0
+    quete(Index).description = vbNullString
+    quete(Index).reponse = vbNullString
+    quete(Index).String1 = vbNullString
+    quete(Index).Temps = 0
+    quete(Index).Type = 0
+    Dim i As Long
+    For i = 1 To 15
+        quete(Index).indexe(i).Data1 = 1
+        quete(Index).indexe(i).Data2 = 0
+        quete(Index).indexe(i).Data3 = 0
+        quete(Index).indexe(i).String1 = vbNullString
+    Next i
+    quete(Index).Recompence.exp = 0
+    quete(Index).Recompence.objn1 = 1
+    quete(Index).Recompence.objn2 = 1
+    quete(Index).Recompence.objn3 = 1
+    quete(Index).Recompence.objq1 = 0
+    quete(Index).Recompence.objq2 = 0
+    quete(Index).Recompence.objq3 = 0
+    quete(Index).Case = 0
 End Sub
 
 Sub ClearTempTile()
@@ -908,19 +990,70 @@ Dim n As Long
 End Sub
 
 Sub ClearPlayerQuete(ByVal Index As Long)
-Player(Index).QueteEnCour = 0
+Dim i As Long
+        Player(MyIndex).QueteEnCour = 0
+        Player(MyIndex).Quetep.Data1 = 0
+        Player(MyIndex).Quetep.Data2 = 0
+        Player(MyIndex).Quetep.Data3 = 0
+        Player(MyIndex).Quetep.String1 = vbNullString
+        Accepter = False
+        
+        For i = 1 To 15
+            Player(MyIndex).Quetep.indexe(i).Data1 = 0
+            Player(MyIndex).Quetep.indexe(i).Data2 = 0
+            Player(MyIndex).Quetep.indexe(i).Data3 = 0
+            Player(MyIndex).Quetep.indexe(i).String1 = 0
+        Next i
 End Sub
 
 Sub ClearPet(ByVal Index As Long)
-Call ZeroMemory(Pets(Index), Len(Pets(Index)))
+    Pets(Index).nom = ""
+    Pets(Index).sprite = 0
+    Pets(Index).addForce = 0
+    Pets(Index).addDefence = 0
 End Sub
 
 Sub ClearRecette(ByVal Index As Long)
-Call ZeroMemory(recette(Index), Len(recette(Index)))
+    recette(Index).nom = vbNullString
+    For i = 0 To 9
+        recette(Index).InCraft(i, 0) = 0
+        recette(Index).InCraft(i, 1) = 0
+    Next i
+    recette(Index).craft(0) = 0
+    recette(Index).craft(1) = 0
 End Sub
 
 Sub ClearItem(ByVal Index As Long)
-Call ZeroMemory(Item(Index), Len(Item(Index)))
+    Item(Index).name = vbNullString
+    Item(Index).desc = vbNullString
+    
+    Item(Index).Type = 0
+    Item(Index).Data1 = 0
+    Item(Index).Data2 = 0
+    Item(Index).Data3 = 0
+    Item(Index).StrReq = 0
+    Item(Index).DefReq = 0
+    Item(Index).SpeedReq = 0
+    Item(Index).ClassReq = -1
+    Item(Index).AccessReq = 0
+    
+    Item(Index).paperdoll = 0
+    Item(Index).paperdollPic = 0
+    
+    Item(Index).Empilable = 0
+    
+    Item(Index).AddHP = 0
+    Item(Index).AddMP = 0
+    Item(Index).AddSP = 0
+    Item(Index).AddStr = 0
+    Item(Index).AddDef = 0
+    Item(Index).AddMagi = 0
+    Item(Index).AddSpeed = 0
+    Item(Index).AddEXP = 0
+    Item(Index).AttackSpeed = 1000
+    
+    Item(Index).NCoul = 0
+    Item(Index).tArme = 0
 End Sub
 
 Sub ClearItems()
