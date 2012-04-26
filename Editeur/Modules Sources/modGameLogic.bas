@@ -2828,31 +2828,11 @@ End Sub
 
 Sub Horsligne()
 Dim i As Long
-If HORS_LIGNE < 1 Then Exit Sub
+
+    If HORS_LIGNE < 1 Then Exit Sub
     MyIndex = 1
-    Call ClearConstante
-    If ReadINI("INFO", "GameName", App.Path & "\config.ini") > vbNullString Then GAME_NAME = ReadINI("INFO", "GameName", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxplayers", App.Path & "\config.ini")) > 0 Then MAX_PLAYERS = ReadINI("INFO", "Maxplayers", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxitems", App.Path & "\config.ini")) > 0 Then MAX_ITEMS = ReadINI("INFO", "Maxitems", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxnpcs", App.Path & "\config.ini")) > 0 Then MAX_NPCS = ReadINI("INFO", "Maxnpcs", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxshops", App.Path & "\config.ini")) > 0 Then MAX_SHOPS = ReadINI("INFO", "Maxshops", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxspells", App.Path & "\config.ini")) > 0 Then MAX_SPELLS = ReadINI("INFO", "Maxspells", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")) > 0 Then MAX_MAPS = ReadINI("INFO", "Maxmaps", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")) > 0 Then MAX_MAP_ITEMS = ReadINI("INFO", "Maxmapitems", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxmapx", App.Path & "\config.ini")) > 0 Then MAX_MAPX = ReadINI("INFO", "Maxmapx", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxmapy", App.Path & "\config.ini")) > 0 Then MAX_MAPY = ReadINI("INFO", "Maxmapy", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxemots", App.Path & "\config.ini")) > 0 Then MAX_EMOTICONS = ReadINI("INFO", "Maxemots", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxclasses", App.Path & "\config.ini")) > 0 Then Max_Classes = Val(ReadINI("INFO", "Maxclasses", App.Path & "\config.ini"))
-    If Val(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini")) > 0 Then MAX_LEVEL = Val(ReadINI("INFO", "Maxlevel", App.Path & "\config.ini"))
-    If Val(ReadINI("INFO", "Maxquet", App.Path & "\config.ini")) > 0 Then MAX_QUETES = Val(ReadINI("INFO", "Maxquet", App.Path & "\config.ini"))
-    If Val(ReadINI("INFO", "Maxnpcspell", App.Path & "\config.ini")) > 0 Then MAX_NPC_SPELLS = Val(ReadINI("INFO", "Maxnpcspell", App.Path & "\config.ini")) Else MAX_NPC_SPELLS = 10
-    If Val(ReadINI("INFO", "Maxinv", App.Path & "\config.ini")) > 0 Then MAX_INV = Val(ReadINI("INFO", "Maxinv", App.Path & "\config.ini"))
-    If Val(ReadINI("INFO", "Maxpets", App.Path & "\config.ini")) > 0 Then MAX_PETS = ReadINI("INFO", "Maxpets", App.Path & "\config.ini")
-    If Val(ReadINI("INFO", "Maxmetier", App.Path & "\config.ini")) > 0 Then MAX_METIER = ReadINI("INFO", "Maxmetier", App.Path & "\config.ini")
-    
-    PIC_PL = Val(ReadINI("INFO", "PIC_PL", App.Path & "\config.ini"))
-    PIC_NPC1 = Val(ReadINI("INFO", "PIC_NPC1", App.Path & "\config.ini"))
-    PIC_NPC2 = Val(ReadINI("INFO", "PIC_NPC2", App.Path & "\config.ini"))
+    Call LoadConstante
+  
     'MAX_PLAYER_SPELLS = Val(ReadINI("INFO", "Maxpspel", App.Path & "\Editeur\config.ini"))
     ReDim Pets(1 To MAX_PETS) As PetsRec
     ReDim recette(1 To MAX_RECETTE) As RecetteRec
@@ -2963,8 +2943,9 @@ Dim i As Long
     Call StopMidi
     frmMirage.lstIndex.Clear
     For i = 1 To MAX_MAPS
-        'frmMirage.lstIndex.AddItem i & " : " & Map(i).name
+        frmMirage.lstIndex.AddItem i & " : " & Map(i).name
     Next i
+    
     frmsplash.Visible = False
     InGame = True
     Call EditorInit
@@ -2982,24 +2963,113 @@ Dim i As Long
     frmMirage.Show
     Call GameLoop
 End Sub
-Sub ClearConstante()
-GAME_NAME = "Frog Creator"
+Sub LoadConstante()
+GAME_NAME = ReadINI("INFO", "GameName", App.Path & "\Config.ini")
+If Len(GAME_NAME) < 2 Then
+GAME_NAME = "FRoG Creator"
+End If
+
+MAX_INV = 26
+MAX_PLAYERS = ReadINI("INFO", "Maxplayers", App.Path & "\Config.ini")
+If MAX_PLAYERS < 1 Then
 MAX_PLAYERS = 50
+End If
+
+MAX_ITEMS = ReadINI("INFO", "Maxitems", App.Path & "\Config.ini")
+If MAX_ITEMS < 1 Then
 MAX_ITEMS = 100
+End If
+
+MAX_NPCS = ReadINI("INFO", "Maxnpcs", App.Path & "\Config.ini")
+If MAX_NPCS < 1 Then
 MAX_NPCS = 100
-MAX_SHOPS = 100
+End If
+
+MAX_SHOPS = ReadINI("INFO", "Maxshops", App.Path & "\Config.ini")
+If MAX_SHOPS < 1 Then
+MAX_SHOPS = 50
+End If
+
+MAX_SPELLS = ReadINI("INFO", "Maxspells", App.Path & "\Config.ini")
+If MAX_SPELLS < 1 Then
 MAX_SPELLS = 100
-MAX_MAPS = 255
+End If
+
+MAX_MAPS = ReadINI("INFO", "Maxmaps", App.Path & "\Config.ini")
+If MAX_MAPS < 1 Then
+MAX_MAPS = 100
+End If
+
+MAX_MAP_ITEMS = ReadINI("INFO", "Maxmapitems", App.Path & "\Config.ini")
+If MAX_MAP_ITEMS < 1 Then
 MAX_MAP_ITEMS = 20
+End If
+
+MAX_MAPX = ReadINI("INFO", "Maxmapx", App.Path & "\Config.ini")
+If MAX_MAPX < 1 Then
 MAX_MAPX = 30
+End If
+
+MAX_MAPY = ReadINI("INFO", "Maxmapy", App.Path & "\Config.ini")
+If MAX_MAPY < 1 Then
 MAX_MAPY = 30
-MAX_EMOTICONS = 10
+End If
+
+MAX_EMOTICONS = ReadINI("INFO", "Maxemots", App.Path & "\Config.ini")
+If MAX_EMOTICONS < 1 Then
+MAX_EMOTICONS = 30
+End If
+
+Max_Classes = ReadINI("INFO", "Maxclasses", App.Path & "\Config.ini")
+If Max_Classes < 1 Then
 Max_Classes = 3
+End If
+
+MAX_LEVEL = ReadINI("INFO", "Maxlevel", App.Path & "\Config.ini")
+If MAX_LEVEL < 1 Then
 MAX_LEVEL = 100
+End If
+
+MAX_QUETES = ReadINI("INFO", "Maxquet", App.Path & "\Config.ini")
+If MAX_QUETES < 1 Then
 MAX_QUETES = 100
-MAX_PETS = 10
+End If
+
+MAX_PETS = ReadINI("INFO", "Maxpets", App.Path & "\Config.ini")
+If MAX_PETS < 1 Then
+MAX_PETS = 100
+End If
+
+MAX_METIER = ReadINI("INFO", "Maxmetier", App.Path & "\Config.ini")
+If MAX_METIER < 1 Then
 MAX_METIER = 100
-MAX_RECETTE = 200
+End If
+
+MAX_RECETTE = ReadINI("INFO", "Maxrecette", App.Path & "\Config.ini")
+If MAX_RECETTE < 1 Then
+MAX_RECETTE = 100
+End If
+
+PIC_PL = ReadINI("INFO", "PIC_PL", App.Path & "\Config.ini")
+If PIC_PL < 1 Then
+PIC_PL = 64
+End If
+
+PIC_NPC1 = ReadINI("INFO", "PIC_NPC1", App.Path & "\Config.ini")
+If PIC_NPC1 < 1 Then
+PIC_NPC1 = 2
+End If
+
+PIC_NPC2 = ReadINI("INFO", "PIC_NPC2", App.Path & "\Config.ini")
+If PIC_NPC2 < 1 Then
+PIC_NPC2 = 2
+End If
+
+MAX_NPC_SPELLS = ReadINI("INFO", "maxnpcspell", App.Path & "\Config.ini")
+If MAX_NPC_SPELLS < 1 Then
+MAX_NPC_SPELLS = 10
+End If
+
 End Sub
 Sub ChargerCartes()
 Dim FileName As String
@@ -6001,7 +6071,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6013,7 +6083,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6031,7 +6101,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6044,7 +6114,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6057,10 +6127,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -6074,7 +6144,7 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)
@@ -6888,6 +6958,7 @@ Sub AffTilesPic(ByVal Tnum As Byte, ByVal AScr As Long)
 Dim sRECT As RECT
 Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
+    'Call copymemory(
     frmMirage.picBackSelect.Width = Int(DDSD_Tile(Tnum).lWidth)
     frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)

@@ -1398,14 +1398,14 @@ On Error Resume Next
 Call PrepareSprite(scrlSprite.value)
 picSprite.height = (DDSD_Character(scrlSprite.value).lHeight) / 4
 picSprite.Width = (DDSD_Character(scrlSprite.value).lWidth) / 4
+scrlSpriteY.Max = (picSprite.height) - Picture1.height
+scrlSpriteX.Max = (picSprite.Width) - Picture1.Width
 If picSprite.height > 96 Then
-scrlSpriteY.Max = picSprite.height - Picture1.height
 scrlSpriteY.Visible = True
 Else
 scrlSpriteY.Visible = False
 End If
 If picSprite.Width > 96 Then
-scrlSpriteX.Max = picSprite.Width - Picture1.Width
 scrlSpriteX.Visible = True
 Else
 scrlSpriteX.Visible = False

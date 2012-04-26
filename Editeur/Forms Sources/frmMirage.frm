@@ -4003,9 +4003,9 @@ If HORS_LIGNE = 1 Then Call InitMirage
 HScroll1.Max = (frmMirage.picBackSelect.Width / 32)
 HScroll1.Width = (scrlPicture.Left)
 picBack.Width = (scrlPicture.Left + 17)
-gauchedroite.min = 0
+gauchedroite.Min = 0
 gauchedroite.Max = Int(30 - (picScreen.Width / 32)) + 1
-hautbas.min = -1
+hautbas.Min = -1
 hautbas.Max = Int(30 - (picScreen.height / 32))
 Call NetPic
 Couche = "Sol"
@@ -4319,7 +4319,7 @@ Private Sub OptCraft_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Table de Craft"
     frmScript.Label1.Caption = "Métier N°"
-    frmScript.scrlScript.min = 1
+    frmScript.scrlScript.Min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_RECETTE
 End Sub
@@ -4372,7 +4372,7 @@ Private Sub OptMetier_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Apprendre Metier"
     frmScript.Label1.Caption = "Métier N°"
-    frmScript.scrlScript.min = 1
+    frmScript.scrlScript.Min = 1
     frmScript.scrlScript.value = 1
     frmScript.scrlScript.Max = MAX_METIER
 End Sub
@@ -4417,7 +4417,7 @@ Private Sub optScripted_Click()
     frmScript.Show vbModeless
     frmScript.Caption = "Case Script"
     frmScript.Label1.Caption = "Numéro case"
-    frmScript.scrlScript.min = 0
+    frmScript.scrlScript.Min = 0
     frmScript.scrlScript.Max = 1000
 End Sub
 
@@ -5174,13 +5174,13 @@ Private Sub timerbar_Timer()
 If frmMirage.Visible = True Then
     
     If Player(MyIndex).y < ((picScreen.height / 32) \ 2) Then
-        hautbas.value = hautbas.min
+        hautbas.value = hautbas.Min
     Else
         If ((picScreen.height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.height \ 32)) < hautbas.Max Then hautbas.value = ((picScreen.height \ 32) \ 2) + (Player(MyIndex).y - (picScreen.height \ 32)) Else hautbas.value = hautbas.Max
     End If
     
     If Player(MyIndex).x < ((picScreen.Width \ 32) \ 2) Then
-        gauchedroite.value = gauchedroite.min
+        gauchedroite.value = gauchedroite.Min
     Else
         If ((picScreen.Width \ 32) \ 2) + 1 + (Player(MyIndex).x - (picScreen.Width \ 32)) < gauchedroite.Max Then gauchedroite.value = ((picScreen.Width \ 32) \ 2) + 1 + (Player(MyIndex).x - (picScreen.Width \ 32)) Else gauchedroite.value = gauchedroite.Max
     End If
