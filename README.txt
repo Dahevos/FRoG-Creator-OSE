@@ -1,4 +1,4 @@
-################################
+﻿################################
 FRoG Creator Open Source Edition
 ################################
 # French software, French language. Sry :)
@@ -23,6 +23,6 @@ Remerciements :
 	- Gak (0.4)
 	- Koolgraph (0.5)
 	- Hugo, Alexoune001, Mimus (0.6)
-	- Alves57600
+	- Alves57600, Mywaystar (0.6.2)
 
 Et toute l'équipe de FRoG Team (modérateurs, graphistes, etc...) sans qui tout cela n'aurait pas été possible
