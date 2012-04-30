@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{463051F7-93F6-433B-8C04-1B5EF7493179}#1.0#0"; "WinXPCEngine.ocx"
 Begin VB.Form frmNpcEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditer un PNJ (PNJ = personnage non joueur)"

@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmMainMenu 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Menu Principal"
-   ClientHeight    =   5100
+   ClientHeight    =   5085
    ClientLeft      =   195
    ClientTop       =   405
    ClientWidth     =   5085
@@ -22,7 +22,7 @@ Begin VB.Form frmMainMenu
    MaxButton       =   0   'False
    MinButton       =   0   'False
    Picture         =   "frmMainMenu.frx":000C
-   ScaleHeight     =   5100
+   ScaleHeight     =   5085
    ScaleWidth      =   5085
    StartUpPosition =   2  'CenterScreen
    Begin VB.Timer Timer2 
@@ -311,8 +311,8 @@ txtName.Text = Trim$(ReadINI("INFO", "Account", App.Path & "\Config\Account.ini"
 txtPassword.Text = Trim$(ReadINI("INFO", "Password", App.Path & "\Config\Account.ini"))
 If Trim$(txtPassword.Text) <> vbNullString Then Check1.value = Checked Else Check1.value = Unchecked
 txtName.SelStart = Len(txtName.Text)
-status.ForeColor = vbRed
-status.Caption = "Recherche en cours..."
+Status.ForeColor = vbRed
+Status.Caption = "Recherche en cours..."
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
@@ -342,7 +342,7 @@ Private Sub picQuit_Click()
 End Sub
 
 Private Sub Timer1_Timer()
-    If ConnectToServer Then status.ForeColor = vbGreen: status.Caption = "Connecté" Else status.ForeColor = vbRed: status.Caption = "Déconnecté"
+    If ConnectToServer Then Status.ForeColor = vbGreen: Status.Caption = "Connecté" Else Status.ForeColor = vbRed: Status.Caption = "Déconnecté"
 End Sub
 
 Private Sub Timer2_Timer()
