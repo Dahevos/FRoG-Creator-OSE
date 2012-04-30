@@ -51,7 +51,7 @@ End Sub
 
 Public Sub PlaySound(Sound As String)
     If ReadINI("CONFIG", "Sound", App.Path & "\Config\Account.ini") = "1" Then
-        If Not FileExiste("SFX\" & Sound) Then Exit Sub
+        If Not FileExist("SFX\" & Sound) Then Exit Sub
         Call sndPlaySound(App.Path & "\SFX\" & Sound, SND_ASYNC Or SND_NODEFAULT)
     End If
 End Sub
@@ -68,10 +68,10 @@ Public Sub PlayMP3(Sound As String)
 Dim result As Boolean
 
 'Vérifie s'il existe
-If Not FileExiste("Music\" & Sound) Then Exit Sub
+If Not FileExist("Music\" & Sound) Then Exit Sub
        
 'Joue la musique
-frmMirage.mediaplayer.Url = App.Path & "\Music\" & Sound
+frmMirage.mediaplayer.URL = App.Path & "\Music\" & Sound
 End Sub
     
 Public Sub StopMP3()

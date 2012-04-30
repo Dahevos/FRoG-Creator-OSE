@@ -346,7 +346,6 @@ Dim z As Long
         InGame = True
         If Player(MyIndex).Access < 1 Then MsgBox "Vous n'avez pas un acces suffisant pour éditer le jeu!!" & vbCrLf & "Le logiciel va se terminer!!": Call GameDestroy
         Call GameInit
-        Call frmMirage.NetPic
         Call GameLoop
         
         If Parse(1) = END_CHAR Then MsgBox ("here"): End
@@ -741,7 +740,7 @@ mont:
         ' Get revision
         y = Val(Parse(2))
         
-        If FileExiste("maps\map" & x & ".fcc") Then
+        If FileExist("maps\map" & x & ".fcc") Then
             ' Check to see if the revisions match
             If GetMapRevision(x) = y Then
                 ' We do so we dont need the map
@@ -774,13 +773,13 @@ mont:
         If Mid$(URL, Len(URL)) = "/" And Mid$(rep, 1, 1) = "/" Then rep = Mid$(rep, 2)
                 
         If Mid$(URL, Len(URL)) = "/" And rep = "/" Then
-            If FileExiste("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & "map" & z & ".fcc")
+            If FileExist("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & "map" & z & ".fcc")
             Call URLDownloadToFile(0, URL & "map" & z & ".fcc", App.Path & "\Maps\map" & z & ".fcc", 0, 0)
         ElseIf Mid$(URL, Len(URL)) <> "/" And Mid$(rep, 1, 1) = "/" Then
-            If FileExiste("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & rep & "map" & z & ".fcc")
+            If FileExist("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & rep & "map" & z & ".fcc")
             Call URLDownloadToFile(0, URL & rep & "map" & z & ".fcc", App.Path & "\Maps\map" & z & ".fcc", &O10, 0)
         Else
-            If FileExiste("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & rep & "map" & z & ".fcc")
+            If FileExist("Maps\map" & z & ".fcc") Then Call DeleteUrlCacheEntry(URL & rep & "map" & z & ".fcc")
             Call URLDownloadToFile(0, URL & rep & "map" & z & ".fcc", App.Path & "\Maps\map" & z & ".fcc", &O10, 0)
         End If
         Call LoadMap(z)
@@ -1955,7 +1954,7 @@ mont:
             frmFlash.Flash.Play
             frmFlash.Check.Enabled = True
             frmFlash.Show vbModeless, frmMirage
-        ElseIf FileExiste("Flashs\" & Trim$(Parse(1))) = True Then
+        ElseIf FileExist("Flashs\" & Trim$(Parse(1))) = True Then
             WriteINI "CONFIG", "Music", 0, App.Path & "\Config\Account.ini"
             AccOpt.Music = False
             WriteINI "CONFIG", "Sound", 0, App.Path & "\Config\Account.ini"

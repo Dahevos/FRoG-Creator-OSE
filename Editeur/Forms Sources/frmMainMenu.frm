@@ -292,6 +292,8 @@ Private Sub Form_Load()
 Dim i As Long
 Dim Ending As String
 
+frmMainMenu.version.Caption = "Version de l'éditeur : " & App.Major & "." & App.Minor & "." & App.Revision
+    
 If LCase$(Dir(App.Path & "\maps", vbDirectory)) <> "maps" Then Call MkDir(App.Path & "\maps")
 If LCase$(Dir(App.Path & "\logs", vbDirectory)) <> "logs" Then Call MkDir(App.Path & "\Logs")
 If LCase$(Dir(App.Path & "\accounts", vbDirectory)) <> "accounts" Then Call MkDir(App.Path & "\accounts")
@@ -311,7 +313,6 @@ If Trim$(txtPassword.Text) <> vbNullString Then Check1.value = Checked Else Chec
 txtName.SelStart = Len(txtName.Text)
 status.ForeColor = vbRed
 status.Caption = "Recherche en cours..."
-version.Caption = "Version de l'éditeur : " & App.Major & "." & App.Minor & "." & App.Revision
 End Sub
 
 Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)

@@ -36,20 +36,20 @@ Function StripTerminator(ByVal strString As String) As String
     If intZeroPos > 0 Then StripTerminator = Left$(strString, intZeroPos - 1) Else StripTerminator = strString
 End Function
 
-Function FileExiste(ByVal FileName As String) As Boolean
+Function FileExist(ByVal FileName As String) As Boolean
     On Error GoTo er:
-    If Dir$(App.Path & "\" & FileName) = vbNullString Then FileExiste = False Else FileExiste = True
+    If Dir$(App.Path & "\" & FileName) = vbNullString Then FileExist = False Else FileExist = True
     Exit Function
 er:
-FileExiste = False
+FileExist = False
 End Function
 
-Function FileExistes(ByVal AppPAndfile As String) As Boolean
+Function FileExists(ByVal AppPAndfile As String) As Boolean
     On Error GoTo er:
-    If Dir$(AppPAndfile) = vbNullString Then FileExistes = False Else FileExistes = True
+    If Dir$(AppPAndfile) = vbNullString Then FileExists = False Else FileExists = True
 Exit Function
 er:
-FileExistes = False
+FileExists = False
 End Function
 
 Sub SaveLocalMap(ByVal MapNum As Long)
@@ -68,7 +68,7 @@ Dim FileName As String
 Dim f As Long
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
         
-    If Not FileExiste("maps\map" & MapNum & ".fcc") Then Exit Sub
+    If Not FileExist("maps\map" & MapNum & ".fcc") Then Exit Sub
     
     f = FreeFile
     Open FileName For Binary As #f
@@ -81,7 +81,7 @@ Dim FileName As String
 Dim f As Long
     FileName = App.Path & "\quetes\quete" & QIndex & ".fcq"
         
-    If Not FileExiste("quetes\quete" & QIndex & ".fcq") Then Exit Sub
+    If Not FileExist("quetes\quete" & QIndex & ".fcq") Then Exit Sub
     
     f = FreeFile
     Open FileName For Binary As #f

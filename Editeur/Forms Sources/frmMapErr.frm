@@ -71,7 +71,7 @@ End Sub
 Private Sub cmdRestaure_Click()
     If curMap > 0 Then
         'Supprimer l'ancien fichier
-        If FileExistes(App.Path & "\Maps\map" & curMap & ".fcc") Then Kill App.Path & "\Maps\map" & curMap & ".fcc"
+        If FileExists(App.Path & "\Maps\map" & curMap & ".fcc") Then Kill App.Path & "\Maps\map" & curMap & ".fcc"
         'Copier le nouveau fichier
         Call FileCopy(App.Path & "\Maps\map" & curMap & "BACKUP.fcc", App.Path & "\Maps\map" & curMap & ".fcc")
         'Fermer la fenêtre
@@ -79,7 +79,7 @@ Private Sub cmdRestaure_Click()
     End If
 End Sub
 
-Private Sub form_Load()
+Private Sub Form_Load()
     curMap = 0
 End Sub
 
@@ -87,7 +87,7 @@ Public Sub Init(ByVal Map As Long)
 On Error Resume Next
 Dim Dmod As String
     'Initialisation de la map courante et de la fenêtre si le fichier de backup existe
-    If FileExistes(App.Path & "\Maps\map" & Map & "BACKUP.fcc") Then
+    If FileExists(App.Path & "\Maps\map" & Map & "BACKUP.fcc") Then
         Dmod = FileDateTime(App.Path & "\Maps\map" & Map & "BACKUP.fcc")
         Label2.Caption = "Informations sur la sauvegarde : Carte " & Map & ", Derniére modification : " & Val(Day(Dmod)) & "/" & Val(Month(Dmod)) & "/" & Val(Year(Dmod)) & " " & Val(Hour(Dmod)) & "h" & Val(minute(Dmod))
         curMap = Map

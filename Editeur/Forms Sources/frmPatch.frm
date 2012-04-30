@@ -142,7 +142,7 @@ End Sub
 Private Sub Cree_Click()
 Dim i As Long
 
-If FileExiste("\info.ini") Then Call Kill(App.Path & "\info.ini")
+If FileExist("\info.ini") Then Call Kill(App.Path & "\info.ini")
 
 For i = 1 To 3000
     If Trim$(Fichier(i).nom) <= vbNullString Then MaxF = i - 1: Exit For

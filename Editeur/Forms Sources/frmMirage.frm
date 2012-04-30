@@ -1890,595 +1890,6 @@ Begin VB.Form frmMirage
          End
       End
    End
-   Begin VB.PictureBox Attributs 
-      Appearance      =   0  'Flat
-      BorderStyle     =   0  'None
-      ForeColor       =   &H80000008&
-      Height          =   6930
-      Left            =   0
-      ScaleHeight     =   462
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   236
-      TabIndex        =   26
-      TabStop         =   0   'False
-      ToolTipText     =   "Maintenir le click gauche  pour déplacer,click droit pour position de default."
-      Top             =   480
-      Visible         =   0   'False
-      Width           =   3540
-      Begin VB.OptionButton OptMetier 
-         Caption         =   "Metier"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   149
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3840
-         Width           =   1410
-      End
-      Begin VB.OptionButton OptCraft 
-         Caption         =   "Table de Craft"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   148
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3600
-         Width           =   1410
-      End
-      Begin VB.OptionButton optNpcAvoid 
-         Caption         =   "Bloquer PNJ"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   0
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les PNJ(personnage non joueur)"
-         Top             =   600
-         Width           =   1215
-      End
-      Begin VB.OptionButton optBDir 
-         Caption         =   "Bloque Direction"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   145
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement une ou plusieurs directions"
-         Top             =   1800
-         Width           =   1410
-      End
-      Begin VB.OptionButton optbtoit 
-         Caption         =   "Bloque Toit"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   144
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3120
-         Width           =   1170
-      End
-      Begin VB.OptionButton optBguilde 
-         Caption         =   "Bloquer Guilde"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   65
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
-         Top             =   1560
-         Width           =   1395
-      End
-      Begin VB.OptionButton opttoit 
-         Caption         =   "Toit"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   52
-         TabStop         =   0   'False
-         ToolTipText     =   "Quand le jouer marche sur une case Toit toutes les couches frange 1,2 et 3 qui sont sur une case Toit autour de lui disparaisse"
-         Top             =   2880
-         Width           =   1170
-      End
-      Begin VB.OptionButton optBniv 
-         Caption         =   "Bloquer Niv."
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   51
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement a partir d'un certain Niveau"
-         Top             =   1080
-         Width           =   1155
-      End
-      Begin VB.OptionButton optBmont 
-         Caption         =   "Bloquer Monture"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   50
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
-         Top             =   1320
-         Width           =   1395
-      End
-      Begin VB.OptionButton optcoffre 
-         Caption         =   "Coffre"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   49
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée un coffre qui ne pourras être ouvert qu'avec un objet clé sélectionner ou un code"
-         Top             =   3240
-         Width           =   1095
-      End
-      Begin VB.OptionButton optportecode 
-         Caption         =   "Porte à code"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   48
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un codéfinit"
-         Top             =   2880
-         Width           =   1095
-      End
-      Begin VB.OptionButton optWarp 
-         Caption         =   "Téléportation"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   1560
-         TabIndex        =   44
-         TabStop         =   0   'False
-         ToolTipText     =   "Téléport le joueur au positions et a la carte choisie"
-         Top             =   1920
-         Width           =   1215
-      End
-      Begin VB.OptionButton OptBank 
-         Caption         =   "Banque"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   0
-         TabIndex        =   43
-         TabStop         =   0   'False
-         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre de la banque"
-         Top             =   4200
-         Width           =   975
-      End
-      Begin VB.OptionButton optScripted 
-         Caption         =   "Case Scriptée"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   42
-         TabStop         =   0   'False
-         ToolTipText     =   "Exécute le script de la case sélectionner"
-         Top             =   1680
-         Width           =   1290
-      End
-      Begin VB.OptionButton optClassChange 
-         Caption         =   "Chg de Classe"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   41
-         TabStop         =   0   'False
-         ToolTipText     =   "Change la classe du joueur"
-         Top             =   2640
-         Width           =   1200
-      End
-      Begin VB.OptionButton optNotice 
-         Caption         =   "Avertissement"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   40
-         TabStop         =   0   'False
-         ToolTipText     =   "Avertissement sous forme de texte et/ou de bruit"
-         Top             =   3720
-         Width           =   1215
-      End
-      Begin VB.OptionButton optDoor 
-         Caption         =   "Porte"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   39
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui s'ouvrira à l'approche du joueur"
-         Top             =   2640
-         Width           =   960
-      End
-      Begin VB.OptionButton optSign 
-         Caption         =   "Panneau"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   38
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée un panneau"
-         Top             =   3480
-         Width           =   1080
-      End
-      Begin VB.OptionButton optSprite 
-         Caption         =   "Chg Sprite"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   37
-         TabStop         =   0   'False
-         ToolTipText     =   "Change l'apparence du joueur(Sprite = skin/habit)"
-         Top             =   2400
-         Width           =   1200
-      End
-      Begin VB.OptionButton optSound 
-         Caption         =   "Jouer un son"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   36
-         TabStop         =   0   'False
-         ToolTipText     =   "Joue un son quand le joueur passe sur la case"
-         Top             =   600
-         Width           =   1170
-      End
-      Begin VB.OptionButton optArena 
-         Caption         =   "Arène"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   35
-         TabStop         =   0   'False
-         ToolTipText     =   "Case à mettre dans les arènes qui enlèvent les pénalités PK (tuer des joueurs)"
-         Top             =   840
-         Width           =   1170
-      End
-      Begin VB.OptionButton optCBlock 
-         Caption         =   "Bloquer Class"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   34
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement certaines classes"
-         Top             =   840
-         Width           =   1125
-      End
-      Begin VB.OptionButton optShop 
-         Caption         =   "Magasin"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   33
-         TabStop         =   0   'False
-         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre du magasin sélectionner"
-         Top             =   3960
-         Width           =   810
-      End
-      Begin VB.OptionButton optKill 
-         Caption         =   "Tuer"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   32
-         TabStop         =   0   'False
-         ToolTipText     =   "Tue un joueur"
-         Top             =   1320
-         Width           =   810
-      End
-      Begin VB.OptionButton optHeal 
-         Caption         =   "Soins"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   31
-         TabStop         =   0   'False
-         ToolTipText     =   "Soigne un joueur"
-         Top             =   1080
-         Width           =   1035
-      End
-      Begin VB.OptionButton optKeyOpen 
-         Caption         =   "Ouvrir une Porte"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   30
-         TabStop         =   0   'False
-         ToolTipText     =   "En passant sur cette case le joueur ouvrira une porte sélectionner par ses coordonner"
-         Top             =   2160
-         Width           =   1455
-      End
-      Begin VB.OptionButton optBlocked 
-         Caption         =   "Bloquer"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   255
-         Left            =   0
-         TabIndex        =   1
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque les joueur et le PNJ"
-         Top             =   360
-         Value           =   -1  'True
-         Width           =   1215
-      End
-      Begin VB.CommandButton cmdClear2 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Éffacer tout les attributs"
-         Height          =   300
-         Left            =   600
-         MaskColor       =   &H00E0E0E0&
-         TabIndex        =   29
-         ToolTipText     =   "Efface tout les attributs sur la carte"
-         Top             =   4560
-         Width           =   2175
-      End
-      Begin VB.OptionButton optItem 
-         Caption         =   "Objet"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   270
-         Left            =   1560
-         TabIndex        =   28
-         TabStop         =   0   'False
-         ToolTipText     =   "Pose l'objet sélectionner au sol"
-         Top             =   360
-         Width           =   1215
-      End
-      Begin VB.OptionButton optKey 
-         Caption         =   "Porte à clé"
-         BeginProperty Font 
-            Name            =   "Tahoma"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   27
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un objet clé sélectionner"
-         Top             =   2400
-         Width           =   1215
-      End
-      Begin VB.Label atrib 
-         Appearance      =   0  'Flat
-         Caption         =   "Attributs :"
-         ForeColor       =   &H80000008&
-         Height          =   255
-         Left            =   240
-         TabIndex        =   45
-         Top             =   0
-         Width           =   855
-      End
-   End
    Begin VB.PictureBox txtQ 
       Appearance      =   0  'Flat
       ForeColor       =   &H80000008&
@@ -3301,6 +2712,595 @@ Begin VB.Form frmMirage
       Top             =   825
       Width           =   1950
    End
+   Begin VB.PictureBox Attributs 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   6930
+      Left            =   0
+      ScaleHeight     =   462
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   236
+      TabIndex        =   26
+      TabStop         =   0   'False
+      ToolTipText     =   "Maintenir le click gauche  pour déplacer,click droit pour position de default."
+      Top             =   480
+      Visible         =   0   'False
+      Width           =   3540
+      Begin VB.OptionButton OptMetier 
+         Caption         =   "Metier"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   149
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3840
+         Width           =   1410
+      End
+      Begin VB.OptionButton OptCraft 
+         Caption         =   "Table de Craft"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   148
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3600
+         Width           =   1410
+      End
+      Begin VB.OptionButton optNpcAvoid 
+         Caption         =   "Bloquer PNJ"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   0
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les PNJ(personnage non joueur)"
+         Top             =   600
+         Width           =   1215
+      End
+      Begin VB.OptionButton optBDir 
+         Caption         =   "Bloque Direction"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   145
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement une ou plusieurs directions"
+         Top             =   1800
+         Width           =   1410
+      End
+      Begin VB.OptionButton optbtoit 
+         Caption         =   "Bloque Toit"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   144
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3120
+         Width           =   1170
+      End
+      Begin VB.OptionButton optBguilde 
+         Caption         =   "Bloquer Guilde"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   65
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
+         Top             =   1560
+         Width           =   1395
+      End
+      Begin VB.OptionButton opttoit 
+         Caption         =   "Toit"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   52
+         TabStop         =   0   'False
+         ToolTipText     =   "Quand le jouer marche sur une case Toit toutes les couches frange 1,2 et 3 qui sont sur une case Toit autour de lui disparaisse"
+         Top             =   2880
+         Width           =   1170
+      End
+      Begin VB.OptionButton optBniv 
+         Caption         =   "Bloquer Niv."
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   51
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement a partir d'un certain Niveau"
+         Top             =   1080
+         Width           =   1155
+      End
+      Begin VB.OptionButton optBmont 
+         Caption         =   "Bloquer Monture"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   50
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
+         Top             =   1320
+         Width           =   1395
+      End
+      Begin VB.OptionButton optcoffre 
+         Caption         =   "Coffre"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   49
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée un coffre qui ne pourras être ouvert qu'avec un objet clé sélectionner ou un code"
+         Top             =   3240
+         Width           =   1095
+      End
+      Begin VB.OptionButton optportecode 
+         Caption         =   "Porte à code"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   48
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un codéfinit"
+         Top             =   2880
+         Width           =   1095
+      End
+      Begin VB.OptionButton optWarp 
+         Caption         =   "Téléportation"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   44
+         TabStop         =   0   'False
+         ToolTipText     =   "Téléport le joueur au positions et a la carte choisie"
+         Top             =   1920
+         Width           =   1215
+      End
+      Begin VB.OptionButton OptBank 
+         Caption         =   "Banque"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   0
+         TabIndex        =   43
+         TabStop         =   0   'False
+         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre de la banque"
+         Top             =   4200
+         Width           =   975
+      End
+      Begin VB.OptionButton optScripted 
+         Caption         =   "Case Scriptée"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   42
+         TabStop         =   0   'False
+         ToolTipText     =   "Exécute le script de la case sélectionner"
+         Top             =   1680
+         Width           =   1290
+      End
+      Begin VB.OptionButton optClassChange 
+         Caption         =   "Chg de Classe"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   41
+         TabStop         =   0   'False
+         ToolTipText     =   "Change la classe du joueur"
+         Top             =   2640
+         Width           =   1200
+      End
+      Begin VB.OptionButton optNotice 
+         Caption         =   "Avertissement"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   40
+         TabStop         =   0   'False
+         ToolTipText     =   "Avertissement sous forme de texte et/ou de bruit"
+         Top             =   3720
+         Width           =   1215
+      End
+      Begin VB.OptionButton optDoor 
+         Caption         =   "Porte"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   39
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui s'ouvrira à l'approche du joueur"
+         Top             =   2640
+         Width           =   960
+      End
+      Begin VB.OptionButton optSign 
+         Caption         =   "Panneau"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   38
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée un panneau"
+         Top             =   3480
+         Width           =   1080
+      End
+      Begin VB.OptionButton optSprite 
+         Caption         =   "Chg Sprite"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   37
+         TabStop         =   0   'False
+         ToolTipText     =   "Change l'apparence du joueur(Sprite = skin/habit)"
+         Top             =   2400
+         Width           =   1200
+      End
+      Begin VB.OptionButton optSound 
+         Caption         =   "Jouer un son"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   36
+         TabStop         =   0   'False
+         ToolTipText     =   "Joue un son quand le joueur passe sur la case"
+         Top             =   600
+         Width           =   1170
+      End
+      Begin VB.OptionButton optArena 
+         Caption         =   "Arène"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   35
+         TabStop         =   0   'False
+         ToolTipText     =   "Case à mettre dans les arènes qui enlèvent les pénalités PK (tuer des joueurs)"
+         Top             =   840
+         Width           =   1170
+      End
+      Begin VB.OptionButton optCBlock 
+         Caption         =   "Bloquer Class"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   34
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement certaines classes"
+         Top             =   840
+         Width           =   1125
+      End
+      Begin VB.OptionButton optShop 
+         Caption         =   "Magasin"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   33
+         TabStop         =   0   'False
+         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre du magasin sélectionner"
+         Top             =   3960
+         Width           =   810
+      End
+      Begin VB.OptionButton optKill 
+         Caption         =   "Tuer"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   32
+         TabStop         =   0   'False
+         ToolTipText     =   "Tue un joueur"
+         Top             =   1320
+         Width           =   810
+      End
+      Begin VB.OptionButton optHeal 
+         Caption         =   "Soins"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   31
+         TabStop         =   0   'False
+         ToolTipText     =   "Soigne un joueur"
+         Top             =   1080
+         Width           =   1035
+      End
+      Begin VB.OptionButton optKeyOpen 
+         Caption         =   "Ouvrir une Porte"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   30
+         TabStop         =   0   'False
+         ToolTipText     =   "En passant sur cette case le joueur ouvrira une porte sélectionner par ses coordonner"
+         Top             =   2160
+         Width           =   1455
+      End
+      Begin VB.OptionButton optBlocked 
+         Caption         =   "Bloquer"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   0
+         TabIndex        =   1
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque les joueur et le PNJ"
+         Top             =   360
+         Value           =   -1  'True
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdClear2 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Éffacer tout les attributs"
+         Height          =   300
+         Left            =   600
+         MaskColor       =   &H00E0E0E0&
+         TabIndex        =   29
+         ToolTipText     =   "Efface tout les attributs sur la carte"
+         Top             =   4560
+         Width           =   2175
+      End
+      Begin VB.OptionButton optItem 
+         Caption         =   "Objet"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   1560
+         TabIndex        =   28
+         TabStop         =   0   'False
+         ToolTipText     =   "Pose l'objet sélectionner au sol"
+         Top             =   360
+         Width           =   1215
+      End
+      Begin VB.OptionButton optKey 
+         Caption         =   "Porte à clé"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   27
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un objet clé sélectionner"
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.Label atrib 
+         Appearance      =   0  'Flat
+         Caption         =   "Attributs :"
+         ForeColor       =   &H80000008&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   45
+         Top             =   0
+         Width           =   855
+      End
+   End
    Begin WMPLibCtl.WindowsMediaPlayer mediaplayer 
       Height          =   240
       Left            =   12840
@@ -3702,9 +3702,9 @@ Private Sub colle_Click()
 Dim f As Long
 Dim FileName As String
     If DonID <> lstIndex.ListIndex + 1 And lstIndex.ListIndex <> -1 Then
-        If FileExiste("Maps\map" & DonID & ".fcc") Then Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Else Call SaveMap(DonID): Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc")
+        If FileExist("Maps\map" & DonID & ".fcc") Then Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Else Call SaveMap(DonID): Call FileCopy(App.Path & "\Maps\map" & DonID & ".fcc", App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc")
         Call ViderTMap(lstIndex.ListIndex + 1)
-        If FileExiste("Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Then
+        If FileExist("Maps\map" & lstIndex.ListIndex + 1 & ".fcc") Then
             FileName = App.Path & "\Maps\map" & lstIndex.ListIndex + 1 & ".fcc"
             f = FreeFile
             Open FileName For Binary As #f
@@ -3715,7 +3715,7 @@ Dim FileName As String
         Call SendTMap(lstIndex.ListIndex + 1)
         lstIndex.List(lstIndex.ListIndex) = lstIndex.ListIndex + 1 & " : " & Map(lstIndex.ListIndex + 1).name
         If DonTP = 1 Then
-            If FileExiste("Maps\map" & DonID & ".fcc") Then Call Kill(App.Path & "\Maps\map" & DonID & ".fcc")
+            If FileExist("Maps\map" & DonID & ".fcc") Then Call Kill(App.Path & "\Maps\map" & DonID & ".fcc")
             Call ViderTMap(DonID)
             Call SaveMap(DonID)
             Call SendTMap(DonID)
@@ -3999,7 +3999,6 @@ OldPCY = 0
 nbcle = 5
 TempNum = 0
 Dim Screenw As Long
-If HORS_LIGNE = 1 Then Call InitMirage
 HScroll1.Max = (frmMirage.picBackSelect.Width / 32)
 HScroll1.Width = (scrlPicture.Left)
 picBack.Width = (scrlPicture.Left + 17)
@@ -4149,7 +4148,7 @@ Call WriteINI("modif", "carte" & Player(MyIndex).Map, "0", App.Path & "\config.i
 save = 0
 Dim i As Long
 If HORS_LIGNE = 1 Then
-    If FileExiste("maps\map" & lstIndex.ListIndex + 1 & ".fcc") Then
+    If FileExist("maps\map" & lstIndex.ListIndex + 1 & ".fcc") Then
         Call SetPlayerMap(MyIndex, Val(lstIndex.ListIndex + 1))
         Call ChargerPnjs
         Call ChargerObjets(MyIndex)
@@ -4561,7 +4560,7 @@ If ConOff = True And Not InEditor Then Exit Sub
         i = 0
         ii = 0
         Do
-            If FileExiste("Screenshot" & i & ".bmp") = True Then i = i + 1 Else Call SavePicture(ScreenShot.Picture, App.Path & "\Screenshot" & i & ".bmp"): ii = 1
+            If FileExist("Screenshot" & i & ".bmp") = True Then i = i + 1 Else Call SavePicture(ScreenShot.Picture, App.Path & "\Screenshot" & i & ".bmp"): ii = 1
             DoEvents
             Sleep 1
         Loop Until ii = 1
@@ -4570,7 +4569,7 @@ If ConOff = True And Not InEditor Then Exit Sub
         i = 0
         ii = 0
         Do
-            If FileExiste("Screenshot" & i & ".bmp") = True Then i = i + 1 Else Call SavePicture(ScreenShot.Picture, App.Path & "\Screenshot" & i & ".bmp"): ii = 1
+            If FileExist("Screenshot" & i & ".bmp") = True Then i = i + 1 Else Call SavePicture(ScreenShot.Picture, App.Path & "\Screenshot" & i & ".bmp"): ii = 1
             DoEvents
             Sleep 1
         Loop Until ii = 1
@@ -5156,7 +5155,7 @@ Private Sub tilescmb_Click()
     For i = 0 To ExtraSheets
         If i <> tilescmb.ListIndex Then Tiles(i).Checked = False
     Next i
-    Set DD_Temp = LoadImage(App.Path & "\GFX\tiles" & EditorSet & ".png", DD, DDSD_Temp)
+    Set DD_Temp = DD_TileSurf(EditorSet) 'LoadImage(App.Path & "\GFX\tiles" & EditorSet & ".png", DD, DDSD_Temp)
     SetMaskColorFromPixel DD_Temp, 0, 0
     Call PreVisua
 End Sub

@@ -50,11 +50,11 @@ Dim Packet As String, i As Long
         If Map(MapNum).Tile(X, Y).type <> TILE_TYPE_WALKABLE Then SummonNpc = -3: Exit Function
         
         For i = 1 To MAX_MAP_NPCS
-            If Map(MapNum).Npc(i) <= 0 And MapNpc(MapNum, i).num <= 0 Then Exit For
+            If Map(MapNum).Npc(i) <= 0 And MapNpc(MapNum, i).Num <= 0 Then Exit For
             If i = MAX_MAP_NPCS Then SummonNpc = -4: Exit Function
         Next i
         
-        MapNpc(MapNum, i).num = npcnum
+        MapNpc(MapNum, i).Num = npcnum
         MapNpc(MapNum, i).Target = 0
         MapNpc(MapNum, i).TargetType = 0
         
@@ -104,7 +104,7 @@ ElseIf OType = GoAttackNpc Then
     MapNpc(MapNum, MapNpcNum).Target = value
     MapNpc(MapNum, MapNpcNum).TargetType = TARGET_TYPE_NPC
 ElseIf OType = KillNpc Then
-    MapNpc(MapNum, MapNpcNum).num = 0
+    MapNpc(MapNum, MapNpcNum).Num = 0
     MapNpc(MapNum, MapNpcNum).SpawnWait = GetTickCount
     MapNpc(MapNum, MapNpcNum).HP = 0
     Call SendDataToMap(MapNum, "NPCDEAD" & SEP_CHAR & MapNpcNum & END_CHAR)
@@ -486,11 +486,11 @@ Function GetPlayerIP(ByVal Index As Long) As String
 End Function
 
 Function GetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemNum = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num
+    GetPlayerInvItemNum = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Num
 End Function
 
 Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNum As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).num = ItemNum
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Num = ItemNum
 End Sub
 
 Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
@@ -584,7 +584,7 @@ Dim i As Long
                     MapItem(GetPlayerMap(Index), i).Dur = GetPlayerInvItemDur(Index, InvNum)
             End Select
                                 
-            MapItem(GetPlayerMap(Index), i).num = GetPlayerInvItemNum(Index, InvNum)
+            MapItem(GetPlayerMap(Index), i).Num = GetPlayerInvItemNum(Index, InvNum)
             MapItem(GetPlayerMap(Index), i).X = GetPlayerX(Index)
             MapItem(GetPlayerMap(Index), i).Y = GetPlayerY(Index)
                         
@@ -622,7 +622,7 @@ Dim i As Long
             ' Send inventory update
             Call SendInventoryUpdate(Index, InvNum)
             ' Spawn the item before we set the num or we'll get a different free map item slot
-            Call SpawnItemSlot(i, MapItem(GetPlayerMap(Index), i).num, Amount, MapItem(GetPlayerMap(Index), i).Dur, GetPlayerMap(Index), GetPlayerX(Index), GetPlayerY(Index))
+            Call SpawnItemSlot(i, MapItem(GetPlayerMap(Index), i).Num, Amount, MapItem(GetPlayerMap(Index), i).Dur, GetPlayerMap(Index), GetPlayerX(Index), GetPlayerY(Index))
         Else
             Call PlayerMsg(Index, "Trop d'objets sont déjà au sol.", BrightRed)
         End If
@@ -639,7 +639,7 @@ Dim i As Long
     i = MapItemSlot
     
     If i <> 0 And ItemNum >= 0 And ItemNum <= MAX_ITEMS Then
-        MapItem(MapNum, i).num = ItemNum
+        MapItem(MapNum, i).Num = ItemNum
         MapItem(MapNum, i).value = ItemVal
         
         If ItemNum <> 0 Then
@@ -911,7 +911,7 @@ Dim i As Long
     If MapNum <= 0 Or MapNum > MAX_MAPS Then Exit Function
         
     For i = 1 To MAX_MAP_ITEMS
-        If MapItem(MapNum, i).num = 0 Then FindOpenMapItemSlot = i: Exit Function
+        If MapItem(MapNum, i).Num = 0 Then FindOpenMapItemSlot = i: Exit Function
     Next i
 End Function
 

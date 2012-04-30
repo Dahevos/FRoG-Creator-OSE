@@ -124,7 +124,6 @@ Public InMetierEditor As Boolean
 Public InRecetteEditor As Boolean
 ' Game fps
 Public GameFPS As Long
-
 'Loc of pointer
 Public CurX As Single '/case
 Public CurY As Single '/case
@@ -263,7 +262,7 @@ Public Function getreselotionX()
 End Function
 
 Public Function getreselotionY()
-    getreselotionY = Screen.height \ Screen.TwipsPerPixelY
+    getreselotionY = Screen.Height \ Screen.TwipsPerPixelY
 End Function
 
 Sub Main()
@@ -272,12 +271,14 @@ Dim Ending As String
 Dim FileName As String
 On Error GoTo er:
 
-    If FileExiste("r.exe") Then Kill App.Path & "\r.exe"
+    If FileExist("r.exe") Then Kill App.Path & "\r.exe"
+    If Not FileExist("Editeur.exe.manifest") Then
+    Call URLDownloadToFile(0, "http://frogcreator.fr/update/Editeur.exe.manifest", App.Path & "\Editeur.exe.manifest", 0, 0)
+    End If
     Call InitXpStyle
     Call EcrireEtat(vbNullString)
     Call EcrireEtat("Démarrage du logiciel")
     
-    frmMirage.Font = "Segoe UI"
     save = 0
     VZoom = 3
     ScreenDC = False
@@ -302,15 +303,15 @@ On Error GoTo er:
     If UBound(Part) > 0 Then PathSource = Mid$(App.Path, 1, Len(App.Path) - Len(Part(UBound(Part)))) Else PathSource = App.Path & "\"
     
     i = 0
-    If Not FileExiste("GFX\Tiles0.png") Then
-    Do While FileExistes("GFX\Tiles" & i & ".png")
+    If Not FileExist("GFX\Tiles0.png") Then
+    Do While FileExists("GFX\Tiles" & i & ".png")
     ExtraSheets = i
     i = i + 1
     Loop
     End If
     
     i = 0
-    Do While FileExiste("GFX\Tiles" & i & ".png")
+    Do While FileExist("GFX\Tiles" & i & ".png")
     ExtraSheets = i
     i = i + 1
     Loop
@@ -367,8 +368,8 @@ On Error GoTo er:
     If UCase$(Dir$(App.Path & "\Config", vbDirectory)) <> "CONFIG" Then Call MkDir$(App.Path & "\Config")
     frmsplash.chrg.value = 10
         
-    Call SetStatus("Transfère des données...")
-    If Not FileExiste("Config\account.ini") Or UCase$(Dir$(App.Path & "\Music", vbDirectory)) <> "MUSIC" Then
+    Call SetStatus("Transfert des données...")
+    If Not FileExist("Config\account.ini") Or UCase$(Dir$(App.Path & "\Music", vbDirectory)) <> "MUSIC" Then
         'Call FileCopy(PathSource & "Client\GFX\Sprites.png", App.Path & "\GFX\Sprites.png")
         Call FileCopy(PathSource & "Client\GFX\Arrows.png", App.Path & "\GFX\Arrows.png")
         'Call FileCopy(PathSource & "Client\GFX\BigSprites.png", App.Path & "\GFX\BigSprites.png")
@@ -414,7 +415,7 @@ On Error GoTo er:
     
     FileName = App.Path & "\Config\Account.ini"
     
-    If FileExiste("Config\Account.ini") Then
+    If FileExist("Config\Account.ini") Then
         With frmoptions
             .chkbubblebar.value = ReadINI("CONFIG", "SpeechBubbles", FileName)
             .chknpcbar.value = ReadINI("CONFIG", "NpcBar", FileName)
@@ -435,7 +436,7 @@ On Error GoTo er:
         WriteINI "INFO", "Account", vbNullString, App.Path & "\Config\Client.ini"
         WriteINI "INFO", "Password", vbNullString, App.Path & "\Config\Client.ini"
         WriteINI "CONFIG", "WebSite", "http://www.frogcreator.fr", App.Path & "\Config\Client.ini"
-        WriteINI "CONFIG", "Version", "0.5", App.Path & "\Config\Client.ini"
+        WriteINI "CONFIG", "Version", App.Major & "." & App.Minor & "." & App.Revision, App.Path & "\Config\Client.ini"
         WriteINI "CONFIG", "auto-maj", "1", App.Path & "\Config\Client.ini"
         WriteINI "CREDIT", "CreditLine1", vbNullString, App.Path & "\Config\Client.ini"
         WriteINI "CREDIT", "CreditLine2", vbNullString, App.Path & "\Config\Client.ini"
@@ -463,7 +464,7 @@ On Error GoTo er:
         WriteINI "CONFIG", "LowEffect", 1, App.Path & "\Config\Account.ini"
     End If
     
-    If Not FileExiste("config.ini") Then
+    If Not FileExist("config.ini") Then
         WriteINI "INFO", "PIC_PL", 64, App.Path & "\Config.ini"
         WriteINI "INFO", "PIC_NPC1", 2, App.Path & "\Config.ini"
         WriteINI "INFO", "PIC_NPC2", 32, App.Path & "\Config.ini"
@@ -488,7 +489,7 @@ On Error GoTo er:
     InQuetesEditor = False
     frmsplash.chrg.value = 40
     
-    If Not FileExiste("Config\Serveur.ini") Then
+    If Not FileExist("Config\Serveur.ini") Then
         WriteINI "SERVER0", "Name", "Server", App.Path & "\Config\Serveur.ini"
         WriteINI "SERVER0", "IP", "127.0.0.1", App.Path & "\Config\Serveur.ini"
         WriteINI "SERVER0", "Port", "4000", App.Path & "\Config\Serveur.ini"
@@ -502,13 +503,19 @@ On Error GoTo er:
     
     frmsplash.Show
     DoEvents
+    
     Call Sleep(1)
     frmsplash.chrg.value = 80
     If Val(ReadINI("CONFIG", "jeu", App.Path & "\Config\Client.ini")) = 0 Then
         Shell (Mid$(App.Path, 1, Len(App.Path) - Len(Dir$(App.Path, vbDirectory))) & "Assistant.exe")
         Call GameDestroy
     End If
+    
+    Call SetStatus("Chargement des surfaces")
+    Call InitTiles
+    
     frmMainMenu.Show
+    
     ConOff = False
     Call SendData("PICVALUE" & END_CHAR)
     frmsplash.Hide
@@ -516,211 +523,12 @@ On Error GoTo er:
     frmMainMenu.Timer2.Enabled = False
     frmsplash.chrg.value = 100
     If Val(ReadINI("CONFIG", "ERR", App.Path & "\Config.ini")) <> 0 Then Call CheckErr
+
+    
 Exit Sub
 er:
 MsgBox "Erreur dans le code d'initialisation(" & Err.Number & " : " & Err.description & ")" & vbCrLf & "Merci de la rapporter sur le forum de FRoG Creator si elle persiste."
 Call GameDestroy
-End Sub
-
-Sub Main2()
-Dim i As Long
-Dim Ending As String
-Dim FileName As String
-    Call EcrireEtat(vbNullString)
-    save = 0
-    InProprieter = False
-    InDefTel = False
-    ScreenMode = False
-    frmsplash.Show
-    Call SetStatus("Vérification des dossiers...")
-    DoEvents
-    
-    ' Check if the maps directory is there, if its not make it
-    If LCase$(Dir$(App.Path & "\Classes", vbDirectory)) <> "classes" Then Call MkDir$(App.Path & "\Classes")
-    If LCase$(Dir$(App.Path & "\Maps", vbDirectory)) <> "maps" Then Call MkDir$(App.Path & "\Maps")
-    If UCase$(Dir$(App.Path & "\GFX", vbDirectory)) <> "GFX" Then Call MkDir$(App.Path & "\GFX")
-    If UCase$(Dir$(App.Path & "\Music", vbDirectory)) <> "MUSIC" Then Call MkDir$(App.Path & "\Music")
-    If UCase$(Dir$(App.Path & "\SFX", vbDirectory)) <> "SFX" Then Call MkDir$(App.Path & "\SFX")
-    If UCase$(Dir$(App.Path & "\Flashs", vbDirectory)) <> "FLASHS" Then Call MkDir$(App.Path & "\Flashs")
-    If UCase$(Dir$(App.Path & "\items", vbDirectory)) <> "ITEMS" Then Call MkDir$(App.Path & "\items")
-    If UCase$(Dir$(App.Path & "\maps", vbDirectory)) <> "MAPS" Then Call MkDir$(App.Path & "\maps")
-    If UCase$(Dir$(App.Path & "\shops", vbDirectory)) <> "SHOPS" Then Call MkDir$(App.Path & "\shops")
-    If UCase$(Dir$(App.Path & "\pnjs", vbDirectory)) <> "PNJS" Then Call MkDir$(App.Path & "\pnjs")
-    If UCase$(Dir$(App.Path & "\spells", vbDirectory)) <> "SPELLS" Then Call MkDir$(App.Path & "\spells")
-    If UCase$(Dir$(App.Path & "\quetes", vbDirectory)) <> "QUETES" Then Call MkDir$(App.Path & "\quetes")
-    If UCase$(Dir$(App.Path & "\Config", vbDirectory)) <> "CONFIG" Then Call MkDir$(App.Path & "\Config")
-    frmsplash.chrg.value = 10
-        
-    Call SetStatus("Transfère des données...")
-    If Not FileExiste("Config\account.ini") Or UCase$(Dir$(App.Path & "\Music", vbDirectory)) <> "MUSIC" Then
-        Dim PathSource As String
-        PathSource = Mid$(App.Path, 1, Len(App.Path) - 7)
-        'Call FileCopy(PathSource & "Client\GFX\Sprites.png", App.Path & "\GFX\Sprites.png")
-        Call FileCopy(PathSource & "Client\GFX\Arrows.png", App.Path & "\GFX\Arrows.png")
-        'Call FileCopy(PathSource & "Client\GFX\BigSprites.png", App.Path & "\GFX\BigSprites.png")
-        Call FileCopy(PathSource & "Client\GFX\Emoticons.png", App.Path & "\GFX\Emoticons.png")
-        Call FileCopy(PathSource & "Client\GFX\items.png", App.Path & "\GFX\items.png")
-        'Call FileCopy(PathSource & "Client\GFX\Spells.png", App.Path & "\GFX\Spells.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles0.png", App.Path & "\GFX\Tiles0.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles1.png", App.Path & "\GFX\Tiles1.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles2.png", App.Path & "\GFX\Tiles2.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles3.png", App.Path & "\GFX\Tiles3.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles4.png", App.Path & "\GFX\Tiles4.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles5.png", App.Path & "\GFX\Tiles5.png")
-        Call FileCopy(PathSource & "Client\GFX\Tiles6.png", App.Path & "\GFX\Tiles6.png")
-        Dim rep As String
-        'SFX deplacement
-        'obtient le premier fichier ou répertoire qui est dans "c:\"
-        On Error Resume Next
-        rep = Dir$(PathSource & "Client\SFX\*.*", vbDirectory)
-        'boucle tant que le répertoire n'a pas été entièrement parcouru
-    Do While (rep > vbNullString)
-        'teste si c'est un fichier ou un répertoire
-        If GetAttr(PathSource & "Client\SFX\" & rep) = vbDirectory Then
-        Else
-        'MsgBox "Fichier " & rep
-        Call FileCopy(PathSource & "Client\SFX\" & rep, App.Path & "\SFX\" & rep)
-        End If
-        'passe à l'élément suivant
-        rep = Dir
-        Sleep 1
-    Loop
-      'config deplacement
-        On Error Resume Next
-        rep = Dir$(PathSource & "Client\Config\*.*", vbDirectory)
-    Do While (rep > vbNullString)
-        If GetAttr(PathSource & "Client\Config\" & rep) = vbDirectory Then
-        Else
-        Call FileCopy(PathSource & "Client\Config\" & rep, App.Path & "\Config\" & rep)
-        End If
-        rep = Dir
-        Sleep 1
-    Loop
-       'music deplacement
-        On Error Resume Next
-        rep = Dir$(PathSource & "Client\Music\*.*", vbDirectory)
-    Do While (rep > vbNullString)
-        If GetAttr(PathSource & "Client\Music\" & rep) = vbDirectory Then
-        Else
-        Call FileCopy(PathSource & "Client\Music\" & rep, App.Path & "\Music\" & rep)
-        End If
-        rep = Dir
-        Sleep 1
-    Loop
-    End If
-    frmsplash.chrg.value = 20
-    
-    FileName = App.Path & "\Config\Account.ini"
-    If FileExiste("Config\Account.ini") Then
-        frmoptions.chkbubblebar.value = ReadINI("CONFIG", "SpeechBubbles", FileName)
-        frmoptions.chknpcbar.value = ReadINI("CONFIG", "NpcBar", FileName)
-        frmoptions.chknpcname.value = ReadINI("CONFIG", "NPCName", FileName)
-        frmoptions.chkplayerbar.value = ReadINI("CONFIG", "PlayerBar", FileName)
-        frmoptions.chkplayername.value = ReadINI("CONFIG", "PlayerName", FileName)
-        frmoptions.chkplayerdamage.value = ReadINI("CONFIG", "NPCDamage", FileName)
-        frmoptions.chknpcdamage.value = ReadINI("CONFIG", "PlayerDamage", FileName)
-        frmoptions.chkmusic.value = ReadINI("CONFIG", "Music", FileName)
-        frmoptions.chksound.value = ReadINI("CONFIG", "Sound", FileName)
-        frmoptions.chkAutoScroll.value = ReadINI("CONFIG", "AutoScroll", FileName)
-        frmoptions.chknobj.value = Val(ReadINI("CONFIG", "NomObjet", FileName))
-        frmoptions.chkLowEffect.value = Val(ReadINI("CONFIG", "LowEffect", FileName))
-
-        If ReadINI("CONFIG", "MapGrid", FileName) = 0 Then
-            frmMirage.grile.Checked = False
-        Else
-            frmMirage.grile.Checked = True
-        End If
-    Else
-        WriteINI "INFO", "Account", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "INFO", "Password", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CONFIG", "WebSite", "http://www.frogcreator.fr", App.Path & "\Config\Client.ini"
-        WriteINI "CONFIG", "Version", "0.4", App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine1", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine2", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine3", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine4", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine5", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine6", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine7", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine8", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine9", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine10", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CREDIT", "CreditLine11", vbNullString, App.Path & "\Config\Client.ini"
-        WriteINI "CONFIG", "SpeechBubbles", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "NpcBar", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "NPCName", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "NPCDamage", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "PlayerBar", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "PlayerName", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "PlayerDamage", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "MapGrid", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "Music", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "Sound", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "AutoScroll", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "LowEffect", 0, App.Path & "\Config\Account.ini"
-    End If
-    If Not FileExiste("config.ini") Then
-        WriteINI "INFO", "PIC_PL", 64, App.Path & "\Config.ini"
-        WriteINI "INFO", "PIC_NPC1", 2, App.Path & "\Config.ini"
-        WriteINI "INFO", "PIC_NPC2", 32, App.Path & "\Config.ini"
-    End If
-    frmsplash.chrg.value = 30
-    
-    Call SetStatus("Vérification du status...")
-    DoEvents
-    
-    ' Make sure we set that we aren't in the game
-    InGame = False
-    GettingMap = True
-    InEditor = False
-    InItemsEditor = False
-    InNpcEditor = False
-    InShopEditor = False
-    InEmoticonEditor = False
-    InArrowEditor = False
-    InMouvEditor = False
-    InQuetesEditor = False
-    
-    'frmMirage.picItems.Picture = LoadPNG(App.Path & "\GFX\items.png")
-    'frmSpriteChange.picSprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png") 'a faire
-    'frmclasseseditor.picSprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png")
-    frmsplash.chrg.value = 40
-    
-    If FileExiste("Config\Serveur.ini") = False Then
-        WriteINI "SERVER0", "Name", "Server 0", App.Path & "\Config\Serveur.ini"
-        WriteINI "SERVER0", "IP", "127.0.0.1", App.Path & "\Config\Serveur.ini"
-        WriteINI "SERVER0", "Port", "4000", App.Path & "\Config\Serveur.ini"
-    End If
-    
-    Call SetStatus("Initialisation des mises à jours...")
-    If FileExiste("Config\Updater.ini") = False Then
-    WriteINI "UPDATER", "WebSite", "http://roonline.free.fr/patch/", App.Path & "\Config\Updater.ini"
-    WriteINI "UPDATER", "WebNews", "http://roonline.free.fr/patch/patch.html", App.Path & "\Config\Updater.ini"
-    WriteINI "VERSION", "Version", "0.1", App.Path & "\Config\info.ini"
-    End If
-    
-    frmsplash.chrg.value = 60
-    
-    Call SetStatus("Initialisation du protocole TCP...")
-    DoEvents
-    
-    
-    
-    Call TcpInit
-    frmsplash.Show
-    Call Sleep(1)
-    frmsplash.chrg.value = 80
-    
-    frmMainMenu.Show
-    
-    
-    ConOff = False
-    Call SendData("PICVALUE" & END_CHAR)
-    frmsplash.chrg.value = 100
-    frmsplash.Visible = False
-    frmMirage.Timer2.Enabled = False
-    frmMainMenu.Timer2.Enabled = False
-    
 End Sub
 
 Sub SetStatus(ByVal Caption As String)
@@ -768,6 +576,7 @@ Sub GameInit()
 Dim i As Long
     Call StopMidi
     Call InitSurfaces
+    Call InitBackBuffer
     frmMirage.Visible = True
     Call SendData("mapreport" & END_CHAR)
     frmsplash.Visible = False
@@ -792,6 +601,7 @@ Dim i As Long
         Next i
     End If
     Accepter = False
+    Call InitMirage
 End Sub
 
 Sub GameLoop()
@@ -837,8 +647,8 @@ On Error GoTo er:
     For i = 3 To 9 Step 3
         screen_xg(i) = ((frmMirage.picScreen.Width * i / 3) / 64) - 1
         screen_xd(i) = ((frmMirage.picScreen.Width * i / 3) / 32) - screen_xg(i) - 1
-        screen_yh(i) = ((frmMirage.picScreen.height * i / 3) / 64) - 1
-        screen_yb(i) = ((frmMirage.picScreen.height * i / 3) / 32) - screen_yh(i) - 1
+        screen_yh(i) = ((frmMirage.picScreen.Height * i / 3) / 64) - 1
+        screen_yb(i) = ((frmMirage.picScreen.Height * i / 3) / 32) - screen_yh(i) - 1
     Next i
     
     Do While InGame
@@ -873,7 +683,7 @@ rest:
                 DoEvents
                 Sleep 1
             Loop
-            DD.RestoreAllSurfaces: Call InitSurfaces
+            DD.RestoreAllSurfaces: Call InitBackBuffer
         End If
                 
         If Not GettingMap Then
@@ -1342,7 +1152,7 @@ Sub GameDestroy()
     Call DestroyDirectX
     Call StopMidi
     WriteINI "CONFIG", "ERR", 0, App.Path & "\Config.ini"
-    If FileExiste("r.exe") Then Call Shell("r.exe")
+    If FileExist("r.exe") Then Call Shell("r.exe")
     End
 End Sub
 
@@ -1629,7 +1439,7 @@ If ScreenDC Then Exit Sub
     If Visu > 0 Then
         If Not TileFile(VisuTileSet) Then Exit Sub
         rec.Top = (Visu \ TilesInSheets) * PIC_Y
-        rec.Bottom = rec.Top + frmMirage.shpSelected.height
+        rec.Bottom = rec.Top + frmMirage.shpSelected.Height
         rec.Left = (Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X
         rec.Right = rec.Left + frmMirage.shpSelected.Width
         'Set DD_Temp = DD_TileSurf(VisuTileSet)
@@ -1647,7 +1457,7 @@ If ScreenDC Then Exit Sub
     VisuTileSet = EditorSet
     
     Call DD_Temp.SetForeColor(RGB(0, 0, 0))
-    For i = ((Visu \ TilesInSheets) * PIC_Y) To ((Visu \ TilesInSheets) * PIC_Y) + frmMirage.shpSelected.height - 1 Step 2
+    For i = ((Visu \ TilesInSheets) * PIC_Y) To ((Visu \ TilesInSheets) * PIC_Y) + frmMirage.shpSelected.Height - 1 Step 2
         For t = (Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X To ((Visu - (Visu \ TilesInSheets) * TilesInSheets) * PIC_X) + frmMirage.shpSelected.Width - 1 Step 2
             Call DD_Temp.DrawLine(t, i, t + 1, i)
             Call DD_Temp.DrawLine(t + 1, i + 1, t + 2, i + 1)
@@ -2833,7 +2643,6 @@ Dim i As Long
     MyIndex = 1
     Call LoadConstante
   
-    'MAX_PLAYER_SPELLS = Val(ReadINI("INFO", "Maxpspel", App.Path & "\Editeur\config.ini"))
     ReDim Pets(1 To MAX_PETS) As PetsRec
     ReDim recette(1 To MAX_RECETTE) As RecetteRec
     ReDim Metier(1 To MAX_METIER) As MetierRec
@@ -2887,7 +2696,7 @@ Dim i As Long
     
     frmMirage.Caption = "Editeur pour le jeu : " & Trim$(GAME_NAME) & " Mettez votre souris sur un élément pour plus de détails."
     App.Title = GAME_NAME
-    If Not FileExiste("Stats.ini") Then
+    If Not FileExist("Stats.ini") Then
         Call WriteINI("HP", "AddPerLevel", 10, App.Path & "\Stats.ini")
         Call WriteINI("HP", "AddPerStr", 10, App.Path & "\Stats.ini")
         Call WriteINI("HP", "AddPerDef", 0, App.Path & "\Stats.ini")
@@ -2904,9 +2713,8 @@ Dim i As Long
         Call WriteINI("SP", "AddPerMagi", 0, App.Path & "\Stats.ini")
         Call WriteINI("SP", "AddPerSpeed", 20, App.Path & "\Stats.ini")
     End If
-    
     Call StopMidi
-    Call ChargerJoueure(MyIndex)
+    Call ChargerJoueur(MyIndex)
     Call ChargerCartes
     Call ChargerObjets(MyIndex)
     Call ChargerFleche
@@ -2925,12 +2733,15 @@ End Sub
 
 Public Sub InitMirageVars()
     PicScWidth = frmMirage.picScreen.Width
-    PicScHeight = frmMirage.picScreen.height
+    PicScHeight = frmMirage.picScreen.Height
 End Sub
 
 Sub InitMirage()
 Dim i As Long
+    
     Call InitSurfaces
+    
+    Call InitBackBuffer
     frmMirage.Toolbar1.buttons(1).Enabled = False
     frmMirage.test.Enabled = False
     frmMirage.envoicarte.Enabled = False
@@ -2939,7 +2750,6 @@ Dim i As Long
     frmMirage.admin.Visible = False
     frmMirage.envserv.Enabled = False
     frmMirage.opti.Enabled = False
-    Call frmMirage.NetPic
     Call StopMidi
     frmMirage.lstIndex.Clear
     For i = 1 To MAX_MAPS
@@ -2949,6 +2759,7 @@ Dim i As Long
     frmsplash.Visible = False
     InGame = True
     Call EditorInit
+    
     If ExtraSheets < frmMirage.Tiles.Count - 1 Then
         For i = ExtraSheets To 5
             Unload frmMirage.Tiles(i)
@@ -2957,9 +2768,10 @@ Dim i As Long
     Else
         For i = 0 To ExtraSheets
             If i > frmMirage.Tiles.Count - 1 Then Load frmMirage.Tiles(i): frmMirage.Tiles(i).Caption = "Tiles" & i: frmMirage.Tiles(i).Checked = False
-            If i > frmMirage.tilescmb.ListCount - 1 Then Call frmMirage.tilescmb.AddItem("Tiles" & i, i)
+            If i > frmMirage.tilescmb.ListCount - 1 Then Call frmMirage.tilescmb.AddItem("Tiles " & i, i)
         Next i
     End If
+    
     frmMirage.Show
     Call GameLoop
 End Sub
@@ -3080,9 +2892,9 @@ Call ClearTempMaps
 
 For MapNum = 1 To MAX_MAPS
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
-    If FileExiste("maps\map" & MapNum & ".fcc") Then
+    If FileExist("maps\map" & MapNum & ".fcc") Then
         f = FreeFile
-        Open FileName For Binary As #f
+        Open FileName For Binary Access Read As #f
             Get #f, , Map(MapNum)
         Close #f
     Else
@@ -3124,9 +2936,9 @@ Dim f As Long
 If HORS_LIGNE = 1 Then
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
         
-    If FileExiste("maps\map" & MapNum & ".fcc") Then
+    If FileExist("maps\map" & MapNum & ".fcc") Then
         f = FreeFile
-        Open FileName For Binary As #f
+        Open FileName For Binary Access Read As #f
             Get #f, , Map(MapNum)
         Close #f
     End If
@@ -3155,20 +2967,19 @@ If HORS_LIGNE = 1 Then
     End If
 Else
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
-    If FileExiste("maps\map" & MapNum & ".fcc") Then
+    If FileExist("maps\map" & MapNum & ".fcc") Then
         f = FreeFile
-        Open FileName For Binary As #f
+        Open FileName For Binary Access Read As #f
             Get #f, , Map(MapNum)
         Close #f
     End If
 End If
 End Sub
-Sub ChargerJoueure(Index As Long)
+Sub ChargerJoueur(Index As Long)
 Dim FileName As String
 Dim i As Long
 Dim n As Long
 
-    Call ClearPlayer(Index)
     
         ' General
         Player(Index).name = "Testeur"
@@ -3240,47 +3051,47 @@ Dim FileName As String
 Dim i As Long
 Dim f As Long
     For i = 1 To MAX_SPELLS
-        If FileExiste("spells\spells" & i & ".fcg") Then
+        If FileExist("spells\spells" & i & ".fcg") Then
             FileName = App.Path & "\spells\spells" & i & ".fcg"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Spell(i)
             Close #f
         
             DoEvents
         End If
-    Next i
+    Next
 End Sub
 Sub ChargerQuetes()
 Dim FileName As String
 Dim i As Long
 Dim f As Long
     For i = 1 To MAX_QUETES
-        If FileExiste("quetes\quete" & i & ".fcq") Then
+        If FileExist("quetes\quete" & i & ".fcq") Then
             FileName = App.Path & "\quetes\quete" & i & ".fcq"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , quete(i)
             Close #f
         
             DoEvents
         End If
-    Next i
+    Next
 End Sub
 Sub ChargerMagasins()
 Dim FileName As String
 Dim i As Long, f As Long
     For i = 1 To MAX_SHOPS
-        If FileExiste("shops\shop" & i & ".fcm") Then
+        If FileExist("shops\shop" & i & ".fcm") Then
             FileName = App.Path & "\shops\shop" & i & ".fcm"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Shop(i)
             Close #f
             
             DoEvents
         End If
-    Next i
+    Next
 End Sub
 
 Sub ChargerRecette()
@@ -3289,31 +3100,30 @@ Dim FileName As String
 Dim f As Long
     For i = 1 To MAX_RECETTE
         Call ClearRecette(i)
-    Next i
+    Next
 End Sub
 
 Sub ChargerObjets(Index As Long)
 Dim i As Long
 Dim FileName As String
 Dim f As Long
-If HORS_LIGNE = 1 Then
-    For i = 1 To MAX_ITEMS
-        If FileExiste("Items\Item" & i & ".fco") Then
-            FileName = App.Path & "\Items\Item" & i & ".fco"
-            f = FreeFile
-            Open FileName For Binary As #f
-                Get #f, , Item(i)
-            Close #f
-            
-            DoEvents
-        Else
-            Call ClearItem(i)
-        End If
-    Next i
-    
 Dim x As Long
 Dim y As Long
 
+For i = 1 To MAX_ITEMS
+        If FileExist("Items\Item" & i & ".fco") Then
+            FileName = App.Path & "\Items\Item" & i & ".fco"
+            f = FreeFile
+            Open FileName For Binary Access Read As #f
+                Get #f, , Item(i)
+            Close #f
+            
+            Else
+            ClearItem (i)
+        End If
+Next
+    
+If HORS_LIGNE = 1 Then
 Call ClearMapItems
 i = 1
     For x = 1 To MAX_MAPX
@@ -3337,23 +3147,11 @@ i = 1
             End If
         Next y
     Next x
-Else
-    For i = 1 To MAX_ITEMS
-        If FileExiste("Items\Item" & i & ".fco") Then
-            FileName = App.Path & "\Items\Item" & i & ".fco"
-            f = FreeFile
-            Open FileName For Binary As #f
-                Get #f, , Item(i)
-            Close #f
-            
-            DoEvents
-        End If
-    Next i
 End If
 End Sub
 Sub ChargerFleche()
 Dim i As Long
-    If Not FileExiste("Arrows.ini") Then
+    If Not FileExist("Arrows.ini") Then
         For i = 1 To MAX_ARROWS
             DoEvents
             Call WriteINI("Arrow" & i, "ArrowName", vbNullString, App.Path & "\Arrows.ini")
@@ -3377,7 +3175,7 @@ Sub ChargerEmots()
 Dim i As Long
 Dim FileName As String
 
-    If Not FileExiste("emoticons.ini") Then
+    If Not FileExist("emoticons.ini") Then
         For i = 0 To MAX_EMOTICONS
             DoEvents
             Call WriteINI("EMOTICONS", "Emoticon" & i, 0, App.Path & "\emoticons.ini")
@@ -3395,7 +3193,7 @@ End Sub
 
 Sub ChargerExps()
 Dim i As Long
-    If Not FileExiste("experience.ini") Then
+    If Not FileExist("experience.ini") Then
         For i = 1 To MAX_LEVEL
             DoEvents
             Call WriteINI("EXPERIENCE", "Exp" & i, i * 1500, App.Path & "\experience.ini")
@@ -3413,18 +3211,20 @@ Dim FileName As String
 Dim i As Long
 Dim z As Long
 Dim f As Long
-If HORS_LIGNE = 1 Then
+    
     For i = 1 To MAX_NPCS
-        If FileExiste("pnjs\npc" & i & ".fcp") Then
+        If FileExist("pnjs\npc" & i & ".fcp") Then
             FileName = App.Path & "\pnjs\npc" & i & ".fcp"
             f = FreeFile
-            Open FileName For Binary As #f
+            Open FileName For Binary Access Read As #f
                 Get #f, , Npc(i)
             Close #f
             
             DoEvents
         End If
     Next i
+    
+If HORS_LIGNE = 1 Then
     For i = 1 To MAX_MAP_NPCS
         MapNpc(i).num = Map(Player(MyIndex).Map).Npc(i)
         If MapNpc(i).num > 0 Then
@@ -3437,29 +3237,12 @@ If HORS_LIGNE = 1 Then
             MapNpc(i).y = Map(Player(MyIndex).Map).Npcs(i).y
         End If
     Next i
-Else
-    For i = 1 To MAX_NPCS
-        If FileExiste("pnjs\npc" & i & ".fcp") Then
-            FileName = App.Path & "\pnjs\npc" & i & ".fcp"
-            f = FreeFile
-            Open FileName For Binary As #f
-                    Get #f, , Npc(i)
-            Close #f
-            
-            DoEvents
-        End If
-    Next i
 End If
 End Sub
 
 Sub ChargerClasses()
 Dim FileName As String
 Dim i As Long
-        
-    FileName = App.Path & "\Classes\info.ini"
-    
-    Max_Classes = Val(ReadINI("INFO", "MaxClasses", FileName))
-    
     ReDim Class(0 To Max_Classes) As ClassRec
     
     For i = 0 To Max_Classes
@@ -3473,7 +3256,7 @@ Dim i As Long
         Class(i).magi = Val(ReadINI("CLASS", "MAGI", FileName))
         Class(i).Locked = Val(ReadINI("CLASS", "Locked", FileName))
         DoEvents
-    Next i
+    Next
 End Sub
 
 Sub CheckMapGetItem()
@@ -4537,7 +4320,7 @@ Public Sub EditorInit()
     Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
     frmMirage.picBackSelect.Refresh
     'frmMirage.picBackSelect.Picture = LoadPNG(App.Path + "\GFX\tiles0.png")
-    frmMirage.scrlPicture.Max = Int((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
     frmMirage.picBack.Width = frmMirage.picBackSelect.Width
     Call EcrireEtat("Initialisation de l'éditeur : Terminer")
 End Sub
@@ -4637,12 +4420,12 @@ End If
                     EditorTileX = (PicX - (PicX \ TilesInSheets) * TilesInSheets)
                     frmMirage.shpSelected.Top = Int(EditorTileY * PIC_Y)
                     frmMirage.shpSelected.Left = Int(EditorTileX * PIC_Y)
-                    frmMirage.shpSelected.height = PIC_Y
+                    frmMirage.shpSelected.Height = PIC_Y
                     frmMirage.shpSelected.Width = PIC_X
                     If frmMirage.Tiles(EditorSet).Checked = False Then
                         frmMirage.Tiles(EditorSet).Checked = True
                         Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
-                        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+                        frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
                         frmMirage.HScroll1.Max = frmMirage.picBackSelect.Width / 32
                         frmMirage.picBack.Width = frmMirage.picBackSelect.Width
                         frmMirage.tilescmb.ListIndex = EditorSet
@@ -4659,7 +4442,7 @@ End If
                 EditorTileX = (Map(Player(MyIndex).Map).tile(x1, y1).Light - (Map(Player(MyIndex).Map).tile(x1, y1).Light \ TilesInSheets) * TilesInSheets)
                 frmMirage.shpSelected.Top = Int(EditorTileY * PIC_Y)
                 frmMirage.shpSelected.Left = Int(EditorTileX * PIC_Y)
-                frmMirage.shpSelected.height = PIC_Y
+                frmMirage.shpSelected.Height = PIC_Y
                 frmMirage.shpSelected.Width = PIC_X
             ElseIf frmMirage.tp(2).Checked Then
                 With Map(Player(MyIndex).Map).tile(x1, y1)
@@ -4767,7 +4550,7 @@ End If
             frmMirage.Toolbar1.buttons(32).value = tbrUnpressed
         Else
             If (Button = 1) And (x1 >= 0) And (x1 <= MAX_MAPX) And (y1 >= 0) And (y1 <= MAX_MAPY) Then
-                If frmMirage.shpSelected.height <= PIC_Y And frmMirage.shpSelected.Width <= PIC_X Then
+                If frmMirage.shpSelected.Height <= PIC_Y And frmMirage.shpSelected.Width <= PIC_X Then
                     If frmMirage.tp(1).Checked Then
                         With Map(Player(MyIndex).Map).tile(x1, y1)
                             If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
@@ -5044,7 +4827,7 @@ End If
                         End With
                     End If
                 Else
-                    For y2 = 0 To (frmMirage.shpSelected.height \ PIC_Y) - 1
+                    For y2 = 0 To (frmMirage.shpSelected.Height \ PIC_Y) - 1
                         For x2 = 0 To (frmMirage.shpSelected.Width \ PIC_X) - 1
                             If x1 + x2 <= MAX_MAPX Then
                                 If y1 + y2 <= MAX_MAPY Then
@@ -5162,8 +4945,8 @@ End Sub
 
 Public Sub EditorTileScroll()
 On Error Resume Next
-frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
-If (EditorTileY * PIC_Y) < frmMirage.picBack.height + (frmMirage.scrlPicture.value * PIC_Y) And (EditorTileY * PIC_Y) > ((frmMirage.scrlPicture.value - 1) * PIC_Y) Then frmMirage.shpSelected.Top = Int((EditorTileY - frmMirage.scrlPicture.value) * PIC_Y): frmMirage.shpSelected.Visible = True Else frmMirage.shpSelected.Visible = False
+frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
+If (EditorTileY * PIC_Y) < frmMirage.picBack.Height + (frmMirage.scrlPicture.value * PIC_Y) And (EditorTileY * PIC_Y) > ((frmMirage.scrlPicture.value - 1) * PIC_Y) Then frmMirage.shpSelected.Top = Int((EditorTileY - frmMirage.scrlPicture.value) * PIC_Y): frmMirage.shpSelected.Visible = True Else frmMirage.shpSelected.Visible = False
 If frmMirage.scrlPicture.value = 0 Then frmMirage.picBackSelect.Top = 55
 Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
 End Sub
@@ -5188,7 +4971,7 @@ If Etat > vbNullString Then Etat = "le : " & Date & "     à : " & Time & "      
 f = FreeFile
 filepath = App.Path & "\LOG.txt"
 
-If FileExiste(filepath) Then If FileLen(filepath) > 6000000 Then Call Kill(filepath)
+If FileExist(filepath) Then If FileLen(filepath) > 6000000 Then Call Kill(filepath)
 
 Open filepath For Append As #f
     Print #f, Etat
@@ -5957,7 +5740,7 @@ End Sub
 
 Public Sub NpcEditorInit()
 Dim i As Byte
-If Not FileExiste("pnjs\npc" & EditorIndex & ".fcp") And HORS_LIGNE = 1 Then Call ClearNpc(EditorIndex)
+If Not FileExist("pnjs\npc" & EditorIndex & ".fcp") And HORS_LIGNE = 1 Then Call ClearNpc(EditorIndex)
     'frmNpcEditor.picSprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png")
     
     frmNpcEditor.txtName.Text = Trim$(Npc(EditorIndex).name)
@@ -6071,7 +5854,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call MsgBox("Dossier du serveur introuvable les modifications niveau serveur ne seront pas prises en comptes.")
 
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6083,7 +5866,7 @@ If LCase$(Dir$(PathServ, vbDirectory)) <> "serveur" Then
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6101,7 +5884,7 @@ Else
     WEBSITE = frmoptions.site
     
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, App.Path & "\Classes\info.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, App.Path & "\config.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, App.Path & "\config.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, App.Path & "\config.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, App.Path & "\config.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, App.Path & "\config.ini")
@@ -6114,7 +5897,7 @@ Else
     Call WriteINI("INFO", "Maxspells", Val(frmoptions.ms), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmaps", Val(frmoptions.mc), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxmapitems", Val(frmoptions.moc), App.Path & "\config.ini")
-    Call WriteINI("INFO", "Maxemots", Val(frmoptions.Me), App.Path & "\config.ini")
+    Call WriteINI("INFO", "Maxemots", Val(frmoptions.me), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxlevel", Val(frmoptions.mn), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxquet", Val(frmoptions.mq), App.Path & "\config.ini")
     Call WriteINI("INFO", "Maxguilds", Val(frmoptions.mg), App.Path & "\config.ini")
@@ -6127,10 +5910,10 @@ Else
     Call WriteINI("INFO", "MaxClasses", frmoptions.nbcls.Text, PathServ & "\Classes\info.ini")
     Call WriteINI("CONFIG", "GameName", frmoptions.nom, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "WebSite", frmoptions.site, PathServ & "\Data.ini")
-    Call WriteINI("CONFIG", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("CONFIG", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
-    Call WriteINI("INFO", "HPRegen", frmoptions.PV, PathServ & "\Data.ini")
+    Call WriteINI("INFO", "HPRegen", frmoptions.pv, PathServ & "\Data.ini")
     Call WriteINI("INFO", "MPRegen", frmoptions.pm, PathServ & "\Data.ini")
     Call WriteINI("INFO", "SPRegen", frmoptions.ps, PathServ & "\Data.ini")
     Call WriteINI("CONFIG", "Scrolling", frmoptions.defl, PathServ & "\Data.ini")
@@ -6144,7 +5927,7 @@ Else
     Call WriteINI("MAX", "MAX_MAP_ITEMS", frmoptions.moc, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILDS", frmoptions.mg, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_GUILD_MEMBERS", frmoptions.mjg, PathServ & "\Data.ini")
-    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.Me, PathServ & "\Data.ini")
+    Call WriteINI("MAX", "MAX_EMOTICONS", frmoptions.me, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_LEVEL", frmoptions.mn, PathServ & "\Data.ini")
     Call WriteINI("MAX", "MAX_QUETES", frmoptions.mq, PathServ & "\Data.ini")
     If HORS_LIGNE = 0 Then Call SendMOTDChange(frmoptions.motd.Text)
@@ -6236,7 +6019,7 @@ End Sub
 
 Public Sub SpellEditorInit()
 Dim i As Long
-If Not FileExiste("spells\spells" & EditorIndex & ".fcg") And HORS_LIGNE = 1 Then Call ClearSpell(EditorIndex)
+If Not FileExist("spells\spells" & EditorIndex & ".fcg") And HORS_LIGNE = 1 Then Call ClearSpell(EditorIndex)
 
     EditorItemY = (Spell(EditorIndex).SpellIco \ 6)
     EditorItemX = (Spell(EditorIndex).SpellIco - (Spell(EditorIndex).SpellIco \ 6) * 6)
@@ -6264,14 +6047,14 @@ If Not FileExiste("spells\spells" & EditorIndex & ".fcg") And HORS_LIGNE = 1 The
         frmSpellEditor.CheckSpell.value = Checked
         frmSpellEditor.scrlSpellAnim.Max = MAX_DX_BIGSPELLS
         frmSpellEditor.picSpell.Width = 960
-        frmSpellEditor.picSpell.height = 960
+        frmSpellEditor.picSpell.Height = 960
         frmSpellEditor.picSpell.Left = 10680
         frmSpellEditor.picSpell.Top = 3540
     Else
         frmSpellEditor.CheckSpell.value = Unchecked
         frmSpellEditor.scrlSpellAnim.Max = MAX_DX_SPELLS
         frmSpellEditor.picSpell.Width = 480
-        frmSpellEditor.picSpell.height = 480
+        frmSpellEditor.picSpell.Height = 480
         frmSpellEditor.picSpell.Left = 10920
         frmSpellEditor.picSpell.Top = 3720
     End If
@@ -6288,9 +6071,9 @@ End Sub
 
 Public Sub QuetesEditorInit()
 Dim i As Long
-If Not FileExiste("quetes\quete" & EditorIndex & ".fcq") And HORS_LIGNE = 1 Then Call ClearQuete(EditorIndex)
+If Not FileExist("quetes\quete" & EditorIndex & ".fcq") And HORS_LIGNE = 1 Then Call ClearQuete(EditorIndex)
 
-If Not FileExiste("quetes\quete" & EditorIndex & ".fcq") And Trim$(quete(EditorIndex).nom) = vbNullString Then Call ClearQuete(EditorIndex)
+If Not FileExist("quetes\quete" & EditorIndex & ".fcq") And Trim$(quete(EditorIndex).nom) = vbNullString Then Call ClearQuete(EditorIndex)
 
     frmEditeurQuetes.Init = False
     
@@ -6505,7 +6288,7 @@ Else
     frmMirage.test.Caption = "Tester"
     frmMirage.itmDesc.Visible = False
     InEditor = True
-    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
     frmMirage.picBack.Width = frmMirage.picBackSelect.Width
     frmMirage.carte.Enabled = True
     frmMirage.comtest.Enabled = False
@@ -6960,17 +6743,17 @@ Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
     'Call copymemory(
     frmMirage.picBackSelect.Width = Int(DDSD_Tile(Tnum).lWidth)
-    frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)
     With dRECT
         .Top = 0
-        .Bottom = frmMirage.picBackSelect.height
+        .Bottom = frmMirage.picBackSelect.Height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
     With sRECT
         .Top = AScr
-        .Bottom = .Top + frmMirage.picBackSelect.height
+        .Bottom = .Top + frmMirage.picBackSelect.Height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
@@ -6983,17 +6766,17 @@ Dim sRECT As RECT
 Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
     frmMirage.picBackSelect.Width = Int(DDSD_Outil.lWidth)
-    frmMirage.scrlPicture.Max = Int((DDSD_Outil.lHeight - frmMirage.picBackSelect.height) \ PIC_Y)
+    frmMirage.scrlPicture.Max = Int((DDSD_Outil.lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)
     With dRECT
         .Top = 0
-        .Bottom = frmMirage.picBackSelect.height
+        .Bottom = frmMirage.picBackSelect.Height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
     With sRECT
         .Top = AScr
-        .Bottom = .Top + frmMirage.picBackSelect.height
+        .Bottom = .Top + frmMirage.picBackSelect.Height
         .Left = 0
         .Right = frmMirage.picBackSelect.Width
     End With
@@ -7010,13 +6793,13 @@ If Not (DD_Surf Is Nothing) Then
     PicBox.Picture = LoadPicture()
     With dRECT
         .Top = 0
-        .Bottom = PicBox.height
+        .Bottom = PicBox.Height
         .Left = 0
         .Right = PicBox.Width
     End With
     With sRECT
         .Top = y
-        .Bottom = .Top + PicBox.height
+        .Bottom = .Top + PicBox.Height
         .Left = x
         .Right = .Left + PicBox.Width
     End With
@@ -7040,5 +6823,5 @@ End Sub
 Sub CheckErr()
 Dim MapErr As Long
     MapErr = Val(ReadINI("CONFIG", "ERR", App.Path & "\Config.ini"))
-    If FileExistes(App.Path & "\Maps\map" & MapErr & "BACKUP.fcc") Then Call frmMapErr.Init(MapErr)
+    If FileExists(App.Path & "\Maps\map" & MapErr & "BACKUP.fcc") Then Call frmMapErr.Init(MapErr)
 End Sub

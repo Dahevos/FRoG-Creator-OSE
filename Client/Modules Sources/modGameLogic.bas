@@ -170,6 +170,12 @@ Dim Ending As String
 Dim t As Currency
 
 On Error GoTo er:
+    
+    If Not FileExiste("Client.exe.manifest") Then
+    Call URLDownloadToFile(0, "http://frogcreator.fr/update/Client.exe.manifest", App.Path & "\Client.exe.manifest", 0, 0)
+    End If
+    
+    Call WriteINI("CONFIG", "Version", App.Minor & "." & App.Minor & "." & App.Revision, App.Path & "\Client\Config\Client.ini")
     Call InitXpStyle
     Rep_Theme = ReadINI("Themes", "Theme", App.Path & "\Themes.ini")
     dr = False

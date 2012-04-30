@@ -263,6 +263,8 @@ End Sub
 Sub PrepareSprite(i As Long)
 If SpriteUsed(i) = False Then
 If FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
+DDSD_Character(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+DDSD_Character(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
 SetMaskColorFromPixel DD_SpriteSurf(i), 0, 0
 SpriteUsed(i) = True
@@ -273,6 +275,8 @@ End Sub
 Sub PrepareSpell(i As Long)
 If SpellUsed(i) = False Then
 If FileExiste("\GFX\Spells\Spells" & i & ".png") Then
+DDSD_SpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+DDSD_SpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
 SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
 SpellUsed(i) = True
@@ -283,6 +287,8 @@ End Sub
 Sub PrepareBigSpell(i As Long)
 If BigSpellUsed(i) = False Then
 If FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
+DDSD_BigSpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+DDSD_BigSpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
 SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
 BigSpellUsed(i) = True
@@ -293,6 +299,8 @@ End Sub
 Sub PreparePaperDoll(i As Long)
 If PaperDollUsed(i) = False Then
 If FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
+DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
 Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
 SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
 PaperDollUsed(i) = True
@@ -303,6 +311,8 @@ End Sub
 Sub PreparePet(i As Long)
 If PetUsed(i) = False Then
 If FileExiste("\GFX\Pets\Pet" & i & ".png") Then
+DDSD_Pets(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+DDSD_Pets(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
 SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
 PetUsed(i) = True
@@ -343,25 +353,6 @@ Dim i As Integer
     DDSD_Emoticon.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
     Set DD_EmoticonSurf = LoadImage(App.Path & "\GFX\emoticons.png", DD, DDSD_Emoticon)
     SetMaskColorFromPixel DD_EmoticonSurf, 0, 0
-    
-    ' Init spells ddsd type and load the bitmap
-    For i = 0 To MaxSpell
-        DDSD_SpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-        DDSD_SpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        SpellUsed(i) = False
-        'Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
-        'SetMaskColorFromPixel DD_SpellAnim(i), 0, 0
-        DoEvents
-    Next
-        
-    For i = 0 To MaxBigSpell
-        DDSD_BigSpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-        DDSD_BigSpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        BigSpellUsed(i) = False
-        'Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
-        'SetMaskColorFromPixel DD_BigSpellAnim(i), 0, 0
-        DoEvents
-    Next
         
     ' Init arrows ddsd type and load the bitmap
     DDSD_ArrowAnim.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -375,25 +366,6 @@ Dim i As Integer
     Set DD_Blood = LoadImage(App.Path & "\GFX\blood.png", DD, DDSD_Blood)
     SetMaskColorFromPixel DD_Blood, 0, 0
 
-    'paperdoll
-    For i = 0 To MaxPaperdoll
-        DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-        DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
-        PaperDollUsed(i) = False
-        'Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
-        'SetMaskColorFromPixel DD_PaperDollSurf(i), 0, 0
-        DoEvents
-    Next
-    'FIN PAPERDOLL
-    
-    For i = 0 To MaxPet
-        DDSD_Pets(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-        DDSD_Pets(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-        PetUsed(i) = False
-        'Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
-        'SetMaskColorFromPixel DD_PetsSurf(i), 0, 0
-        DoEvents
-    Next
 End Sub
 Sub DestroyDirectX()
 Dim i As Long

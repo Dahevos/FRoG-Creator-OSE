@@ -1018,7 +1018,7 @@ Sub ClearRecette(ByVal Index As Long)
     For i = 0 To 9
         recette(Index).InCraft(i, 0) = 0
         recette(Index).InCraft(i, 1) = 0
-    Next i
+    Next
     recette(Index).craft(0) = 0
     recette(Index).craft(1) = 0
 End Sub

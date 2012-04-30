@@ -54,6 +54,11 @@ Dim f As Long
     'On Error GoTo er:
     
     Randomize Timer
+    
+    If Not FileExist("Serveur.exe.manifest") Then
+    Call URLDownloadToFile(0, "http://frogcreator/update/Serveur.exe.manifest", App.Path & "\Serveur.exe.manifest", 0, 0)
+    End If
+
     Call InitXpStyle
     CClasses = True
     InDestroy = False

@@ -58,11 +58,11 @@ Attribute VB_Exposed = False
 Option Explicit
 
 Private Sub Form_Click()
-If GettingMap And FileExistes(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc") Then Call Kill(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc")
+If GettingMap And FileExists(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc") Then Call Kill(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc")
 Call GameDestroy
 End Sub
 
 Private Sub Label1_Click()
-If GettingMap And FileExistes(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc") Then Call Kill(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc")
+If GettingMap And FileExists(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc") Then Call Kill(App.Path & "\Maps\" & Player(MyIndex).Map & ".fcc")
 Call GameDestroy
 End Sub

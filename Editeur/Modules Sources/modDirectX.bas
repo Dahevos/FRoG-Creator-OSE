@@ -176,7 +176,7 @@ Public Sub UnloadTextures()
 End Sub
 Sub PrepareSprite(i As Long)
 If SpriteUsed(i) = False Then
-If FileExiste("\GFX\Sprites\Sprites" & i & ".png") Then
+If FileExist("\GFX\Sprites\Sprites" & i & ".png") Then
 DDSD_Character(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
 DDSD_Character(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_SpriteSurf(i) = LoadImage(App.Path & "\GFX\Sprites\Sprites" & i & ".png", DD, DDSD_Character(i))
@@ -188,7 +188,7 @@ SpriteTimer(i) = GetTickCount
 End Sub
 Sub PrepareSpell(i As Long)
 If SpellUsed(i) = False Then
-If FileExiste("\GFX\Spells\Spells" & i & ".png") Then
+If FileExist("\GFX\Spells\Spells" & i & ".png") Then
 DDSD_SpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
 DDSD_SpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_SpellAnim(i) = LoadImage(App.Path & "\GFX\Spells\Spells" & i & ".png", DD, DDSD_SpellAnim(i))
@@ -200,7 +200,7 @@ SpellTimer(i) = GetTickCount
 End Sub
 Sub PrepareBigSpell(i As Long)
 If BigSpellUsed(i) = False Then
-If FileExiste("\GFX\BigSpells\BigSpells" & i & ".png") Then
+If FileExist("\GFX\BigSpells\BigSpells" & i & ".png") Then
 DDSD_BigSpellAnim(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
 DDSD_BigSpellAnim(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_BigSpellAnim(i) = LoadImage(App.Path & "\GFX\BigSpells\BigSpells" & i & ".png", DD, DDSD_BigSpellAnim(i))
@@ -212,7 +212,7 @@ BigSpellTimer(i) = GetTickCount
 End Sub
 Sub PreparePaperDoll(i As Long)
 If PaperDollUsed(i) = False Then
-If FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
+If FileExist("\GFX\Paperdolls\Paperdolls" & i & ".png") Then
 DDSD_PaperDoll(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
 DDSD_PaperDoll(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN
 Set DD_PaperDollSurf(i) = LoadImage(App.Path & "\GFX\Paperdolls\Paperdolls" & i & ".png", DD, DDSD_PaperDoll(i))
@@ -224,7 +224,7 @@ PaperDollTimer(i) = GetTickCount
 End Sub
 Sub PreparePet(i As Long)
 If PetUsed(i) = False Then
-If FileExiste("\GFX\Pets\Pet" & i & ".png") Then
+If FileExist("\GFX\Pets\Pet" & i & ".png") Then
 DDSD_Pets(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
 DDSD_Pets(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
 Set DD_PetsSurf(i) = LoadImage(App.Path & "\GFX\Pets\Pet" & i & ".png", DD, DDSD_Pets(i))
@@ -238,7 +238,7 @@ Function LoadMaxSprite()
 Dim i As Long
     
 i = 0
-Do While FileExiste("\GFX\Sprites\Sprites" & i & ".png")
+Do While FileExist("\GFX\Sprites\Sprites" & i & ".png")
 LoadMaxSprite = i
 i = i + 1
 Loop
@@ -249,7 +249,7 @@ Sub LoadMaxPet()
 Dim i As Long
     
 i = 0
-Do While FileExiste("\GFX\Pets\Pet" & i & ".png")
+Do While FileExist("\GFX\Pets\Pet" & i & ".png")
 i = i + 1
 Loop
 MAX_DX_PETS = i - 1
@@ -259,7 +259,7 @@ Sub LoadMaxPaperdolls()
 Dim i As Long
     
 i = 0
-Do While FileExiste("\GFX\Paperdolls\Paperdolls" & i & ".png")
+Do While FileExist("\GFX\Paperdolls\Paperdolls" & i & ".png")
 i = i + 1
 Loop
 MAX_DX_PAPERDOLL = i - 1
@@ -269,7 +269,7 @@ Sub LoadMaxSpells()
 Dim i As Long
 
 i = 0
-Do While FileExiste("\GFX\Spells\Spells" & i & ".png")
+Do While FileExist("\GFX\Spells\Spells" & i & ".png")
 i = i + 1
 Loop
 MAX_DX_SPELLS = i - 1
@@ -279,22 +279,16 @@ Sub LoadMaxBigSpells()
 Dim i As Long
 
 i = 0
-Do While FileExiste("\GFX\BigSpells\BigSpells" & i & ".png")
+Do While FileExist("\GFX\BigSpells\BigSpells" & i & ".png")
 i = i + 1
 Loop
 MAX_DX_BIGSPELLS = i - 1
 End Sub
-
-Sub InitSurfaces()
-Dim Key As DDCOLORKEY
+Sub InitBackBuffer()
 Dim i As Long
 
     ' Check for files existing
-    If FileExiste("\GFX\items.png") = False Or FileExiste("\GFX\emoticons.png") = False Or FileExiste("\GFX\Outils.png") = False Or FileExiste("\GFX\arrows.png") = False Then Call MsgBox("Plusieurs fichiers manquants", vbOKOnly, GAME_NAME): Call GameDestroy
-    
-    ' Set the key for masks
-    Key.low = 0
-    Key.high = 0
+    If Not FileExist("\GFX\items.png") Or Not FileExist("\GFX\emoticons.png") Or Not FileExist("\GFX\Outils.png") Or Not FileExist("\GFX\arrows.png") Then Call MsgBox("Plusieurs fichiers manquants", vbOKOnly, GAME_NAME): Call GameDestroy
     
     ' Initialize back buffer
     DDSD_BackBuffer.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
@@ -303,54 +297,6 @@ Dim i As Long
     DDSD_BackBuffer.lHeight = (MAX_MAPY + 1) * PIC_Y
     Set DD_BackBuffer = DD.CreateSurface(DDSD_BackBuffer)
         
-    DDSD_Outil.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_Outil.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_OutilSurf = LoadImage(App.Path & "\GFX\Outils.png", DD, DDSD_Outil)
-    SetMaskColorFromPixel DD_OutilSurf, 0, 0
-        
-    ' Init tiles ddsd type and load the bitmap
-    For i = 0 To ExtraSheets
-        If Dir$(App.Path & "\GFX\tiles" & i & ".png") <> vbNullString Then
-            DDSD_Tile(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-            DDSD_Tile(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-            Set DD_TileSurf(i) = LoadImage(App.Path & "\GFX\tiles" & i & ".png", DD, DDSD_Tile(i))
-            SetMaskColorFromPixel DD_TileSurf(i), 0, 0
-            TileFile(i) = True
-        Else
-            TileFile(i) = False
-        End If
-    Next i
-    
-    ' Init items ddsd type and load the bitmap
-    DDSD_Item.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_Item.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_ItemSurf = LoadImage(App.Path & "\GFX\items.png", DD, DDSD_Item)
-    SetMaskColorFromPixel DD_ItemSurf, 0, 0
-       
-    ' Init emoticons ddsd type and load the bitmap
-    DDSD_Emoticon.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_Emoticon.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_EmoticonSurf = LoadImage(App.Path & "\GFX\emoticons.png", DD, DDSD_Emoticon)
-    SetMaskColorFromPixel DD_EmoticonSurf, 0, 0
-    
-    ' Init arrows ddsd type and load the bitmap
-    DDSD_ArrowAnim.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_ArrowAnim.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_ArrowAnim = LoadImage(App.Path & "\GFX\arrows.png", DD, DDSD_ArrowAnim)
-    SetMaskColorFromPixel DD_ArrowAnim, 0, 0
-    
-    ' Prends la planche de sang
-    DDSD_Blood.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_Blood.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_Blood = LoadImage(App.Path & "\GFX\blood.png", DD, DDSD_Blood)
-    SetMaskColorFromPixel DD_Blood, 0, 0
-
-    ' Init temp ddsd type and load the bitmap
-    DDSD_Temp.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
-    DDSD_Temp.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
-    Set DD_Temp = DD_TileSurf(0)
-    SetMaskColorFromPixel DD_Temp, 0, 0
-    
     'Initisialisation de la surface temporaire
     DDSD_Tmp.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
     DDSD_Tmp.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_3DDEVICE  'Or DDSCAPS_OPTIMIZED 'DDSCAPS_TEXTURE 'DDSCAPS_OPTIMIZED
@@ -360,10 +306,72 @@ Dim i As Long
     Set DD_TmpSurf = DD.CreateSurface(DDSD_Tmp)
     Call DD_TmpSurf.SetForeColor(0)
     Call DD_TmpSurf.setDrawStyle(5)
-
     
 End Sub
+Sub InitTiles()
+Dim i As Integer
 
+        ' Init tiles ddsd type and load the bitmap
+    For i = 0 To ExtraSheets
+        If FileExist("\GFX\tiles" & i & ".png") Then
+            DDSD_Tile(i).lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+            DDSD_Tile(i).ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+            Set DD_TileSurf(i) = LoadImage(App.Path & "\GFX\tiles" & i & ".png", DD, DDSD_Tile(i))
+            SetMaskColorFromPixel DD_TileSurf(i), 0, 0
+            TileFile(i) = True
+            DoEvents
+        Else
+            TileFile(i) = False
+        End If
+    Next
+    
+End Sub
+Sub InitSurfaces()
+    
+    
+        ' Init temp ddsd type and load the bitmap
+    DDSD_Temp.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_Temp.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_Temp = DD_TileSurf(0)
+    SetMaskColorFromPixel DD_Temp, 0, 0
+    DoEvents
+    
+    
+    DDSD_Outil.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_Outil.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_OutilSurf = LoadImage(App.Path & "\GFX\Outils.png", DD, DDSD_Outil)
+    SetMaskColorFromPixel DD_OutilSurf, 0, 0
+    DoEvents
+    
+    ' Init items ddsd type and load the bitmap
+    DDSD_Item.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_Item.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_ItemSurf = LoadImage(App.Path & "\GFX\items.png", DD, DDSD_Item)
+    SetMaskColorFromPixel DD_ItemSurf, 0, 0
+    DoEvents
+    
+    ' Init emoticons ddsd type and load the bitmap
+    DDSD_Emoticon.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_Emoticon.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_EmoticonSurf = LoadImage(App.Path & "\GFX\emoticons.png", DD, DDSD_Emoticon)
+    SetMaskColorFromPixel DD_EmoticonSurf, 0, 0
+    DoEvents
+    
+    ' Init arrows ddsd type and load the bitmap
+    DDSD_ArrowAnim.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_ArrowAnim.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_ArrowAnim = LoadImage(App.Path & "\GFX\arrows.png", DD, DDSD_ArrowAnim)
+    SetMaskColorFromPixel DD_ArrowAnim, 0, 0
+    DoEvents
+    
+    ' Prends la planche de sang
+    DDSD_Blood.lFlags = DDSD_CAPS Or DDSD_HEIGHT Or DDSD_WIDTH
+    DDSD_Blood.ddsCaps.lCaps = DDSCAPS_OFFSCREENPLAIN Or DDSCAPS_SYSTEMMEMORY
+    Set DD_Blood = LoadImage(App.Path & "\GFX\blood.png", DD, DDSD_Blood)
+    SetMaskColorFromPixel DD_Blood, 0, 0
+    DoEvents
+    
+End Sub
 Sub DestroyDirectX()
 Dim i As Long
 
@@ -823,7 +831,7 @@ End Sub
 Public Sub InitPano(ByVal MapNum As Long)
     If MapNum <= 0 Or MapNum > MAX_MAPS Or DD Is Nothing Then Exit Sub
     If Trim$(Map(MapNum).PanoInf) <> vbNullString And InStr(1, Trim$(Map(MapNum).PanoInf), ".png") > 0 Then
-        If Not FileExiste("GFX\" & Trim$(Map(MapNum).PanoInf)) Then
+        If Not FileExist("GFX\" & Trim$(Map(MapNum).PanoInf)) Then
             Map(MapNum).PanoInf = vbNullString
         Else
             'Initialisation de la surface PanoInfSurf
@@ -835,7 +843,7 @@ Public Sub InitPano(ByVal MapNum As Long)
     End If
     
     If Trim$(Map(MapNum).PanoSup) <> vbNullString And InStr(1, Trim$(Map(MapNum).PanoSup), ".png") > 0 Then
-        If Not FileExiste("GFX\" & Trim$(Map(MapNum).PanoSup)) Then
+        If Not FileExist("GFX\" & Trim$(Map(MapNum).PanoSup)) Then
             Map(MapNum).PanoSup = vbNullString
         Else
             'Initialisation de la surface PanoSupSurf
