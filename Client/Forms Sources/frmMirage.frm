@@ -450,7 +450,7 @@ Begin VB.Form frmMirage
       ForeColor       =   &H80000008&
       Height          =   1995
       Left            =   3960
-      Picture         =   "frmMirage.frx":17D2A
+      Picture         =   "frmMirage.frx":74F2
       ScaleHeight     =   1965
       ScaleWidth      =   3600
       TabIndex        =   241
@@ -535,7 +535,7 @@ Begin VB.Form frmMirage
       ForeColor       =   &H80000008&
       Height          =   1965
       Left            =   3480
-      Picture         =   "frmMirage.frx":2EDDC
+      Picture         =   "frmMirage.frx":1E5A4
       ScaleHeight     =   1965
       ScaleWidth      =   3600
       TabIndex        =   212
@@ -1658,9 +1658,9 @@ Begin VB.Form frmMirage
    Begin VB.ComboBox Canal 
       Appearance      =   0  'Flat
       Height          =   315
-      ItemData        =   "frmMirage.frx":3198E
+      ItemData        =   "frmMirage.frx":21156
       Left            =   120
-      List            =   "frmMirage.frx":3199E
+      List            =   "frmMirage.frx":21166
       Locked          =   -1  'True
       TabIndex        =   120
       Text            =   "Carte"
@@ -2014,7 +2014,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   720
-               Picture         =   "frmMirage.frx":319BE
+               Picture         =   "frmMirage.frx":21186
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   51
@@ -2034,7 +2034,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   1080
-               Picture         =   "frmMirage.frx":31C56
+               Picture         =   "frmMirage.frx":2141E
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   50
@@ -2265,7 +2265,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   1200
-               Picture         =   "frmMirage.frx":31EE1
+               Picture         =   "frmMirage.frx":216A9
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   127
@@ -2285,7 +2285,7 @@ Begin VB.Form frmMirage
                EndProperty
                Height          =   270
                Left            =   840
-               Picture         =   "frmMirage.frx":3216C
+               Picture         =   "frmMirage.frx":21934
                ScaleHeight     =   270
                ScaleWidth      =   270
                TabIndex        =   126
@@ -2400,9 +2400,9 @@ Begin VB.Form frmMirage
                   Strikethrough   =   0   'False
                EndProperty
                Height          =   2340
-               ItemData        =   "frmMirage.frx":32404
+               ItemData        =   "frmMirage.frx":21BCC
                Left            =   75
-               List            =   "frmMirage.frx":32406
+               List            =   "frmMirage.frx":21BCE
                TabIndex        =   45
                Top             =   75
                Width           =   2220
@@ -2749,7 +2749,7 @@ Begin VB.Form frmMirage
                ForeColor       =   &H80000008&
                Height          =   2.25000e5
                Left            =   2400
-               Picture         =   "frmMirage.frx":32408
+               Picture         =   "frmMirage.frx":21BD0
                ScaleHeight     =   2.23636e5
                ScaleMode       =   0  'User
                ScaleWidth      =   477.091
@@ -3109,7 +3109,7 @@ Begin VB.Form frmMirage
          Begin VB.Image Image3 
             Height          =   2985
             Left            =   0
-            Picture         =   "frmMirage.frx":191D4A
+            Picture         =   "frmMirage.frx":181512
             Top             =   0
             Width           =   2595
          End
@@ -3228,7 +3228,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   270
             Left            =   1320
-            Picture         =   "frmMirage.frx":1AB1C4
+            Picture         =   "frmMirage.frx":19A98C
             ScaleHeight     =   270
             ScaleWidth      =   270
             TabIndex        =   229
@@ -3248,7 +3248,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   270
             Left            =   960
-            Picture         =   "frmMirage.frx":1AB45C
+            Picture         =   "frmMirage.frx":19AC24
             ScaleHeight     =   270
             ScaleWidth      =   270
             TabIndex        =   228
@@ -3442,7 +3442,7 @@ Begin VB.Form frmMirage
          Begin VB.Image Image5 
             Height          =   2985
             Left            =   0
-            Picture         =   "frmMirage.frx":1AB6E7
+            Picture         =   "frmMirage.frx":19AEAF
             Top             =   0
             Width           =   2595
          End
@@ -3565,7 +3565,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H80000008&
          Height          =   4290
          Left            =   480
-         Picture         =   "frmMirage.frx":1C4B61
+         Picture         =   "frmMirage.frx":1B4329
          ScaleHeight     =   286
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
@@ -4250,7 +4250,7 @@ Begin VB.Form frmMirage
          Begin VB.Image Image1 
             Height          =   5250
             Left            =   0
-            Picture         =   "frmMirage.frx":1F3A63
+            Picture         =   "frmMirage.frx":1E322B
             Top             =   0
             Width           =   4500
          End
@@ -4464,7 +4464,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H80000008&
          Height          =   1575
          Left            =   0
-         Picture         =   "frmMirage.frx":24091D
+         Picture         =   "frmMirage.frx":2300E5
          ScaleHeight     =   1545
          ScaleWidth      =   9510
          TabIndex        =   56
@@ -4480,7 +4480,7 @@ Begin VB.Form frmMirage
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
             TabIndex        =   57
-            Text            =   "frmMirage.frx":27076F
+            Text            =   "frmMirage.frx":25FF37
             Top             =   180
             Width           =   9160
          End
@@ -4647,7 +4647,7 @@ Begin VB.Form frmMirage
    Begin VB.Image Interface 
       Height          =   900
       Left            =   0
-      Picture         =   "frmMirage.frx":270775
+      Picture         =   "frmMirage.frx":25FF3D
       Top             =   9120
       Width           =   12000
    End
@@ -4948,7 +4948,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5784,7 +5784,7 @@ If Seco <= 0 And Minu > 0 Then
     Seco = 59
     seconde.Caption = Seco
     Minu = Minu - 1
-    If Len(STR$(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
+    If Len(STR$(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0

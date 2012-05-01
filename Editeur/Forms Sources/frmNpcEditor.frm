@@ -1087,22 +1087,6 @@ Begin VB.Form frmNpcEditor
       Top             =   240
       Width           =   3975
    End
-   Begin WinXPC_Engine.WindowsXPC WindowsXPC1 
-      Left            =   7080
-      Top             =   6480
-      _ExtentX        =   6588
-      _ExtentY        =   1085
-      ColorScheme     =   2
-      Common_Dialog   =   0   'False
-      PictureControl  =   0   'False
-      DriveListBoxControl=   0   'False
-      TabStripControl =   0   'False
-      StatusBarControl=   0   'False
-      SliderControl   =   0   'False
-      ImageComboControl=   0   'False
-      FileListBoxControl=   0   'False
-      DirListBoxControl=   0   'False
-   End
    Begin VB.Label Label14 
       Alignment       =   2  'Center
       Caption         =   "Discussion :"

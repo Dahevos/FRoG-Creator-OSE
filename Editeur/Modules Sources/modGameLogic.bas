@@ -1543,28 +1543,28 @@ If Not IsPlaying(Index) Then Exit Sub
     'PAPERDOLL
     If GetPlayerArmorSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdoll = 1 Then
-            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic))
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerHelmetSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdoll = 1 Then
-            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic))
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerWeaponSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdoll = 1 Then
-            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic))
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
     
     If GetPlayerShieldSlot(Index) > 0 Then
         If Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdoll = 1 Then
-            Call PreparePaperDoll(DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic))
+            Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic)
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
     End If
@@ -2742,6 +2742,8 @@ Dim i As Long
     Call InitSurfaces
     
     Call InitBackBuffer
+    
+    If HORS_LIGNE = 1 Then
     frmMirage.Toolbar1.buttons(1).Enabled = False
     frmMirage.test.Enabled = False
     frmMirage.envoicarte.Enabled = False
@@ -2750,6 +2752,10 @@ Dim i As Long
     frmMirage.admin.Visible = False
     frmMirage.envserv.Enabled = False
     frmMirage.opti.Enabled = False
+    Else
+    frmMirage.Picpics.Visible = False
+    End If
+
     Call StopMidi
     frmMirage.lstIndex.Clear
     For i = 1 To MAX_MAPS
