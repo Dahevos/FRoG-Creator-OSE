@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmServer 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "FRoG Server"
@@ -122,29 +122,42 @@ Begin VB.Form frmServer
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "picMap"
-      Tab(2).Control(1)=   "picWeather"
-      Tab(2).Control(2)=   "picWarp"
-      Tab(2).Control(3)=   "picExp"
-      Tab(2).Control(4)=   "Frame9"
-      Tab(2).Control(5)=   "Frame6"
+      Tab(2).Control(0)=   "lblPort"
+      Tab(2).Control(0).Enabled=   0   'False
+      Tab(2).Control(1)=   "lblIP"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "Label7"
+      Tab(2).Control(2).Enabled=   0   'False
+      Tab(2).Control(3)=   "Frame7"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "Frame1"
+      Tab(2).Control(4).Enabled=   0   'False
+      Tab(2).Control(5)=   "Frame2"
+      Tab(2).Control(5).Enabled=   0   'False
       Tab(2).Control(6)=   "Frame3"
-      Tab(2).Control(7)=   "Frame2"
-      Tab(2).Control(8)=   "Frame1"
-      Tab(2).Control(9)=   "Frame7"
-      Tab(2).Control(10)=   "Label7"
-      Tab(2).Control(11)=   "lblIP"
-      Tab(2).Control(12)=   "lblPort"
+      Tab(2).Control(6).Enabled=   0   'False
+      Tab(2).Control(7)=   "Frame6"
+      Tab(2).Control(7).Enabled=   0   'False
+      Tab(2).Control(8)=   "Frame9"
+      Tab(2).Control(8).Enabled=   0   'False
+      Tab(2).Control(9)=   "picExp"
+      Tab(2).Control(9).Enabled=   0   'False
+      Tab(2).Control(10)=   "picWarp"
+      Tab(2).Control(10).Enabled=   0   'False
+      Tab(2).Control(11)=   "picWeather"
+      Tab(2).Control(11).Enabled=   0   'False
+      Tab(2).Control(12)=   "picMap"
+      Tab(2).Control(12).Enabled=   0   'False
       Tab(2).ControlCount=   13
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "CharInfo(21)"
-      Tab(3).Control(1)=   "CharInfo(22)"
-      Tab(3).Control(2)=   "CharInfo(23)"
-      Tab(3).Control(3)=   "lstTopics"
-      Tab(3).Control(4)=   "TopicTitle"
-      Tab(3).Control(5)=   "sync"
+      Tab(3).Control(0)=   "sync"
+      Tab(3).Control(1)=   "TopicTitle"
+      Tab(3).Control(2)=   "lstTopics"
+      Tab(3).Control(3)=   "CharInfo(23)"
+      Tab(3).Control(4)=   "CharInfo(22)"
+      Tab(3).Control(5)=   "CharInfo(21)"
       Tab(3).ControlCount=   6
       Begin VB.Timer sync 
          Interval        =   10000
@@ -324,12 +337,12 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3375
-         Left            =   -75000
+         Left            =   -74400
          ScaleHeight     =   223
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
          TabIndex        =   128
-         Top             =   240
+         Top             =   1080
          Visible         =   0   'False
          Width           =   3375
          Begin VB.ListBox lstNPC 
@@ -2152,11 +2165,20 @@ Begin VB.Form frmServer
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "Sauvegarde dans :"
-         Height          =   195
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   165
          Left            =   6480
          TabIndex        =   168
          Top             =   3600
-         Width           =   2685
+         Width           =   1170
       End
       Begin VB.Label CharInfo 
          Alignment       =   2  'Center
@@ -2718,9 +2740,9 @@ End Sub
 
 Private Sub Command4_Click()
     CMessages(CM).Title = txtTitle.text
-    CMessages(CM).Message = txtMsg.text
+    CMessages(CM).message = txtMsg.text
     PutVar App.Path & "\CMessages.ini", "MESSAGES", "Title" & CM, CMessages(CM).Title
-    PutVar App.Path & "\CMessages.ini", "MESSAGES", "Message" & CM, CMessages(CM).Message
+    PutVar App.Path & "\CMessages.ini", "MESSAGES", "Message" & CM, CMessages(CM).message
     CustomMsg(CM - 1).Caption = CMessages(CM).Title
     picCMsg.Visible = False
 End Sub
@@ -2967,7 +2989,7 @@ End Sub
 Private Sub CustomMsg_Click(Index As Integer)
     CM = Index + 1
     txtTitle.text = CMessages(CM).Title
-    txtMsg.text = CMessages(CM).Message
+    txtMsg.text = CMessages(CM).message
     picCMsg.Visible = True
 End Sub
 
@@ -3009,7 +3031,7 @@ Call Command58_Click
 End Sub
 
 Private Sub Label7_Click()
-    Shell ("explorer http://www.whatismyip.com"), vbNormalNoFocus
+    Shell ("explorer http://monip.org"), vbNormalNoFocus
 End Sub
 
 Private Sub lstTopics_Click()
@@ -3083,8 +3105,8 @@ Call Command25_Click
 End Sub
 
 Private Sub Say_Click(Index As Integer)
-    Call GlobalMsg(Trim$(CMessages(Index + 1).Message), White)
-    Call TextAdd(frmServer.txtText(0), "Msg rapide : " & Trim$(CMessages(Index + 1).Message), True)
+    Call GlobalMsg(Trim$(CMessages(Index + 1).message), White)
+    Call TextAdd(frmServer.txtText(0), "Msg rapide : " & Trim$(CMessages(Index + 1).message), True)
 End Sub
 
 Private Sub scrlMap_Change()

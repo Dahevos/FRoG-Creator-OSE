@@ -654,7 +654,7 @@ End Type
 
 Type CMRec
     Title As String
-    Message As String
+    message As String
 End Type
 
 Type IBMsgs
@@ -1751,8 +1751,8 @@ Sub SetPlayerPetSlot(ByVal Index As Long, InvNum As Long)
     Player(Index).Char(Player(Index).CharNum).PetSlot = InvNum
 End Sub
 
-Sub BattleMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
-    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
+Sub BattleMsg(ByVal Index As Long, ByVal msg As String, ByVal Color As Long, ByVal Side As Byte)
+    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
 End Sub
 
 Public Sub Attendre(ByVal temps As Long)
@@ -1763,7 +1763,7 @@ Dim Seconde As Long
      lngEndingTime = GetTickCount() + (Seconde)
      
      Do While GetTickCount() < lngEndingTime
-         DoEvents
+         NewDoEvents
      Loop
 End Sub
 
@@ -1793,14 +1793,14 @@ JSemaine = Weekday(Date, vbMonday)
 End Function
 
 Function Heure() As Byte
-Heure = Hour(Time)
+Heure = Hour(time)
 End Function
 
 Function Minutes() As Byte
-Minutes = Minute(Time)
+Minutes = Minute(time)
 End Function
 
 Function Seconde() As Byte
-Seconde = Second(Time)
+Seconde = Second(time)
 End Function
 

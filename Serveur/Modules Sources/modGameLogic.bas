@@ -432,7 +432,7 @@ Sub PlayerMapGetItem(ByVal Index As Long)
 Dim i As Long
 Dim n As Long
 Dim MapNum As Long
-Dim Msg As String
+Dim msg As String
 
 
     If IsPlaying(Index) = False Then Exit Sub
@@ -454,10 +454,10 @@ Dim Msg As String
                     
                     If item(GetPlayerInvItemNum(Index, n)).type = ITEM_TYPE_CURRENCY Or item(GetPlayerInvItemNum(Index, n)).Empilable <> 0 Then
                         Call SetPlayerInvItemValue(Index, n, GetPlayerInvItemValue(Index, n) + MapItem(MapNum, i).value)
-                        Msg = "Vous ramassez " & MapItem(MapNum, i).value & " " & Trim$(item(GetPlayerInvItemNum(Index, n)).Name) & "."
+                        msg = "Vous ramassez " & MapItem(MapNum, i).value & " " & Trim$(item(GetPlayerInvItemNum(Index, n)).Name) & "."
                     Else
                         Call SetPlayerInvItemValue(Index, n, 1)
-                        Msg = "Vous ramassez un " & Trim$(item(GetPlayerInvItemNum(Index, n)).Name) & "."
+                        msg = "Vous ramassez un " & Trim$(item(GetPlayerInvItemNum(Index, n)).Name) & "."
                     End If
                     
                     If Player(Index).Char(Player(Index).CharNum).QueteEnCour > 0 Then
@@ -477,7 +477,7 @@ Dim Msg As String
                         
                     Call SendInventoryUpdate(Index, n)
                     Call SpawnItemSlot(i, 0, 0, 0, GetPlayerMap(Index), GetPlayerX(Index), GetPlayerY(Index))
-                    Call PlayerMsg(Index, Msg, Yellow)
+                    Call PlayerMsg(Index, msg, Yellow)
                     Exit Sub
                 Else
                     Call PlayerMsg(Index, "Votre inventaire est plein.", BrightRed)
@@ -863,7 +863,7 @@ Dim Spawned As Boolean
 End Sub
 
 Sub SpawnMapNpcs(ByVal MapNum As Long)
-Dim i As Long
+Dim i As Integer
 
     For i = 1 To MAX_MAP_NPCS
         Call SpawnNpc(i, MapNum)
@@ -871,7 +871,7 @@ Dim i As Long
 End Sub
 
 Sub SpawnAllMapNpcs()
-Dim i As Long
+Dim i As Integer
 
     For i = 1 To MAX_MAPS
         Call SpawnMapNpcs(i)
@@ -1008,7 +1008,7 @@ On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Or Victim < 0 Or Victim > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Attacker, "Attaque annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
 Call PlayerMsg(Victim, "Attaque (du joueur qui vous attaque) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(ATT : " & Player(Attacker).Login & ",VIC : " & Player(Victim).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(ATT : " & Player(Attacker).Login & ",VIC : " & Player(Victim).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(ATT : " & GetPlayerName(Attacker) & ",VIC : " & GetPlayerName(Victim) & ")", BrightRed, True)
 End Function
 
@@ -1158,7 +1158,7 @@ CanAttackNpc = False
 On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Attacker, "Attaque annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & GetPlayerName(Attacker) & ")", BrightRed, True)
 End Function
 
@@ -1219,7 +1219,7 @@ CanNpcAttackPlayer = False
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Index, "Attaque du PNJ annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")", BrightRed, True)
 End Function
 
@@ -1385,7 +1385,7 @@ On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Or Victim < 0 Or Victim > MAX_PLAYERS Then Exit Sub
 Call PlayerMsg(Attacker, "Attaque du joueur annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
 Call PlayerMsg(Victim, "Attaque (du joueur qui vous attaque) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(" & Player(Victim).Login & ")par un autre joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Victim).Login & ")par un autre joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Victim) & ")par un autre joueur(" & GetPlayerName(Attacker) & ")", BrightRed, True)
 End Sub
 
@@ -1505,7 +1505,7 @@ er:
 On Error Resume Next
 If Victim < 0 Or Victim > MAX_PLAYERS Then Exit Sub
 Call PlayerMsg(Victim, "Attaque (du PNJ qui vous attaque) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(" & Player(Victim).Login & ")par un PNJ(" & MapNpc(MapNum, MapNpcNum).Num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Victim).Login & ")par un PNJ(" & MapNpc(MapNum, MapNpcNum).Num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Victim) & ")par un PNJ(" & MapNpc(MapNum, MapNpcNum).Num & ")", BrightRed, True)
 End Sub
 
@@ -1732,7 +1732,7 @@ er:
 On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Then Exit Sub
 Call PlayerMsg(Attacker, "Attaque du PNJ annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ")par un joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ")par un joueur(" & Player(Attacker).Login & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & npcnum & ")par un joueur(" & GetPlayerName(Attacker) & ")", BrightRed, True)
 End Sub
 
@@ -1778,7 +1778,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant la téléportation du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Carte : " & MapNum & "(" & X & "," & Y & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant la téléportation du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Carte : " & MapNum & "(" & X & "," & Y & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant la téléportation du joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -2371,7 +2371,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le mouvement du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Direction : " & Dir & "(" & Movement & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le mouvement du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Direction : " & Dir & "(" & Movement & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le mouvement du joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -2468,7 +2468,7 @@ Exit Function
 er:
 CanNpcMove = False
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur du mouvement du PNJ" & MapNpcNum & " sur la carte " & MapNum & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur du mouvement du PNJ" & MapNpcNum & " sur la carte " & MapNum & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur du mouvement du PNJ" & MapNpcNum & " sur la carte " & MapNum, BrightRed, True)
 End Function
 
@@ -2511,7 +2511,7 @@ Dim i As Long
 Exit Sub
 er:
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum & ",Direction : " & Dir & "(" & Movement & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum & ",Direction : " & Dir & "(" & Movement & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum, BrightRed, True)
 End Sub
 
@@ -2645,7 +2645,7 @@ End If
 Exit Sub
 er:
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum & ",Direction : " & Dir & "(" & Movement & ")" & ",Vers(X;Y) : " & X & ";" & Y & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum & ",Direction : " & Dir & "(" & Movement & ")" & ",Vers(X;Y) : " & X & ";" & Y & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le mouvement du PNJ" & MapNpcNum & " sur la carte : " & MapNum, BrightRed, True)
 End Sub
 
@@ -2746,7 +2746,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur de connexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur de connexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur de connexion au jeu, joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -2828,7 +2828,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur de déconnexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur de déconnexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur de déconnexion au jeu, joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -2941,7 +2941,7 @@ Dim c As Long
                 MyScript.ExecuteStatement "Scripts\Main.txt", "PlayerLevelUp " & Index
             Else
                 Do Until GetPlayerExp(Index) < GetPlayerNextLevel(Index)
-                    DoEvents
+                    NewDoEvents
                     If GetPlayerLevel(Index) < MAX_LEVEL Then
                         If GetPlayerExp(Index) >= GetPlayerNextLevel(Index) Then
                             d = GetPlayerExp(Index) - GetPlayerNextLevel(Index)
@@ -2979,7 +2979,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur lors de la vérification du niveau du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur lors de la vérification du niveau du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur lors de la vérification du niveau du joueur : " & GetPlayerName(Index), BrightRed, True)
 End Sub
 
@@ -3462,7 +3462,7 @@ Casted = False
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call PlayerMsg(Index, "Le sort n'a pas put être lancé.", BrightRed)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur de lancement d'un sort du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Slot : " & SpellSlot & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur de lancement d'un sort du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Slot : " & SpellSlot & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur de lancement d'un sort du joueur : " & GetPlayerName(Index), BrightRed, True)
 End Sub
 
@@ -3683,7 +3683,7 @@ CanAttackNpcWithArrow = False
 On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Attacker, "Attaque(flêche) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & GetPlayerName(Attacker) & ") avec un arc. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & GetPlayerName(Attacker) & ") avec un arc. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & npcnum & ") par un joueur(" & GetPlayerName(Attacker) & ")avec un arc", BrightRed, True)
 End Function
 
@@ -3724,7 +3724,7 @@ On Error Resume Next
 If Attacker < 0 Or Attacker > MAX_PLAYERS Or Victim < 0 Or Victim > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Attacker, "Attaque(flêche) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
 Call PlayerMsg(Victim, "Attaque(flêche d'un autre joueur) annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(" & GetPlayerName(Victim) & ") par un joueur(" & GetPlayerName(Attacker) & ") avec un arc. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & GetPlayerName(Victim) & ") par un joueur(" & GetPlayerName(Attacker) & ") avec un arc. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Victim) & ") par un joueur(" & GetPlayerName(Attacker) & ")avec un arc", BrightRed, True)
 End Function
 

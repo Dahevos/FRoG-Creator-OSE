@@ -54,27 +54,27 @@ Public Sub Envoi(FTP As String, USER As String, PASS As String, Fichier As Strin
     hOpen = InternetOpen("FrogCreator", INTERNET_OPEN_TYPE_PRECONFIG, vbNullString, vbNullString, 0)
 
     hConnection = InternetConnect(hOpen, FTP, INTERNET_DEFAULT_FTP_PORT, USER, PASS, INTERNET_SERVICE_FTP, IIf(PassiveConnection, INTERNET_FLAG_PASSIVE, 0), 0)
-    DoEvents
+    NewDoEvents
 
     sOrgpaths = String(MAX_PATH, 0)
 
     FtpGetCurrentDirectory hConnection, sOrgpaths, Len(sOrgpaths)
-    DoEvents
+    NewDoEvents
  
     FtpSetCurrentDirectory hConnection, PATHS
 
     FtpPutFile hConnection, App.Path & "\" & Fichier, FichierFTP, FTP_TRANSFER_TYPE_UNKNOWN, 0
-    DoEvents
+    NewDoEvents
 
     FtpGetFile hConnection, App.Path & "\" & Fichier, FichierFTP, False, 0, FTP_TRANSFER_TYPE_UNKNOWN, 0
 
     FtpSetCurrentDirectory hConnection, sOrgpaths
-    DoEvents
+    NewDoEvents
 
     InternetCloseHandle hConnection
 
     InternetCloseHandle hOpen
-    DoEvents
+    NewDoEvents
 
 End Sub
 
@@ -82,27 +82,27 @@ Public Sub Supprimer(FTP As String, USER As String, PASS As String, FichierFTP A
     Dim hConnection As Long, hOpen As Long, sOrgpaths  As String
 
     hOpen = InternetOpen("FrogCreator", INTERNET_OPEN_TYPE_PRECONFIG, vbNullString, vbNullString, 0)
-    DoEvents
+    NewDoEvents
 
     hConnection = InternetConnect(hOpen, FTP, INTERNET_DEFAULT_FTP_PORT, USER, PASS, INTERNET_SERVICE_FTP, IIf(PassiveConnection, INTERNET_FLAG_PASSIVE, 0), 0)
     
     sOrgpaths = String(MAX_PATH, 0)
-    DoEvents
+    NewDoEvents
 
     FtpGetCurrentDirectory hConnection, sOrgpaths, Len(sOrgpaths)
      
     FtpSetCurrentDirectory hConnection, PATHS
-    DoEvents
+    NewDoEvents
 
     FtpDeleteFile hConnection, FichierFTP
         
     FtpSetCurrentDirectory hConnection, sOrgpaths
-    DoEvents
+    NewDoEvents
 
     InternetCloseHandle hConnection
   
     InternetCloseHandle hOpen
-    DoEvents
+    NewDoEvents
 
 End Sub
 
@@ -110,27 +110,27 @@ Public Sub Telecharger(FTP As String, USER As String, PASS As String, Fichier As
     Dim hConnection As Long, hOpen As Long, sOrgpaths  As String
 
     hOpen = InternetOpen("FrogCreator", INTERNET_OPEN_TYPE_PRECONFIG, vbNullString, vbNullString, 0)
-    DoEvents
+    NewDoEvents
 
     hConnection = InternetConnect(hOpen, FTP, INTERNET_DEFAULT_FTP_PORT, USER, PASS, INTERNET_SERVICE_FTP, IIf(PassiveConnection, INTERNET_FLAG_PASSIVE, 0), 0)
   
     sOrgpaths = String(MAX_PATH, 0)
-    DoEvents
+    NewDoEvents
 
     FtpGetCurrentDirectory hConnection, sOrgpaths, Len(sOrgpaths)
  
     FtpSetCurrentDirectory hConnection, PATHS
-    DoEvents
+    NewDoEvents
 
     FtpGetFile hConnection, FichierFTP, Fichier, True, 0, FTP_TRANSFER_TYPE_UNKNOWN, 0
 
     FtpSetCurrentDirectory hConnection, sOrgpaths
-    DoEvents
+    NewDoEvents
 
     InternetCloseHandle hConnection
     
     InternetCloseHandle hOpen
-    DoEvents
+    NewDoEvents
 
 End Sub
 
@@ -143,27 +143,27 @@ Dim Connecter As Boolean
     frmOptFTP.bar.value = 10
     
     hConnection = InternetConnect(hOpen, FTP, INTERNET_DEFAULT_FTP_PORT, USER, PASS, INTERNET_SERVICE_FTP, IIf(PassiveConnection, INTERNET_FLAG_PASSIVE, 0), 0)
-    DoEvents
+    NewDoEvents
 
     frmOptFTP.bar.value = 30
-    DoEvents
+    NewDoEvents
 
     sOrgpaths = String(MAX_PATH, 0)
 
     frmOptFTP.bar.value = 50
-    DoEvents
+    NewDoEvents
     
     Connecter = FtpGetCurrentDirectory(hConnection, sOrgpaths, Len(sOrgpaths))
-    DoEvents
+    NewDoEvents
     
     frmOptFTP.bar.value = 70
-    DoEvents
+    NewDoEvents
     
     InternetCloseHandle hConnection
     
     frmOptFTP.bar.value = 100
     InternetCloseHandle hOpen
-    DoEvents
+    NewDoEvents
     If Connecter = True Then
         MsgBox "Le logiciel s'est connecter avec succès!", vbInformation
     Else
@@ -183,7 +183,7 @@ Dim sOrgpaths  As String
     ConnexionFTP = InternetConnect(hOpen, FTP, INTERNET_DEFAULT_FTP_PORT, USER, PASS, INTERNET_SERVICE_FTP, IIf(PassiveConnection, INTERNET_FLAG_PASSIVE, 0), 0)
     
     Connecter = FtpGetCurrentDirectory(ConnexionFTP, sOrgpaths, Len(sOrgpaths))
-    DoEvents
+    NewDoEvents
     
     If Not Connecter Then
         MsgBox "Le logiciel n'arrive pas à ce connecter au serveur. Vérifiez vos informations, votre connections et si vous n'êtes pas déjà connecter au ftp avec un autre logiciel.", vbCritical
@@ -199,19 +199,19 @@ Public Sub EnvoiFTP(hConnection As Long, FTP As String, USER As String, PASS As 
     sOrgpaths = String(MAX_PATH, 0)
 
     FtpGetCurrentDirectory hConnection, sOrgpaths, Len(sOrgpaths)
-    DoEvents
+    NewDoEvents
  
     FtpSetCurrentDirectory hConnection, PATHS
-    DoEvents
+    NewDoEvents
 
     FtpPutFile hConnection, App.Path & "\" & Fichier, FichierFTP, FTP_TRANSFER_TYPE_UNKNOWN, 0
-    DoEvents
+    NewDoEvents
 
     FtpGetFile hConnection, App.Path & "\" & Fichier, FichierFTP, False, 0, FTP_TRANSFER_TYPE_UNKNOWN, 0
-    DoEvents
+    NewDoEvents
 
     FtpSetCurrentDirectory hConnection, sOrgpaths
-    DoEvents
+    NewDoEvents
 End Sub
 
 Public Sub FermerFTP(hConnection As Long)
@@ -219,5 +219,5 @@ Public Sub FermerFTP(hConnection As Long)
     InternetCloseHandle hConnection
 
     InternetCloseHandle hOpen
-    DoEvents
+    NewDoEvents
 End Sub

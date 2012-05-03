@@ -50,10 +50,10 @@ Dim MPCost As Integer
     If MapNpcNum <= 0 Or MapNpcNum > MAX_MAP_NPCS Or IsPlaying(Index) = False Then Exit Function
         
     ' Check for subscript out of range
-    If MapNpc(GetPlayerMap(Index), MapNpcNum).num <= 0 Or MapNpc(GetPlayerMap(Index), MapNpcNum).num > MAX_NPCS Then Exit Function
+    If MapNpc(GetPlayerMap(Index), MapNpcNum).Num <= 0 Or MapNpc(GetPlayerMap(Index), MapNpcNum).Num > MAX_NPCS Then Exit Function
         
     MapNum = GetPlayerMap(Index)
-    npcnum = MapNpc(MapNum, MapNpcNum).num
+    npcnum = MapNpc(MapNum, MapNpcNum).Num
     
     If Not NPCHasSpell(npcnum) Then Exit Function
     
@@ -98,7 +98,7 @@ Dim MPCost As Integer
 EndSel:
         Next
         
-        DoEvents
+        NewDoEvents
         
         If Not Para(Index) Then
             If UBound(Paraly) > 0 Then Call Tri(Paraly, True): SpellSlotNum = Paraly(UBound(Paraly)).Slot: GoTo NBal
@@ -125,7 +125,7 @@ EndSel:
 
 NBal:
     If SpellSlotNum <= 0 Then Exit Function
-    DoEvents
+    NewDoEvents
     MapNpc(MapNum, MapNpcNum).AttackTimer = GetTickCount
 
     ' Check if at same coordinates
@@ -139,7 +139,7 @@ CanNpcAttackPlayerWithSpell = False
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Index, "Attaque du PNJ annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & ")", BrightRed, True)
 End Function
 
@@ -153,9 +153,9 @@ Dim npcnum As Integer, i As Byte, ResHP() As SubSpellSlot, ResMP() As SubSpellSl
     On Error GoTo er:
     ' Check for subscript out of range
     If MapNpcNum <= 0 Or MapNpcNum > MAX_MAP_NPCS Or MapNum <= 0 Or MapNum > MAX_MAPS Then Exit Function
-    If MapNpc(MapNum, MapNpcNum).num <= 0 Or MapNpc(MapNum, MapNpcNum).num > MAX_NPCS Then Exit Function
+    If MapNpc(MapNum, MapNpcNum).Num <= 0 Or MapNpc(MapNum, MapNpcNum).Num > MAX_NPCS Then Exit Function
     
-    npcnum = MapNpc(MapNum, MapNpcNum).num
+    npcnum = MapNpc(MapNum, MapNpcNum).Num
     
     If Not NPCHasSpell(npcnum) Then Exit Function
     If (MapNpc(MapNum, MapNpcNum).HP <= 0 And CLng(Npc(npcnum).Inv) = 0) Then Exit Function
@@ -191,7 +191,7 @@ Dim npcnum As Integer, i As Byte, ResHP() As SubSpellSlot, ResMP() As SubSpellSl
 EndSel:
         Next
         
-        DoEvents
+        NewDoEvents
         If MapNpc(MapNum, MapNpcNum).Immune < GetTickCount And MapNpc(MapNum, MapNpcNum).HP / Npc(npcnum).MaxHp * 100 <= 20 Then
             If UBound(Defenc) > 0 Then Call Tri(Defenc, True): SpellSlotNum = Defenc(UBound(Defenc)).Slot: GoTo NBal
             If UBound(Amelio) > 0 Then Call Tri(Amelio, True): SpellSlotNum = Amelio(UBound(Amelio)).Slot: GoTo NBal
@@ -216,7 +216,7 @@ EndSel:
     End If
 
 NBal:
-    DoEvents
+    NewDoEvents
     MapNpc(MapNum, MapNpcNum).AttackTimer = GetTickCount
     
     CanNpcRestoreHimself = True
@@ -224,35 +224,35 @@ Exit Function
 er:
 CanNpcRestoreHimself = False
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & ")", BrightRed, True)
 End Function
 
 Sub CastSpellOn(ByVal Attacker As Integer, ByVal AttackerType As Byte, ByVal Target As Integer, ByVal TargetType As Byte, ByVal MapNum As Integer, ByVal SpellSlot As Byte)
 Dim SpellNum As Integer, Damage As Long, Casted As Boolean
-If AttackerType = TARGET_TYPE_NPC Then SpellNum = Npc(MapNpc(MapNum, Attacker).num).Spell(SpellSlot) Else: SpellNum = Player(Attacker).Char(Player(Attacker).CharNum).Spell(SpellSlot)
+If AttackerType = TARGET_TYPE_NPC Then SpellNum = Npc(MapNpc(MapNum, Attacker).Num).Spell(SpellSlot) Else: SpellNum = Player(Attacker).Char(Player(Attacker).CharNum).Spell(SpellSlot)
 
 If TargetType = TARGET_TYPE_PLAYER Then
     If AttackerType = TARGET_TYPE_PLAYER Then
         Call CastSpell(Attacker, SpellSlot)
     ElseIf AttackerType = TARGET_TYPE_NPC Then
-        If Not NPCHasSpell(MapNpc(MapNum, Attacker).num) Then Exit Sub
+        If Not NPCHasSpell(MapNpc(MapNum, Attacker).Num) Then Exit Sub
         If SpellNum <= 0 Then Exit Sub
         Call CastSpellTo(Target, SpellNum, Attacker)
     End If
 ElseIf TargetType = TARGET_TYPE_NPC Then
     If AttackerType = TARGET_TYPE_NPC Then
-        If Not NPCHasSpell(MapNpc(MapNum, Attacker).num) Then Exit Sub
+        If Not NPCHasSpell(MapNpc(MapNum, Attacker).Num) Then Exit Sub
         If SpellNum <= 0 Then Exit Sub
         If Attacker = Target Then
             Select Case Spell(SpellNum).type
             Case SPELL_TYPE_ADDHP
                 MapNpc(MapNum, Target).HP = MapNpc(MapNum, Target).HP + Spell(SpellNum).data1
-                If MapNpc(MapNum, Target).HP > Npc(MapNpc(MapNum, Target).num).MaxHp Then MapNpc(MapNum, Target).HP = Npc(MapNpc(MapNum, Target).num).MaxHp
+                If MapNpc(MapNum, Target).HP > Npc(MapNpc(MapNum, Target).Num).MaxHp Then MapNpc(MapNum, Target).HP = Npc(MapNpc(MapNum, Target).Num).MaxHp
                 Casted = True
             Case SPELL_TYPE_ADDMP
                 MapNpc(MapNum, Target).MP = MapNpc(MapNum, Target).MP + Spell(SpellNum).data1
-                If MapNpc(MapNum, Target).MP > GetNpcMaxMP(MapNpc(MapNum, Target).num) + IIf(MapNpc(MapNum, Target).Amelio.Timer >= GetTickCount, MapNpc(MapNum, Target).Amelio.Power * 2, 0) Then MapNpc(MapNum, Target).MP = GetNpcMaxMP(MapNpc(MapNum, Target).num) + IIf(MapNpc(MapNum, Target).Amelio.Timer >= GetTickCount, MapNpc(MapNum, Target).Amelio.Power, 0)
+                If MapNpc(MapNum, Target).MP > GetNpcMaxMP(MapNpc(MapNum, Target).Num) + IIf(MapNpc(MapNum, Target).Amelio.Timer >= GetTickCount, MapNpc(MapNum, Target).Amelio.Power * 2, 0) Then MapNpc(MapNum, Target).MP = GetNpcMaxMP(MapNpc(MapNum, Target).Num) + IIf(MapNpc(MapNum, Target).Amelio.Timer >= GetTickCount, MapNpc(MapNum, Target).Amelio.Power, 0)
                 Casted = True
             Case SPELL_TYPE_DEFENC
                 MapNpc(MapNum, Target).Immune = GetTickCount + Val(Spell(SpellNum).data1 * 1000)

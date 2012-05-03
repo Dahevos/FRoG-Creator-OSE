@@ -2,7 +2,7 @@ Attribute VB_Name = "modServerTCP"
 Option Explicit
 'Affichage de petits détails
 Sub UpdateCaption()
-    frmServer.Caption = GAME_NAME & " - FRoG Serveur 0.6"
+    frmServer.Caption = GAME_NAME & " - FRoG Serveur 0.6.2"
     frmServer.lblIP.Caption = "Adresse IP: " & frmServer.Socket(0).LocalIP
     frmServer.lblPort.Caption = "Port: " & STR$(frmServer.Socket(0).LocalPort)
     frmServer.TPO.Caption = "Nombre de joueurs en ligne : " & TotalOnlinePlayers
@@ -92,7 +92,7 @@ Sub SendDataTo(ByVal Index As Long, ByVal data As String)
 Dim i As Long, n As Long, startc As Long
 On Error Resume Next
 
-    If IsConnected(Index) Then frmServer.Socket(Index).SendData data: DoEvents
+    If IsConnected(Index) Then frmServer.Socket(Index).SendData data: NewDoEvents
 End Sub
 
 Sub SendDataToAll(ByVal data As String)
@@ -131,35 +131,35 @@ On Error Resume Next
     Next i
 End Sub
 'Message global
-Sub GlobalMsg(ByVal Msg As String, ByVal Color As Long)
+Sub GlobalMsg(ByVal msg As String, ByVal Color As Long)
 Dim Packet As String
 
-    Packet = "GLOBALMSG" & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR
+    Packet = "GLOBALMSG" & SEP_CHAR & msg & SEP_CHAR & Color & END_CHAR
     
     Call SendDataToAll(Packet)
 End Sub
 'Message admin
-Sub AdminMsg(ByVal Msg As String, ByVal Color As Long)
+Sub AdminMsg(ByVal msg As String, ByVal Color As Long)
 Dim Packet As String
 Dim i As Long
 
-    Packet = "ADMINMSG" & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR
+    Packet = "ADMINMSG" & SEP_CHAR & msg & SEP_CHAR & Color & END_CHAR
     For i = 1 To MAX_PLAYERS
         If IsPlaying(i) And GetPlayerAccess(i) > 0 Then Call SendDataTo(i, Packet)
     Next i
 End Sub
 'Message privé
-Sub PlayerMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long)
+Sub PlayerMsg(ByVal Index As Long, ByVal msg As String, ByVal Color As Long)
 Dim Packet As String
 
     If Not IsPlaying(Index) Then Exit Sub
 
-    Packet = "PLAYERMSG" & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR
+    Packet = "PLAYERMSG" & SEP_CHAR & msg & SEP_CHAR & Color & END_CHAR
     
     Call SendDataTo(Index, Packet)
 End Sub
 'Message de guilde
-Sub GuildeMsg(ByVal Index As Long, ByVal Msg As String)
+Sub GuildeMsg(ByVal Index As Long, ByVal msg As String)
     Dim i As Long
     Dim s As String
     
@@ -167,7 +167,7 @@ Sub GuildeMsg(ByVal Index As Long, ByVal Msg As String)
        
     If GetPlayerGuild(Index) = vbNullString Then Call PlayerMsg(Index, "Tu n'es pas dans une guilde!", AlertColor): Exit Sub
     
-    s = GetPlayerName(Index) & " (" & GetPlayerGuild(Index) & ") : " & Msg
+    s = GetPlayerName(Index) & " (" & GetPlayerGuild(Index) & ") : " & msg
     Call AddLog(s, PLAYER_LOG)
        
     For i = 1 To MAX_PLAYERS
@@ -175,38 +175,38 @@ Sub GuildeMsg(ByVal Index As Long, ByVal Msg As String)
     Next i
 End Sub
 
-Public Sub QueteMsg(ByVal Index As Long, ByVal Msg As String)
+Public Sub QueteMsg(ByVal Index As Long, ByVal msg As String)
 Dim Packet As String
 
-If Mid(Msg, 1, 2) = "**" Then Msg = Mid(Msg, InStr(1, Msg, ":"))
-Packet = "QMSG" & SEP_CHAR & Msg & END_CHAR
+If Mid(msg, 1, 2) = "**" Then msg = Mid(msg, InStr(1, msg, ":"))
+Packet = "QMSG" & SEP_CHAR & msg & END_CHAR
 
 Call SendDataTo(Index, Packet)
 End Sub
 
-Sub MapMsg(ByVal MapNum As Long, ByVal Msg As String, ByVal Color As Long)
+Sub MapMsg(ByVal MapNum As Long, ByVal msg As String, ByVal Color As Long)
 Dim Packet As String
 Dim text As String
 
-    Packet = "MAPMSG" & SEP_CHAR & Msg & SEP_CHAR & Color & END_CHAR
+    Packet = "MAPMSG" & SEP_CHAR & msg & SEP_CHAR & Color & END_CHAR
     
     Call SendDataToMap(MapNum, Packet)
 End Sub
 'Message d'alertes
-Sub AlertMsg(ByVal Index As Long, ByVal Msg As String)
+Sub AlertMsg(ByVal Index As Long, ByVal msg As String)
 Dim Packet As String
 
-    Packet = "ALERTMSG" & SEP_CHAR & Msg & END_CHAR
+    Packet = "ALERTMSG" & SEP_CHAR & msg & END_CHAR
     
     Call SendDataTo(Index, Packet)
     Call CloseSocket(Index)
-    If Index > 0 And Index < MAX_PLAYERS Then If IsPlaying(Index) Then Call AffIBMsg(Index, "ATTENTION : Un joueur a reçu un message d'alerte!!(Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & " Message : " & Msg & ").", BrightRed, True)
+    If Index > 0 And Index < MAX_PLAYERS Then If IsPlaying(Index) Then Call AffIBMsg(Index, "ATTENTION : Un joueur a reçu un message d'alerte!!(Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & " Message : " & msg & ").", BrightRed, True)
 End Sub
 
-Sub PlainMsg(ByVal Index As Long, ByVal Msg As String, ByVal Num As Long)
+Sub PlainMsg(ByVal Index As Long, ByVal msg As String, ByVal Num As Long)
 Dim Packet As String
 
-    Packet = "PLAINMSG" & SEP_CHAR & Msg & SEP_CHAR & Num & END_CHAR
+    Packet = "PLAINMSG" & SEP_CHAR & msg & SEP_CHAR & Num & END_CHAR
     
     Call SendDataTo(Index, Packet)
 End Sub
@@ -559,7 +559,7 @@ Player(Index).sync = True
     Exit Sub
     
 er:
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans la réception du serveur. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la réception du serveur. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 On Error Resume Next
 If IBErr Then Call IBMsg("Un erreur c'est produite dans la réception du serveur", BrightRed, True)
 If Not IsPlaying(Index) Then Call PlainMsg(Index, "Erreur d'envoie, relancer svp!", 3)
@@ -570,7 +570,7 @@ Dim Parse() As String
 Dim Packs As String
 Dim Name As String
 Dim CharNum As Integer
-Dim Msg As String
+Dim msg As String
 Dim IPMask As String
 Dim BanSlot As Long
 Dim MsgTo As Long
@@ -727,9 +727,9 @@ Player(Index).sync = True
                     
                 Case "playermsg"
                     MsgTo = FindPlayer(Parse(1))
-                    Msg = Parse(2)
+                    msg = Parse(2)
                     ' Prevent hacking
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrect dans ses paroles(joueurs)"): Exit Sub
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrect dans ses paroles(joueurs)"): Exit Sub
             
                     If frmServer.chkP.value = Unchecked Then If GetPlayerAccess(Index) <= 0 Then Call PlayerMsg(Index, "Les messages privés on été désactivés par l'admin du serveur!", BrightRed): Exit Sub
             
@@ -738,9 +738,9 @@ Player(Index).sync = True
                     ' Check if they are trying to talk to themselves
                     If MsgTo <> Index Then
                         If MsgTo > 0 And MsgTo < MAX_PLAYERS Then
-                            Call AddLog(GetPlayerName(Index) & " dit à " & GetPlayerName(MsgTo) & ", " & Msg & "'", PLAYER_LOG)
-                            Call PlayerMsg(MsgTo, GetPlayerName(Index) & " vous dit : '" & Msg & "'", TellColor)
-                            Call PlayerMsg(Index, "Vous dite a " & GetPlayerName(MsgTo) & ", '" & Msg & "'", TellColor)
+                            Call AddLog(GetPlayerName(Index) & " dit à " & GetPlayerName(MsgTo) & ", " & msg & "'", PLAYER_LOG)
+                            Call PlayerMsg(MsgTo, GetPlayerName(Index) & " vous dit : '" & msg & "'", TellColor)
+                            Call PlayerMsg(Index, "Vous dite a " & GetPlayerName(MsgTo) & ", '" & msg & "'", TellColor)
                         Else
                             Call PlayerMsg(Index, "Le joueur n'est pas en ligne.", White)
                         End If
@@ -748,7 +748,7 @@ Player(Index).sync = True
                         Call AddLog("Carte #" & GetPlayerMap(Index) & " : " & GetPlayerName(Index) & " se parle à lui même...", PLAYER_LOG)
                         Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " murmure quelque chose à lui même.", Green)
                     End If
-                    TextAdd frmServer.txtText(4), "À : " & GetPlayerName(MsgTo) & " De : " & GetPlayerName(Index) & " : " & Msg, True
+                    TextAdd frmServer.txtText(4), "À : " & GetPlayerName(MsgTo) & " De : " & GetPlayerName(Index) & " : " & msg, True
                     Exit Sub
                     
                 Case "partychat"
@@ -1052,17 +1052,17 @@ Player(Index).sync = True
                     Exit Sub
                 
                 Case "adminmsg"
-                    Msg = Parse(1)
+                    msg = Parse(1)
                     ' Prevent hacking
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrect dans ses paroles(admin)"): Exit Sub
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrect dans ses paroles(admin)"): Exit Sub
                     
                     If frmServer.chkA.value = Unchecked Then Call PlayerMsg(Index, "Les messages aux admins ont été désactivés!", BrightRed): Exit Sub
                             
                     If GetPlayerAccess(Index) > 0 Then
-                        Call AddLog("(Admin : " & GetPlayerName(Index) & ") " & Msg, ADMIN_LOG)
-                        Call AdminMsg("(Admin : " & GetPlayerName(Index) & ") " & Msg, AdminColor)
+                        Call AddLog("(Admin : " & GetPlayerName(Index) & ") " & msg, ADMIN_LOG)
+                        Call AdminMsg("(Admin : " & GetPlayerName(Index) & ") " & msg, AdminColor)
                     End If
-                    TextAdd frmServer.txtText(5), GetPlayerName(Index) & " : " & Msg, True
+                    TextAdd frmServer.txtText(5), GetPlayerName(Index) & " : " & msg, True
                     Exit Sub
                     
                 Case "atrade"
@@ -1920,27 +1920,27 @@ Player(Index).sync = True
                     
                 ' :: Social packets ::
                 Case "saymsg"
-                    Msg = Parse(1)
+                    msg = Parse(1)
                     
                     ' Prevent hacking
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles"): Exit Sub
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles"): Exit Sub
                     
                     If frmServer.chkM.value = Unchecked And GetPlayerAccess(Index) <= 0 Then Call PlayerMsg(Index, "Les discutions ne sont pas autorisés sur les cartes!", BrightRed): Exit Sub
                     
-                    Call AddLog("Carte #" & GetPlayerMap(Index) & " : " & GetPlayerName(Index) & " : " & Msg & "", PLAYER_LOG)
-                    Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " : " & Msg & "", SayColor)
-                    Call MapMsg2(GetPlayerMap(Index), Msg, Index)
-                    TextAdd frmServer.txtText(3), GetPlayerName(Index) & " Sur la carte " & GetPlayerMap(Index) & ": " & Msg, True
+                    Call AddLog("Carte #" & GetPlayerMap(Index) & " : " & GetPlayerName(Index) & " : " & msg & "", PLAYER_LOG)
+                    Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " : " & msg & "", SayColor)
+                    Call MapMsg2(GetPlayerMap(Index), msg, Index)
+                    TextAdd frmServer.txtText(3), GetPlayerName(Index) & " Sur la carte " & GetPlayerMap(Index) & ": " & msg, True
                     Exit Sub
                     
                 Case "guildemsg"
-                   Msg = Parse(1)
+                   msg = Parse(1)
                    
                    If Player(Index).Mute = True Then Exit Sub
                    
                    If GetPlayerGuild(Index) = vbNullString Then Call PlayerMsg(Index, "Tu n'es pas dans une guilde!", AlertColor): Exit Sub
                    
-                   s = GetPlayerName(Index) & " (" & GetPlayerGuild(Index) & ") : " & Msg
+                   s = GetPlayerName(Index) & " (" & GetPlayerGuild(Index) & ") : " & msg
                    Call AddLog(s, PLAYER_LOG)
                    
                    For i = 1 To MAX_PLAYERS
@@ -1949,48 +1949,48 @@ Player(Index).sync = True
                    Exit Sub
             
                 Case "emotemsg"
-                    Msg = Parse(1)
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles(émoticons)"): Exit Sub
+                    msg = Parse(1)
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles(émoticons)"): Exit Sub
                     
                     If frmServer.chkE.value = Unchecked Then If GetPlayerAccess(Index) <= 0 Then Call PlayerMsg(Index, "Les émotes ont été désactivés!", BrightRed): Exit Sub
                     
-                    Call AddLog("Carte #" & GetPlayerMap(Index) & " : " & GetPlayerName(Index) & " " & Msg, PLAYER_LOG)
-                    Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " " & Msg, EmoteColor)
-                    TextAdd frmServer.txtText(6), GetPlayerName(Index) & " " & Msg, True
+                    Call AddLog("Carte #" & GetPlayerMap(Index) & " : " & GetPlayerName(Index) & " " & msg, PLAYER_LOG)
+                    Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " " & msg, EmoteColor)
+                    TextAdd frmServer.txtText(6), GetPlayerName(Index) & " " & msg, True
                     Exit Sub
              
                 Case "broadcastmsg"
-                    Msg = Parse(1)
+                    msg = Parse(1)
                     ' Prevent hacking
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles(global)"): Exit Sub
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrecte dans ses paroles(global)"): Exit Sub
                     
                     If frmServer.chkBC.value = Unchecked Then If GetPlayerAccess(Index) <= 0 Then Call PlayerMsg(Index, "Les hurlement ont été désactivés!", BrightRed): Exit Sub
                     
                     If Player(Index).Mute = True Then Exit Sub
                     
-                    s = GetPlayerName(Index) & " : " & Msg
+                    s = GetPlayerName(Index) & " : " & msg
                     Call AddLog(s, PLAYER_LOG)
                     Call GlobalMsg(s, BroadcastColor)
                     Call TextAdd(frmServer.txtText(0), s, True)
-                    TextAdd frmServer.txtText(1), GetPlayerName(Index) & " : " & Msg, True
+                    TextAdd frmServer.txtText(1), GetPlayerName(Index) & " : " & msg, True
                     Exit Sub
                 
                 Case "globalmsg"
-                    Msg = Parse(1)
+                    msg = Parse(1)
                     ' Prevent hacking
-                    If MMsg(Msg) Then Call HackingAttempt(Index, "Caractère incorrects dans ses paroles(global)"): Exit Sub
+                    If MMsg(msg) Then Call HackingAttempt(Index, "Caractère incorrects dans ses paroles(global)"): Exit Sub
                     
                     If frmServer.chkG.value = Unchecked Then If GetPlayerAccess(Index) <= 0 Then Call PlayerMsg(Index, "Les messages globaux ont été désactivés!", BrightRed): Exit Sub
                         
                     If Player(Index).Mute = True Then Exit Sub
                     
                     If GetPlayerAccess(Index) > 0 Then
-                        s = "(global) " & GetPlayerName(Index) & ": " & Msg
+                        s = "(global) " & GetPlayerName(Index) & ": " & msg
                         Call AddLog(s, ADMIN_LOG)
                         Call GlobalMsg(s, GlobalColor)
                         Call TextAdd(frmServer.txtText(0), s, True)
                     End If
-                    TextAdd frmServer.txtText(2), GetPlayerName(Index) & ": " & Msg, True
+                    TextAdd frmServer.txtText(2), GetPlayerName(Index) & ": " & msg, True
                     Exit Sub
                     
                 Case "ouvrire"
@@ -3326,7 +3326,7 @@ Player(Index).sync = True
 Call HackingAttempt(Index, "Erreur : Aucun Envoie ou envoie erroné(" & Parse(0) & ")")
 Exit Sub
 er:
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans la réception du serveur. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la réception du serveur. Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 On Error Resume Next
 If IBErr Then Call IBMsg("Un erreur c'est produite dans la réception du serveur", BrightRed, True)
 If Not IsPlaying(Index) Then Call PlainMsg(Index, "Erreur d'envoie, relancez svp!", 3)
@@ -3478,7 +3478,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant l'envoi du changement de carte d'un joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Carte : " & GetPlayerMap(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant l'envoi du changement de carte d'un joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Carte : " & GetPlayerMap(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant l'envoi du changement de carte d'un joueur(" & GetPlayerName(Index) & ")", BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancez SVP!(Pour tous problème récurent visitez " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -3510,7 +3510,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le dépard du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",De la carte : " & MapNum & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le dépard du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",De la carte : " & MapNum & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le dépard de " & GetPlayerName(Index) & " d'une la carte", BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancez SVP!(Pour tous problème récurent visitez " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -3542,7 +3542,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant l'envoi des données du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant l'envoi des données du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant l'envoi des données du joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancez SVP!(Pour tous problème récurent visitez " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -3573,7 +3573,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant l'envoi des données(quête) du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant l'envoi des données(quête) du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant l'envoi des données(quête) du joueur : " & GetPlayerName(Index), BrightRed, True)
 End Sub
 
@@ -3644,7 +3644,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant l'envoi de la carte " & MapNum & " au joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant l'envoi de la carte " & MapNum & " au joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant l'envoi de la carte " & MapNum & " au joueur : " & GetPlayerName(Index), BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancez SVP!(Pour tous problème récurent visitez " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -4297,22 +4297,22 @@ Dim i As Long
     Call SpawnAllMapNpcs
 End Sub
 
-Sub MapMsg2(ByVal MapNum As Long, ByVal Msg As String, ByVal Index As Long)
+Sub MapMsg2(ByVal MapNum As Long, ByVal msg As String, ByVal Index As Long)
 Dim Packet As String
 
-    Packet = "MAPMSG2" & SEP_CHAR & Msg & SEP_CHAR & Index & END_CHAR
+    Packet = "MAPMSG2" & SEP_CHAR & msg & SEP_CHAR & Index & END_CHAR
     
     Call SendDataToMap(MapNum, Packet)
 End Sub
 
-Function MMsg(ByVal Msg As String) As Boolean
+Function MMsg(ByVal msg As String) As Boolean
 Dim i As Long
 Dim Asct As String
 
 MMsg = True
 
-For i = 1 To Len(Msg)
-    Asct = Asc(Mid$(Msg, i, 1))
+For i = 1 To Len(msg)
+    Asct = Asc(Mid$(msg, i, 1))
     If Asct < 32 Or Asct > 126 Then
         If (Not Asct = 253) And (Not Asct = 252) And (Not Asct = 251) And (Not Asct = 250) And (Not Asct = 249) And (Not Asct = 246) And (Not Asct = 245) And (Not Asct = 244) And (Not Asct = 243) And (Not Asct = 242) And (Not Asct = 238) And (Not Asct = 238) And (Not Asct = 237) And (Not Asct = 236) And (Not Asct = 235) And (Not Asct = 234) And (Not Asct = 233) And (Not Asct = 232) And (Not Asct = 231) And (Not Asct = 230) And (Not Asct = 229) And (Not Asct = 228) And (Not Asct = 227) And (Not Asct = 226) And (Not Asct = 225) And (Not Asct = 224) And (Not Asct = 202) And (Not Asct = 128) And (Not Asct = 199) And (Not Asct = 167) And (Not Asct = 164) Then
            MMsg = True

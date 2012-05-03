@@ -42,10 +42,37 @@ Public ServerLog As Boolean
 'utiliser pour les cartes par FTP
 Public CarteFTP As Boolean
 
-Public Type LARGE_INTEGER
-   LowPart As Long
-   HighPart As Long
+Public Const nLng As Long = (&H80 Or &H1 Or &H4 Or &H20) + (&H8 Or &H40)
+Private Declare Function GetQueueStatus Lib "user32" (ByVal fuFlags As Long) As Long
+Public Declare Function PeekMessage Lib "user32" Alias "PeekMessageA" (lpMsg As msg, ByVal hWnd As Long, ByVal wMsgFilterMin As Long, ByVal wMsgFilterMax As Long, ByVal wRemoveMsg As Long) As Long
+Public Declare Function TranslateMessage Lib "user32" (lpMsg As msg) As Long
+Public Declare Function DispatchMessage Lib "user32" Alias "DispatchMessageA" (lpMsg As msg) As Long
+
+Public Type POINTAPI
+        X As Long
+        Y As Long
 End Type
+
+Public Type msg
+    hWnd As Long
+    message As Long
+    wParam As Long
+    lParam As Long
+    time As Long
+    pt As POINTAPI
+End Type
+
+Dim msg_ As msg
+Public Const PM_REMOVE = &H1
+
+Public Sub NewDoEvents()
+If GetQueueStatus(nLng) <> 0 Then
+Do While PeekMessage(msg_, 0, 0, 0, PM_REMOVE) 'Vide la pile
+        TranslateMessage msg_
+        DispatchMessage msg_
+Loop
+End If
+End Sub
 
 Sub InitServer()
 Dim IPMask As String
@@ -174,7 +201,7 @@ Dim f As Long
         PutVar App.Path & "\Stats.ini", "SP", "AddPerSpeed", 20
     End If
 
-    Call SetStatus("Loading settings...")
+    Call SetStatus("Chargement des paramètres...")
     
     AddHP.Level = Val(GetVar(App.Path & "\Stats.ini", "HP", "AddPerLevel"))
     AddHP.STR = Val(GetVar(App.Path & "\Stats.ini", "HP", "AddPerStr"))
@@ -355,11 +382,12 @@ Dim f As Long
         Call ClearPlayer(i)
         
         Load frmServer.Socket(i)
-    Next i
-    
-    For i = 1 To MAX_PLAYERS
         Call ShowPLR(i)
     Next i
+    
+    'For i = 1 To MAX_PLAYERS
+    '    Call ShowPLR(i)
+    'Next i
     
     If Not FileExist("CMessages.ini") Then
         For i = 1 To 6
@@ -370,7 +398,7 @@ Dim f As Long
     
     For i = 1 To 6
         CMessages(i).Title = GetVar(App.Path & "\CMessages.ini", "MESSAGES", "Title" & i)
-        CMessages(i).Message = GetVar(App.Path & "\CMessages.ini", "MESSAGES", "Message" & i)
+        CMessages(i).message = GetVar(App.Path & "\CMessages.ini", "MESSAGES", "Message" & i)
         frmServer.CustomMsg(i - 1).Caption = CMessages(i).Title
     Next i
     
@@ -446,10 +474,10 @@ Dim f As Long
     Call LoadSpells
     Call SetStatus("Chargement des quêtes...")
     Call LoadQuetes
-    Call SetStatus("Placement des objets sur les cartes...")
-    Call SpawnAllMapsItems
-    Call SetStatus("Placement des PNJ sur les cartes...")
-    Call SpawnAllMapNpcs
+    'Call SetStatus("Placement des objets sur les cartes...")
+    'Call SpawnAllMapsItems
+    'Call SetStatus("Placement des PNJ sur les cartes...")
+    'Call SpawnAllMapNpcs
     Call VideIBMsg
     Call ChargIBOpt
     
@@ -526,7 +554,7 @@ Dim i As Long
     Call SetStatus("Fermeture en cours...")
     frmLoad.Visible = True
     frmServer.Visible = False
-    DoEvents
+    NewDoEvents
     Call Shell_NotifyIcon(NIM_DELETE, nid)
     
     Call SetStatus("Sauvegarde des joueurs en ligne...")
@@ -552,7 +580,7 @@ Dim i As Long
     On Error GoTo sock:
     For i = 1 To MAX_PLAYERS
         Call SetStatus("Fermeture du protocole TCP " & i & "/" & MAX_PLAYERS)
-        DoEvents
+        NewDoEvents
         Unload frmServer.Socket(i)
     Next i
 sock:
@@ -582,7 +610,7 @@ End Sub
 
 Sub SetStatus(ByVal Status As String)
     frmLoad.lblStatus.Caption = Status
-    DoEvents
+    NewDoEvents
 End Sub
 
 Sub ServerLogic()
@@ -622,7 +650,7 @@ Dim X As Long, Y As Long
                 Call SpawnMapItems(Y)
                 Call SendMapItemsToAll(Y)
             End If
-            DoEvents
+            NewDoEvents
         Next Y
         
         SpawnSeconds = 0
@@ -892,7 +920,7 @@ Dim SpellSlot As Byte
             Next X
             
         End If
-        DoEvents
+        NewDoEvents
     Next Y
     
     ' Make sure we reset the timer for npc hp regeneration
@@ -915,7 +943,7 @@ Dim i As Long, n As Long
                 Call SetPlayerSP(i, GetPlayerSP(i) + GetPlayerSPRegen(i))
                 Call SendSP(i)
             End If
-            DoEvents
+            NewDoEvents
         Next i
         
         GiveHPTimer = GetTickCount
@@ -1263,7 +1291,7 @@ Exit Function
 er:
 CanNPCAttackNPC = False
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & npcnum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & npcnum & ")", BrightRed, True)
 End Function
 
@@ -1304,7 +1332,7 @@ Exit Sub
 er:
 On Error Resume Next
 
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).Num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).Num & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur dans l'attaque d'un PNJ(" & MapNpc(MapNum, MapNpcNumDef).Num & ")par un PNJ(" & MapNpc(MapNum, MapNpcNumAtt).Num & ")", BrightRed, True)
 End Sub
 'Script Hotel de ventes par Horace

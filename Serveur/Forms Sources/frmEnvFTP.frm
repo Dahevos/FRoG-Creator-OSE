@@ -164,7 +164,7 @@ annul.Enabled = False
 bar.value = 0
 etat.Caption = "Connexion..."
 If ExStop Then Call FermerFTP(Connex): GoTo fin:
-DoEvents
+NewDoEvents
 Connex = ConnexionFTP(frmOptFTP.hote.text, frmCoFTP.nom.text, frmCoFTP.mdp.text)
 If Connex = 0 Then GoTo fin:
 bar.Max = Val(fin.text) + 10
@@ -174,7 +174,7 @@ For i = Val(debut.text) To Val(fin.text)
     bar.value = i
     etat.Caption = "Envoie de la carte" & i
     If ExStop Then Call FermerFTP(Connex): GoTo fin:
-    DoEvents
+    NewDoEvents
     If i = Val(debut.text) Then t = Timer
     Call EnvoiFTP(Connex, frmOptFTP.hote.text, frmCoFTP.nom.text, frmCoFTP.mdp.text, "maps\map" & i & ".fcc", "map" & i & ".fcc", frmOptFTP.rep)
     If i = Val(debut.text) Then t = Timer - t: temps.Caption = "Temps théorique : " & t * (Val(fin.text) - i) & "s" Else temps.Caption = "Temps théorique : " & t * (Val(fin.text) - i) & "s"

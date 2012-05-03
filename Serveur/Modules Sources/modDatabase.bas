@@ -60,7 +60,7 @@ Dim i As Long
         Call SetStatus("Changement de l'experience... " & i & "/" & MAX_LEVEL)
         experience(i) = Val(GetVar(FileName, "experience", "Exp" & i))
         
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -70,7 +70,7 @@ Sub CheckExps()
     
         For i = 1 To MAX_LEVEL
             Call SetStatus("Sauvegarde de l'experience... " & i & "/" & MAX_LEVEL)
-            DoEvents
+            NewDoEvents
             Call PutVar(App.Path & "\experience.ini", "experience", "Exp" & i, i * 1500)
         Next i
     End If
@@ -99,7 +99,7 @@ Dim i As Long
         Emoticons(i).Pic = Val(GetVar(FileName, "EMOTICONS", "Emoticon" & i))
         Emoticons(i).Command = GetVar(FileName, "EMOTICONS", "EmoticonC" & i)
         
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -109,7 +109,7 @@ Sub CheckEmos()
     
         For i = 0 To MAX_EMOTICONS
             Call SetStatus("Sauvegarde des émoticons... " & i & "/" & MAX_EMOTICONS)
-            DoEvents
+            NewDoEvents
             Call PutVar(App.Path & "\emoticons.ini", "EMOTICONS", "Emoticon" & i, 0)
             Call PutVar(App.Path & "\emoticons.ini", "EMOTICONS", "EmoticonC" & i, "")
         Next i
@@ -215,13 +215,13 @@ Dim n As Integer
             Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).Num))
             Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
             Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
-        DoEvents
+        NewDoEvents
         Next
         
         ' Spells
         For n = 1 To MAX_PLAYER_SPELLS
             Call PutVar(FileName, "CHAR" & i, "Spell" & n, STR$(Player(Index).Char(i).Spell(n)))
-        DoEvents
+        NewDoEvents
         Next
         
         ' coffre
@@ -232,14 +232,14 @@ Dim n As Integer
                 Call PutVar(FileName, "CHAR" & i, "cofitemval" & n, " 0")
                 Call PutVar(FileName, "CHAR" & i, "cofitemdur" & n, " 0")
             End If
-        DoEvents
+        NewDoEvents
         Next
         
         'Quete
         Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(Index).Char(i).QueteEnCour))
         For n = 1 To MAX_QUETES
             Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(Index).Char(i).QueteStatut(n)))
-        DoEvents
+        NewDoEvents
         Next
         
     Next
@@ -342,7 +342,7 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & Time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le chargement du joueur : " & Name, BrightRed, True)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
@@ -568,7 +568,7 @@ Dim i As Long
             Classe(i).Y = Val(GetVar(FileName, "CLASS", "Y"))
             Classe(i).Locked = Val(GetVar(FileName, "CLASS", "Locked"))
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -590,7 +590,7 @@ Dim i As Long
     ReDim Classe(0 To Max_Classes) As ClassRec
     For i = 0 To Max_Classes
         Call SetStatus("Sauvegarde des classes... " & i & "/" & Max_Classes)
-        DoEvents
+        NewDoEvents
         FileName = App.Path & "\Classes\Class" & i & ".ini"
         If Not FileExist("Classes\Class" & i & ".ini") Then
             Call PutVar(FileName, "CLASS", "Name", Trim$(Classe(i).Name))
@@ -619,7 +619,7 @@ Dim i As Long
     For i = 1 To MAX_ITEMS
         If Not FileExist("items\item" & i & ".fco") Then
             Call SetStatus("Sauvegarde l'objet... " & i & "/" & MAX_ITEMS)
-            DoEvents
+            NewDoEvents
             Call SaveItem(i)
         End If
     Next i
@@ -642,7 +642,7 @@ Dim i As Long
 Dim f As Long
 
     'Call CheckItems
-    Call ClearItems
+    'Call ClearItems
     
     For i = 1 To MAX_ITEMS
         Call SetStatus("Chargement des objets... " & i & "/" & MAX_ITEMS)
@@ -653,8 +653,10 @@ Dim f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , item(i)
             Close #f
+        Else
+        ClearItem (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -669,7 +671,7 @@ Dim i As Long
     For i = 1 To MAX_PETS
         If Not FileExist("Pets\Pet" & i & ".fcf") Then
             Call SetStatus("Sauvegarde du famillier... " & i & "/" & MAX_PETS)
-            DoEvents
+            NewDoEvents
             Call SavePet(i)
         End If
     Next i
@@ -692,7 +694,7 @@ Dim FileName As String
 Dim f  As Long
 
     'Call SavePets
-    Call ClearPets
+    'Call ClearPets
     
     For i = 1 To MAX_PETS
         Call SetStatus("Chargement des familliers... " & i & "/" & MAX_PETS)
@@ -703,8 +705,10 @@ Dim f  As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , Pets(i)
             Close #f
+        Else
+        ClearPet (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -715,7 +719,7 @@ Dim i As Long
     For i = 1 To MAX_METIER
         If Not FileExist("Metiers\Metier" & i & ".fcm") Then
             Call SetStatus("Sauvegarde du Metiers... " & i & "/" & MAX_METIER)
-            DoEvents
+            NewDoEvents
             Call SaveMetier(i)
         End If
     Next i
@@ -738,7 +742,7 @@ Dim FileName As String
 Dim f  As Long
 
     'Call SaveMetiers
-    Call ClearMetiers
+    'Call ClearMetiers
     
     For i = 1 To MAX_METIER
         Call SetStatus("Chargement des Metiers... " & i & "/" & MAX_METIER)
@@ -749,8 +753,10 @@ Dim f  As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , metier(i)
             Close #f
+        Else
+        ClearMetier (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -761,7 +767,7 @@ Dim i As Long
     For i = 1 To MAX_RECETTE
         If Not FileExist("recettes\recette" & i & ".fcr") Then
             Call SetStatus("Sauvegarde du recettes... " & i & "/" & MAX_RECETTE)
-            DoEvents
+            NewDoEvents
             Call Saverecette(i)
         End If
     Next i
@@ -784,7 +790,7 @@ Dim FileName As String
 Dim f  As Long
 
     'Call Saverecettes
-    Call ClearRecettes
+    'Call ClearRecettes
     
     For i = 1 To MAX_RECETTE
         Call SetStatus("Chargement des recettes... " & i & "/" & MAX_RECETTE)
@@ -795,8 +801,10 @@ Dim f  As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , recette(i)
             Close #f
+        Else
+        ClearRecette (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -807,7 +815,7 @@ Dim i As Long
     For i = 1 To MAX_SHOPS
         If Not FileExist("shops\shop" & i & ".fcm") Then
             Call SetStatus("Sauvegarde des magasins... " & i & "/" & MAX_SHOPS)
-            DoEvents
+            NewDoEvents
             Call SaveShop(i)
         End If
     Next i
@@ -830,7 +838,7 @@ Dim FileName As String
 Dim i As Long, f As Long
 
     'Call CheckShops
-    Call ClearShops
+    'Call ClearShops
     
     For i = 1 To MAX_SHOPS
         Call SetStatus("Chargement des magasins " & i & "/" & MAX_SHOPS)
@@ -840,8 +848,10 @@ Dim i As Long, f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , Shop(i)
             Close #f
+        Else
+        ClearShop (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -880,7 +890,7 @@ Dim i As Long
     For i = 1 To MAX_SPELLS
         If Not FileExist("spells\spells" & i & ".fcg") Then
             Call SetStatus("Sauvegarde des sorts... " & i & "/" & MAX_SPELLS)
-            DoEvents
+            NewDoEvents
             Call SaveSpell(i)
         End If
     Next i
@@ -892,7 +902,7 @@ Dim i As Long
 Dim f As Long
 
     'Call CheckSpells
-    Call ClearSpells
+    'Call ClearSpells
     
     For i = 1 To MAX_SPELLS
         Call SetStatus("Chargement des sorts... " & i & "/" & MAX_SPELLS)
@@ -903,8 +913,10 @@ Dim f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , Spell(i)
             Close #f
+        Else
+        ClearSpell (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -920,7 +932,7 @@ Dim i As Long
     For i = 1 To MAX_NPCS
         If Not FileExist("npcs\npc" & i & ".fcp") Then
             Call SetStatus("Sauvegarde des NPCs... " & i & "/" & MAX_NPCS)
-            DoEvents
+            NewDoEvents
             Call SaveNpc(i)
         End If
     Next i
@@ -944,7 +956,7 @@ Dim z As Long
 Dim f As Long
 
     'Call CheckNpcs
-    Call ClearNpcs
+    'Call ClearNpcs
     
     For i = 1 To MAX_NPCS
         Call SetStatus("Chargement des NPCs " & i & "/" & MAX_NPCS)
@@ -954,8 +966,10 @@ Dim f As Long
             Open FileName For Binary As #f
                 Get #f, , Npc(i)
             Close #f
+        Else
+        ClearNpc (i)
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -989,14 +1003,15 @@ Dim f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , Map(i)
             Close #f
-            
+            SpawnMapItems (i)
+            SpawnMapNpcs (i)
         Else
             'Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
-            'DoEvents
+            'NewDoEvents
             'Call SaveMap(i)
             ClearMap (i)
         End If
-        DoEvents
+        NewDoEvents
     Next
 End Sub
 
@@ -1012,7 +1027,8 @@ Dim f As Long
     Open FileName For Binary Access Read As #f
         Get #f, , Map(MapNum)
     Close #f
-    
+    SpawnMapItems (MapNum)
+    SpawnMapNpcs (MapNum)
 End Sub
 
 
@@ -1022,7 +1038,7 @@ Dim i As Long
 Dim f As Long
 
     'Call CheckQuetes
-    Call ClearQuetes
+    'Call ClearQuetes
     
     For i = 1 To MAX_QUETES
         Call SetStatus("Chargement des Quetes " & i & "/" & MAX_QUETES)
@@ -1032,8 +1048,11 @@ Dim f As Long
             Open FileName For Binary Access Read As #f
                 Get #f, , quete(i)
             Close #f
+        Else
+        ClearQuete (i)
+            
         End If
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -1052,10 +1071,9 @@ Dim n As Long
         ' Check to see if map exists, if it doesn't, create it.
         If Not FileExist(FileName) Then
             Call SetStatus("Sauvegarde des Quetes... " & i & "/" & MAX_QUETES)
-            DoEvents
-            
             Call SaveQuete(i)
         End If
+    NewDoEvents
     Next i
 End Sub
 
@@ -1074,7 +1092,7 @@ On Error Resume Next
     
         f = FreeFile
         Open FileName For Append As #f
-            Print #f, Time & ": " & text
+            Print #f, time & ": " & text
         Close #f
     End If
 End Sub
@@ -1186,7 +1204,7 @@ Dim i As String, c As String
 
     If LCase$(Dir(App.Path & "\logs", vbDirectory)) <> "logs" Then Call MkDir(App.Path & "\Logs")
     
-    c = Time
+    c = time
     c = Replace(c, ":", ".", 1)
     c = Replace(c, ":", ".", 1)
     c = Replace(c, ":", ".", 1)
@@ -1252,7 +1270,7 @@ Dim i As Long
         Arrows(i).Pic = GetVar(FileName, "Arrow" & i, "ArrowPic")
         Arrows(i).Range = GetVar(FileName, "Arrow" & i, "ArrowRange")
 
-        DoEvents
+        NewDoEvents
     Next i
 End Sub
 
@@ -1262,7 +1280,7 @@ Sub CheckArrows()
     
         For i = 1 To MAX_ARROWS
             Call SetStatus("Sauvegarde des flêches... " & i & "/" & MAX_ARROWS)
-            DoEvents
+            NewDoEvents
             Call PutVar(App.Path & "\Arrows.ini", "Arrow" & i, "ArrowName", "")
             Call PutVar(App.Path & "\Arrows.ini", "Arrow" & i, "ArrowPic", 0)
             Call PutVar(App.Path & "\Arrows.ini", "Arrow" & i, "ArrowRange", 0)

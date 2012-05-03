@@ -47,8 +47,7 @@ Option Explicit
 
 Private Sub Form_Load()
     Me.Show
-    DoEvents
-    Dim t As Currency
+    NewDoEvents
     If InDestroy = False Then Call InitServer
 End Sub
 
