@@ -139,7 +139,7 @@ Dim z As Long
             frmMirage.picInv(i).Visible = True
         Next
         
-        frmMirage.Picture9.height = frmMirage.picInv(i - 1).Top + 40
+        frmMirage.Picture9.Height = frmMirage.picInv(i - 1).Top + 40
         
         If MAX_MAPX <= 20 Then PicScHeight = (MAX_MAPY + 1) * PIC_Y: PicScWidth = (MAX_MAPX + 1) * PIC_X
         
@@ -1556,7 +1556,7 @@ mont:
             frmMirage.quetetimersec.Interval = 1000
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = (Val(Parse(1)) \ 60)
-            If Len(CStr(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
+            If Len(CStr(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
             If Len(CStr(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1707,10 +1707,10 @@ mont:
             Trade(xx).Selected = NO
         Next xx
         Trade(1).Selected = YES
-        frmTrade.shopType.Top = frmTrade.label(1).Top
-        frmTrade.shopType.Left = frmTrade.label(1).Left
-        frmTrade.shopType.height = frmTrade.label(1).height
-        frmTrade.shopType.Width = frmTrade.label(1).Width
+        frmTrade.shopType.Top = frmTrade.Label(1).Top
+        frmTrade.shopType.Left = frmTrade.Label(1).Left
+        frmTrade.shopType.Height = frmTrade.Label(1).Height
+        frmTrade.shopType.Width = frmTrade.Label(1).Width
         Trade(1).SelectedItem = 1
         NumShop = ShopNum
         
@@ -1938,37 +1938,7 @@ mont:
     ' :: Change Player Direction Packet ::
     ' ::::::::::::::::::::::::::::::::::::
     If LCase$(Parse(0)) = "changedir" Then Player(Val(Parse(2))).Dir = Val(Parse(1)): Exit Sub
-        
-    ' ::::::::::::::::::::::::::::::
-    ' :: Flash Movie Event Packet ::
-    ' ::::::::::::::::::::::::::::::
-    If LCase$(Parse(0)) = "flashevent" Then
-        If LCase$(Mid$(Trim$(Parse(1)), 1, 7)) = "http://" Then
-            WriteINI "CONFIG", "Music", 0, App.Path & "\Config\Account.ini"
-            AccOpt.Music = False
-            WriteINI "CONFIG", "Sound", 0, App.Path & "\Config\Account.ini"
-            AccOpt.Sound = False
-            Call StopMidi
-            Call StopSound
-            frmFlash.Flash.LoadMovie 0, Trim$(Parse(1))
-            frmFlash.Flash.Play
-            frmFlash.Check.Enabled = True
-            frmFlash.Show vbModeless, frmMirage
-        ElseIf FileExist("Flashs\" & Trim$(Parse(1))) = True Then
-            WriteINI "CONFIG", "Music", 0, App.Path & "\Config\Account.ini"
-            AccOpt.Music = False
-            WriteINI "CONFIG", "Sound", 0, App.Path & "\Config\Account.ini"
-            AccOpt.Sound = False
-            Call StopMidi
-            Call StopSound
-            frmFlash.Flash.LoadMovie 0, App.Path & "\Flashs\" & Trim$(Parse(1))
-            frmFlash.Flash.Play
-            frmFlash.Check.Enabled = True
-            frmFlash.Show vbModeless, frmMirage
-        End If
-        Exit Sub
-    End If
-    
+         
     ' :::::::::::::::::::
     ' :: Prompt Packet ::
     ' :::::::::::::::::::

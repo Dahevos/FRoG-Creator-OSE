@@ -75,7 +75,7 @@ Dim f As Long
         Get #f, , Map(MapNum)
     Close #f
     Else
-    ClearMap (i)
+    ClearMap (MapNum)
     End If
 End Sub
 
