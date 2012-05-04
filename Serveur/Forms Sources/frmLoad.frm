@@ -1,8 +1,8 @@
 VERSION 5.00
 Begin VB.Form frmLoad 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "FRoG Server 0.6"
-   ClientHeight    =   495
+   Caption         =   "FRoG Server 0.6.2"
+   ClientHeight    =   780
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   5625
@@ -11,9 +11,18 @@ Begin VB.Form frmLoad
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   495
+   ScaleHeight     =   780
    ScaleWidth      =   5625
    StartUpPosition =   2  'CenterScreen
+   Begin Serveur.ctlProgressBar chrg 
+      Height          =   375
+      Left            =   0
+      Top             =   360
+      Width           =   5655
+      _ExtentX        =   9975
+      _ExtentY        =   661
+      Appearance      =   1
+   End
    Begin VB.Timer Timer1 
       Interval        =   1000
       Left            =   0
@@ -23,7 +32,7 @@ Begin VB.Form frmLoad
       Alignment       =   2  'Center
       Caption         =   "Initialisation ..."
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9
          Charset         =   0
          Weight          =   700
@@ -34,7 +43,7 @@ Begin VB.Form frmLoad
       Height          =   255
       Left            =   0
       TabIndex        =   0
-      Top             =   120
+      Top             =   80
       Width           =   5535
    End
 End

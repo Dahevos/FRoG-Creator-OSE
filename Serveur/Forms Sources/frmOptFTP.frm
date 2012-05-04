@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmOptFTP 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Option des cartes par FTP"
@@ -13,30 +12,28 @@ Begin VB.Form frmOptFTP
    ScaleHeight     =   2430
    ScaleWidth      =   4425
    StartUpPosition =   2  'CenterScreen
-   Begin MSComctlLib.ProgressBar bar 
+   Begin Serveur.ctlProgressBar bar 
       Height          =   255
-      Left            =   960
-      TabIndex        =   0
+      Left            =   840
       Top             =   840
       Visible         =   0   'False
-      Width           =   2535
-      _ExtentX        =   4471
+      Width           =   3015
+      _ExtentX        =   5318
       _ExtentY        =   450
-      _Version        =   393216
       Appearance      =   1
    End
    Begin VB.CommandButton sauv 
       Caption         =   "Sauvegarder"
       Height          =   255
       Left            =   240
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   1680
       Width           =   1815
    End
    Begin VB.TextBox hote 
       Height          =   285
       Left            =   1920
-      TabIndex        =   6
+      TabIndex        =   5
       ToolTipText     =   "Hote FTP ex: ftpperso.free.fr"
       Top             =   120
       Width           =   1935
@@ -44,7 +41,7 @@ Begin VB.Form frmOptFTP
    Begin VB.TextBox rep 
       Height          =   285
       Left            =   1920
-      TabIndex        =   5
+      TabIndex        =   4
       Text            =   "/"
       ToolTipText     =   "Répertoir ou seront envoyer les cartes"
       Top             =   480
@@ -54,14 +51,14 @@ Begin VB.Form frmOptFTP
       Caption         =   "Tester"
       Height          =   255
       Left            =   2400
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   1680
       Width           =   1815
    End
    Begin VB.TextBox url 
       Height          =   285
       Left            =   1920
-      TabIndex        =   3
+      TabIndex        =   2
       Text            =   "http://"
       ToolTipText     =   "URL du FTP ex : http://frogcreator.leobaillard.org"
       Top             =   840
@@ -71,7 +68,7 @@ Begin VB.Form frmOptFTP
       Caption         =   "Activer les cartes par FTP"
       Height          =   255
       Left            =   480
-      TabIndex        =   2
+      TabIndex        =   1
       Top             =   1200
       Width           =   3015
    End
@@ -79,7 +76,7 @@ Begin VB.Form frmOptFTP
       Caption         =   "Envoyer les cartes sur le FTP"
       Height          =   255
       Left            =   240
-      TabIndex        =   1
+      TabIndex        =   0
       Top             =   2040
       Width           =   3975
    End
@@ -88,7 +85,7 @@ Begin VB.Form frmOptFTP
       Caption         =   "Hote FTP :"
       Height          =   195
       Left            =   480
-      TabIndex        =   10
+      TabIndex        =   9
       Top             =   120
       Width           =   780
    End
@@ -97,7 +94,7 @@ Begin VB.Form frmOptFTP
       Caption         =   "Répertoire distant :"
       Height          =   195
       Left            =   480
-      TabIndex        =   9
+      TabIndex        =   8
       Top             =   480
       Width           =   1335
    End
@@ -106,7 +103,7 @@ Begin VB.Form frmOptFTP
       Caption         =   "URL du FTP :"
       Height          =   195
       Left            =   480
-      TabIndex        =   8
+      TabIndex        =   7
       Top             =   840
       Width           =   990
    End

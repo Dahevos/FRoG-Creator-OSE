@@ -32,7 +32,7 @@ Begin VB.Form frmOptCoul
    Begin VB.Frame Frame2 
       Caption         =   "Couleurs des messages"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -321,7 +321,7 @@ Begin VB.Form frmOptCoul
    Begin VB.Frame Frame1 
       Caption         =   "Couleurs des accès"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

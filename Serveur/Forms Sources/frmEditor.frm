@@ -25,7 +25,7 @@ Begin VB.Form frmEditor
       Begin VB.CommandButton Command1 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400

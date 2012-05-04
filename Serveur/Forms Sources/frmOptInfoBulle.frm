@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
 Begin VB.Form frmOptInfoBulle 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Options des Infos Bulles"
@@ -24,14 +24,14 @@ Begin VB.Form frmOptInfoBulle
       Caption         =   "Sauvegarder"
       Height          =   255
       Left            =   1440
-      TabIndex        =   8
+      TabIndex        =   6
       Top             =   2280
       Width           =   2175
    End
    Begin VB.Frame Frame1 
       Caption         =   "Messages à afficher"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -48,7 +48,7 @@ Begin VB.Form frmOptInfoBulle
          Caption         =   "Tout les messages"
          Height          =   195
          Left            =   240
-         TabIndex        =   9
+         TabIndex        =   7
          Top             =   480
          Width           =   2175
       End
@@ -61,7 +61,7 @@ Begin VB.Form frmOptInfoBulle
          Left            =   4080
          ScaleHeight     =   495
          ScaleWidth      =   495
-         TabIndex        =   7
+         TabIndex        =   5
          ToolTipText     =   "Cliquez pour modifier"
          Top             =   1320
          Width           =   495
@@ -75,7 +75,7 @@ Begin VB.Form frmOptInfoBulle
          Left            =   4080
          ScaleHeight     =   495
          ScaleWidth      =   495
-         TabIndex        =   5
+         TabIndex        =   4
          ToolTipText     =   "Cliquez pour modifier"
          Top             =   480
          Width           =   495
@@ -104,26 +104,6 @@ Begin VB.Form frmOptInfoBulle
          Top             =   840
          Width           =   2175
       End
-      Begin VB.Label Label2 
-         AutoSize        =   -1  'True
-         Caption         =   "Couleur pour les messages sur les admins :"
-         Height          =   390
-         Left            =   2760
-         TabIndex        =   6
-         Top             =   1080
-         Width           =   2100
-         WordWrap        =   -1  'True
-      End
-      Begin VB.Label Label1 
-         AutoSize        =   -1  'True
-         Caption         =   "Couleur pour les messages sur les joueurs :"
-         Height          =   390
-         Left            =   2760
-         TabIndex        =   4
-         Top             =   240
-         Width           =   2100
-         WordWrap        =   -1  'True
-      End
    End
 End
 Attribute VB_Name = "frmOptInfoBulle"
@@ -151,20 +131,20 @@ End If
 End Sub
 
 Private Sub ma_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If ma.value = Checked Then IBAdmin = False: mt.value = Unchecked: mt.Refresh: IBTout = False Else IBAdmin = True
+If ma.Value = Checked Then IBAdmin = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBAdmin = True
 End Sub
 
 Private Sub mer_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mer.value = Checked Then IBErr = False: mt.value = Unchecked: mt.Refresh: IBTout = False Else IBErr = True
+If mer.Value = Checked Then IBErr = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBErr = True
 End Sub
 
 Private Sub mj_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mj.value = Checked Then IBJoueur = False: mt.value = Unchecked: mt.Refresh: IBTout = False Else IBJoueur = True
+If mj.Value = Checked Then IBJoueur = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBJoueur = True
 End Sub
 
 Private Sub mt_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mt.value = Unchecked Then ma.value = Checked: mer.value = Checked: mj.value = Checked: mj.Refresh: ma.Refresh: mer.Refresh
-If mt.value = Checked Then IBTout = False Else IBTout = True: IBJoueur = True: IBAdmin = True: IBErr = True
+If mt.Value = Unchecked Then ma.Value = Checked: mer.Value = Checked: mj.Value = Checked: mj.Refresh: ma.Refresh: mer.Refresh
+If mt.Value = Checked Then IBTout = False Else IBTout = True: IBJoueur = True: IBAdmin = True: IBErr = True
 End Sub
 
 Private Sub sauv_Click()

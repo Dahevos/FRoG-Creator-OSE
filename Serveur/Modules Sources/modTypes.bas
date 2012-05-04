@@ -216,7 +216,7 @@ End Type
 
 Type PlayerInvRec
     Num As Long
-    value As Long
+    Value As Long
     Dur As Long
 End Type
 
@@ -457,7 +457,7 @@ End Type
 Type QueteRec
     nom As String * 40
     type As Long
-    description As String
+    Description As String
     reponse As String
     temps As Long
     data1 As Long
@@ -528,7 +528,7 @@ End Type
 
 Type MapItemRec
     Num As Long
-    value As Long
+    Value As Long
     Dur As Long
     
     X As Byte
@@ -601,7 +601,7 @@ Type TradeItemRec
 End Type
 
 Type TradeItemsRec
-    value(1 To MAX_TRADES) As TradeItemRec
+    Value(1 To MAX_TRADES) As TradeItemRec
 End Type
 
 Type ShopRec
@@ -655,12 +655,6 @@ End Type
 Type CMRec
     Title As String
     message As String
-End Type
-
-Type IBMsgs
-    Texte As String
-    Couleur As Long
-    Gra As Boolean
 End Type
 
 Type PetsRec
@@ -718,7 +712,6 @@ Public ParaN() As Boolean
 Public ParaNT() As Long
 Public Point() As Long
 Public PointT() As Long
-Public IBMsgs(1 To 10) As IBMsgs
 Public Pets() As PetsRec
 Public metier() As MetierRec
 Public recette() As RecetteRec
@@ -820,7 +813,7 @@ With Player(Index)
         
         For n = 1 To MAX_INV
             .Char(i).Inv(n).Num = 0
-            .Char(i).Inv(n).value = 0
+            .Char(i).Inv(n).Value = 0
             .Char(i).Inv(n).Dur = 0
         Next n
         
@@ -924,7 +917,7 @@ With Player(Index)
     
     For n = 1 To MAX_INV
         .Char(CharNum).Inv(n).Num = 0
-        .Char(CharNum).Inv(n).value = 0
+        .Char(CharNum).Inv(n).Value = 0
         .Char(CharNum).Inv(n).Dur = 0
     Next n
     
@@ -1098,7 +1091,7 @@ End Sub
 
 Sub ClearMapItem(ByVal Index As Long, ByVal MapNum As Long)
     MapItem(MapNum, Index).Num = 0
-    MapItem(MapNum, Index).value = 0
+    MapItem(MapNum, Index).Value = 0
     MapItem(MapNum, Index).Dur = 0
     MapItem(MapNum, Index).X = 0
     MapItem(MapNum, Index).Y = 0
@@ -1238,7 +1231,7 @@ With quete(Index)
     .data1 = 0
     .data2 = 0
     .data2 = 0
-    .description = vbNullString
+    .Description = vbNullString
     .reponse = vbNullString
     .String1 = vbNullString
     .temps = 0
@@ -1308,10 +1301,10 @@ Dim z As Long
     
     For z = 1 To 6
         For i = 1 To MAX_TRADES
-            Shop(Index).TradeItem(z).value(i).GiveItem = 0
-            Shop(Index).TradeItem(z).value(i).GiveValue = 0
-            Shop(Index).TradeItem(z).value(i).GetItem = 0
-            Shop(Index).TradeItem(z).value(i).GetValue = 0
+            Shop(Index).TradeItem(z).Value(i).GiveItem = 0
+            Shop(Index).TradeItem(z).Value(i).GiveValue = 0
+            Shop(Index).TradeItem(z).Value(i).GetItem = 0
+            Shop(Index).TradeItem(z).Value(i).GetValue = 0
         Next i
     Next z
 End Sub
@@ -1688,11 +1681,11 @@ Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNu
 End Sub
 
 Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value
+    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value
 End Function
 
 Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value = ItemValue
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value = ItemValue
 End Sub
 
 Function GetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long) As Long
@@ -1751,8 +1744,8 @@ Sub SetPlayerPetSlot(ByVal Index As Long, InvNum As Long)
     Player(Index).Char(Player(Index).CharNum).PetSlot = InvNum
 End Sub
 
-Sub BattleMsg(ByVal Index As Long, ByVal msg As String, ByVal Color As Long, ByVal Side As Byte)
-    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
+Sub BattleMsg(ByVal Index As Long, ByVal Msg As String, ByVal Color As Long, ByVal Side As Byte)
+    Call SendDataTo(Index, "damagedisplay" & SEP_CHAR & Side & SEP_CHAR & Msg & SEP_CHAR & Color & SEP_CHAR & END_CHAR)
 End Sub
 
 Public Sub Attendre(ByVal temps As Long)

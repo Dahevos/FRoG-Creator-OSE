@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmEnvFTP 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Envoyer les cartes sur un FTP"
@@ -13,11 +12,20 @@ Begin VB.Form frmEnvFTP
    ScaleHeight     =   1905
    ScaleWidth      =   3960
    StartUpPosition =   2  'CenterScreen
+   Begin Serveur.ctlProgressBar bar 
+      Height          =   255
+      Left            =   120
+      Top             =   960
+      Width           =   3735
+      _extentx        =   6588
+      _extenty        =   450
+      appearance      =   1
+   End
    Begin VB.CommandButton annul 
       Caption         =   "Annuler"
       Height          =   255
       Left            =   2160
-      TabIndex        =   8
+      TabIndex        =   7
       Top             =   1560
       Width           =   1575
    End
@@ -25,21 +33,9 @@ Begin VB.Form frmEnvFTP
       Caption         =   "Envoyer"
       Height          =   255
       Left            =   240
-      TabIndex        =   5
+      TabIndex        =   4
       Top             =   1560
       Width           =   1575
-   End
-   Begin MSComctlLib.ProgressBar bar 
-      Height          =   255
-      Left            =   120
-      TabIndex        =   4
-      Top             =   960
-      Width           =   3735
-      _ExtentX        =   6588
-      _ExtentY        =   450
-      _Version        =   393216
-      Appearance      =   1
-      Enabled         =   0   'False
    End
    Begin VB.TextBox fin 
       Height          =   285
@@ -62,7 +58,7 @@ Begin VB.Form frmEnvFTP
       Enabled         =   0   'False
       Height          =   255
       Left            =   120
-      TabIndex        =   7
+      TabIndex        =   6
       Top             =   1200
       Width           =   3735
    End
@@ -72,7 +68,7 @@ Begin VB.Form frmEnvFTP
       Enabled         =   0   'False
       Height          =   255
       Left            =   120
-      TabIndex        =   6
+      TabIndex        =   5
       Top             =   720
       Width           =   3735
    End
@@ -154,7 +150,6 @@ Connex = 0
 If Val(debut.text) > Val(fin.text) Then MsgBox "La 1er valeur ne peut pas être supérieur à la 2éme", vbCritical: Exit Sub
 
 etat.Enabled = True
-bar.Enabled = True
 temps.Enabled = True
 debut.Enabled = False
 fin.Enabled = False
@@ -189,7 +184,6 @@ bar.value = bar.Max
 
 MsgBox "Envoie terminé!", vbInformation
 etat.Enabled = False
-bar.Enabled = False
 temps.Enabled = False
 etat.Caption = vbNullString
 bar.value = bar.Min
@@ -204,7 +198,7 @@ er:
 MsgBox "Erreur pendant l'envoie des cartes", vbCritical
 fin:
 etat.Enabled = False
-bar.Enabled = False
+bar.State = ccStateError
 temps.Enabled = False
 etat.Caption = vbNullString
 bar.value = bar.Min
@@ -213,5 +207,6 @@ debut.Enabled = True
 fin.Enabled = True
 envoyer.Enabled = True
 annul.Enabled = True
+bar.State = ccStateError
 If Connex <> 0 Then Call FermerFTP(Connex)
 End Sub

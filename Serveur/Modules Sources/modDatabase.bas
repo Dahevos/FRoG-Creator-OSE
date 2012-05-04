@@ -57,9 +57,9 @@ Dim i As Long
     FileName = App.Path & "\experience.ini"
     
     For i = 1 To MAX_LEVEL
-        Call SetStatus("Changement de l'experience... " & i & "/" & MAX_LEVEL)
+        'Call SetStatus("Changement de l'experience... " & i & "/" & MAX_LEVEL)
         experience(i) = Val(GetVar(FileName, "experience", "Exp" & i))
-        
+        loading (31.8 + (5.8 / MAX_LEVEL) * i)
         NewDoEvents
     Next i
 End Sub
@@ -69,7 +69,7 @@ Sub CheckExps()
         Dim i As Long
     
         For i = 1 To MAX_LEVEL
-            Call SetStatus("Sauvegarde de l'experience... " & i & "/" & MAX_LEVEL)
+            'Call SetStatus("Sauvegarde de l'experience... " & i & "/" & MAX_LEVEL)
             NewDoEvents
             Call PutVar(App.Path & "\experience.ini", "experience", "Exp" & i, i * 1500)
         Next i
@@ -95,10 +95,10 @@ Dim i As Long
     FileName = App.Path & "\emoticons.ini"
     
     For i = 0 To MAX_EMOTICONS
-        Call SetStatus("Chargement des émoticon... " & i & "/" & MAX_EMOTICONS)
+        'Call SetStatus("Chargement des émoticon... " & i & "/" & MAX_EMOTICONS)
         Emoticons(i).Pic = Val(GetVar(FileName, "EMOTICONS", "Emoticon" & i))
         Emoticons(i).Command = GetVar(FileName, "EMOTICONS", "EmoticonC" & i)
-        
+        loading (20 + (5.8 / MAX_EMOTICONS) * i)
         NewDoEvents
     Next i
 End Sub
@@ -108,7 +108,7 @@ Sub CheckEmos()
         Dim i As Long
     
         For i = 0 To MAX_EMOTICONS
-            Call SetStatus("Sauvegarde des émoticons... " & i & "/" & MAX_EMOTICONS)
+            'Call SetStatus("Sauvegarde des émoticons... " & i & "/" & MAX_EMOTICONS)
             NewDoEvents
             Call PutVar(App.Path & "\emoticons.ini", "EMOTICONS", "Emoticon" & i, 0)
             Call PutVar(App.Path & "\emoticons.ini", "EMOTICONS", "EmoticonC" & i, "")
@@ -189,8 +189,8 @@ Dim n As Integer
         Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(Index).Char(i).PetSlot))
         
         Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(Index).Char(i).pet.Dir))
-        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.X))
-        Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.Y))
+        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.x))
+        Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.y))
         
         Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(Index).Char(i).metier))
         Call PutVar(FileName, "CHAR" & i, "MetierLvl", STR$(Player(Index).Char(i).MetierLvl))
@@ -200,14 +200,14 @@ Dim n As Integer
         ' Check to make sure that they aren't on map 0, if so reset'm
         If Player(Index).Char(i).Map = 0 Then
             Player(Index).Char(i).Map = START_MAP
-            Player(Index).Char(i).X = START_X
-            Player(Index).Char(i).Y = START_Y
+            Player(Index).Char(i).x = START_X
+            Player(Index).Char(i).y = START_Y
         End If
             
         ' Position
         Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(Index).Char(i).Map))
-        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).X))
-        Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).Y))
+        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).x))
+        Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).y))
         Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(Index).Char(i).Dir))
         
         ' Inventory
@@ -296,13 +296,13 @@ With Player(Index)
         
         ' Position
         .Map = Val(GetVar(FileName, "CHAR" & i, "Map"))
-        .X = Val(GetVar(FileName, "CHAR" & i, "X"))
-        .Y = Val(GetVar(FileName, "CHAR" & i, "Y"))
+        .x = Val(GetVar(FileName, "CHAR" & i, "X"))
+        .y = Val(GetVar(FileName, "CHAR" & i, "Y"))
         .Dir = Val(GetVar(FileName, "CHAR" & i, "Dir"))
         
         .pet.Dir = Val(GetVar(FileName, "CHAR" & i, "PetDir"))
-        .pet.X = Val(GetVar(FileName, "CHAR" & i, "PetX"))
-        .pet.Y = Val(GetVar(FileName, "CHAR" & i, "PetY"))
+        .pet.x = Val(GetVar(FileName, "CHAR" & i, "PetX"))
+        .pet.y = Val(GetVar(FileName, "CHAR" & i, "PetY"))
         
         .metier = Val(GetVar(FileName, "CHAR" & i, "Metier"))
         .MetierLvl = Val(GetVar(FileName, "CHAR" & i, "MetierLvl"))
@@ -311,8 +311,8 @@ With Player(Index)
         ' Check to make sure that they aren't on map 0, if so reset'm
         If .Map = 0 Then
             .Map = START_MAP
-            .X = START_X
-            .Y = START_Y
+            .x = START_X
+            .y = START_Y
         End If
         
         ' Inventory
@@ -342,8 +342,8 @@ Exit Sub
 er:
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
-Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
-If IBErr Then Call IBMsg("Erreur pendant le chargement du joueur : " & Name, BrightRed, True)
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
+If IBErr Then Call IBMsg("Erreur pendant le chargement du joueur : " & Name, BrightRed)
 Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
@@ -433,11 +433,11 @@ Dim f As Long
         .Char(CharNum).magi = Classe(ClassNum).magi
         
         If Classe(ClassNum).Map <= 0 Then Classe(ClassNum).Map = 1
-        If Classe(ClassNum).X < 0 Or Classe(ClassNum).X > MAX_MAPX Then Classe(ClassNum).X = Int(Classe(ClassNum).X / 2)
-        If Classe(ClassNum).Y < 0 Or Classe(ClassNum).Y > MAX_MAPY Then Classe(ClassNum).Y = Int(Classe(ClassNum).Y / 2)
+        If Classe(ClassNum).x < 0 Or Classe(ClassNum).x > MAX_MAPX Then Classe(ClassNum).x = Int(Classe(ClassNum).x / 2)
+        If Classe(ClassNum).y < 0 Or Classe(ClassNum).y > MAX_MAPY Then Classe(ClassNum).y = Int(Classe(ClassNum).y / 2)
         .Char(CharNum).Map = Classe(ClassNum).Map
-        .Char(CharNum).X = Classe(ClassNum).X
-        .Char(CharNum).Y = Classe(ClassNum).Y
+        .Char(CharNum).x = Classe(ClassNum).x
+        .Char(CharNum).y = Classe(ClassNum).y
             
         .Char(CharNum).HP = GetPlayerMaxHP(Index)
         .Char(CharNum).MP = GetPlayerMaxMP(Index)
@@ -564,10 +564,11 @@ Dim i As Long
             Classe(i).Speed = Val(GetVar(FileName, "CLASS", "SPEED"))
             Classe(i).magi = Val(GetVar(FileName, "CLASS", "MAGI"))
             Classe(i).Map = Val(GetVar(FileName, "CLASS", "MAP"))
-            Classe(i).X = Val(GetVar(FileName, "CLASS", "X"))
-            Classe(i).Y = Val(GetVar(FileName, "CLASS", "Y"))
+            Classe(i).x = Val(GetVar(FileName, "CLASS", "X"))
+            Classe(i).y = Val(GetVar(FileName, "CLASS", "Y"))
             Classe(i).Locked = Val(GetVar(FileName, "CLASS", "Locked"))
         End If
+        loading (37.5 + (5.8 / Max_Classes) * i)
         NewDoEvents
     Next i
 End Sub
@@ -601,8 +602,8 @@ Dim i As Long
             Call PutVar(FileName, "CLASS", "SPEED", STR$(Classe(i).Speed))
             Call PutVar(FileName, "CLASS", "MAGI", STR$(Classe(i).magi))
             Call PutVar(FileName, "CLASS", "MAP", STR$(Classe(i).Map))
-            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).X))
-            Call PutVar(FileName, "CLASS", "Y", STR$(Classe(i).Y))
+            Call PutVar(FileName, "CLASS", "X", STR$(Classe(i).x))
+            Call PutVar(FileName, "CLASS", "Y", STR$(Classe(i).y))
             Call PutVar(FileName, "CLASS", "Locked", STR$(Classe(i).Locked))
         End If
     Next i
@@ -645,7 +646,7 @@ Dim f As Long
     'Call ClearItems
     
     For i = 1 To MAX_ITEMS
-        Call SetStatus("Chargement des objets... " & i & "/" & MAX_ITEMS)
+        'Call SetStatus("Chargement des objets... " & i & "/" & MAX_ITEMS)
         
         FileName = App.Path & "\Items\Item" & i & ".fco"
         If FileExist(FileName, False) Then
@@ -657,6 +658,7 @@ Dim f As Long
         ClearItem (i)
         End If
         NewDoEvents
+        loading (72.2 + (5.8 / MAX_ITEMS) * i)
     Next i
 End Sub
 
@@ -697,7 +699,7 @@ Dim f  As Long
     'Call ClearPets
     
     For i = 1 To MAX_PETS
-        Call SetStatus("Chargement des familliers... " & i & "/" & MAX_PETS)
+        'Call SetStatus("Chargement des familliers... " & i & "/" & MAX_PETS)
         
         FileName = App.Path & "\Pets\Pet" & i & ".fcf"
         If FileExist(FileName, False) Then
@@ -708,6 +710,7 @@ Dim f  As Long
         Else
         ClearPet (i)
         End If
+        loading (24.2 + (5.8 / MAX_PETS) * i)
         NewDoEvents
     Next i
 End Sub
@@ -745,7 +748,7 @@ Dim f  As Long
     'Call ClearMetiers
     
     For i = 1 To MAX_METIER
-        Call SetStatus("Chargement des Metiers... " & i & "/" & MAX_METIER)
+        'Call SetStatus("Chargement des Metiers... " & i & "/" & MAX_METIER)
         
         FileName = App.Path & "\Metiers\Metier" & i & ".fcm"
         If FileExist(FileName, False) Then
@@ -756,6 +759,7 @@ Dim f  As Long
         Else
         ClearMetier (i)
         End If
+        loading (49 + (5.8 / MAX_METIER) * i)
         NewDoEvents
     Next i
 End Sub
@@ -793,7 +797,7 @@ Dim f  As Long
     'Call ClearRecettes
     
     For i = 1 To MAX_RECETTE
-        Call SetStatus("Chargement des recettes... " & i & "/" & MAX_RECETTE)
+        'Call SetStatus("Chargement des recettes... " & i & "/" & MAX_RECETTE)
         
         FileName = App.Path & "\recettes\recette" & i & ".fcr"
         If FileExist(FileName, False) Then
@@ -804,6 +808,7 @@ Dim f  As Long
         Else
         ClearRecette (i)
         End If
+        loading (54.8 + (5.8 / MAX_RECETTE) * i)
         NewDoEvents
     Next i
 End Sub
@@ -841,7 +846,7 @@ Dim i As Long, f As Long
     'Call ClearShops
     
     For i = 1 To MAX_SHOPS
-        Call SetStatus("Chargement des magasins " & i & "/" & MAX_SHOPS)
+        'Call SetStatus("Chargement des magasins " & i & "/" & MAX_SHOPS)
         FileName = App.Path & "\shops\shop" & i & ".fcm"
         If FileExist(FileName, False) Then
             f = FreeFile
@@ -851,6 +856,7 @@ Dim i As Long, f As Long
         Else
         ClearShop (i)
         End If
+        loading (83.8 + (5.8 / MAX_SHOPS) * i)
         NewDoEvents
     Next i
 End Sub
@@ -905,7 +911,7 @@ Dim f As Long
     'Call ClearSpells
     
     For i = 1 To MAX_SPELLS
-        Call SetStatus("Chargement des sorts... " & i & "/" & MAX_SPELLS)
+        'Call SetStatus("Chargement des sorts... " & i & "/" & MAX_SPELLS)
         
         FileName = App.Path & "\spells\spells" & i & ".fcg"
         If FileExist(FileName, False) Then
@@ -916,6 +922,7 @@ Dim f As Long
         Else
         ClearSpell (i)
         End If
+        loading (90 + (5.8 / MAX_SPELLS) * i)
         NewDoEvents
     Next i
 End Sub
@@ -959,7 +966,7 @@ Dim f As Long
     'Call ClearNpcs
     
     For i = 1 To MAX_NPCS
-        Call SetStatus("Chargement des NPCs " & i & "/" & MAX_NPCS)
+        'Call SetStatus("Chargement des NPCs " & i & "/" & MAX_NPCS)
         FileName = App.Path & "\npcs\npc" & i & ".fcp"
         If FileExist(FileName, False) Then
             f = FreeFile
@@ -970,6 +977,7 @@ Dim f As Long
         ClearNpc (i)
         End If
         NewDoEvents
+        loading (78 + (5.8 / MAX_NPCS) * i)
     Next i
 End Sub
 
@@ -991,28 +999,34 @@ End Sub
 
 Sub LoadMaps()
 Dim FileName As String
-Dim i As Long
+Dim i As Integer
 Dim f As Long
-    
+Dim r As Integer
     'Call ClearMaps
     For i = 1 To MAX_MAPS
         FileName = App.Path & "\maps\map" & i & ".fcc"
         If FileExist(FileName, False) Then
-            Call SetStatus("Chargement des maps " & i & "/" & MAX_MAPS)
+            'Call SetStatus("Chargement des maps " & i & "/" & MAX_MAPS)
             f = FreeFile
             Open FileName For Binary Access Read As #f
                 Get #f, , Map(i)
             Close #f
             SpawnMapItems (i)
             SpawnMapNpcs (i)
+            r = r + 1
         Else
             'Call SetStatus("Sauvegarde des maps... " & i & "/" & MAX_MAPS)
             'NewDoEvents
             'Call SaveMap(i)
             ClearMap (i)
         End If
+        loading (66.4 + (5.8 / MAX_MAPS) * i)
         NewDoEvents
     Next
+    
+    If r > MAX_MAPS - 1 Then
+    Call MsgBox("Le serveur à detecté un grand nombre de maps, afin d'améliorer le chargement, veuillez supprimer les maps inutilisées", vbInformation, "Conseil")
+    End If
 End Sub
 
 Sub LoadMap(ByVal MapNum As Long)
@@ -1041,7 +1055,7 @@ Dim f As Long
     'Call ClearQuetes
     
     For i = 1 To MAX_QUETES
-        Call SetStatus("Chargement des Quetes " & i & "/" & MAX_QUETES)
+        'Call SetStatus("Chargement des Quetes " & i & "/" & MAX_QUETES)
         FileName = App.Path & "\quetes\quete" & i & ".fcq"
         If FileExist(FileName, False) Then
             f = FreeFile
@@ -1052,14 +1066,15 @@ Dim f As Long
         ClearQuete (i)
             
         End If
+        loading (95 + (5.8 / MAX_QUETES) * i)
         NewDoEvents
     Next i
 End Sub
 
 Sub CheckQuetes()
 Dim FileName As String
-Dim X As Long
-Dim Y As Long
+Dim x As Long
+Dim y As Long
 Dim i As Long
 Dim n As Long
 
@@ -1125,7 +1140,7 @@ Dim f As Long, i As Long
     
     Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par " & GetPlayerName(BannedByIndex) & "!", White)
     Call AddLog(GetPlayerName(BannedByIndex) & " a banni " & GetPlayerName(BanPlayerIndex) & ".", ADMIN_LOG)
-    Call IBMsg(GetPlayerName(BannedByIndex) & " a bannis " & GetPlayerName(BanPlayerIndex), IBCAdmin)
+    Call IBMsg(GetPlayerName(BannedByIndex) & " a bannis " & GetPlayerName(BanPlayerIndex))
     Call AlertMsg(BanPlayerIndex, "Vous avez été banni par " & GetPlayerName(BannedByIndex) & "!")
 End Sub
 
@@ -1265,11 +1280,11 @@ Dim i As Long
     FileName = App.Path & "\Arrows.ini"
     
     For i = 1 To MAX_ARROWS
-        Call SetStatus("Chargement des flêches... " & i & "/" & MAX_ARROWS)
+        'Call SetStatus("Chargement des flêches... " & i & "/" & MAX_ARROWS)
         Arrows(i).Name = GetVar(FileName, "Arrow" & i, "ArrowName")
         Arrows(i).Pic = GetVar(FileName, "Arrow" & i, "ArrowPic")
         Arrows(i).Range = GetVar(FileName, "Arrow" & i, "ArrowRange")
-
+        loading (25.8 + (5.8 / MAX_ARROWS) * i)
         NewDoEvents
     Next i
 End Sub

@@ -5,13 +5,13 @@ Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmServer 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "FRoG Server"
-   ClientHeight    =   4785
+   ClientHeight    =   4800
    ClientLeft      =   45
    ClientTop       =   615
    ClientWidth     =   10245
    BeginProperty Font 
-      Name            =   "Tahoma"
-      Size            =   8.25
+      Name            =   "Segoe UI"
+      Size            =   9
       Charset         =   0
       Weight          =   400
       Underline       =   0   'False
@@ -21,16 +21,10 @@ Begin VB.Form frmServer
    Icon            =   "frmServer.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
-   ScaleHeight     =   319
+   ScaleHeight     =   320
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   683
    StartUpPosition =   2  'CenterScreen
-   Begin VB.Timer Bouclescript 
-      Enabled         =   0   'False
-      Interval        =   50
-      Left            =   6960
-      Top             =   0
-   End
    Begin TabDlg.SSTab SSTab1 
       Height          =   4800
       Left            =   0
@@ -45,7 +39,7 @@ Begin VB.Form frmServer
       TabHeight       =   370
       TabMaxWidth     =   3175
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -58,41 +52,43 @@ Begin VB.Form frmServer
       Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Label6"
       Tab(0).Control(0).Enabled=   0   'False
-      Tab(0).Control(1)=   "CustomMsg(0)"
+      Tab(0).Control(1)=   "Image1"
       Tab(0).Control(1).Enabled=   0   'False
-      Tab(0).Control(2)=   "Say(0)"
+      Tab(0).Control(2)=   "CustomMsg(0)"
       Tab(0).Control(2).Enabled=   0   'False
-      Tab(0).Control(3)=   "Frame5"
+      Tab(0).Control(3)=   "Say(0)"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "CustomMsg(1)"
+      Tab(0).Control(4)=   "Frame5"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "CustomMsg(2)"
+      Tab(0).Control(5)=   "CustomMsg(1)"
       Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "CustomMsg(3)"
+      Tab(0).Control(6)=   "CustomMsg(2)"
       Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "CustomMsg(4)"
+      Tab(0).Control(7)=   "CustomMsg(3)"
       Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "CustomMsg(5)"
+      Tab(0).Control(8)=   "CustomMsg(4)"
       Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).Control(9)=   "Say(1)"
+      Tab(0).Control(9)=   "CustomMsg(5)"
       Tab(0).Control(9).Enabled=   0   'False
-      Tab(0).Control(10)=   "Say(2)"
+      Tab(0).Control(10)=   "Say(1)"
       Tab(0).Control(10).Enabled=   0   'False
-      Tab(0).Control(11)=   "Say(3)"
+      Tab(0).Control(11)=   "Say(2)"
       Tab(0).Control(11).Enabled=   0   'False
-      Tab(0).Control(12)=   "Say(4)"
+      Tab(0).Control(12)=   "Say(3)"
       Tab(0).Control(12).Enabled=   0   'False
-      Tab(0).Control(13)=   "Say(5)"
+      Tab(0).Control(13)=   "Say(4)"
       Tab(0).Control(13).Enabled=   0   'False
-      Tab(0).Control(14)=   "SSTab2"
+      Tab(0).Control(14)=   "Say(5)"
       Tab(0).Control(14).Enabled=   0   'False
-      Tab(0).Control(15)=   "picCMsg"
+      Tab(0).Control(15)=   "SSTab2"
       Tab(0).Control(15).Enabled=   0   'False
-      Tab(0).Control(16)=   "tmrChatLogs"
+      Tab(0).Control(16)=   "picCMsg"
       Tab(0).Control(16).Enabled=   0   'False
-      Tab(0).Control(17)=   "Frame8"
+      Tab(0).Control(17)=   "tmrChatLogs"
       Tab(0).Control(17).Enabled=   0   'False
-      Tab(0).ControlCount=   18
+      Tab(0).Control(18)=   "Frame8"
+      Tab(0).Control(18).Enabled=   0   'False
+      Tab(0).ControlCount=   19
       TabCaption(1)   =   "Joueur"
       TabPicture(1)   =   "frmServer.frx":17D46
       Tab(1).ControlEnabled=   0   'False
@@ -122,32 +118,19 @@ Begin VB.Form frmServer
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lblPort"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "lblIP"
-      Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Label7"
-      Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "Frame7"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "Frame1"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "Frame2"
-      Tab(2).Control(5).Enabled=   0   'False
+      Tab(2).Control(0)=   "picMap"
+      Tab(2).Control(1)=   "picWeather"
+      Tab(2).Control(2)=   "picWarp"
+      Tab(2).Control(3)=   "picExp"
+      Tab(2).Control(4)=   "Frame9"
+      Tab(2).Control(5)=   "Frame6"
       Tab(2).Control(6)=   "Frame3"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "Frame6"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "Frame9"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "picExp"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "picWarp"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "picWeather"
-      Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "picMap"
-      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).Control(7)=   "Frame2"
+      Tab(2).Control(8)=   "Frame1"
+      Tab(2).Control(9)=   "Frame7"
+      Tab(2).Control(10)=   "Label7"
+      Tab(2).Control(11)=   "lblIP"
+      Tab(2).Control(12)=   "lblPort"
       Tab(2).ControlCount=   13
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
@@ -167,7 +150,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picReason 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -203,7 +186,7 @@ Begin VB.Form frmServer
          End
          Begin VB.TextBox txtReason 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -240,13 +223,19 @@ Begin VB.Form frmServer
          Caption         =   "Gestion du temps :"
          Height          =   855
          Left            =   120
-         TabIndex        =   180
+         TabIndex        =   179
          Top             =   3840
          Width           =   9975
+         Begin Serveur.ctlSysTrayBalloon ctlSysTrayBalloon 
+            Left            =   9000
+            Top             =   120
+            _ExtentX        =   2143
+            _ExtentY        =   661
+         End
          Begin VB.TextBox txtJournuit 
             Height          =   285
             Left            =   240
-            TabIndex        =   186
+            TabIndex        =   185
             Top             =   480
             Width           =   1935
          End
@@ -260,7 +249,7 @@ Begin VB.Form frmServer
             Caption         =   "Définir"
             Height          =   255
             Left            =   2280
-            TabIndex        =   185
+            TabIndex        =   184
             Top             =   480
             Width           =   1095
          End
@@ -274,7 +263,7 @@ Begin VB.Form frmServer
             Caption         =   "Activer"
             Height          =   255
             Left            =   7320
-            TabIndex        =   184
+            TabIndex        =   183
             Top             =   480
             Width           =   1215
          End
@@ -287,7 +276,7 @@ Begin VB.Form frmServer
          Begin VB.TextBox txtRandom 
             Height          =   285
             Left            =   5400
-            TabIndex        =   183
+            TabIndex        =   182
             Top             =   480
             Width           =   1815
          End
@@ -295,7 +284,7 @@ Begin VB.Form frmServer
             Caption         =   "Désactiver"
             Height          =   255
             Left            =   8640
-            TabIndex        =   182
+            TabIndex        =   181
             Top             =   480
             Width           =   1215
          End
@@ -303,7 +292,7 @@ Begin VB.Form frmServer
             Caption         =   "Désactiver"
             Height          =   255
             Left            =   3480
-            TabIndex        =   181
+            TabIndex        =   180
             Top             =   480
             Width           =   1335
          End
@@ -311,7 +300,7 @@ Begin VB.Form frmServer
             Caption         =   "Cycle jour / nuit ( minutes ) :"
             Height          =   255
             Left            =   240
-            TabIndex        =   188
+            TabIndex        =   187
             Top             =   240
             Width           =   2175
          End
@@ -319,7 +308,7 @@ Begin VB.Form frmServer
             Caption         =   "Temps aléatoire ( minutes ) :"
             Height          =   255
             Left            =   5400
-            TabIndex        =   187
+            TabIndex        =   186
             Top             =   240
             Width           =   2415
          End
@@ -327,7 +316,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picMap 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -337,16 +326,16 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3375
-         Left            =   -74400
+         Left            =   -75120
          ScaleHeight     =   223
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
          TabIndex        =   128
-         Top             =   1080
+         Top             =   1560
          Visible         =   0   'False
          Width           =   3375
          Begin VB.ListBox lstNPC 
-            Height          =   2400
+            Height          =   2310
             Left            =   1680
             TabIndex        =   143
             Top             =   480
@@ -518,7 +507,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox Picskint 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -532,7 +521,7 @@ Begin VB.Form frmServer
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   127
-         TabIndex        =   173
+         TabIndex        =   172
          Top             =   1200
          Visible         =   0   'False
          Width           =   1935
@@ -540,7 +529,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   240
-            TabIndex        =   174
+            TabIndex        =   173
             Top             =   2160
             Width           =   1575
          End
@@ -548,7 +537,7 @@ Begin VB.Form frmServer
             Caption         =   "32/48 pixels"
             Height          =   255
             Left            =   120
-            TabIndex        =   177
+            TabIndex        =   176
             Top             =   960
             Value           =   -1  'True
             Width           =   1455
@@ -557,7 +546,7 @@ Begin VB.Form frmServer
             Caption         =   "32/32 pixels"
             Height          =   255
             Left            =   120
-            TabIndex        =   176
+            TabIndex        =   175
             Top             =   600
             Width           =   1455
          End
@@ -565,7 +554,7 @@ Begin VB.Form frmServer
             Caption         =   "Enregistrer"
             Height          =   255
             Left            =   240
-            TabIndex        =   175
+            TabIndex        =   174
             Top             =   1920
             Width           =   1575
          End
@@ -573,7 +562,7 @@ Begin VB.Form frmServer
             Caption         =   "Séléctioner une taille (Largeur/Hauteur) :"
             Height          =   435
             Left            =   120
-            TabIndex        =   178
+            TabIndex        =   177
             Top             =   120
             Width           =   1755
          End
@@ -581,7 +570,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picWeather 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -595,7 +584,7 @@ Begin VB.Form frmServer
          ScaleHeight     =   95
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
-         TabIndex        =   161
+         TabIndex        =   160
          Top             =   2400
          Visible         =   0   'False
          Width           =   3255
@@ -603,7 +592,7 @@ Begin VB.Form frmServer
             Caption         =   "Neige"
             Height          =   255
             Left            =   1680
-            TabIndex        =   167
+            TabIndex        =   166
             Top             =   720
             Width           =   1335
          End
@@ -611,7 +600,7 @@ Begin VB.Form frmServer
             Caption         =   "Pluie"
             Height          =   255
             Left            =   240
-            TabIndex        =   166
+            TabIndex        =   165
             Top             =   720
             Width           =   1335
          End
@@ -619,7 +608,7 @@ Begin VB.Form frmServer
             Caption         =   "Orage"
             Height          =   255
             Left            =   1680
-            TabIndex        =   165
+            TabIndex        =   164
             Top             =   480
             Width           =   1335
          End
@@ -627,7 +616,7 @@ Begin VB.Form frmServer
             Caption         =   "Soleil"
             Height          =   255
             Left            =   240
-            TabIndex        =   164
+            TabIndex        =   163
             Top             =   480
             Width           =   1335
          End
@@ -635,7 +624,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1560
-            TabIndex        =   162
+            TabIndex        =   161
             Top             =   1080
             Width           =   1575
          End
@@ -645,7 +634,7 @@ Begin VB.Form frmServer
             Caption         =   "Météologie présentement: Aucune"
             Height          =   195
             Left            =   120
-            TabIndex        =   163
+            TabIndex        =   162
             Top             =   120
             Width           =   2475
          End
@@ -653,7 +642,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picWarp 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -663,7 +652,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2535
-         Left            =   -71400
+         Left            =   -70680
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
@@ -744,7 +733,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picStats 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1005,7 +994,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picExp 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1015,12 +1004,12 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1335
-         Left            =   -71400
+         Left            =   -70200
          ScaleHeight     =   87
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
          TabIndex        =   121
-         Top             =   240
+         Top             =   360
          Visible         =   0   'False
          Width           =   3255
          Begin VB.CommandButton Command39 
@@ -1033,7 +1022,7 @@ Begin VB.Form frmServer
          End
          Begin VB.TextBox txtExp 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1086,7 +1075,7 @@ Begin VB.Form frmServer
          Caption         =   "Régler la Taille des Skins"
          Height          =   255
          Left            =   -66840
-         TabIndex        =   172
+         TabIndex        =   171
          Top             =   3600
          Visible         =   0   'False
          Width           =   1935
@@ -1099,7 +1088,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picCMsg 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1118,7 +1107,7 @@ Begin VB.Form frmServer
          Width           =   3375
          Begin VB.TextBox txtMsg 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1134,7 +1123,7 @@ Begin VB.Form frmServer
          End
          Begin VB.TextBox txtTitle 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1188,7 +1177,7 @@ Begin VB.Form frmServer
       End
       Begin TabDlg.SSTab SSTab2 
          Height          =   3015
-         Left            =   120
+         Left            =   240
          TabIndex        =   150
          Top             =   240
          Width           =   8415
@@ -1200,7 +1189,7 @@ Begin VB.Form frmServer
          TabsPerRow      =   7
          TabHeight       =   353
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -1211,9 +1200,9 @@ Begin VB.Form frmServer
          TabCaption(0)   =   "Général"
          TabPicture(0)   =   "frmServer.frx":17D9A
          Tab(0).ControlEnabled=   -1  'True
-         Tab(0).Control(0)=   "txtText(0)"
+         Tab(0).Control(0)=   "txtChat"
          Tab(0).Control(0).Enabled=   0   'False
-         Tab(0).Control(1)=   "txtChat"
+         Tab(0).Control(1)=   "txtText(0)"
          Tab(0).Control(1).Enabled=   0   'False
          Tab(0).ControlCount=   2
          TabCaption(1)   =   "Émission"
@@ -1248,137 +1237,7 @@ Begin VB.Form frmServer
          Tab(6).ControlCount=   1
          Begin VB.TextBox txtText 
             BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   6
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   158
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   5
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   157
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   4
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   156
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   3
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   155
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   2
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   154
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   2490
-            Index           =   1
-            Left            =   -74880
-            MultiLine       =   -1  'True
-            ScrollBars      =   2  'Vertical
-            TabIndex        =   153
-            Top             =   360
-            Width           =   8115
-         End
-         Begin VB.TextBox txtChat 
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            Height          =   255
-            Left            =   120
-            TabIndex        =   152
-            Top             =   2640
-            Width           =   8115
-         End
-         Begin VB.TextBox txtText 
-            BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1391,8 +1250,138 @@ Begin VB.Form frmServer
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   151
+            TabIndex        =   188
             Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   6
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   157
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   5
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   156
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   4
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   155
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   3
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   154
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   2
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   153
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtText 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   2490
+            Index           =   1
+            Left            =   -74880
+            MultiLine       =   -1  'True
+            ScrollBars      =   2  'Vertical
+            TabIndex        =   152
+            Top             =   360
+            Width           =   8115
+         End
+         Begin VB.TextBox txtChat 
+            BeginProperty Font 
+               Name            =   "Segoe UI"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            Height          =   270
+            Left            =   120
+            TabIndex        =   151
+            Top             =   2640
             Width           =   8115
          End
       End
@@ -1412,7 +1401,7 @@ Begin VB.Form frmServer
          Top             =   480
          Width           =   6015
          Begin VB.ListBox MapList 
-            Height          =   1425
+            Height          =   1185
             Left            =   120
             TabIndex        =   127
             Top             =   240
@@ -1446,12 +1435,12 @@ Begin VB.Form frmServer
             Caption         =   "Sauvegarder(Tous)"
             Height          =   255
             Left            =   120
-            TabIndex        =   179
+            TabIndex        =   178
             Top             =   1800
             Width           =   1695
          End
          Begin VB.CommandButton Command34 
-            Caption         =   "Dons 1 Niveau (Tous)"
+            Caption         =   "+1 Niveau (Tous)"
             Height          =   255
             Left            =   120
             TabIndex        =   103
@@ -1467,7 +1456,7 @@ Begin VB.Form frmServer
             Width           =   1695
          End
          Begin VB.CommandButton Command32 
-            Caption         =   "Téléportation (Tous)"
+            Caption         =   "Téléportater (Tous)"
             Height          =   255
             Left            =   120
             TabIndex        =   101
@@ -1518,7 +1507,7 @@ Begin VB.Form frmServer
          End
       End
       Begin VB.ListBox lstTopics 
-         Height          =   2790
+         Height          =   2760
          ItemData        =   "frmServer.frx":17E5E
          Left            =   -74760
          List            =   "frmServer.frx":17E60
@@ -1529,7 +1518,7 @@ Begin VB.Form frmServer
       Begin VB.PictureBox picJail 
          Appearance      =   0  'Flat
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1713,37 +1702,37 @@ Begin VB.Form frmServer
          Left            =   120
          TabIndex        =   31
          Top             =   3240
-         Width           =   6375
+         Width           =   6735
          Begin VB.CommandButton Command60 
             Caption         =   "Enregistrer"
             Height          =   255
-            Left            =   4800
-            TabIndex        =   159
+            Left            =   5160
+            TabIndex        =   158
             Top             =   240
             Width           =   1455
          End
          Begin VB.CheckBox chkA 
             Caption         =   "Admin"
-            Height          =   255
-            Left            =   4080
+            Height          =   375
+            Left            =   4320
             TabIndex        =   55
-            Top             =   240
+            Top             =   170
             Value           =   1  'Checked
-            Width           =   735
+            Width           =   855
          End
          Begin VB.CheckBox chkG 
             Caption         =   "Globale"
             Height          =   255
-            Left            =   3240
+            Left            =   3360
             TabIndex        =   54
             Top             =   240
             Value           =   1  'Checked
-            Width           =   855
+            Width           =   1095
          End
          Begin VB.CheckBox chkP 
             Caption         =   "Privé"
             Height          =   255
-            Left            =   2520
+            Left            =   2640
             TabIndex        =   35
             Top             =   240
             Value           =   1  'Checked
@@ -1752,7 +1741,7 @@ Begin VB.Form frmServer
          Begin VB.CheckBox chkM 
             Caption         =   "Carte"
             Height          =   255
-            Left            =   1800
+            Left            =   1920
             TabIndex        =   34
             Top             =   240
             Value           =   1  'Checked
@@ -1761,7 +1750,7 @@ Begin VB.Form frmServer
          Begin VB.CheckBox chkE 
             Caption         =   "Emote"
             Height          =   255
-            Left            =   1080
+            Left            =   1100
             TabIndex        =   33
             Top             =   240
             Value           =   1  'Checked
@@ -1839,7 +1828,7 @@ Begin VB.Form frmServer
             Caption         =   "Sauvegarder les logs"
             Height          =   255
             Left            =   120
-            TabIndex        =   160
+            TabIndex        =   159
             Top             =   720
             Value           =   1  'Checked
             Width           =   2175
@@ -2088,7 +2077,7 @@ Begin VB.Form frmServer
          Caption         =   "Rafraîchir"
          Height          =   255
          Left            =   -69480
-         TabIndex        =   169
+         TabIndex        =   168
          Top             =   4440
          Width           =   1575
       End
@@ -2112,7 +2101,7 @@ Begin VB.Form frmServer
          BorderStyle     =   1
          Appearance      =   1
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -2151,13 +2140,21 @@ Begin VB.Form frmServer
             Object.Width           =   1235
          EndProperty
       End
+      Begin VB.Image Image1 
+         Height          =   240
+         Left            =   600
+         Picture         =   "frmServer.frx":17E62
+         Top             =   600
+         Visible         =   0   'False
+         Width           =   240
+      End
       Begin VB.Label Label7 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "Cliquez ici pour voir votre IP "
          Height          =   195
          Left            =   -74880
-         TabIndex        =   170
+         TabIndex        =   169
          Top             =   840
          Width           =   2055
       End
@@ -2166,7 +2163,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Sauvegarde dans :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2175,8 +2172,8 @@ Begin VB.Form frmServer
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   6480
-         TabIndex        =   168
+         Left            =   6960
+         TabIndex        =   167
          Top             =   3600
          Width           =   1170
       End
@@ -2186,7 +2183,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "http://www.frogcreator.fr"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -2255,11 +2252,17 @@ Begin VB.Form frmServer
          Width           =   1455
       End
    End
+   Begin VB.Timer Bouclescript 
+      Enabled         =   0   'False
+      Interval        =   50
+      Left            =   6960
+      Top             =   0
+   End
    Begin VB.Label Label9 
       Caption         =   "Label9"
       Height          =   495
       Left            =   4800
-      TabIndex        =   171
+      TabIndex        =   170
       Top             =   3120
       Width           =   1215
    End
@@ -2314,7 +2317,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 Option Explicit
-Private Declare Function SetForegroundWindow Lib "user32" (ByVal hWnd As Long) As Long
+Private Declare Function SetForegroundWindow Lib "user32" (ByVal hwnd As Long) As Long
 Dim CM As Long
 Dim Num As Long
 Dim Random As Long
@@ -2328,7 +2331,7 @@ If Scripting = 1 Then MyScript.ExecuteStatement "Scripts\Main.txt", "Boucle"
 End Sub
 
 Private Sub CharInfo_Click(Index As Integer)
-ShellExecute Me.hWnd, "open", "http://www.frogcreator.fr", "", App.Path, 1
+ShellExecute Me.hwnd, "open", "http://www.frogcreator.fr", "", App.Path, 1
 End Sub
 
 Private Sub Check1_Click()
@@ -2532,7 +2535,7 @@ If Scripting = 1 Then
     MyScript.ReadInCode App.Path & "\Scripts\Main.txt", "Scripts\Main.txt", MyScript.SControl, False
     MyScript.SControl.AddObject "ScriptHardCode", clsScriptCommands, True
     Call TextAdd(frmServer.txtText(0), "Scripts rechargés.", True)
-    Call IBMsg("Scripts rechargés!", Green)
+    Call IBMsg("Scripts rechargés!")
 End If
 End Sub
 
@@ -2565,7 +2568,7 @@ End Sub
 Private Sub Command29_Click()
     Call LoadClasses
     Call TextAdd(frmServer.txtText(0), "Classes rechargées.", True)
-    Call IBMsg("Classes rechargées.", Green)
+    Call IBMsg("Classes rechargées.")
 End Sub
 
 Private Sub Command3_Click()
@@ -2997,15 +3000,15 @@ Private Sub Form_Load()
 Random = 1
 End Sub
 
-Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 Dim lmsg As Long
-    lmsg = X
+    lmsg = x
     Select Case lmsg
-        Case WM_LBUTTONDBLCLK
+        Case &H203
             frmServer.WindowState = vbNormal
             frmServer.Show
-        Case WM_RBUTTONDOWN
-            SetForegroundWindow Me.hWnd
+        Case &H204
+            SetForegroundWindow Me.hwnd
             Call PopupMenu(Dmenu)
     End Select
 End Sub

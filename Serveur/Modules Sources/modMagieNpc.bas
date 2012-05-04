@@ -9,28 +9,28 @@ Slot As Byte
 End Type
 
 Private Sub Tri(ByRef Liste() As SubSpellSlot, bASC As Boolean)
-    Dim i As Long, j As Long
+    Dim i As Long, J As Long
     Dim temp As SubSpellSlot
     
     If bASC Then    '  croissant
         For i = LBound(Liste) To UBound(Liste) - 1
-            For j = i + 1 To UBound(Liste)
-                If Liste(i).Power > Liste(j).Power Then
-                    temp.Power = Liste(j).Power: temp.Slot = Liste(j).Slot
-                    Liste(j).Power = Liste(i).Power: Liste(j).Slot = Liste(i).Slot
+            For J = i + 1 To UBound(Liste)
+                If Liste(i).Power > Liste(J).Power Then
+                    temp.Power = Liste(J).Power: temp.Slot = Liste(J).Slot
+                    Liste(J).Power = Liste(i).Power: Liste(J).Slot = Liste(i).Slot
                     Liste(i).Power = temp.Power: Liste(i).Slot = temp.Slot
                 End If
-            Next j
+            Next J
         Next i
     Else            ' décroissant
         For i = LBound(Liste) To UBound(Liste) - 1
-            For j = i + 1 To UBound(Liste)
-                If Liste(i).Power < Liste(j).Power Then
-                    temp.Power = Liste(j).Power: temp.Slot = Liste(j).Slot
-                    Liste(j).Power = Liste(i).Power: Liste(j).Slot = Liste(i).Slot
+            For J = i + 1 To UBound(Liste)
+                If Liste(i).Power < Liste(J).Power Then
+                    temp.Power = Liste(J).Power: temp.Slot = Liste(J).Slot
+                    Liste(J).Power = Liste(i).Power: Liste(J).Slot = Liste(i).Slot
                     Liste(i).Power = temp.Power: Liste(i).Slot = temp.Slot
                 End If
-            Next j
+            Next J
         Next i
     End If
 End Sub
@@ -129,7 +129,7 @@ NBal:
     MapNpc(MapNum, MapNpcNum).AttackTimer = GetTickCount
 
     ' Check if at same coordinates
-    If Abs(Player(Index).Char(Player(Index).CharNum).Y - MapNpc(MapNum, MapNpcNum).Y) <= Spell(Npc(npcnum).Spell(SpellSlotNum)).Range And Abs(Player(Index).Char(Player(Index).CharNum).X - MapNpc(MapNum, MapNpcNum).X) <= Spell(Npc(npcnum).Spell(SpellSlotNum)).Range Then
+    If Abs(Player(Index).Char(Player(Index).CharNum).y - MapNpc(MapNum, MapNpcNum).y) <= Spell(Npc(npcnum).Spell(SpellSlotNum)).Range And Abs(Player(Index).Char(Player(Index).CharNum).x - MapNpc(MapNum, MapNpcNum).x) <= Spell(Npc(npcnum).Spell(SpellSlotNum)).Range Then
         CanNpcAttackPlayerWithSpell = True
     Else: Exit Function
     End If
@@ -139,8 +139,8 @@ CanNpcAttackPlayerWithSpell = False
 On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Index, "Attaque du PNJ annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
-Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
-If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & ")", BrightRed, True)
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & "). Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
+Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & ")", BrightRed)
 End Function
 
 Function CanNpcRestoreHimself(ByVal MapNpcNum As Byte, ByVal MapNum As Integer, Optional ByRef SpellSlotNum As Byte) As Boolean
@@ -224,8 +224,8 @@ Exit Function
 er:
 CanNpcRestoreHimself = False
 On Error Resume Next
-Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & "). Détails : Num :" & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "...", "logs\Err.txt")
-If IBErr Then Call IBMsg("Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & ")", BrightRed, True)
+Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & "). Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
+If IBErr Then Call IBMsg("Erreur dans la restoration d'un PNJ(" & npcnum & ")à l'Aide du sort du slot(" & SpellSlotNum & ")", BrightRed)
 End Function
 
 Sub CastSpellOn(ByVal Attacker As Integer, ByVal AttackerType As Byte, ByVal Target As Integer, ByVal TargetType As Byte, ByVal MapNum As Integer, ByVal SpellSlot As Byte)

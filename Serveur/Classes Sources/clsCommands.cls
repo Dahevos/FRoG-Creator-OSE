@@ -73,7 +73,7 @@ Dim Packet As String, i As Long
         SummonNpc = i
 End Function
 
-Function NpcOrder(ByVal MapNum As Integer, ByVal MapNpcNum As Byte, ByVal OType As OrderType, Optional ByVal value As Integer) As Integer
+Function NpcOrder(ByVal MapNum As Integer, ByVal MapNpcNum As Byte, ByVal OType As OrderType, Optional ByVal Value As Integer) As Integer
 NpcOrder = 0
 If MapNum <= 0 Or MapNum > MAX_MAPS Or MapNpcNum <= 0 Or MapNpcNum > MAX_MAP_NPCS Then NpcOrder = -1: Exit Function
 
@@ -84,24 +84,24 @@ ElseIf OType = AllowToMove Then
 ElseIf OType = DoSpawn Then
     Call SpawnNpc(MapNpcNum, MapNum)
 ElseIf OType = ChangeDir Then
-    If value < 0 Or value > 3 Then NpcOrder = -1: Exit Function
-    MapNpc(MapNum, MapNpcNum).Dir = value
+    If Value < 0 Or Value > 3 Then NpcOrder = -1: Exit Function
+    MapNpc(MapNum, MapNpcNum).Dir = Value
 ElseIf OType = GoToDir Then
-    If value < 0 Or value > 3 Then NpcOrder = -1: Exit Function
-    If CanNpcMove(MapNum, MapNpcNum, value) Then Call NpcMove(MapNum, MapNpcNum, value, MOVING_WALKING)
+    If Value < 0 Or Value > 3 Then NpcOrder = -1: Exit Function
+    If CanNpcMove(MapNum, MapNpcNum, Value) Then Call NpcMove(MapNum, MapNpcNum, Value, MOVING_WALKING)
 ElseIf OType = GoToPos Then
-    If value < 0 Or value > (MAX_MAPX + 1) * (MAX_MAPY + 1) Then NpcOrder = -1: Exit Function
-    MapNpc(MapNum, MapNpcNum).Target = value
+    If Value < 0 Or Value > (MAX_MAPX + 1) * (MAX_MAPY + 1) Then NpcOrder = -1: Exit Function
+    MapNpc(MapNum, MapNpcNum).Target = Value
     MapNpc(MapNum, MapNpcNum).TargetType = TARGET_TYPE_CASE
     'X = value - Int(value / (MAX_MAPX + 1)) * (MAX_MAPX + 1)
     'Y = Int(value / (MAX_MAPX + 1))
 ElseIf OType = GoAttackPlayer Then
-    If value <= 0 Or value > MAX_PLAYERS Then NpcOrder = -1: Exit Function
-    MapNpc(MapNum, MapNpcNum).Target = value
+    If Value <= 0 Or Value > MAX_PLAYERS Then NpcOrder = -1: Exit Function
+    MapNpc(MapNum, MapNpcNum).Target = Value
     MapNpc(MapNum, MapNpcNum).TargetType = TARGET_TYPE_PLAYER
 ElseIf OType = GoAttackNpc Then
-    If value <= 0 Or value > MAX_MAP_NPCS Then NpcOrder = -1: Exit Function
-    MapNpc(MapNum, MapNpcNum).Target = value
+    If Value <= 0 Or Value > MAX_MAP_NPCS Then NpcOrder = -1: Exit Function
+    MapNpc(MapNum, MapNpcNum).Target = Value
     MapNpc(MapNum, MapNpcNum).TargetType = TARGET_TYPE_NPC
 ElseIf OType = KillNpc Then
     MapNpc(MapNum, MapNpcNum).Num = 0
@@ -119,7 +119,7 @@ Public Sub SetPlayerQuete(ByVal Index As Integer, ByVal QuestNum As Integer, Opt
     If Ask Then PacketName = "QUETECOUR" Else PacketName = "SETQUETECOUR"
     Call SendDataTo(Index, PacketName & SEP_CHAR & QuestNum & END_CHAR)
     Player(Index).Char(Player(Index).CharNum).QueteEnCour = QuestNum
-    If Ask Then Call QueteMsg(Index, Trim$(quete(QuestNum).nom) & " : " & Trim$(quete(QuestNum).description))
+    If Ask Then Call QueteMsg(Index, Trim$(quete(QuestNum).nom) & " : " & Trim$(quete(QuestNum).Description))
 End Sub
 
 Public Function GetVar(File As String, Header As String, Var As String) As String
@@ -138,9 +138,9 @@ Dim szReturn As String  ' Return default value if not found
     GetVar = Left$(GetVar, Len(GetVar) - 1)
 End Function
 
-Sub PutVar(ByVal File As String, Header As String, Var As String, value As String)
+Sub PutVar(ByVal File As String, Header As String, Var As String, Value As String)
     File = App.Path & "\" & File
-    Call WritePrivateProfileString(Header, Var, value, File)
+    Call WritePrivateProfileString(Header, Var, Value, File)
 End Sub
 
 Public Sub GlobalMsg(ByVal Msg As String, ByVal Color As Long)
@@ -494,11 +494,11 @@ Sub SetPlayerInvItemNum(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemNu
 End Sub
 
 Function GetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long) As Long
-    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value
+    GetPlayerInvItemValue = Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value
 End Function
 
 Sub SetPlayerInvItemValue(ByVal Index As Long, ByVal InvSlot As Long, ByVal ItemValue As Long)
-    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).value = ItemValue
+    Player(Index).Char(Player(Index).CharNum).Inv(InvSlot).Value = ItemValue
 End Sub
 
 Function GetPlayerInvItemDur(ByVal Index As Long, ByVal InvSlot As Long) As Long
@@ -591,19 +591,19 @@ Dim i As Long
             If item(GetPlayerInvItemNum(Index, InvNum)).type = ITEM_TYPE_CURRENCY Then
                 ' Check if its more then they have and if so drop it all
                 If Amount >= GetPlayerInvItemValue(Index, InvNum) Then
-                    MapItem(GetPlayerMap(Index), i).value = GetPlayerInvItemValue(Index, InvNum)
+                    MapItem(GetPlayerMap(Index), i).Value = GetPlayerInvItemValue(Index, InvNum)
                     Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " dépose " & GetPlayerInvItemValue(Index, InvNum) & " " & Trim$(item(GetPlayerInvItemNum(Index, InvNum)).Name) & ".", Yellow)
                     Call SetPlayerInvItemNum(Index, InvNum, 0)
                     Call SetPlayerInvItemValue(Index, InvNum, 0)
                     Call SetPlayerInvItemDur(Index, InvNum, 0)
                 Else
-                    MapItem(GetPlayerMap(Index), i).value = Amount
+                    MapItem(GetPlayerMap(Index), i).Value = Amount
                     Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " dépose " & Amount & " " & Trim$(item(GetPlayerInvItemNum(Index, InvNum)).Name) & ".", Yellow)
                     Call SetPlayerInvItemValue(Index, InvNum, GetPlayerInvItemValue(Index, InvNum) - Amount)
                 End If
             Else
                 ' Its not a currency object so this is easy
-                MapItem(GetPlayerMap(Index), i).value = 1
+                MapItem(GetPlayerMap(Index), i).Value = 1
                 If item(GetPlayerInvItemNum(Index, InvNum)).type >= ITEM_TYPE_WEAPON And item(GetPlayerInvItemNum(Index, InvNum)).type <= ITEM_TYPE_SHIELD Then
                     If item(GetPlayerInvItemNum(Index, InvNum)).data1 <= -1 Then
                         Call MapMsg(GetPlayerMap(Index), GetPlayerName(Index) & " dépose un " & Trim$(item(GetPlayerInvItemNum(Index, InvNum)).Name) & " - Ind.", Yellow)
@@ -640,7 +640,7 @@ Dim i As Long
     
     If i <> 0 And ItemNum >= 0 And ItemNum <= MAX_ITEMS Then
         MapItem(MapNum, i).Num = ItemNum
-        MapItem(MapNum, i).value = ItemVal
+        MapItem(MapNum, i).Value = ItemVal
         
         If ItemNum <> 0 Then
             If (item(ItemNum).type >= ITEM_TYPE_WEAPON) And (item(ItemNum).type <= ITEM_TYPE_SHIELD) Then
@@ -741,8 +741,8 @@ Sub Flash(ByVal Index As Long, ByVal flashfile As String)
     Call SendDataTo(Index, "flashevent" & SEP_CHAR & flashfile & END_CHAR)
 End Sub
 
-Sub Prompt(ByVal Index As Long, ByVal question As String, ByVal value As Long)
-    Call SendDataTo(Index, "prompt" & SEP_CHAR & question & SEP_CHAR & value & END_CHAR)
+Sub Prompt(ByVal Index As Long, ByVal question As String, ByVal Value As Long)
+    Call SendDataTo(Index, "prompt" & SEP_CHAR & question & SEP_CHAR & Value & END_CHAR)
 End Sub
 
 Sub PlaySound(ByVal Index As Long, ByVal Sound As String)
@@ -807,7 +807,7 @@ End Sub
 
 Sub SendDataTo(ByVal Index As Long, ByVal data As String)
 Dim i As Long, n As Long, startc As Long
-    If IsConnected(Index) Then frmServer.Socket(Index).SendData data: DoEvents
+    If IsConnected(Index) Then frmServer.Socket(Index).SendData data: NewDoEvents
 End Sub
 
 Sub SendDataToAll(ByVal data As String)
@@ -970,7 +970,7 @@ Dim f As Long
     
         f = FreeFile
         Open FileName For Append As #f
-            Print #f, Time & ": " & text
+            Print #f, time & ": " & text
         Close #f
     End If
 End Sub
@@ -979,7 +979,7 @@ Sub HackingAttempt(ByVal Index As Long, ByVal Reason As String)
     If Index > 0 Then
         If IsPlaying(Index) Then Call GlobalMsg(GetPlayerLogin(Index) & "/" & GetPlayerName(Index) & " a été déconnecté pour : (" & Reason & ")", White)
         Call AlertMsg(Index, "Tu as perdu ta connexion avec " & GAME_NAME & "." & Reason)
-        Call AffIBMsg(Index, "ATTENTION : Détection d'une tentative de hacking!!(Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed, True)
+        Call IBMsg("Détection d'une tentative de hack!(Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed)
     End If
 End Sub
 
@@ -1014,7 +1014,7 @@ Public Sub Attendre(ByVal temps As Long)
      Seconde = temps * 1000
      lngEndingTime = GetTickCount() + (Seconde)
      Do While GetTickCount() < lngEndingTime
-         DoEvents
+         NewDoEvents
      Loop
 End Sub
 
@@ -1088,12 +1088,12 @@ Do
 Loop Until n > 24
 End Sub
 
-Sub SetPlayerItemValue(Index, item, value)
+Sub SetPlayerItemValue(Index, item, Value)
 Dim n
 n = 1
 Do
    If GetPlayerInvItemNum(Index, n) = item Then
-      Call SetPlayerInvItemValue(Index, n, value)
+      Call SetPlayerInvItemValue(Index, n, Value)
       Call SendInventoryUpdate(Index, n)
       Exit Do
    End If
@@ -1305,15 +1305,15 @@ JSemaine = Weekday(Date, vbMonday)
 End Function
 
 Function Heure() As Byte
-Heure = Hour(Time)
+Heure = Hour(time)
 End Function
 
 Function Minutes() As Byte
-Minutes = Minute(Time)
+Minutes = Minute(time)
 End Function
 
 Function Seconde() As Byte
-Seconde = Second(Time)
+Seconde = Second(time)
 End Function
 
 Function GetTime() As Byte
