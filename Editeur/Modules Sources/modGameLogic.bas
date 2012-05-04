@@ -264,7 +264,13 @@ End Function
 Public Function getreselotionY()
     getreselotionY = Screen.Height \ Screen.TwipsPerPixelY
 End Function
-
+Public Sub loading(ByVal value As Byte)
+Dim i As Byte
+If value > 100 Then Exit Sub
+For i = frmsplash.chrg.value To value
+frmsplash.chrg.value = i
+Next
+End Sub
 Sub Main()
 Dim i As Long
 Dim Ending As String
@@ -275,6 +281,7 @@ On Error GoTo er:
     If Not FileExist("Editeur.exe.manifest") Then
     Call URLDownloadToFile(0, "http://frogcreator.fr/update/Editeur.exe.manifest", App.Path & "\Editeur.exe.manifest", 0, 0)
     End If
+    Call loading(3)
     Call InitXpStyle
     Call EcrireEtat(vbNullString)
     Call EcrireEtat("Démarrage du logiciel")
@@ -301,15 +308,7 @@ On Error GoTo er:
     Dim PathSource As String, Part() As String
     Part = Split(App.Path, "\")
     If UBound(Part) > 0 Then PathSource = Mid$(App.Path, 1, Len(App.Path) - Len(Part(UBound(Part)))) Else PathSource = App.Path & "\"
-    
-    i = 0
-    If Not FileExist("GFX\Tiles0.png") Then
-    Do While FileExists("GFX\Tiles" & i & ".png")
-    ExtraSheets = i
-    i = i + 1
-    Loop
-    End If
-    
+
     i = 0
     Do While FileExist("GFX\Tiles" & i & ".png")
     ExtraSheets = i
@@ -320,6 +319,8 @@ On Error GoTo er:
     ReDim DD_TileSurf(0 To ExtraSheets) As DirectDrawSurface7
     ReDim DDSD_Tile(0 To ExtraSheets) As DDSURFACEDESC2
     ReDim TileFile(0 To ExtraSheets) As Boolean
+    
+    Call loading(5)
     
     Call LoadMaxSprite
     Call LoadMaxPaperdolls
@@ -351,7 +352,7 @@ On Error GoTo er:
     ReDim DDSD_Pets(0 To MAX_DX_PETS) As DDSURFACEDESC2
     ReDim PetTimer(0 To MAX_DX_PETS) As Long
     ReDim PetUsed(0 To MAX_DX_PETS) As Boolean
-    
+    Call loading(7)
     ' Check if the maps directory is there, if its not make it
     If LCase$(Dir$(App.Path & "\Classes", vbDirectory)) <> "classes" Then Call MkDir$(App.Path & "\Classes")
     If LCase$(Dir$(App.Path & "\Maps", vbDirectory)) <> "maps" Then Call MkDir$(App.Path & "\Maps")
@@ -366,7 +367,8 @@ On Error GoTo er:
     If UCase$(Dir$(App.Path & "\spells", vbDirectory)) <> "SPELLS" Then Call MkDir$(App.Path & "\spells")
     If UCase$(Dir$(App.Path & "\quetes", vbDirectory)) <> "QUETES" Then Call MkDir$(App.Path & "\quetes")
     If UCase$(Dir$(App.Path & "\Config", vbDirectory)) <> "CONFIG" Then Call MkDir$(App.Path & "\Config")
-    frmsplash.chrg.value = 10
+    
+    Call loading(10)
         
     Call SetStatus("Transfert des données...")
     If Not FileExist("Config\account.ini") Or UCase$(Dir$(App.Path & "\Music", vbDirectory)) <> "MUSIC" Then
@@ -411,7 +413,7 @@ On Error GoTo er:
             Sleep 1
         Loop
     End If
-    frmsplash.chrg.value = 20
+    Call loading(20)
     
     FileName = App.Path & "\Config\Account.ini"
     
@@ -469,7 +471,7 @@ On Error GoTo er:
         WriteINI "INFO", "PIC_NPC1", 2, App.Path & "\Config.ini"
         WriteINI "INFO", "PIC_NPC2", 32, App.Path & "\Config.ini"
     End If
-    frmsplash.chrg.value = 30
+    Call loading(30)
     Call InitAccountOpt
     Call InitMirageVars
     
@@ -487,14 +489,14 @@ On Error GoTo er:
     InArrowEditor = False
     InMouvEditor = False
     InQuetesEditor = False
-    frmsplash.chrg.value = 40
+    Call loading(40)
     
     If Not FileExist("Config\Serveur.ini") Then
         WriteINI "SERVER0", "Name", "Server", App.Path & "\Config\Serveur.ini"
         WriteINI "SERVER0", "IP", "127.0.0.1", App.Path & "\Config\Serveur.ini"
         WriteINI "SERVER0", "Port", "4000", App.Path & "\Config\Serveur.ini"
     End If
-    frmsplash.chrg.value = 60
+    Call loading(50)
     
     Call SetStatus("Initialisation du protocole TCP...")
     DoEvents
@@ -505,12 +507,11 @@ On Error GoTo er:
     DoEvents
     
     Call Sleep(1)
-    frmsplash.chrg.value = 80
     If Val(ReadINI("CONFIG", "jeu", App.Path & "\Config\Client.ini")) = 0 Then
         Shell (Mid$(App.Path, 1, Len(App.Path) - Len(Dir$(App.Path, vbDirectory))) & "Assistant.exe")
         Call GameDestroy
     End If
-    
+    Call loading(60)
     Call SetStatus("Chargement des surfaces")
     Call InitTiles
     
@@ -3361,15 +3362,15 @@ Next i
 
 End Function
 
-Sub CaseChange(ByVal CX, ByVal CY)
+Sub CaseChange(ByVal cx, ByVal cy)
 Dim ONum As Long
 
 If Val(ReadINI("CONFIG", "NomObjet", App.Path & "\Config\Account.ini")) = 0 Then frmMirage.ObjNm.Visible = False: Exit Sub
 
-ONum = ObjetNumPos(CX, CY)
+ONum = ObjetNumPos(cx, cy)
 
-If ObjetPos(CX, CY) Then
-    If Item(ONum).Type = ITEM_TYPE_CURRENCY Then frmMirage.OName.Caption = Trim$(Item(ONum).name) & "(" & ObjetValPos(CX, CY) & ")" Else frmMirage.OName.Caption = Trim$(Item(ONum).name) & "(1)"
+If ObjetPos(cx, cy) Then
+    If Item(ONum).Type = ITEM_TYPE_CURRENCY Then frmMirage.OName.Caption = Trim$(Item(ONum).name) & "(" & ObjetValPos(cx, cy) & ")" Else frmMirage.OName.Caption = Trim$(Item(ONum).name) & "(1)"
     frmMirage.OName.ForeColor = Item(ONum).NCoul
     frmMirage.ObjNm.Left = PotX + 10
     frmMirage.ObjNm.Top = PotY - 30

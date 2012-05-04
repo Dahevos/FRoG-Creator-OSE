@@ -68,12 +68,15 @@ Dim FileName As String
 Dim f As Long
     FileName = App.Path & "\maps\map" & MapNum & ".fcc"
         
-    If Not FileExist("maps\map" & MapNum & ".fcc") Then Exit Sub
+    If FileExist("maps\map" & MapNum & ".fcc") Then
     
     f = FreeFile
     Open FileName For Binary As #f
         Get #f, , Map(MapNum)
     Close #f
+    Else
+    ClearMap (i)
+    End If
 End Sub
 
 Sub LoadQuete(ByVal QIndex As Long)

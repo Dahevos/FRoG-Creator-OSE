@@ -320,6 +320,7 @@ Dim i As Integer
             SetMaskColorFromPixel DD_TileSurf(i), 0, 0
             TileFile(i) = True
             DoEvents
+            Call loading(60 + (40 / ExtraSheets) * i)
         Else
             TileFile(i) = False
         End If
