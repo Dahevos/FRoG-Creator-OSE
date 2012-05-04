@@ -17,7 +17,7 @@ Begin VB.Form frmoptions
    Begin VB.CommandButton cmdOk 
       Caption         =   "Enregistrer"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9
          Charset         =   0
          Weight          =   400
@@ -35,7 +35,7 @@ Begin VB.Form frmoptions
    Begin VB.CommandButton cmdCancel 
       Caption         =   "Annuler"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9
          Charset         =   0
          Weight          =   400
@@ -64,7 +64,7 @@ Begin VB.Form frmoptions
       TabHeight       =   529
       TabMaxWidth     =   2778
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -173,7 +173,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkLowEffect 
          Caption         =   "Désactiver les effets avancés"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -190,7 +190,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chknobj 
          Caption         =   "Nom des objets aux sol (quand la souris les survole)"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -209,7 +209,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkplayerbar 
          Caption         =   "Mini barre de vie"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -228,7 +228,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkplayername 
          Caption         =   "Nom"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -246,7 +246,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chknpcname 
          Caption         =   "Noms"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -264,7 +264,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkbubblebar 
          Caption         =   "Bulles de dialogue"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -282,7 +282,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chknpcbar 
          Caption         =   "Afficher leur mini barre de vie"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -301,7 +301,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkplayerdamage 
          Caption         =   "Dégâts affichés au dessus de la tête"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -319,7 +319,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chknpcdamage 
          Caption         =   "Dégâts affichés au dessus de la tête"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -337,7 +337,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkmusic 
          Caption         =   "Musique"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -355,7 +355,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chksound 
          Caption         =   "Effets sonores"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -383,7 +383,7 @@ Begin VB.Form frmoptions
       Begin VB.CheckBox chkAutoScroll 
          Caption         =   "Défilement automatique"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -610,7 +610,7 @@ Begin VB.Form frmoptions
          BackStyle       =   0  'Transparent
          Caption         =   "Nombre de ligne écrite sur l'écran: 6"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -630,7 +630,7 @@ Begin VB.Form frmoptions
          BackStyle       =   0  'Transparent
          Caption         =   "-Affichage du Joueur-"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -651,7 +651,7 @@ Begin VB.Form frmoptions
          BackStyle       =   0  'Transparent
          Caption         =   "-Affichage des PNJ-"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -672,7 +672,7 @@ Begin VB.Form frmoptions
          BackStyle       =   0  'Transparent
          Caption         =   "-Musique/Sons-"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -693,7 +693,7 @@ Begin VB.Form frmoptions
          BackStyle       =   0  'Transparent
          Caption         =   "-Affichage du Chat-"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -711,7 +711,7 @@ Begin VB.Form frmoptions
       Begin VB.Label Label2 
          Caption         =   $"frmoptions.frx":00FE
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -729,7 +729,7 @@ Begin VB.Form frmoptions
       Begin VB.Label Label1 
          Caption         =   $"frmoptions.frx":01A3
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   700

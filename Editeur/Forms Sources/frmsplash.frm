@@ -1,5 +1,4 @@
 VERSION 5.00
-Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmsplash 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   0  'None
@@ -15,23 +14,20 @@ Begin VB.Form frmsplash
    ScaleWidth      =   5085
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin MSComctlLib.ProgressBar chrg 
+   Begin Editeur.ctlProgressBar chrg 
       Height          =   375
-      Left            =   600
-      TabIndex        =   1
+      Left            =   480
       Top             =   3240
       Width           =   4095
       _ExtentX        =   7223
       _ExtentY        =   661
-      _Version        =   393216
-      Appearance      =   1
    End
    Begin VB.Label lblStatus 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
       Caption         =   "Statut"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9
          Charset         =   0
          Weight          =   700

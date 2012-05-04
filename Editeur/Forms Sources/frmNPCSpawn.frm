@@ -16,7 +16,7 @@ Begin VB.Form frmNPCSpawn
    Begin VB.CommandButton Command2 
       Caption         =   "Annuler"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -33,7 +33,7 @@ Begin VB.Form frmNPCSpawn
    Begin VB.CommandButton Command1 
       Caption         =   "Ok"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -79,7 +79,7 @@ Begin VB.Form frmNPCSpawn
       BackStyle       =   0  'Transparent
       Caption         =   "Nombre de NPC : 1"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -98,7 +98,7 @@ Begin VB.Form frmNPCSpawn
       BackStyle       =   0  'Transparent
       Caption         =   "Distance d'apparition (Spawn) : 0"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -117,7 +117,7 @@ Begin VB.Form frmNPCSpawn
       BackStyle       =   0  'Transparent
       Caption         =   "Numéro du NPC: 1 -"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

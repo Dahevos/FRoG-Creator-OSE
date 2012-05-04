@@ -28,7 +28,7 @@ Begin VB.Form frmNotice
       TabHeight       =   353
       TabMaxWidth     =   5292
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -58,7 +58,7 @@ Begin VB.Form frmNotice
       Tab(0).ControlCount=   8
       Begin VB.ListBox lstSound 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -75,7 +75,7 @@ Begin VB.Form frmNotice
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmNotice
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -128,7 +128,7 @@ Begin VB.Form frmNotice
          AutoSize        =   -1  'True
          Caption         =   "Titre:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -147,7 +147,7 @@ Begin VB.Form frmNotice
          AutoSize        =   -1  'True
          Caption         =   "Texte:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -166,7 +166,7 @@ Begin VB.Form frmNotice
          AutoSize        =   -1  'True
          Caption         =   "Son:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

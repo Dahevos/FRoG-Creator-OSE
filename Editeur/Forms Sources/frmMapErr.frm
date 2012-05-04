@@ -41,7 +41,7 @@ Begin VB.Form frmMapErr
       Alignment       =   2  'Center
       Caption         =   $"frmMapErr.frx":0000
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   700

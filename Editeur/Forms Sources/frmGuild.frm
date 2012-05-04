@@ -26,7 +26,7 @@ Begin VB.Form frmGuild
    StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox txtName 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -42,7 +42,7 @@ Begin VB.Form frmGuild
    End
    Begin VB.TextBox txtGuild 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

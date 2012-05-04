@@ -28,7 +28,7 @@ Begin VB.Form frmClassChange
       TabHeight       =   441
       TabMaxWidth     =   2646
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -69,7 +69,7 @@ Begin VB.Form frmClassChange
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -86,7 +86,7 @@ Begin VB.Form frmClassChange
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -113,7 +113,7 @@ Begin VB.Form frmClassChange
          BackStyle       =   0  'Transparent
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -132,7 +132,7 @@ Begin VB.Form frmClassChange
          BackStyle       =   0  'Transparent
          Caption         =   "Classe Requise :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -151,7 +151,7 @@ Begin VB.Form frmClassChange
          BackStyle       =   0  'Transparent
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -169,7 +169,7 @@ Begin VB.Form frmClassChange
          Alignment       =   1  'Right Justify
          Caption         =   "Nouvelle Classe :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

@@ -7,7 +7,7 @@ Begin VB.Form frmpet
    ClientWidth     =   4905
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -42,7 +42,7 @@ Begin VB.Form frmpet
       BackStyle       =   0  'Transparent
       Caption         =   " Revenir au menu"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400

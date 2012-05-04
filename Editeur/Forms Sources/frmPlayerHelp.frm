@@ -8,7 +8,7 @@ Begin VB.Form frmPlayerHelp
    ClientTop       =   3480
    ClientWidth     =   3270
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   6.75
       Charset         =   0
       Weight          =   400
@@ -37,7 +37,7 @@ Begin VB.Form frmPlayerHelp
       TabHeight       =   520
       TabMaxWidth     =   1879
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

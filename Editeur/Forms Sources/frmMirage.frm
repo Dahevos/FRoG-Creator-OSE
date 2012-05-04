@@ -13,7 +13,7 @@ Begin VB.Form frmMirage
    ClipControls    =   0   'False
    FillColor       =   &H00FFFFFF&
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -47,7 +47,7 @@ Begin VB.Form frmMirage
       Appearance      =   0  'Flat
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -241,7 +241,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "00:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   20.25
                Charset         =   0
                Weight          =   400
@@ -260,7 +260,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "00"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   20.25
                Charset         =   0
                Weight          =   400
@@ -280,7 +280,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -302,7 +302,7 @@ Begin VB.Form frmMirage
             BackColor       =   &H80000016&
             Caption         =   "Changer l'Access"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -322,7 +322,7 @@ Begin VB.Form frmMirage
             BackColor       =   &H80000016&
             Caption         =   "Faire quitter la Guilde"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -342,7 +342,7 @@ Begin VB.Form frmMirage
             BackColor       =   &H80000016&
             Caption         =   "Faire entrer dans la Guild"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -362,7 +362,7 @@ Begin VB.Form frmMirage
             BackColor       =   &H80000016&
             Caption         =   "Faire entrainer"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -381,7 +381,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H00E0E0E0&
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -399,7 +399,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H00E0E0E0&
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -419,7 +419,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Nom:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -438,7 +438,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Access:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -482,7 +482,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Arreter la quete"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -502,7 +502,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   " "
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -522,7 +522,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   " "
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -542,7 +542,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -565,7 +565,7 @@ Begin VB.Form frmMirage
             BackColor       =   &H00FFFFFF&
             BorderStyle     =   0  'None
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -586,7 +586,7 @@ Begin VB.Form frmMirage
                Appearance      =   0  'Flat
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -609,7 +609,7 @@ Begin VB.Form frmMirage
                   BackColor       =   &H00000000&
                   BorderStyle     =   0  'None
                   BeginProperty Font 
-                     Name            =   "MS Sans Serif"
+                     Name            =   "Segoe UI"
                      Size            =   9.75
                      Charset         =   0
                      Weight          =   400
@@ -695,7 +695,7 @@ Begin VB.Form frmMirage
          Begin VB.PictureBox Down 
             BorderStyle     =   0  'None
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -715,7 +715,7 @@ Begin VB.Form frmMirage
          Begin VB.PictureBox Up 
             BorderStyle     =   0  'None
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -737,7 +737,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Utiliser"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -757,7 +757,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Jeter"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -829,7 +829,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "nom"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -848,7 +848,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "classe"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1001,7 +1001,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1029,7 +1029,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6
                Charset         =   0
                Weight          =   400
@@ -1051,7 +1051,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6
                Charset         =   0
                Weight          =   400
@@ -1071,7 +1071,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "+"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   700
@@ -1091,7 +1091,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "+"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   700
@@ -1111,7 +1111,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "+"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   700
@@ -1131,7 +1131,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "+"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   700
@@ -1179,7 +1179,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -1200,7 +1200,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H00E0E0E0&
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1208,7 +1208,7 @@ Begin VB.Form frmMirage
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   2340
+            Height          =   2190
             ItemData        =   "frmMirage.frx":183D5
             Left            =   0
             List            =   "frmMirage.frx":183D7
@@ -1221,7 +1221,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -1245,7 +1245,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Nom de la Guilde:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1267,7 +1267,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Votre access:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1287,7 +1287,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Guild"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1306,7 +1306,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Rank"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1324,7 +1324,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Quitter la Guilde"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1343,7 +1343,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -1364,7 +1364,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1388,7 +1388,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1410,7 +1410,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1434,7 +1434,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1456,7 +1456,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H00FFFFFF&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1480,7 +1480,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1502,7 +1502,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H00FFFFFF&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1526,7 +1526,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1548,7 +1548,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1573,7 +1573,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1595,7 +1595,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1619,7 +1619,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1641,7 +1641,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1666,7 +1666,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1688,7 +1688,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1713,7 +1713,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1735,7 +1735,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1760,7 +1760,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1782,7 +1782,7 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             BackColor       =   &H80000005&
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   9.75
                Charset         =   0
                Weight          =   400
@@ -1807,7 +1807,7 @@ Begin VB.Form frmMirage
                BackColor       =   &H00000000&
                BorderStyle     =   0  'None
                BeginProperty Font 
-                  Name            =   "MS Sans Serif"
+                  Name            =   "Segoe UI"
                   Size            =   9.75
                   Charset         =   0
                   Weight          =   400
@@ -1830,7 +1830,7 @@ Begin VB.Form frmMirage
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1873,7 +1873,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             Caption         =   "Lancer"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -2340,7 +2340,7 @@ Begin VB.Form frmMirage
       Key:10          =   "#gom"
       UseSystemFont   =   0   'False
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2370,7 +2370,7 @@ Begin VB.Form frmMirage
       BackColor       =   &H80000005&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -2411,7 +2411,7 @@ Begin VB.Form frmMirage
    Begin VB.TextBox txtMyTextBox 
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   700
@@ -2455,7 +2455,7 @@ Begin VB.Form frmMirage
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2493,7 +2493,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6
                Charset         =   0
                Weight          =   400
@@ -2539,7 +2539,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6
                Charset         =   0
                Weight          =   400
@@ -2585,7 +2585,7 @@ Begin VB.Form frmMirage
             BackStyle       =   0  'Transparent
             BorderStyle     =   1  'Fixed Single
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6
                Charset         =   0
                Weight          =   400
@@ -2682,7 +2682,7 @@ Begin VB.Form frmMirage
    Begin VB.ListBox lstIndex 
       BackColor       =   &H80000004&
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -2691,7 +2691,7 @@ Begin VB.Form frmMirage
          Strikethrough   =   0   'False
       EndProperty
       ForeColor       =   &H80000007&
-      Height          =   2535
+      Height          =   2400
       ItemData        =   "frmMirage.frx":205A8
       Left            =   60
       List            =   "frmMirage.frx":205AF
@@ -2730,7 +2730,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton OptMetier 
          Caption         =   "Metier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2749,7 +2749,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton OptCraft 
          Caption         =   "Table de Craft"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2768,7 +2768,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optNpcAvoid 
          Caption         =   "Bloquer PNJ"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2787,7 +2787,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optBDir 
          Caption         =   "Bloque Direction"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2806,7 +2806,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optbtoit 
          Caption         =   "Bloque Toit"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2825,7 +2825,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optBguilde 
          Caption         =   "Bloquer Guilde"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2844,7 +2844,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton opttoit 
          Caption         =   "Toit"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2863,7 +2863,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optBniv 
          Caption         =   "Bloquer Niv."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2882,7 +2882,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optBmont 
          Caption         =   "Bloquer Monture"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2901,7 +2901,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optcoffre 
          Caption         =   "Coffre"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2920,7 +2920,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optportecode 
          Caption         =   "Porte à code"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2939,7 +2939,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optWarp 
          Caption         =   "Téléportation"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2958,7 +2958,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton OptBank 
          Caption         =   "Banque"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2977,7 +2977,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optScripted 
          Caption         =   "Case Scriptée"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -2996,7 +2996,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optClassChange 
          Caption         =   "Chg de Classe"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3015,7 +3015,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optNotice 
          Caption         =   "Avertissement"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3034,7 +3034,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optDoor 
          Caption         =   "Porte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3053,7 +3053,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optSign 
          Caption         =   "Panneau"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3072,7 +3072,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optSprite 
          Caption         =   "Chg Sprite"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3091,7 +3091,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optSound 
          Caption         =   "Jouer un son"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3110,7 +3110,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optArena 
          Caption         =   "Arène"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3129,7 +3129,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optCBlock 
          Caption         =   "Bloquer Class"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3148,7 +3148,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optShop 
          Caption         =   "Magasin"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3167,7 +3167,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optKill 
          Caption         =   "Tuer"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3186,7 +3186,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optHeal 
          Caption         =   "Soins"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3205,7 +3205,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optKeyOpen 
          Caption         =   "Ouvrir une Porte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3224,7 +3224,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optBlocked 
          Caption         =   "Bloquer"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3255,7 +3255,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optItem 
          Caption         =   "Objet"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -3274,7 +3274,7 @@ Begin VB.Form frmMirage
       Begin VB.OptionButton optKey 
          Caption         =   "Porte à clé"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

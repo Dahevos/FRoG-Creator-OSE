@@ -18,7 +18,7 @@ Begin VB.Form frmIpconfig
    StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox TxtPort 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -34,7 +34,7 @@ Begin VB.Form frmIpconfig
    End
    Begin VB.TextBox TxtIP 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -70,7 +70,7 @@ Begin VB.Form frmIpconfig
       BackStyle       =   0  'Transparent
       Caption         =   "Enter Server IP"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -88,7 +88,7 @@ Begin VB.Form frmIpconfig
       BackStyle       =   0  'Transparent
       Caption         =   "Enter Server Port"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

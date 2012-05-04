@@ -35,7 +35,7 @@ Begin VB.Form frmShopEditor
       TabsPerRow      =   6
       TabHeight       =   353
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -76,7 +76,7 @@ Begin VB.Form frmShopEditor
       Tab(5).ControlCount=   1
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -95,7 +95,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -114,7 +114,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -133,7 +133,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -152,7 +152,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -171,7 +171,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ListBox lstTradeItem 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -192,7 +192,7 @@ Begin VB.Form frmShopEditor
    Begin VB.Frame Frame2 
       Caption         =   "Propriétés du magasin"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   700
@@ -207,7 +207,7 @@ Begin VB.Form frmShopEditor
       Width           =   11535
       Begin VB.ComboBox cmbItemGive 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -228,7 +228,7 @@ Begin VB.Form frmShopEditor
       Begin VB.TextBox txtItemGiveValue 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -246,7 +246,7 @@ Begin VB.Form frmShopEditor
       End
       Begin VB.ComboBox cmbItemGet 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -265,7 +265,7 @@ Begin VB.Form frmShopEditor
       Begin VB.TextBox txtItemGetValue 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -284,7 +284,7 @@ Begin VB.Form frmShopEditor
       Begin VB.CommandButton cmdUpdate 
          Caption         =   "Mettre dans le slot sélectionné"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -303,7 +303,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Objet donné :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -321,7 +321,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Valeur :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -339,7 +339,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Objet reçu :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -357,7 +357,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Valeur :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -375,7 +375,7 @@ Begin VB.Form frmShopEditor
    Begin VB.CommandButton cmdOk 
       Caption         =   "Ok"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -393,7 +393,7 @@ Begin VB.Form frmShopEditor
    Begin VB.CommandButton cmdCancel 
       Caption         =   "Annuler"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -410,7 +410,7 @@ Begin VB.Form frmShopEditor
    End
    Begin VB.TextBox txtLeaveSay 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -429,7 +429,7 @@ Begin VB.Form frmShopEditor
    End
    Begin VB.TextBox txtName 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -446,7 +446,7 @@ Begin VB.Form frmShopEditor
    End
    Begin VB.TextBox txtJoinSay 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -466,7 +466,7 @@ Begin VB.Form frmShopEditor
    Begin VB.Frame Frame1 
       Caption         =   "Propriétés Générale"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   700
@@ -481,7 +481,7 @@ Begin VB.Form frmShopEditor
       Width           =   11535
       Begin VB.ComboBox cmbItemFix 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -503,7 +503,7 @@ Begin VB.Form frmShopEditor
       Begin VB.CheckBox chkFixesItems 
          Caption         =   "Le magasin répare les objets"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -522,7 +522,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Objet pour payer les réparations :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -542,7 +542,7 @@ Begin VB.Form frmShopEditor
          AutoSize        =   -1  'True
          Caption         =   "Message d'accueil :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -560,7 +560,7 @@ Begin VB.Form frmShopEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Nom :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -579,7 +579,7 @@ Begin VB.Form frmShopEditor
          AutoSize        =   -1  'True
          Caption         =   "Message au départ :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

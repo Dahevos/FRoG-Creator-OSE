@@ -95,7 +95,7 @@ Begin VB.Form frmInventory
       BackColor       =   &H80000005&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -119,7 +119,7 @@ Begin VB.Form frmInventory
       BackColor       =   &H80000005&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

@@ -27,7 +27,7 @@ Begin VB.Form frmEditArrows
       TabHeight       =   397
       TabMaxWidth     =   1984
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -59,7 +59,7 @@ Begin VB.Form frmEditArrows
       Tab(0).ControlCount=   9
       Begin VB.TextBox txtName 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -126,7 +126,7 @@ Begin VB.Form frmEditArrows
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -144,7 +144,7 @@ Begin VB.Form frmEditArrows
       Begin VB.CommandButton Command1 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -164,7 +164,7 @@ Begin VB.Form frmEditArrows
          BackStyle       =   0  'Transparent
          Caption         =   "Nom:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -183,7 +183,7 @@ Begin VB.Form frmEditArrows
          BackStyle       =   0  'Transparent
          Caption         =   "Flêche:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -202,7 +202,7 @@ Begin VB.Form frmEditArrows
          AutoSize        =   -1  'True
          Caption         =   "Portée :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

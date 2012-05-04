@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmMainMenu 
+   BackColor       =   &H00FFFFFF&
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Menu Principal"
    ClientHeight    =   5085
@@ -8,7 +9,7 @@ Begin VB.Form frmMainMenu
    ClientWidth     =   5085
    ClipControls    =   0   'False
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -34,7 +35,7 @@ Begin VB.Form frmMainMenu
    Begin VB.CheckBox Check2 
       Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -52,7 +53,7 @@ Begin VB.Form frmMainMenu
    Begin VB.CommandButton picConnect 
       Caption         =   "Connexion"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -110,7 +111,7 @@ Begin VB.Form frmMainMenu
       Appearance      =   0  'Flat
       BackColor       =   &H80000005&
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -128,7 +129,7 @@ Begin VB.Form frmMainMenu
    Begin VB.CommandButton picCredits 
       Caption         =   "Crédits"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -145,7 +146,7 @@ Begin VB.Form frmMainMenu
    Begin VB.CommandButton picQuit 
       Caption         =   "Quitter"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -229,7 +230,7 @@ Begin VB.Form frmMainMenu
       BackStyle       =   0  'Transparent
       Caption         =   "État du serveur :"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

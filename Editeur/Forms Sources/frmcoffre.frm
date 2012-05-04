@@ -27,7 +27,7 @@ Begin VB.Form frmcoffre
       TabHeight       =   370
       TabMaxWidth     =   2646
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -85,7 +85,7 @@ Begin VB.Form frmcoffre
          Caption         =   "Faire disparaitre la clée une fois utilisé."
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -130,7 +130,7 @@ Begin VB.Form frmcoffre
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -147,7 +147,7 @@ Begin VB.Form frmcoffre
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -172,7 +172,7 @@ Begin VB.Form frmcoffre
       Begin VB.Label Label6 
          Caption         =   "1"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -189,7 +189,7 @@ Begin VB.Form frmcoffre
       Begin VB.Label Label5 
          Caption         =   "Objet :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -215,7 +215,7 @@ Begin VB.Form frmcoffre
          Caption         =   "1"
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -233,7 +233,7 @@ Begin VB.Form frmcoffre
          Caption         =   "Objet"
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -251,7 +251,7 @@ Begin VB.Form frmcoffre
          Caption         =   "Objet"
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -268,7 +268,7 @@ Begin VB.Form frmcoffre
       Begin VB.Label lblName 
          Enabled         =   0   'False
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

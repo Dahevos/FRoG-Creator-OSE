@@ -34,11 +34,12 @@ Begin VB.Form frmMapProperties
       _ExtentY        =   14684
       _Version        =   393216
       Tabs            =   2
+      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   353
       TabMaxWidth     =   1764
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -48,7 +49,7 @@ Begin VB.Form frmMapProperties
       EndProperty
       TabCaption(0)   =   "Général"
       TabPicture(0)   =   "frmMapProperties.frx":0000
-      Tab(0).ControlEnabled=   -1  'True
+      Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label13"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "txtName"
@@ -70,54 +71,101 @@ Begin VB.Form frmMapProperties
       Tab(0).ControlCount=   9
       TabCaption(1)   =   "PNJ"
       TabPicture(1)   =   "frmMapProperties.frx":001C
-      Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Command5"
-      Tab(1).Control(1)=   "Command4"
-      Tab(1).Control(2)=   "plus(15)"
-      Tab(1).Control(3)=   "plus(1)"
-      Tab(1).Control(4)=   "plus(2)"
-      Tab(1).Control(5)=   "plus(3)"
-      Tab(1).Control(6)=   "plus(4)"
-      Tab(1).Control(7)=   "plus(5)"
-      Tab(1).Control(8)=   "plus(6)"
-      Tab(1).Control(9)=   "plus(7)"
-      Tab(1).Control(10)=   "plus(8)"
-      Tab(1).Control(11)=   "plus(9)"
-      Tab(1).Control(12)=   "plus(11)"
-      Tab(1).Control(13)=   "plus(12)"
-      Tab(1).Control(14)=   "plus(13)"
-      Tab(1).Control(15)=   "plus(14)"
-      Tab(1).Control(16)=   "plus(10)"
-      Tab(1).Control(17)=   "Copy(9)"
-      Tab(1).Control(18)=   "Copy(13)"
-      Tab(1).Control(19)=   "Copy(12)"
-      Tab(1).Control(20)=   "Copy(11)"
-      Tab(1).Control(21)=   "Copy(10)"
-      Tab(1).Control(22)=   "Copy(8)"
+      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).Control(0)=   "cmbNpc(14)"
+      Tab(1).Control(0).Enabled=   0   'False
+      Tab(1).Control(1)=   "cmbNpc(13)"
+      Tab(1).Control(1).Enabled=   0   'False
+      Tab(1).Control(2)=   "cmbNpc(12)"
+      Tab(1).Control(2).Enabled=   0   'False
+      Tab(1).Control(3)=   "cmbNpc(11)"
+      Tab(1).Control(3).Enabled=   0   'False
+      Tab(1).Control(4)=   "cmbNpc(10)"
+      Tab(1).Control(4).Enabled=   0   'False
+      Tab(1).Control(5)=   "cmbNpc(9)"
+      Tab(1).Control(5).Enabled=   0   'False
+      Tab(1).Control(6)=   "cmbNpc(8)"
+      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(7)=   "cmbNpc(7)"
+      Tab(1).Control(7).Enabled=   0   'False
+      Tab(1).Control(8)=   "cmbNpc(6)"
+      Tab(1).Control(8).Enabled=   0   'False
+      Tab(1).Control(9)=   "cmbNpc(5)"
+      Tab(1).Control(9).Enabled=   0   'False
+      Tab(1).Control(10)=   "cmbNpc(4)"
+      Tab(1).Control(10).Enabled=   0   'False
+      Tab(1).Control(11)=   "cmbNpc(3)"
+      Tab(1).Control(11).Enabled=   0   'False
+      Tab(1).Control(12)=   "cmbNpc(2)"
+      Tab(1).Control(12).Enabled=   0   'False
+      Tab(1).Control(13)=   "cmbNpc(1)"
+      Tab(1).Control(13).Enabled=   0   'False
+      Tab(1).Control(14)=   "cmbNpc(0)"
+      Tab(1).Control(14).Enabled=   0   'False
+      Tab(1).Control(15)=   "Command1"
+      Tab(1).Control(15).Enabled=   0   'False
+      Tab(1).Control(16)=   "Copy(0)"
+      Tab(1).Control(16).Enabled=   0   'False
+      Tab(1).Control(17)=   "Copy(1)"
+      Tab(1).Control(17).Enabled=   0   'False
+      Tab(1).Control(18)=   "Copy(2)"
+      Tab(1).Control(18).Enabled=   0   'False
+      Tab(1).Control(19)=   "Copy(3)"
+      Tab(1).Control(19).Enabled=   0   'False
+      Tab(1).Control(20)=   "Copy(4)"
+      Tab(1).Control(20).Enabled=   0   'False
+      Tab(1).Control(21)=   "Copy(5)"
+      Tab(1).Control(21).Enabled=   0   'False
+      Tab(1).Control(22)=   "Copy(6)"
+      Tab(1).Control(22).Enabled=   0   'False
       Tab(1).Control(23)=   "Copy(7)"
-      Tab(1).Control(24)=   "Copy(6)"
-      Tab(1).Control(25)=   "Copy(5)"
-      Tab(1).Control(26)=   "Copy(4)"
-      Tab(1).Control(27)=   "Copy(3)"
-      Tab(1).Control(28)=   "Copy(2)"
-      Tab(1).Control(29)=   "Copy(1)"
-      Tab(1).Control(30)=   "Copy(0)"
-      Tab(1).Control(31)=   "Command1"
-      Tab(1).Control(32)=   "cmbNpc(0)"
-      Tab(1).Control(33)=   "cmbNpc(1)"
-      Tab(1).Control(34)=   "cmbNpc(2)"
-      Tab(1).Control(35)=   "cmbNpc(3)"
-      Tab(1).Control(36)=   "cmbNpc(4)"
-      Tab(1).Control(37)=   "cmbNpc(5)"
-      Tab(1).Control(38)=   "cmbNpc(6)"
-      Tab(1).Control(39)=   "cmbNpc(7)"
-      Tab(1).Control(40)=   "cmbNpc(8)"
-      Tab(1).Control(41)=   "cmbNpc(9)"
-      Tab(1).Control(42)=   "cmbNpc(10)"
-      Tab(1).Control(43)=   "cmbNpc(11)"
-      Tab(1).Control(44)=   "cmbNpc(12)"
-      Tab(1).Control(45)=   "cmbNpc(13)"
-      Tab(1).Control(46)=   "cmbNpc(14)"
+      Tab(1).Control(23).Enabled=   0   'False
+      Tab(1).Control(24)=   "Copy(8)"
+      Tab(1).Control(24).Enabled=   0   'False
+      Tab(1).Control(25)=   "Copy(10)"
+      Tab(1).Control(25).Enabled=   0   'False
+      Tab(1).Control(26)=   "Copy(11)"
+      Tab(1).Control(26).Enabled=   0   'False
+      Tab(1).Control(27)=   "Copy(12)"
+      Tab(1).Control(27).Enabled=   0   'False
+      Tab(1).Control(28)=   "Copy(13)"
+      Tab(1).Control(28).Enabled=   0   'False
+      Tab(1).Control(29)=   "Copy(9)"
+      Tab(1).Control(29).Enabled=   0   'False
+      Tab(1).Control(30)=   "plus(10)"
+      Tab(1).Control(30).Enabled=   0   'False
+      Tab(1).Control(31)=   "plus(14)"
+      Tab(1).Control(31).Enabled=   0   'False
+      Tab(1).Control(32)=   "plus(13)"
+      Tab(1).Control(32).Enabled=   0   'False
+      Tab(1).Control(33)=   "plus(12)"
+      Tab(1).Control(33).Enabled=   0   'False
+      Tab(1).Control(34)=   "plus(11)"
+      Tab(1).Control(34).Enabled=   0   'False
+      Tab(1).Control(35)=   "plus(9)"
+      Tab(1).Control(35).Enabled=   0   'False
+      Tab(1).Control(36)=   "plus(8)"
+      Tab(1).Control(36).Enabled=   0   'False
+      Tab(1).Control(37)=   "plus(7)"
+      Tab(1).Control(37).Enabled=   0   'False
+      Tab(1).Control(38)=   "plus(6)"
+      Tab(1).Control(38).Enabled=   0   'False
+      Tab(1).Control(39)=   "plus(5)"
+      Tab(1).Control(39).Enabled=   0   'False
+      Tab(1).Control(40)=   "plus(4)"
+      Tab(1).Control(40).Enabled=   0   'False
+      Tab(1).Control(41)=   "plus(3)"
+      Tab(1).Control(41).Enabled=   0   'False
+      Tab(1).Control(42)=   "plus(2)"
+      Tab(1).Control(42).Enabled=   0   'False
+      Tab(1).Control(43)=   "plus(1)"
+      Tab(1).Control(43).Enabled=   0   'False
+      Tab(1).Control(44)=   "plus(15)"
+      Tab(1).Control(44).Enabled=   0   'False
+      Tab(1).Control(45)=   "Command4"
+      Tab(1).Control(45).Enabled=   0   'False
+      Tab(1).Control(46)=   "Command5"
+      Tab(1).Control(46).Enabled=   0   'False
       Tab(1).ControlCount=   47
       Begin VB.CommandButton Command5 
          Caption         =   "Annuler"
@@ -131,7 +179,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   390
-         Left            =   -67080
+         Left            =   7920
          TabIndex        =   90
          Top             =   7680
          Width           =   1575
@@ -148,7 +196,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   -68880
+         Left            =   6120
          TabIndex        =   89
          Top             =   7680
          Width           =   1575
@@ -156,7 +204,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Frame Frame6 
          Caption         =   "Panoramas de la carte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -165,14 +213,14 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2055
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   75
          ToolTipText     =   "Panorama situé au dessus de la couche frange"
          Top             =   5040
          Width           =   3615
          Begin VB.TextBox PanoInf 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -191,7 +239,7 @@ Begin VB.Form frmMapProperties
          End
          Begin VB.TextBox PanoSup 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -211,7 +259,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CommandButton ch1 
             Caption         =   "Choisir"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -229,7 +277,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CommandButton ch2 
             Caption         =   "Choisir"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -247,7 +295,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CheckBox TSup 
             Caption         =   "Transparence "
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -265,7 +313,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CheckBox TInf 
             Caption         =   "Transparence "
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -283,7 +331,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label3 
             Caption         =   "Panorama inférieur :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -300,7 +348,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label4 
             Caption         =   "Panorama supérieur :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -318,7 +366,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -328,7 +376,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   15
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   59
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   7320
@@ -337,7 +385,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -347,7 +395,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   255
          Index           =   1
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   16
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   600
@@ -356,7 +404,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -366,7 +414,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   2
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   20
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1080
@@ -375,7 +423,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -385,7 +433,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   3
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   23
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1560
@@ -394,7 +442,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -404,7 +452,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   4
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   26
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2040
@@ -413,7 +461,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -423,7 +471,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   5
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   29
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2520
@@ -432,7 +480,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -442,7 +490,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   6
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   32
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3000
@@ -451,7 +499,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -461,7 +509,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   7
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   35
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3480
@@ -470,7 +518,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -480,7 +528,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   8
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   38
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3960
@@ -489,7 +537,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -499,7 +547,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   9
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   41
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4440
@@ -508,7 +556,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -518,7 +566,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   11
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   47
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5400
@@ -527,7 +575,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -537,7 +585,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   12
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   50
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5880
@@ -546,7 +594,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -556,7 +604,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   13
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   53
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6360
@@ -565,7 +613,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -575,7 +623,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   14
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   56
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6840
@@ -584,7 +632,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton plus 
          Caption         =   "Plus..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -594,7 +642,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   10
-         Left            =   -69480
+         Left            =   5520
          TabIndex        =   44
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4920
@@ -603,7 +651,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -612,7 +660,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   420
-         Left            =   7920
+         Left            =   -67080
          TabIndex        =   17
          ToolTipText     =   "Annuler les changements"
          Top             =   7560
@@ -621,7 +669,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -630,7 +678,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   420
-         Left            =   6000
+         Left            =   -69000
          TabIndex        =   14
          ToolTipText     =   "Confirmer les changements"
          Top             =   7560
@@ -639,7 +687,7 @@ Begin VB.Form frmMapProperties
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -649,16 +697,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   9
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   46
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5400
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -668,16 +716,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   13
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   58
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   7320
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -687,16 +735,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   12
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   55
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6840
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -706,16 +754,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   11
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   52
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6360
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -725,16 +773,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   10
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   49
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5880
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -744,16 +792,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   8
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   43
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4920
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -763,16 +811,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   7
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   40
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4440
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -782,16 +830,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   6
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   37
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3960
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -801,16 +849,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   5
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   34
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3480
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -820,16 +868,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   4
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   31
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3000
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -839,16 +887,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   3
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   28
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2520
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -858,16 +906,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   2
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   25
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2040
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -877,16 +925,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   1
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   22
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1560
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Copy 
          Caption         =   "Copier"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -896,16 +944,16 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   255
          Index           =   0
-         Left            =   -70320
+         Left            =   4680
          TabIndex        =   19
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1080
-         Width           =   615
+         Width           =   735
       End
       Begin VB.CommandButton Command1 
          Caption         =   "Retirer les PNJ de la carte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -914,7 +962,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   -73560
+         Left            =   1440
          TabIndex        =   60
          ToolTipText     =   "Retirer tout les pnj de la carte"
          Top             =   7800
@@ -923,7 +971,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Frame Frame4 
          Caption         =   "Musique de la carte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -932,7 +980,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4215
-         Left            =   4320
+         Left            =   -70680
          TabIndex        =   73
          ToolTipText     =   "Musique entendue par les joueurs qui sont sur la carte"
          Top             =   2880
@@ -940,7 +988,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CommandButton Command3 
             Caption         =   "Stop"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -958,7 +1006,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CommandButton Command2 
             Caption         =   "Jouer"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -975,7 +1023,7 @@ Begin VB.Form frmMapProperties
          End
          Begin VB.ListBox lstMusic 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -995,7 +1043,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Frame Frame3 
          Caption         =   "Téléportation à la déconnexion :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1004,7 +1052,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1845
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   69
          ToolTipText     =   "Vous pouvez l'utiliser pour faire vos donjons par exemple"
          Top             =   3000
@@ -1012,7 +1060,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CommandButton collco 
             Caption         =   "Coller les coordonées"
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1030,7 +1078,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtBootMap 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1048,7 +1096,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtBootX 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1067,7 +1115,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtBootY 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1086,7 +1134,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label7 
             Caption         =   "Numéro de la carte :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1103,7 +1151,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label8 
             Caption         =   "Valeur en X :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1120,7 +1168,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label9 
             Caption         =   "Valeur en Y :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1138,7 +1186,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Frame Frame2 
          Caption         =   "Globale"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1147,7 +1195,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1980
-         Left            =   4320
+         Left            =   -70680
          TabIndex        =   67
          Top             =   840
          Width           =   5085
@@ -1164,7 +1212,7 @@ Begin VB.Form frmMapProperties
          Begin VB.ComboBox cmbFog 
             Enabled         =   0   'False
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1185,7 +1233,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CheckBox chkFog 
             Caption         =   "Brouillard"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1198,11 +1246,11 @@ Begin VB.Form frmMapProperties
             TabIndex        =   84
             ToolTipText     =   "Active/Désactive le brouillard sur la carte sélectionnée"
             Top             =   1000
-            Width           =   975
+            Width           =   1335
          End
          Begin VB.ComboBox cmbMoral 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1223,7 +1271,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label5 
             Caption         =   "Numéro :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1240,7 +1288,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label prFog 
             Caption         =   "Pourcentage de transparence :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1257,7 +1305,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label1 
             Caption         =   "Spécialité de la carte :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1275,7 +1323,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Frame Frame1 
          Caption         =   "Téléportation sur les bords de la Carte"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1284,14 +1332,14 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2115
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   62
          Top             =   840
          Width           =   3615
          Begin VB.CheckBox Ctraversable 
             Caption         =   "Joueur Traversable"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1309,7 +1357,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CheckBox cPetView 
             Caption         =   "Cacher Famillier sur la map"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1317,17 +1365,17 @@ Begin VB.Form frmMapProperties
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   255
+            Height          =   375
             Left            =   1320
             TabIndex        =   92
             ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
-            Top             =   1560
+            Top             =   1460
             Width           =   2200
          End
          Begin VB.CheckBox CGuild 
             Caption         =   "Guilde Seule"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1345,7 +1393,7 @@ Begin VB.Form frmMapProperties
          Begin VB.CheckBox chkIndoors 
             Caption         =   "Intérieur"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1357,13 +1405,13 @@ Begin VB.Form frmMapProperties
             Left            =   120
             TabIndex        =   6
             ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
-            Top             =   1560
+            Top             =   1520
             Width           =   1095
          End
          Begin VB.TextBox txtLeft 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1382,7 +1430,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtDown 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1401,7 +1449,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtRight 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1420,7 +1468,7 @@ Begin VB.Form frmMapProperties
          Begin VB.TextBox txtUp 
             Alignment       =   1  'Right Justify
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1439,7 +1487,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label16 
             Caption         =   "Ouest (Gauche) :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1456,7 +1504,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label15 
             Caption         =   "Sud (Bas) :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1473,7 +1521,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label2 
             Caption         =   "Est (Droite) :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1490,7 +1538,7 @@ Begin VB.Form frmMapProperties
          Begin VB.Label Label14 
             Caption         =   "Nord (Haut) :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -1507,7 +1555,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.TextBox txtName 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1516,7 +1564,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   1740
+         Left            =   -73260
          MaxLength       =   40
          TabIndex        =   1
          ToolTipText     =   "Ecrivez le nom désirer pour la carte ici"
@@ -1525,7 +1573,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1535,7 +1583,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   0
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   15
          ToolTipText     =   "Sélectionner un pnj"
@@ -1544,7 +1592,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1554,7 +1602,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   1
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   18
          ToolTipText     =   "Sélectionner un pnj"
@@ -1563,7 +1611,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1573,7 +1621,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   2
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   21
          ToolTipText     =   "Sélectionner un pnj"
@@ -1582,7 +1630,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1593,7 +1641,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   3
          ItemData        =   "frmMapProperties.frx":007E
-         Left            =   -74520
+         Left            =   480
          List            =   "frmMapProperties.frx":0080
          Style           =   2  'Dropdown List
          TabIndex        =   24
@@ -1603,7 +1651,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1613,7 +1661,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   4
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   27
          ToolTipText     =   "Sélectionner un pnj"
@@ -1622,7 +1670,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1632,7 +1680,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   5
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   30
          ToolTipText     =   "Sélectionner un pnj"
@@ -1641,7 +1689,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1651,7 +1699,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   6
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   33
          ToolTipText     =   "Sélectionner un pnj"
@@ -1660,7 +1708,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1671,7 +1719,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   7
          ItemData        =   "frmMapProperties.frx":0082
-         Left            =   -74520
+         Left            =   480
          List            =   "frmMapProperties.frx":0084
          Style           =   2  'Dropdown List
          TabIndex        =   36
@@ -1681,7 +1729,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1691,7 +1739,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   8
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   39
          ToolTipText     =   "Sélectionner un pnj"
@@ -1700,7 +1748,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1710,7 +1758,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   9
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   42
          ToolTipText     =   "Sélectionner un pnj"
@@ -1719,7 +1767,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1729,7 +1777,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   10
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   45
          ToolTipText     =   "Sélectionner un pnj"
@@ -1738,7 +1786,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1748,7 +1796,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   11
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   48
          ToolTipText     =   "Sélectionner un pnj"
@@ -1757,7 +1805,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1767,7 +1815,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   12
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   51
          ToolTipText     =   "Sélectionner un pnj"
@@ -1776,7 +1824,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1787,7 +1835,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   13
          ItemData        =   "frmMapProperties.frx":0086
-         Left            =   -74520
+         Left            =   480
          List            =   "frmMapProperties.frx":0088
          Style           =   2  'Dropdown List
          TabIndex        =   54
@@ -1797,7 +1845,7 @@ Begin VB.Form frmMapProperties
       End
       Begin VB.ComboBox cmbNpc 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1807,7 +1855,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   14
-         Left            =   -74520
+         Left            =   480
          Style           =   2  'Dropdown List
          TabIndex        =   57
          ToolTipText     =   "Sélectionner un pnj"
@@ -1817,7 +1865,7 @@ Begin VB.Form frmMapProperties
       Begin VB.Label Label13 
          Caption         =   "Nom de la carte :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -1826,7 +1874,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   360
+         Left            =   -74640
          TabIndex        =   61
          Top             =   360
          Width           =   1335

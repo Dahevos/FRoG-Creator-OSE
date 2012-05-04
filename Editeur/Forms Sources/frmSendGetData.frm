@@ -19,7 +19,7 @@ Begin VB.Form frmSendGetData
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

@@ -57,7 +57,7 @@ Begin VB.Form frmFlash
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -77,7 +77,7 @@ Begin VB.Form frmFlash
       BackStyle       =   0  'Transparent
       Caption         =   "Annuler"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

@@ -24,7 +24,7 @@ Begin VB.Form frmNpcEditor
    Begin VB.Frame fraSpells 
       Caption         =   "Sortillèges"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -39,7 +39,7 @@ Begin VB.Form frmNpcEditor
       Width           =   6015
       Begin VB.ComboBox cmbSpellType 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -58,7 +58,7 @@ Begin VB.Form frmNpcEditor
       End
       Begin VB.ListBox lstTypeSpell 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -75,7 +75,7 @@ Begin VB.Form frmNpcEditor
       End
       Begin VB.ListBox lstSpells 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -93,7 +93,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CommandButton cmdAddSpell 
          Caption         =   ">"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -110,7 +110,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CommandButton cmdRemSpell 
          Caption         =   "<"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -128,7 +128,7 @@ Begin VB.Form frmNpcEditor
    Begin VB.Frame Frame3 
       Caption         =   "Divers"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -156,7 +156,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.TextBox txtSpawnSecs 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -174,7 +174,7 @@ Begin VB.Form frmNpcEditor
       End
       Begin VB.ComboBox cmbBehavior 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -195,7 +195,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CheckBox chkDay 
          Caption         =   "Jour"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -214,7 +214,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CheckBox chkNight 
          Caption         =   "Nuit"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -233,7 +233,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.TextBox txtChance 
          Alignment       =   1  'Right Justify
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -282,7 +282,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "Numéro de la quête :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -302,7 +302,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -323,7 +323,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "Apparition :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -342,7 +342,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Temps entre chaque réapparition :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -360,7 +360,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Atitude :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -378,7 +378,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "1 chance de l'avoir sur..."
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -396,7 +396,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -415,7 +415,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Valeur :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -434,7 +434,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -453,7 +453,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Numéro :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -470,7 +470,7 @@ Begin VB.Form frmNpcEditor
       End
       Begin VB.Label lblItemName 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -489,7 +489,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Objet :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -508,7 +508,7 @@ Begin VB.Form frmNpcEditor
          AutoSize        =   -1  'True
          Caption         =   "1"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -527,7 +527,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Objet donné :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -546,7 +546,7 @@ Begin VB.Form frmNpcEditor
    Begin VB.Frame Frame1 
       Caption         =   "Informations Générales"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -576,7 +576,7 @@ Begin VB.Form frmNpcEditor
             BackColor       =   &H00000000&
             BorderStyle     =   0  'None
             BeginProperty Font 
-               Name            =   "MS Sans Serif"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -622,7 +622,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CheckBox vol 
          Caption         =   "PNJ volant"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -640,7 +640,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.CheckBox invi 
          Caption         =   "Invincible"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -721,7 +721,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblExpGiven 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -740,7 +740,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "EXP donnée :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -758,7 +758,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblStartHP 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -777,7 +777,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Points de Vie :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -795,7 +795,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblSprite 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -814,7 +814,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Apparence :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -831,7 +831,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblRange 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -851,7 +851,7 @@ Begin VB.Form frmNpcEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Distance de vision:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -869,7 +869,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblSTR 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -888,7 +888,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Force :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -906,7 +906,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblDEF 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -925,7 +925,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Défense :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -943,7 +943,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblSPEED 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -962,7 +962,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Vitesse :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -980,7 +980,7 @@ Begin VB.Form frmNpcEditor
       Begin VB.Label lblMAGI 
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -999,7 +999,7 @@ Begin VB.Form frmNpcEditor
          Alignment       =   1  'Right Justify
          Caption         =   "Magie :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -1017,7 +1017,7 @@ Begin VB.Form frmNpcEditor
    End
    Begin VB.TextBox txtAttackSay 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -1037,7 +1037,7 @@ Begin VB.Form frmNpcEditor
    Begin VB.CommandButton cmdCancel 
       Caption         =   "Annuler"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -1055,7 +1055,7 @@ Begin VB.Form frmNpcEditor
    Begin VB.CommandButton cmdOk 
       Caption         =   "Ok"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -1072,7 +1072,7 @@ Begin VB.Form frmNpcEditor
    End
    Begin VB.TextBox txtName 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -1091,7 +1091,7 @@ Begin VB.Form frmNpcEditor
       Alignment       =   2  'Center
       Caption         =   "Discussion :"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -1109,7 +1109,7 @@ Begin VB.Form frmNpcEditor
       Alignment       =   1  'Right Justify
       Caption         =   "Nom :"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

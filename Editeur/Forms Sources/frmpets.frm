@@ -8,7 +8,7 @@ Begin VB.Form frmpet
    ClientWidth     =   4905
    ControlBox      =   0   'False
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   8.25
       Charset         =   0
       Weight          =   400

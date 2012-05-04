@@ -28,7 +28,7 @@ Begin VB.Form frmIndex
    Begin VB.CommandButton cmdCancel 
       Caption         =   "Fermer"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -45,7 +45,7 @@ Begin VB.Form frmIndex
    Begin VB.CommandButton cmdOk 
       Caption         =   "Editer..."
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -61,7 +61,7 @@ Begin VB.Form frmIndex
    End
    Begin VB.ListBox lstIndex 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -91,7 +91,7 @@ Begin VB.Form frmIndex
       TabHeight       =   370
       TabMaxWidth     =   3528
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -109,7 +109,7 @@ Begin VB.Form frmIndex
       Tab(0).ControlCount=   2
       Begin VB.TextBox Text1 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -127,7 +127,7 @@ Begin VB.Form frmIndex
          AutoSize        =   -1  'True
          Caption         =   "Rechercher (numéros ou nom) :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400

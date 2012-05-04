@@ -17,7 +17,7 @@ Begin VB.Form frmadmin
    Begin VB.CommandButton btnclose 
       Caption         =   "Fermer le panneau"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   700
@@ -44,7 +44,7 @@ Begin VB.Form frmadmin
       TabHeight       =   353
       TabMaxWidth     =   1940
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -97,7 +97,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame11 
          Caption         =   "Environnement"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -112,7 +112,7 @@ Begin VB.Form frmadmin
          Width           =   2055
          Begin VB.TextBox motd 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -129,7 +129,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command14 
             Caption         =   "Changer mot de bienvenue"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -146,7 +146,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command13 
             Caption         =   "Jour / Nuit"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -163,7 +163,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label19 
             Caption         =   "Mot de bienvenue:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -181,7 +181,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame3 
          Caption         =   "Commande du sprite"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -197,7 +197,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnPlayerSprite 
             Caption         =   "Changer sprite du joueur"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -213,7 +213,7 @@ Begin VB.Form frmadmin
          End
          Begin VB.TextBox txtSprite 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -230,7 +230,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnSprite 
             Caption         =   "Changer votre sprite"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -247,7 +247,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label3 
             Caption         =   "Numéro du sprite:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -265,7 +265,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame10 
          Caption         =   "Chagement de Stats"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -281,7 +281,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command11 
             Caption         =   "Changer le PM"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -298,7 +298,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command10 
             Caption         =   "Changer les PV"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -315,7 +315,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command12 
             Caption         =   "Changer les points"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -332,7 +332,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command9 
             Caption         =   "Changer l'expérience"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -349,7 +349,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command8 
             Caption         =   "Changer le niveau"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -366,7 +366,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command7 
             Caption         =   "Changer le PK"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -383,7 +383,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command6 
             Caption         =   "Changer la magie"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -400,7 +400,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command4 
             Caption         =   "Changer la vitesse"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -417,7 +417,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command3 
             Caption         =   "Changer la défense"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -434,7 +434,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command5 
             Caption         =   "Changer la force"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -450,7 +450,7 @@ Begin VB.Form frmadmin
          End
          Begin VB.TextBox txtValeur 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9
                Charset         =   0
                Weight          =   700
@@ -467,7 +467,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label18 
             Caption         =   "Nouvelle valeur:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -486,7 +486,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame9 
          Caption         =   "Cible de la Commande"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -502,7 +502,7 @@ Begin VB.Form frmadmin
          Width           =   2055
          Begin VB.TextBox txtplayer2 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9
                Charset         =   0
                Weight          =   700
@@ -519,7 +519,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label17 
             Caption         =   "Nom du Joueur concerné:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -537,7 +537,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame5 
          Caption         =   "Commande de Nom"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -552,7 +552,7 @@ Begin VB.Form frmadmin
          Width           =   2055
          Begin VB.TextBox txtName 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -569,7 +569,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnname 
             Caption         =   "Changer le nom du joueur"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -586,7 +586,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnyname 
             Caption         =   "Changer votre nom"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -603,7 +603,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label6 
             Caption         =   "Nouveau nom:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -731,7 +731,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame7 
          Caption         =   "Cible de la Commande"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -747,7 +747,7 @@ Begin VB.Form frmadmin
          Width           =   2055
          Begin VB.TextBox txtPlayer 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   9
                Charset         =   0
                Weight          =   700
@@ -764,7 +764,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label1 
             Caption         =   "Nom du Joueur concerné:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -782,7 +782,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame4 
          Caption         =   "Commande de Dev"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -798,7 +798,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton tnEditQuetes 
             Caption         =   "Éditer les Quêtes"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -815,7 +815,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton tnEditEmoticon 
             Caption         =   "Éditer les Émoticons"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -832,7 +832,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton tnEditArrow 
             Caption         =   "Éditer les Flêches"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -849,7 +849,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnEditNPC 
             Caption         =   "Éditer les NPCs"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -866,7 +866,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnEditShops 
             Caption         =   "Éditer les Magasins"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -883,7 +883,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnedititem 
             Caption         =   "Éditer les Objets"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -900,7 +900,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btneditspell 
             Caption         =   "Éditer les Sorts"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -917,7 +917,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnMapeditor 
             Caption         =   "Éditer les Maps"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -935,7 +935,7 @@ Begin VB.Form frmadmin
       Begin VB.Frame Frame2 
          Caption         =   "Commande de Maps"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -951,7 +951,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command15 
             Caption         =   "Menu de téléportation"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -968,7 +968,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnWarpto 
             Caption         =   "Téléporter à .."
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -985,7 +985,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnRespawn 
             Caption         =   "Réinitialiser"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1002,7 +1002,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnLOC 
             Caption         =   "Location"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1018,7 +1018,7 @@ Begin VB.Form frmadmin
          End
          Begin VB.TextBox txtMap 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1035,7 +1035,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label2 
             Caption         =   "Numéro de la Map:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1068,7 +1068,7 @@ Begin VB.Form frmadmin
          Width           =   2055
          Begin VB.TextBox txtAccess 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1085,7 +1085,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnBan 
             Caption         =   "Banir"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1102,7 +1102,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton Command2 
             Caption         =   "Informations sur le joueur"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1119,7 +1119,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnKick 
             Caption         =   "Déconnecter"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1136,7 +1136,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnSetAccess 
             Caption         =   "Changer les access"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1153,7 +1153,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnWarpToME 
             Caption         =   "Téléportez-le à moi"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1170,7 +1170,7 @@ Begin VB.Form frmadmin
          Begin VB.CommandButton btnWarpMeTo 
             Caption         =   "Téléporter moi à..."
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1187,7 +1187,7 @@ Begin VB.Form frmadmin
          Begin VB.Label Label4 
             Caption         =   "Valeur de l'access:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -1212,7 +1212,7 @@ Begin VB.Form frmadmin
       Begin VB.Label Label16 
          Caption         =   "Panneau d'administration"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -1229,7 +1229,7 @@ Begin VB.Form frmadmin
       Begin VB.Label Label7 
          Caption         =   "Panneau d'administration"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -1246,7 +1246,7 @@ Begin VB.Form frmadmin
       Begin VB.Label Label5 
          Caption         =   "Panneau d'administration"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

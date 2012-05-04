@@ -32,7 +32,7 @@ Begin VB.Form frmEmoticonEditor
       TabHeight       =   397
       TabMaxWidth     =   1984
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -63,7 +63,7 @@ Begin VB.Form frmEmoticonEditor
       Begin VB.CommandButton Command1 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -81,7 +81,7 @@ Begin VB.Form frmEmoticonEditor
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -98,7 +98,7 @@ Begin VB.Form frmEmoticonEditor
       End
       Begin VB.TextBox txtCommand 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -156,7 +156,7 @@ Begin VB.Form frmEmoticonEditor
          AutoSize        =   -1  'True
          Caption         =   "Commande :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -174,7 +174,7 @@ Begin VB.Form frmEmoticonEditor
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -192,7 +192,7 @@ Begin VB.Form frmEmoticonEditor
       Begin VB.Label Label5 
          Caption         =   "Emoticone :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

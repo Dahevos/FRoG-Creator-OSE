@@ -29,7 +29,7 @@ Begin VB.Form frmSpriteChange
       TabHeight       =   353
       TabMaxWidth     =   2822
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -68,7 +68,7 @@ Begin VB.Form frmSpriteChange
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -116,7 +116,7 @@ Begin VB.Form frmSpriteChange
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -143,7 +143,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "Aucun Prix"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -162,7 +162,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "Objet:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -180,7 +180,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -199,7 +199,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "Valeur:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -218,7 +218,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "Sprite:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -236,7 +236,7 @@ Begin VB.Form frmSpriteChange
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

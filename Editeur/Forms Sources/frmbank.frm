@@ -7,7 +7,7 @@ Begin VB.Form frmbank
    ClientTop       =   -30
    ClientWidth     =   10080
    BeginProperty Font 
-      Name            =   "Tahoma"
+      Name            =   "Segoe UI"
       Size            =   8.25
       Charset         =   0
       Weight          =   400
@@ -28,7 +28,7 @@ Begin VB.Form frmbank
       Appearance      =   0  'Flat
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -93,7 +93,7 @@ Begin VB.Form frmbank
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -118,7 +118,7 @@ Begin VB.Form frmbank
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   400
@@ -941,7 +941,7 @@ Begin VB.Form frmbank
       BackStyle       =   0  'Transparent
       Caption         =   "Inventaire :"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -960,7 +960,7 @@ Begin VB.Form frmbank
       BackStyle       =   0  'Transparent
       Caption         =   "Coffre :"
       BeginProperty Font 
-         Name            =   "MS Sans Serif"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

@@ -28,7 +28,7 @@ Begin VB.Form frmBClass
       TabHeight       =   353
       TabMaxWidth     =   1764
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -81,7 +81,7 @@ Begin VB.Form frmBClass
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -98,7 +98,7 @@ Begin VB.Form frmBClass
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -124,7 +124,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -142,7 +142,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -161,7 +161,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "Classe acceptée:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -180,7 +180,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "Classe acceptée:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -199,7 +199,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "Classe acceptée:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -217,7 +217,7 @@ Begin VB.Form frmBClass
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

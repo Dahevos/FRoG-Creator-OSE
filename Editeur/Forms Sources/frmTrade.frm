@@ -1712,7 +1712,7 @@ Begin VB.Form frmTrade
    Begin VB.Label picFixItems 
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1733,7 +1733,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Classe"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1762,7 +1762,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Quantity"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1783,7 +1783,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1821,7 +1821,7 @@ Begin VB.Form frmTrade
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1958,7 +1958,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Name"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1979,7 +1979,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXX%"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -1999,7 +1999,7 @@ Begin VB.Form frmTrade
       BackColor       =   &H00808080&
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2020,7 +2020,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2041,7 +2041,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2062,7 +2062,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2083,7 +2083,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2104,7 +2104,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2125,7 +2125,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2146,7 +2146,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "XXXX"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2167,7 +2167,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Speed"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2188,7 +2188,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Defence"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -2209,7 +2209,7 @@ Begin VB.Form frmTrade
       BackStyle       =   0  'Transparent
       Caption         =   "Strength"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

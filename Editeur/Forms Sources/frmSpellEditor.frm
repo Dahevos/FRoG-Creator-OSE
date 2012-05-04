@@ -42,7 +42,7 @@ Begin VB.Form frmSpellEditor
       TabHeight       =   397
       TabMaxWidth     =   1587
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -130,7 +130,7 @@ Begin VB.Form frmSpellEditor
          BackColor       =   &H00000000&
          BorderStyle     =   0  'None
          BeginProperty Font 
-            Name            =   "MS Sans Serif"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -166,7 +166,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.CheckBox CheckSpell 
          Caption         =   "BigSpells"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -193,7 +193,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.CommandButton Command1 
          Caption         =   "Actualiser"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   8.25
             Charset         =   0
             Weight          =   400
@@ -268,7 +268,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -286,7 +286,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   9.75
             Charset         =   0
             Weight          =   400
@@ -303,7 +303,7 @@ Begin VB.Form frmSpellEditor
       End
       Begin VB.ComboBox cmbType 
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -342,7 +342,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.Frame Frame1 
          Caption         =   "Requis de l'utilisation"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -378,7 +378,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "Niveau Requis:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -399,7 +399,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "PM Requis:"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -419,7 +419,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "Administrateur Seulement"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -439,7 +439,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "0"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -458,7 +458,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.Frame info 
          Caption         =   "Informations"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -474,7 +474,7 @@ Begin VB.Form frmSpellEditor
          Begin VB.CheckBox chkArea 
             Caption         =   "Affecte les alentours"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -491,7 +491,7 @@ Begin VB.Form frmSpellEditor
          End
          Begin VB.ComboBox cmbClassReq 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -511,7 +511,7 @@ Begin VB.Form frmSpellEditor
          End
          Begin VB.TextBox txtName 
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   8.25
                Charset         =   0
                Weight          =   400
@@ -531,7 +531,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "Classe Requise :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -549,7 +549,7 @@ Begin VB.Form frmSpellEditor
             BackStyle       =   0  'Transparent
             Caption         =   "Nom :"
             BeginProperty Font 
-               Name            =   "Tahoma"
+               Name            =   "Segoe UI"
                Size            =   6.75
                Charset         =   0
                Weight          =   400
@@ -567,7 +567,7 @@ Begin VB.Form frmSpellEditor
       Begin VB.Label Label11 
          Caption         =   "Icone :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   700
@@ -585,7 +585,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Nombre de points perdu :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -606,7 +606,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -627,7 +627,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Cycle Animation 1 Fois"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -647,7 +647,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Temps: 40"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -667,7 +667,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Anim: 0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -687,7 +687,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -706,7 +706,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Distance:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -725,7 +725,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Type de Sort :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -744,7 +744,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -763,7 +763,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Modifie les points de :"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -782,7 +782,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Effet Sonore:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -802,7 +802,7 @@ Begin VB.Form frmSpellEditor
          BackStyle       =   0  'Transparent
          Caption         =   "Aucun"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

@@ -29,7 +29,7 @@ Begin VB.Form frmArena
       TabHeight       =   441
       TabMaxWidth     =   3528
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -74,7 +74,7 @@ Begin VB.Form frmArena
       Begin VB.CommandButton cmdCancel 
          Caption         =   "Annuler"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -91,7 +91,7 @@ Begin VB.Form frmArena
       Begin VB.CommandButton cmdOk 
          Caption         =   "Ok"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -125,7 +125,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -144,7 +144,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "Map:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -163,7 +163,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "X:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -182,7 +182,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "Y:"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -200,7 +200,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400
@@ -218,7 +218,7 @@ Begin VB.Form frmArena
          AutoSize        =   -1  'True
          Caption         =   "0"
          BeginProperty Font 
-            Name            =   "Tahoma"
+            Name            =   "Segoe UI"
             Size            =   6.75
             Charset         =   0
             Weight          =   400

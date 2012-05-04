@@ -17,7 +17,7 @@ Begin VB.Form frmmsg
       AutoSize        =   -1  'True
       Caption         =   "Erreur? cliquer sur le message pour Quitter!"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -35,7 +35,7 @@ Begin VB.Form frmmsg
       AutoSize        =   -1  'True
       Caption         =   "Veuillez patienter SVP ..."
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   14.25
          Charset         =   0
          Weight          =   400
