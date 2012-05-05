@@ -6,7 +6,7 @@ Object = "{984C2AF5-D8F3-11D7-8532-00E07DD46690}#1.0#0"; "HookMenuPlus.ocx"
 Begin VB.Form frmMirage 
    BorderStyle     =   1  'Fixed Single
    Caption         =   " "
-   ClientHeight    =   8115
+   ClientHeight    =   10200
    ClientLeft      =   2805
    ClientTop       =   -45
    ClientWidth     =   15270
@@ -28,11 +28,600 @@ Begin VB.Form frmMirage
    MaxButton       =   0   'False
    MinButton       =   0   'False
    MouseIcon       =   "frmMirage.frx":17D2A
-   ScaleHeight     =   541
+   ScaleHeight     =   680
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1018
    StartUpPosition =   2  'CenterScreen
    Visible         =   0   'False
+   Begin VB.PictureBox Attributs 
+      Appearance      =   0  'Flat
+      BorderStyle     =   0  'None
+      ForeColor       =   &H80000008&
+      Height          =   6930
+      Left            =   0
+      ScaleHeight     =   462
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   236
+      TabIndex        =   26
+      TabStop         =   0   'False
+      ToolTipText     =   "Maintenir le click gauche  pour déplacer,click droit pour position de default."
+      Top             =   480
+      Visible         =   0   'False
+      Width           =   3540
+      Begin VB.OptionButton OptMetier 
+         Caption         =   "Metier"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   149
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3840
+         Width           =   1410
+      End
+      Begin VB.OptionButton OptCraft 
+         Caption         =   "Table de Craft"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   148
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3600
+         Width           =   1410
+      End
+      Begin VB.OptionButton optNpcAvoid 
+         Caption         =   "Bloquer PNJ"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   0
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les PNJ(personnage non joueur)"
+         Top             =   600
+         Width           =   1215
+      End
+      Begin VB.OptionButton optBDir 
+         Caption         =   "Bloque Direction"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   145
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement une ou plusieurs directions"
+         Top             =   1800
+         Width           =   1410
+      End
+      Begin VB.OptionButton optbtoit 
+         Caption         =   "Bloque Toit"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   144
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
+         Top             =   3120
+         Width           =   1170
+      End
+      Begin VB.OptionButton optBguilde 
+         Caption         =   "Bloquer Guilde"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   65
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
+         Top             =   1560
+         Width           =   1395
+      End
+      Begin VB.OptionButton opttoit 
+         Caption         =   "Toit"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   52
+         TabStop         =   0   'False
+         ToolTipText     =   "Quand le jouer marche sur une case Toit toutes les couches frange 1,2 et 3 qui sont sur une case Toit autour de lui disparaisse"
+         Top             =   2880
+         Width           =   1170
+      End
+      Begin VB.OptionButton optBniv 
+         Caption         =   "Bloquer Niv."
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   51
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement a partir d'un certain Niveau"
+         Top             =   1080
+         Width           =   1155
+      End
+      Begin VB.OptionButton optBmont 
+         Caption         =   "Bloquer Monture"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   50
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
+         Top             =   1320
+         Width           =   1395
+      End
+      Begin VB.OptionButton optcoffre 
+         Caption         =   "Coffre"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   49
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée un coffre qui ne pourras être ouvert qu'avec un objet clé sélectionner ou un code"
+         Top             =   3240
+         Width           =   1095
+      End
+      Begin VB.OptionButton optportecode 
+         Caption         =   "Porte à code"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   48
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un codéfinit"
+         Top             =   2880
+         Width           =   1095
+      End
+      Begin VB.OptionButton optWarp 
+         Caption         =   "Téléportation"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   44
+         TabStop         =   0   'False
+         ToolTipText     =   "Téléport le joueur au positions et a la carte choisie"
+         Top             =   1920
+         Width           =   1215
+      End
+      Begin VB.OptionButton OptBank 
+         Caption         =   "Banque"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   0
+         TabIndex        =   43
+         TabStop         =   0   'False
+         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre de la banque"
+         Top             =   4200
+         Width           =   975
+      End
+      Begin VB.OptionButton optScripted 
+         Caption         =   "Case Scriptée"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   42
+         TabStop         =   0   'False
+         ToolTipText     =   "Exécute le script de la case sélectionner"
+         Top             =   1680
+         Width           =   1290
+      End
+      Begin VB.OptionButton optClassChange 
+         Caption         =   "Chg de Classe"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   41
+         TabStop         =   0   'False
+         ToolTipText     =   "Change la classe du joueur"
+         Top             =   2640
+         Width           =   1200
+      End
+      Begin VB.OptionButton optNotice 
+         Caption         =   "Avertissement"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   40
+         TabStop         =   0   'False
+         ToolTipText     =   "Avertissement sous forme de texte et/ou de bruit"
+         Top             =   3720
+         Width           =   1215
+      End
+      Begin VB.OptionButton optDoor 
+         Caption         =   "Porte"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   39
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui s'ouvrira à l'approche du joueur"
+         Top             =   2640
+         Width           =   960
+      End
+      Begin VB.OptionButton optSign 
+         Caption         =   "Panneau"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   38
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée un panneau"
+         Top             =   3480
+         Width           =   1080
+      End
+      Begin VB.OptionButton optSprite 
+         Caption         =   "Chg Sprite"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   37
+         TabStop         =   0   'False
+         ToolTipText     =   "Change l'apparence du joueur(Sprite = skin/habit)"
+         Top             =   2400
+         Width           =   1200
+      End
+      Begin VB.OptionButton optSound 
+         Caption         =   "Jouer un son"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   36
+         TabStop         =   0   'False
+         ToolTipText     =   "Joue un son quand le joueur passe sur la case"
+         Top             =   600
+         Width           =   1170
+      End
+      Begin VB.OptionButton optArena 
+         Caption         =   "Arène"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   35
+         TabStop         =   0   'False
+         ToolTipText     =   "Case à mettre dans les arènes qui enlèvent les pénalités PK (tuer des joueurs)"
+         Top             =   840
+         Width           =   1170
+      End
+      Begin VB.OptionButton optCBlock 
+         Caption         =   "Bloquer Class"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   34
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque seulement certaines classes"
+         Top             =   840
+         Width           =   1125
+      End
+      Begin VB.OptionButton optShop 
+         Caption         =   "Magasin"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   33
+         TabStop         =   0   'False
+         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre du magasin sélectionner"
+         Top             =   3960
+         Width           =   810
+      End
+      Begin VB.OptionButton optKill 
+         Caption         =   "Tuer"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   32
+         TabStop         =   0   'False
+         ToolTipText     =   "Tue un joueur"
+         Top             =   1320
+         Width           =   810
+      End
+      Begin VB.OptionButton optHeal 
+         Caption         =   "Soins"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   1560
+         TabIndex        =   31
+         TabStop         =   0   'False
+         ToolTipText     =   "Soigne un joueur"
+         Top             =   1080
+         Width           =   1035
+      End
+      Begin VB.OptionButton optKeyOpen 
+         Caption         =   "Ouvrir une Porte"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   240
+         Left            =   0
+         TabIndex        =   30
+         TabStop         =   0   'False
+         ToolTipText     =   "En passant sur cette case le joueur ouvrira une porte sélectionner par ses coordonner"
+         Top             =   2160
+         Width           =   1455
+      End
+      Begin VB.OptionButton optBlocked 
+         Caption         =   "Bloquer"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   0
+         TabIndex        =   1
+         TabStop         =   0   'False
+         ToolTipText     =   "Bloque les joueur et le PNJ"
+         Top             =   360
+         Value           =   -1  'True
+         Width           =   1215
+      End
+      Begin VB.CommandButton cmdClear2 
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Éffacer tout les attributs"
+         Height          =   300
+         Left            =   600
+         MaskColor       =   &H00E0E0E0&
+         TabIndex        =   29
+         ToolTipText     =   "Efface tout les attributs sur la carte"
+         Top             =   4560
+         Width           =   2175
+      End
+      Begin VB.OptionButton optItem 
+         Caption         =   "Objet"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   1560
+         TabIndex        =   28
+         TabStop         =   0   'False
+         ToolTipText     =   "Pose l'objet sélectionner au sol"
+         Top             =   360
+         Width           =   1215
+      End
+      Begin VB.OptionButton optKey 
+         Caption         =   "Porte à clé"
+         BeginProperty Font 
+            Name            =   "Segoe UI"
+            Size            =   6.75
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   270
+         Left            =   0
+         TabIndex        =   27
+         TabStop         =   0   'False
+         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un objet clé sélectionner"
+         Top             =   2400
+         Width           =   1215
+      End
+      Begin VB.Label atrib 
+         Appearance      =   0  'Flat
+         Caption         =   "Attributs :"
+         ForeColor       =   &H80000008&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   45
+         Top             =   0
+         Width           =   855
+      End
+   End
    Begin VB.ComboBox Canal 
       Height          =   315
       ItemData        =   "frmMirage.frx":17E7C
@@ -290,7 +879,7 @@ Begin VB.Form frmMirage
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2625
-         Left            =   0
+         Left            =   120
          ScaleHeight     =   2625
          ScaleWidth      =   2385
          TabIndex        =   132
@@ -541,15 +1130,6 @@ Begin VB.Form frmMirage
       Begin VB.PictureBox picInv3 
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          ForeColor       =   &H80000008&
          Height          =   2595
          Left            =   0
@@ -1829,15 +2409,6 @@ Begin VB.Form frmMirage
       Begin VB.PictureBox picPlayerSpells 
          Appearance      =   0  'Flat
          BorderStyle     =   0  'None
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
          ForeColor       =   &H80000008&
          Height          =   2505
          Left            =   0
@@ -1899,7 +2470,7 @@ Begin VB.Form frmMirage
       ScaleWidth      =   9465
       TabIndex        =   17
       TabStop         =   0   'False
-      Top             =   7680
+      Top             =   7920
       Visible         =   0   'False
       Width           =   9495
       Begin VB.TextBox TxtQ2 
@@ -2109,197 +2680,13 @@ Begin VB.Form frmMirage
          EndProperty
       EndProperty
    End
-   Begin MSComctlLib.Toolbar Toolbar1 
-      Align           =   1  'Align Top
-      Height          =   465
-      Left            =   0
-      Negotiate       =   -1  'True
-      TabIndex        =   24
-      Top             =   0
-      Width           =   15270
-      _ExtentX        =   26935
-      _ExtentY        =   820
-      ButtonWidth     =   847
-      ButtonHeight    =   820
-      Style           =   1
-      ImageList       =   "imagebouton"
-      HotImageList    =   "imagebouton"
-      _Version        =   393216
-      BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
-         NumButtons      =   34
-         BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Tester la carte (F9)"
-            Object.Tag             =   "1"
-            ImageIndex      =   8
-         EndProperty
-         BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Enregistrer la carte sur le serveur"
-            ImageIndex      =   6
-         EndProperty
-         BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Enabled         =   0   'False
-            Object.Visible         =   0   'False
-         EndProperty
-         BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Sol"
-            ImageIndex      =   3
-            Style           =   1
-            Value           =   1
-         EndProperty
-         BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Masque 1"
-            ImageIndex      =   5
-            Style           =   1
-         EndProperty
-         BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Masque 2"
-            ImageIndex      =   4
-            Style           =   1
-         EndProperty
-         BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Masque 3"
-            ImageIndex      =   15
-            Style           =   1
-         EndProperty
-         BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Frange 1"
-            ImageIndex      =   1
-            Style           =   1
-         EndProperty
-         BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Frange 2"
-            ImageIndex      =   2
-            Style           =   1
-         EndProperty
-         BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Frange 3"
-            ImageIndex      =   11
-            Style           =   1
-         EndProperty
-         BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Masque 1"
-            ImageIndex      =   9
-            Style           =   1
-         EndProperty
-         BeginProperty Button14 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Masque 2"
-            ImageIndex      =   14
-            Style           =   1
-         EndProperty
-         BeginProperty Button15 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Masque 3"
-            ImageIndex      =   16
-            Style           =   1
-         EndProperty
-         BeginProperty Button16 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Frange 1"
-            ImageIndex      =   13
-            Style           =   1
-         EndProperty
-         BeginProperty Button17 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Frange 2"
-            ImageIndex      =   10
-            Style           =   1
-         EndProperty
-         BeginProperty Button18 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Animation Frange 3"
-            ImageIndex      =   12
-            Style           =   1
-         EndProperty
-         BeginProperty Button19 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button20 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Enabled         =   0   'False
-            Object.ToolTipText     =   "Annuler la derniére action (CTRL+Z)"
-            ImageIndex      =   27
-         EndProperty
-         BeginProperty Button21 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Enabled         =   0   'False
-            Object.ToolTipText     =   "Rétablir la derniére action (CTRL+U)"
-            ImageIndex      =   28
-         EndProperty
-         BeginProperty Button22 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button23 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Couches"
-            ImageIndex      =   20
-            Style           =   1
-            Object.Width           =   1e-4
-            Value           =   1
-         EndProperty
-         BeginProperty Button24 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Attributs"
-            ImageIndex      =   21
-            Style           =   1
-         EndProperty
-         BeginProperty Button25 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Lumières"
-            ImageIndex      =   22
-            Style           =   1
-         EndProperty
-         BeginProperty Button26 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button27 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Zoom 100%"
-            ImageIndex      =   24
-            Style           =   1
-            Value           =   1
-         EndProperty
-         BeginProperty Button28 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Zoom 50%"
-            ImageIndex      =   25
-            Style           =   1
-         EndProperty
-         BeginProperty Button29 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Zoom 30%"
-            ImageIndex      =   23
-            Style           =   1
-         EndProperty
-         BeginProperty Button30 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Style           =   3
-         EndProperty
-         BeginProperty Button31 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Remplir la carte par l'élément graphique séléctionné"
-            ImageIndex      =   18
-         EndProperty
-         BeginProperty Button32 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Prélever un élément graphique de la carte (Maj+Supr)"
-            ImageIndex      =   17
-            Style           =   1
-         EndProperty
-         BeginProperty Button33 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Efface un élément de la carte (Supr)"
-            ImageIndex      =   26
-            Style           =   1
-         EndProperty
-         BeginProperty Button34 {66833FEA-8583-11D1-B16A-00C0F0283628} 
-            Object.ToolTipText     =   "Supprimer la couche active sur toute la carte"
-            ImageIndex      =   19
-         EndProperty
-      EndProperty
-      MouseIcon       =   "frmMirage.frx":1C748
-      Begin VB.Timer sync 
-         Interval        =   5000
-         Left            =   14040
-         Top             =   0
-      End
-   End
    Begin VB.VScrollBar scrlPicture 
       Height          =   6480
       LargeChange     =   10
       Left            =   3300
       Max             =   512
       TabIndex        =   23
-      Top             =   825
+      Top             =   840
       Width           =   255
    End
    Begin HookMenuPlus.ctxHookMenu ctxHookMenu1 
@@ -2308,34 +2695,34 @@ Begin VB.Form frmMirage
       _ExtentX        =   900
       _ExtentY        =   900
       BmpCount        =   10
-      Bmp:1           =   "frmMirage.frx":1C8AA
+      Bmp:1           =   "frmMirage.frx":1C748
       Mask:1          =   16777215
       Key:1           =   "#test"
-      Bmp:2           =   "frmMirage.frx":1CACC
+      Bmp:2           =   "frmMirage.frx":1C96A
       Mask:2          =   16777215
       Key:2           =   "#envoicarte"
-      Bmp:3           =   "frmMirage.frx":1D1DA
+      Bmp:3           =   "frmMirage.frx":1D078
       Mask:3          =   16777215
       Key:3           =   "#enregcarte"
-      Bmp:4           =   "frmMirage.frx":1D8E8
+      Bmp:4           =   "frmMirage.frx":1D786
       Mask:4          =   16777215
       Key:4           =   "#quit"
-      Bmp:5           =   "frmMirage.frx":1DFF6
+      Bmp:5           =   "frmMirage.frx":1DE94
       Mask:5          =   16777215
       Key:5           =   "#rempli"
-      Bmp:6           =   "frmMirage.frx":1E218
+      Bmp:6           =   "frmMirage.frx":1E0B6
       Mask:6          =   16777215
       Key:6           =   "#prelv"
-      Bmp:7           =   "frmMirage.frx":1E926
+      Bmp:7           =   "frmMirage.frx":1E7C4
       Mask:7          =   16777215
       Key:7           =   "#tp:1"
-      Bmp:8           =   "frmMirage.frx":1F034
+      Bmp:8           =   "frmMirage.frx":1EED2
       Mask:8          =   16777215
       Key:8           =   "#tp:2"
-      Bmp:9           =   "frmMirage.frx":1F742
+      Bmp:9           =   "frmMirage.frx":1F5E0
       Mask:9          =   16777215
       Key:9           =   "#tp:3"
-      Bmp:10          =   "frmMirage.frx":1FE50
+      Bmp:10          =   "frmMirage.frx":1FCEE
       Mask:10         =   16777215
       Key:10          =   "#gom"
       UseSystemFont   =   0   'False
@@ -2430,12 +2817,12 @@ Begin VB.Form frmMirage
    End
    Begin VB.ComboBox tilescmb 
       Height          =   315
-      ItemData        =   "frmMirage.frx":2055E
+      ItemData        =   "frmMirage.frx":203FC
       Left            =   0
-      List            =   "frmMirage.frx":20574
+      List            =   "frmMirage.frx":20412
       Style           =   2  'Dropdown List
       TabIndex        =   46
-      Top             =   495
+      Top             =   480
       Width           =   3525
    End
    Begin VB.HScrollBar HScroll1 
@@ -2454,15 +2841,6 @@ Begin VB.Form frmMirage
       AutoRedraw      =   -1  'True
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
-      BeginProperty Font 
-         Name            =   "Segoe UI"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       ForeColor       =   &H80000008&
       Height          =   9075
       Left            =   3540
@@ -2644,7 +3022,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   8175
       ScaleWidth      =   7095
       TabIndex        =   20
-      Top             =   360
+      Top             =   480
       Width           =   7095
    End
    Begin VB.PictureBox Picture11 
@@ -2669,7 +3047,7 @@ Begin VB.Form frmMirage
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   219
       TabIndex        =   21
-      Top             =   825
+      Top             =   840
       Width           =   3285
       Begin VB.Shape shpSelected 
          BorderColor     =   &H000000FF&
@@ -2692,9 +3070,9 @@ Begin VB.Form frmMirage
       EndProperty
       ForeColor       =   &H80000007&
       Height          =   2400
-      ItemData        =   "frmMirage.frx":205A8
-      Left            =   60
-      List            =   "frmMirage.frx":205AF
+      ItemData        =   "frmMirage.frx":20446
+      Left            =   120
+      List            =   "frmMirage.frx":2044D
       TabIndex        =   58
       TabStop         =   0   'False
       Top             =   7440
@@ -2709,596 +3087,191 @@ Begin VB.Form frmMirage
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   130
       TabIndex        =   22
-      Top             =   825
+      Top             =   840
       Width           =   1950
    End
-   Begin VB.PictureBox Attributs 
-      Appearance      =   0  'Flat
-      BorderStyle     =   0  'None
-      ForeColor       =   &H80000008&
-      Height          =   6930
+   Begin MSComctlLib.Toolbar Toolbar1 
+      Align           =   1  'Align Top
+      Height          =   465
       Left            =   0
-      ScaleHeight     =   462
-      ScaleMode       =   3  'Pixel
-      ScaleWidth      =   236
-      TabIndex        =   26
-      TabStop         =   0   'False
-      ToolTipText     =   "Maintenir le click gauche  pour déplacer,click droit pour position de default."
-      Top             =   480
-      Visible         =   0   'False
-      Width           =   3540
-      Begin VB.OptionButton OptMetier 
-         Caption         =   "Metier"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+      Negotiate       =   -1  'True
+      TabIndex        =   24
+      Top             =   0
+      Width           =   15270
+      _ExtentX        =   26935
+      _ExtentY        =   820
+      ButtonWidth     =   847
+      ButtonHeight    =   820
+      Style           =   1
+      ImageList       =   "imagebouton"
+      HotImageList    =   "imagebouton"
+      _Version        =   393216
+      BeginProperty Buttons {66833FE8-8583-11D1-B16A-00C0F0283628} 
+         NumButtons      =   34
+         BeginProperty Button1 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Tester la carte (F9)"
+            Object.Tag             =   "1"
+            ImageIndex      =   8
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   149
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3840
-         Width           =   1410
-      End
-      Begin VB.OptionButton OptCraft 
-         Caption         =   "Table de Craft"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button2 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Enregistrer la carte sur le serveur"
+            ImageIndex      =   6
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   148
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3600
-         Width           =   1410
-      End
-      Begin VB.OptionButton optNpcAvoid 
-         Caption         =   "Bloquer PNJ"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button3 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Enabled         =   0   'False
+            Object.Visible         =   0   'False
          EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   0
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les PNJ(personnage non joueur)"
-         Top             =   600
-         Width           =   1215
-      End
-      Begin VB.OptionButton optBDir 
-         Caption         =   "Bloque Direction"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button4 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   145
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement une ou plusieurs directions"
-         Top             =   1800
-         Width           =   1410
-      End
-      Begin VB.OptionButton optbtoit 
-         Caption         =   "Bloque Toit"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button5 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Sol"
+            ImageIndex      =   3
+            Style           =   1
+            Value           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   144
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
-         Top             =   3120
-         Width           =   1170
-      End
-      Begin VB.OptionButton optBguilde 
-         Caption         =   "Bloquer Guilde"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button6 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Masque 1"
+            ImageIndex      =   5
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   65
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
-         Top             =   1560
-         Width           =   1395
-      End
-      Begin VB.OptionButton opttoit 
-         Caption         =   "Toit"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button7 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Masque 2"
+            ImageIndex      =   4
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   52
-         TabStop         =   0   'False
-         ToolTipText     =   "Quand le jouer marche sur une case Toit toutes les couches frange 1,2 et 3 qui sont sur une case Toit autour de lui disparaisse"
-         Top             =   2880
-         Width           =   1170
-      End
-      Begin VB.OptionButton optBniv 
-         Caption         =   "Bloquer Niv."
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button8 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Masque 3"
+            ImageIndex      =   15
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   51
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement a partir d'un certain Niveau"
-         Top             =   1080
-         Width           =   1155
-      End
-      Begin VB.OptionButton optBmont 
-         Caption         =   "Bloquer Monture"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button9 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Frange 1"
+            ImageIndex      =   1
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   50
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
-         Top             =   1320
-         Width           =   1395
-      End
-      Begin VB.OptionButton optcoffre 
-         Caption         =   "Coffre"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button10 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Frange 2"
+            ImageIndex      =   2
+            Style           =   1
          EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   49
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée un coffre qui ne pourras être ouvert qu'avec un objet clé sélectionner ou un code"
-         Top             =   3240
-         Width           =   1095
-      End
-      Begin VB.OptionButton optportecode 
-         Caption         =   "Porte à code"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button11 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Frange 3"
+            ImageIndex      =   11
+            Style           =   1
          EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   48
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un codéfinit"
-         Top             =   2880
-         Width           =   1095
-      End
-      Begin VB.OptionButton optWarp 
-         Caption         =   "Téléportation"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button12 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
          EndProperty
-         Height          =   255
-         Left            =   1560
-         TabIndex        =   44
-         TabStop         =   0   'False
-         ToolTipText     =   "Téléport le joueur au positions et a la carte choisie"
-         Top             =   1920
-         Width           =   1215
-      End
-      Begin VB.OptionButton OptBank 
-         Caption         =   "Banque"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button13 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Masque 1"
+            ImageIndex      =   9
+            Style           =   1
          EndProperty
-         Height          =   255
-         Left            =   0
-         TabIndex        =   43
-         TabStop         =   0   'False
-         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre de la banque"
-         Top             =   4200
-         Width           =   975
-      End
-      Begin VB.OptionButton optScripted 
-         Caption         =   "Case Scriptée"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button14 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Masque 2"
+            ImageIndex      =   14
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   42
-         TabStop         =   0   'False
-         ToolTipText     =   "Exécute le script de la case sélectionner"
-         Top             =   1680
-         Width           =   1290
-      End
-      Begin VB.OptionButton optClassChange 
-         Caption         =   "Chg de Classe"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button15 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Masque 3"
+            ImageIndex      =   16
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   41
-         TabStop         =   0   'False
-         ToolTipText     =   "Change la classe du joueur"
-         Top             =   2640
-         Width           =   1200
-      End
-      Begin VB.OptionButton optNotice 
-         Caption         =   "Avertissement"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button16 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Frange 1"
+            ImageIndex      =   13
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   40
-         TabStop         =   0   'False
-         ToolTipText     =   "Avertissement sous forme de texte et/ou de bruit"
-         Top             =   3720
-         Width           =   1215
-      End
-      Begin VB.OptionButton optDoor 
-         Caption         =   "Porte"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button17 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Frange 2"
+            ImageIndex      =   10
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   39
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui s'ouvrira à l'approche du joueur"
-         Top             =   2640
-         Width           =   960
-      End
-      Begin VB.OptionButton optSign 
-         Caption         =   "Panneau"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button18 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Animation Frange 3"
+            ImageIndex      =   12
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   38
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée un panneau"
-         Top             =   3480
-         Width           =   1080
-      End
-      Begin VB.OptionButton optSprite 
-         Caption         =   "Chg Sprite"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button19 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   37
-         TabStop         =   0   'False
-         ToolTipText     =   "Change l'apparence du joueur(Sprite = skin/habit)"
-         Top             =   2400
-         Width           =   1200
-      End
-      Begin VB.OptionButton optSound 
-         Caption         =   "Jouer un son"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button20 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Enabled         =   0   'False
+            Object.ToolTipText     =   "Annuler la derniére action (CTRL+Z)"
+            ImageIndex      =   27
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   36
-         TabStop         =   0   'False
-         ToolTipText     =   "Joue un son quand le joueur passe sur la case"
-         Top             =   600
-         Width           =   1170
-      End
-      Begin VB.OptionButton optArena 
-         Caption         =   "Arène"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button21 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Enabled         =   0   'False
+            Object.ToolTipText     =   "Rétablir la derniére action (CTRL+U)"
+            ImageIndex      =   28
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   35
-         TabStop         =   0   'False
-         ToolTipText     =   "Case à mettre dans les arènes qui enlèvent les pénalités PK (tuer des joueurs)"
-         Top             =   840
-         Width           =   1170
-      End
-      Begin VB.OptionButton optCBlock 
-         Caption         =   "Bloquer Class"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button22 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   34
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque seulement certaines classes"
-         Top             =   840
-         Width           =   1125
-      End
-      Begin VB.OptionButton optShop 
-         Caption         =   "Magasin"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button23 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Couches"
+            ImageIndex      =   20
+            Style           =   1
+            Object.Width           =   1e-4
+            Value           =   1
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   33
-         TabStop         =   0   'False
-         ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre du magasin sélectionner"
-         Top             =   3960
-         Width           =   810
-      End
-      Begin VB.OptionButton optKill 
-         Caption         =   "Tuer"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button24 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Attributs"
+            ImageIndex      =   21
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   32
-         TabStop         =   0   'False
-         ToolTipText     =   "Tue un joueur"
-         Top             =   1320
-         Width           =   810
-      End
-      Begin VB.OptionButton optHeal 
-         Caption         =   "Soins"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button25 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Lumières"
+            ImageIndex      =   22
+            Style           =   1
          EndProperty
-         Height          =   240
-         Left            =   1560
-         TabIndex        =   31
-         TabStop         =   0   'False
-         ToolTipText     =   "Soigne un joueur"
-         Top             =   1080
-         Width           =   1035
-      End
-      Begin VB.OptionButton optKeyOpen 
-         Caption         =   "Ouvrir une Porte"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button26 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
          EndProperty
-         Height          =   240
-         Left            =   0
-         TabIndex        =   30
-         TabStop         =   0   'False
-         ToolTipText     =   "En passant sur cette case le joueur ouvrira une porte sélectionner par ses coordonner"
-         Top             =   2160
-         Width           =   1455
-      End
-      Begin VB.OptionButton optBlocked 
-         Caption         =   "Bloquer"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button27 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Zoom 100%"
+            ImageIndex      =   24
+            Style           =   1
+            Value           =   1
          EndProperty
-         Height          =   255
-         Left            =   0
-         TabIndex        =   1
-         TabStop         =   0   'False
-         ToolTipText     =   "Bloque les joueur et le PNJ"
-         Top             =   360
-         Value           =   -1  'True
-         Width           =   1215
-      End
-      Begin VB.CommandButton cmdClear2 
-         BackColor       =   &H00FFFFFF&
-         Caption         =   "Éffacer tout les attributs"
-         Height          =   300
-         Left            =   600
-         MaskColor       =   &H00E0E0E0&
-         TabIndex        =   29
-         ToolTipText     =   "Efface tout les attributs sur la carte"
-         Top             =   4560
-         Width           =   2175
-      End
-      Begin VB.OptionButton optItem 
-         Caption         =   "Objet"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button28 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Zoom 50%"
+            ImageIndex      =   25
+            Style           =   1
          EndProperty
-         Height          =   270
-         Left            =   1560
-         TabIndex        =   28
-         TabStop         =   0   'False
-         ToolTipText     =   "Pose l'objet sélectionner au sol"
-         Top             =   360
-         Width           =   1215
-      End
-      Begin VB.OptionButton optKey 
-         Caption         =   "Porte à clé"
-         BeginProperty Font 
-            Name            =   "Segoe UI"
-            Size            =   6.75
-            Charset         =   0
-            Weight          =   400
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
+         BeginProperty Button29 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Zoom 30%"
+            ImageIndex      =   23
+            Style           =   1
          EndProperty
-         Height          =   270
-         Left            =   0
-         TabIndex        =   27
-         TabStop         =   0   'False
-         ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un objet clé sélectionner"
-         Top             =   2400
-         Width           =   1215
-      End
-      Begin VB.Label atrib 
-         Appearance      =   0  'Flat
-         Caption         =   "Attributs :"
-         ForeColor       =   &H80000008&
-         Height          =   255
-         Left            =   240
-         TabIndex        =   45
+         BeginProperty Button30 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Style           =   3
+         EndProperty
+         BeginProperty Button31 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Remplir la carte par l'élément graphique séléctionné"
+            ImageIndex      =   18
+         EndProperty
+         BeginProperty Button32 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Prélever un élément graphique de la carte (Maj+Supr)"
+            ImageIndex      =   17
+            Style           =   1
+         EndProperty
+         BeginProperty Button33 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Efface un élément de la carte (Supr)"
+            ImageIndex      =   26
+            Style           =   1
+         EndProperty
+         BeginProperty Button34 {66833FEA-8583-11D1-B16A-00C0F0283628} 
+            Object.ToolTipText     =   "Supprimer la couche active sur toute la carte"
+            ImageIndex      =   19
+         EndProperty
+      EndProperty
+      MouseIcon       =   "frmMirage.frx":2045B
+      Begin VB.Timer sync 
+         Interval        =   5000
+         Left            =   14040
          Top             =   0
-         Width           =   855
       End
    End
    Begin WMPLibCtl.WindowsMediaPlayer mediaplayer 
@@ -4095,13 +4068,15 @@ ShellExecute Me.hwnd, "open", "http://www.frog-script.c.la/", vbNullString, App.
 End Sub
 
 Private Sub HScroll1_Change()
-HScroll1.Max = frmMirage.picBackSelect.Width / 32
-picBackSelect.Left = (frmMirage.HScroll1.value * PIC_Y) * -1 + 33
+HScroll1.Max = Int(frmMirage.picBackSelect.Width / 32)
+'picBackSelect.Left = (frmMirage.HScroll1.value * PIC_Y) * -1 + 33
+Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
 End Sub
 
 Private Sub HScroll1_Scroll()
-HScroll1.Max = frmMirage.picBackSelect.Width / 32
-picBackSelect.Left = (frmMirage.HScroll1.value * PIC_Y) * -1 + 33
+HScroll1.Max = Int(frmMirage.picBackSelect.Width / 32)
+'picBackSelect.Left = (frmMirage.HScroll1.value * PIC_Y) * -1 + 33
+Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
 End Sub
 
 Private Sub inv_Click()
@@ -4738,66 +4713,59 @@ End Sub
 Private Sub rempli_Click()
 Dim y As Integer
 Dim x As Integer
-Dim y2 As Integer
-Dim x2 As Integer
 
 x = MsgBox("Es-tu sur de vouloir remplir la carte?", vbYesNo)
 If x = vbNo Then Exit Sub
 
 Call SauvTemp
 If frmMirage.tp(1).Checked = True Then
-For y2 = 0 To Int(frmMirage.shpSelected.Height / PIC_Y) - 1
-For x2 = 0 To Int(frmMirage.shpSelected.Width / PIC_X) - 1
 For y = 0 To (MAX_MAPY / Int(frmMirage.shpSelected.Height / PIC_Y))
 For x = 0 To (MAX_MAPX / Int(frmMirage.shpSelected.Width / PIC_X))
-
             
-            With Map(Player(MyIndex).Map).tile(x2 + x, y2 + y)
+            With Map(Player(MyIndex).Map).tile(x, y)
                 If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
-                    .Ground = (EditorTileY + y2) * TilesInSheets + EditorTileX + x2
+                    .Ground = (EditorTileY) * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .GroundSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(6).value = tbrPressed Then
-                    .Mask = EditorTileY * TilesInSheets + EditorTileX
+                    .Mask = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .MaskSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(13).value = tbrPressed Then
-                    .Anim = EditorTileY * TilesInSheets + EditorTileX
+                    .Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .AnimSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(7).value = tbrPressed Then
-                    .Mask2 = EditorTileY * TilesInSheets + EditorTileX
+                    .Mask2 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .Mask2Set = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(14).value = tbrPressed Then
-                    .M2Anim = EditorTileY * TilesInSheets + EditorTileX
+                    .M2Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .M2AnimSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(8).value = tbrPressed Then '<--
-                    .Mask3 = EditorTileY * TilesInSheets + EditorTileX
+                    .Mask3 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .Mask3Set = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(15).value = tbrPressed Then '<--
-                    .M3Anim = EditorTileY * TilesInSheets + EditorTileX
+                    .M3Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .M3AnimSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(9).value = tbrPressed Then
-                    .Fringe = EditorTileY * TilesInSheets + EditorTileX
+                    .Fringe = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .FringeSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(16).value = tbrPressed Then
-                    .FAnim = EditorTileY * TilesInSheets + EditorTileX
+                    .FAnim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .FAnimSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(10).value = tbrPressed Then
-                    .Fringe2 = EditorTileY * TilesInSheets + EditorTileX
+                    .Fringe2 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .Fringe2Set = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(17).value = tbrPressed Then
-                    .F2Anim = EditorTileY * TilesInSheets + EditorTileX
+                    .F2Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     .F2AnimSet = EditorSet
                 ElseIf frmMirage.Toolbar1.buttons(11).value = tbrPressed Then '<--
                     .Fringe3 = EditorTileY * TilesInSheets + EditorTileX
-                    .Fringe3Set = EditorSet
+                    .Fringe3Set = EditorSet + frmMirage.HScroll1.value - 1
                 ElseIf frmMirage.Toolbar1.buttons(18).value = tbrPressed Then '<--
                     .F3Anim = EditorTileY * TilesInSheets + EditorTileX
-                    .F3AnimSet = EditorSet
+                    .F3AnimSet = EditorSet + frmMirage.HScroll1.value - 1
                 End If
             End With
-Next x
-Next y
-Next x2
-Next y2
+Next
+Next
 ElseIf frmMirage.tp(2).Checked = True Then
     For y = 0 To MAX_MAPY
         For x = 0 To MAX_MAPX
@@ -5130,7 +5098,7 @@ Private Sub Tiles_Click(Index As Integer)
         Tiles(Index).Checked = True
         'frmMirage.picBackSelect.Picture = LoadPNG(App.Path & "\GFX\Tiles" & index & ".png")
         EditorSet = Index
-        Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+        Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
         frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
         HScroll1.Max = frmMirage.picBackSelect.Width / 32
         frmMirage.picBack.Width = frmMirage.picBackSelect.Width
@@ -5146,7 +5114,7 @@ End Sub
 Private Sub tilescmb_Click()
     'frmMirage.picBackSelect.Picture = LoadPNG(App.Path & "\GFX\Tiles" & Val(tilescmb.ListIndex) & ".png")
     EditorSet = Val(tilescmb.ListIndex)
-    Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+    Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
     Tiles(tilescmb.ListIndex).Checked = True
     HScroll1.Max = frmMirage.picBackSelect.Width / 32
     'frmMirage.scrlPicture.max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
@@ -5315,7 +5283,7 @@ Dim i As Byte
             Tiles(OldTiles).Checked = True
             'frmMirage.picBackSelect.Picture = LoadPNG(App.Path & "\GFX\Tiles" & OldTiles & ".png")
             EditorSet = OldTiles
-            Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+            Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
             tilescmb.ListIndex = OldTiles
             frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
             frmMirage.picBack.Width = frmMirage.picBackSelect.Width

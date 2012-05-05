@@ -298,6 +298,23 @@ On Error GoTo er:
     AccptDir2 = -1
     AccptDir3 = -1
     frmsplash.Show
+    
+    If (Screen.Height \ Screen.TwipsPerPixelY) < 700 Then
+    frmMirage.picBackSelect.Height = 256
+    frmMirage.picBack.Height = 256
+    frmMirage.scrlPicture.Height = 256
+    frmMirage.HScroll1.Top = 312
+    frmMirage.HScroll1.Width = 236
+    frmMirage.lstIndex.Top = 340
+    frmMirage.picScreen.Height = 14 * 32
+    frmMirage.txtQ.Top = 14 * 32 - 236
+    frmMirage.gauchedroite.Top = 482
+    frmMirage.gauchedroite.Height = 10
+    frmMirage.hautbas.Height = 464
+    frmMirage.Canal.Top = 495
+    frmMirage.txtMyTextBox.Top = 494
+    frmMirage.Height = 8450
+    End If
     Call SetStatus("Vérification des dossiers...")
     DoEvents
     ExtraSheets = 0
@@ -4324,7 +4341,7 @@ Public Sub EditorInit()
     InEditor = True
     EditorSet = 0
     Call EcrireEtat("Initialisation de l'éditeur : Affichage des tiles")
-    Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+    Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
     frmMirage.picBackSelect.Refresh
     'frmMirage.picBackSelect.Picture = LoadPNG(App.Path + "\GFX\tiles0.png")
     frmMirage.scrlPicture.Max = Int((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
@@ -4431,7 +4448,7 @@ End If
                     frmMirage.shpSelected.Width = PIC_X
                     If frmMirage.Tiles(EditorSet).Checked = False Then
                         frmMirage.Tiles(EditorSet).Checked = True
-                        Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+                        Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
                         frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
                         frmMirage.HScroll1.Max = frmMirage.picBackSelect.Width / 32
                         frmMirage.picBack.Width = frmMirage.picBackSelect.Width
@@ -4561,48 +4578,48 @@ End If
                     If frmMirage.tp(1).Checked Then
                         With Map(Player(MyIndex).Map).tile(x1, y1)
                             If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
-                                .Ground = EditorTileY * TilesInSheets + EditorTileX
+                                .Ground = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .GroundSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(6).value = tbrPressed Then
-                                .Mask = EditorTileY * TilesInSheets + EditorTileX
+                                .Mask = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .MaskSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(13).value = tbrPressed Then
-                                .Anim = EditorTileY * TilesInSheets + EditorTileX
+                                .Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .AnimSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(7).value = tbrPressed Then
-                                .Mask2 = EditorTileY * TilesInSheets + EditorTileX
+                                .Mask2 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .Mask2Set = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(14).value = tbrPressed Then
-                                .M2Anim = EditorTileY * TilesInSheets + EditorTileX
+                                .M2Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .M2AnimSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(8).value = tbrPressed Then '<--
-                                .Mask3 = EditorTileY * TilesInSheets + EditorTileX
+                                .Mask3 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .Mask3Set = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(15).value = tbrPressed Then '<--
-                                .M3Anim = EditorTileY * TilesInSheets + EditorTileX
+                                .M3Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .M3AnimSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(9).value = tbrPressed Then
-                                .Fringe = EditorTileY * TilesInSheets + EditorTileX
+                                .Fringe = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .FringeSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(16).value = tbrPressed Then
-                                .FAnim = EditorTileY * TilesInSheets + EditorTileX
+                                .FAnim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .FAnimSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(10).value = tbrPressed Then
-                                .Fringe2 = EditorTileY * TilesInSheets + EditorTileX
+                                .Fringe2 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .Fringe2Set = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(17).value = tbrPressed Then
-                                .F2Anim = EditorTileY * TilesInSheets + EditorTileX
+                                .F2Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .F2AnimSet = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(11).value = tbrPressed Then
-                                .Fringe3 = EditorTileY * TilesInSheets + EditorTileX
+                                .Fringe3 = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .Fringe3Set = EditorSet
                             ElseIf frmMirage.Toolbar1.buttons(18).value = tbrPressed Then
-                                .F3Anim = EditorTileY * TilesInSheets + EditorTileX
+                                .F3Anim = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                                 .F3AnimSet = EditorSet
                             End If
                         End With
                     ElseIf frmMirage.tp(3).Checked Then
-                        Map(Player(MyIndex).Map).tile(x1, y1).Light = EditorTileY * TilesInSheets + EditorTileX
+                        Map(Player(MyIndex).Map).tile(x1, y1).Light = EditorTileY * TilesInSheets + EditorTileX + frmMirage.HScroll1.value - 1
                     ElseIf frmMirage.tp(2).Checked Then
                         With Map(Player(MyIndex).Map).tile(x1, y1)
                             If frmMirage.optBlocked.value Then .Type = TILE_TYPE_BLOCKED
@@ -4841,43 +4858,43 @@ End If
                                     If frmMirage.tp(1).Checked = True Then
                                         With Map(Player(MyIndex).Map).tile(x1 + x2, y1 + y2)
                                             If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
-                                                .Ground = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Ground = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .GroundSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(6).value = tbrPressed Then
-                                                .Mask = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Mask = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .MaskSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(13).value = tbrPressed Then
-                                                .Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .AnimSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(7).value = tbrPressed Then
-                                                .Mask2 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Mask2 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .Mask2Set = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(14).value = tbrPressed Then
-                                                .M2Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .M2Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .M2AnimSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(8).value = tbrPressed Then '<--
-                                                .Mask3 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Mask3 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .Mask3Set = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(15).value = tbrPressed Then '<--
-                                                .M3Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .M3Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .M3AnimSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(9).value = tbrPressed Then
-                                                .Fringe = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Fringe = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .FringeSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(16).value = tbrPressed Then
-                                                .FAnim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .FAnim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .FAnimSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(10).value = tbrPressed Then
-                                                .Fringe2 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Fringe2 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .Fringe2Set = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(17).value = tbrPressed Then
                                                 .F2Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
                                                 .F2AnimSet = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(11).value = tbrPressed Then '<--
-                                                .Fringe3 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .Fringe3 = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .Fringe3Set = EditorSet
                                             ElseIf frmMirage.Toolbar1.buttons(18).value = tbrPressed Then '<--
-                                                .F3Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2)
+                                                .F3Anim = (EditorTileY + y2) * TilesInSheets + (EditorTileX + x2) + frmMirage.HScroll1.value - 1
                                                 .F3AnimSet = EditorSet
                                             End If
                                         End With
@@ -4955,7 +4972,7 @@ On Error Resume Next
 frmMirage.scrlPicture.Max = ((DDSD_Tile(EditorSet).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
 If (EditorTileY * PIC_Y) < frmMirage.picBack.Height + (frmMirage.scrlPicture.value * PIC_Y) And (EditorTileY * PIC_Y) > ((frmMirage.scrlPicture.value - 1) * PIC_Y) Then frmMirage.shpSelected.Top = Int((EditorTileY - frmMirage.scrlPicture.value) * PIC_Y): frmMirage.shpSelected.Visible = True Else frmMirage.shpSelected.Visible = False
 If frmMirage.scrlPicture.value = 0 Then frmMirage.picBackSelect.Top = 55
-Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y)
+Call AffTilesPic(EditorSet, frmMirage.scrlPicture.value * PIC_Y, frmMirage.HScroll1.value * PIC_Y)
 End Sub
 
 Public Sub EditorSend()
@@ -6744,7 +6761,7 @@ Sub ClearItemSelected()
     frmTrade.desc.Caption = vbNullString
 End Sub
 
-Sub AffTilesPic(ByVal Tnum As Byte, ByVal AScr As Long)
+Sub AffTilesPic(ByVal Tnum As Byte, ByVal AScr As Long, Optional ByVal LScr As Long = 0)
 Dim sRECT As RECT
 Dim dRECT As RECT
     frmMirage.picBackSelect.Picture = LoadPicture()
@@ -6752,6 +6769,9 @@ Dim dRECT As RECT
     frmMirage.picBackSelect.Width = Int(DDSD_Tile(Tnum).lWidth)
     frmMirage.scrlPicture.Max = Int((DDSD_Tile(Tnum).lHeight - frmMirage.picBackSelect.Height) \ PIC_Y)
     frmMirage.picBack.Width = Int(frmMirage.picBackSelect.Width)
+    If LScr > 0 Then
+    LScr = LScr - 32
+    End If
     With dRECT
         .Top = 0
         .Bottom = frmMirage.picBackSelect.Height
@@ -6761,8 +6781,8 @@ Dim dRECT As RECT
     With sRECT
         .Top = AScr
         .Bottom = .Top + frmMirage.picBackSelect.Height
-        .Left = 0
-        .Right = frmMirage.picBackSelect.Width
+        .Left = LScr
+        .Right = frmMirage.picBackSelect.Width + LScr
     End With
     Call DD_TileSurf(Tnum).BltToDC(frmMirage.picBackSelect.hDC, sRECT, dRECT)
     frmMirage.picBackSelect.Refresh
