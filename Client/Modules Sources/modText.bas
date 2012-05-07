@@ -42,8 +42,8 @@ Public Const NewMapColor As Byte = Grey
 Public TexthDC As Long
 Public GameFont As Long
 
-Public Sub SetFont(ByVal Font As String, ByVal Size As Byte)
-    GameFont = CreateFont(Size, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Font)
+Public Sub SetFont(ByVal Font As String, ByVal size As Byte)
+    GameFont = CreateFont(size, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, Font)
 End Sub
 
 Public Sub DrawText(ByVal hDC As Long, ByVal x, ByVal y, ByVal Text As String, Color As Long)
@@ -82,6 +82,7 @@ Dim C As Long
 Dim t As Long
 Dim i As Long
 Dim z As Long
+On Error Resume Next
 t = 0
        For i = 1 To MAX_BLT_LINE
             If t = 0 Then

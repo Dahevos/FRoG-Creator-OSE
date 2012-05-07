@@ -20,9 +20,12 @@ Sub TcpInit()
     frmMirage.Socket.RemotePort = Val(ReadINI("IPCONFIG", "PORT", FileName))
 End Sub
 
-Sub TcpDestroy()
+Sub TcpDestroy(Optional ByVal Bypass As Byte = 0)
+    If Bypass Then
+    Call SendData("desync" & SEP_CHAR & END_CHAR)
+    End If
     frmMirage.Socket.Close
-    
+    frmMirage.sync.Enabled = False
     If frmMainMenu.fraPers.Visible Then frmMainMenu.fraPers.Visible = False
     If frmMainMenu.fraLogin.Visible Then frmMainMenu.fraLogin.Visible = False
     If frmMainMenu.fraNewAccount.Visible Then frmMainMenu.fraNewAccount.Visible = False
@@ -124,8 +127,8 @@ Dim Ending As String
         MAX_RECETTE = Val(Parse(18))
         
         For i = 1 To MAX_INV - 1
-            If Loading = False Then Load frmMirage.picInv(i)
-            
+            'If Loading = False Then
+            Load frmMirage.picInv(i)
             x = Int(i / 3)
             frmMirage.picInv(i).Top = 8 + 40 * x
             frmMirage.picInv(i).Left = 8 + (i - x * 3) * 40
@@ -214,7 +217,7 @@ Dim Ending As String
         CHECK_WAIT = False
         Exit Sub
     End If
-        
+    
     ' :::::::::::::::::::
     ' :: Npc hp packet ::
     ' :::::::::::::::::::
@@ -1469,7 +1472,7 @@ mont:
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = Val(Parse(1)) \ 60
             frmMirage.tmpsquete.Visible = True
-            If Len(STR$(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
+            If Len(STR$(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
             If Len(STR$(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -2139,6 +2142,7 @@ Function IsPlaying(ByVal Index As Long) As Boolean
 End Function
 
 Sub SendData(ByVal data As String)
+frmMirage.sync.Enabled = True
     If IsConnected Then frmMirage.Socket.SendData data: DoEvents
 End Sub
 

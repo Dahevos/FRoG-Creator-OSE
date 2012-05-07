@@ -200,7 +200,11 @@ Dim Packet As String
     
     Call SendDataTo(Index, Packet)
     Call CloseSocket(Index)
-    If Index > 0 And Index < MAX_PLAYERS Then If IsPlaying(Index) Then Call IBMsg("Un joueur a reçu un message d'alerte! (Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & " Message : " & Msg & ").", BrightRed)
+    If Index > 0 And Index < MAX_PLAYERS Then
+    If IsPlaying(Index) Then
+    If IBErr Then Call IBMsg("Un joueur a reçu un message d'alerte! (Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & " Message : " & Msg & ").", BrightRed)
+    End If
+    End If
 End Sub
 
 Sub PlainMsg(ByVal Index As Long, ByVal Msg As String, ByVal Num As Long)
@@ -219,7 +223,7 @@ Sub HackingAttempt(ByVal Index As Long, ByVal Reason As String)
         End If
     
         Call AlertMsg(Index, "Tu as perdu ta connexion avec " & GAME_NAME & "." & Reason)
-        Call IBMsg("Détection d'une tentative de hack! (Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed)
+        If IBErr Then Call IBMsg("Détection d'une tentative de hack! (Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed)
     End If
     Exit Sub
 End Sub
@@ -269,7 +273,7 @@ Dim Start As Long
             Call SendDataTo(Index, Top)
             Call CloseSocket(Index)
         End If
-            
+        
         Player(Index).Buffer = Player(Index).Buffer & Buffer
         
         Start = InStr(Player(Index).Buffer, END_CHAR)
@@ -321,14 +325,16 @@ Dim Sex As Long
 Dim Class As Long
 Dim CharNum As Long
 Dim i As Integer, n As Integer, f As Integer
-
-Player(Index).sync = True
     On Error GoTo er:
+    
+    Player(Index).sync = True
     ' Handle Data
     Parse = Split(data, SEP_CHAR)
 
     Select Case LCase$(Parse(0))
-    
+        Case "desync"
+        Call CloseSocket(Index, True)
+        Exit Sub
         Case "logination"
             If Not IsLoggedIn(Index) Then
                 Name = Parse(1)
@@ -389,7 +395,7 @@ Player(Index).sync = True
         
                 Call AddLog(GetPlayerLogin(Index) & " s'est connecté depuis " & GetPlayerIP(Index) & ".", PLAYER_LOG)
                 Call TextAdd(frmServer.txtText(0), GetPlayerLogin(Index) & " s'est connecté depuis " & GetPlayerIP(Index) & ".", True)
-                Call IBMsg(GetPlayerLogin(Index) & " s'est connecté à " & GAME_NAME, IBCJoueur)
+                If IBJoueur Then Call IBMsg(GetPlayerLogin(Index) & " s'est connecté à " & GAME_NAME, IBCJoueur)
             End If
             Exit Sub
     
@@ -422,7 +428,7 @@ Player(Index).sync = True
                     
                     Call AddLog(GetPlayerLogin(Index) & "/" & GetPlayerName(Index) & " est en train de jouer à " & GAME_NAME & ".", PLAYER_LOG)
                     Call TextAdd(frmServer.txtText(0), GetPlayerLogin(Index) & "/" & GetPlayerName(Index) & " est en train de jouer à " & GAME_NAME & ".", True)
-                    Call IBMsg(GetPlayerName(Index) & " vient de se connecter à " & GAME_NAME & ".", IBCJoueur)
+                    If IBJoueur Then Call IBMsg(GetPlayerName(Index) & " vient de se connecter à " & GAME_NAME & ".", IBCJoueur)
                     Call UpdateCaption
                     If Not FindChar(GetPlayerName(Index)) Then
                         f = FreeFile
@@ -473,7 +479,7 @@ Player(Index).sync = True
                 Call AddLog("Le personnage " & Name & " a été ajouté au compte de " & GetPlayerLogin(Index) & ".", PLAYER_LOG)
                 Call SendChars(Index)
                 Call PlainMsg(Index, "Le personnage a été créé!", 5)
-                Call IBMsg("Le personnage " & Name & " a été ajouté au compte de " & GetPlayerLogin(Index) & ".", IBCJoueur)
+                If IBJoueur Then Call IBMsg("Le personnage " & Name & " a été ajouté au compte de " & GetPlayerLogin(Index) & ".", IBCJoueur)
             Exit Sub
     
         Case "serverresults"
@@ -503,7 +509,7 @@ Player(Index).sync = True
                     Call TextAdd(frmServer.txtText(0), "Compte " & Name & " a été créé.", True)
                     Call AddLog("Compte " & Name & " a été créé.", PLAYER_LOG)
                     Call PlainMsg(Index, "Votre compte a été crée!", 1)
-                    Call IBMsg("Un joueur a crée un compte nommé " & Name, IBCJoueur)
+                    If IBJoueur Then Call IBMsg("Un joueur a crée un compte nommé " & Name, IBCJoueur)
                 Else
                     Call PlainMsg(Index, "Désolé mais le compte existe déjà!", 1)
                 End If
@@ -529,7 +535,7 @@ Player(Index).sync = True
                 Call Kill(App.Path & "\accounts\" & Trim$(Name) & ".ini")
                 Call AddLog("Account " & Trim$(Name) & " a été effacé.", PLAYER_LOG)
                 Call PlainMsg(Index, "Votre compte a été effacé.", 2)
-                Call IBMsg("Un joueur a éffacé son compte nommé " & Name, IBCJoueur)
+                If IBJoueur Then Call IBMsg("Un joueur a éffacé son compte nommé " & Name, IBCJoueur)
             End If
             Exit Sub
     
@@ -547,7 +553,7 @@ Player(Index).sync = True
                 Call AddLog("Un personnage a été suprimer du compte " & GetPlayerLogin(Index) & ".", PLAYER_LOG)
                 Call SendChars(Index)
                 Call PlainMsg(Index, "Le personnage a été effacé!", 5)
-                Call IBMsg("Le personnage numéros " & CharNum & " a été suprimé du compte de " & GetPlayerLogin(Index) & ".", IBCJoueur)
+                If IBJoueur Then Call IBMsg("Le personnage numéros " & CharNum & " a été suprimé du compte de " & GetPlayerLogin(Index) & ".", IBCJoueur)
             Exit Sub
          
          Case "sync"
@@ -555,7 +561,7 @@ Player(Index).sync = True
          Exit Sub
     End Select
     
-    Call HackingAttempt(Index, "Erreur : Aucun Envoie ou envoie erroné(" & Parse(0) & ")")
+    Call HackingAttempt(Index, "Erreur dans l'envoi d'un packet (" & Parse(0) & ")")
     Exit Sub
     
 er:
@@ -611,7 +617,7 @@ Player(Index).sync = True
         
     If Not IsPlaying(Index) Then Exit Sub
     If Not IsConnected(Index) Then Exit Sub
-    
+
     Select Case PChar
         Case "c"
             Select Case Parse(0)
@@ -670,6 +676,7 @@ Player(Index).sync = True
             End Select
         Case "p"
             Select Case Parse(0)
+
                 ' déplacement du personnage
                 Case "playermove"
                     If Player(Index).GettingMap = YES Then Exit Sub
@@ -2301,7 +2308,7 @@ Player(Index).sync = True
             
                 Case "getadminhelp"
                     Call GlobalMsg(GetPlayerName(Index) & " a besoin d'un admin!", White)
-                    Call IBMsg(GetPlayerName(Index) & " a besoin d'un admin!", IBCJoueur)
+                    If IBAdmin Then Call IBMsg(GetPlayerName(Index) & " a besoin d'un admin!", IBCJoueur)
                     Exit Sub
             
                 Case "requestnewmap"
@@ -2334,7 +2341,7 @@ Player(Index).sync = True
                                 Call GlobalMsg(GetPlayerName(n) & " a été deconnecté de " & GAME_NAME & " par " & GetPlayerName(Index) & "!", White)
                                 Call AddLog(GetPlayerName(Index) & " a déconnecté(kicker) " & GetPlayerName(n) & ".", ADMIN_LOG)
                                 Call AlertMsg(n, "Vous avez été banni par " & GetPlayerName(Index) & "!")
-                                Call IBMsg(GetPlayerName(Index) & " a déconnecté(kicker) " & GetPlayerName(n) & ".", IBCAdmin)
+                                If IBAdmin Then Call IBMsg(GetPlayerName(Index) & " a déconnecté(kicker) " & GetPlayerName(n) & ".", IBCAdmin)
                             Else
                                 Call PlayerMsg(Index, "Cette personne possède un accès supérieur au votre!", White)
                             End If
@@ -2366,7 +2373,7 @@ Player(Index).sync = True
                     If GetPlayerAccess(Index) < ADMIN_CREATOR Then Call HackingAttempt(Index, "Clonage d'Admin"): Exit Sub
                     Call Kill(App.Path & "\banlist.txt")
                     Call PlayerMsg(Index, "Liste des bannis effacée.", White)
-                    Call IBMsg(GetPlayerName(Index) & " a détruit la liste des bannis.", IBCAdmin)
+                    If IBAdmin Then Call IBMsg(GetPlayerName(Index) & " a détruit la liste des bannis.", IBCAdmin)
                     Exit Sub
             
                 Case "banplayer"
@@ -2838,7 +2845,7 @@ Player(Index).sync = True
                     Call PutVar(App.Path & "\motd.ini", "MOTD", "Msg", Parse(1))
                     Call GlobalMsg("Mot de bienvenue remplacé par : " & Parse(1), BrightCyan)
                     Call AddLog(GetPlayerName(Index) & " a changé le mot de bienvenue par : " & Parse(1), ADMIN_LOG)
-                    Call IBMsg(GetPlayerName(Index) & " a changé le mot de bienvenue.", IBCAdmin)
+                    If IBAdmin Then Call IBMsg(GetPlayerName(Index) & " a changé le mot de bienvenue.", IBCAdmin)
                     Exit Sub
                 
                 Case "leaveshop"
@@ -3323,7 +3330,7 @@ Player(Index).sync = True
             
     End Select
 
-Call HackingAttempt(Index, "Erreur : Aucun Envoie ou envoie erroné(" & Parse(0) & ")")
+Call HackingAttempt(Index, "Erreur : Problème dans l'envoi d'un packet (" & Parse(0) & ")")
 Exit Sub
 er:
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans la réception du serveur. Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
@@ -3347,27 +3354,20 @@ Else
 End If
 End Sub
 
-Sub CloseSocket(ByVal Index As Long)
+Sub CloseSocket(ByVal Index As Long, Optional ByVal Bypass As Boolean = False)
+On Error Resume Next
     ' Make sure player was/is playing the game, and if so, save'm.
     If Index > 0 Then
-
-        
         If Player(Index).sync = False Then
-        
-        Call TextAdd(frmServer.txtText(0), "Connexion de " & GetPlayerIP(Index) & " est terminer.", True)
-        
-        'Call SavePlayer(Index)
-        
-        Call LeftGame(Index)
-        
+        Call LeftGame(Index, Bypass)
         frmServer.Socket(Index).Close
-        
+        Player(Index).Login = vbNullString
+        Player(Index).InGame = False
         Call UpdateCaption
-        
+        Call TextAdd(frmServer.txtText(0), "Connexion de " & GetPlayerIP(Index) & " est terminée.", True)
         End If
-        'End If
-        
     End If
+        
 End Sub
 
 Sub SendWhosOnline(ByVal Index As Long)

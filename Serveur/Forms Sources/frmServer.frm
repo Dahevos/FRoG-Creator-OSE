@@ -92,28 +92,28 @@ Begin VB.Form frmServer
       TabCaption(1)   =   "Joueur"
       TabPicture(1)   =   "frmServer.frx":17D46
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "TPO"
-      Tab(1).Control(1)=   "lvUsers"
-      Tab(1).Control(2)=   "Command66"
-      Tab(1).Control(3)=   "Check1"
-      Tab(1).Control(4)=   "Command13"
-      Tab(1).Control(5)=   "Command14"
-      Tab(1).Control(6)=   "Command15"
-      Tab(1).Control(7)=   "Command16"
-      Tab(1).Control(8)=   "Command17"
-      Tab(1).Control(9)=   "Command18"
-      Tab(1).Control(10)=   "Command19"
-      Tab(1).Control(11)=   "Command21"
-      Tab(1).Control(12)=   "Command22"
-      Tab(1).Control(13)=   "Command23"
-      Tab(1).Control(14)=   "Command24"
-      Tab(1).Control(15)=   "Command3"
-      Tab(1).Control(16)=   "picJail"
-      Tab(1).Control(17)=   "Command45"
-      Tab(1).Control(18)=   "Command51"
-      Tab(1).Control(19)=   "picStats"
-      Tab(1).Control(20)=   "Picskint"
-      Tab(1).Control(21)=   "picReason"
+      Tab(1).Control(0)=   "picReason"
+      Tab(1).Control(1)=   "Picskint"
+      Tab(1).Control(2)=   "picStats"
+      Tab(1).Control(3)=   "Command51"
+      Tab(1).Control(4)=   "Command45"
+      Tab(1).Control(5)=   "picJail"
+      Tab(1).Control(6)=   "Command3"
+      Tab(1).Control(7)=   "Command24"
+      Tab(1).Control(8)=   "Command23"
+      Tab(1).Control(9)=   "Command22"
+      Tab(1).Control(10)=   "Command21"
+      Tab(1).Control(11)=   "Command19"
+      Tab(1).Control(12)=   "Command18"
+      Tab(1).Control(13)=   "Command17"
+      Tab(1).Control(14)=   "Command16"
+      Tab(1).Control(15)=   "Command15"
+      Tab(1).Control(16)=   "Command14"
+      Tab(1).Control(17)=   "Command13"
+      Tab(1).Control(18)=   "Check1"
+      Tab(1).Control(19)=   "Command66"
+      Tab(1).Control(20)=   "lvUsers"
+      Tab(1).Control(21)=   "TPO"
       Tab(1).ControlCount=   22
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
@@ -135,15 +135,21 @@ Begin VB.Form frmServer
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "sync"
-      Tab(3).Control(1)=   "TopicTitle"
-      Tab(3).Control(2)=   "lstTopics"
-      Tab(3).Control(3)=   "CharInfo(23)"
-      Tab(3).Control(4)=   "CharInfo(22)"
-      Tab(3).Control(5)=   "CharInfo(21)"
+      Tab(3).Control(0)=   "CharInfo(21)"
+      Tab(3).Control(0).Enabled=   0   'False
+      Tab(3).Control(1)=   "CharInfo(22)"
+      Tab(3).Control(1).Enabled=   0   'False
+      Tab(3).Control(2)=   "CharInfo(23)"
+      Tab(3).Control(2).Enabled=   0   'False
+      Tab(3).Control(3)=   "lstTopics"
+      Tab(3).Control(3).Enabled=   0   'False
+      Tab(3).Control(4)=   "TopicTitle"
+      Tab(3).Control(4).Enabled=   0   'False
+      Tab(3).Control(5)=   "sync"
+      Tab(3).Control(5).Enabled=   0   'False
       Tab(3).ControlCount=   6
       Begin VB.Timer sync 
-         Interval        =   10000
+         Interval        =   5000
          Left            =   -68520
          Top             =   0
       End
@@ -3139,11 +3145,9 @@ End Sub
 Private Sub sync_Timer()
 Dim i As Long
 For i = 1 To MAX_PLAYERS
-If Player(i).sync = False Then
-If Len(Player(i).Login) <= 1 Then
-Call CloseSocket(i)
-
-End If
+If IsConnected(i) And Player(i).sync = False Then
+Player(i).sync = False
+'Call CloseSocket(i)
 End If
 Player(i).sync = False
 Next i

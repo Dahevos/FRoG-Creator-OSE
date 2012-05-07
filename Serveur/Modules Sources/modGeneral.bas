@@ -520,7 +520,9 @@ Dim f As Long
     End If
     End If
     
+    If Not surcharge Then
     Call IBMsg("Serveur chargé")
+    End If
 
 Exit Sub
 er:

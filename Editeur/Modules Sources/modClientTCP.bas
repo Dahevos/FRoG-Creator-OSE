@@ -1000,7 +1000,7 @@ mont:
     
     If (LCase$(Parse(0)) = "qmsg") Then frmMirage.txtQ.Visible = True: frmMirage.TxtQ2.Text = Parse(1): Exit Sub
         
-    If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hwnd, "open", Parse(1), vbNullString, App.Path, 1): Exit Sub
+    If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hWnd, "open", Parse(1), vbNullString, App.Path, 1): Exit Sub
     
     If (LCase$(Parse(0)) = "craft") Then
         RecetteSelect = Parse(1)
@@ -1556,7 +1556,7 @@ mont:
             frmMirage.quetetimersec.Interval = 1000
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = (Val(Parse(1)) \ 60)
-            If Len(CStr(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
+            If Len(CStr(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
             If Len(CStr(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1707,10 +1707,10 @@ mont:
             Trade(xx).Selected = NO
         Next xx
         Trade(1).Selected = YES
-        frmTrade.shopType.Top = frmTrade.Label(1).Top
-        frmTrade.shopType.Left = frmTrade.Label(1).Left
-        frmTrade.shopType.Height = frmTrade.Label(1).Height
-        frmTrade.shopType.Width = frmTrade.Label(1).Width
+        frmTrade.shopType.Top = frmTrade.label(1).Top
+        frmTrade.shopType.Left = frmTrade.label(1).Left
+        frmTrade.shopType.Height = frmTrade.label(1).Height
+        frmTrade.shopType.Width = frmTrade.label(1).Width
         Trade(1).SelectedItem = 1
         NumShop = ShopNum
         

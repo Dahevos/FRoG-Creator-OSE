@@ -1,7 +1,7 @@
 Attribute VB_Name = "modGameLogic"
 Option Explicit
 
-Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Public Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
 Public Declare Function GetKeyState Lib "user32" (ByVal nVirtKey As Long) As Integer
 Public Declare Function GetTickCount Lib "kernel32" () As Long
@@ -257,6 +257,16 @@ Public CarteFTP As Boolean
 'Variables de FrmMirage
 Public PicScWidth As Single
 Public PicScHeight As Single
+
+Private Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
+Private Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal nPos As Long) As Long
+Private Declare Function SetMenuItemBitmaps Lib "user32" (ByVal hMenu As Long, ByVal nPosition As Long, ByVal wFlags As Long, ByVal hBitmapUnchecked As Long, ByVal hBitmapChecked As Long) As Long
+Private Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal nPos As Long) As Long        ':( Missing Scope
+Private Const MF_BYPOSITION = &H400&
+Private mHandle As Long
+Private lRet As Long
+Private sHandle As Long
+
 Public Function getreselotionX()
     getreselotionX = Screen.Width \ Screen.TwipsPerPixelX
 End Function
@@ -270,6 +280,25 @@ If value > 100 Then Exit Sub
 For i = frmsplash.chrg.value To value
 frmsplash.chrg.value = i
 Next
+End Sub
+Public Sub PaintMenuBitmaps()  'function to set bitmaps to menus
+    'On Error Resume Next
+   ' AssignMenuBitmaps frmMirage, frmMirage.imagebouton, 0, 2  'New
+    'AssignMenuBitmaps frmMirage, imgOpen, 0, 1 'Open
+    'frmMirage.imagebouton.ListImages (2)
+    'frmMirage.imagebouton.ListImages(3).Picture
+    mHandle = GetMenu(frmMirage.hWnd)
+   sHandle = GetSubMenu(mHandle, 0)
+   lRet = SetMenuItemBitmaps(sHandle, 2, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
+   lRet = SetMenuItemBitmaps(sHandle, 3, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
+End Sub
+
+'Function that assign bitmaps to menu
+Public Sub AssignMenuBitmaps(ByRef frm As Form, ByRef IMG As ImageList, ByVal Menu_Position As Integer, ByVal Sub_Menu_Position As Integer)
+   mHandle = GetMenu(frm.hWnd)
+   sHandle = GetSubMenu(mHandle, Menu_Position)
+   lRet = SetMenuItemBitmaps(sHandle, Sub_Menu_Position, MF_BYPOSITION, IMG.Picture, IMG.Picture)
+  
 End Sub
 Sub Main()
 Dim i As Long
@@ -298,7 +327,7 @@ On Error GoTo er:
     AccptDir2 = -1
     AccptDir3 = -1
     frmsplash.Show
-    
+    PaintMenuBitmaps
     If (Screen.Height \ Screen.TwipsPerPixelY) < 700 Then
     frmMirage.picBackSelect.Height = 256
     frmMirage.picBack.Height = 256
@@ -1086,7 +1115,7 @@ rest:
         If ScreenDC Then Call CarteCapture: ScreenDC = False
             
         ' Get the rect to blit to
-        Call Dx.GetWindowRect(frmMirage.picScreen.hwnd, rec_pos)
+        Call Dx.GetWindowRect(frmMirage.picScreen.hWnd, rec_pos)
         rec_pos.Bottom = rec_pos.Top - sy + ((MAX_MAPY + 1) * PIC_Y) / VZoom * 3
         rec_pos.Right = rec_pos.Left - sx + ((MAX_MAPX + 1) * PIC_X) / VZoom * 3
         rec_pos.Top = rec_pos.Bottom - ((MAX_MAPY + 1) * PIC_Y) / VZoom * 3

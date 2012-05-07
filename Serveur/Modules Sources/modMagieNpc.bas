@@ -140,7 +140,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Function
 Call PlayerMsg(Index, "Attaque du PNJ annulée à cause d'une erreur si le problème persiste contactez un administrateur.", Red)
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur dans l'attaque d'un joueur(" & Player(Index).Login & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & "). Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
-Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & ")", BrightRed)
+If IBErr Then Call IBMsg("Erreur dans l'attaque d'un joueur(" & GetPlayerName(Index) & ")par un PNJ(" & npcnum & ")à l'Aide du sort(" & SpellNum & ")", BrightRed)
 End Function
 
 Function CanNpcRestoreHimself(ByVal MapNpcNum As Byte, ByVal MapNum As Integer, Optional ByRef SpellSlotNum As Byte) As Boolean

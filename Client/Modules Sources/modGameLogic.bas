@@ -174,7 +174,6 @@ On Error GoTo er:
     If Not FileExiste("Client.exe.manifest") Then
     Call URLDownloadToFile(0, "http://frogcreator.fr/update/Client.exe.manifest", App.Path & "\Client.exe.manifest", 0, 0)
     End If
-    
     Call WriteINI("CONFIG", "Version", App.Minor & "." & App.Minor & "." & App.Revision, App.Path & "\Client\Config\Client.ini")
     Call InitXpStyle
     Rep_Theme = ReadINI("Themes", "Theme", App.Path & "\Themes.ini")
@@ -184,7 +183,7 @@ On Error GoTo er:
     DoEvents
         
     If FileExiste("GFX\curseur.cur") Then Call frmMainMenu.imgl.ListImages.Add(1, , LoadPNG(App.Path & "\GFX\curseur.png")): frmMainMenu.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmMainMenu.MousePointer = 99: frmMirage.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmMirage.MousePointer = 99: frmNewChar.MouseIcon = frmMainMenu.imgl.ListImages(1).ExtractIcon: frmNewChar.MousePointer = 99
-    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
     
   '  For i = 0 To 256
   '      If Not FileExiste("GFX\Tiles" & i & ".png") Then ExtraSheets = i - 1: Exit For
@@ -232,7 +231,7 @@ On Error GoTo er:
     ReDim DDSD_Pets(0 To MaxPet) As DDSURFACEDESC2
     ReDim PetTimer(0 To MaxPet) As Long
     ReDim PetUsed(0 To MaxPet) As Boolean
-    
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
     ' Check if the maps directory is there, if its not make it
     If LCase$(Dir$(App.Path & "\Maps", vbDirectory)) <> "maps" Then Call MkDir$(App.Path & "\Maps")
     If UCase$(Dir$(App.Path & "\GFX", vbDirectory)) <> "GFX" Then Call MkDir$(App.Path & "\GFX")
@@ -288,7 +287,7 @@ On Error GoTo er:
         WriteINI "CONFIG", "LowEffect", 0, App.Path & "\Config\Account.ini"
     End If
     
-    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
     
     If Not FileExiste("Config\Ecriture.ini") Then
         WriteINI "POLICE", "Police", "MS Sans Serif", App.Path & "\Config\Ecriture.ini"
@@ -362,7 +361,7 @@ On Error GoTo er:
         .chkLowEffect.BackColor = RGB(R1, G1, B1)
     End With
     
-    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
         
     R1 = Val(ReadINI("WHOLIST", "R", App.Path & "\Config\Ecriture.ini"))
     G1 = Val(ReadINI("WHOLIST", "G", App.Path & "\Config\Ecriture.ini"))
@@ -376,7 +375,7 @@ On Error GoTo er:
     frmNewChar.optFemale.BackColor = RGB(R1, G1, B1)
     
     Call SetStatus("Vérification du Statut...")
-    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
         
     If Not FileExiste("Config\Serveur.ini") Then
         WriteINI "SERVER0", "Name", "Server 0", App.Path & "\Config\Serveur.ini"
@@ -391,11 +390,13 @@ On Error GoTo er:
         WriteINI "UPDATER", "WebNews", "http://roonline.free.fr/patch/patch.html", App.Path & "\Config\Updater.ini"
         WriteINI "VERSION", "Version", "0.1", App.Path & "\Config\info.ini"
     End If
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
     Call InitAccountOpt
     Call InitMirageVars
     'On initialise dès maintenant DirectX
     Call SetStatus("Initialisation de DirectX...")
     Call InitDirectX
+    frmsplash.Shape1.Width = frmsplash.Shape1.Width + 200
     Call SetStatus("Initialisation du protocole TCP...")
         
     frmsplash.Shape1.Width = frmsplash.Shape1.Width + 400
@@ -1162,7 +1163,7 @@ Dim ty As Long
     rec.Right = rec.Left + PIC_X
     'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(GroundTileSet), rec, DDBLT_WAIT)
     Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(GroundTileSet), rec, DDBLTFAST_WAIT)
-
+   
     If (Not MapAnim) Or (Anim2 <= 0) Then
         ' Is there an animation tile to plot?
         If Anim1 > 0 And TempTile(x, y).DoorOpen = NO And MaskTileSet <= ExtraSheets Then

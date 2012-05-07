@@ -65,6 +65,9 @@ Option Explicit
 Dim GAME_IP As String, GAME_PORT As Long
 Public Path As String
 Public Extension As String
+Private Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long
+Private Const WM_CLOSE = &H10
+
     Private Sub cmdCancel_Click()
         Call GameDestroy
         Unload Me
@@ -93,8 +96,12 @@ End Sub
 
     Private Sub Form_Load()
     Dim FileName As String
-    Dim i As Long, C As Long
+    Dim i As Byte, C As Byte, n As Byte
     Dim Ending As String
+    Dim Auto_IP As String
+    Dim Auto_Port As String
+    
+    frmServerChooser.Visible = False
     
     For i = 1 To 4
         If i = 1 Then Ending = ".gif"
@@ -104,7 +111,6 @@ End Sub
 
         If FileExiste(Rep_Theme & "\Login\choix_serveur" & Ending) Then frmServerChooser.Picture = LoadPNG(App.Path & Rep_Theme & "\Login\choix_serveur" & Ending)
     Next i
-        frmServerChooser.Visible = True
 
         FileName = App.Path & "\Config\Serveur.ini"
         i = 0
@@ -122,7 +128,15 @@ End Sub
                 If ReadINI("SERVER" & i, "IP", FileName) <> vbNullString And ReadINI("SERVER" & i, "PORT", FileName) <> vbNullString Then
                     GAME_IP = ReadINI("SERVER" & i, "IP", FileName)
                     GAME_PORT = Val(ReadINI("SERVER" & i, "PORT", FileName))
-                    If CheckServerStatus Then CHECK_WAIT = True: Call SendData("serverresults" & SEP_CHAR & i & END_CHAR) Else lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé!"
+                    If CheckServerStatus Then
+                    Auto_IP = GAME_IP
+                    Auto_Port = GAME_PORT
+                    CHECK_WAIT = True
+                    Call SendData("serverresults" & SEP_CHAR & i & END_CHAR)
+                    n = n + 1
+                    Else
+                    lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé!"
+                    End If
                     i = i + 1
                 Else
                     C = 1
@@ -130,10 +144,25 @@ End Sub
             End If
             Sleep 1
         Loop
+        
+        If n = 1 Then
+        GAME_IP = Auto_IP
+        GAME_PORT = Auto_Port
+        frmMirage.Socket.Close
+        frmMirage.Socket.RemoteHost = GAME_IP
+        frmMirage.Socket.RemotePort = GAME_PORT
+        frmMainMenu.Show
+        Call frmMainMenu.txtName.SetFocus
+        PostMessage Me.hwnd, WM_CLOSE, 0, 0
+        Exit Sub
+        Else
+        frmServerChooser.Visible = True
+        End If
+   
+        
         cmdOk.Enabled = True
         CmdRafraichir.Enabled = True
         Me.MousePointer = 0
-        
         
         Call WriteINI("UPDATER", "exename", App.EXEName, App.Path & "\Config\Updater.ini")
       End Sub

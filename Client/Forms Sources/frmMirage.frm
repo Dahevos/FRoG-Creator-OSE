@@ -33,12 +33,12 @@ Begin VB.Form frmMirage
       BackColor       =   &H00FFFFFF&
       ForeColor       =   &H80000008&
       Height          =   5745
-      Left            =   0
+      Left            =   480
       ScaleHeight     =   381
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   173
       TabIndex        =   143
-      Top             =   0
+      Top             =   960
       Visible         =   0   'False
       Width           =   2625
       Begin VB.TextBox txtTempsBulles 
@@ -580,12 +580,12 @@ Begin VB.Form frmMirage
       BackColor       =   &H80000005&
       ForeColor       =   &H80000008&
       Height          =   4035
-      Left            =   0
+      Left            =   480
       ScaleHeight     =   267
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   511
       TabIndex        =   165
-      Top             =   1320
+      Top             =   960
       Visible         =   0   'False
       Width           =   7695
       Begin VB.CommandButton cmdOTA 
@@ -1922,7 +1922,7 @@ Begin VB.Form frmMirage
       Visible         =   0   'False
       Width           =   11040
       Begin VB.Timer sync 
-         Interval        =   5000
+         Interval        =   250
          Left            =   6720
          Top             =   0
       End
@@ -5784,7 +5784,7 @@ If Seco <= 0 And Minu > 0 Then
     Seco = 59
     seconde.Caption = Seco
     Minu = Minu - 1
-    If Len(STR$(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
+    If Len(STR$(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0

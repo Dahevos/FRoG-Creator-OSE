@@ -12,6 +12,7 @@ Public START_Y As Long
 Public Const ADMIN_LOG = "logs\admin.txt"
 Public Const PLAYER_LOG = "logs\player.txt"
 Public Const GUILDE_LOG = "logs\guildes.txt"
+Public surcharge As Boolean
 
 
 Public Function GetVar(File As String, Header As String, Var As String) As String
@@ -154,7 +155,6 @@ Dim n As Integer
     
     Call PutVar(FileName, "GENERAL", "Login", Trim$(Player(Index).Login))
     Call PutVar(FileName, "GENERAL", "Password", Trim$(Player(Index).Password))
-
     For i = 1 To 3
         ' General
         Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(Index).Char(i).Name))
@@ -246,6 +246,103 @@ Dim n As Integer
     
 End Sub
 
+Sub SavePlayerOptim(ByVal Index As Long)
+Dim FileName As String
+Dim i As Integer
+Dim n As Integer
+
+  If Len(Trim$(Player(Index).Login)) <= 1 Then Exit Sub
+    
+    FileName = App.Path & "\accounts\" & Trim$(Player(Index).Login) & ".ini"
+    i = Player(Index).CharNum
+        ' General
+        Call PutVar(FileName, "CHAR" & i, "Name", Trim$(Player(Index).Char(i).Name))
+        Call PutVar(FileName, "CHAR" & i, "Class", STR$(Player(Index).Char(i).Class))
+        Call PutVar(FileName, "CHAR" & i, "Sex", STR$(Player(Index).Char(i).Sex))
+        Call PutVar(FileName, "CHAR" & i, "Sprite", STR$(Player(Index).Char(i).sprite))
+        Call PutVar(FileName, "CHAR" & i, "Level", STR$(Player(Index).Char(i).Level))
+        Call PutVar(FileName, "CHAR" & i, "Exp", STR$(Player(Index).Char(i).Exp))
+        Call PutVar(FileName, "CHAR" & i, "Access", STR$(Player(Index).Char(i).Access))
+        Call PutVar(FileName, "CHAR" & i, "PK", STR$(Player(Index).Char(i).PK))
+        Call PutVar(FileName, "CHAR" & i, "Guild", Trim$(Player(Index).Char(i).Guild))
+        Call PutVar(FileName, "CHAR" & i, "Guildaccess", STR$(Player(Index).Char(i).Guildaccess))
+
+        
+        ' Vitals
+        Call PutVar(FileName, "CHAR" & i, "HP", STR$(Player(Index).Char(i).HP))
+        Call PutVar(FileName, "CHAR" & i, "MP", STR$(Player(Index).Char(i).MP))
+        Call PutVar(FileName, "CHAR" & i, "SP", STR$(Player(Index).Char(i).SP))
+        
+        ' Stats
+        Call PutVar(FileName, "CHAR" & i, "STR", STR$(Player(Index).Char(i).STR))
+        Call PutVar(FileName, "CHAR" & i, "DEF", STR$(Player(Index).Char(i).def))
+        Call PutVar(FileName, "CHAR" & i, "SPEED", STR$(Player(Index).Char(i).Speed))
+        Call PutVar(FileName, "CHAR" & i, "MAGI", STR$(Player(Index).Char(i).magi))
+        Call PutVar(FileName, "CHAR" & i, "POINTS", STR$(Player(Index).Char(i).POINTS))
+        
+        ' Worn equipment
+        Call PutVar(FileName, "CHAR" & i, "ArmorSlot", STR$(Player(Index).Char(i).ArmorSlot))
+        Call PutVar(FileName, "CHAR" & i, "WeaponSlot", STR$(Player(Index).Char(i).WeaponSlot))
+        Call PutVar(FileName, "CHAR" & i, "HelmetSlot", STR$(Player(Index).Char(i).HelmetSlot))
+        Call PutVar(FileName, "CHAR" & i, "ShieldSlot", STR$(Player(Index).Char(i).ShieldSlot))
+        Call PutVar(FileName, "CHAR" & i, "PetSlot", STR$(Player(Index).Char(i).PetSlot))
+        
+        Call PutVar(FileName, "CHAR" & i, "PetDir", STR$(Player(Index).Char(i).pet.Dir))
+        Call PutVar(FileName, "CHAR" & i, "PetX", STR$(Player(Index).Char(i).pet.x))
+        Call PutVar(FileName, "CHAR" & i, "PetY", STR$(Player(Index).Char(i).pet.y))
+        
+        Call PutVar(FileName, "CHAR" & i, "Metier", STR$(Player(Index).Char(i).metier))
+        Call PutVar(FileName, "CHAR" & i, "MetierLvl", STR$(Player(Index).Char(i).MetierLvl))
+        Call PutVar(FileName, "CHAR" & i, "MetierExp", STR$(Player(Index).Char(i).MetierExp))
+        
+        
+        ' Check to make sure that they aren't on map 0, if so reset'm
+        If Player(Index).Char(i).Map = 0 Then
+            Player(Index).Char(i).Map = START_MAP
+            Player(Index).Char(i).x = START_X
+            Player(Index).Char(i).y = START_Y
+        End If
+            
+        ' Position
+        Call PutVar(FileName, "CHAR" & i, "Map", STR$(Player(Index).Char(i).Map))
+        Call PutVar(FileName, "CHAR" & i, "X", STR$(Player(Index).Char(i).x))
+        Call PutVar(FileName, "CHAR" & i, "Y", STR$(Player(Index).Char(i).y))
+        Call PutVar(FileName, "CHAR" & i, "Dir", STR$(Player(Index).Char(i).Dir))
+        
+        ' Inventory
+        For n = 1 To MAX_INV
+            Call PutVar(FileName, "CHAR" & i, "InvItemNum" & n, STR$(Player(Index).Char(i).Inv(n).Num))
+            Call PutVar(FileName, "CHAR" & i, "InvItemVal" & n, STR$(Player(Index).Char(i).Inv(n).value))
+            Call PutVar(FileName, "CHAR" & i, "InvItemDur" & n, STR$(Player(Index).Char(i).Inv(n).Dur))
+        DoEvents
+        Next
+        
+        ' Spells
+        For n = 1 To MAX_PLAYER_SPELLS
+            Call PutVar(FileName, "CHAR" & i, "Spell" & n, STR$(Player(Index).Char(i).Spell(n)))
+        DoEvents
+        Next
+        
+        ' coffre
+
+        For n = 1 To 30
+            If Val(GetVar(FileName, "CHAR" & i, "cofitemnum" & n)) <= 0 Then
+                Call PutVar(FileName, "CHAR" & i, "cofitemnum" & n, "0")
+                Call PutVar(FileName, "CHAR" & i, "cofitemval" & n, "0")
+                Call PutVar(FileName, "CHAR" & i, "cofitemdur" & n, "0")
+            End If
+        DoEvents
+        Next
+        
+        'Quete
+        Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(Index).Char(i).QueteEnCour))
+        For n = 1 To MAX_QUETES
+            Call PutVar(FileName, "CHAR" & i, "quete" & n, STR$(Player(Index).Char(i).QueteStatut(n)))
+        DoEvents
+        Next
+
+    
+End Sub
 Sub LoadPlayer(ByVal Index As Long, ByVal Name As String)
 Dim FileName As String
 Dim i As Long
@@ -1024,8 +1121,9 @@ Dim r As Integer
         NewDoEvents
     Next
     
-    If r > MAX_MAPS - 1 Then
-    Call MsgBox("Le serveur à detecté un grand nombre de maps, afin d'améliorer le chargement, veuillez supprimer les maps inutilisées", vbInformation, "Conseil")
+    If r > (MAX_MAPS * 0.8) Then
+    Call IBMsg("Le serveur à detecté un grand nombre de maps, afin d'améliorer le chargement, veuillez supprimer les maps inutilisées")
+    surcharge = True
     End If
 End Sub
 
@@ -1140,7 +1238,7 @@ Dim f As Long, i As Long
     
     Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par " & GetPlayerName(BannedByIndex) & "!", White)
     Call AddLog(GetPlayerName(BannedByIndex) & " a banni " & GetPlayerName(BanPlayerIndex) & ".", ADMIN_LOG)
-    Call IBMsg(GetPlayerName(BannedByIndex) & " a bannis " & GetPlayerName(BanPlayerIndex))
+    If IBAdmin Then Call IBMsg(GetPlayerName(BannedByIndex) & " a bannis " & GetPlayerName(BanPlayerIndex))
     Call AlertMsg(BanPlayerIndex, "Vous avez été banni par " & GetPlayerName(BannedByIndex) & "!")
 End Sub
 

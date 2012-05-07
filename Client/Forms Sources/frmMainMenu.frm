@@ -548,7 +548,7 @@ End Sub
 Private Sub Form_Load()
 Dim i As Long
 Dim Ending As String
-       
+On Error Resume Next
     dragAndDrop = 0
     Call iniOptTouche
     charSelectNum = 1
@@ -744,9 +744,7 @@ Private Sub picCancel_Click()
     For i = 1 To MAX_INV - 1
         Unload frmMirage.picInv(i)
     Next
-    Call TcpDestroy
-    fraLogin.Visible = True
-    fraPers.Visible = False
+    Call TcpDestroy(1)
 End Sub
 
 Private Sub picConnect_Click()

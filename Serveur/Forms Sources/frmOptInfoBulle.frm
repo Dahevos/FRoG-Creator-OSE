@@ -44,14 +44,6 @@ Begin VB.Form frmOptInfoBulle
       TabIndex        =   0
       Top             =   120
       Width           =   5055
-      Begin VB.CheckBox mt 
-         Caption         =   "Tout les messages"
-         Height          =   195
-         Left            =   240
-         TabIndex        =   7
-         Top             =   480
-         Width           =   2175
-      End
       Begin VB.PictureBox acoul 
          Appearance      =   0  'Flat
          BackColor       =   &H80000005&
@@ -85,7 +77,7 @@ Begin VB.Form frmOptInfoBulle
          Height          =   195
          Left            =   240
          TabIndex        =   3
-         Top             =   1200
+         Top             =   720
          Width           =   2175
       End
       Begin VB.CheckBox mer 
@@ -93,7 +85,7 @@ Begin VB.Form frmOptInfoBulle
          Height          =   195
          Left            =   240
          TabIndex        =   2
-         Top             =   1560
+         Top             =   960
          Width           =   2175
       End
       Begin VB.CheckBox mj 
@@ -101,7 +93,7 @@ Begin VB.Form frmOptInfoBulle
          Height          =   195
          Left            =   240
          TabIndex        =   1
-         Top             =   840
+         Top             =   480
          Width           =   2175
       End
    End
@@ -113,7 +105,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub acoul_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub acoul_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 1 Then
     cmd.Flags = &H2& + &H1&
     cmd.ShowColor
@@ -122,7 +114,7 @@ End If
 End Sub
 
 
-Private Sub jcoul_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub jcoul_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If Button = 1 Then
     cmd.Flags = &H2& + &H1&
     cmd.ShowColor
@@ -130,21 +122,21 @@ If Button = 1 Then
 End If
 End Sub
 
-Private Sub ma_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If ma.Value = Checked Then IBAdmin = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBAdmin = True
+Private Sub ma_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+If ma.value = Checked Then IBAdmin = False Else IBAdmin = True
 End Sub
 
-Private Sub mer_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mer.Value = Checked Then IBErr = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBErr = True
+Private Sub mer_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+If mer.value = Checked Then IBErr = False Else IBErr = True
 End Sub
 
-Private Sub mj_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mj.Value = Checked Then IBJoueur = False: mt.Value = Unchecked: mt.Refresh: IBTout = False Else IBJoueur = True
+Private Sub mj_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+If mj.value = Checked Then IBJoueur = False Else IBJoueur = True
 End Sub
 
-Private Sub mt_MouseDown(Button As Integer, Shift As Integer, X As Single, Y As Single)
-If mt.Value = Unchecked Then ma.Value = Checked: mer.Value = Checked: mj.Value = Checked: mj.Refresh: ma.Refresh: mer.Refresh
-If mt.Value = Checked Then IBTout = False Else IBTout = True: IBJoueur = True: IBAdmin = True: IBErr = True
+Private Sub mt_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
+If mt.value = Unchecked Then ma.value = Checked: mer.value = Checked: mj.value = Checked: mj.Refresh: ma.Refresh: mer.Refresh
+If mt.value = Checked Then IBJoueur = True: IBAdmin = True: IBErr = True
 End Sub
 
 Private Sub sauv_Click()

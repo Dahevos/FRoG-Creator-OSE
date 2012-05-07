@@ -2,7 +2,6 @@ VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
 Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{984C2AF5-D8F3-11D7-8532-00E07DD46690}#1.0#0"; "HookMenuPlus.ocx"
 Begin VB.Form frmMirage 
    BorderStyle     =   1  'Fixed Single
    Caption         =   " "
@@ -2689,68 +2688,6 @@ Begin VB.Form frmMirage
       Top             =   840
       Width           =   255
    End
-   Begin HookMenuPlus.ctxHookMenu ctxHookMenu1 
-      Left            =   2280
-      Top             =   7680
-      _ExtentX        =   900
-      _ExtentY        =   900
-      BmpCount        =   10
-      Bmp:1           =   "frmMirage.frx":1C748
-      Mask:1          =   16777215
-      Key:1           =   "#test"
-      Bmp:2           =   "frmMirage.frx":1C96A
-      Mask:2          =   16777215
-      Key:2           =   "#envoicarte"
-      Bmp:3           =   "frmMirage.frx":1D078
-      Mask:3          =   16777215
-      Key:3           =   "#enregcarte"
-      Bmp:4           =   "frmMirage.frx":1D786
-      Mask:4          =   16777215
-      Key:4           =   "#quit"
-      Bmp:5           =   "frmMirage.frx":1DE94
-      Mask:5          =   16777215
-      Key:5           =   "#rempli"
-      Bmp:6           =   "frmMirage.frx":1E0B6
-      Mask:6          =   16777215
-      Key:6           =   "#prelv"
-      Bmp:7           =   "frmMirage.frx":1E7C4
-      Mask:7          =   16777215
-      Key:7           =   "#tp:1"
-      Bmp:8           =   "frmMirage.frx":1EED2
-      Mask:8          =   16777215
-      Key:8           =   "#tp:2"
-      Bmp:9           =   "frmMirage.frx":1F5E0
-      Mask:9          =   16777215
-      Key:9           =   "#tp:3"
-      Bmp:10          =   "frmMirage.frx":1FCEE
-      Mask:10         =   16777215
-      Key:10          =   "#gom"
-      UseSystemFont   =   0   'False
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Segoe UI"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      SelMenuBorder   =   16744576
-      SelMenuBack     =   16761024
-      SelMenuFore     =   16777215
-      CheckBack       =   16761024
-      CheckFore       =   0
-      SelCheckBack    =   16744576
-      MenuBorder      =   16777215
-      MenuBack        =   16761024
-      MenuFore        =   0
-      DisabledMenuBorder=   16744576
-      DisabledMenuBack=   16761024
-      DisabledMenuFore=   14737632
-      MenuBarBack     =   14737632
-      MenuPopupBack   =   16777215
-      AutorSet        =   -1  'True
-   End
    Begin VB.PictureBox ScreenShot 
       Appearance      =   0  'Flat
       AutoRedraw      =   -1  'True
@@ -2817,9 +2754,9 @@ Begin VB.Form frmMirage
    End
    Begin VB.ComboBox tilescmb 
       Height          =   315
-      ItemData        =   "frmMirage.frx":203FC
+      ItemData        =   "frmMirage.frx":1C748
       Left            =   0
-      List            =   "frmMirage.frx":20412
+      List            =   "frmMirage.frx":1C75E
       Style           =   2  'Dropdown List
       TabIndex        =   46
       Top             =   480
@@ -3070,9 +3007,9 @@ Begin VB.Form frmMirage
       EndProperty
       ForeColor       =   &H80000007&
       Height          =   2400
-      ItemData        =   "frmMirage.frx":20446
+      ItemData        =   "frmMirage.frx":1C792
       Left            =   120
-      List            =   "frmMirage.frx":2044D
+      List            =   "frmMirage.frx":1C799
       TabIndex        =   58
       TabStop         =   0   'False
       Top             =   7440
@@ -3267,9 +3204,9 @@ Begin VB.Form frmMirage
             ImageIndex      =   19
          EndProperty
       EndProperty
-      MouseIcon       =   "frmMirage.frx":2045B
+      MouseIcon       =   "frmMirage.frx":1C7A7
       Begin VB.Timer sync 
-         Interval        =   5000
+         Interval        =   2500
          Left            =   14040
          Top             =   0
       End
@@ -3723,7 +3660,7 @@ frmGuild.Show vbModeless, frmMirage
 End Sub
 
 Private Sub don_Click()
-ShellExecute Me.hwnd, "open", "http://creafrog.free.fr/frogteam/?page=soutien", vbNullString, App.Path, 1
+ShellExecute Me.hWnd, "open", "http://creafrog.free.fr/frogteam/?page=soutien", vbNullString, App.Path, 1
 End Sub
 
 Private Sub Editeurclas_Click()
@@ -4064,7 +4001,7 @@ Call SetPlayerY(MyIndex, (Int(picScreen.Height / 32) / 2) + hautbas.value)
 End Sub
 
 Private Sub hscript_Click()
-ShellExecute Me.hwnd, "open", "http://www.frog-script.c.la/", vbNullString, App.Path, 1
+ShellExecute Me.hWnd, "open", "http://www.frog-script.c.la/", vbNullString, App.Path, 1
 End Sub
 
 Private Sub HScroll1_Change()
@@ -5031,11 +4968,11 @@ ScreenDC = True
 End Sub
 
 Private Sub site_Click()
-ShellExecute Me.hwnd, "open", "http://frogcreator.fr", vbNullString, App.Path, 1
+ShellExecute Me.hWnd, "open", "http://frogcreator.fr", vbNullString, App.Path, 1
 End Sub
 
 Private Sub siteequp_Click()
-ShellExecute Me.hwnd, "open", "http://creafrog.free.fr/frogteam/", vbNullString, App.Path, 1
+ShellExecute Me.hWnd, "open", "http://creafrog.free.fr/frogteam/", vbNullString, App.Path, 1
 End Sub
 
 Private Sub Socket_DataArrival(ByVal bytesTotal As Long)
