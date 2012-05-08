@@ -24,6 +24,7 @@ Sub TcpInit()
 End Sub
 
 Sub TcpDestroy()
+    Call SendData("desync" & SEP_CHAR & END_CHAR)
     Call EcrireEtat("Destruction Tcp")
     
     frmMirage.Socket.Close
@@ -1000,7 +1001,7 @@ mont:
     
     If (LCase$(Parse(0)) = "qmsg") Then frmMirage.txtQ.Visible = True: frmMirage.TxtQ2.Text = Parse(1): Exit Sub
         
-    If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hWnd, "open", Parse(1), vbNullString, App.Path, 1): Exit Sub
+    If (LCase$(Parse(0)) = "lance") Then Call ShellExecute(frmMirage.hwnd, "open", Parse(1), vbNullString, App.Path, 1): Exit Sub
     
     If (LCase$(Parse(0)) = "craft") Then
         RecetteSelect = Parse(1)

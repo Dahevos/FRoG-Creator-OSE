@@ -1,7 +1,7 @@
 Attribute VB_Name = "modGameLogic"
 Option Explicit
 
-Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+Public Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 Public Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As Long) As Integer
 Public Declare Function GetKeyState Lib "user32" (ByVal nVirtKey As Long) As Integer
 Public Declare Function GetTickCount Lib "kernel32" () As Long
@@ -258,7 +258,7 @@ Public CarteFTP As Boolean
 Public PicScWidth As Single
 Public PicScHeight As Single
 
-Private Declare Function GetMenu Lib "user32" (ByVal hWnd As Long) As Long
+Private Declare Function GetMenu Lib "user32" (ByVal hwnd As Long) As Long
 Private Declare Function GetSubMenu Lib "user32" (ByVal hMenu As Long, ByVal nPos As Long) As Long
 Private Declare Function SetMenuItemBitmaps Lib "user32" (ByVal hMenu As Long, ByVal nPosition As Long, ByVal wFlags As Long, ByVal hBitmapUnchecked As Long, ByVal hBitmapChecked As Long) As Long
 Private Declare Function GetMenuItemID Lib "user32" (ByVal hMenu As Long, ByVal nPos As Long) As Long        ':( Missing Scope
@@ -287,19 +287,12 @@ Public Sub PaintMenuBitmaps()  'function to set bitmaps to menus
     'AssignMenuBitmaps frmMirage, imgOpen, 0, 1 'Open
     'frmMirage.imagebouton.ListImages (2)
     'frmMirage.imagebouton.ListImages(3).Picture
-    mHandle = GetMenu(frmMirage.hWnd)
+    mHandle = GetMenu(frmMirage.hwnd)
    sHandle = GetSubMenu(mHandle, 0)
    lRet = SetMenuItemBitmaps(sHandle, 2, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
    lRet = SetMenuItemBitmaps(sHandle, 3, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
 End Sub
 
-'Function that assign bitmaps to menu
-Public Sub AssignMenuBitmaps(ByRef frm As Form, ByRef IMG As ImageList, ByVal Menu_Position As Integer, ByVal Sub_Menu_Position As Integer)
-   mHandle = GetMenu(frm.hWnd)
-   sHandle = GetSubMenu(mHandle, Menu_Position)
-   lRet = SetMenuItemBitmaps(sHandle, Sub_Menu_Position, MF_BYPOSITION, IMG.Picture, IMG.Picture)
-  
-End Sub
 Sub Main()
 Dim i As Long
 Dim Ending As String
@@ -647,6 +640,7 @@ Dim i As Long
             If i > frmMirage.tilescmb.ListCount - 1 Then Call frmMirage.tilescmb.AddItem("Tiles" & i, i)
         Next i
     End If
+    frmMirage.tilescmb.ListIndex = 0
     Accepter = False
     Call InitMirage
 End Sub
@@ -1115,7 +1109,7 @@ rest:
         If ScreenDC Then Call CarteCapture: ScreenDC = False
             
         ' Get the rect to blit to
-        Call Dx.GetWindowRect(frmMirage.picScreen.hWnd, rec_pos)
+        Call Dx.GetWindowRect(frmMirage.picScreen.hwnd, rec_pos)
         rec_pos.Bottom = rec_pos.Top - sy + ((MAX_MAPY + 1) * PIC_Y) / VZoom * 3
         rec_pos.Right = rec_pos.Left - sx + ((MAX_MAPX + 1) * PIC_X) / VZoom * 3
         rec_pos.Top = rec_pos.Bottom - ((MAX_MAPY + 1) * PIC_Y) / VZoom * 3
@@ -2824,7 +2818,7 @@ Dim i As Long
             If i > frmMirage.tilescmb.ListCount - 1 Then Call frmMirage.tilescmb.AddItem("Tiles " & i, i)
         Next i
     End If
-    
+    frmMirage.tilescmb.ListIndex = 0
     frmMirage.Show
     Call GameLoop
 End Sub
@@ -5238,7 +5232,7 @@ Dim YesNo As Long, x As Long, y As Long
 End Sub
 
 Public Sub EmoticonEditorInit()
-    frmEmoticonEditor.scrlEmoticon.Max = MAX_EMOTICONS
+    frmEmoticonEditor.scrlEmoticon.Max = DDSD_Emoticon.lHeight / 32 'MAX_EMOTICONS
     frmEmoticonEditor.scrlEmoticon.value = Emoticons(EditorIndex - 1).Pic
     frmEmoticonEditor.txtCommand.Text = Trim$(Emoticons(EditorIndex - 1).Command)
     'frmEmoticonEditor.picEmoticons.Picture = LoadPNG(App.Path & "\GFX\emoticons.png")

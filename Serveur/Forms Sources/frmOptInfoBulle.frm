@@ -134,11 +134,6 @@ Private Sub mj_MouseDown(Button As Integer, Shift As Integer, x As Single, y As 
 If mj.value = Checked Then IBJoueur = False Else IBJoueur = True
 End Sub
 
-Private Sub mt_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-If mt.value = Unchecked Then ma.value = Checked: mer.value = Checked: mj.value = Checked: mj.Refresh: ma.Refresh: mer.Refresh
-If mt.value = Checked Then IBJoueur = True: IBAdmin = True: IBErr = True
-End Sub
-
 Private Sub sauv_Click()
 IBCJoueur = jcoul.BackColor
 IBCAdmin = acoul.BackColor

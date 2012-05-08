@@ -185,7 +185,7 @@ Public Const NPC_BEHAVIOR_GUARD As Byte = 4
 Public Const NPC_BEHAVIOR_QUETEUR As Byte = 5
 
 ' Speach bubble constants
-Public DISPLAY_BUBBLE_TIME ' In milliseconds.
+Public DISPLAY_BUBBLE_TIME As Long ' In milliseconds.
 Public DISPLAY_BUBBLE_WIDTH As Byte
 Public Const MAX_BUBBLE_WIDTH As Byte = 16 ' In tiles. Includes corners.
 Public Const MAX_LINE_LENGTH As Byte = 20 ' In characters.

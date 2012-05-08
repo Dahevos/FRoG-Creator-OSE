@@ -535,47 +535,92 @@ Private Sub ajd_GotFocus()
 ajd.SelStart = 0
 ajd.SelLength = Len(ajd)
 End Sub
-
+Private Sub ajd_change()
+If Not IsNumeric(ajd.Text) Then
+ajd.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub ajf_GotFocus()
 ajf.SelStart = 0
 ajf.SelLength = Len(ajf)
 End Sub
-
+Private Sub ajf_change()
+If Not IsNumeric(ajf.Text) Then
+ajf.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub ajm_GotFocus()
 ajm.SelStart = 0
 ajm.SelLength = Len(ajm)
 End Sub
-
+Private Sub ajm_change()
+If Not IsNumeric(ajm.Text) Then
+ajm.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub ajv_GotFocus()
 ajv.SelStart = 0
 ajv.SelLength = Len(ajv)
 End Sub
-
+Private Sub ajv_change()
+If Not IsNumeric(ajv.Text) Then
+ajv.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub arme_GotFocus()
 arme.SelStart = 0
 arme.SelLength = Len(arme)
 End Sub
-
+Private Sub arme_change()
+If Not IsNumeric(arme.Text) Then
+arme.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub armure_GotFocus()
 armure.SelStart = 0
 armure.SelLength = Len(armure)
 End Sub
-
+Private Sub armure_change()
+If Not IsNumeric(armure.Text) Then
+armure.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub bouclier_GotFocus()
 bouclier.SelStart = 0
 bouclier.SelLength = Len(bouclier)
 End Sub
-
+Private Sub bouclier_change()
+If Not IsNumeric(bouclier.Text) Then
+bouclier.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub carted_GotFocus()
 carted.SelStart = 0
 carted.SelLength = Len(carted)
 End Sub
-
+Private Sub carted_change()
+If Not IsNumeric(carted.Text) Then
+carted.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub cartem_GotFocus()
 cartem.SelStart = 0
 cartem.SelLength = Len(cartem)
 End Sub
-
+Private Sub cartem_change()
+If Not IsNumeric(cartem.Text) Then
+cartem.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub caske_GotFocus()
 caske.SelStart = 0
 caske.SelLength = Len(caske)
@@ -597,7 +642,18 @@ Private Sub def_GotFocus()
 def.SelStart = 0
 def.SelLength = Len(def)
 End Sub
-
+Private Sub def_change()
+If Not IsNumeric(def.Text) Then
+def.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
+Private Sub force_change()
+If Not IsNumeric(force.Text) Then
+force.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub force_GotFocus()
 force.SelStart = 0
 force.SelLength = Len(force)
@@ -616,7 +672,12 @@ Private Sub magi_GotFocus()
 magi.SelStart = 0
 magi.SelLength = Len(magi)
 End Sub
-
+Private Sub magi_change()
+If Not IsNumeric(magi.Text) Then
+magi.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub nom_GotFocus()
 nom.SelStart = 0
 nom.SelLength = Len(nom)
@@ -706,24 +767,49 @@ Private Sub vit_GotFocus()
 vit.SelStart = 0
 vit.SelLength = Len(vit)
 End Sub
-
+Private Sub vit_change()
+If Not IsNumeric(vit.Text) Then
+vit.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub xd_GotFocus()
 xd.SelStart = 0
 xd.SelLength = Len(xd)
 End Sub
-
+Private Sub xd_change()
+If Not IsNumeric(xd.Text) Then
+xd.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub xm_GotFocus()
 xm.SelStart = 0
 xm.SelLength = Len(xm)
 End Sub
-
+Private Sub xm_change()
+If Not IsNumeric(xm.Text) Then
+xm.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub yd_GotFocus()
 yd.SelStart = 0
 yd.SelLength = Len(yd)
 End Sub
-
+Private Sub yd_change()
+If Not IsNumeric(yd.Text) Then
+yd.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub
 Private Sub ym_GotFocus()
 ym.SelStart = 0
 ym.SelLength = Len(ym)
 End Sub
-
+Private Sub ym_change()
+If Not IsNumeric(ym.Text) Then
+ym.Text = "0"
+MsgBox ("Veullez remplir cette case par une valeur numérique")
+End If
+End Sub

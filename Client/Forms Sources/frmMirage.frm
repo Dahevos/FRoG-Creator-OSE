@@ -1993,7 +1993,7 @@ Begin VB.Form frmMirage
             BorderStyle     =   0  'None
             ForeColor       =   &H80000008&
             Height          =   2535
-            Left            =   480
+            Left            =   120
             ScaleHeight     =   169
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   161

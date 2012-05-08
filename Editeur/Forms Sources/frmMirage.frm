@@ -41,7 +41,7 @@ Begin VB.Form frmMirage
       ScaleHeight     =   462
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   236
-      TabIndex        =   26
+      TabIndex        =   25
       TabStop         =   0   'False
       ToolTipText     =   "Maintenir le click gauche  pour déplacer,click droit pour position de default."
       Top             =   480
@@ -60,7 +60,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   149
+         TabIndex        =   148
          TabStop         =   0   'False
          ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
          Top             =   3840
@@ -79,7 +79,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   148
+         TabIndex        =   147
          TabStop         =   0   'False
          ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
          Top             =   3600
@@ -117,7 +117,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   145
+         TabIndex        =   144
          TabStop         =   0   'False
          ToolTipText     =   "Bloque seulement une ou plusieurs directions"
          Top             =   1800
@@ -136,7 +136,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   144
+         TabIndex        =   143
          TabStop         =   0   'False
          ToolTipText     =   "Bloque le joueur mais garde les caractéristique de l'attribut Toit"
          Top             =   3120
@@ -155,7 +155,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   65
+         TabIndex        =   64
          TabStop         =   0   'False
          ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
          Top             =   1560
@@ -174,7 +174,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   52
+         TabIndex        =   51
          TabStop         =   0   'False
          ToolTipText     =   "Quand le jouer marche sur une case Toit toutes les couches frange 1,2 et 3 qui sont sur une case Toit autour de lui disparaisse"
          Top             =   2880
@@ -193,7 +193,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   51
+         TabIndex        =   50
          TabStop         =   0   'False
          ToolTipText     =   "Bloque seulement a partir d'un certain Niveau"
          Top             =   1080
@@ -212,7 +212,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   50
+         TabIndex        =   49
          TabStop         =   0   'False
          ToolTipText     =   "Bloque seulement les joueurs qui ont une monture"
          Top             =   1320
@@ -231,7 +231,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   270
          Left            =   0
-         TabIndex        =   49
+         TabIndex        =   48
          TabStop         =   0   'False
          ToolTipText     =   "Crée un coffre qui ne pourras être ouvert qu'avec un objet clé sélectionner ou un code"
          Top             =   3240
@@ -250,7 +250,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   270
          Left            =   0
-         TabIndex        =   48
+         TabIndex        =   47
          TabStop         =   0   'False
          ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un codéfinit"
          Top             =   2880
@@ -269,7 +269,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   1560
-         TabIndex        =   44
+         TabIndex        =   43
          TabStop         =   0   'False
          ToolTipText     =   "Téléport le joueur au positions et a la carte choisie"
          Top             =   1920
@@ -288,7 +288,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   255
          Left            =   0
-         TabIndex        =   43
+         TabIndex        =   42
          TabStop         =   0   'False
          ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre de la banque"
          Top             =   4200
@@ -307,7 +307,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   42
+         TabIndex        =   41
          TabStop         =   0   'False
          ToolTipText     =   "Exécute le script de la case sélectionner"
          Top             =   1680
@@ -326,7 +326,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   41
+         TabIndex        =   40
          TabStop         =   0   'False
          ToolTipText     =   "Change la classe du joueur"
          Top             =   2640
@@ -345,7 +345,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   40
+         TabIndex        =   39
          TabStop         =   0   'False
          ToolTipText     =   "Avertissement sous forme de texte et/ou de bruit"
          Top             =   3720
@@ -364,7 +364,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   39
+         TabIndex        =   38
          TabStop         =   0   'False
          ToolTipText     =   "Crée une porte qui s'ouvrira à l'approche du joueur"
          Top             =   2640
@@ -383,7 +383,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   38
+         TabIndex        =   37
          TabStop         =   0   'False
          ToolTipText     =   "Crée un panneau"
          Top             =   3480
@@ -402,7 +402,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   37
+         TabIndex        =   36
          TabStop         =   0   'False
          ToolTipText     =   "Change l'apparence du joueur(Sprite = skin/habit)"
          Top             =   2400
@@ -421,7 +421,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   36
+         TabIndex        =   35
          TabStop         =   0   'False
          ToolTipText     =   "Joue un son quand le joueur passe sur la case"
          Top             =   600
@@ -440,7 +440,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   35
+         TabIndex        =   34
          TabStop         =   0   'False
          ToolTipText     =   "Case à mettre dans les arènes qui enlèvent les pénalités PK (tuer des joueurs)"
          Top             =   840
@@ -459,7 +459,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   34
+         TabIndex        =   33
          TabStop         =   0   'False
          ToolTipText     =   "Bloque seulement certaines classes"
          Top             =   840
@@ -478,7 +478,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   33
+         TabIndex        =   32
          TabStop         =   0   'False
          ToolTipText     =   "Case où le joueur doit marcher pour ouvrit la fenêtre du magasin sélectionner"
          Top             =   3960
@@ -497,7 +497,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   32
+         TabIndex        =   31
          TabStop         =   0   'False
          ToolTipText     =   "Tue un joueur"
          Top             =   1320
@@ -516,7 +516,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   1560
-         TabIndex        =   31
+         TabIndex        =   30
          TabStop         =   0   'False
          ToolTipText     =   "Soigne un joueur"
          Top             =   1080
@@ -535,7 +535,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   240
          Left            =   0
-         TabIndex        =   30
+         TabIndex        =   29
          TabStop         =   0   'False
          ToolTipText     =   "En passant sur cette case le joueur ouvrira une porte sélectionner par ses coordonner"
          Top             =   2160
@@ -567,7 +567,7 @@ Begin VB.Form frmMirage
          Height          =   300
          Left            =   600
          MaskColor       =   &H00E0E0E0&
-         TabIndex        =   29
+         TabIndex        =   28
          ToolTipText     =   "Efface tout les attributs sur la carte"
          Top             =   4560
          Width           =   2175
@@ -585,7 +585,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   270
          Left            =   1560
-         TabIndex        =   28
+         TabIndex        =   27
          TabStop         =   0   'False
          ToolTipText     =   "Pose l'objet sélectionner au sol"
          Top             =   360
@@ -604,7 +604,7 @@ Begin VB.Form frmMirage
          EndProperty
          Height          =   270
          Left            =   0
-         TabIndex        =   27
+         TabIndex        =   26
          TabStop         =   0   'False
          ToolTipText     =   "Crée une porte qui ne pourras être ouvert qu'avec un objet clé sélectionner"
          Top             =   2400
@@ -616,7 +616,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H80000008&
          Height          =   255
          Left            =   240
-         TabIndex        =   45
+         TabIndex        =   44
          Top             =   0
          Width           =   855
       End
@@ -626,7 +626,7 @@ Begin VB.Form frmMirage
       ItemData        =   "frmMirage.frx":17E7C
       Left            =   3600
       List            =   "frmMirage.frx":17E8C
-      TabIndex        =   147
+      TabIndex        =   146
       Text            =   "Carte"
       Top             =   9840
       Width           =   1215
@@ -661,7 +661,7 @@ Begin VB.Form frmMirage
          ForeColor       =   &H00000000&
          Height          =   195
          Left            =   0
-         TabIndex        =   146
+         TabIndex        =   145
          Top             =   2160
          Width           =   2655
       End
@@ -808,7 +808,7 @@ Begin VB.Form frmMirage
       Left            =   900
       ScaleHeight     =   2625
       ScaleWidth      =   2505
-      TabIndex        =   66
+      TabIndex        =   65
       Top             =   4620
       Visible         =   0   'False
       Width           =   2535
@@ -821,7 +821,7 @@ Begin VB.Form frmMirage
          ScaleHeight     =   31
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   81
-         TabIndex        =   67
+         TabIndex        =   66
          Top             =   960
          Visible         =   0   'False
          Width           =   1215
@@ -839,7 +839,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   495
             Left            =   0
-            TabIndex        =   69
+            TabIndex        =   68
             ToolTipText     =   "Minutes restante avant la fin de la quête en cour"
             Top             =   0
             Width           =   600
@@ -858,7 +858,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   495
             Left            =   600
-            TabIndex        =   68
+            TabIndex        =   67
             ToolTipText     =   "Secondes restante avant la fin de la quête en cour"
             Top             =   0
             Width           =   450
@@ -881,7 +881,7 @@ Begin VB.Form frmMirage
          Left            =   120
          ScaleHeight     =   2625
          ScaleWidth      =   2385
-         TabIndex        =   132
+         TabIndex        =   131
          Top             =   0
          Visible         =   0   'False
          Width           =   2385
@@ -901,7 +901,7 @@ Begin VB.Form frmMirage
             Height          =   255
             Left            =   420
             Style           =   1  'Graphical
-            TabIndex        =   138
+            TabIndex        =   137
             Top             =   1980
             Width           =   1815
          End
@@ -921,7 +921,7 @@ Begin VB.Form frmMirage
             Height          =   255
             Left            =   420
             Style           =   1  'Graphical
-            TabIndex        =   137
+            TabIndex        =   136
             Top             =   1650
             Width           =   1815
          End
@@ -941,7 +941,7 @@ Begin VB.Form frmMirage
             Height          =   255
             Left            =   420
             Style           =   1  'Graphical
-            TabIndex        =   136
+            TabIndex        =   135
             Top             =   1305
             Width           =   1815
          End
@@ -961,7 +961,7 @@ Begin VB.Form frmMirage
             Height          =   255
             Left            =   420
             Style           =   1  'Graphical
-            TabIndex        =   135
+            TabIndex        =   134
             Top             =   975
             Width           =   1815
          End
@@ -979,7 +979,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   225
             Left            =   720
-            TabIndex        =   134
+            TabIndex        =   133
             Top             =   345
             Width           =   1575
          End
@@ -998,7 +998,7 @@ Begin VB.Form frmMirage
             Height          =   225
             Left            =   720
             MaxLength       =   2
-            TabIndex        =   133
+            TabIndex        =   132
             Top             =   585
             Width           =   1575
          End
@@ -1017,7 +1017,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   165
             Left            =   180
-            TabIndex        =   140
+            TabIndex        =   139
             Top             =   360
             Width           =   345
          End
@@ -1036,7 +1036,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   165
             Left            =   150
-            TabIndex        =   139
+            TabIndex        =   138
             Top             =   615
             Width           =   465
          End
@@ -1050,7 +1050,7 @@ Begin VB.Form frmMirage
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   161
-         TabIndex        =   70
+         TabIndex        =   69
          Top             =   120
          Visible         =   0   'False
          Width           =   2415
@@ -1060,7 +1060,7 @@ Begin VB.Form frmMirage
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   71
+            TabIndex        =   70
             Text            =   "frmMirage.frx":17EAC
             Top             =   120
             Width           =   2175
@@ -1081,7 +1081,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   165
             Left            =   720
-            TabIndex        =   74
+            TabIndex        =   73
             Top             =   2280
             Width           =   975
          End
@@ -1101,7 +1101,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   165
             Left            =   120
-            TabIndex        =   73
+            TabIndex        =   72
             Top             =   2040
             Width           =   45
          End
@@ -1121,7 +1121,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   165
             Left            =   1200
-            TabIndex        =   72
+            TabIndex        =   71
             Top             =   2040
             Width           =   45
          End
@@ -1135,7 +1135,7 @@ Begin VB.Form frmMirage
          ScaleHeight     =   173
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   163
-         TabIndex        =   102
+         TabIndex        =   101
          Top             =   0
          Visible         =   0   'False
          Width           =   2440
@@ -1158,7 +1158,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   145
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   177
-            TabIndex        =   106
+            TabIndex        =   105
             Top             =   0
             Width           =   2655
             Begin VB.PictureBox Picture9 
@@ -1179,7 +1179,7 @@ Begin VB.Form frmMirage
                ScaleHeight     =   249
                ScaleMode       =   3  'Pixel
                ScaleWidth      =   177
-               TabIndex        =   107
+               TabIndex        =   106
                Top             =   0
                Width           =   2655
                Begin VB.PictureBox picInv 
@@ -1203,7 +1203,7 @@ Begin VB.Form frmMirage
                   ScaleHeight     =   32
                   ScaleMode       =   3  'Pixel
                   ScaleWidth      =   32
-                  TabIndex        =   108
+                  TabIndex        =   107
                   Top             =   120
                   Width           =   480
                End
@@ -1266,7 +1266,7 @@ Begin VB.Form frmMirage
             Height          =   330
             Left            =   2640
             Max             =   100
-            TabIndex        =   105
+            TabIndex        =   104
             Top             =   2400
             Visible         =   0   'False
             Width           =   255
@@ -1287,7 +1287,7 @@ Begin VB.Form frmMirage
             Picture         =   "frmMirage.frx":17EB2
             ScaleHeight     =   270
             ScaleWidth      =   270
-            TabIndex        =   104
+            TabIndex        =   103
             Top             =   2235
             Width           =   270
          End
@@ -1307,7 +1307,7 @@ Begin VB.Form frmMirage
             Picture         =   "frmMirage.frx":1813D
             ScaleHeight     =   270
             ScaleWidth      =   270
-            TabIndex        =   103
+            TabIndex        =   102
             Top             =   2235
             Width           =   270
          End
@@ -1327,7 +1327,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   210
             Left            =   15
-            TabIndex        =   110
+            TabIndex        =   109
             Top             =   2265
             Width           =   690
          End
@@ -1347,7 +1347,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   210
             Left            =   1830
-            TabIndex        =   109
+            TabIndex        =   108
             Top             =   2265
             Width           =   795
          End
@@ -1372,7 +1372,7 @@ Begin VB.Form frmMirage
          Left            =   0
          ScaleHeight     =   2505
          ScaleWidth      =   2385
-         TabIndex        =   111
+         TabIndex        =   110
          Top             =   0
          Visible         =   0   'False
          Width           =   2385
@@ -1381,7 +1381,7 @@ Begin VB.Form frmMirage
             Caption         =   "EXP :"
             Height          =   255
             Left            =   120
-            TabIndex        =   129
+            TabIndex        =   128
             Top             =   585
             Width           =   375
          End
@@ -1390,7 +1390,7 @@ Begin VB.Form frmMirage
             Caption         =   "PM :"
             Height          =   255
             Left            =   120
-            TabIndex        =   128
+            TabIndex        =   127
             Top             =   345
             Width           =   375
          End
@@ -1399,7 +1399,7 @@ Begin VB.Form frmMirage
             Caption         =   "PV :"
             Height          =   255
             Left            =   120
-            TabIndex        =   127
+            TabIndex        =   126
             Top             =   120
             Width           =   375
          End
@@ -1418,7 +1418,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   255
             Left            =   2040
-            TabIndex        =   126
+            TabIndex        =   125
             Top             =   840
             Visible         =   0   'False
             Width           =   1695
@@ -1437,7 +1437,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   255
             Left            =   2040
-            TabIndex        =   125
+            TabIndex        =   124
             Top             =   1080
             Visible         =   0   'False
             Width           =   1695
@@ -1460,7 +1460,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   124
+            TabIndex        =   123
             Top             =   1080
             Width           =   375
          End
@@ -1481,7 +1481,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   123
+            TabIndex        =   122
             Top             =   840
             Width           =   1875
          End
@@ -1503,7 +1503,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   122
+            TabIndex        =   121
             Top             =   1800
             Width           =   465
          End
@@ -1525,7 +1525,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   121
+            TabIndex        =   120
             Top             =   1560
             Width           =   360
          End
@@ -1547,7 +1547,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   120
+            TabIndex        =   119
             Top             =   2040
             Width           =   225
          End
@@ -1569,7 +1569,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   120
-            TabIndex        =   119
+            TabIndex        =   118
             Top             =   1320
             Width           =   375
          End
@@ -1591,7 +1591,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   480
-            TabIndex        =   118
+            TabIndex        =   117
             Top             =   600
             Width           =   1890
          End
@@ -1619,7 +1619,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   480
-            TabIndex        =   117
+            TabIndex        =   116
             Top             =   360
             Width           =   1890
          End
@@ -1641,7 +1641,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   480
-            TabIndex        =   116
+            TabIndex        =   115
             Top             =   120
             Width           =   1890
          End
@@ -1661,7 +1661,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   240
             Left            =   2040
-            TabIndex        =   115
+            TabIndex        =   114
             Top             =   2040
             Width           =   165
          End
@@ -1681,7 +1681,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   240
             Left            =   2040
-            TabIndex        =   114
+            TabIndex        =   113
             Top             =   1560
             Width           =   165
          End
@@ -1701,7 +1701,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   240
             Left            =   2040
-            TabIndex        =   113
+            TabIndex        =   112
             Top             =   1800
             Width           =   165
          End
@@ -1721,7 +1721,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   240
             Left            =   2040
-            TabIndex        =   112
+            TabIndex        =   111
             Top             =   1320
             Width           =   165
          End
@@ -1771,7 +1771,7 @@ Begin VB.Form frmMirage
          Left            =   0
          ScaleHeight     =   2505
          ScaleWidth      =   2385
-         TabIndex        =   130
+         TabIndex        =   129
          Top             =   0
          Visible         =   0   'False
          Width           =   2385
@@ -1791,7 +1791,7 @@ Begin VB.Form frmMirage
             ItemData        =   "frmMirage.frx":183D5
             Left            =   0
             List            =   "frmMirage.frx":183D7
-            TabIndex        =   131
+            TabIndex        =   130
             Top             =   60
             Width           =   2350
          End
@@ -1813,7 +1813,7 @@ Begin VB.Form frmMirage
          Left            =   0
          ScaleHeight     =   2505
          ScaleWidth      =   2385
-         TabIndex        =   96
+         TabIndex        =   95
          Top             =   0
          Visible         =   0   'False
          Width           =   2385
@@ -1835,7 +1835,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   165
             Left            =   240
-            TabIndex        =   101
+            TabIndex        =   100
             Top             =   645
             Width           =   1050
          End
@@ -1857,7 +1857,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   165
             Left            =   480
-            TabIndex        =   100
+            TabIndex        =   99
             Top             =   960
             Width           =   825
          End
@@ -1876,7 +1876,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   165
             Left            =   1425
-            TabIndex        =   99
+            TabIndex        =   98
             Top             =   660
             Width           =   1065
          End
@@ -1895,7 +1895,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   165
             Left            =   1425
-            TabIndex        =   98
+            TabIndex        =   97
             Top             =   975
             Width           =   1080
          End
@@ -1913,7 +1913,7 @@ Begin VB.Form frmMirage
             EndProperty
             Height          =   180
             Left            =   720
-            TabIndex        =   97
+            TabIndex        =   96
             Top             =   2280
             Width           =   1110
          End
@@ -1935,7 +1935,7 @@ Begin VB.Form frmMirage
          Left            =   0
          ScaleHeight     =   2505
          ScaleWidth      =   2385
-         TabIndex        =   75
+         TabIndex        =   74
          Top             =   0
          Visible         =   0   'False
          Width           =   2385
@@ -1957,7 +1957,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   94
+            TabIndex        =   93
             Top             =   120
             Width           =   555
             Begin VB.PictureBox HelmetImage 
@@ -1980,7 +1980,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   95
+               TabIndex        =   94
                Top             =   15
                Width           =   495
             End
@@ -2003,7 +2003,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   92
+            TabIndex        =   91
             Top             =   720
             Width           =   555
             Begin VB.PictureBox ShieldImage 
@@ -2026,7 +2026,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   93
+               TabIndex        =   92
                Top             =   15
                Width           =   495
             End
@@ -2049,7 +2049,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   90
+            TabIndex        =   89
             Top             =   720
             Width           =   555
             Begin VB.PictureBox ArmorImage 
@@ -2072,7 +2072,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   91
+               TabIndex        =   90
                Top             =   15
                Width           =   495
             End
@@ -2095,7 +2095,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   88
+            TabIndex        =   87
             Top             =   720
             Width           =   555
             Begin VB.PictureBox WeaponImage 
@@ -2118,7 +2118,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   89
+               TabIndex        =   88
                Top             =   15
                Width           =   495
             End
@@ -2141,7 +2141,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   86
+            TabIndex        =   85
             Top             =   1320
             Visible         =   0   'False
             Width           =   555
@@ -2165,7 +2165,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   87
+               TabIndex        =   86
                Top             =   15
                Width           =   495
             End
@@ -2188,7 +2188,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   84
+            TabIndex        =   83
             Top             =   1920
             Width           =   555
             Begin VB.PictureBox PetImage 
@@ -2211,7 +2211,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   85
+               TabIndex        =   84
                Top             =   15
                Width           =   495
             End
@@ -2234,7 +2234,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   82
+            TabIndex        =   81
             Top             =   1320
             Visible         =   0   'False
             Width           =   555
@@ -2258,7 +2258,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   83
+               TabIndex        =   82
                Top             =   15
                Width           =   495
             End
@@ -2281,7 +2281,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   80
+            TabIndex        =   79
             Top             =   1320
             Visible         =   0   'False
             Width           =   555
@@ -2305,7 +2305,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   81
+               TabIndex        =   80
                Top             =   15
                Width           =   495
             End
@@ -2328,7 +2328,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   78
+            TabIndex        =   77
             Top             =   1920
             Visible         =   0   'False
             Width           =   555
@@ -2352,7 +2352,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   79
+               TabIndex        =   78
                Top             =   15
                Width           =   495
             End
@@ -2375,7 +2375,7 @@ Begin VB.Form frmMirage
             ScaleHeight     =   35
             ScaleMode       =   3  'Pixel
             ScaleWidth      =   35
-            TabIndex        =   76
+            TabIndex        =   75
             Top             =   120
             Visible         =   0   'False
             Width           =   555
@@ -2399,7 +2399,7 @@ Begin VB.Form frmMirage
                Left            =   15
                ScaleHeight     =   495
                ScaleWidth      =   495
-               TabIndex        =   77
+               TabIndex        =   76
                Top             =   0
                Width           =   495
             End
@@ -2414,7 +2414,7 @@ Begin VB.Form frmMirage
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   167
-         TabIndex        =   141
+         TabIndex        =   140
          Top             =   120
          Visible         =   0   'False
          Width           =   2505
@@ -2435,7 +2435,7 @@ Begin VB.Form frmMirage
             ItemData        =   "frmMirage.frx":183D9
             Left            =   60
             List            =   "frmMirage.frx":183DB
-            TabIndex        =   142
+            TabIndex        =   141
             Top             =   60
             Width           =   2325
          End
@@ -2454,7 +2454,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H00000000&
             Height          =   195
             Left            =   960
-            TabIndex        =   143
+            TabIndex        =   142
             Top             =   2280
             Width           =   375
          End
@@ -2537,148 +2537,6 @@ Begin VB.Form frmMirage
       _ExtentY        =   741
       _Version        =   393216
    End
-   Begin MSComctlLib.ImageList imagebouton 
-      Left            =   14400
-      Top             =   1440
-      _ExtentX        =   1005
-      _ExtentY        =   1005
-      BackColor       =   -2147483633
-      ImageWidth      =   25
-      ImageHeight     =   25
-      MaskColor       =   16777215
-      _Version        =   393216
-      BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
-         NumListImages   =   28
-         BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":183E3
-            Key             =   ""
-            Object.Tag             =   "frange"
-         EndProperty
-         BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":18813
-            Key             =   ""
-            Object.Tag             =   "frange1"
-         EndProperty
-         BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":18C5C
-            Key             =   ""
-            Object.Tag             =   "sol"
-         EndProperty
-         BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":18E04
-            Key             =   ""
-            Object.Tag             =   "mask1"
-         EndProperty
-         BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":18FC0
-            Key             =   ""
-            Object.Tag             =   "mask"
-         EndProperty
-         BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1915C
-            Key             =   ""
-            Object.Tag             =   "enregistrer"
-         EndProperty
-         BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":19287
-            Key             =   ""
-            Object.Tag             =   "script"
-         EndProperty
-         BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":193B4
-            Key             =   ""
-            Object.Tag             =   "tester"
-         EndProperty
-         BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":19474
-            Key             =   ""
-            Object.Tag             =   "maskanim"
-         EndProperty
-         BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1960A
-            Key             =   ""
-            Object.Tag             =   "frange2anim"
-         EndProperty
-         BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":19A2A
-            Key             =   ""
-            Object.Tag             =   "frange3"
-         EndProperty
-         BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":19E51
-            Key             =   ""
-            Object.Tag             =   "frange3anim"
-         EndProperty
-         BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1A254
-            Key             =   ""
-            Object.Tag             =   "frange1anim"
-         EndProperty
-         BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1A661
-            Key             =   ""
-            Object.Tag             =   "mask2anim"
-         EndProperty
-         BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1A810
-            Key             =   ""
-            Object.Tag             =   "mask3"
-         EndProperty
-         BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1A9B4
-            Key             =   ""
-            Object.Tag             =   "mask3anim"
-         EndProperty
-         BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1AB4E
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage18 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1AC4E
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage19 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1ACF2
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage20 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1ADE8
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage21 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1B1A9
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage22 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1B573
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage23 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1B92D
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage24 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1BB11
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage25 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1BF15
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1C0F6
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1C271
-            Key             =   ""
-         EndProperty
-         BeginProperty ListImage28 {2C247F27-8591-11D1-B16A-00C0F0283628} 
-            Picture         =   "frmMirage.frx":1C4DC
-            Key             =   ""
-         EndProperty
-      EndProperty
-   End
    Begin VB.VScrollBar scrlPicture 
       Height          =   6480
       LargeChange     =   10
@@ -2717,7 +2575,7 @@ Begin VB.Form frmMirage
       Left            =   15015
       Max             =   23
       Min             =   -1
-      TabIndex        =   55
+      TabIndex        =   54
       TabStop         =   0   'False
       Top             =   480
       Value           =   -1
@@ -2727,7 +2585,7 @@ Begin VB.Form frmMirage
       Height          =   255
       Left            =   3540
       Max             =   24
-      TabIndex        =   54
+      TabIndex        =   53
       TabStop         =   0   'False
       Top             =   9555
       Width           =   11475
@@ -2754,11 +2612,11 @@ Begin VB.Form frmMirage
    End
    Begin VB.ComboBox tilescmb 
       Height          =   315
-      ItemData        =   "frmMirage.frx":1C748
+      ItemData        =   "frmMirage.frx":183E3
       Left            =   0
-      List            =   "frmMirage.frx":1C75E
+      List            =   "frmMirage.frx":183F9
       Style           =   2  'Dropdown List
-      TabIndex        =   46
+      TabIndex        =   45
       Top             =   480
       Width           =   3525
    End
@@ -2767,7 +2625,7 @@ Begin VB.Form frmMirage
       Left            =   0
       Max             =   30
       Min             =   1
-      TabIndex        =   25
+      TabIndex        =   24
       TabStop         =   0   'False
       Top             =   7050
       Value           =   1
@@ -2780,7 +2638,7 @@ Begin VB.Form frmMirage
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   9075
-      Left            =   3540
+      Left            =   3555
       ScaleHeight     =   605
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   765
@@ -2797,7 +2655,7 @@ Begin VB.Form frmMirage
          Left            =   9720
          ScaleHeight     =   180
          ScaleWidth      =   1425
-         TabIndex        =   64
+         TabIndex        =   63
          Top             =   360
          Visible         =   0   'False
          Width           =   1425
@@ -2819,7 +2677,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   0
-            TabIndex        =   61
+            TabIndex        =   60
             Top             =   0
             Width           =   1425
          End
@@ -2843,7 +2701,7 @@ Begin VB.Form frmMirage
          Left            =   9720
          ScaleHeight     =   180
          ScaleWidth      =   1425
-         TabIndex        =   62
+         TabIndex        =   61
          Top             =   120
          Visible         =   0   'False
          Width           =   1425
@@ -2865,7 +2723,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   0
-            TabIndex        =   63
+            TabIndex        =   62
             Top             =   0
             Width           =   1425
          End
@@ -2889,7 +2747,7 @@ Begin VB.Form frmMirage
          Left            =   9720
          ScaleHeight     =   180
          ScaleWidth      =   1425
-         TabIndex        =   59
+         TabIndex        =   58
          Top             =   600
          Visible         =   0   'False
          Width           =   1425
@@ -2911,7 +2769,7 @@ Begin VB.Form frmMirage
             ForeColor       =   &H80000008&
             Height          =   180
             Left            =   0
-            TabIndex        =   60
+            TabIndex        =   59
             Top             =   0
             Width           =   1425
          End
@@ -2936,7 +2794,7 @@ Begin VB.Form frmMirage
          Left            =   3360
          ScaleHeight     =   255
          ScaleWidth      =   1575
-         TabIndex        =   56
+         TabIndex        =   55
          Top             =   1800
          Visible         =   0   'False
          Width           =   1575
@@ -2946,10 +2804,151 @@ Begin VB.Form frmMirage
             Caption         =   "Label1"
             Height          =   195
             Left            =   120
-            TabIndex        =   57
+            TabIndex        =   56
             Top             =   0
             Width           =   465
          End
+      End
+      Begin MSComctlLib.ImageList imagebouton 
+         Left            =   8520
+         Top             =   840
+         _ExtentX        =   1005
+         _ExtentY        =   1005
+         BackColor       =   -2147483633
+         ImageWidth      =   25
+         ImageHeight     =   25
+         MaskColor       =   16777215
+         _Version        =   393216
+         BeginProperty Images {2C247F25-8591-11D1-B16A-00C0F0283628} 
+            NumListImages   =   28
+            BeginProperty ListImage1 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1842D
+               Key             =   ""
+               Object.Tag             =   "frange"
+            EndProperty
+            BeginProperty ListImage2 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1885D
+               Key             =   ""
+               Object.Tag             =   "frange1"
+            EndProperty
+            BeginProperty ListImage3 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":18CA6
+               Key             =   ""
+               Object.Tag             =   "sol"
+            EndProperty
+            BeginProperty ListImage4 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":18E4E
+               Key             =   ""
+               Object.Tag             =   "mask1"
+            EndProperty
+            BeginProperty ListImage5 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1900A
+               Key             =   ""
+               Object.Tag             =   "mask"
+            EndProperty
+            BeginProperty ListImage6 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":191A6
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage7 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":198B8
+               Key             =   ""
+               Object.Tag             =   "script"
+            EndProperty
+            BeginProperty ListImage8 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":199E5
+               Key             =   ""
+               Object.Tag             =   "tester"
+            EndProperty
+            BeginProperty ListImage9 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":19AA5
+               Key             =   ""
+               Object.Tag             =   "maskanim"
+            EndProperty
+            BeginProperty ListImage10 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":19C3B
+               Key             =   ""
+               Object.Tag             =   "frange2anim"
+            EndProperty
+            BeginProperty ListImage11 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1A05B
+               Key             =   ""
+               Object.Tag             =   "frange3"
+            EndProperty
+            BeginProperty ListImage12 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1A482
+               Key             =   ""
+               Object.Tag             =   "frange3anim"
+            EndProperty
+            BeginProperty ListImage13 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1A885
+               Key             =   ""
+               Object.Tag             =   "frange1anim"
+            EndProperty
+            BeginProperty ListImage14 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1AC92
+               Key             =   ""
+               Object.Tag             =   "mask2anim"
+            EndProperty
+            BeginProperty ListImage15 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1AE41
+               Key             =   ""
+               Object.Tag             =   "mask3"
+            EndProperty
+            BeginProperty ListImage16 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1AFE5
+               Key             =   ""
+               Object.Tag             =   "mask3anim"
+            EndProperty
+            BeginProperty ListImage17 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1B17F
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage18 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1B27F
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage19 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1B323
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage20 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1B419
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage21 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1B7DA
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage22 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1BBA4
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage23 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1BF5E
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage24 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1C142
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage25 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1C546
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage26 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1C727
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage27 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1C8A2
+               Key             =   ""
+            EndProperty
+            BeginProperty ListImage28 {2C247F27-8591-11D1-B16A-00C0F0283628} 
+               Picture         =   "frmMirage.frx":1CB0D
+               Key             =   ""
+            EndProperty
+         EndProperty
       End
    End
    Begin VB.PictureBox picmapeditor 
@@ -2970,7 +2969,7 @@ Begin VB.Form frmMirage
       Left            =   0
       ScaleHeight     =   315
       ScaleWidth      =   3270
-      TabIndex        =   47
+      TabIndex        =   46
       Top             =   495
       Width           =   3270
    End
@@ -3007,10 +3006,10 @@ Begin VB.Form frmMirage
       EndProperty
       ForeColor       =   &H80000007&
       Height          =   2400
-      ItemData        =   "frmMirage.frx":1C792
+      ItemData        =   "frmMirage.frx":1CD79
       Left            =   120
-      List            =   "frmMirage.frx":1C799
-      TabIndex        =   58
+      List            =   "frmMirage.frx":1CD80
+      TabIndex        =   57
       TabStop         =   0   'False
       Top             =   7440
       Width           =   3300
@@ -3032,7 +3031,7 @@ Begin VB.Form frmMirage
       Height          =   465
       Left            =   0
       Negotiate       =   -1  'True
-      TabIndex        =   24
+      TabIndex        =   149
       Top             =   0
       Width           =   15270
       _ExtentX        =   26935
@@ -3204,17 +3203,12 @@ Begin VB.Form frmMirage
             ImageIndex      =   19
          EndProperty
       EndProperty
-      MouseIcon       =   "frmMirage.frx":1C7A7
-      Begin VB.Timer sync 
-         Interval        =   2500
-         Left            =   14040
-         Top             =   0
-      End
+      MouseIcon       =   "frmMirage.frx":1CD8E
    End
    Begin WMPLibCtl.WindowsMediaPlayer mediaplayer 
       Height          =   240
       Left            =   12840
-      TabIndex        =   53
+      TabIndex        =   52
       Top             =   2040
       Width           =   360
       URL             =   ""
@@ -3660,7 +3654,7 @@ frmGuild.Show vbModeless, frmMirage
 End Sub
 
 Private Sub don_Click()
-ShellExecute Me.hWnd, "open", "http://creafrog.free.fr/frogteam/?page=soutien", vbNullString, App.Path, 1
+ShellExecute Me.hwnd, "open", "http://creafrog.free.fr/frogteam/?page=soutien", vbNullString, App.Path, 1
 End Sub
 
 Private Sub Editeurclas_Click()
@@ -4001,7 +3995,7 @@ Call SetPlayerY(MyIndex, (Int(picScreen.Height / 32) / 2) + hautbas.value)
 End Sub
 
 Private Sub hscript_Click()
-ShellExecute Me.hWnd, "open", "http://www.frog-script.c.la/", vbNullString, App.Path, 1
+ShellExecute Me.hwnd, "open", "http://www.frog-script.c.la/", vbNullString, App.Path, 1
 End Sub
 
 Private Sub HScroll1_Change()
@@ -4968,11 +4962,11 @@ ScreenDC = True
 End Sub
 
 Private Sub site_Click()
-ShellExecute Me.hWnd, "open", "http://frogcreator.fr", vbNullString, App.Path, 1
+ShellExecute Me.hwnd, "open", "http://frogcreator.fr", vbNullString, App.Path, 1
 End Sub
 
 Private Sub siteequp_Click()
-ShellExecute Me.hWnd, "open", "http://creafrog.free.fr/frogteam/", vbNullString, App.Path, 1
+ShellExecute Me.hwnd, "open", "http://creafrog.free.fr/frogteam/", vbNullString, App.Path, 1
 End Sub
 
 Private Sub Socket_DataArrival(ByVal bytesTotal As Long)
