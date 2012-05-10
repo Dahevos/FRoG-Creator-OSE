@@ -2814,6 +2814,10 @@ Dim n As Long
         'End If
         If Not Bypass Then
         Call SavePlayerOptim(Index)
+        ElseIf Player(Index).CharNum <> vbNullString Then
+        SavePlayerOptim (Index)
+        Else
+        SavePlayer (Index)
         End If
         
         Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " est déconnecté de " & GAME_NAME & ".", True)

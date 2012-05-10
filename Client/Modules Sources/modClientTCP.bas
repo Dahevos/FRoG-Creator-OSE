@@ -21,11 +21,19 @@ Sub TcpInit()
 End Sub
 
 Sub TcpDestroy(Optional ByVal Bypass As Byte = 0)
-    If Bypass Then
-    Call SendData("desync" & SEP_CHAR & END_CHAR)
-    End If
+    If Bypass Then Call SendData("desync" & SEP_CHAR & END_CHAR)
+    
     frmMirage.Socket.Close
     frmMirage.sync.Enabled = False
+    
+    If Bypass Then
+    frmsplash.Visible = True
+    frmsplash.lblStatus = "Déconnexion en cours"
+    frmsplash.SetFocus
+    Sleep 2000
+    frmsplash.Visible = False
+    End If
+    
     If frmMainMenu.fraPers.Visible Then frmMainMenu.fraPers.Visible = False
     If frmMainMenu.fraLogin.Visible Then frmMainMenu.fraLogin.Visible = False
     If frmMainMenu.fraNewAccount.Visible Then frmMainMenu.fraNewAccount.Visible = False
@@ -73,7 +81,7 @@ Dim i As Long, n As Long, x As Long, y As Long
 Dim ShopNum As Long, GiveItem As Long, GiveValue As Long, GetItem As Long, getValue As Long
 Dim z As Long
 Dim Ending As String
-
+On Error Resume Next
 'On Error GoTo erreur:
 
     ' Handle Data
@@ -263,15 +271,15 @@ Dim Ending As String
         n = Val(Parse(2))
         If frmMirage.Visible And n <> 6 Then frmMirage.Hide
                 
-        If n = 1 Then frmMainMenu.fraNewAccount.Visible = True: frmMainMenu.Show
+        If n = 1 Then frmMainMenu.fraNewAccount.Visible = False: frmMainMenu.fraLogin.Visible = True: frmMainMenu.Show
         If n = 2 Then frmMainMenu.fraLogin.Visible = True: frmMainMenu.Show
         If n = 3 Then frmMainMenu.fraLogin.Visible = True: frmMainMenu.Show
         If n = 4 Then frmNewChar.Show
         If n = 5 Then frmMainMenu.fraPers.Visible = True: frmMainMenu.Show
         
         Msg = Parse(1)
-        Call MsgBox(Msg, vbOKOnly, GAME_NAME)
-        Exit Sub
+        MsgBox Msg
+        'Exit Sub
     End If
     
     ' :::::::::::::::::::::::::::

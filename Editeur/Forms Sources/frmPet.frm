@@ -182,6 +182,7 @@ End Sub
 
 Private Sub ScrlApp_Change()
     lblAppNum.Caption = ScrlApp.value
+    PreparePet (ScrlApp.value)
     frmPets.PictApp.Picture = LoadPNG(App.Path & "\GFX\Pets\Pet" & ScrlApp.value & ".png")
     PictApp.Width = DDSD_Pets(ScrlApp.value).lWidth / 4
     PictApp.Height = DDSD_Pets(ScrlApp.value).lHeight / 4

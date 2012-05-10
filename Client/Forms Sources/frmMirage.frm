@@ -580,7 +580,7 @@ Begin VB.Form frmMirage
       BackColor       =   &H80000005&
       ForeColor       =   &H80000008&
       Height          =   4035
-      Left            =   480
+      Left            =   3120
       ScaleHeight     =   267
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   511
@@ -1083,7 +1083,7 @@ Begin VB.Form frmMirage
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   210
-         Left            =   3840
+         Left            =   3960
          TabIndex        =   206
          Top             =   0
          Width           =   3735
@@ -5070,6 +5070,7 @@ Dim i As Integer
     Call SendData("CHANGECHAR" & END_CHAR)
     InGame = False
     deco = True
+    Sleep 2000
     PicMenuQuitter.Visible = False
     frmMainMenu.Visible = True
     frmMainMenu.fraLogin.Visible = True
@@ -5268,7 +5269,13 @@ Dim i As Long
 
 fra_info.Visible = False
 For i = 1 To MAX_PLAYERS
-    If IsPlaying(i) = True Then If MouseDownX = GetPlayerX(i) And MouseDownY = GetPlayerY(i) Then Call SendData("playerchat" & SEP_CHAR & GetPlayerName(i) & END_CHAR): Exit Sub
+    If IsPlaying(i) = True Then
+    If MouseDownX = GetPlayerX(i) And MouseDownY = GetPlayerY(i) Then
+    Call SendData("playerchat" & SEP_CHAR & GetPlayerName(i) & END_CHAR): Exit Sub
+    End If
+    Else
+    MsgBox ("Vous devez sélectionner un joueur")
+    End If
 Next i
 
 End Sub

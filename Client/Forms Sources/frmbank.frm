@@ -945,7 +945,7 @@ Dim SInv As Long
 Dim SCof As Long
 Dim DInv As Boolean
 Dim DCof As Boolean
-
+Dim deplacé As Boolean
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 dr = True
 drx = x
@@ -1130,6 +1130,7 @@ Packet = "COFFREITEM" & END_CHAR
 Call SendData(Packet)
 
 Call ActPic
+deplacé = True
 End Sub
 
 Public Sub DansCoffre(ByVal SlotC As Long, ByVal SlotI As Long)
@@ -1239,13 +1240,14 @@ Packet = "COFFREITEM" & END_CHAR
 Call SendData(Packet)
 
 Call ActPic
+deplacé = True
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
 If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
 If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
-Picture3.Visible = False
+picture3.Visible = False
 End Sub
 
 Private Sub OK_Click()
@@ -1256,12 +1258,15 @@ Unload Me
 End Sub
 
 Private Sub Picture1_Click(Index As Integer)
+If deplacé Then
 SInv = Index
 Shape3.Visible = True
 Shape3.Left = Picture1(SInv).Left - 1
 Shape3.Top = Picture1(SInv).Top - 1
 DCof = False
 DInv = False
+deplacé = False
+End If
 End Sub
 
 Private Sub Picture1_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
@@ -1297,23 +1302,26 @@ If Val(Idur) <= 0 Then Idur = "Ind."
 If ival = 0 Then ival = 1
 
 If Inum > 0 Then
-    Picture3.Top = Picture1(Index).Top + 32
-    Picture3.Left = Picture1(Index).Left - 40
+    picture3.Top = Picture1(Index).Top + 32
+    picture3.Left = Picture1(Index).Left - 40
     nom.Caption = "Nom : " & Trim$(Item(Inum).name)
     nb.Caption = "  Nombre : " & ival
     dur.Caption = "  Durabilité : " & Idur
-    Picture3.Visible = True
+    picture3.Visible = True
 End If
 
 End Sub
 
 Private Sub Picture2_Click(Index As Integer)
+If deplacé Then
 SCof = Index
 Shape1.Visible = True
 Shape1.Left = Picture2(SCof).Left - 1
 Shape1.Top = Picture2(SCof).Top - 1
 DCof = False
 DInv = False
+deplacé = False
+End If
 End Sub
 
 Private Sub Picture2_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
@@ -1351,12 +1359,12 @@ If Val(Cdur) <= 0 Then Cdur = "Ind."
 If Cval = 0 Then Cval = 1
 
 If Cnum > 0 Then
-    Picture3.Top = Picture2(Index).Top + 32
-    Picture3.Left = Picture2(Index).Left - 89
+    picture3.Top = Picture2(Index).Top + 32
+    picture3.Left = Picture2(Index).Left - 89
     nom.Caption = "Nom : " & Trim$(Item(Cnum).name)
     nb.Caption = "  Nombre : " & Cval
     dur.Caption = "  Durabilité : " & Cdur
-    Picture3.Visible = True
+    picture3.Visible = True
 End If
 End Sub
 

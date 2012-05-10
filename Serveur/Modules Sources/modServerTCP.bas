@@ -1113,10 +1113,12 @@ Player(Index).sync = True
                 Case "achat"
                     n = Player(Index).ChatPlayer
                     If n < 1 Then Call PlayerMsg(Index, "Aucune requête pour discuter avec vous.", Pink): Exit Sub
-                    If Player(n).ChatPlayer <> Index Then Call PlayerMsg(Index, "La discution a échoué..", Pink): Exit Sub
-                                            
+                    If Player(n).ChatPlayer <> Index Then
                     Call SendDataTo(Index, "PPCHATTING" & SEP_CHAR & n & END_CHAR)
                     Call SendDataTo(n, "PPCHATTING" & SEP_CHAR & Index & END_CHAR)
+                    Else
+                    Call PlayerMsg(Index, "La discution a échoué..", Pink)
+                    End If
                     Exit Sub
             End Select
         Case "m"

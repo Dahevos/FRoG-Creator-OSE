@@ -105,23 +105,6 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Private Sub acoul_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-If Button = 1 Then
-    cmd.Flags = &H2& + &H1&
-    cmd.ShowColor
-    If cmd.Color > -1 And cmd.Color <> RGB(255, 255, 255) Then acoul.BackColor = cmd.Color
-End If
-End Sub
-
-
-Private Sub jcoul_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
-If Button = 1 Then
-    cmd.Flags = &H2& + &H1&
-    cmd.ShowColor
-    If cmd.Color > -1 And cmd.Color <> RGB(255, 255, 255) Then jcoul.BackColor = cmd.Color
-End If
-End Sub
-
 Private Sub ma_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If ma.value = Checked Then IBAdmin = False Else IBAdmin = True
 End Sub
@@ -133,10 +116,13 @@ End Sub
 Private Sub mj_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 If mj.value = Checked Then IBJoueur = False Else IBJoueur = True
 End Sub
+Private Sub form_load()
+If IBJoueur Then mj.value = 1
+If IBErr Then mer.value = 1
+If IBAdmin Then ma.value = 1
+End Sub
 
 Private Sub sauv_Click()
-IBCJoueur = jcoul.BackColor
-IBCAdmin = acoul.BackColor
 Call SauvIBOpt
 Unload Me
 End Sub

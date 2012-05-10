@@ -144,7 +144,7 @@ Function FileExist(ByVal FileName As String, Optional dirapp As Boolean = True) 
     End If
 End Function
 
-Sub SavePlayer(ByVal Index As Long)
+Sub SavePlayer(ByVal Index As Long, Optional ByVal coffredel As Boolean = False)
 Dim FileName As String
 Dim i As Integer
 Dim n As Integer
@@ -226,14 +226,13 @@ Dim n As Integer
         
         ' coffre
 
+        If coffredel Then
         For n = 1 To 30
-            If Val(GetVar(FileName, "CHAR" & i, "cofitemnum" & n)) <= 0 Then
-                Call PutVar(FileName, "CHAR" & i, "cofitemnum" & n, " 0")
-                Call PutVar(FileName, "CHAR" & i, "cofitemval" & n, " 0")
-                Call PutVar(FileName, "CHAR" & i, "cofitemdur" & n, " 0")
-            End If
-        NewDoEvents
+            Call PutVar(FileName, "CHAR" & i, "cofitemnum" & n, " 0")
+            Call PutVar(FileName, "CHAR" & i, "cofitemval" & n, " 0")
+            Call PutVar(FileName, "CHAR" & i, "cofitemdur" & n, " 0")
         Next
+        End If
         
         'Quete
         Call PutVar(FileName, "CHAR" & i, "QueteC", STR$(Player(Index).Char(i).QueteEnCour))
@@ -595,7 +594,7 @@ Dim s As String
 
     Call DeleteName(Player(Index).Char(CharNum).Name)
     Call ClearChar(Index, CharNum)
-    Call SavePlayer(Index)
+    Call SavePlayer(Index, True)
 End Sub
 
 Function FindChar(ByVal Name As String) As Boolean

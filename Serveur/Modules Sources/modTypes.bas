@@ -940,7 +940,7 @@ With Player(Index)
             .Char(CharNum).Quetep.indexe(n).data3 = 0
             .Char(CharNum).Quetep.indexe(n).String1 = 0
     Next n
-    
+        
     .Char(CharNum).ArmorSlot = 0
     .Char(CharNum).WeaponSlot = 0
     .Char(CharNum).HelmetSlot = 0

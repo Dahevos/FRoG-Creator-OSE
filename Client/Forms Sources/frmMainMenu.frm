@@ -745,6 +745,10 @@ Private Sub picCancel_Click()
         Unload frmMirage.picInv(i)
     Next
     Call TcpDestroy(1)
+    frmsplash.Show
+    frmsplash.Visible = True
+    fraLogin.Visible = True
+    fraPers.Visible = False
 End Sub
 
 Private Sub picConnect_Click()

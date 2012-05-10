@@ -35,7 +35,6 @@ Begin VB.Form frmServer
       _ExtentY        =   8467
       _Version        =   393216
       Tabs            =   4
-      Tab             =   2
       TabsPerRow      =   4
       TabHeight       =   370
       TabMaxWidth     =   3175
@@ -50,7 +49,7 @@ Begin VB.Form frmServer
       EndProperty
       TabCaption(0)   =   "Discussions"
       TabPicture(0)   =   "frmServer.frx":17D2A
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Label6"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Image1"
@@ -118,7 +117,7 @@ Begin VB.Form frmServer
       Tab(1).ControlCount=   22
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
-      Tab(2).ControlEnabled=   -1  'True
+      Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "lblPort"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "lblIP"
@@ -150,17 +149,11 @@ Begin VB.Form frmServer
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "CharInfo(21)"
-      Tab(3).Control(0).Enabled=   0   'False
       Tab(3).Control(1)=   "CharInfo(22)"
-      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).Control(2)=   "CharInfo(23)"
-      Tab(3).Control(2).Enabled=   0   'False
       Tab(3).Control(3)=   "lstTopics"
-      Tab(3).Control(3).Enabled=   0   'False
       Tab(3).Control(4)=   "TopicTitle"
-      Tab(3).Control(4).Enabled=   0   'False
       Tab(3).Control(5)=   "sync"
-      Tab(3).Control(5).Enabled=   0   'False
       Tab(3).ControlCount=   6
       Begin VB.Timer sync 
          Interval        =   5000
@@ -242,7 +235,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame8 
          Caption         =   "Gestion du temps :"
          Height          =   855
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   179
          Top             =   3840
          Width           =   9975
@@ -346,7 +339,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3375
-         Left            =   -120
+         Left            =   -75120
          ScaleHeight     =   223
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
@@ -600,7 +593,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1455
-         Left            =   6840
+         Left            =   -68160
          ScaleHeight     =   95
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
@@ -672,7 +665,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2535
-         Left            =   4320
+         Left            =   -70680
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
@@ -1024,7 +1017,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1335
-         Left            =   4800
+         Left            =   -70200
          ScaleHeight     =   87
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
@@ -1102,7 +1095,7 @@ Begin VB.Form frmServer
       End
       Begin VB.Timer tmrChatLogs 
          Interval        =   1000
-         Left            =   -65160
+         Left            =   9840
          Top             =   360
       End
       Begin VB.PictureBox picCMsg 
@@ -1118,7 +1111,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1935
-         Left            =   -70080
+         Left            =   4920
          ScaleHeight     =   1905
          ScaleWidth      =   3345
          TabIndex        =   47
@@ -1197,7 +1190,7 @@ Begin VB.Form frmServer
       End
       Begin TabDlg.SSTab SSTab2 
          Height          =   3015
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   150
          Top             =   240
          Width           =   8415
@@ -1416,7 +1409,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame9 
          Caption         =   "Liste des Cartes"
          Height          =   1815
-         Left            =   4080
+         Left            =   -70920
          TabIndex        =   126
          Top             =   480
          Width           =   6015
@@ -1431,7 +1424,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame6 
          Caption         =   "Commande"
          Height          =   2655
-         Left            =   2040
+         Left            =   -72960
          TabIndex        =   97
          Top             =   1080
          Width           =   1935
@@ -1630,7 +1623,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   5
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   46
          Top             =   3480
          Width           =   495
@@ -1639,7 +1632,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   4
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   45
          Top             =   2880
          Width           =   495
@@ -1648,7 +1641,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   3
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   44
          Top             =   2280
          Width           =   495
@@ -1657,7 +1650,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   2
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   43
          Top             =   1680
          Width           =   495
@@ -1666,7 +1659,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   1
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   42
          Top             =   1080
          Width           =   495
@@ -1675,7 +1668,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   5
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   41
          Top             =   3240
          Width           =   1455
@@ -1684,7 +1677,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   4
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   40
          Top             =   2640
          Width           =   1455
@@ -1693,7 +1686,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   3
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   39
          Top             =   2040
          Width           =   1455
@@ -1702,7 +1695,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   2
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   38
          Top             =   1440
          Width           =   1455
@@ -1711,7 +1704,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   1
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   37
          Top             =   840
          Width           =   1455
@@ -1719,7 +1712,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame5 
          Caption         =   "Configuration des discussions :"
          Height          =   615
-         Left            =   -74880
+         Left            =   120
          TabIndex        =   31
          Top             =   3240
          Width           =   6735
@@ -1808,7 +1801,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame3 
          Caption         =   "Classes"
          Height          =   1095
-         Left            =   4080
+         Left            =   -70920
          TabIndex        =   24
          Top             =   2280
          Width           =   1695
@@ -1832,7 +1825,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame2 
          Caption         =   "Serveur"
          Height          =   1575
-         Left            =   5880
+         Left            =   -69120
          TabIndex        =   23
          Top             =   2280
          Width           =   4215
@@ -1917,7 +1910,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame1 
          Caption         =   "Scripts"
          Height          =   1215
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   19
          Top             =   2520
          Width           =   1815
@@ -2047,7 +2040,7 @@ Begin VB.Form frmServer
          Caption         =   "Dire"
          Height          =   255
          Index           =   0
-         Left            =   -65400
+         Left            =   9600
          TabIndex        =   2
          Top             =   480
          Width           =   495
@@ -2056,7 +2049,7 @@ Begin VB.Form frmServer
          Caption         =   "Editer msg"
          Height          =   255
          Index           =   0
-         Left            =   -66360
+         Left            =   8640
          TabIndex        =   1
          Top             =   240
          Width           =   1455
@@ -2064,7 +2057,7 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame7 
          Caption         =   "Fichier Texte"
          Height          =   1215
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   117
          Top             =   1080
          Width           =   1815
@@ -2162,7 +2155,7 @@ Begin VB.Form frmServer
       End
       Begin VB.Image Image1 
          Height          =   240
-         Left            =   -74400
+         Left            =   600
          Picture         =   "frmServer.frx":17E62
          Top             =   600
          Visible         =   0   'False
@@ -2173,7 +2166,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Cliquez ici pour voir votre IP "
          Height          =   195
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   169
          Top             =   840
          Width           =   2055
@@ -2192,7 +2185,7 @@ Begin VB.Form frmServer
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   -68040
+         Left            =   6960
          TabIndex        =   167
          Top             =   3600
          Width           =   1170
@@ -2246,7 +2239,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Adresse IP:"
          Height          =   195
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   7
          Top             =   360
          Width           =   840
@@ -2256,7 +2249,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Port:"
          Height          =   195
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   6
          Top             =   600
          Width           =   360
@@ -3016,7 +3009,7 @@ Private Sub CustomMsg_Click(Index As Integer)
     picCMsg.Visible = True
 End Sub
 
-Private Sub Form_Load()
+Private Sub form_load()
 Random = 1
 End Sub
 
