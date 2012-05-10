@@ -166,13 +166,9 @@ Begin VB.Form frmoptions
       TabPicture(3)   =   "frmoptions.frx":0054
       Tab(3).ControlEnabled=   0   'False
       Tab(3).Control(0)=   "Label33"
-      Tab(3).Control(0).Enabled=   0   'False
       Tab(3).Control(1)=   "editcls"
-      Tab(3).Control(1).Enabled=   0   'False
       Tab(3).Control(2)=   "clase"
-      Tab(3).Control(2).Enabled=   0   'False
       Tab(3).Control(3)=   "nbcls"
-      Tab(3).Control(3).Enabled=   0   'False
       Tab(3).ControlCount=   4
       Begin VB.CheckBox chkLowEffect 
          Caption         =   "Désactiver les effets avancés"
@@ -1072,6 +1068,7 @@ Dim i As Long
 For i = 0 To Val(nbcls.Text)
     Call clase.AddItem("Classe" & i, i)
 Next i
+
 motd.Text = "Bienvenue dans la version " & App.Major & "." & App.Minor & "." & App.Revision & " de FRoG Creator, si vous rencontrez un problème ou un bug veuillez le rapporter sur frogcreator.fr"
 End Sub
 

@@ -282,15 +282,13 @@ frmsplash.chrg.value = i
 Next
 End Sub
 Public Sub PaintMenuBitmaps()  'function to set bitmaps to menus
-    'On Error Resume Next
-   ' AssignMenuBitmaps frmMirage, frmMirage.imagebouton, 0, 2  'New
-    'AssignMenuBitmaps frmMirage, imgOpen, 0, 1 'Open
-    'frmMirage.imagebouton.ListImages (2)
-    'frmMirage.imagebouton.ListImages(3).Picture
-    mHandle = GetMenu(frmMirage.hwnd)
+   On Error Resume Next
+   mHandle = GetMenu(frmMirage.hwnd)
    sHandle = GetSubMenu(mHandle, 0)
-   lRet = SetMenuItemBitmaps(sHandle, 2, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
-   lRet = SetMenuItemBitmaps(sHandle, 3, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(1).Picture)
+   lRet = SetMenuItemBitmaps(sHandle, 2, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(6).Picture)
+   lRet = SetMenuItemBitmaps(sHandle, 3, MF_BYPOSITION, frmMirage.imagebouton.ListImages(6).Picture, frmMirage.imagebouton.ListImages(6).Picture)
+   lRet = SetMenuItemBitmaps(sHandle, 0, MF_BYPOSITION, frmMirage.imagebouton.ListImages(8).Picture, frmMirage.imagebouton.ListImages(7).Picture)
+   lRet = SetMenuItemBitmaps(sHandle, 1, MF_BYPOSITION, frmMirage.imagebouton.ListImages(7).Picture, frmMirage.imagebouton.ListImages(7).Picture)
 End Sub
 
 Sub Main()

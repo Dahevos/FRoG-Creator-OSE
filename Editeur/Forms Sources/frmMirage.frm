@@ -3903,6 +3903,62 @@ OldPCY = 0
 nbcle = 5
 TempNum = 0
 Dim Screenw As Long
+
+If FileExist("GFX\icons\options.png") Then
+imagebouton.ListImages.Remove (7)
+Call imagebouton.ListImages.Add(7, vbNullString, LoadPNG(App.Path & "\GFX\icons\options.png"))
+End If
+
+If FileExist("GFX\icons\play.png") Then
+imagebouton.ListImages.Remove (8)
+Call imagebouton.ListImages.Add(8, vbNullString, LoadPNG(App.Path & "\GFX\icons\play.png"))
+End If
+
+If FileExist("GFX\icons\pipette.png") Then
+imagebouton.ListImages.Remove (17)
+Call imagebouton.ListImages.Add(17, vbNullString, LoadPNG(App.Path & "\GFX\icons\pipette.png"))
+End If
+
+If FileExist("GFX\icons\fill.png") Then
+imagebouton.ListImages.Remove (18)
+Call imagebouton.ListImages.Add(18, vbNullString, LoadPNG(App.Path & "\GFX\icons\fill.png"))
+End If
+
+If FileExist("GFX\icons\erase.png") Then
+imagebouton.ListImages.Remove (19)
+Call imagebouton.ListImages.Add(19, vbNullString, LoadPNG(App.Path & "\GFX\icons\erase.png"))
+End If
+
+If FileExist("GFX\icons\c.png") Then
+imagebouton.ListImages.Remove (20)
+Call imagebouton.ListImages.Add(20, vbNullString, LoadPNG(App.Path & "\GFX\icons\c.png"))
+End If
+
+If FileExist("GFX\icons\a.png") Then
+imagebouton.ListImages.Remove (21)
+Call imagebouton.ListImages.Add(21, vbNullString, LoadPNG(App.Path & "\GFX\icons\a.png"))
+End If
+
+If FileExist("GFX\icons\l.png") Then
+imagebouton.ListImages.Remove (22)
+Call imagebouton.ListImages.Add(22, vbNullString, LoadPNG(App.Path & "\GFX\icons\l.png"))
+End If
+
+If FileExist("GFX\icons\gomme.png") Then
+imagebouton.ListImages.Remove (26)
+Call imagebouton.ListImages.Add(26, vbNullString, LoadPNG(App.Path & "\GFX\icons\gomme.png"))
+End If
+
+If FileExist("GFX\icons\previous.png") Then
+imagebouton.ListImages.Remove (27)
+Call imagebouton.ListImages.Add(27, vbNullString, LoadPNG(App.Path & "\GFX\icons\previous.png"))
+End If
+
+If FileExist("GFX\icons\next.png") Then
+imagebouton.ListImages.Remove (28)
+Call imagebouton.ListImages.Add(28, vbNullString, LoadPNG(App.Path & "\GFX\icons\next.png"))
+End If
+
 HScroll1.Max = (frmMirage.picBackSelect.Width / 32)
 HScroll1.Width = (scrlPicture.Left)
 picBack.Width = (scrlPicture.Left + 17)

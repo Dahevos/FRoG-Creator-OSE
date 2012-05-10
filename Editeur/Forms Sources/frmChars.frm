@@ -81,6 +81,7 @@ Dim i As Long
     Call TcpDestroy
     frmMainMenu.Visible = True
     Me.Visible = False
+    Sleep 2000
 End Sub
 
 Private Sub picUseChar_Click()
