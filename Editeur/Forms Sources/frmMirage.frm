@@ -37,7 +37,7 @@ Begin VB.Form frmMirage
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   6930
-      Left            =   0
+      Left            =   -15
       ScaleHeight     =   462
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   236
@@ -2613,7 +2613,7 @@ Begin VB.Form frmMirage
    Begin VB.ComboBox tilescmb 
       Height          =   315
       ItemData        =   "frmMirage.frx":183E3
-      Left            =   0
+      Left            =   15
       List            =   "frmMirage.frx":183F9
       Style           =   2  'Dropdown List
       TabIndex        =   45
@@ -2643,7 +2643,7 @@ Begin VB.Form frmMirage
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   765
       TabIndex        =   3
-      Top             =   480
+      Top             =   495
       Width           =   11475
       Begin VB.PictureBox mana 
          Appearance      =   0  'Flat
@@ -3667,6 +3667,7 @@ Call frmoptions.clase.Clear
 For i = 0 To Val(frmoptions.nbcls.Text)
     Call frmoptions.clase.AddItem("Classe" & i, i)
 Next i
+frmoptions.clase.ListIndex = 0
 If Len(ReadINI("INFO", "HPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pv = ReadINI("INFO", "HPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "MPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.pm = ReadINI("INFO", "MPRegen", App.Path & "\config.ini")
 If Len(ReadINI("INFO", "SPRegen", App.Path & "\config.ini")) > 0 Then frmoptions.ps = ReadINI("INFO", "SPRegen", App.Path & "\config.ini")

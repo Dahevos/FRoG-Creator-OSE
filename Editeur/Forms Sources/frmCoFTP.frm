@@ -17,15 +17,15 @@ Begin VB.Form frmCoFTP
       Height          =   255
       Left            =   240
       TabIndex        =   7
-      Top             =   1080
+      Top             =   1065
       Width           =   3015
    End
    Begin VB.CommandButton annul 
       Caption         =   "Annuler"
       Height          =   255
-      Left            =   2220
+      Left            =   2250
       TabIndex        =   6
-      Top             =   1440
+      Top             =   1430
       Width           =   1695
    End
    Begin VB.TextBox mdp 
