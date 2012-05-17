@@ -170,9 +170,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   5055
-         Left            =   5580
+         Left            =   5540
          TabIndex        =   64
-         Top             =   900
+         Top             =   1005
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlSexReq 
@@ -1343,9 +1343,9 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   315
-            ItemData        =   "frmItemEditor.frx":01C8
+            ItemData        =   "frmItemEditor.frx":01C7
             Left            =   120
-            List            =   "frmItemEditor.frx":01CA
+            List            =   "frmItemEditor.frx":01C9
             Style           =   2  'Dropdown List
             TabIndex        =   34
             ToolTipText     =   "Sélectionner une flèche"
@@ -1449,9 +1449,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2355
-         Left            =   5580
+         Left            =   5540
          TabIndex        =   43
-         Top             =   900
+         Top             =   960
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar vit 
@@ -1598,9 +1598,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   5580
+         Left            =   5535
          TabIndex        =   86
-         Top             =   900
+         Top             =   975
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlVitalMod 
@@ -1665,9 +1665,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1515
-         Left            =   5580
+         Left            =   5535
          TabIndex        =   90
-         Top             =   900
+         Top             =   960
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlSpell 
@@ -1769,9 +1769,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1695
-         Left            =   5580
+         Left            =   5550
          TabIndex        =   49
-         Top             =   900
+         Top             =   945
          Visible         =   0   'False
          Width           =   2355
          Begin VB.CheckBox disp 
@@ -1840,7 +1840,7 @@ Begin VB.Form frmItemEditor
          End
       End
       Begin VB.Frame fraPet 
-         Caption         =   "Famillier"
+         Caption         =   "Familier"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -1851,9 +1851,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1395
-         Left            =   5580
+         Left            =   5550
          TabIndex        =   103
-         Top             =   900
+         Top             =   915
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlPet 
@@ -2023,8 +2023,8 @@ Private Sub cmbType_Click()
     If (cmbType.ListIndex >= ITEM_TYPE_WEAPON) And (cmbType.ListIndex <= ITEM_TYPE_SHIELD) Then
         If cmbType.ListIndex = ITEM_TYPE_WEAPON Then
             Label3.Caption = "Dommage :"
-            Label3.ToolTipText = "Dommage infliger par l'objet"
-            lblStrength.ToolTipText = "Dommage infliger par l'objet"
+            Label3.ToolTipText = "Dommage infligé par l'objet"
+            lblStrength.ToolTipText = "Dommage infligé par l'objet"
             fraBow.Visible = True
             CtArme.Visible = True
         Else
@@ -2082,7 +2082,7 @@ Private Sub Form_Load()
     'Call BitBlt(picSelect.hDC, 0, 0, PIC_X, PIC_Y, picItems.hDC, EditorItemX * PIC_X, EditorItemY * PIC_Y, SRCCOPY)
     'picBow.Picture = LoadPNG(App.Path & "\GFX\arrows.png")
 '    picSprites.Picture = LoadPNG(App.Path & "\GFX\sprites.png")
-    Picture4.height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY) + 60
+    Picture4.Height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY) + 60
     'imgmont.Height = ((PIC_NPC1 * 32) * Screen.TwipsPerPixelY)
 End Sub
 
@@ -2180,8 +2180,8 @@ End Sub
 
 Private Sub scrlPD_Change()
     PicPD.Picture = LoadPNG(App.Path & "\GFX\Paperdolls\Paperdolls" & scrlPD.value & ".png")
-    PicPD.height = 64
-    Pic.height = 1020
+    PicPD.Height = 64
+    Pic.Height = 1020
     lblpaper.Caption = scrlPD.value
 End Sub
 
@@ -2229,7 +2229,7 @@ On Error Resume Next
     Call AffSurfPic(DD_SpriteSurf(skin.value), imgmont, 0, 0)
 End Sub
 
-Private Sub vit_Change()
+Private Sub vit_change()
 If vit.value = 5 Or vit.value = 6 Then vit.value = 8
 If vit.value = 7 Then vit.value = 4
 If vit.value = 3 And VitVal = 4 Then vit.value = 2

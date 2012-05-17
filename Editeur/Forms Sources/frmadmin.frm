@@ -87,11 +87,11 @@ Begin VB.Form frmadmin
       TabCaption(2)   =   "Aide"
       TabPicture(2)   =   "frmadmin.frx":0902
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label16"
+      Tab(2).Control(0)=   "Frame8"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Frame8"
+      Tab(2).Control(2)=   "Label16"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       Begin VB.Frame Frame11 
@@ -1337,7 +1337,11 @@ Call SendSetAccess(Trim$(txtPlayer.Text), Val(Trim$(txtAccess.Text)))
 End Sub
 
 Private Sub btnyname_Click()
+If Len(txtName.txt) > 2 Then
 Call SendSetName(Trim$(txtName.Text))
+Else
+MsgBox ("Le nombre de caractères du nom doit être supérieur à 2 caractères")
+End If
 End Sub
 
 Private Sub Command10_Click()

@@ -2561,7 +2561,7 @@ End Sub
 Sub SendRequestEditPet()
 Dim Packet As String
 
-    Call EcrireEtat("Edition des famillier")
+    Call EcrireEtat("Edition des familier")
     Packet = "REQUESTEDITPET" & END_CHAR
     Call SendData(Packet)
 End Sub

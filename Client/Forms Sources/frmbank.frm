@@ -1128,9 +1128,8 @@ End If
 Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
-
-Call ActPic
 deplacé = True
+Call ActPic
 End Sub
 
 Public Sub DansCoffre(ByVal SlotC As Long, ByVal SlotI As Long)
@@ -1273,7 +1272,9 @@ Private Sub Picture1_DragDrop(Index As Integer, Source As Control, x As Single, 
 If DInv = True Then DInv = False: Exit Sub
 DCof = False
 SInv = Index
+If Not deplacé Then
 Call DansInv(SInv, SCof)
+End If
 End Sub
 
 Private Sub Picture1_DragOver(Index As Integer, Source As Control, x As Single, y As Single, State As Integer)
@@ -1328,7 +1329,9 @@ Private Sub Picture2_DragDrop(Index As Integer, Source As Control, x As Single, 
 If DCof = True Then DCof = False: Exit Sub
 DInv = False
 SCof = Index
+If Not deplacé Then
 Call DansCoffre(SCof, SInv)
+End If
 SInv = 0
 SCof = 0
 End Sub
