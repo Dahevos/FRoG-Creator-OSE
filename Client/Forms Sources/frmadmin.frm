@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
 Begin VB.Form frmadmin 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Panneau d'administration"
@@ -1065,7 +1065,7 @@ Begin VB.Form frmadmin
          Width           =   2175
       End
       Begin VB.Label Label7 
-         Caption         =   "Panneau d'administration 0.3"
+         Caption         =   "Panneau d'administration"
          BeginProperty Font 
             Name            =   "Tahoma"
             Size            =   6.75
@@ -1210,7 +1210,11 @@ End Sub
 
 Private Sub btnyname_Click()
 If GetPlayerAccess(MyIndex) >= ADMIN_MAPPER Then
+    If Len(txtName.Txt) > 2 Then
     Call SendSetName(Trim$(txtName.Text))
+    Else
+    MsgBox ("Le nombre de caractères du nom doit être supérieur à 2 caractères")
+    End If
 Else
     Call AddText("Vous n'êtes pas autorisé à faire cette action.", BrightRed)
 End If

@@ -480,9 +480,9 @@ Begin VB.Form frmMirage
          Alignment       =   2  'Center
          BackStyle       =   0  'Transparent
          Height          =   255
-         Left            =   3240
+         Left            =   3390
          TabIndex        =   247
-         Top             =   0
+         Top             =   1935
          Width           =   375
       End
       Begin VB.Label lblmetierEnd 
