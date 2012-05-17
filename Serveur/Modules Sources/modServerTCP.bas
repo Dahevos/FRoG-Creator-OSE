@@ -3,7 +3,8 @@ Option Explicit
 'Affichage de petits détails
 Sub UpdateCaption()
     frmServer.Caption = GAME_NAME & " - FRoG Serveur 0.6.2"
-    frmServer.lblIP.Caption = "Adresse IP: " & frmServer.Socket(0).LocalIP
+    frmServer.lblIP.Caption = "Adresse IP : " & SendAPIRequest("http://www.frogcreator.fr/update/getIP.php")
+    frmServer.lblIP.Caption = frmServer.lblIP & " (Local : " & frmServer.Socket(0).LocalIP & " ) "
     frmServer.lblPort.Caption = "Port: " & STR$(frmServer.Socket(0).LocalPort)
     frmServer.TPO.Caption = "Nombre de joueurs en ligne : " & TotalOnlinePlayers
 End Sub
