@@ -480,7 +480,7 @@ Dim f As Long
     
     ' Start listening
     
-    'On Error GoTo er:
+    On Error GoTo er:
     frmServer.Socket(0).Listen
     
     Call UpdateCaption
@@ -526,7 +526,7 @@ Dim f As Long
 
 Exit Sub
 er:
-MsgBox "Erreur pendant l'initialisation du serveur, vérifiez que l'IP et le Port ne soit pas déjà utilisés(Détails :" & Err.Number & " " & Err.Description & ")"
+MsgBox "Erreur pendant l'initialisation du serveur, vérifiez que le port n'est pas déjà utilisé par une autre application ou que le serveur ne soit pas déjà lancé ! (Détails :" & Err.Number & " " & Err.Description & ")"
 Call DestroyServer
 End Sub
 
