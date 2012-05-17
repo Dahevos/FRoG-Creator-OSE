@@ -7,7 +7,7 @@ Begin VB.Form frmMirage
    ClientHeight    =   10020
    ClientLeft      =   1275
    ClientTop       =   1140
-   ClientWidth     =   11985
+   ClientWidth     =   12000
    FillColor       =   &H00FFFFFF&
    BeginProperty Font 
       Name            =   "Tahoma"
@@ -24,9 +24,9 @@ Begin VB.Form frmMirage
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MousePointer    =   99  'Custom
-   ScaleHeight     =   668
-   ScaleMode       =   3  'Pixel
-   ScaleWidth      =   799
+   ScaleHeight     =   660
+   ScaleMode       =   0  'User
+   ScaleWidth      =   800
    Visible         =   0   'False
    Begin VB.PictureBox picOptions 
       Appearance      =   0  'Flat
