@@ -33,7 +33,7 @@ Begin VB.Form frmMirage
       BackColor       =   &H00FFFFFF&
       ForeColor       =   &H80000008&
       Height          =   5745
-      Left            =   480
+      Left            =   2640
       ScaleHeight     =   381
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   173
@@ -3577,11 +3577,30 @@ Begin VB.Form frmMirage
             Appearance      =   0  'Flat
             Height          =   3015
             Left            =   240
+            Locked          =   -1  'True
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
             TabIndex        =   93
             Top             =   480
             Width           =   2895
+         End
+         Begin VB.Label artquete 
+            BackStyle       =   0  'Transparent
+            BeginProperty Font 
+               Name            =   "Tahoma"
+               Size            =   6.75
+               Charset         =   0
+               Weight          =   400
+               Underline       =   0   'False
+               Italic          =   0   'False
+               Strikethrough   =   0   'False
+            EndProperty
+            ForeColor       =   &H00000000&
+            Height          =   405
+            Left            =   1440
+            TabIndex        =   94
+            Top             =   3840
+            Width           =   1845
          End
          Begin VB.Label qf 
             BackStyle       =   0  'Transparent
@@ -3640,24 +3659,6 @@ Begin VB.Form frmMirage
             TabIndex        =   95
             Top             =   3600
             Width           =   1020
-         End
-         Begin VB.Label artquete 
-            BackStyle       =   0  'Transparent
-            BeginProperty Font 
-               Name            =   "Tahoma"
-               Size            =   6.75
-               Charset         =   0
-               Weight          =   400
-               Underline       =   0   'False
-               Italic          =   0   'False
-               Strikethrough   =   0   'False
-            EndProperty
-            ForeColor       =   &H00000000&
-            Height          =   405
-            Left            =   1440
-            TabIndex        =   94
-            Top             =   3840
-            Width           =   1845
          End
       End
       Begin VB.Frame fra_info 
@@ -4948,7 +4949,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
