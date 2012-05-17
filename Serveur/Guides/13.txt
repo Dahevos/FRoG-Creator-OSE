@@ -1,4 +1,31 @@
 ----------------
+0.6.2 Pré-Patch
+----------------
+
+-Réglage de la faille 0 days
+-Réglage du bug de connexion "Nom trop court
+-Support de Windows 8
+-Suppression de la dépendance WinXPCEngine.ocx
+-Suppression de la dépendance PaintX.DLL
+-Suppression de la dépendance dll md5
+-Suppression du SEP_CHAR de fin de packet
+-Fix du bug de canal de chat
+-Amélioration de l'interface Netbook
+-Fix de la fenêtre intempêstive du magasin
+-Modification des révisions
+-Ajout d'un Updater
+-Optimisations de chargement
+-Déchargement des textures de la RAM
+-Fix du bug de l'objet avec chance aléatoire
+-Fix du problème de déconnexion
+-Fix du joueur qui reste connecté
+-Fix de la décharge de la pile sur un serveur VPS
+-Nouveau chargement du serveur
+-Ajout du style Windows natif
+-Amélioration interface serveur
+- ...
+
+----------------
 0.6 Pré-Patch
 ----------------
 Client & Editeur:

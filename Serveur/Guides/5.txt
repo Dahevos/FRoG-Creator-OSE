@@ -1,10 +1,10 @@
 ---- Contrôle des joueurs
 Voici les contrôles utilisé en jeu :
 
-Flèche de direction - Bouge le personnage..
+zqsd - Bouge le personnage..
 Enter - Utilisé pour prendre des objets sur la carte, et pour chatter.
 Shift - Utiliser celui de gauche pour courir.
-Ctrl - Cette touche permet d'attaquer.
+e - Cette touche permet d'attaquer.
 Insert - Lorsque vous sélectionnez une cible et un sort, Insert permet de le lancer.
 F1 - Ouvre le panneau d'administration si vous êtes admin(s).
 F2 - Ouvre le panneau d'aide aux joueurs.

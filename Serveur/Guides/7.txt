@@ -1,6 +1,6 @@
 ---- Les différentes façons de discuter ----
 
-Dans la version 0.6, grâce a son système de canaux de discussions intégrés, vous pourrez parler plus simplement, ou bien utiliser l'ancienne méthode :
+Dans la version 0.6.2, grâce a son système de canaux de discussions intégrés, vous pourrez parler plus simplement, ou bien utiliser l'ancienne méthode :
 
 Discussion de carte - taper simplement son texte, et l'envoyer !
 Broadcast - taper ' avant votre texte.

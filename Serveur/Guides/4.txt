@@ -1,5 +1,7 @@
 ---- Configuration de l'Updater ----
 
+CETTE FONCTION A ETE DESACTIVE DANS LES PLUS RECENTES VERSIONS. UN NOUVEAU EST EN PREPARATION. MERCI DE VOTRE COMPREHENSION.
+
 Le configuration d'un patch est très simple.
 Utiliser Patch.exe pour créer un patch, en remplissant bien les champs.
 Une fois ceci fait, Uploader info.ini et les fichiers des patchs sur un ftp.

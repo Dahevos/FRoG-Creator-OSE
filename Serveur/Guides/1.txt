@@ -1,6 +1,9 @@
-Introduction à FRoG 0.6
-Bienvenue dans le Guide de FRoG 0.6,
-Avec tous ces guides, vous apprendrez à manipuler FRoG.
+Introduction à FRoG 0.6.2
+Bienvenue dans le Guide de FRoG 0.6.2,
+Ces petits guides vous permettrons d'apprendre à manipuler le serveur. 
+N'oubliez pas qu'en cas de problème, il y a le manuel utilisateur, plus complet, disponible à l'adresse suivante :
+http://frogcreator.fr/frogaide/ 
 
-N'oubliez pas de venir participer à la communauté: http://www.frogcreator.fr/
+N'hésitez pas non plus à poser vos questions si vous n'arrivez pas à trouver vos réponses sur le forum : 
+http://www.frogcreator.fr/ose/
 Bonne chance pour votre jeu.
