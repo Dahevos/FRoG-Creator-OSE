@@ -35,7 +35,7 @@ Begin VB.Form frmServer
       _ExtentY        =   8467
       _Version        =   393216
       Tabs            =   4
-      Tab             =   2
+      Tab             =   1
       TabsPerRow      =   4
       TabHeight       =   370
       TabMaxWidth     =   3175
@@ -51,93 +51,166 @@ Begin VB.Form frmServer
       TabCaption(0)   =   "Discussions"
       TabPicture(0)   =   "frmServer.frx":17D2A
       Tab(0).ControlEnabled=   0   'False
-      Tab(0).Control(0)=   "Label6"
-      Tab(0).Control(1)=   "Image1"
-      Tab(0).Control(2)=   "mesgSave"
-      Tab(0).Control(3)=   "CustomMsg(0)"
-      Tab(0).Control(4)=   "Say(0)"
-      Tab(0).Control(5)=   "Frame5"
-      Tab(0).Control(6)=   "CustomMsg(1)"
-      Tab(0).Control(7)=   "CustomMsg(2)"
-      Tab(0).Control(8)=   "CustomMsg(3)"
-      Tab(0).Control(9)=   "CustomMsg(4)"
-      Tab(0).Control(10)=   "CustomMsg(5)"
-      Tab(0).Control(11)=   "Say(1)"
-      Tab(0).Control(12)=   "Say(2)"
-      Tab(0).Control(13)=   "Say(3)"
-      Tab(0).Control(14)=   "Say(4)"
-      Tab(0).Control(15)=   "Say(5)"
-      Tab(0).Control(16)=   "SSTab2"
-      Tab(0).Control(17)=   "picCMsg"
-      Tab(0).Control(18)=   "tmrChatLogs"
-      Tab(0).Control(19)=   "mesgSaveTimer"
+      Tab(0).Control(0)=   "mesgSaveTimer"
+      Tab(0).Control(1)=   "tmrChatLogs"
+      Tab(0).Control(2)=   "picCMsg"
+      Tab(0).Control(3)=   "SSTab2"
+      Tab(0).Control(4)=   "Say(5)"
+      Tab(0).Control(5)=   "Say(4)"
+      Tab(0).Control(6)=   "Say(3)"
+      Tab(0).Control(7)=   "Say(2)"
+      Tab(0).Control(8)=   "Say(1)"
+      Tab(0).Control(9)=   "CustomMsg(5)"
+      Tab(0).Control(10)=   "CustomMsg(4)"
+      Tab(0).Control(11)=   "CustomMsg(3)"
+      Tab(0).Control(12)=   "CustomMsg(2)"
+      Tab(0).Control(13)=   "CustomMsg(1)"
+      Tab(0).Control(14)=   "Frame5"
+      Tab(0).Control(15)=   "Say(0)"
+      Tab(0).Control(16)=   "CustomMsg(0)"
+      Tab(0).Control(17)=   "mesgSave"
+      Tab(0).Control(18)=   "Image1"
+      Tab(0).Control(19)=   "Label6"
       Tab(0).ControlCount=   20
       TabCaption(1)   =   "Joueur"
       TabPicture(1)   =   "frmServer.frx":17D46
-      Tab(1).ControlEnabled=   0   'False
+      Tab(1).ControlEnabled=   -1  'True
       Tab(1).Control(0)=   "TPO"
+      Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "lvUsers"
+      Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Command66"
+      Tab(1).Control(2).Enabled=   0   'False
       Tab(1).Control(3)=   "Check1"
-      Tab(1).Control(4)=   "Command13"
-      Tab(1).Control(5)=   "Command14"
-      Tab(1).Control(6)=   "Command15"
-      Tab(1).Control(7)=   "Command16"
-      Tab(1).Control(8)=   "Command17"
-      Tab(1).Control(9)=   "Command18"
-      Tab(1).Control(10)=   "Command19"
-      Tab(1).Control(11)=   "Command21"
-      Tab(1).Control(12)=   "Command22"
-      Tab(1).Control(13)=   "Command23"
-      Tab(1).Control(14)=   "Command24"
-      Tab(1).Control(15)=   "Command3"
-      Tab(1).Control(16)=   "picJail"
-      Tab(1).Control(17)=   "Command45"
-      Tab(1).Control(18)=   "Command51"
-      Tab(1).Control(19)=   "picStats"
-      Tab(1).Control(20)=   "Picskint"
-      Tab(1).Control(21)=   "picReason"
-      Tab(1).ControlCount=   22
+      Tab(1).Control(3).Enabled=   0   'False
+      Tab(1).Control(4)=   "Command14"
+      Tab(1).Control(4).Enabled=   0   'False
+      Tab(1).Control(5)=   "Command16"
+      Tab(1).Control(5).Enabled=   0   'False
+      Tab(1).Control(6)=   "Command18"
+      Tab(1).Control(6).Enabled=   0   'False
+      Tab(1).Control(7)=   "Command19"
+      Tab(1).Control(7).Enabled=   0   'False
+      Tab(1).Control(8)=   "Command21"
+      Tab(1).Control(8).Enabled=   0   'False
+      Tab(1).Control(9)=   "Command22"
+      Tab(1).Control(9).Enabled=   0   'False
+      Tab(1).Control(10)=   "Command23"
+      Tab(1).Control(10).Enabled=   0   'False
+      Tab(1).Control(11)=   "Command24"
+      Tab(1).Control(11).Enabled=   0   'False
+      Tab(1).Control(12)=   "Command3"
+      Tab(1).Control(12).Enabled=   0   'False
+      Tab(1).Control(13)=   "picJail"
+      Tab(1).Control(13).Enabled=   0   'False
+      Tab(1).Control(14)=   "Command45"
+      Tab(1).Control(14).Enabled=   0   'False
+      Tab(1).Control(15)=   "Command51"
+      Tab(1).Control(15).Enabled=   0   'False
+      Tab(1).Control(16)=   "picStats"
+      Tab(1).Control(16).Enabled=   0   'False
+      Tab(1).Control(17)=   "Picskint"
+      Tab(1).Control(17).Enabled=   0   'False
+      Tab(1).Control(18)=   "picReason"
+      Tab(1).Control(18).Enabled=   0   'False
+      Tab(1).Control(19)=   "Command9"
+      Tab(1).Control(19).Enabled=   0   'False
+      Tab(1).Control(20)=   "Command31"
+      Tab(1).Control(20).Enabled=   0   'False
+      Tab(1).Control(21)=   "Command12"
+      Tab(1).Control(21).Enabled=   0   'False
+      Tab(1).Control(22)=   "Command32"
+      Tab(1).Control(22).Enabled=   0   'False
+      Tab(1).Control(23)=   "Command33"
+      Tab(1).Control(23).Enabled=   0   'False
+      Tab(1).Control(24)=   "Command34"
+      Tab(1).Control(24).Enabled=   0   'False
+      Tab(1).Control(25)=   "Command46"
+      Tab(1).Control(25).Enabled=   0   'False
+      Tab(1).ControlCount=   26
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
-      Tab(2).ControlEnabled=   -1  'True
-      Tab(2).Control(0)=   "lblPort"
-      Tab(2).Control(0).Enabled=   0   'False
-      Tab(2).Control(1)=   "lblIP"
-      Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Frame7"
-      Tab(2).Control(2).Enabled=   0   'False
-      Tab(2).Control(3)=   "Frame1"
-      Tab(2).Control(3).Enabled=   0   'False
-      Tab(2).Control(4)=   "Frame2"
-      Tab(2).Control(4).Enabled=   0   'False
-      Tab(2).Control(5)=   "Frame3"
-      Tab(2).Control(5).Enabled=   0   'False
+      Tab(2).ControlEnabled=   0   'False
+      Tab(2).Control(0)=   "Frame8"
+      Tab(2).Control(1)=   "picMap"
+      Tab(2).Control(2)=   "picWeather"
+      Tab(2).Control(3)=   "picWarp"
+      Tab(2).Control(4)=   "picExp"
+      Tab(2).Control(5)=   "Frame9"
       Tab(2).Control(6)=   "Frame6"
-      Tab(2).Control(6).Enabled=   0   'False
-      Tab(2).Control(7)=   "Frame9"
-      Tab(2).Control(7).Enabled=   0   'False
-      Tab(2).Control(8)=   "picExp"
-      Tab(2).Control(8).Enabled=   0   'False
-      Tab(2).Control(9)=   "picWarp"
-      Tab(2).Control(9).Enabled=   0   'False
-      Tab(2).Control(10)=   "picWeather"
-      Tab(2).Control(10).Enabled=   0   'False
-      Tab(2).Control(11)=   "picMap"
-      Tab(2).Control(11).Enabled=   0   'False
-      Tab(2).Control(12)=   "Frame8"
-      Tab(2).Control(12).Enabled=   0   'False
+      Tab(2).Control(7)=   "Frame3"
+      Tab(2).Control(8)=   "Frame2"
+      Tab(2).Control(9)=   "Frame1"
+      Tab(2).Control(10)=   "Frame7"
+      Tab(2).Control(11)=   "lblIP"
+      Tab(2).Control(12)=   "lblPort"
       Tab(2).ControlCount=   13
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "CharInfo(21)"
-      Tab(3).Control(1)=   "CharInfo(22)"
-      Tab(3).Control(2)=   "CharInfo(23)"
-      Tab(3).Control(3)=   "lstTopics"
-      Tab(3).Control(4)=   "TopicTitle"
-      Tab(3).Control(5)=   "sync"
+      Tab(3).Control(0)=   "sync"
+      Tab(3).Control(1)=   "TopicTitle"
+      Tab(3).Control(2)=   "lstTopics"
+      Tab(3).Control(3)=   "CharInfo(23)"
+      Tab(3).Control(4)=   "CharInfo(22)"
+      Tab(3).Control(5)=   "CharInfo(21)"
       Tab(3).ControlCount=   6
+      Begin VB.CommandButton Command46 
+         Caption         =   "Sauvegarder(Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   185
+         Top             =   3840
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command34 
+         Caption         =   "+1 Niveau (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   184
+         Top             =   4320
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command33 
+         Caption         =   "Expérience (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   183
+         Top             =   4080
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command32 
+         Caption         =   "Téléporter (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   182
+         Top             =   3600
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command12 
+         Caption         =   "Guérir (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   181
+         Top             =   3120
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command31 
+         Caption         =   "Tuer (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   180
+         Top             =   2640
+         Width           =   1935
+      End
+      Begin VB.CommandButton Command9 
+         Caption         =   "Déconnecter (Tous)"
+         Height          =   255
+         Left            =   8160
+         TabIndex        =   179
+         Top             =   720
+         Width           =   1935
+      End
       Begin VB.Timer mesgSaveTimer 
          Enabled         =   0   'False
          Interval        =   3000
@@ -147,15 +220,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame8 
          Caption         =   "Gestion du temps :"
          Height          =   855
-         Left            =   120
-         TabIndex        =   179
+         Left            =   -74880
+         TabIndex        =   169
          Top             =   3840
          Width           =   9975
          Begin VB.CommandButton Command50 
             Caption         =   "Désactiver"
             Height          =   255
             Left            =   3480
-            TabIndex        =   185
+            TabIndex        =   175
             Top             =   480
             Width           =   1335
          End
@@ -163,14 +236,14 @@ Begin VB.Form frmServer
             Caption         =   "Désactiver"
             Height          =   255
             Left            =   8640
-            TabIndex        =   184
+            TabIndex        =   174
             Top             =   480
             Width           =   1215
          End
          Begin VB.TextBox txtRandom 
             Height          =   285
             Left            =   5400
-            TabIndex        =   183
+            TabIndex        =   173
             Top             =   480
             Width           =   1815
          End
@@ -184,7 +257,7 @@ Begin VB.Form frmServer
             Caption         =   "Activer"
             Height          =   255
             Left            =   7320
-            TabIndex        =   182
+            TabIndex        =   172
             Top             =   480
             Width           =   1215
          End
@@ -198,7 +271,7 @@ Begin VB.Form frmServer
             Caption         =   "Définir"
             Height          =   255
             Left            =   2280
-            TabIndex        =   181
+            TabIndex        =   171
             Top             =   480
             Width           =   1095
          End
@@ -211,7 +284,7 @@ Begin VB.Form frmServer
          Begin VB.TextBox txtJournuit 
             Height          =   285
             Left            =   240
-            TabIndex        =   180
+            TabIndex        =   170
             Top             =   480
             Width           =   1935
          End
@@ -225,7 +298,7 @@ Begin VB.Form frmServer
             Caption         =   "Temps aléatoire ( minutes ) :"
             Height          =   255
             Left            =   5400
-            TabIndex        =   187
+            TabIndex        =   177
             Top             =   240
             Width           =   2415
          End
@@ -233,7 +306,7 @@ Begin VB.Form frmServer
             Caption         =   "Cycle jour / nuit ( minutes ) :"
             Height          =   255
             Left            =   240
-            TabIndex        =   186
+            TabIndex        =   176
             Top             =   240
             Width           =   2175
          End
@@ -256,11 +329,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1335
-         Left            =   -70320
+         Left            =   4680
          ScaleHeight     =   87
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
-         TabIndex        =   56
+         TabIndex        =   53
          Top             =   360
          Visible         =   0   'False
          Width           =   3375
@@ -268,7 +341,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1680
-            TabIndex        =   114
+            TabIndex        =   105
             Top             =   960
             Width           =   1575
          End
@@ -276,7 +349,7 @@ Begin VB.Form frmServer
             Caption         =   "Caption"
             Height          =   255
             Left            =   1680
-            TabIndex        =   58
+            TabIndex        =   55
             Top             =   720
             Width           =   1575
          End
@@ -292,7 +365,7 @@ Begin VB.Form frmServer
             EndProperty
             Height          =   255
             Left            =   120
-            TabIndex        =   57
+            TabIndex        =   54
             Top             =   360
             Width           =   3075
          End
@@ -302,7 +375,7 @@ Begin VB.Form frmServer
             Caption         =   "Raison:"
             Height          =   195
             Left            =   120
-            TabIndex        =   59
+            TabIndex        =   56
             Top             =   120
             Width           =   540
          End
@@ -328,18 +401,18 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3375
-         Left            =   840
+         Left            =   -69120
          ScaleHeight     =   223
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
-         TabIndex        =   128
-         Top             =   960
+         TabIndex        =   119
+         Top             =   0
          Visible         =   0   'False
          Width           =   3375
          Begin VB.ListBox lstNPC 
             Height          =   2310
             Left            =   1680
-            TabIndex        =   143
+            TabIndex        =   134
             Top             =   480
             Width           =   1575
          End
@@ -347,7 +420,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1680
-            TabIndex        =   129
+            TabIndex        =   120
             Top             =   3000
             Width           =   1575
          End
@@ -358,7 +431,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   13
             Left            =   1680
-            TabIndex        =   144
+            TabIndex        =   135
             Top             =   285
             Width           =   375
          End
@@ -369,7 +442,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   12
             Left            =   120
-            TabIndex        =   142
+            TabIndex        =   133
             Top             =   3000
             Width           =   690
          End
@@ -380,7 +453,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   11
             Left            =   120
-            TabIndex        =   141
+            TabIndex        =   132
             Top             =   2760
             Width           =   645
          End
@@ -391,7 +464,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   10
             Left            =   120
-            TabIndex        =   140
+            TabIndex        =   131
             Top             =   2520
             Width           =   990
          End
@@ -402,7 +475,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   9
             Left            =   120
-            TabIndex        =   139
+            TabIndex        =   130
             Top             =   2280
             Width           =   990
          End
@@ -413,7 +486,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   8
             Left            =   120
-            TabIndex        =   138
+            TabIndex        =   129
             Top             =   2040
             Width           =   1110
          End
@@ -424,7 +497,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   7
             Left            =   120
-            TabIndex        =   137
+            TabIndex        =   128
             Top             =   1800
             Width           =   645
          End
@@ -435,7 +508,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   6
             Left            =   120
-            TabIndex        =   136
+            TabIndex        =   127
             Top             =   1560
             Width           =   495
          End
@@ -446,7 +519,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   5
             Left            =   120
-            TabIndex        =   135
+            TabIndex        =   126
             Top             =   1320
             Width           =   600
          End
@@ -457,7 +530,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   4
             Left            =   120
-            TabIndex        =   134
+            TabIndex        =   125
             Top             =   1080
             Width           =   315
          End
@@ -468,7 +541,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   3
             Left            =   120
-            TabIndex        =   133
+            TabIndex        =   124
             Top             =   840
             Width           =   405
          End
@@ -479,7 +552,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   2
             Left            =   120
-            TabIndex        =   132
+            TabIndex        =   123
             Top             =   600
             Width           =   540
          End
@@ -490,7 +563,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   1
             Left            =   120
-            TabIndex        =   131
+            TabIndex        =   122
             Top             =   360
             Width           =   660
          End
@@ -501,7 +574,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   0
             Left            =   120
-            TabIndex        =   130
+            TabIndex        =   121
             Top             =   120
             Width           =   300
          End
@@ -519,19 +592,19 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2535
-         Left            =   -68760
+         Left            =   5760
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   127
-         TabIndex        =   171
-         Top             =   1200
+         TabIndex        =   162
+         Top             =   1080
          Visible         =   0   'False
          Width           =   1935
          Begin VB.CommandButton Command52 
             Caption         =   "Annuler"
             Height          =   255
             Left            =   240
-            TabIndex        =   172
+            TabIndex        =   163
             Top             =   2160
             Width           =   1575
          End
@@ -539,7 +612,7 @@ Begin VB.Form frmServer
             Caption         =   "32/48 pixels"
             Height          =   255
             Left            =   120
-            TabIndex        =   175
+            TabIndex        =   166
             Top             =   960
             Value           =   -1  'True
             Width           =   1455
@@ -548,7 +621,7 @@ Begin VB.Form frmServer
             Caption         =   "32/32 pixels"
             Height          =   255
             Left            =   120
-            TabIndex        =   174
+            TabIndex        =   165
             Top             =   600
             Width           =   1455
          End
@@ -556,7 +629,7 @@ Begin VB.Form frmServer
             Caption         =   "Enregistrer"
             Height          =   255
             Left            =   240
-            TabIndex        =   173
+            TabIndex        =   164
             Top             =   1920
             Width           =   1575
          End
@@ -564,7 +637,7 @@ Begin VB.Form frmServer
             Caption         =   "Séléctioner une taille (Largeur/Hauteur) :"
             Height          =   435
             Left            =   120
-            TabIndex        =   176
+            TabIndex        =   167
             Top             =   120
             Width           =   1755
          End
@@ -582,11 +655,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1455
-         Left            =   6840
+         Left            =   -68160
          ScaleHeight     =   95
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
-         TabIndex        =   160
+         TabIndex        =   151
          Top             =   2400
          Visible         =   0   'False
          Width           =   3255
@@ -594,7 +667,7 @@ Begin VB.Form frmServer
             Caption         =   "Neige"
             Height          =   255
             Left            =   1680
-            TabIndex        =   166
+            TabIndex        =   157
             Top             =   720
             Width           =   1335
          End
@@ -602,7 +675,7 @@ Begin VB.Form frmServer
             Caption         =   "Pluie"
             Height          =   255
             Left            =   240
-            TabIndex        =   165
+            TabIndex        =   156
             Top             =   720
             Width           =   1335
          End
@@ -610,7 +683,7 @@ Begin VB.Form frmServer
             Caption         =   "Orage"
             Height          =   255
             Left            =   1680
-            TabIndex        =   164
+            TabIndex        =   155
             Top             =   480
             Width           =   1335
          End
@@ -618,7 +691,7 @@ Begin VB.Form frmServer
             Caption         =   "Soleil"
             Height          =   255
             Left            =   240
-            TabIndex        =   163
+            TabIndex        =   154
             Top             =   480
             Width           =   1335
          End
@@ -626,7 +699,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1560
-            TabIndex        =   161
+            TabIndex        =   152
             Top             =   1080
             Width           =   1575
          End
@@ -636,7 +709,7 @@ Begin VB.Form frmServer
             Caption         =   "Météologie présentement: Aucune"
             Height          =   195
             Left            =   120
-            TabIndex        =   162
+            TabIndex        =   153
             Top             =   120
             Width           =   2475
          End
@@ -654,11 +727,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2535
-         Left            =   4320
+         Left            =   -70680
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
-         TabIndex        =   106
+         TabIndex        =   97
          Top             =   1560
          Visible         =   0   'False
          Width           =   3255
@@ -666,21 +739,21 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1560
-            TabIndex        =   116
+            TabIndex        =   107
             Top             =   2160
             Width           =   1575
          End
          Begin VB.HScrollBar scrlMY 
             Height          =   255
             Left            =   120
-            TabIndex        =   110
+            TabIndex        =   101
             Top             =   1560
             Width           =   3015
          End
          Begin VB.HScrollBar scrlMX 
             Height          =   255
             Left            =   120
-            TabIndex        =   109
+            TabIndex        =   100
             Top             =   960
             Width           =   3015
          End
@@ -688,7 +761,7 @@ Begin VB.Form frmServer
             Height          =   255
             Left            =   120
             Min             =   1
-            TabIndex        =   108
+            TabIndex        =   99
             Top             =   360
             Value           =   1
             Width           =   3015
@@ -697,7 +770,7 @@ Begin VB.Form frmServer
             Caption         =   "Téléporter"
             Height          =   255
             Left            =   1560
-            TabIndex        =   107
+            TabIndex        =   98
             Top             =   1920
             Width           =   1575
          End
@@ -707,7 +780,7 @@ Begin VB.Form frmServer
             Caption         =   "Y: 0"
             Height          =   195
             Left            =   120
-            TabIndex        =   113
+            TabIndex        =   104
             Top             =   1320
             Width           =   285
          End
@@ -717,7 +790,7 @@ Begin VB.Form frmServer
             Caption         =   "X: 0"
             Height          =   195
             Left            =   120
-            TabIndex        =   112
+            TabIndex        =   103
             Top             =   720
             Width           =   285
          End
@@ -727,7 +800,7 @@ Begin VB.Form frmServer
             Caption         =   "Map: 1"
             Height          =   195
             Left            =   120
-            TabIndex        =   111
+            TabIndex        =   102
             Top             =   120
             Width           =   495
          End
@@ -745,11 +818,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3255
-         Left            =   -75000
+         Left            =   0
          ScaleHeight     =   215
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   311
-         TabIndex        =   60
+         TabIndex        =   57
          Top             =   360
          Visible         =   0   'False
          Width           =   4695
@@ -757,7 +830,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   3000
-            TabIndex        =   61
+            TabIndex        =   58
             Top             =   2880
             Width           =   1575
          End
@@ -768,7 +841,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   20
             Left            =   2400
-            TabIndex        =   82
+            TabIndex        =   79
             Top             =   1800
             Width           =   480
          End
@@ -779,7 +852,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   19
             Left            =   2400
-            TabIndex        =   81
+            TabIndex        =   78
             Top             =   1560
             Width           =   495
          End
@@ -790,7 +863,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   18
             Left            =   2400
-            TabIndex        =   80
+            TabIndex        =   77
             Top             =   1320
             Width           =   480
          End
@@ -801,7 +874,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   17
             Left            =   2400
-            TabIndex        =   79
+            TabIndex        =   76
             Top             =   1080
             Width           =   570
          End
@@ -812,7 +885,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   16
             Left            =   2400
-            TabIndex        =   78
+            TabIndex        =   75
             Top             =   840
             Width           =   315
          End
@@ -823,7 +896,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   15
             Left            =   2400
-            TabIndex        =   77
+            TabIndex        =   74
             Top             =   600
             Width           =   300
          End
@@ -834,7 +907,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   14
             Left            =   2400
-            TabIndex        =   76
+            TabIndex        =   73
             Top             =   360
             Width           =   1005
          End
@@ -845,7 +918,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   13
             Left            =   2400
-            TabIndex        =   75
+            TabIndex        =   72
             Top             =   120
             Width           =   495
          End
@@ -856,7 +929,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   12
             Left            =   120
-            TabIndex        =   74
+            TabIndex        =   71
             Top             =   3000
             Width           =   360
          End
@@ -867,7 +940,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   11
             Left            =   120
-            TabIndex        =   73
+            TabIndex        =   70
             Top             =   2760
             Width           =   420
          End
@@ -878,7 +951,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   10
             Left            =   120
-            TabIndex        =   72
+            TabIndex        =   69
             Top             =   2520
             Width           =   480
          End
@@ -889,7 +962,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   9
             Left            =   120
-            TabIndex        =   71
+            TabIndex        =   68
             Top             =   2280
             Width           =   525
          End
@@ -900,7 +973,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   8
             Left            =   120
-            TabIndex        =   70
+            TabIndex        =   67
             Top             =   2040
             Width           =   240
          End
@@ -911,7 +984,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   7
             Left            =   120
-            TabIndex        =   69
+            TabIndex        =   66
             Top             =   1800
             Width           =   525
          End
@@ -922,7 +995,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   6
             Left            =   120
-            TabIndex        =   68
+            TabIndex        =   65
             Top             =   1560
             Width           =   435
          End
@@ -933,7 +1006,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   5
             Left            =   120
-            TabIndex        =   67
+            TabIndex        =   64
             Top             =   1320
             Width           =   435
          End
@@ -944,7 +1017,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   4
             Left            =   120
-            TabIndex        =   66
+            TabIndex        =   63
             Top             =   1080
             Width           =   375
          End
@@ -955,7 +1028,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   3
             Left            =   120
-            TabIndex        =   65
+            TabIndex        =   62
             Top             =   840
             Width           =   345
          End
@@ -966,7 +1039,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   2
             Left            =   120
-            TabIndex        =   64
+            TabIndex        =   61
             Top             =   600
             Width           =   555
          End
@@ -977,7 +1050,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   1
             Left            =   120
-            TabIndex        =   63
+            TabIndex        =   60
             Top             =   360
             Width           =   915
          End
@@ -988,7 +1061,7 @@ Begin VB.Form frmServer
             Height          =   195
             Index           =   0
             Left            =   120
-            TabIndex        =   62
+            TabIndex        =   59
             Top             =   120
             Width           =   615
          End
@@ -1006,11 +1079,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   1335
-         Left            =   4800
+         Left            =   -70200
          ScaleHeight     =   87
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   215
-         TabIndex        =   121
+         TabIndex        =   112
          Top             =   360
          Visible         =   0   'False
          Width           =   3255
@@ -1018,7 +1091,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1560
-            TabIndex        =   125
+            TabIndex        =   116
             Top             =   960
             Width           =   1575
          End
@@ -1034,7 +1107,7 @@ Begin VB.Form frmServer
             EndProperty
             Height          =   255
             Left            =   120
-            TabIndex        =   123
+            TabIndex        =   114
             Top             =   360
             Width           =   2955
          End
@@ -1042,7 +1115,7 @@ Begin VB.Form frmServer
             Caption         =   "OK"
             Height          =   255
             Left            =   1560
-            TabIndex        =   122
+            TabIndex        =   113
             Top             =   720
             Width           =   1575
          End
@@ -1052,7 +1125,7 @@ Begin VB.Form frmServer
             Caption         =   "Expérience:"
             Height          =   195
             Left            =   120
-            TabIndex        =   124
+            TabIndex        =   115
             Top             =   120
             Width           =   855
          End
@@ -1074,11 +1147,11 @@ Begin VB.Form frmServer
          Top             =   -14
       End
       Begin VB.CommandButton Command51 
-         Caption         =   "Régler la Taille des Skins"
+         Caption         =   "Régler taille des Skins"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   170
-         Top             =   3600
+         Left            =   6000
+         TabIndex        =   161
+         Top             =   4440
          Visible         =   0   'False
          Width           =   1935
       End
@@ -1103,7 +1176,7 @@ Begin VB.Form frmServer
          Left            =   -70680
          ScaleHeight     =   1905
          ScaleWidth      =   3345
-         TabIndex        =   47
+         TabIndex        =   44
          Top             =   960
          Visible         =   0   'False
          Width           =   3375
@@ -1119,7 +1192,7 @@ Begin VB.Form frmServer
             EndProperty
             Height          =   255
             Left            =   120
-            TabIndex        =   53
+            TabIndex        =   50
             Top             =   960
             Width           =   3075
          End
@@ -1136,7 +1209,7 @@ Begin VB.Form frmServer
             Height          =   255
             Left            =   120
             MaxLength       =   13
-            TabIndex        =   52
+            TabIndex        =   49
             Top             =   360
             Width           =   3075
          End
@@ -1144,7 +1217,7 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1680
-            TabIndex        =   49
+            TabIndex        =   46
             Top             =   1560
             Width           =   1575
          End
@@ -1152,7 +1225,7 @@ Begin VB.Form frmServer
             Caption         =   "Enregistrer"
             Height          =   255
             Left            =   1680
-            TabIndex        =   48
+            TabIndex        =   45
             Top             =   1320
             Width           =   1575
          End
@@ -1162,7 +1235,7 @@ Begin VB.Form frmServer
             Caption         =   "Message:"
             Height          =   195
             Left            =   120
-            TabIndex        =   51
+            TabIndex        =   48
             Top             =   720
             Width           =   690
          End
@@ -1172,7 +1245,7 @@ Begin VB.Form frmServer
             Caption         =   "Titre:"
             Height          =   195
             Left            =   120
-            TabIndex        =   50
+            TabIndex        =   47
             Top             =   120
             Width           =   390
          End
@@ -1180,7 +1253,7 @@ Begin VB.Form frmServer
       Begin TabDlg.SSTab SSTab2 
          Height          =   3015
          Left            =   -74880
-         TabIndex        =   150
+         TabIndex        =   141
          Top             =   360
          Width           =   8415
          _ExtentX        =   14843
@@ -1252,7 +1325,7 @@ Begin VB.Form frmServer
             Left            =   120
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   178
+            TabIndex        =   168
             Top             =   360
             Width           =   8115
          End
@@ -1271,7 +1344,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   157
+            TabIndex        =   148
             Top             =   360
             Width           =   8115
          End
@@ -1290,7 +1363,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   156
+            TabIndex        =   147
             Top             =   360
             Width           =   8115
          End
@@ -1309,7 +1382,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   155
+            TabIndex        =   146
             Top             =   360
             Width           =   8115
          End
@@ -1328,7 +1401,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   154
+            TabIndex        =   145
             Top             =   360
             Width           =   8115
          End
@@ -1347,7 +1420,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   153
+            TabIndex        =   144
             Top             =   360
             Width           =   8115
          End
@@ -1366,7 +1439,7 @@ Begin VB.Form frmServer
             Left            =   -74880
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   152
+            TabIndex        =   143
             Top             =   360
             Width           =   8115
          End
@@ -1382,7 +1455,7 @@ Begin VB.Form frmServer
             EndProperty
             Height          =   270
             Left            =   120
-            TabIndex        =   151
+            TabIndex        =   142
             Top             =   2640
             Width           =   8115
          End
@@ -1390,22 +1463,22 @@ Begin VB.Form frmServer
       Begin VB.CommandButton Command45 
          Caption         =   "Téléporter"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   145
+         Left            =   8160
+         TabIndex        =   136
          Top             =   3360
          Width           =   1935
       End
       Begin VB.Frame Frame9 
          Caption         =   "Liste des Cartes"
          Height          =   1815
-         Left            =   4080
-         TabIndex        =   126
+         Left            =   -70920
+         TabIndex        =   117
          Top             =   480
          Width           =   6015
          Begin VB.ListBox MapList 
             Height          =   1185
             Left            =   120
-            TabIndex        =   127
+            TabIndex        =   118
             Top             =   240
             Width           =   5775
          End
@@ -1413,15 +1486,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame6 
          Caption         =   "Commande"
          Height          =   2655
-         Left            =   2040
-         TabIndex        =   97
+         Left            =   -72960
+         TabIndex        =   94
          Top             =   1080
          Width           =   1935
          Begin VB.CommandButton Command36 
             Caption         =   "Informations Carte"
             Height          =   255
             Left            =   120
-            TabIndex        =   105
+            TabIndex        =   96
             Top             =   2280
             Width           =   1695
          End
@@ -1429,64 +1502,8 @@ Begin VB.Form frmServer
             Caption         =   "Liste des Cartes"
             Height          =   255
             Left            =   120
-            TabIndex        =   104
+            TabIndex        =   95
             Top             =   2040
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command46 
-            Caption         =   "Sauvegarder(Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   177
-            Top             =   1800
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command34 
-            Caption         =   "+1 Niveau (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   103
-            Top             =   1560
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command33 
-            Caption         =   "Expérience (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   102
-            Top             =   1320
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command32 
-            Caption         =   "Téléporter (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   101
-            Top             =   1080
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command12 
-            Caption         =   "Guérir (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   100
-            Top             =   840
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command31 
-            Caption         =   "Tuer (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   99
-            Top             =   600
-            Width           =   1695
-         End
-         Begin VB.CommandButton Command9 
-            Caption         =   "Déconnecter (Tous)"
-            Height          =   255
-            Left            =   120
-            TabIndex        =   98
-            Top             =   360
             Width           =   1695
          End
       End
@@ -1494,7 +1511,7 @@ Begin VB.Form frmServer
          Caption         =   "Titre du Topics:"
          Height          =   4335
          Left            =   -72480
-         TabIndex        =   93
+         TabIndex        =   90
          Top             =   360
          Width           =   7575
          Begin VB.TextBox txtTopic 
@@ -1503,7 +1520,7 @@ Begin VB.Form frmServer
             Locked          =   -1  'True
             MultiLine       =   -1  'True
             ScrollBars      =   2  'Vertical
-            TabIndex        =   94
+            TabIndex        =   91
             Top             =   240
             Width           =   7335
          End
@@ -1513,7 +1530,7 @@ Begin VB.Form frmServer
          ItemData        =   "frmServer.frx":17E5E
          Left            =   -74760
          List            =   "frmServer.frx":17E60
-         TabIndex        =   91
+         TabIndex        =   88
          Top             =   600
          Width           =   2175
       End
@@ -1530,11 +1547,11 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   2535
-         Left            =   -70320
+         Left            =   4680
          ScaleHeight     =   167
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
-         TabIndex        =   83
+         TabIndex        =   80
          Top             =   1080
          Visible         =   0   'False
          Width           =   3375
@@ -1542,21 +1559,21 @@ Begin VB.Form frmServer
             Caption         =   "Annuler"
             Height          =   255
             Left            =   1680
-            TabIndex        =   115
+            TabIndex        =   106
             Top             =   2160
             Width           =   1575
          End
          Begin VB.HScrollBar scrlY 
             Height          =   255
             Left            =   120
-            TabIndex        =   87
+            TabIndex        =   84
             Top             =   1560
             Width           =   3135
          End
          Begin VB.HScrollBar scrlX 
             Height          =   255
             Left            =   120
-            TabIndex        =   86
+            TabIndex        =   83
             Top             =   960
             Width           =   3135
          End
@@ -1564,7 +1581,7 @@ Begin VB.Form frmServer
             Height          =   255
             Left            =   120
             Min             =   1
-            TabIndex        =   85
+            TabIndex        =   82
             Top             =   360
             Value           =   1
             Width           =   3135
@@ -1573,7 +1590,7 @@ Begin VB.Form frmServer
             Caption         =   "Emprisonner"
             Height          =   255
             Left            =   1680
-            TabIndex        =   84
+            TabIndex        =   81
             Top             =   1920
             Width           =   1575
          End
@@ -1583,7 +1600,7 @@ Begin VB.Form frmServer
             Caption         =   "Y: 0"
             Height          =   195
             Left            =   120
-            TabIndex        =   90
+            TabIndex        =   87
             Top             =   1320
             Width           =   285
          End
@@ -1593,7 +1610,7 @@ Begin VB.Form frmServer
             Caption         =   "X: 0"
             Height          =   195
             Left            =   120
-            TabIndex        =   89
+            TabIndex        =   86
             Top             =   720
             Width           =   285
          End
@@ -1603,7 +1620,7 @@ Begin VB.Form frmServer
             Caption         =   "Map: 1"
             Height          =   195
             Left            =   120
-            TabIndex        =   88
+            TabIndex        =   85
             Top             =   120
             Width           =   495
          End
@@ -1613,7 +1630,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   5
          Left            =   -65880
-         TabIndex        =   46
+         TabIndex        =   43
          Top             =   3960
          Width           =   495
       End
@@ -1622,7 +1639,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   4
          Left            =   -65880
-         TabIndex        =   45
+         TabIndex        =   42
          Top             =   3240
          Width           =   495
       End
@@ -1631,7 +1648,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   3
          Left            =   -65880
-         TabIndex        =   44
+         TabIndex        =   41
          Top             =   2640
          Width           =   495
       End
@@ -1640,7 +1657,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   2
          Left            =   -65880
-         TabIndex        =   43
+         TabIndex        =   40
          Top             =   2040
          Width           =   495
       End
@@ -1649,7 +1666,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   1
          Left            =   -65880
-         TabIndex        =   42
+         TabIndex        =   39
          Top             =   1440
          Width           =   495
       End
@@ -1658,7 +1675,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   5
          Left            =   -66360
-         TabIndex        =   41
+         TabIndex        =   38
          Top             =   3720
          Width           =   1455
       End
@@ -1667,7 +1684,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   4
          Left            =   -66360
-         TabIndex        =   40
+         TabIndex        =   37
          Top             =   3000
          Width           =   1455
       End
@@ -1676,7 +1693,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   3
          Left            =   -66360
-         TabIndex        =   39
+         TabIndex        =   36
          Top             =   2400
          Width           =   1455
       End
@@ -1685,7 +1702,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   2
          Left            =   -66360
-         TabIndex        =   38
+         TabIndex        =   35
          Top             =   1800
          Width           =   1455
       End
@@ -1694,7 +1711,7 @@ Begin VB.Form frmServer
          Height          =   255
          Index           =   1
          Left            =   -66360
-         TabIndex        =   37
+         TabIndex        =   34
          Top             =   1200
          Width           =   1455
       End
@@ -1702,14 +1719,14 @@ Begin VB.Form frmServer
          Caption         =   "Configuration des discussions :"
          Height          =   615
          Left            =   -74880
-         TabIndex        =   31
+         TabIndex        =   28
          Top             =   3600
          Width           =   6855
          Begin VB.CommandButton Command60 
             Caption         =   "Enregistrer"
             Height          =   255
             Left            =   5280
-            TabIndex        =   158
+            TabIndex        =   149
             Top             =   240
             Width           =   1455
          End
@@ -1717,7 +1734,7 @@ Begin VB.Form frmServer
             Caption         =   "Admin"
             Height          =   375
             Left            =   4320
-            TabIndex        =   55
+            TabIndex        =   52
             Top             =   170
             Value           =   1  'Checked
             Width           =   855
@@ -1726,7 +1743,7 @@ Begin VB.Form frmServer
             Caption         =   "Globale"
             Height          =   255
             Left            =   3360
-            TabIndex        =   54
+            TabIndex        =   51
             Top             =   240
             Value           =   1  'Checked
             Width           =   1095
@@ -1735,7 +1752,7 @@ Begin VB.Form frmServer
             Caption         =   "Privé"
             Height          =   255
             Left            =   2640
-            TabIndex        =   35
+            TabIndex        =   32
             Top             =   240
             Value           =   1  'Checked
             Width           =   735
@@ -1744,7 +1761,7 @@ Begin VB.Form frmServer
             Caption         =   "Carte"
             Height          =   255
             Left            =   1920
-            TabIndex        =   34
+            TabIndex        =   31
             Top             =   240
             Value           =   1  'Checked
             Width           =   855
@@ -1753,7 +1770,7 @@ Begin VB.Form frmServer
             Caption         =   "Emote"
             Height          =   255
             Left            =   1100
-            TabIndex        =   33
+            TabIndex        =   30
             Top             =   240
             Value           =   1  'Checked
             Width           =   855
@@ -1762,7 +1779,7 @@ Begin VB.Form frmServer
             Caption         =   "Émission"
             Height          =   255
             Left            =   120
-            TabIndex        =   32
+            TabIndex        =   29
             Top             =   240
             Value           =   1  'Checked
             Width           =   1095
@@ -1771,9 +1788,9 @@ Begin VB.Form frmServer
       Begin VB.CommandButton Command3 
          Caption         =   "Guérir"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   30
-         Top             =   3120
+         Left            =   8160
+         TabIndex        =   27
+         Top             =   2880
          Width           =   1935
       End
       Begin VB.Timer tmrSpawnMapItems 
@@ -1790,15 +1807,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame3 
          Caption         =   "Classes"
          Height          =   1095
-         Left            =   4080
-         TabIndex        =   24
+         Left            =   -70920
+         TabIndex        =   21
          Top             =   2280
          Width           =   1695
          Begin VB.CommandButton Command30 
             Caption         =   "Modifier"
             Height          =   255
             Left            =   120
-            TabIndex        =   26
+            TabIndex        =   23
             Top             =   600
             Width           =   1455
          End
@@ -1806,7 +1823,7 @@ Begin VB.Form frmServer
             Caption         =   "Recharger"
             Height          =   255
             Left            =   120
-            TabIndex        =   25
+            TabIndex        =   22
             Top             =   360
             Width           =   1455
          End
@@ -1814,15 +1831,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame2 
          Caption         =   "Serveur"
          Height          =   1575
-         Left            =   5880
-         TabIndex        =   23
+         Left            =   -69120
+         TabIndex        =   20
          Top             =   2280
          Width           =   4215
          Begin VB.CommandButton Command58 
             Caption         =   "Jours/Nuit"
             Height          =   255
             Left            =   2640
-            TabIndex        =   148
+            TabIndex        =   139
             Top             =   840
             Width           =   1455
          End
@@ -1830,7 +1847,7 @@ Begin VB.Form frmServer
             Caption         =   "Sauvegarder les logs"
             Height          =   255
             Left            =   120
-            TabIndex        =   159
+            TabIndex        =   150
             Top             =   720
             Value           =   1  'Checked
             Width           =   2175
@@ -1839,7 +1856,7 @@ Begin VB.Form frmServer
             Caption         =   "Météo"
             Height          =   255
             Left            =   2640
-            TabIndex        =   149
+            TabIndex        =   140
             Top             =   600
             Width           =   1455
          End
@@ -1847,7 +1864,7 @@ Begin VB.Form frmServer
             Caption         =   "Logs du Serveur"
             Height          =   255
             Left            =   120
-            TabIndex        =   147
+            TabIndex        =   138
             Top             =   960
             Value           =   1  'Checked
             Width           =   1935
@@ -1856,7 +1873,7 @@ Begin VB.Form frmServer
             Caption         =   "Fermer"
             Height          =   255
             Left            =   120
-            TabIndex        =   146
+            TabIndex        =   137
             Top             =   480
             Width           =   2295
          End
@@ -1864,7 +1881,7 @@ Begin VB.Form frmServer
             Caption         =   "Maître de jeu seulement "
             Height          =   255
             Left            =   120
-            TabIndex        =   36
+            TabIndex        =   33
             Top             =   240
             Width           =   2415
          End
@@ -1872,7 +1889,7 @@ Begin VB.Form frmServer
             Caption         =   "Fermer"
             Height          =   255
             Left            =   2640
-            TabIndex        =   28
+            TabIndex        =   25
             Top             =   360
             Width           =   1455
          End
@@ -1880,7 +1897,7 @@ Begin VB.Form frmServer
             Caption         =   "Éteindre"
             Height          =   255
             Left            =   2640
-            TabIndex        =   27
+            TabIndex        =   24
             Top             =   120
             Width           =   1455
          End
@@ -1891,7 +1908,7 @@ Begin VB.Form frmServer
             Caption         =   "Fermeture: Désactiver"
             Height          =   195
             Left            =   2400
-            TabIndex        =   29
+            TabIndex        =   26
             Top             =   1200
             Width           =   1620
          End
@@ -1899,15 +1916,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame1 
          Caption         =   "Scripts"
          Height          =   1215
-         Left            =   120
-         TabIndex        =   19
+         Left            =   -74880
+         TabIndex        =   16
          Top             =   2520
          Width           =   1815
          Begin VB.CommandButton Command27 
             Caption         =   "Activer"
             Height          =   255
             Left            =   120
-            TabIndex        =   22
+            TabIndex        =   19
             Top             =   840
             Width           =   1575
          End
@@ -1915,7 +1932,7 @@ Begin VB.Form frmServer
             Caption         =   "Désactiver"
             Height          =   255
             Left            =   120
-            TabIndex        =   21
+            TabIndex        =   18
             Top             =   600
             Width           =   1575
          End
@@ -1923,7 +1940,7 @@ Begin VB.Form frmServer
             Caption         =   "Recharger"
             Height          =   255
             Left            =   120
-            TabIndex        =   20
+            TabIndex        =   17
             Top             =   360
             Width           =   1575
          End
@@ -1931,87 +1948,63 @@ Begin VB.Form frmServer
       Begin VB.CommandButton Command24 
          Caption         =   "Tuer"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   18
-         Top             =   2880
+         Left            =   8160
+         TabIndex        =   15
+         Top             =   2400
          Width           =   1935
       End
       Begin VB.CommandButton Command23 
          Caption         =   "Désactivé mode Muet"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   17
-         Top             =   2640
+         Left            =   8160
+         TabIndex        =   14
+         Top             =   2160
          Width           =   1935
       End
       Begin VB.CommandButton Command22 
          Caption         =   "Mode Muet"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   16
-         Top             =   2400
+         Left            =   8160
+         TabIndex        =   13
+         Top             =   1920
          Width           =   1935
       End
       Begin VB.CommandButton Command21 
          Caption         =   "Message Privé"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   15
-         Top             =   2160
+         Left            =   8160
+         TabIndex        =   12
+         Top             =   1680
          Width           =   1935
       End
       Begin VB.CommandButton Command19 
          Caption         =   "Voir informations"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   14
-         Top             =   1920
+         Left            =   8160
+         TabIndex        =   11
+         Top             =   1440
          Width           =   1935
       End
       Begin VB.CommandButton Command18 
          Caption         =   "Prison (Raison)"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   13
-         Top             =   1680
-         Width           =   1935
-      End
-      Begin VB.CommandButton Command17 
-         Caption         =   "Prison"
-         Height          =   255
-         Left            =   -66840
-         TabIndex        =   12
-         Top             =   1440
+         Left            =   8160
+         TabIndex        =   10
+         Top             =   1200
          Width           =   1935
       End
       Begin VB.CommandButton Command16 
          Caption         =   "Bannir (Raison)"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   11
-         Top             =   1200
-         Width           =   1935
-      End
-      Begin VB.CommandButton Command15 
-         Caption         =   "Bannir"
-         Height          =   255
-         Left            =   -66840
-         TabIndex        =   10
+         Left            =   8160
+         TabIndex        =   9
          Top             =   960
          Width           =   1935
       End
       Begin VB.CommandButton Command14 
          Caption         =   "Déconnecter (Raison)"
          Height          =   255
-         Left            =   -66840
-         TabIndex        =   9
-         Top             =   720
-         Width           =   1935
-      End
-      Begin VB.CommandButton Command13 
-         Caption         =   "Déconnecter"
-         Height          =   255
-         Left            =   -66840
+         Left            =   8160
          TabIndex        =   8
          Top             =   480
          Width           =   1935
@@ -2019,7 +2012,7 @@ Begin VB.Form frmServer
       Begin VB.CheckBox Check1 
          Caption         =   "Grille"
          Height          =   255
-         Left            =   -67680
+         Left            =   5160
          TabIndex        =   4
          Top             =   4440
          Value           =   1  'Checked
@@ -2046,15 +2039,15 @@ Begin VB.Form frmServer
       Begin VB.Frame Frame7 
          Caption         =   "Fichier Texte"
          Height          =   1215
-         Left            =   120
-         TabIndex        =   117
+         Left            =   -74880
+         TabIndex        =   108
          Top             =   1080
          Width           =   1815
          Begin VB.CommandButton Command44 
             Caption         =   "Player.txt"
             Height          =   255
             Left            =   120
-            TabIndex        =   120
+            TabIndex        =   111
             Top             =   840
             Width           =   1575
          End
@@ -2062,7 +2055,7 @@ Begin VB.Form frmServer
             Caption         =   "BanList.txt"
             Height          =   255
             Left            =   120
-            TabIndex        =   119
+            TabIndex        =   110
             Top             =   600
             Width           =   1575
          End
@@ -2070,7 +2063,7 @@ Begin VB.Form frmServer
             Caption         =   "Admin.txt"
             Height          =   255
             Left            =   120
-            TabIndex        =   118
+            TabIndex        =   109
             Top             =   360
             Width           =   1575
          End
@@ -2078,14 +2071,14 @@ Begin VB.Form frmServer
       Begin VB.CommandButton Command66 
          Caption         =   "Rafraîchir"
          Height          =   255
-         Left            =   -69480
-         TabIndex        =   168
+         Left            =   3480
+         TabIndex        =   159
          Top             =   4440
          Width           =   1575
       End
       Begin MSComctlLib.ListView lvUsers 
          Height          =   3855
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   3
          Top             =   480
          Width           =   7815
@@ -2146,7 +2139,7 @@ Begin VB.Form frmServer
          ForeColor       =   &H0000FF00&
          Height          =   255
          Left            =   -67800
-         TabIndex        =   188
+         TabIndex        =   178
          Top             =   3840
          Width           =   1095
       End
@@ -2173,7 +2166,7 @@ Begin VB.Form frmServer
          EndProperty
          Height          =   165
          Left            =   -74760
-         TabIndex        =   167
+         TabIndex        =   158
          Top             =   4320
          Width           =   1170
       End
@@ -2195,7 +2188,7 @@ Begin VB.Form frmServer
          Height          =   195
          Index           =   23
          Left            =   -74760
-         TabIndex        =   96
+         TabIndex        =   93
          Top             =   3960
          Width           =   1935
       End
@@ -2206,7 +2199,7 @@ Begin VB.Form frmServer
          Height          =   195
          Index           =   22
          Left            =   -74760
-         TabIndex        =   95
+         TabIndex        =   92
          Top             =   3720
          Width           =   1740
       End
@@ -2217,7 +2210,7 @@ Begin VB.Form frmServer
          Height          =   195
          Index           =   21
          Left            =   -74760
-         TabIndex        =   92
+         TabIndex        =   89
          Top             =   360
          Width           =   555
       End
@@ -2226,7 +2219,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Adresse IP:"
          Height          =   195
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   7
          Top             =   360
          Width           =   840
@@ -2236,7 +2229,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Port:"
          Height          =   195
-         Left            =   120
+         Left            =   -74880
          TabIndex        =   6
          Top             =   600
          Width           =   360
@@ -2246,7 +2239,7 @@ Begin VB.Form frmServer
          BackStyle       =   0  'Transparent
          Caption         =   "Nbr Joueur en ligne:"
          Height          =   195
-         Left            =   -74760
+         Left            =   240
          TabIndex        =   5
          Top             =   4440
          Width           =   1455
@@ -2262,7 +2255,7 @@ Begin VB.Form frmServer
       Caption         =   "Label9"
       Height          =   495
       Left            =   4800
-      TabIndex        =   169
+      TabIndex        =   160
       Top             =   3120
       Width           =   1215
    End
@@ -2939,7 +2932,9 @@ End Sub
 Private Sub Command7_Click()
 Dim Index As Long
 
-If txtReason.text = vbNullString Then MsgBox "Ecrire une raison SVP!": Exit Sub
+If txtReason.text = vbNullString Then
+    txtReason.text = "Aucune raison spécifiée"
+End If
 
 Index = lvUsers.ListItems(lvUsers.SelectedItem.Index).text
 
