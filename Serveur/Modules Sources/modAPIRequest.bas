@@ -22,12 +22,10 @@ Dim Ret As Long, sBuffer As String * 128
 Dim iResult As Integer, sData As String
 hOpen = InternetOpen("VB Program", 1, vbNullString, vbNullString, 0)
 If hOpen = 0 Then
-MsgBox "Error opening Internet connection"
 Exit Function
 End If
 hFile = InternetOpenUrl(hOpen, strUrl, vbNullString, 0, INTERNET_FLAG_NO_CACHE_WRITE, 0)
 If hFile = 0 Then
-MsgBox "Error opening Web page"
 Else
 InternetReadFile hFile, sBuffer, STRING_SIZE, Ret
 sData = sBuffer

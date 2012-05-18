@@ -137,6 +137,7 @@ Dim FileName As String
 End Sub
 
 Function FileExist(ByVal FileName As String, Optional dirapp As Boolean = True) As Boolean
+On Error Resume Next
     If dirapp = True Then
         If Dir(App.Path & "\" & FileName) = vbNullString Then FileExist = False Else FileExist = True
     Else
@@ -637,11 +638,14 @@ Sub LoadClasses()
 Dim FileName As String
 Dim i As Long
 
-    Call CheckClasses
     
-    FileName = App.Path & "\Classes\info.ini"
+    i = 0
+    Do While FileExist(App.Path & "\Classes\Class" & i & ".ini", False)
+    Max_Classes = i
+    i = i + 1
+    Loop
+    i = 0
     
-    Max_Classes = Val(GetVar(FileName, "INFO", "MaxClasses"))
     If Max_Classes <= 0 Then Max_Classes = 1
     
     ReDim Classe(0 To Max_Classes) As ClassRec
@@ -674,14 +678,7 @@ Dim FileName As String
 Dim i As Long
 
     FileName = App.Path & "\Classes\info.ini"
-    
-    If Not FileExist("Classes\info.ini") Then
-        Call PutVar(FileName, "INFO", "MaxClasses", 3)
-        Call PutVar(FileName, "INFO", "MaxSkills", 25)
-        Call PutVar(FileName, "INFO", "StatPoints", 0)
-        Call PutVar(FileName, "INFO", "SkillPoints", 0)
-    End If
-    
+        
     If Max_Classes <= 0 Then Max_Classes = 3
     
     ReDim Classe(0 To Max_Classes) As ClassRec
@@ -703,10 +700,6 @@ Dim i As Long
             Call PutVar(FileName, "CLASS", "Locked", STR$(Classe(i).Locked))
         End If
     Next i
-End Sub
-
-Sub CheckClasses()
-    If Not FileExist("Classes\info.ini") Then Call SaveClasses
 End Sub
 
 Sub SaveItems()

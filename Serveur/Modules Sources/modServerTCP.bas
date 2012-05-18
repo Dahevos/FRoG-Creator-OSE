@@ -623,6 +623,7 @@ Player(Index).sync = True
         Case "c"
             Select Case Parse(0)
                 Case "changechar"
+                    Call SavePlayerOptim(Index)
                     Player(Index).InGame = False
                     Exit Sub
                     
