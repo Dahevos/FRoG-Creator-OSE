@@ -1209,6 +1209,7 @@ mont:
     End If
     
     If (LCase$(Parse(0)) = "bank") Then
+        
         frmbank.Show
         frmMirage.TxtQ2.Text = Map(GetPlayerMap(MyIndex)).Tile(GetPlayerX(MyIndex), GetPlayerY(MyIndex)).String1
         frmMirage.txtQ.Visible = True

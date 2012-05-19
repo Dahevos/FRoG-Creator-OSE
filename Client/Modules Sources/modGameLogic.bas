@@ -2740,6 +2740,14 @@ Dim Dire As Long
 
     CanMove = True
     
+    
+    'ne peux plus bouger si certaines frames sont visibles
+    If frmTrade.Visible = True Or frmbank.Visible = True Or frmPlayerTrade.Visible = True Or frmFlash.Visible = True Or frmFixItem.Visible = True Or frmcraft.Visible = True Then
+        CanMove = False
+        Exit Function
+    End If
+    
+    
     ' Make sure they aren't trying to move when they are already moving
     If Player(MyIndex).Moving <> 0 Then CanMove = False: Exit Function
     

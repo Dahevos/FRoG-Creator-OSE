@@ -944,8 +944,10 @@ Attribute VB_Exposed = False
 Dim SInv As Long
 Dim SCof As Long
 Dim DInv As Boolean
+Dim Invdeplace(24) As Boolean
+Dim BankDeplace(30) As Boolean
+
 Dim DCof As Boolean
-Dim deplacé As Boolean
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 dr = True
 drx = x
@@ -1128,7 +1130,7 @@ End If
 Packet = "COFFREITEM" & END_CHAR
 
 Call SendData(Packet)
-deplacé = True
+
 Call ActPic
 End Sub
 
@@ -1239,7 +1241,7 @@ Packet = "COFFREITEM" & END_CHAR
 Call SendData(Packet)
 
 Call ActPic
-deplacé = True
+
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -1257,24 +1259,29 @@ Unload Me
 End Sub
 
 Private Sub Picture1_Click(Index As Integer)
-If deplacé Then
+
+If Invdeplace(Index) = False Then
+Invdeplace(Index) = True
+
 SInv = Index
 Shape3.Visible = True
 Shape3.Left = Picture1(SInv).Left - 1
 Shape3.Top = Picture1(SInv).Top - 1
 DCof = False
 DInv = False
-deplacé = False
+
 End If
+
+
 End Sub
 
 Private Sub Picture1_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
 If DInv = True Then DInv = False: Exit Sub
 DCof = False
 SInv = Index
-If Not deplacé Then
 Call DansInv(SInv, SCof)
-End If
+BankDeplace(SInv) = True
+
 End Sub
 
 Private Sub Picture1_DragOver(Index As Integer, Source As Control, x As Single, y As Single, State As Integer)
@@ -1314,24 +1321,27 @@ End If
 End Sub
 
 Private Sub Picture2_Click(Index As Integer)
-If deplacé Then
+
+If BankDeplace(Index) = False Then
+BankDeplace(Index) = True
 SCof = Index
 Shape1.Visible = True
 Shape1.Left = Picture2(SCof).Left - 1
 Shape1.Top = Picture2(SCof).Top - 1
 DCof = False
 DInv = False
-deplacé = False
+
 End If
+
 End Sub
 
 Private Sub Picture2_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
 If DCof = True Then DCof = False: Exit Sub
 DInv = False
 SCof = Index
-If Not deplacé Then
+
 Call DansCoffre(SCof, SInv)
-End If
+Invdeplace(SInv) = False
 SInv = 0
 SCof = 0
 End Sub
