@@ -39,6 +39,7 @@ Form=Forms Sources\frmFixItem.frm
 Form=Forms Sources\frmcraft.frm
 Module=modXp; Modules Sources\modXp.bas
 Object={BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0; TABCTL3N.OCX
+Form=Forms Sources\frmSplashScreen.frm
 IconForm="frmMirage"
 Startup="Sub Main"
 HelpFile=""
