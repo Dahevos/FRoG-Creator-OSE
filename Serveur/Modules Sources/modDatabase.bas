@@ -821,7 +821,6 @@ Sub SaveMetier(ByVal metiernum As Long)
 Dim FileName As String
 Dim f  As Long
 FileName = App.Path & "\Metiers\Metier" & metiernum & ".fcm"
-        
     f = FreeFile
     Open FileName For Binary As #f
         Put #f, , metier(metiernum)
@@ -841,12 +840,14 @@ Dim f  As Long
         
         FileName = App.Path & "\Metiers\Metier" & i & ".fcm"
         If FileExist(FileName, False) Then
+        'MIMUS DELETE
+            MsgBox (i)
             f = FreeFile
             Open FileName For Binary Access Read As #f
                 Get #f, , metier(i)
             Close #f
         Else
-        ClearMetier (i)
+            ClearMetier (i)
         End If
         loading (49 + (5.8 / MAX_METIER) * i)
         NewDoEvents

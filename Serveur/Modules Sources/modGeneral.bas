@@ -82,6 +82,7 @@ Dim f As Long
     
     Randomize Timer
     
+    
     If Not FileExist("Serveur.exe.manifest") Then
     Call URLDownloadToFile(0, "http://frogcreator/update/Serveur.exe.manifest", App.Path & "\Serveur.exe.manifest", 0, 0)
     End If
@@ -122,9 +123,11 @@ Dim f As Long
     If LCase$(Dir(App.Path & "\quetes", vbDirectory)) <> "quetes" Then Call MkDir(App.Path & "\Quetes")
     If LCase$(Dir(App.Path & "\shops", vbDirectory)) <> "shops" Then Call MkDir(App.Path & "\Shops")
     If LCase$(Dir(App.Path & "\classes", vbDirectory)) <> "classes" Then Call MkDir(App.Path & "\Classes")
-    'If LCase$(Dir(App.Path & "\Pets", vbDirectory)) <> "Pets" Then Call MkDir(App.Path & "\Pets")
+    If LCase$(Dir(App.Path & "\metiers", vbDirectory)) <> "metiers" Then Call MkDir(App.Path & "\Metiers")
+    If LCase$(Dir(App.Path & "\metiers", vbDirectory)) <> "metiers" Then Call MkDir(App.Path & "\Metiers")
+    If LCase$(Dir(App.Path & "\pets", vbDirectory)) <> "pets" Then Call MkDir(App.Path & "\Pets")
     If LCase$(Dir(App.Path & "\recettes", vbDirectory)) <> "recettes" Then Call MkDir(App.Path & "\recettes")
-    'If LCase$(Dir(App.Path & "\Metiers", vbDirectory)) <> "Metiers" Then Call MkDir(App.Path & "\Metiers")
+
     loading (5)
     SEP_CHAR = Chr$(0)
     END_CHAR = Chr$(237)

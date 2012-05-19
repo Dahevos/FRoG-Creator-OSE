@@ -2,3 +2,16 @@
 15:58:41: Le serveur a banni dqsdsq.  Raison(Aucune raison spécifié)
 17:46:31: Admin edite le metier #1.
 17:47:03: Admin a modifié(e) la carte #2
+18:40:06: Admin edite le metier #1.
+18:42:16: Admin a modifié(e) la carte #2
+18:45:41: Admin edite le metier #1.
+18:45:55: Admin a modifié(e) la carte #2
+18:52:59: Admin edite le metier #1.
+18:53:09: Admin a modifié(e) la carte #2
+18:56:15: Admin edite le metier #1.
+18:56:59: Admin edite le metier #1.
+18:58:50: Admin edite le metier #1.
+18:58:58: Admin sauvegarde le metier #1.
+19:05:57: Admin edite le metier #1.
+19:06:02: Admin sauvegarde le metier #1.
+19:06:21: Admin a modifié(e) la carte #2
