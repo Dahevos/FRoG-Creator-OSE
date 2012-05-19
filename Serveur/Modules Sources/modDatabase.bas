@@ -835,13 +835,12 @@ Dim f  As Long
     'Call SaveMetiers
     'Call ClearMetiers
     
+    
     For i = 1 To MAX_METIER
         'Call SetStatus("Chargement des Metiers... " & i & "/" & MAX_METIER)
         
         FileName = App.Path & "\Metiers\Metier" & i & ".fcm"
         If FileExist(FileName, False) Then
-        'MIMUS DELETE
-            MsgBox (i)
             f = FreeFile
             Open FileName For Binary Access Read As #f
                 Get #f, , metier(i)

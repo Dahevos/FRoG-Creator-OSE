@@ -1,7 +1,7 @@
 modText = 54, 87, 626, 573, 
 modTypes = 299, 133, 871, 614, 
 frmMainMenu = 44, 151, 616, 637, , 99, 67, 782, 553, C
-modClientTCP = 86, 108, 1012, 720, Z
+modClientTCP = 86, 108, 1012, 720, 
 frmNewChar = 35, 103, 607, 589, , 105, 186, 677, 672, C
 modDirectX = 10, 36, 943, 505, 
 modDatabase = 22, 29, 804, 641, 
