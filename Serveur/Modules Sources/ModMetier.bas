@@ -2,7 +2,7 @@ Attribute VB_Name = "ModMetier"
 Public Const MAX_DATA_METIER = 100
 
 Sub craft(ByVal Index As Long, ByVal rec As Long)
-Dim n As Byte, i As Byte, v As Byte, w As Byte, R As Byte, rb As Boolean
+Dim n As Byte, i As Byte, v As Byte, w As Byte, r As Byte, rb As Boolean
 Dim rin As Boolean
 Dim pin(0 To MAX_DATA_METIER) As Boolean, piv(0 To MAX_DATA_METIER) As Boolean
 Dim pis(0 To MAX_DATA_METIER) As Byte, vr As Boolean
@@ -17,7 +17,7 @@ If n > 0 Then
         rb = False
         For i = 0 To MAX_DATA_METIER
             If metier(n).data(i, 0) = rec Then
-                R = i
+                r = i
                 rb = True
                 Exit For
             End If
@@ -26,7 +26,7 @@ If n > 0 Then
             Call BattleMsg(Index, "(Metier) Vous ne pouvez pas faire cette recettes", Red, 0)
             Exit Sub
         End If
-        With recette(metier(n).data(R, 0))
+        With recette(metier(n).data(r, 0))
             rin = False
             For i = 0 To MAX_DATA_METIER
                 If .InCraft(i, 0) > 0 Then
@@ -35,7 +35,7 @@ If n > 0 Then
                 End If
             Next i
             If rin = False Then
-                Call BattleMsg(Index, "(Metier) Cette recette n'est pas bonnes", Red, 0)
+                Call BattleMsg(Index, "(Metier) Cette recette n'est pas bonne", Red, 0)
                 Exit Sub
             End If
             
@@ -100,8 +100,8 @@ If n > 0 Then
                     Call SendInventory(Index)
                     Call BattleMsg(Index, "(Metier) Vous avez Crafter l'objet: " & item(.craft(0)).Name, BrightBlue, 0)
                     If Player(Index).Char(Player(Index).CharNum).MetierLvl < 200 Then
-                        Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + metier(n).data(R, 1)
-                        Call BattleMsg(Index, "(Metier) Vous avez gagné " & metier(n).data(R, 1) & " pts d'expérience.", BrightBlue, 0)
+                        Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + metier(n).data(r, 1)
+                        Call BattleMsg(Index, "(Metier) Vous avez gagné " & metier(n).data(r, 1) & " pts d'expérience.", BrightBlue, 0)
                     Else
                         Call BattleMsg(Index, "(Metier) Vous ne pouver plus gagnez d'expérience", BrightBlue, 0)
                     End If
@@ -109,8 +109,8 @@ If n > 0 Then
                     Call SendInventory(Index)
                     Call BattleMsg(Index, "(Metier) Vous avez rater le Craft de l'objet: " & item(.craft(0)).Name, Red, 0)
                     If Player(Index).Char(Player(Index).CharNum).MetierLvl < 200 Then
-                        Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + Math.Round(metier(n).data(R, 1) / 2)
-                        Call BattleMsg(Index, "(Metier) Vous avez gagné " & Math.Round(metier(n).data(R, 1) / 2) & " pts d'expérience.", BrightBlue, 0)
+                        Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + Math.Round(metier(n).data(r, 1) / 2)
+                        Call BattleMsg(Index, "(Metier) Vous avez gagné " & Math.Round(metier(n).data(r, 1) / 2) & " pts d'expérience.", BrightBlue, 0)
                     Else
                         Call BattleMsg(Index, "(Metier) Vous ne pouver plus gagnez d'expérience", BrightBlue, 0)
                     End If

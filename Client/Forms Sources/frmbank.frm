@@ -1067,11 +1067,11 @@ End If
 
 If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
 
-    Nbi = InputBox("Combiens d'objet(s) voulez-vous métre dans le coffre?", "Demande")
+    Nbi = InputBox("Combiens d'objet(s) voulez-vous mettre dans le coffre ?", "Demande")
 
     If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre SVP!!", vbCritical, "Erreur"): Exit Sub
     
-    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objet!!", vbCritical, "Erreur"): Exit Sub
+    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objets !", vbCritical, "Erreur"): Exit Sub
     
     If Val(Nbi) <= 0 Then Exit Sub
     
