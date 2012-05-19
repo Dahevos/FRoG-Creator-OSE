@@ -33,12 +33,12 @@ Begin VB.Form frmMirage
       BackColor       =   &H00FFFFFF&
       ForeColor       =   &H80000008&
       Height          =   5745
-      Left            =   2640
+      Left            =   9000
       ScaleHeight     =   381
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   173
       TabIndex        =   143
-      Top             =   960
+      Top             =   3240
       Visible         =   0   'False
       Width           =   2625
       Begin VB.TextBox txtTempsBulles 
@@ -4585,7 +4585,7 @@ Begin VB.Form frmMirage
    Begin VB.Label menu_tchat 
       BackStyle       =   0  'Transparent
       Height          =   540
-      Left            =   10200
+      Left            =   10320
       TabIndex        =   115
       ToolTipText     =   "Tchat"
       Top             =   9240
@@ -5163,6 +5163,8 @@ Private Sub lstOnline_DblClick()
 End Sub
 
 Private Sub menu_equ_Click()
+
+If picOptions.Visible = True Then picOptions.Visible = False
 If fra_info.Visible = True Then
     fra_info.Visible = False
 Else
@@ -5181,6 +5183,8 @@ End If
 End Sub
 
 Private Sub menu_guild_Click()
+
+If picOptions.Visible = True Then picOptions.Visible = False
 ' Set Their Guild Name and Their Rank
 If fra_fenetre.Visible = True And picGuild.Visible = True Then fra_fenetre.Visible = False Else fra_fenetre.Visible = True
 picParty.Visible = (fra_fenetre.Visible And (Player(MyIndex).PartyIndex > 0))
@@ -5213,6 +5217,7 @@ picGuild.Visible = True
 End Sub
 
 Private Sub menu_inv_Click()
+If picOptions.Visible = True Then picOptions.Visible = False
 If fra_fenetre.Visible = True And picInv3.Visible = True Then fra_fenetre.Visible = False Else fra_fenetre.Visible = True
 Call UpdateVisInv
 Call ClearPic
@@ -5221,11 +5226,24 @@ End Sub
 
 Private Sub menu_opt_Click()
     fra_info.Visible = False
-    picOptions.Visible = True
     If fra_fenetre.Visible = True Then fra_fenetre.Visible = False
+    If picquete.Visible = True Then picquete.Visible = False
+    
+    
+    If picOptions.Visible = False Then
+        picOptions.Visible = True
+    Else
+        picOptions.Visible = False
+    End If
+    
+
 End Sub
 
 Private Sub menu_quete_Click()
+
+If picOptions.Visible = True Then picOptions.Visible = False
+
+
 If frmMirage.picquete.Visible = True Then
     frmMirage.picquete.Visible = False
 Else
@@ -5254,7 +5272,7 @@ If PicMenuQuitter.Visible Then PicMenuQuitter.Visible = False Else PicMenuQuitte
 End Sub
 
 Private Sub menu_sort_Click()
-
+If picOptions.Visible = True Then picOptions.Visible = False
 If fra_fenetre.Visible = True And picPlayerSpells.Visible = True Then
     fra_fenetre.Visible = False
 Else
@@ -5267,7 +5285,7 @@ End Sub
 
 Private Sub menu_tchat_Click()
 Dim i As Long
-
+If picOptions.Visible = True Then picOptions.Visible = False
 fra_info.Visible = False
 For i = 1 To MAX_PLAYERS
     If IsPlaying(i) = True Then
@@ -5282,6 +5300,7 @@ Next i
 End Sub
 
 Private Sub menu_who_Click()
+If picOptions.Visible = True Then picOptions.Visible = False
     If fra_fenetre.Visible = True And picWhosOnline.Visible = True Then fra_fenetre.Visible = False Else fra_fenetre.Visible = True
 
     Call SendOnlineList

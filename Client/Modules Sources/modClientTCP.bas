@@ -1245,7 +1245,7 @@ mont:
     End If
     
     If (LCase$(Parse(0)) = "newmetier") Then
-        i = MsgBox("Voulez vous apprendre se métier? " & Metier(Val(Parse(1))).nom, vbYesNo, GAME_NAME)
+        i = MsgBox("Voulez vous apprendre le métier de " & Metier(Val(Parse(1))).nom & " ? ", vbYesNo, GAME_NAME)
         If i = vbYes Then SendData ("newmetier" & SEP_CHAR & Val(Parse(1)) & END_CHAR)
         Exit Sub
     End If

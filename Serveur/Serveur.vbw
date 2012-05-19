@@ -29,3 +29,4 @@ ModMetier = 130, 130, 712, 456,
 modXp = 0, 0, 582, 326, 
 ctlSysTrayBalloon = 130, 130, 684, 395, , 0, 0, 554, 265, C
 ctlProgressBar = 0, 0, 0, 0, C, 156, 156, 693, 470, C
+modAPIRequest = 0, 0, 0, 0, C
