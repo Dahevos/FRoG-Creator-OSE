@@ -27,11 +27,7 @@ Sub TcpDestroy(Optional ByVal Bypass As Byte = 0)
     frmMirage.sync.Enabled = False
     
     If Bypass Then
-    frmsplash.Visible = True
-    frmsplash.lblStatus = "Déconnexion en cours"
-    frmsplash.SetFocus
-    Sleep 2000
-    frmsplash.Visible = False
+        MsgBox ("Vous vous êtes déconnecté. Valider et patienter quelques secondes.")
     End If
     
     If frmMainMenu.fraPers.Visible Then frmMainMenu.fraPers.Visible = False

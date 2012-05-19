@@ -126,10 +126,10 @@ Begin VB.Form frmMainMenu
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Height          =   315
-         Left            =   3000
+         Left            =   3120
          TabIndex        =   21
          Top             =   0
-         Width           =   420
+         Width           =   300
       End
       Begin VB.Image imgPers 
          Height          =   3600
@@ -212,6 +212,14 @@ Begin VB.Form frmMainMenu
          TabIndex        =   1
          Top             =   1560
          Width           =   195
+      End
+      Begin VB.Label Label6 
+         BackStyle       =   0  'Transparent
+         Height          =   255
+         Left            =   3120
+         TabIndex        =   30
+         Top             =   0
+         Width           =   255
       End
       Begin VB.Label Label5 
          BackStyle       =   0  'Transparent
@@ -687,6 +695,10 @@ Private Sub Label2_Click()
     fraNewAccount.Visible = False
 End Sub
 
+Private Sub Label6_Click()
+ Call GameDestroy
+End Sub
+
 Private Sub lbl_creer_Click()
     fraNewAccount.Visible = True
     fraLogin.Visible = False
@@ -740,13 +752,10 @@ If KeyAscii = vbKeyReturn Then Call picUseChar_Click: KeyAscii = 0
 End Sub
 
 Private Sub picCancel_Click()
-    Dim i As Integer
-    For i = 1 To MAX_INV - 1
-        Unload frmMirage.picInv(i)
-    Next
+
+ 
     Call TcpDestroy(1)
-    frmsplash.Show
-    frmsplash.Visible = True
+    Sleep (2000)
     fraLogin.Visible = True
     fraPers.Visible = False
 End Sub
@@ -890,3 +899,4 @@ Private Sub txtpassword22_GotFocus()
 txtpassword22.SelStart = 0
 txtpassword22.SelLength = Len(txtpassword22)
 End Sub
+

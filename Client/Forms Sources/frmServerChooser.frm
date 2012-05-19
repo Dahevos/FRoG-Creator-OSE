@@ -50,10 +50,10 @@ Begin VB.Form frmServerChooser
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Height          =   375
-      Left            =   4560
+      Left            =   4800
       TabIndex        =   3
       Top             =   0
-      Width           =   615
+      Width           =   375
    End
 End
 Attribute VB_Name = "frmServerChooser"

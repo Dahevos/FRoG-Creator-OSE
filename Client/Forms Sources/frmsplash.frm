@@ -14,26 +14,6 @@ Begin VB.Form frmsplash
    ScaleWidth      =   4200
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin VB.Label Label1 
-      AutoSize        =   -1  'True
-      BackStyle       =   0  'Transparent
-      Caption         =   "Moteur : FRoG Creator                       frogcreator.fr"
-      BeginProperty Font 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00FF0000&
-      Height          =   195
-      Left            =   240
-      TabIndex        =   1
-      Top             =   120
-      Width           =   3690
-   End
    Begin VB.Label lblStatus 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
