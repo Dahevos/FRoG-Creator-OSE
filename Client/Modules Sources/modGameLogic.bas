@@ -1087,7 +1087,7 @@ rest:
         Call GameDestroy
         
         ' Report disconnection if server disconnects
-        If IsConnected = False Then Call MsgBox("Merci d'avoirs joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
+        If IsConnected = False Then Call MsgBox("Merci d'avoir joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
     Else
         deco = False
         Call MsgBox("Merci d'avoirs joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
