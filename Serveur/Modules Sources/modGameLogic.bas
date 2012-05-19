@@ -2339,7 +2339,7 @@ Dim Moved As Byte
     
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_METIER Then
         If Player(Index).Char(Player(Index).CharNum).metier = 0 Then
-            Packet = "NEWMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
+            Packet = "NEWMETIER" & SEP_CHAR & (Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1) & END_CHAR
         Else
             If Player(Index).Char(Player(Index).CharNum).metier <> Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 Then
                 Packet = "REMPLACEMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
