@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Begin VB.Form frmMirage 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  'Fixed Single
@@ -4500,6 +4500,16 @@ Begin VB.Form frmMirage
          End
       End
    End
+   Begin VB.Label lbltimeQuete 
+      BackStyle       =   0  'Transparent
+      Caption         =   "0"
+      Height          =   255
+      Left            =   7800
+      TabIndex        =   252
+      Top             =   9120
+      Visible         =   0   'False
+      Width           =   4095
+   End
    Begin VB.Label menu_quete 
       BackStyle       =   0  'Transparent
       Height          =   540
@@ -5314,7 +5324,7 @@ Dim i As Long
 Dim msgb As String
 
 If Player(MyIndex).QueteEnCour > 0 And Accepter = False Then
-    msgb = MsgBox("Voulez-vous faire la Quete proposer?", vbYesNo, "Quete")
+    msgb = MsgBox("Voulez-vous faire la quête proposée ?", vbYesNo, "Quete")
         If msgb = vbYes Then
             Call SendData("DEMAREQUETE" & SEP_CHAR & Player(MyIndex).QueteEnCour & END_CHAR)
             Accepter = True
@@ -5815,17 +5825,20 @@ If Seco <= 0 And Minu > 0 Then
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0
-    Call MsgBox("La quête : " & Trim$(quete(Queten).nom) & " est terminer, le temps est écouler")
+    Call MsgBox("La quête : " & Trim$(quete(Queten).nom) & " est terminer, le temps est écoulé")
     Player(MyIndex).QueteEnCour = 0
     quetetimersec.Enabled = False
     tmpsquete.Visible = False
 End If
 
 If Len(STR$(Seco)) > 2 Then seconde.Caption = Seco Else seconde.Caption = "0" & Seco
+lbltimeQuete.Visible = True
+lbltimeQuete.Caption = "Quête se termine dans :" & Minu & " minute(s) et " & Seco & " seconde."
 Else
 Player(MyIndex).QueteEnCour = 0
 tmpsquete.Visible = False
 quetetimersec.Enabled = False
+lbltimeQuete.Visible = False
 End If
 
 End Sub

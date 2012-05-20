@@ -1,7 +1,7 @@
 frmServer = 130, 130, 712, 456, , 104, 104, 686, 430, C
 modDatabase = 130, 130, 712, 456, 
 modTypes = 156, 156, 738, 482, 
-modGameLogic = 22, 29, 811, 641, 
+modGameLogic = 22, 29, 811, 641, Z
 modGeneral = 156, 156, 738, 482, 
 modText = 0, 0, 0, 0, C
 frmLoad = 104, 104, 712, 369, , 78, 78, 660, 404, C
@@ -10,7 +10,7 @@ clsRC4 = 0, 0, 0, 0, C
 clsSadScript = 78, 78, 632, 343, 
 modCodeEdit = 52, 52, 606, 317, 
 frmEditor = 130, 130, 738, 395, , 156, 156, 738, 482, C
-modServerTCP = 44, 58, 833, 670, Z
+modServerTCP = 44, 58, 833, 670, 
 modFTP = 130, 130, 712, 456, 
 modInfoBulle = 0, 0, 608, 265, 
 frmOptInfoBulle = 104, 104, 658, 369, , 26, 26, 608, 352, C

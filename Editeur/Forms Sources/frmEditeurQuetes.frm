@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
 Begin VB.Form frmEditeurQuetes 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Editeur de Quetes"
@@ -45,17 +45,17 @@ Begin VB.Form frmEditeurQuetes
       Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Label5"
       Tab(0).Control(3).Enabled=   0   'False
-      Tab(0).Control(4)=   "frtp(3)"
+      Tab(0).Control(4)=   "frtp(6)"
       Tab(0).Control(4).Enabled=   0   'False
-      Tab(0).Control(5)=   "frtp(1)"
+      Tab(0).Control(5)=   "frtp(5)"
       Tab(0).Control(5).Enabled=   0   'False
-      Tab(0).Control(6)=   "frtp(4)"
+      Tab(0).Control(6)=   "frtp(2)"
       Tab(0).Control(6).Enabled=   0   'False
-      Tab(0).Control(7)=   "frtp(6)"
+      Tab(0).Control(7)=   "frtp(3)"
       Tab(0).Control(7).Enabled=   0   'False
-      Tab(0).Control(8)=   "frtp(5)"
+      Tab(0).Control(8)=   "frtp(1)"
       Tab(0).Control(8).Enabled=   0   'False
-      Tab(0).Control(9)=   "frtp(2)"
+      Tab(0).Control(9)=   "frtp(4)"
       Tab(0).Control(9).Enabled=   0   'False
       Tab(0).Control(10)=   "description"
       Tab(0).Control(10).Enabled=   0   'False
@@ -308,6 +308,228 @@ Begin VB.Form frmEditeurQuetes
       End
       Begin VB.Frame frtp 
          Caption         =   "Caractéristiques"
+         Height          =   2175
+         Index           =   4
+         Left            =   4560
+         TabIndex        =   44
+         Top             =   480
+         Width           =   6855
+         Begin VB.HScrollBar nbt 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   3360
+            Max             =   100
+            TabIndex        =   18
+            Top             =   1560
+            Width           =   3255
+         End
+         Begin VB.HScrollBar indpnj 
+            Height          =   255
+            Left            =   240
+            Max             =   15
+            Min             =   1
+            TabIndex        =   15
+            Top             =   720
+            Value           =   1
+            Width           =   2775
+         End
+         Begin VB.HScrollBar tempr 
+            Height          =   255
+            Index           =   4
+            LargeChange     =   60
+            Left            =   3360
+            Max             =   1800
+            TabIndex        =   16
+            Top             =   720
+            Width           =   3255
+         End
+         Begin VB.HScrollBar numopnj 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   1000
+            Min             =   1
+            TabIndex        =   17
+            Top             =   1560
+            Value           =   1
+            Width           =   2775
+         End
+         Begin VB.Label Label12 
+            AutoSize        =   -1  'True
+            Caption         =   "Nombre de fois qu'il faut le tuer :"
+            Height          =   195
+            Left            =   3360
+            TabIndex        =   56
+            Top             =   1200
+            Width           =   2265
+         End
+         Begin VB.Label Label15 
+            AutoSize        =   -1  'True
+            Caption         =   "Index du PNJ (pour la Quete) :"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   53
+            Top             =   360
+            Width           =   2145
+         End
+         Begin VB.Label tp 
+            AutoSize        =   -1  'True
+            Caption         =   "Temps pour réalisée la Quete :"
+            Height          =   195
+            Index           =   4
+            Left            =   3360
+            TabIndex        =   52
+            Top             =   360
+            Width           =   2160
+         End
+         Begin VB.Label Label13 
+            AutoSize        =   -1  'True
+            Caption         =   "Numéros du PNJ :"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   51
+            Top             =   1200
+            Width           =   1290
+         End
+      End
+      Begin VB.Frame frtp 
+         Caption         =   "Caractéristiques"
+         Height          =   2175
+         Index           =   1
+         Left            =   4560
+         TabIndex        =   34
+         Top             =   480
+         Width           =   6855
+         Begin VB.HScrollBar quant 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   3360
+            Max             =   500
+            TabIndex        =   8
+            Top             =   1560
+            Value           =   1
+            Width           =   3255
+         End
+         Begin VB.HScrollBar numo 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   1000
+            Min             =   1
+            TabIndex        =   7
+            Top             =   1560
+            Value           =   1
+            Width           =   2775
+         End
+         Begin VB.HScrollBar tempr 
+            Height          =   255
+            Index           =   1
+            LargeChange     =   60
+            Left            =   3360
+            Max             =   1800
+            TabIndex        =   6
+            Top             =   720
+            Width           =   3255
+         End
+         Begin VB.HScrollBar indo 
+            Height          =   255
+            Left            =   240
+            Max             =   15
+            Min             =   1
+            TabIndex        =   5
+            Top             =   720
+            Value           =   1
+            Width           =   2775
+         End
+         Begin VB.Label Label7 
+            AutoSize        =   -1  'True
+            Caption         =   "Quantité à ramassé :"
+            Height          =   195
+            Left            =   3360
+            TabIndex        =   41
+            Top             =   1200
+            Width           =   1455
+         End
+         Begin VB.Label Label6 
+            AutoSize        =   -1  'True
+            Caption         =   "Numéros de l'objet :"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   40
+            Top             =   1200
+            Width           =   1395
+         End
+         Begin VB.Label tp 
+            AutoSize        =   -1  'True
+            Caption         =   "Temps pour réalisée la Quete :"
+            Height          =   195
+            Index           =   1
+            Left            =   3360
+            TabIndex        =   39
+            Top             =   360
+            Width           =   2160
+         End
+         Begin VB.Label Label4 
+            AutoSize        =   -1  'True
+            Caption         =   "Index de l'objet (pour la Quete) :"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   38
+            Top             =   360
+            Width           =   2250
+         End
+      End
+      Begin VB.Frame frtp 
+         Caption         =   "Caractéristiques"
+         Height          =   1335
+         Index           =   3
+         Left            =   4560
+         TabIndex        =   43
+         Top             =   480
+         Width           =   6855
+         Begin VB.HScrollBar tempr 
+            Height          =   255
+            Index           =   3
+            LargeChange     =   60
+            Left            =   3240
+            Max             =   1800
+            TabIndex        =   14
+            Top             =   720
+            Width           =   3255
+         End
+         Begin VB.HScrollBar numepnj 
+            Height          =   255
+            LargeChange     =   10
+            Left            =   240
+            Max             =   1000
+            Min             =   1
+            TabIndex        =   13
+            Top             =   720
+            Value           =   1
+            Width           =   2775
+         End
+         Begin VB.Label tp 
+            AutoSize        =   -1  'True
+            Caption         =   "Temps pour réalisée la Quete :"
+            Height          =   195
+            Index           =   3
+            Left            =   3240
+            TabIndex        =   55
+            Top             =   360
+            Width           =   2160
+         End
+         Begin VB.Label Label11 
+            AutoSize        =   -1  'True
+            Caption         =   "Numéros du PNJ :"
+            Height          =   195
+            Left            =   240
+            TabIndex        =   50
+            Top             =   360
+            Width           =   1290
+         End
+      End
+      Begin VB.Frame frtp 
+         Caption         =   "Caractéristiques"
          Height          =   3975
          Index           =   2
          Left            =   4560
@@ -546,228 +768,6 @@ Begin VB.Form frmEditeurQuetes
             Width           =   2160
          End
       End
-      Begin VB.Frame frtp 
-         Caption         =   "Caractéristiques"
-         Height          =   2175
-         Index           =   4
-         Left            =   4560
-         TabIndex        =   44
-         Top             =   480
-         Width           =   6855
-         Begin VB.HScrollBar nbt 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   3360
-            Max             =   100
-            TabIndex        =   18
-            Top             =   1560
-            Width           =   3255
-         End
-         Begin VB.HScrollBar indpnj 
-            Height          =   255
-            Left            =   240
-            Max             =   15
-            Min             =   1
-            TabIndex        =   15
-            Top             =   720
-            Value           =   1
-            Width           =   2775
-         End
-         Begin VB.HScrollBar tempr 
-            Height          =   255
-            Index           =   4
-            LargeChange     =   60
-            Left            =   3360
-            Max             =   1800
-            TabIndex        =   16
-            Top             =   720
-            Width           =   3255
-         End
-         Begin VB.HScrollBar numopnj 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   1000
-            Min             =   1
-            TabIndex        =   17
-            Top             =   1560
-            Value           =   1
-            Width           =   2775
-         End
-         Begin VB.Label Label12 
-            AutoSize        =   -1  'True
-            Caption         =   "Nombre de fois qu'il faut le tuer :"
-            Height          =   195
-            Left            =   3360
-            TabIndex        =   56
-            Top             =   1200
-            Width           =   2265
-         End
-         Begin VB.Label Label15 
-            AutoSize        =   -1  'True
-            Caption         =   "Index du PNJ (pour la Quete) :"
-            Height          =   195
-            Left            =   240
-            TabIndex        =   53
-            Top             =   360
-            Width           =   2145
-         End
-         Begin VB.Label tp 
-            AutoSize        =   -1  'True
-            Caption         =   "Temps pour réalisée la Quete :"
-            Height          =   195
-            Index           =   4
-            Left            =   3360
-            TabIndex        =   52
-            Top             =   360
-            Width           =   2160
-         End
-         Begin VB.Label Label13 
-            AutoSize        =   -1  'True
-            Caption         =   "Numéros du PNJ :"
-            Height          =   195
-            Left            =   240
-            TabIndex        =   51
-            Top             =   1200
-            Width           =   1290
-         End
-      End
-      Begin VB.Frame frtp 
-         Caption         =   "Caractéristiques"
-         Height          =   2175
-         Index           =   1
-         Left            =   4560
-         TabIndex        =   34
-         Top             =   480
-         Width           =   6855
-         Begin VB.HScrollBar quant 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   3360
-            Max             =   500
-            TabIndex        =   8
-            Top             =   1560
-            Value           =   1
-            Width           =   3255
-         End
-         Begin VB.HScrollBar numo 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   1000
-            Min             =   1
-            TabIndex        =   7
-            Top             =   1560
-            Value           =   1
-            Width           =   2775
-         End
-         Begin VB.HScrollBar tempr 
-            Height          =   255
-            Index           =   1
-            LargeChange     =   60
-            Left            =   3360
-            Max             =   1800
-            TabIndex        =   6
-            Top             =   720
-            Width           =   3255
-         End
-         Begin VB.HScrollBar indo 
-            Height          =   255
-            Left            =   240
-            Max             =   15
-            Min             =   1
-            TabIndex        =   5
-            Top             =   720
-            Value           =   1
-            Width           =   2775
-         End
-         Begin VB.Label Label7 
-            AutoSize        =   -1  'True
-            Caption         =   "Quantité à ramassé :"
-            Height          =   195
-            Left            =   3360
-            TabIndex        =   41
-            Top             =   1200
-            Width           =   1455
-         End
-         Begin VB.Label Label6 
-            AutoSize        =   -1  'True
-            Caption         =   "Numéros de l'objet :"
-            Height          =   195
-            Left            =   240
-            TabIndex        =   40
-            Top             =   1200
-            Width           =   1395
-         End
-         Begin VB.Label tp 
-            AutoSize        =   -1  'True
-            Caption         =   "Temps pour réalisée la Quete :"
-            Height          =   195
-            Index           =   1
-            Left            =   3360
-            TabIndex        =   39
-            Top             =   360
-            Width           =   2160
-         End
-         Begin VB.Label Label4 
-            AutoSize        =   -1  'True
-            Caption         =   "Index de l'objet (pour la Quete) :"
-            Height          =   195
-            Left            =   240
-            TabIndex        =   38
-            Top             =   360
-            Width           =   2250
-         End
-      End
-      Begin VB.Frame frtp 
-         Caption         =   "Caractéristiques"
-         Height          =   1335
-         Index           =   3
-         Left            =   4560
-         TabIndex        =   43
-         Top             =   480
-         Width           =   6855
-         Begin VB.HScrollBar tempr 
-            Height          =   255
-            Index           =   3
-            LargeChange     =   60
-            Left            =   3240
-            Max             =   1800
-            TabIndex        =   14
-            Top             =   720
-            Width           =   3255
-         End
-         Begin VB.HScrollBar numepnj 
-            Height          =   255
-            LargeChange     =   10
-            Left            =   240
-            Max             =   1000
-            Min             =   1
-            TabIndex        =   13
-            Top             =   720
-            Value           =   1
-            Width           =   2775
-         End
-         Begin VB.Label tp 
-            AutoSize        =   -1  'True
-            Caption         =   "Temps pour réalisée la Quete :"
-            Height          =   195
-            Index           =   3
-            Left            =   3240
-            TabIndex        =   55
-            Top             =   360
-            Width           =   2160
-         End
-         Begin VB.Label Label11 
-            AutoSize        =   -1  'True
-            Caption         =   "Numéros du PNJ :"
-            Height          =   195
-            Left            =   240
-            TabIndex        =   50
-            Top             =   360
-            Width           =   1290
-         End
-      End
       Begin VB.Label Label5 
          AutoSize        =   -1  'True
          Caption         =   "Réponse à la fin de la quête :"
@@ -956,7 +956,7 @@ ElseIf tpe.ListIndex = QUETE_TYPE_APORT Then
     quete(EditorIndex).Data3 = 0
     quete(EditorIndex).String1 = reppnj.Text
     For i = 1 To 15
-        quete(EditorIndex).indexe(i).Data1 = 1
+        quete(EditorIndex).indexe(i).Dj 'ata1 = 1
         quete(EditorIndex).indexe(i).Data2 = 0
         quete(EditorIndex).indexe(i).Data3 = 0
         quete(EditorIndex).indexe(i).String1 = vbNullString

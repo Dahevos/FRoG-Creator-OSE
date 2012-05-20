@@ -682,6 +682,7 @@ If NpcTnum <= 0 Or NpcTnum > MAX_NPCS Then Exit Sub
 If GetPlayerQueteEtat(Index, Queteec) = True Then Exit Sub
 
 For i = 1 To 15
+    
     If NpcTnum = quete(Queteec).indexe(i).data1 And quete(Queteec).indexe(i).data2 > 0 And Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2 < quete(Queteec).indexe(i).data2 Then
         Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data1 = 1
         Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2 = Val(Player(Index).Char(Player(Index).CharNum).Quetep.indexe(i).data2) + 1
