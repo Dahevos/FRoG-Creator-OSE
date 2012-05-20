@@ -27,3 +27,8 @@
 02:02:23: mimus edite le PNJ #1.
 02:02:49: mimus sauvegarde le PNJ #1.
 02:03:42: mimus a modifié(e) la carte #1
+02:27:21: mimus edite le PNJ #1.
+02:27:41: mimus edite le sorrt #1.
+02:35:03: mimus edite le sorrt #1.
+02:35:15: mimus sauvegarde le sort #1.
+02:35:17: mimus edite le sorrt #1.

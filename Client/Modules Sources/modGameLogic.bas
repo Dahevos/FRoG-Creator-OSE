@@ -4046,7 +4046,7 @@ index2 = Trade(Selected).Items(Index).ItemGetNum
     frmTrade.descDef.Caption = Item(index2).DefReq
     frmTrade.descSpeed.Caption = Item(index2).SpeedReq
     If Item(index2).Type = ITEM_TYPE_SPELL Then
-        If Spell(Item(index2).Data1).ClassReq = 0 Then frmTrade.descClasse.Caption = "Toute" Else frmTrade.descClasse.Caption = Class(Spell(Item(index2).Data1).ClassReq).name
+        If Spell(Item(index2).Data1).ClassReq = 0 Then frmTrade.descClasse.Caption = "Toute" Else frmTrade.descClasse.Caption = Class(Spell(Item(index2).Data1).ClassReq - 1).name
     Else
         If Item(index2).ClassReq = -1 Then frmTrade.descClasse.Caption = "Toute" Else frmTrade.descClasse.Caption = Class(Item(index2).ClassReq).name
     End If

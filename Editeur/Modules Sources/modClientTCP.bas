@@ -1630,6 +1630,7 @@ mont:
         Spell(n).name = Parse(2)
         Spell(n).Big = Parse(3)
         Spell(n).SpellIco = Parse(4)
+        Spell(n).ClassReq = Parse(5)
         Exit Sub
     End If
     
