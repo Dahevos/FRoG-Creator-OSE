@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
 Begin VB.Form frmScript 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Case Scripter"
@@ -149,12 +149,16 @@ Private Sub cmdOk_Click()
 frmMirage.txtMyTextBox.SetFocus
 End Sub
 
-Private Sub form_Load()
-    If ScriptNum < scrlScript.min Then ScriptNum = scrlScript.min
+Private Sub Form_Load()
+    If ScriptNum < scrlScript.Min Then ScriptNum = scrlScript.Min
     scrlScript.value = ScriptNum
 End Sub
 
 Private Sub scrlScript_Change()
-    lblScript.Caption = scrlScript.value
+    If frmMirage.OptMetier.value = True Or frmMirage.OptCraft.value Then
+        lblScript.Caption = scrlScript.value & " - " & Metier(scrlScript.value).nom
+    Else
+        lblScript.Caption = scrlScript.value
+    End If
 End Sub
 

@@ -32,3 +32,7 @@
 02:35:03: mimus edite le sorrt #1.
 02:35:15: mimus sauvegarde le sort #1.
 02:35:17: mimus edite le sorrt #1.
+02:53:16: mimus edite le recette #1.
+02:53:55: mimus sauvegarde le recette #1.
+02:54:00: mimus edite le metier #1.
+02:54:11: mimus sauvegarde le metier #1.
