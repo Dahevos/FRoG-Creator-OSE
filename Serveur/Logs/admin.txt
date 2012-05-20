@@ -57,3 +57,25 @@
 11:56:58: mimus sauvegarde la quete #3.
 11:57:03: mimus edite le PNJ #1.
 11:57:07: mimus sauvegarde le PNJ #1.
+14:44:43: mimus edite l'objet #3.
+14:45:32: mimus sauvegarde l'objet #3.
+14:45:33: mimus edite l'objet #4.
+14:45:55: mimus sauvegarde l'objet #4.
+14:45:56: mimus edite l'objet #5.
+14:46:37: mimus sauvegarde l'objet #5.
+14:47:41: mimus edite le recette #1.
+14:47:53: mimus sauvegarde le recette #1.
+14:48:09: mimus edite le metier #1.
+14:49:01: mimus sauvegarde le metier #1.
+14:49:30: mimus a modifié(e) la carte #1
+15:00:28: mimus edite le recette #1.
+16:11:28: mimus edite l'objet #6.
+16:12:02: mimus sauvegarde l'objet #6.
+16:12:10: mimus edite le recette #1.
+16:12:14: mimus edite le recette #2.
+16:12:39: mimus sauvegarde le recette #2.
+16:12:45: mimus edite le metier #1.
+16:12:55: mimus sauvegarde le metier #1.
+16:13:09: mimus a modifié(e) la carte #1
+16:13:39: mimus a modifié(e) la carte #1
+17:08:28: mimus a réinitialisé(e) la carte #1

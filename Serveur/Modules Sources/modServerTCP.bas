@@ -631,7 +631,8 @@ Player(Index).sync = True
                     Call CastSpell(Index, Val(Parse(1)))
                     Exit Sub
                 Case "crafter"
-                    Call craft(Index, Val(Parse(1)))
+                    'Call craft(Index, Val(Parse(1)))
+                    Call craftv2(Index, Val(Parse(1)))
                     Exit Sub
                 Case "coffreitem"
                     Dim cof As Long

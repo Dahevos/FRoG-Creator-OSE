@@ -4506,7 +4506,7 @@ Begin VB.Form frmMirage
       Height          =   255
       Left            =   7800
       TabIndex        =   252
-      Top             =   9120
+      Top             =   9185
       Visible         =   0   'False
       Width           =   4095
    End

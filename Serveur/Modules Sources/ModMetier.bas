@@ -1,5 +1,112 @@
 Attribute VB_Name = "ModMetier"
 Public Const MAX_DATA_METIER = 100
+Public Const MAX_DATA_RECETTE = 9
+
+Sub craftv2(ByVal Index As Long, ByVal rec As Long)
+Dim n As Byte, i As Byte, v As Byte, w As Byte, s As Byte, r As Byte
+Dim nb_item As Byte, f As Byte
+
+    n = Player(Index).Char(Player(Index).CharNum).metier
+    
+    If n <= 0 Then
+        Call BattleMsg(Index, "(Metier) Vous n'avez pas de métier", Red, 0)
+        Exit Sub
+    End If
+    
+    If metier(n).type <> METIER_CRAFT Then
+        Call BattleMsg(Index, "(Metier) Vous n'avez pas le bon métier", Red, 0)
+        Exit Sub
+    End If
+    
+    For i = 0 To MAX_DATA_RECETTE
+        If metier(n).data(i, 0) = rec Then
+            r = i
+            Exit For
+        Else
+            If i = MAX_DATA_RECETTE Then
+                Call BattleMsg(Index, "(Metier) Cette recette n'est pas dans votre métier.", Red, 0)
+                Exit Sub
+            End If
+        End If
+    Next i
+    
+    With recette(metier(n).data(r, 0))
+        If .craft(0) <= 0 Then
+            Call BattleMsg(Index, "(Metier) Il n'y a rien a créer avec cette recette.", Red, 0)
+            Exit Sub
+        End If
+        
+        For i = 0 To MAX_DATA_RECETTE
+            If .InCraft(i, 0) > 0 Then
+                Exit For
+            Else
+                If i = MAX_DATA_RECETTE Then
+                    Call BattleMsg(Index, "(Metier) Cette recette n'est pas bonne", Red, 0)
+                End If
+            End If
+        Next i
+        
+        For i = 0 To MAX_DATA_RECETTE
+            If .InCraft(i, 0) > 0 Then
+                If AObjet(Index, .InCraft(i, 0)) > 0 Then
+                    If NbObjet(Index, .InCraft(i, 0)) < .InCraft(i, 1) Then
+                        Call BattleMsg(Index, "(Metier) Vous n'avez pas toute les ressources pour réaliser se craft. (2)", Red, 0)
+                        Exit Sub
+                    End If
+                Else
+                    Call BattleMsg(Index, "(Metier) Vous n'avez pas toute les ressources pour réaliser se craft.", Red, 0)
+                    Exit Sub
+                End If
+            End If
+        Next i
+        
+        v = FindOpenInvSlot(Index, .craft(0))
+        If v > 0 Then
+            nb_item = 0
+            For i = 0 To MAX_DATA_RECETTE
+                If .InCraft(i, 0) > 0 Then
+                    nb_item = nb_item + 1
+                    f = AObjet(Index, .InCraft(i, 0))
+                    If GetPlayerInvItemValue(Index, f) - .InCraft(i, 1) <= 0 Then
+                        Call SetPlayerInvItemNum(Index, f, 0)
+                        Call SetPlayerInvItemValue(Index, f, 0)
+                    Else
+                        Call SetPlayerInvItemValue(Index, f, GetPlayerInvItemValue(Index, f) - .InCraft(i, 1))
+                    End If
+                End If
+            Next i
+            Math.Randomize
+            w = Math.Round(Math.Rnd * 101)
+            If w > 0 And w <= CraftReussiteV2(Index, nb_item) Then
+                Call SetPlayerInvItemNum(Index, v, .craft(0))
+                Call SetPlayerInvItemValue(Index, v, GetPlayerInvItemValue(Index, v) + .craft(1))
+                If (item(.craft(0)).type >= ITEM_TYPE_WEAPON) And (item(.craft(0)).type <= ITEM_TYPE_SHIELD) Then Call SetPlayerInvItemDur(Index, v, item(.craft(0)).data1) Else Call SetPlayerInvItemDur(Index, v, 0)
+                Call SendInventory(Index)
+                Call BattleMsg(Index, "(Metier) Vous avez Crafter l'objet: " & item(.craft(0)).Name, BrightBlue, 0)
+                If Player(Index).Char(Player(Index).CharNum).MetierLvl < 200 Then
+                    Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + metier(n).data(r, 1)
+                    Call BattleMsg(Index, "(Metier) Vous avez gagné " & metier(n).data(r, 1) & " pts d'expérience.", BrightBlue, 0)
+                Else
+                    Call BattleMsg(Index, "(Metier) Vous ne pouver plus gagnez d'expérience", BrightBlue, 0)
+                End If
+            Else
+                Call SendInventory(Index)
+                Call BattleMsg(Index, "(Metier) Vous avez rater le Craft de l'objet: " & item(.craft(0)).Name, Red, 0)
+                If Player(Index).Char(Player(Index).CharNum).MetierLvl < 200 Then
+                    Player(Index).Char(Player(Index).CharNum).MetierExp = Player(Index).Char(Player(Index).CharNum).MetierExp + Math.Round(metier(n).data(r, 1) / 2)
+                    Call BattleMsg(Index, "(Metier) Vous avez gagné " & Math.Round(metier(n).data(r, 1) / 2) & " pts d'expérience.", BrightBlue, 0)
+                Else
+                    Call BattleMsg(Index, "(Metier) Vous ne pouver plus gagnez d'expérience", BrightBlue, 0)
+                End If
+            End If
+            Call checkLvlUpMetier(Index)
+        Else
+            Call BattleMsg(Index, "(Metier) Vous n'avez pas de place dans votre inventaire.", Red, 0)
+            Exit Sub
+        End If
+    End With
+End Sub
+
 
 Sub craft(ByVal Index As Long, ByVal rec As Long)
 Dim n As Byte, i As Byte, v As Byte, w As Byte, r As Byte, rb As Boolean
@@ -45,7 +152,6 @@ If n > 0 Then
             End If
 
             For i = 1 To MAX_INV
-                MsgBox i
                 For v = 0 To MAX_DATA_METIER
                     If .InCraft(v, 0) > 0 Then
                         If pin(v) = False Then
@@ -70,11 +176,10 @@ If n > 0 Then
                     End If
                 Next v
             Next i
-            MsgBox "ok"
             For i = 0 To MAX_DATA_METIER
                 If (pin(i) = True And piv(i) = False) Or (pin(i) = False And .InCraft(i, 0) > 0) Then
                     Call BattleMsg(Index, "(Metier) Vous n'avez pas tout les objets pour créer cette recette.", Red, 0)
-                    Exit Sub
+                    'Exit Sub
                 End If
             Next i
             v = FindOpenInvSlot(Index, .craft(0))
@@ -149,6 +254,22 @@ Public Function CraftReussite(ByVal Index As Long, ByVal nb_item As Byte) As Byt
         CraftReussite = 99
     Else
         CraftReussite = CraftReussite + (Player(Index).Char(Player(Index).CharNum).MetierLvl - 1)
+    End If
+End Function
+
+Public Function CraftReussiteV2(ByVal Index As Long, ByVal nb_item As Byte) As Integer
+    CraftReussiteV2 = 20
+    If nb_item > 2 Then
+        If 0 <= CraftReussiteV2 - ((nb_item - 1) * 5) Then
+            CraftReussiteV2 = 0
+        Else
+            CraftReussiteV2 = CraftReussiteV2 - ((nb_item - 1) * 5)
+        End If
+    End If
+    If CraftReussiteV2 + (Player(Index).Char(Player(Index).CharNum).MetierLvl - 1) > 90 Then
+        CraftReussiteV2 = 90
+    Else
+        CraftReussiteV2 = CraftReussiteV2 + (Player(Index).Char(Player(Index).CharNum).MetierLvl - 1)
     End If
 End Function
 
