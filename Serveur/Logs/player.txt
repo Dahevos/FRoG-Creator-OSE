@@ -70,3 +70,18 @@
 19:06:49: Admin/Admin est en train de jouer à FRoG Creator.
 19:08:41: Admin s'est connecté depuis 127.0.0.1.
 19:08:43: Admin/Admin est en train de jouer à FRoG Creator.
+01:54:06: Compte admin a été créé.
+01:54:39: Admin s'est connecté depuis 127.0.0.1.
+01:54:56: Le personnage mimus a été ajouté au compte de Admin.
+01:55:25: admin s'est connecté depuis 127.0.0.1.
+01:55:28: admin/mimus est en train de jouer à FRoG Creator.
+02:00:46: Admin s'est connecté depuis 127.0.0.1.
+02:00:49: Admin/mimus est en train de jouer à FRoG Creator.
+02:02:04: admin s'est connecté depuis 127.0.0.1.
+02:02:08: admin/mimus est en train de jouer à FRoG Creator.
+02:04:27: Admin s'est connecté depuis 127.0.0.1.
+02:04:29: Admin/mimus est en train de jouer à FRoG Creator.
+02:12:54: Admin s'est connecté depuis 127.0.0.1.
+02:12:56: Admin/mimus est en train de jouer à FRoG Creator.
+02:17:37: Admin s'est connecté depuis 127.0.0.1.
+02:17:38: Admin/mimus est en train de jouer à FRoG Creator.

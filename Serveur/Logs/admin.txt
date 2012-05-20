@@ -15,3 +15,15 @@
 19:05:57: Admin edite le metier #1.
 19:06:02: Admin sauvegarde le metier #1.
 19:06:21: Admin a modifié(e) la carte #2
+01:55:51: mimus edite le sorrt #1.
+01:57:08: mimus sauvegarde le sort #1.
+01:57:28: mimus edite l'objet #1.
+01:57:41: mimus sauvegarde l'objet #1.
+01:57:44: mimus edite l'objet #2.
+01:58:20: mimus sauvegarde l'objet #2.
+01:58:25: mimus edite le magasin #1.
+01:58:52: mimus sauvegarde le magasin #1.
+02:00:16: mimus a modifié(e) la carte #1
+02:02:23: mimus edite le PNJ #1.
+02:02:49: mimus sauvegarde le PNJ #1.
+02:03:42: mimus a modifié(e) la carte #1

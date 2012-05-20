@@ -2112,6 +2112,7 @@ mont:
         PlayerAnim(Parse(1), 4) = Val(Parse(4)) + 1
         Exit Sub
     End If
+
 Exit Sub
 
 erreur:

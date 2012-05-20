@@ -644,7 +644,8 @@ Dim MinDrawMapY As Long 'Calcul du minimum a dessiner en Y
         Tick = GetTickCount
         
         ' Check to make sure they aren't trying to auto do anything
-        If frmMirage.txtMyTextBox.Locked = False Or frmcraft.Visible Then
+        'ne peux plus bouger si certaines frames sont visibles
+        If frmMirage.txtMyTextBox.Locked = False Or frmTrade.Visible = True Or frmbank.Visible = True Or frmPlayerTrade.Visible = True Or frmFlash.Visible = True Or frmFixItem.Visible = True Or frmcraft.Visible = True Then
             DirUp = False
             DirDown = False
             DirLeft = False
@@ -2739,14 +2740,6 @@ Dim PX As Long, PY As Long
 Dim Dire As Long
 
     CanMove = True
-    
-    
-    'ne peux plus bouger si certaines frames sont visibles
-    If frmTrade.Visible = True Or frmbank.Visible = True Or frmPlayerTrade.Visible = True Or frmFlash.Visible = True Or frmFixItem.Visible = True Or frmcraft.Visible = True Then
-        CanMove = False
-        Exit Function
-    End If
-    
     
     ' Make sure they aren't trying to move when they are already moving
     If Player(MyIndex).Moving <> 0 Then CanMove = False: Exit Function
