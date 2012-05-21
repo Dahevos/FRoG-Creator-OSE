@@ -1,4 +1,4 @@
-frmServer = 130, 130, 712, 456, , 104, 104, 686, 430, C
+frmServer = 130, 130, 712, 456, Z, 104, 104, 686, 430, C
 modDatabase = 130, 130, 712, 456, 
 modTypes = 156, 156, 738, 482, 
 modGameLogic = 22, 29, 811, 641, 
@@ -25,7 +25,7 @@ clsPartys = 0, 0, 0, 0, C
 clsHdV = 104, 104, 686, 430, 
 clsHdVChild = 0, 0, 0, 0, C
 clsMD5 = 52, 52, 634, 378, 
-ModMetier = 130, 130, 712, 456, Z
+ModMetier = 130, 130, 712, 456, 
 modXp = 0, 0, 582, 326, 
 ctlSysTrayBalloon = 130, 130, 684, 395, , 0, 0, 554, 265, C
 ctlProgressBar = 0, 0, 0, 0, C, 156, 156, 693, 470, C
