@@ -683,7 +683,7 @@ Dim i As Long
         
         ' Prevent high ascii chars
         For i = 1 To Len(Msg)
-            If Asc(Mid$(Msg, i, 1)) < 32 Or Asc(Mid$(Msg, i, 1)) > 126 Then Call MsgBox("Vous ne pouvez pas utiliser des accents dans votre noms.", vbOKOnly, GAME_NAME): txtName.Text = vbNullString: Exit Sub
+            If Asc(Mid$(Msg, i, 1)) < 32 Or Asc(Mid$(Msg, i, 1)) > 126 Then Call MsgBox("Vous ne pouvez pas utiliser d'accents dans votre nom.", vbOKOnly, GAME_NAME): txtName.Text = vbNullString: Exit Sub
         Next i
     
         Call MenuState(MENU_STATE_NEWACCOUNT)

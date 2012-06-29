@@ -573,7 +573,7 @@ Dim d As Byte
                     End If
                 End If
             Else
-                Call AddText("Aucuns sort ici.", BrightRed)
+                Call AddText("Aucun sort ici.", BrightRed)
             End If
         End If
         
@@ -590,7 +590,7 @@ Dim d As Byte
             Call UpdateVisInv
         End If
     Else
-        Call AddText("Aucuns raccourci ici.", BrightRed)
+        Call AddText("Aucun raccourci ici.", BrightRed)
     End If
 End Sub
 

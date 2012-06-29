@@ -5035,7 +5035,7 @@ Dim YesNo As Long, x As Long, y As Long
 
     ' Ground layer
     If frmMirage.Toolbar1.buttons(5).value = tbrPressed Then
-    YesNo = MsgBox("es-tu sur de vouloir éffacer le sol ?", vbYesNo, GAME_NAME)
+    YesNo = MsgBox("es-tu sur de vouloir effacer le sol ?", vbYesNo, GAME_NAME)
         If YesNo = vbYes Then
             Call SauvTemp
             For y = 0 To MAX_MAPY

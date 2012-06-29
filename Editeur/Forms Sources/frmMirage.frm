@@ -37,7 +37,7 @@ Begin VB.Form frmMirage
       BorderStyle     =   0  'None
       ForeColor       =   &H80000008&
       Height          =   6930
-      Left            =   -15
+      Left            =   0
       ScaleHeight     =   462
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   236
