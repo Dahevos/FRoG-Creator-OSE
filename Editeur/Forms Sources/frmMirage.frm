@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMirage 
    BorderStyle     =   1  'Fixed Single
@@ -4159,7 +4159,7 @@ End Sub
 Private Sub lstSpells_DblClick()
     If Player(MyIndex).Spell(lstSpells.ListIndex + 1) > 0 Then
         SpellMemorized = lstSpells.ListIndex + 1
-        Call AddText("Mémorisation de la magie réussit!", White)
+        Call AddText("Mémorisation de la magie réussit.", White)
     Else
         Call AddText("Aucune magie à mémoriser.", BrightRed)
     End If
@@ -4508,7 +4508,7 @@ If ConOff = True And Not InEditor Then Exit Sub
                     Player(MyIndex).AttackTimer = GetTickCount
                     Player(MyIndex).CastedSpell = YES
                 Else
-                    Call AddText("Vous ne pouvez lancer un sort en marchant!", BrightRed)
+                    Call AddText("Vous ne pouvez lancer un sort en marchant.", BrightRed)
                 End If
             End If
         Else
@@ -5175,7 +5175,7 @@ End If
 If Numbut = 3 Then
 Dim PathServ As String
     If LCase$(Dir$(Mid$(App.Path, 1, Len(App.Path) - 7) & "Serveur", vbDirectory)) <> "serveur" Then
-        Call MsgBox("Le Dossier du serveur est introuvable!!", , "Erreur")
+        Call MsgBox("Le Dossier du serveur est introuvable.", , "Erreur")
     Else
         PathServ = Mid$(App.Path, 1, Len(App.Path) - 7) & "Serveur"
         Call Shell(PathServ & "\Editeur de script.exe", vbNormalFocus)
@@ -5369,7 +5369,7 @@ If Inventory <= 0 Then Exit Sub
     Call UpdateVisInv
     Exit Sub
 Done:
-    If Item(GetPlayerInvItemNum(MyIndex, InvNum)).Type = ITEM_TYPE_CURRENCY Then MsgBox "Entrez un chiffre SVP!"
+    If Item(GetPlayerInvItemNum(MyIndex, InvNum)).Type = ITEM_TYPE_CURRENCY Then MsgBox "Entrez un chiffre s'il vous plait."
 End Sub
 
 
@@ -5382,7 +5382,7 @@ Private Sub lblCast_Click()
                 Player(MyIndex).AttackTimer = GetTickCount
                 Player(MyIndex).CastedSpell = YES
             Else
-                Call AddText("Vous pouvez lancer un sort en marchant!", BrightRed)
+                Call AddText("Vous pouvez lancer un sort en marchant.", BrightRed)
             End If
         End If
     Else

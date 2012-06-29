@@ -87,7 +87,7 @@ r = 0
 For n = 1 To TreeView1.Nodes.Count
     If Not TreeView1.Nodes.Item(n).Checked Then r = r + 1
 Next n
-If r = Val(TreeView1.Nodes.Count) Then MsgBox "Aucun éléments sélectionés!!": Exit Sub
+If r = Val(TreeView1.Nodes.Count) Then MsgBox "Aucun éléments sélectionés.": Exit Sub
 
 Command1.Visible = False
 ProgressBar1.Visible = True
@@ -132,8 +132,8 @@ For n = 1 To i
     End If
     DoEvents
 Next n
-Call MsgBox("Envoies terminés!", vbInformation)
-If TreeView1.Nodes.Count = 7 Then MsgBox "Plus aucun fichier à envoyer!", vbInformation:  Call TreeView1.Nodes.Clear: Unload Me: Exit Sub
+Call MsgBox("Envoies terminés.", vbInformation)
+If TreeView1.Nodes.Count = 7 Then MsgBox "Plus aucun fichier à envoyer.", vbInformation:  Call TreeView1.Nodes.Clear: Unload Me: Exit Sub
 ProgressBar1.value = ProgressBar1.Max
 Call TreeView1.Nodes.Clear
 Me.Visible = False

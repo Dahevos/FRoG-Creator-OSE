@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmEditeurQuetes 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Editeur de Quetes"
@@ -817,7 +817,7 @@ Public Init As Boolean
 
 Private Sub cases_Change()
 frmEditeurQuetes.Label26.Caption = "Case scripter à éxécuter : " & frmEditeurQuetes.cases.Text
-If Val(cases) < 0 Then MsgBox "Entrez un chiffre supérieur à zéro SVP!"
+If Val(cases) < 0 Then MsgBox "Entrez un chiffre supérieur à zéro s'il vous plait."
 End Sub
 
 Private Sub collco_Click()
@@ -1040,12 +1040,12 @@ End Sub
 
 Private Sub rexp_Change()
 On Error Resume Next
-If Not IsNumeric(rexp.Text) Then Call MsgBox("Les points d'expériences doivent être en chiffre!"): Call rexp.SetFocus
+If Not IsNumeric(rexp.Text) Then Call MsgBox("Les points d'expériences doivent être en chiffre."): Call rexp.SetFocus
 End Sub
 
 Private Sub rexp_LostFocus()
 On Error Resume Next
-If Not IsNumeric(rexp.Text) Then Call MsgBox("Les points d'expériences doivent être en chiffre!"): Call rexp.SetFocus
+If Not IsNumeric(rexp.Text) Then Call MsgBox("Les points d'expériences doivent être en chiffre."): Call rexp.SetFocus
 End Sub
 
 Private Sub ro1_Change()

@@ -940,15 +940,6 @@ Begin VB.Form frmbank
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   "Inventaire :"
-      BeginProperty Font 
-         Name            =   "Segoe UI"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   195
       Left            =   480
       TabIndex        =   3
@@ -959,15 +950,6 @@ Begin VB.Form frmbank
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       Caption         =   "Coffre :"
-      BeginProperty Font 
-         Name            =   "Segoe UI"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       Height          =   195
       Left            =   5760
       TabIndex        =   4
@@ -1013,15 +995,15 @@ Public Sub jeter_Click()
 Dim Packet As String
 Dim ival As Long
 
-If SCof = 0 Then Call MsgBox("Veuillez séléctionner un slot dans le coffre!!", vbCritical, "Erreur"): Exit Sub
+If SCof = 0 Then Call MsgBox("Veuillez séléctionner un slot dans le coffre.", vbCritical, "Erreur"): Exit Sub
 
-If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Aucun objet dans le slot" & SCof & " du coffre!!!", vbCritical, "Erreur"): Exit Sub
+If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Aucun objet dans le slot" & SCof & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 ival = CoffreTmp(SCof).Valeur
 
 If ival <= 0 Then ival = 1
 
-cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(CoffreTmp(SCof).Numeros).name) & " du coffre?? il sera supprimé définitivement!!", vbYesNo, "Demande")
+cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(CoffreTmp(SCof).Numeros).name) & " du coffre?? il sera supprimé définitivement.", vbYesNo, "Demande")
 
 If cont = vbYes Then Packet = "MODIFCOFFRE" & SEP_CHAR & SCof & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & END_CHAR: Call SendData(Packet)
 
@@ -1034,15 +1016,15 @@ Private Sub jinv_Click()
 Dim Packet As String
 Dim ival As Long
 
-If SInv = 0 Then Call MsgBox("Veuillez séléctionner un slot dans l'inventaire!!", vbCritical, "Erreur"): Exit Sub
+If SInv = 0 Then Call MsgBox("Veuillez séléctionner un slot dans l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
-If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Aucun objet dans le slot" & SInv & " de l'inventaire!!!", vbCritical, "Erreur"): Exit Sub
+If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Aucun objet dans le slot" & SInv & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 ival = GetPlayerInvItemValue(MyIndex, SInv)
 
 If ival <= 0 Then ival = 1
 
-cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(GetPlayerInvItemNum(MyIndex, SInv)).name) & " de l'inventaire?? il sera supprimer définitivement!!", vbYesNo, "Demande")
+cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(GetPlayerInvItemNum(MyIndex, SInv)).name) & " de l'inventaire?? il sera supprimer définitivement.", vbYesNo, "Demande")
 
 If cont = vbYes Then Packet = "MODIFINV" & SEP_CHAR & SInv & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SCof & END_CHAR: Call SendData(Packet)
 
@@ -1090,15 +1072,15 @@ Cdur = CoffreTmp(SlotC).Durabiliter
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Cnum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotC & " du coffre!!!", vbCritical, "Erreur"): Exit Sub
+If Cnum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 If Inum <> 0 Then
     If Item(Inum).Type <> ITEM_TYPE_CURRENCY Or Item(Inum).Empilable = 0 Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur")
         Exit Sub
     Else
         If Cnum <> Inum Then
-            Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire!!", vbCritical, "Erreur")
+            Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur")
             Exit Sub
         End If
     End If
@@ -1108,9 +1090,9 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
 
     Nbi = InputBox("Combiens d'objet(s) voulez-vous métre dans le coffre?", "Demande")
 
-    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre SVP!!", vbCritical, "Erreur"): Exit Sub
+    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre s'il vous plait.", vbCritical, "Erreur"): Exit Sub
     
-    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objet!!", vbCritical, "Erreur"): Exit Sub
+    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objet.", vbCritical, "Erreur"): Exit Sub
     
     If Val(Nbi) <= 0 Then Exit Sub
     
@@ -1202,14 +1184,14 @@ If SlotI = GetPlayerWeaponSlot(MyIndex) Then Call SetPlayerWeaponSlot(MyIndex, 0
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Inum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotI & " de l'inventaire!!!", vbCritical, "Erreur"): Exit Sub
+If Inum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 If Cnum <> 0 Then
     If Item(Cnum).Type <> ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable = 0 Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur")
         Exit Sub
     ElseIf Cnum <> Inum Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur")
         Exit Sub
     End If
 End If
@@ -1218,9 +1200,9 @@ If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
 
     Nbi = InputBox("Combiens d'objet(s) voulez-vous métre dans le coffre?", "Demande")
 
-    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre SVP!!", vbCritical, "Erreur"): Exit Sub
+    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre s'il vous plait.", vbCritical, "Erreur"): Exit Sub
     
-    If Val(Nbi) > ival Then Call MsgBox("Valeur supérieur au nombre d'objet!!", vbCritical, "Erreur"): Exit Sub
+    If Val(Nbi) > ival Then Call MsgBox("Valeur supérieur au nombre d'objet.", vbCritical, "Erreur"): Exit Sub
     
     If Val(Nbi) <= 0 Then Exit Sub
     
@@ -1285,7 +1267,7 @@ End Sub
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
 If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
+If Me.Left > Screen.Width Or Me.Top > Screen.Height Then Me.Top = Screen.Height \ 2: Me.Left = Screen.Width \ 2
 Picture3.Visible = False
 End Sub
 

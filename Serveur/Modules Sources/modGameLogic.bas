@@ -29,7 +29,7 @@ Dim WeaponSlot As Long
                 Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, WeaponSlot)).Name) & " a été brisé.", Yellow, 0)
                 Call TakeItem(Index, GetPlayerInvItemNum(Index, WeaponSlot), 0)
             Else
-                If GetPlayerInvItemDur(Index, WeaponSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, WeaponSlot)).Name) & " va bientôt se briser! Usure: " & GetPlayerInvItemDur(Index, WeaponSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, WeaponSlot)).data1), Yellow, 0)
+                If GetPlayerInvItemDur(Index, WeaponSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, WeaponSlot)).Name) & " va bientôt se briser. Usure: " & GetPlayerInvItemDur(Index, WeaponSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, WeaponSlot)).data1), Yellow, 0)
             End If
         End If
     End If
@@ -64,7 +64,7 @@ Dim ArmorSlot As Long, HelmSlot As Long, ShieldSlot As Long
                 Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ArmorSlot)).Name) & " a été brisé.", Yellow, 0)
                 Call TakeItem(Index, GetPlayerInvItemNum(Index, ArmorSlot), 0)
             Else
-                If GetPlayerInvItemDur(Index, ArmorSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ArmorSlot)).Name) & " est endommagé! Usure: " & GetPlayerInvItemDur(Index, ArmorSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, ArmorSlot)).data1), Yellow, 0)
+                If GetPlayerInvItemDur(Index, ArmorSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ArmorSlot)).Name) & " est endommagé. Usure: " & GetPlayerInvItemDur(Index, ArmorSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, ArmorSlot)).data1), Yellow, 0)
             End If
         End If
     End If
@@ -78,7 +78,7 @@ Dim ArmorSlot As Long, HelmSlot As Long, ShieldSlot As Long
                 Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, HelmSlot)).Name) & " a été brisé.", Yellow, 0)
                 Call TakeItem(Index, GetPlayerInvItemNum(Index, HelmSlot), 0)
             Else
-                If GetPlayerInvItemDur(Index, HelmSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, HelmSlot)).Name) & " est endommagé! Usure: " & GetPlayerInvItemDur(Index, HelmSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, HelmSlot)).data1), Yellow, 0)
+                If GetPlayerInvItemDur(Index, HelmSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, HelmSlot)).Name) & " est endommagé. Usure: " & GetPlayerInvItemDur(Index, HelmSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, HelmSlot)).data1), Yellow, 0)
             End If
         End If
     End If
@@ -92,7 +92,7 @@ Dim ArmorSlot As Long, HelmSlot As Long, ShieldSlot As Long
                 Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ShieldSlot)).Name) & " est brisé.", Yellow, 0)
                 Call TakeItem(Index, GetPlayerInvItemNum(Index, ShieldSlot), 0)
             Else
-                If GetPlayerInvItemDur(Index, ShieldSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ShieldSlot)).Name) & " est endommagé! Usure: " & GetPlayerInvItemDur(Index, ShieldSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, ShieldSlot)).data1), Yellow, 0)
+                If GetPlayerInvItemDur(Index, ShieldSlot) <= 10 Then Call BattleMsg(Index, "Ton " & Trim$(item(GetPlayerInvItemNum(Index, ShieldSlot)).Name) & " est endommagé. Usure: " & GetPlayerInvItemDur(Index, ShieldSlot) & "/" & Trim$(item(GetPlayerInvItemNum(Index, ShieldSlot)).data1), Yellow, 0)
             End If
         End If
     End If
@@ -596,7 +596,7 @@ Dim i As Long
             ' Spawn the item before we set the num or we'll get a different free map item slot
             Call SpawnItemSlot(i, MapItem(GetPlayerMap(Index), i).Num, Amount, MapItem(GetPlayerMap(Index), i).Dur, GetPlayerMap(Index), GetPlayerX(Index), GetPlayerY(Index))
         Else
-            Call PlayerMsg(Index, "Il y a trop d'objets par terre !", BrightRed)
+            Call PlayerMsg(Index, "Il y a trop d'objets par terre .", BrightRed)
         End If
     End If
 End Sub
@@ -743,7 +743,7 @@ Call SendPlayerQuete(Index)
 If GetPlayerLevel(Index) = MAX_LEVEL Then
     If quete(QueteTindex).Recompence.Exp > 0 Then
         Call SetPlayerExp(Index, experience(MAX_LEVEL))
-        Call BattleMsg(Index, "Tu ne peux pas gagner plus d'expérience!", BrightBlue, 0)
+        Call BattleMsg(Index, "Tu ne peux pas gagner plus d'expérience.", BrightBlue, 0)
     End If
 Else
     If quete(QueteTindex).Recompence.Exp > 0 Then
@@ -916,13 +916,13 @@ Dim AttackSpeed As Long
                                 If Trim$(GetPlayerGuild(Attacker)) <> Trim$(GetPlayerGuild(Victim)) Then
                                     CanAttackPlayer = True
                                 Else
-                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde !", BrightRed)
+                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde .", BrightRed)
                                 End If
                             Else
                                 CanAttackPlayer = True
                             End If
                         Else
-                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs)!", BrightRed)
+                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs).", BrightRed)
                         End If
                     ElseIf Map(GetPlayerMap(Victim)).Tile(GetPlayerX(Victim), GetPlayerY(Victim)).type = TILE_TYPE_ARENA And Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).type = TILE_TYPE_ARENA Then
                         CanAttackPlayer = True
@@ -939,13 +939,13 @@ Dim AttackSpeed As Long
                                 If Trim$(GetPlayerGuild(Attacker)) <> Trim$(GetPlayerGuild(Victim)) Then
                                     CanAttackPlayer = True
                                 Else
-                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde !", BrightRed)
+                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde .", BrightRed)
                                 End If
                             Else
                                 CanAttackPlayer = True
                             End If
                         Else
-                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs)!", BrightRed)
+                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs).", BrightRed)
                         End If
                         
                     ElseIf Map(GetPlayerMap(Victim)).Tile(GetPlayerX(Victim), GetPlayerY(Victim)).type = TILE_TYPE_ARENA And Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).type = TILE_TYPE_ARENA Then
@@ -962,13 +962,13 @@ Dim AttackSpeed As Long
                                 If Trim$(GetPlayerGuild(Attacker)) <> Trim$(GetPlayerGuild(Victim)) Then
                                     CanAttackPlayer = True
                                 Else
-                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde !", BrightRed)
+                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde .", BrightRed)
                                 End If
                             Else
                                 CanAttackPlayer = True
                             End If
                         Else
-                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs)!", BrightRed)
+                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs).", BrightRed)
                         End If
                         
                     ElseIf Map(GetPlayerMap(Victim)).Tile(GetPlayerX(Victim), GetPlayerY(Victim)).type = TILE_TYPE_ARENA And Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).type = TILE_TYPE_ARENA Then
@@ -986,13 +986,13 @@ Dim AttackSpeed As Long
                                 If Trim$(GetPlayerGuild(Attacker)) <> Trim$(GetPlayerGuild(Victim)) Then
                                     CanAttackPlayer = True
                                 Else
-                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde !", BrightRed)
+                                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un membre de votre guilde .", BrightRed)
                                 End If
                             Else
                                 CanAttackPlayer = True
                             End If
                         Else
-                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs)!", BrightRed)
+                            Call PlayerMsg(Attacker, "C'est une safe zone (impossible d'attaquer d'autres joueurs).", BrightRed)
                         End If
                     ElseIf Map(GetPlayerMap(Victim)).Tile(GetPlayerX(Victim), GetPlayerY(Victim)).type = TILE_TYPE_ARENA And Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).type = TILE_TYPE_ARENA Then
                         CanAttackPlayer = True
@@ -1278,8 +1278,8 @@ If Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).
             If Exp < 0 Then Exp = 0
                         
             If GetPlayerLevel(Victim) = MAX_LEVEL Then
-                Call BattleMsg(Victim, "Tu ne peux pas perdre d'expérience!", BrightRed, 1)
-                Call BattleMsg(Attacker, GetPlayerName(Victim) & " est niveau maximum!", BrightBlue, 0)
+                Call BattleMsg(Victim, "Tu ne peux pas perdre d'expérience.", BrightRed, 1)
+                Call BattleMsg(Attacker, GetPlayerName(Victim) & " est niveau maximum.", BrightBlue, 0)
             Else
                 If Exp = 0 Then
                     Call BattleMsg(Victim, "Tu n'as pas perdu d'expérience.", BrightRed, 1)
@@ -1321,12 +1321,12 @@ If Map(GetPlayerMap(Attacker)).Tile(GetPlayerX(Attacker), GetPlayerY(Attacker)).
             If GetPlayerPK(Attacker) = NO Then
                 Call SetPlayerPK(Attacker, YES)
                 Call SendPlayerData(Attacker)
-                Call GlobalMsg(GetPlayerName(Attacker) & " est maintenant un criminel!", BrightRed)
+                Call GlobalMsg(GetPlayerName(Attacker) & " est maintenant un criminel.", BrightRed)
             End If
         Else
             Call SetPlayerPK(Victim, NO)
             Call SendPlayerData(Victim)
-            Call GlobalMsg(GetPlayerName(Victim) & " a payé le prix d'être un criminel!", BrightRed)
+            Call GlobalMsg(GetPlayerName(Victim) & " a payé le prix d'être un criminel.", BrightRed)
         End If
     Else
         ' Player not dead, just do the damage
@@ -1604,7 +1604,7 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
         If Player(Attacker).InParty = 0 Or Party.ShareExp(Player(Attacker).InParty) = 0 Then
             If GetPlayerLevel(Attacker) = MAX_LEVEL Then
                 Call SetPlayerExp(Attacker, experience(MAX_LEVEL))
-                Call BattleMsg(Attacker, "Tu ne peux pas gagner plus d'expérience!", BrightBlue, 0)
+                Call BattleMsg(Attacker, "Tu ne peux pas gagner plus d'expérience.", BrightBlue, 0)
             Else
                 Call SetPlayerExp(Attacker, GetPlayerExp(Attacker) + Exp)
                 Call BattleMsg(Attacker, "Tu as gagné " & Exp & " pts d'expérience.", BrightBlue, 0)
@@ -1625,7 +1625,7 @@ Dim STR As Long, def As Long, MapNum As Long, npcnum As Long
                 If Party.ShareExp(Player(Attacker).InParty) = 2 Then ExpG = Exp * (Player(n).Char(Player(n).CharNum).Level / i)
                 If GetPlayerLevel(n) = MAX_LEVEL Then
                     Call SetPlayerExp(n, experience(MAX_LEVEL))
-                    Call BattleMsg(n, "Vous ne pouvez pas gagner plus d'expérience!", BrightBlue, 0)
+                    Call BattleMsg(n, "Vous ne pouvez pas gagner plus d'expérience.", BrightBlue, 0)
                 Else
                     Call SetPlayerExp(n, GetPlayerExp(n) + ExpG)
                     Call BattleMsg(n, "Vous avez gagné " & ExpG & " points d'expérience (groupe).", BrightBlue, 0)
@@ -1781,7 +1781,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant la téléportation du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Carte : " & MapNum & "(" & x & "," & y & "). Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant la téléportation du joueur : " & GetPlayerName(Index), BrightRed)
-Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer s'il vous plait.(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
 Function canPetMove(ByVal Index As Long, ByVal Dir As Byte) As Boolean
@@ -2063,13 +2063,13 @@ Dim Moved As Byte
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_HEAL Then
         Call SetPlayerHP(Index, GetPlayerMaxHP(Index))
         Call SendHP(Index)
-        Call PlayerMsg(Index, "Tu sens ta force revenir peu a peu!", BrightGreen)
+        Call PlayerMsg(Index, "Tu sens ta force revenir peu a peu.", BrightGreen)
     End If
     
     'Check for kill tile, and if so kill them
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_KILL Then
         Call SetPlayerHP(Index, 0)
-        Call PlayerMsg(Index, "Tu sens la mort arriver et tu perds peu a peu tes forces!!", BrightRed)
+        Call PlayerMsg(Index, "Tu sens la mort arriver et tu perds peu a peu tes forces.", BrightRed)
         
         ' Warp player away
         If Scripting = 1 Then
@@ -2165,7 +2165,7 @@ Dim Moved As Byte
                             
             Call SendDataToMap(GetPlayerMap(Index), "MAPKEY" & SEP_CHAR & x & SEP_CHAR & y & SEP_CHAR & 1 & END_CHAR)
             If Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1) = vbNullString Then
-                Call MapMsg(GetPlayerMap(Index), "La porte a été ouverte par un mécanisme!", White)
+                Call MapMsg(GetPlayerMap(Index), "La porte a été ouverte par un mécanisme.", White)
             Else
                 Call MapMsg(GetPlayerMap(Index), Trim$(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).String1), White)
             End If
@@ -2188,18 +2188,18 @@ Dim Moved As Byte
     ' Check if player stepped on sprite changing tile
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_SPRITE_CHANGE Then
         If GetPlayerSprite(Index) = Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 Then
-            Call PlayerMsg(Index, "Tu as déjà ce sprites!", BrightRed)
+            Call PlayerMsg(Index, "Tu as déjà ce sprites.", BrightRed)
             Exit Sub
         Else
             If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2 = 0 Then
                 Call SendDataTo(Index, "spritechange" & SEP_CHAR & 0 & END_CHAR)
             Else
                 If item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).type = ITEM_TYPE_CURRENCY Then
-                    Call PlayerMsg(Index, "Ce sprite vous coûte " & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data3 & " " & Trim$(item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).Name) & "!", Yellow)
+                    Call PlayerMsg(Index, "Ce sprite vous coûte " & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data3 & " " & Trim$(item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).Name) & ".", Yellow)
                     Call TakeItem(Index, Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2, Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data3)
                     Call SendInventory(Index)
                 Else
-                    Call PlayerMsg(Index, "Ce sprite vous coûte un " & Trim$(item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).Name) & "!", Yellow)
+                    Call PlayerMsg(Index, "Ce sprite vous coûte un " & Trim$(item(Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2).Name) & ".", Yellow)
                     Call TakeItem(Index, Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2, 1)
                     Call SendInventory(Index)
                 End If
@@ -2213,13 +2213,13 @@ Dim Moved As Byte
     If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type = TILE_TYPE_CLASS_CHANGE Then
         If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2 > -1 Then
             If GetPlayerClass(Index) <> Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data2 Then
-                Call PlayerMsg(Index, "Tu n'as pas la classe requise!", BrightRed)
+                Call PlayerMsg(Index, "Tu n'as pas la classe requise.", BrightRed)
                 Exit Sub
             End If
         End If
         
         If GetPlayerClass(Index) = Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 Then
-            Call PlayerMsg(Index, "Tu as déjà cette classe!", BrightRed)
+            Call PlayerMsg(Index, "Tu as déjà cette classe.", BrightRed)
         Else
             If Player(Index).Char(Player(Index).CharNum).Sex = 0 Then
                 If GetPlayerSprite(Index) = Classe(GetPlayerClass(Index)).MaleSprite Then
@@ -2295,7 +2295,7 @@ Dim Moved As Byte
             End If
             
             
-            Call PlayerMsg(Index, "Ta nouvelle classe est " & Trim$(Classe(GetPlayerClass(Index)).Name) & "!", BrightGreen)
+            Call PlayerMsg(Index, "Ta nouvelle classe est " & Trim$(Classe(GetPlayerClass(Index)).Name) & ".", BrightGreen)
             
             Call SendStats(Index)
             Call SendHP(Index)
@@ -2331,10 +2331,10 @@ Dim Moved As Byte
                 Packet = "CRAFT" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
                 Call SendDataTo(Index, Packet)
             Else
-                Call PlayerMsg(Index, "Votre métier n'est pas un métier de craft!", Red)
+                Call PlayerMsg(Index, "Votre métier n'est pas un métier de craft.", Red)
             End If
         Else
-            Call PlayerMsg(Index, "Vous n'avez pas de métier !", Red)
+            Call PlayerMsg(Index, "Vous n'avez pas de métier .", Red)
         End If
     End If
     
@@ -2345,7 +2345,7 @@ Dim Moved As Byte
             If Player(Index).Char(Player(Index).CharNum).metier <> Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 Then
                 Packet = "REMPLACEMETIER" & SEP_CHAR & Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).data1 & END_CHAR
             Else
-                Call PlayerMsg(Index, "Vous avez déjà ce métier !", Red)
+                Call PlayerMsg(Index, "Vous avez déjà ce métier .", Red)
             End If
         End If
         Call SendDataTo(Index, Packet)
@@ -2374,7 +2374,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le mouvement du joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ",Direction : " & Dir & "(" & Movement & "). Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le mouvement du joueur : " & GetPlayerName(Index), BrightRed)
-Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer s'il vous plait.(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
 Function CanNpcMove(ByVal MapNum As Long, ByVal MapNpcNum As Long, ByVal Dir) As Boolean
@@ -2713,14 +2713,14 @@ Dim f As Long
         
         ' Send a global message that he/she joined
         If GetPlayerAccess(Index) <= ADMIN_MONITER Then
-            Call GlobalMsg(GetPlayerName(Index) & " a rejoin " & GAME_NAME & "!", JoinLeftColor)
+            Call GlobalMsg(GetPlayerName(Index) & " a rejoin " & GAME_NAME & ".", JoinLeftColor)
         Else
-            Call GlobalMsg(GetPlayerName(Index) & " a rejoin " & GAME_NAME & "!", AdminColor)
-            If IBAdmin Then IBMsg ("L'Admin/Modo : " & GetPlayerName(Index) & " a rejoin " & GAME_NAME & "!")
+            Call GlobalMsg(GetPlayerName(Index) & " a rejoin " & GAME_NAME & ".", AdminColor)
+            If IBAdmin Then IBMsg ("L'Admin/Modo : " & GetPlayerName(Index) & " a rejoin " & GAME_NAME & ".")
         End If
     
         ' Send them welcome
-        Call PlayerMsg(Index, "Bienvenue sur " & GAME_NAME & "!", 15)
+        Call PlayerMsg(Index, "Bienvenue sur " & GAME_NAME & ".", 15)
         
         ' Send motd
         If Trim$(MOTD) <> vbNullString Then Call PlayerMsg(Index, "MOTD: " & MOTD, 11)
@@ -2749,7 +2749,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur de connexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur de connexion au jeu, joueur : " & GetPlayerName(Index), BrightRed)
-Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer s'il vous plait.(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
 Sub LeftGame(ByVal Index As Long, Optional ByVal Bypass As Boolean = False)
@@ -2803,9 +2803,9 @@ Dim n As Long
         Else
             ' Send a global message that he/she left
             If GetPlayerAccess(Index) <= 1 Then
-                Call GlobalMsg(GetPlayerName(Index) & " a quitté " & GAME_NAME & "!", 7)
+                Call GlobalMsg(GetPlayerName(Index) & " a quitté " & GAME_NAME & ".", 7)
             Else
-                Call GlobalMsg(GetPlayerName(Index) & " a quitté " & GAME_NAME & "!", 15)
+                Call GlobalMsg(GetPlayerName(Index) & " a quitté " & GAME_NAME & ".", 15)
             End If
         End If
         'If quete(Player(Index).Char(Player(Index).CharNum).QueteEnCour).temps > 0 Then
@@ -2836,7 +2836,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur de déconnexion au jeu, joueur : " & GetPlayerName(Index) & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur de déconnexion au jeu, joueur : " & GetPlayerName(Index), BrightRed)
-Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer s'il vous plait.(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
 Function GetTotalMapPlayers(ByVal MapNum As Long) As Long
@@ -2963,9 +2963,9 @@ Dim c As Long
                     End If
                 Loop
                 If c > 1 Then
-                    Call GlobalMsg(GetPlayerName(Index) & " a gagné " & c & " niveaux!", 6)
+                    Call GlobalMsg(GetPlayerName(Index) & " a gagné " & c & " niveaux.", 6)
                 Else
-                    Call GlobalMsg(GetPlayerName(Index) & " a gagné un niveau!", 6)
+                    Call GlobalMsg(GetPlayerName(Index) & " a gagné un niveau.", 6)
                 End If
                 Call BattleMsg(Index, "Vous avez " & GetPlayerPOINTS(Index) & " points de stats.", 9, 0)
             End If
@@ -3005,7 +3005,7 @@ Dim Casted As Boolean
     
     ' Make sure player has the spell
     If Not HasSpell(Index, SpellNum) Then
-        Call BattleMsg(Index, "Vous n'avez pas ce sort!", BrightRed, 0)
+        Call BattleMsg(Index, "Vous n'avez pas ce sort.", BrightRed, 0)
         Exit Sub
     End If
     
@@ -3013,7 +3013,7 @@ Dim Casted As Boolean
 
     ' Check if they have enough MP
     If GetPlayerMP(Index) < Spell(SpellNum).MPCost Then
-        Call BattleMsg(Index, "Pas assez de mana!", BrightRed, 0)
+        Call BattleMsg(Index, "Pas assez de mana.", BrightRed, 0)
         Exit Sub
     End If
         
@@ -3039,7 +3039,7 @@ Dim Casted As Boolean
             Call SendMP(Index)
             Casted = True
         Else
-            Call PlayerMsg(Index, "Votre inventaire est plein!", BrightRed)
+            Call PlayerMsg(Index, "Votre inventaire est plein.", BrightRed)
         End If
         
         Exit Sub
@@ -3088,7 +3088,7 @@ If Spell(SpellNum).AE = 1 Then
             If Player(Index).TargetType = TARGET_TYPE_PLAYER Then
                 If IsPlaying(n) Then
                     If bouclier(n) = True Then
-                        Call BattleMsg(Index, "Le sort ne peut pas toucher le joueur car il a un bouclier!", BrightRed, 0)
+                        Call BattleMsg(Index, "Le sort ne peut pas toucher le joueur car il a un bouclier.", BrightRed, 0)
                         Exit Sub
                     End If
 '                    If n <> Index Then
@@ -3098,7 +3098,7 @@ If Spell(SpellNum).AE = 1 Then
                                 
                                 Case SPELL_TYPE_SUBHP
                                     Damage = ((GetPlayerMAGI(Index) \ 4) + Spell(SpellNum).data1) - GetPlayerProtection(n)
-                                    If Damage > 0 Then Call AttackPlayer(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & GetPlayerName(n) & "!", BrightRed, 0)
+                                    If Damage > 0 Then Call AttackPlayer(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & GetPlayerName(n) & ".", BrightRed, 0)
                                                             
                                 Case SPELL_TYPE_SUBMP
                                     Call SetPlayerMP(n, GetPlayerMP(n) - Spell(SpellNum).data1)
@@ -3196,7 +3196,7 @@ If Spell(SpellNum).AE = 1 Then
                                 
                                 Casted = True
                             Else
-                                Call PlayerMsg(Index, "Vous n'avez pas pu envoyer le sort!(la cible n'est pas sur la même carte que vous)", BrightRed)
+                                Call PlayerMsg(Index, "Vous n'avez pas pu envoyer le sort.(la cible n'est pas sur la même carte que vous)", BrightRed)
                             End If
                         End If
                     'Else
@@ -3227,12 +3227,12 @@ If Spell(SpellNum).AE = 1 Then
 
                      '           Casted = True
                      '       Else
-                     '           Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort!", BrightRed, 0)
+                     '           Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort.", BrightRed, 0)
                      '       End If
                      '   End If
                     'End If
                 Else
-                    Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort!(la cible n'est pas/plus en jeu)", BrightRed, 0)
+                    Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort.(la cible n'est pas/plus en jeu)", BrightRed, 0)
                 End If
             Else
                 Player(Index).TargetType = TARGET_TYPE_NPC
@@ -3242,7 +3242,7 @@ If Spell(SpellNum).AE = 1 Then
                             
                             Case SPELL_TYPE_SUBHP
                                 Damage = ((GetPlayerMAGI(Index) \ 4) + Spell(SpellNum).data1) - (Npc(MapNpc(GetPlayerMap(Index), n).Num).def \ 2)
-                                If Damage > 0 Then Call AttackNpc(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & Trim$(Npc(MapNpc(GetPlayerMap(Index), n).Num).Name) & "!", BrightRed, 0)
+                                If Damage > 0 Then Call AttackNpc(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & Trim$(Npc(MapNpc(GetPlayerMap(Index), n).Num).Name) & ".", BrightRed, 0)
                             Case SPELL_TYPE_SUBMP
                                 MapNpc(GetPlayerMap(Index), n).MP = MapNpc(GetPlayerMap(Index), n).MP - Spell(SpellNum).data1
 
@@ -3261,7 +3261,7 @@ If Spell(SpellNum).AE = 1 Then
                         Casted = False
                     End If
                 Else
-                    Call BattleMsg(Index, "Vous ne lancez pas le sort!!(PNJ amis)", BrightRed, 0)
+                    Call BattleMsg(Index, "Vous ne lancez pas le sort.(PNJ amis)", BrightRed, 0)
                 End If
             End If
         End If
@@ -3276,11 +3276,11 @@ If Spell(SpellNum).AE = 1 Then
     Call SendMP(Index)
 Else
     n = Player(Index).Target
-    If n = -1 Then Call PlayerMsg(Index, "Vous n'avez pas pu envoyer le sort!(aucune cible)", BrightRed): Exit Sub
+    If n = -1 Then Call PlayerMsg(Index, "Vous n'avez pas pu envoyer le sort.(aucune cible)", BrightRed): Exit Sub
     If Player(Index).TargetType = TARGET_TYPE_PLAYER Then
         If IsPlaying(n) Then
             If bouclier(n) = True Then
-                Call BattleMsg(Index, "Le sort ne peut pas toucher le joueur car il a un bouclier!", BrightRed, 0)
+                Call BattleMsg(Index, "Le sort ne peut pas toucher le joueur car il a un bouclier.", BrightRed, 0)
                 Exit Sub
             End If
 
@@ -3298,7 +3298,7 @@ Else
 
                     Case SPELL_TYPE_SUBHP
                         Damage = ((GetPlayerMAGI(Index) \ 4) + Spell(SpellNum).data1) - GetPlayerProtection(n)
-                        If Damage > 0 Then Call AttackPlayer(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & GetPlayerName(n) & "!", BrightRed, 0)
+                        If Damage > 0 Then Call AttackPlayer(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & GetPlayerName(n) & ".", BrightRed, 0)
                         
                     Case SPELL_TYPE_SUBMP
                         Call SetPlayerMP(n, GetPlayerMP(n) - Spell(SpellNum).data1)
@@ -3402,11 +3402,11 @@ Else
                     Call SendMP(Index)
                     Casted = True
                 Else
-                    Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort!", BrightRed, 0)
+                    Call BattleMsg(Index, "Vous n'avez pas put envoyer le sort.", BrightRed, 0)
                 End If
             End If
         Else
-            Call PlayerMsg(Index, "Vous n'avez pas put envoyer le sort!(cible hors ligne)", BrightRed)
+            Call PlayerMsg(Index, "Vous n'avez pas put envoyer le sort.(cible hors ligne)", BrightRed)
         End If
     Else
         If CInt(Sqr((GetPlayerX(Index) - MapNpc(GetPlayerMap(Index), n).x) ^ 2 + ((GetPlayerY(Index) - MapNpc(GetPlayerMap(Index), n).y) ^ 2))) > Spell(SpellNum).Range Then
@@ -3425,7 +3425,7 @@ Else
                 
                 Case SPELL_TYPE_SUBHP
                     Damage = ((GetPlayerMAGI(Index) \ 4) + Spell(SpellNum).data1) - (Npc(MapNpc(GetPlayerMap(Index), n).Num).def \ 2)
-                    If Damage > 0 Then Call AttackNpc(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & Trim$(Npc(MapNpc(GetPlayerMap(Index), n).Num).Name) & "!", BrightRed, 0)
+                    If Damage > 0 Then Call AttackNpc(Index, n, Damage) Else Call BattleMsg(Index, "Votre sort n'est pas assez puissant pour blesser " & Trim$(Npc(MapNpc(GetPlayerMap(Index), n).Num).Name) & ".", BrightRed, 0)
                     
                 Case SPELL_TYPE_ADDMP
                     MapNpc(GetPlayerMap(Index), n).MP = MapNpc(GetPlayerMap(Index), n).MP + Spell(SpellNum).data1
@@ -3451,7 +3451,7 @@ Else
             Call SendMP(Index)
             Casted = True
         Else
-            Call BattleMsg(Index, "Vous n'avez pas pu envoyer le sort!(cible non ennemi)", BrightRed, 0)
+            Call BattleMsg(Index, "Vous n'avez pas pu envoyer le sort.(cible non ennemi)", BrightRed, 0)
         End If
     End If
 End If
@@ -3642,7 +3642,7 @@ npcnum = MapNpc(MapNum, MapNpcNum).Num
 If MapNpc(MapNum, MapNpcNum).HP <= 0 And CLng(Npc(npcnum).Inv) = 0 Then Exit Function
 
 If Npc(npcnum).Behavior = NPC_BEHAVIOR_FRIENDLY Or Npc(npcnum).Behavior = NPC_BEHAVIOR_SHOPKEEPER Or Npc(npcnum).Behavior = NPC_BEHAVIOR_QUETEUR And Npc(npcnum).Behavior = NPC_BEHAVIOR_SCRIPT Then
-    If Npc(npcnum).Behavior = NPC_BEHAVIOR_QUETEUR And ACoter(MapNpcNum, Attacker) Then Call PlayerMsg(Attacker, "Ne pointe pas cette arme sur moi si tu veut me parler!", BrightRed)
+    If Npc(npcnum).Behavior = NPC_BEHAVIOR_QUETEUR And ACoter(MapNpcNum, Attacker) Then Call PlayerMsg(Attacker, "Ne pointe pas cette arme sur moi si tu veut me parler.", BrightRed)
     CanAttackNpcWithArrow = False
     Exit Function
 End If
@@ -3703,16 +3703,16 @@ On Error GoTo er:
 If Map(GetPlayerMap(Attacker)).Moral = MAP_MORAL_NONE Or Map(GetPlayerMap(Attacker)).Moral = MAP_MORAL_NO_PENALTY Or GetPlayerPK(Victim) = YES Then
 ' Make sure they are high enough level
     If GetPlayerLevel(Attacker) < PK_LEVEL Then
-        Call PlayerMsg(Attacker, "Vous éte en dessous du niveau " & PK_LEVEL & ",vous ne pouvez pas encore attaquer d'autres joueurs!", BrightRed)
+        Call PlayerMsg(Attacker, "Vous éte en dessous du niveau " & PK_LEVEL & ",vous ne pouvez pas encore attaquer d'autres joueurs.", BrightRed)
     Else
         If GetPlayerLevel(Victim) < NOOB_LEVEL Then
-            Call PlayerMsg(Attacker, GetPlayerName(Victim) & " est en dessous du niveau " & NOOB_LEVEL & ",vous ne pouvez pas encore l'attaquer!", BrightRed)
+            Call PlayerMsg(Attacker, GetPlayerName(Victim) & " est en dessous du niveau " & NOOB_LEVEL & ",vous ne pouvez pas encore l'attaquer.", BrightRed)
         Else
             If Trim$(GetPlayerGuild(Attacker)) <> vbNullString And GetPlayerGuild(Victim) <> vbNullString Then
                 If Trim$(GetPlayerGuild(Attacker)) <> Trim$(GetPlayerGuild(Victim)) Then
                     CanAttackPlayerWithArrow = True
                 Else
-                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un menbre de votre guilde!", BrightRed)
+                    Call PlayerMsg(Attacker, "Vous ne pouvez pas attaquer un menbre de votre guilde.", BrightRed)
                 End If
             Else
                 CanAttackPlayerWithArrow = True
@@ -3720,7 +3720,7 @@ If Map(GetPlayerMap(Attacker)).Moral = MAP_MORAL_NONE Or Map(GetPlayerMap(Attack
         End If
     End If
 Else
-    Call PlayerMsg(Attacker, "La carte est une safe zone(vous ne pouvez pas attaquer d'autres joueurs)!", BrightRed)
+    Call PlayerMsg(Attacker, "La carte est une safe zone(vous ne pouvez pas attaquer d'autres joueurs).", BrightRed)
 End If
 
 Exit Function

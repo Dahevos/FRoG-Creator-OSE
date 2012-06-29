@@ -84,7 +84,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   5
          ItemData        =   "frmShopEditor.frx":00A8
          Left            =   -74880
@@ -103,7 +103,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   4
          ItemData        =   "frmShopEditor.frx":00AC
          Left            =   -74880
@@ -122,7 +122,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   3
          ItemData        =   "frmShopEditor.frx":00B0
          Left            =   -74880
@@ -141,7 +141,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   2
          ItemData        =   "frmShopEditor.frx":00B4
          Left            =   -74880
@@ -160,7 +160,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   1
          ItemData        =   "frmShopEditor.frx":00B8
          Left            =   -74880
@@ -179,7 +179,7 @@ Begin VB.Form frmShopEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   2535
+         Height          =   2400
          Index           =   0
          ItemData        =   "frmShopEditor.frx":00BC
          Left            =   120
@@ -625,108 +625,108 @@ Dim Index As Long, i As Long, ItemNum As Long
         If i = 1 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
-                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
-                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
-                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
-                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci."
                 Exit Sub
             Else
-                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci."
                 Exit Sub
             End If
         ElseIf i = 2 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
-                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
-                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
-                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
-                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci."
                 Exit Sub
             Else
-                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci."
                 Exit Sub
             End If
         ElseIf i = 3 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
-                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
-                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
-                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
-                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci."
                 Exit Sub
             Else
-                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci."
                 Exit Sub
             End If
         ElseIf i = 4 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
-                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
-                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
-                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
-                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci."
                 Exit Sub
             Else
-                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci."
                 Exit Sub
             End If
         ElseIf i = 5 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
-                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
-                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
-                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
-                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
             Else
-                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique SORT pour ajouter ceci."
                 Exit Sub
             End If
         ElseIf i = 6 Then
             If Item(ItemNum).Type = ITEM_TYPE_WEAPON Then
-                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARME pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SHIELD Then
-                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique BOUCLIER pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_ARMOR Then
-                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique ARMURE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_HELMET Then
-                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique CASQUE pour ajouter ceci."
                 Exit Sub
             ElseIf Item(ItemNum).Type = ITEM_TYPE_SPELL Then
-                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci!"
+                MsgBox "Cliquer sur la rubrique DIVERS pour ajouter ceci."
                 Exit Sub
             Else
             End If

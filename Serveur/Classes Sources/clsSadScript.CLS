@@ -53,7 +53,7 @@ Public Function ReadInCode(sfile As String, sModTitle As String, msc As ScriptCo
             Kill sfile
             Name sfile & "1" As sfile
         Else
-            MsgBox "Unencrypt FAILED!"
+            MsgBox "Unencrypt FAILED."
             Exit Function
         End If
     End If
@@ -110,7 +110,7 @@ Public Function ReadInCode(sfile As String, sModTitle As String, msc As ScriptCo
             Kill sfile
             Name sfile & "1" As sfile
         Else
-            MsgBox "Encrypt FAILED!"
+            MsgBox "Encrypt FAILED."
         End If
     End If
     
@@ -311,10 +311,10 @@ Private Sub SControl_Error()
     
     If Not DetectScriptErr Then
     DetectScriptErr = True
-    sError = sError & "ERREUR : Exécution des Scripts : " & Err.description & vbNewLine
+    sError = sError & "ERREUR : Exécution des Scripts : " & Err.Description & vbNewLine
     sError = sError & "Plus D'Informations?"
     temps(1) = ASub
-    temps(2) = SControl.Error.description
+    temps(2) = SControl.Error.Description
     temps(3) = SControl.Error.Line
     temps(4) = SControl.Error.Column
     temps(5) = SControl.Error.text

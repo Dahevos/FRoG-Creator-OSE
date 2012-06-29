@@ -186,10 +186,10 @@ Private Sub CmdCrafter_Click()
         If Metier(RecetteSelect).Data(scrlRecettes.value, 0) > 0 Then
             Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).Data(scrlRecettes.value, 0) & END_CHAR)
         Else
-            MsgBox ("Pas de recettes !")
+            MsgBox ("Pas de recettes .")
         End If
     Else
-        MsgBox ("Ce n'est pas votre métier !")
+        MsgBox ("Ce n'est pas votre métier .")
     End If
 End Sub
 

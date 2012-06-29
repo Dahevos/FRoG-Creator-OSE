@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmadmin 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Panneau d'administration"
@@ -57,17 +57,11 @@ Begin VB.Form frmadmin
       TabPicture(0)   =   "frmadmin.frx":17D2A
       Tab(0).ControlEnabled=   0   'False
       Tab(0).Control(0)=   "Label5"
-      Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "Line1"
-      Tab(0).Control(1).Enabled=   0   'False
       Tab(0).Control(2)=   "Frame1"
-      Tab(0).Control(2).Enabled=   0   'False
       Tab(0).Control(3)=   "Frame2"
-      Tab(0).Control(3).Enabled=   0   'False
       Tab(0).Control(4)=   "Frame7"
-      Tab(0).Control(4).Enabled=   0   'False
       Tab(0).Control(5)=   "Frame11"
-      Tab(0).Control(5).Enabled=   0   'False
       Tab(0).ControlCount=   6
       TabCaption(1)   =   "Commande"
       TabPicture(1)   =   "frmadmin.frx":17D46
@@ -87,11 +81,8 @@ Begin VB.Form frmadmin
       TabPicture(2)   =   "frmadmin.frx":17D62
       Tab(2).ControlEnabled=   0   'False
       Tab(2).Control(0)=   "Frame8"
-      Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
-      Tab(2).Control(1).Enabled=   0   'False
       Tab(2).Control(2)=   "Label16"
-      Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       Begin VB.Frame Frame11 
          Caption         =   "Environnement"
@@ -1361,7 +1352,7 @@ On Error GoTo er:
     End If
 Exit Sub
 er:
-MsgBox "Valeur trop grande!"
+MsgBox "Valeur trop grande."
 End Sub
 
 Private Sub motd_Change()

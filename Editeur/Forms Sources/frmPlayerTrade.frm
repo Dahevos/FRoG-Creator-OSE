@@ -198,16 +198,16 @@ i = PlayerInv1.ListIndex + 1
 
 If GetPlayerInvItemNum(MyIndex, i) > 0 And GetPlayerInvItemNum(MyIndex, i) <= MAX_ITEMS Then
     For n = 1 To MAX_PLAYER_TRADES
-        If Trading(n).InvNum = i Then MsgBox "Vous pouvez échanger cet article seulement une fois!": Exit Sub
+        If Trading(n).InvNum = i Then MsgBox "Vous pouvez échanger cet article seulement une fois.": Exit Sub
         
         If Trading(n).InvNum <= 0 Then
             If Item(GetPlayerInvItemNum(MyIndex, i)).Type = ITEM_TYPE_CURRENCY Then
                 nb = InputBox("Combien de " & Trim$(Item(GetPlayerInvItemNum(MyIndex, i)).name) & " vous-les vous échangez?", "Echange")
                 If Val(nb) <= 0 Then
-                    MsgBox "Nombre inférieur à 0!"
+                    MsgBox "Nombre inférieur à 0."
                     Exit Sub
                 ElseIf nb > Val(GetPlayerInvItemValue(MyIndex, i)) Then
-                    MsgBox "Nombre supérieur au nombre d'objets dans l'inventaire!"
+                    MsgBox "Nombre supérieur au nombre d'objets dans l'inventaire."
                     Exit Sub
                 Else
                     PlayerInv1.List(i - 1) = PlayerInv1.Text & "(" & nb & ") **"
@@ -220,7 +220,7 @@ If GetPlayerInvItemNum(MyIndex, i) > 0 And GetPlayerInvItemNum(MyIndex, i) <= MA
                 End If
             Else
                 If GetPlayerWeaponSlot(MyIndex) = i Or GetPlayerArmorSlot(MyIndex) = i Or GetPlayerHelmetSlot(MyIndex) = i Or GetPlayerShieldSlot(MyIndex) = i Or GetPlayerPetSlot(MyIndex) = i Then
-                    MsgBox "Tu ne peux échanger un objet équipé!"
+                    MsgBox "Tu ne peux échanger un objet équipé."
                     Exit Sub
                 Else
                     PlayerInv1.List(i - 1) = PlayerInv1.Text & "(1) **"
@@ -242,7 +242,7 @@ Dim i As Long, n As Long
 i = Items1.ListIndex + 1
 
     If Trading(i).InvNum <= 0 Then
-        MsgBox "Pas d'objet a retirer!"
+        MsgBox "Pas d'objet a retirer."
         Exit Sub
     End If
 

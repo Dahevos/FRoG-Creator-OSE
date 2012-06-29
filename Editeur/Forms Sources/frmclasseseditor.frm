@@ -744,9 +744,9 @@ Call ChargerClasses
 Me.Hide
 Exit Sub
 ereu:
-Call MsgBox("N'entrez que des chiffres SVP!!")
+Call MsgBox("N'entrez que des chiffres s'il vous plait.")
 Call MsgBox("Erreur rencontrez : " & Err.Number & " : " & Err.description, vbCritical)
-Call EcrireEtat(Err.Number & " " & Err.description & " N'entrez que des chiffres SVP!!")
+Call EcrireEtat(Err.Number & " " & Err.description & " N'entrez que des chiffres s'il vous plait.")
 End Sub
 
 Private Sub scrlfem_Change()

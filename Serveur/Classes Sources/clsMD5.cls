@@ -391,7 +391,7 @@ Dim lngI As Long
 End Function
 
 '-- Fonction utilitaire Additioner 2 nombres non signés
-'      Les dépassements (Overflows) sont ignorés!
+'      Les dépassements (Overflows) sont ignorés.
 Private Function LongOverflowAdd(Val1 As Long, Val2 As Long) As Long
 Dim lngHighWord As Long
 Dim lngLowWord As Long
@@ -404,7 +404,7 @@ Dim lngOverflow As Long
 End Function
 
 '-- Fonction utilitaire Additioner 4 nombres non signés
-'      Les dépassements (Overflows) sont ignorés!
+'      Les dépassements (Overflows) sont ignorés.
 Private Function LongOverflowAdd4(Val1 As Long, Val2 As Long, val3 As Long, val4 As Long) As Long
 Dim lngHighWord As Long
 Dim lngLowWord As Long

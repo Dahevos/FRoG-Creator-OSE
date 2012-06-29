@@ -114,7 +114,7 @@ Private Sub cmdOk_Click()
 If Val(lstPano.Tag) = 1 Then frmMapProperties.PanoSup.Text = lstPano.Text Else frmMapProperties.PanoInf.Text = lstPano.Text
 If Val(lstPano.Tag) = 1 And lstPano.ListIndex = 0 Then frmMapProperties.PanoSup.Text = vbNullString
 If Val(lstPano.Tag) = 0 And lstPano.ListIndex = 0 Then frmMapProperties.PanoInf.Text = vbNullString
-If Len(lstPano.Text) > 50 Then Call MsgBox("Nom du fichier trop grand, veuillez en choisir un autre SVP", vbExclamation, "Erreur") Else Unload Me
+If Len(lstPano.Text) > 50 Then Call MsgBox("Nom du fichier trop grand, veuillez en choisir un autre s'il vous plait", vbExclamation, "Erreur") Else Unload Me
 End Sub
 
 

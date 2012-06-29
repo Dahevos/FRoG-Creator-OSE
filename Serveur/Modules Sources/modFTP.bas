@@ -165,7 +165,7 @@ Dim Connecter As Boolean
     InternetCloseHandle hOpen
     NewDoEvents
     If Connecter = True Then
-        MsgBox "Le logiciel s'est connecter avec succès!", vbInformation
+        MsgBox "Le logiciel s'est connecter avec succès.", vbInformation
     Else
         MsgBox "Le logiciel n'arrive pas à ce connecter au serveur. Vérifiez vos informations, votre connections et si vous n'êtes pas déjà connecter au ftp avec un autre logiciel.", vbCritical
     End If

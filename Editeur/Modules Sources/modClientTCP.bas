@@ -345,7 +345,7 @@ Dim z As Long
     ' ::::::::::::::::::::
     If LCase$(Parse(0)) = "ingame" Then
         InGame = True
-        If Player(MyIndex).Access < 1 Then MsgBox "Vous n'avez pas un acces suffisant pour éditer le jeu!!" & vbCrLf & "Le logiciel va se terminer!!": Call GameDestroy
+        If Player(MyIndex).Access < 1 Then MsgBox "Vous n'avez pas un acces suffisant pour éditer le jeu." & vbCrLf & "Le logiciel va se terminer.": Call GameDestroy
         Call GameInit
         Call GameLoop
         
@@ -1543,7 +1543,7 @@ mont:
     
     If (LCase$(Parse(0)) = "finquete") Then
         If Player(MyIndex).QueteEnCour <= 0 Then Exit Sub
-        Call MsgBox("Bravo!! vous venez de finir la quête : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourné voir celui qui vous la donné pour avoir vos récompenses")
+        Call MsgBox("Bravo. vous venez de finir la quête : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourné voir celui qui vous la donné pour avoir vos récompenses")
         frmMirage.quetetimersec.Enabled = False
         frmMirage.tmpsquete.Visible = False
         Exit Sub
@@ -1748,8 +1748,8 @@ mont:
     ' :: Weather packet ::
     ' ::::::::::::::::::::
     If (LCase$(Parse(0)) = "weather") Then
-        If Val(Parse(1)) = WEATHER_RAINING And GameWeather <> WEATHER_RAINING Then Call AddText("La pluie commence a tomber!", BrightGreen)
-        If Val(Parse(1)) = WEATHER_THUNDER And GameWeather <> WEATHER_THUNDER Then Call AddText("Le tonnerre commence a gronder!", BrightGreen)
+        If Val(Parse(1)) = WEATHER_RAINING And GameWeather <> WEATHER_RAINING Then Call AddText("La pluie commence a tomber.", BrightGreen)
+        If Val(Parse(1)) = WEATHER_THUNDER And GameWeather <> WEATHER_THUNDER Then Call AddText("Le tonnerre commence a gronder.", BrightGreen)
         If Val(Parse(1)) = WEATHER_SNOWING And GameWeather <> WEATHER_SNOWING Then Call AddText("La neige commence a tomber", BrightGreen)
         If Val(Parse(1)) = WEATHER_NONE Then
             If GameWeather = WEATHER_RAINING Then

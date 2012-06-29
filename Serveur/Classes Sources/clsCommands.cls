@@ -177,7 +177,7 @@ Sub GuildeMsg(ByVal Index As Long, ByVal Msg As String)
     
     If Player(Index).Mute Then Exit Sub
        
-    If GetPlayerGuild(Index) = vbNullString Then Call PlayerMsg(Index, "Tu n'es pas dans une guilde!", AlertColor): Exit Sub
+    If GetPlayerGuild(Index) = vbNullString Then Call PlayerMsg(Index, "Tu n'es pas dans une guilde.", AlertColor): Exit Sub
     
     s = GetPlayerName(Index) & " (" & GetPlayerGuild(Index) & ") : " & Msg
     Call AddLog(s, PLAYER_LOG)
@@ -979,7 +979,7 @@ Sub HackingAttempt(ByVal Index As Long, ByVal Reason As String)
     If Index > 0 Then
         If IsPlaying(Index) Then Call GlobalMsg(GetPlayerLogin(Index) & "/" & GetPlayerName(Index) & " a été déconnecté pour : (" & Reason & ")", White)
         Call AlertMsg(Index, "Tu as perdu ta connexion avec " & GAME_NAME & "." & Reason)
-        If IBErr Then Call IBMsg("Détection d'une tentative de hack!(Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed)
+        If IBErr Then Call IBMsg("Détection d'une tentative de hack.(Raison : " & Reason & " Login : " & GetPlayerLogin(Index) & " perso : " & GetPlayerName(Index) & ").", BrightRed)
     End If
 End Sub
 
@@ -1215,7 +1215,7 @@ Call SetPlayerMAGI(Index, (Player(Index).Char(Player(Index).CharNum).magi + Clas
 Call SetPlayerSPEED(Index, (Player(Index).Char(Player(Index).CharNum).Speed + Classe(GetPlayerClass(Index)).Speed + GetVar("Classes\Class" & GetPlayerClass(Index) & ".ini", "CLASSCHANGE", "AddSpeed")))
 
 
-Call PlayerMsg(Index, "Ta nouvelle classe est " & Trim$(Classe(GetPlayerClass(Index)).Name) & "!", BrightGreen)
+Call PlayerMsg(Index, "Ta nouvelle classe est " & Trim$(Classe(GetPlayerClass(Index)).Name) & ".", BrightGreen)
 
 Call SendStats(Index)
 Call SendHP(Index)

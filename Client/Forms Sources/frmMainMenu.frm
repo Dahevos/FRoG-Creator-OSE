@@ -629,7 +629,7 @@ DragY = y
 End Sub
 
 Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((x / twippx) - (DragX / twippx))
+If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.left = fraLogin.left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -645,7 +645,7 @@ DragY = y
 End Sub
 
 Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((x / twippx) - (DragX / twippx))
+If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.left = fraNewAccount.left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -661,7 +661,7 @@ Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, x As Single, 
 End Sub
 
 Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((x / twippx) - (DragX / twippx))
+If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.left = fraPers.left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -677,7 +677,7 @@ Dim i As Long
     If Trim$(txtname2.Text) <> vbNullString And Trim$(txtpassword22.Text) <> vbNullString And Trim$(txtPassword2.Text) <> vbNullString Then
         Msg = Trim$(txtname2.Text)
         
-        If Trim$(txtpassword22.Text) <> Trim$(txtPassword2.Text) Then MsgBox "Le mot de passe ne correspond pas!": Exit Sub
+        If Trim$(txtpassword22.Text) <> Trim$(txtPassword2.Text) Then MsgBox "Le mot de passe ne correspond pas.": Exit Sub
         
         If Len(Trim$(txtname2.Text)) < 3 Or Len(Trim$(txtpassword22.Text)) < 3 Then MsgBox "Votre nom et mot de passe doit contenir plus de 3 caractères.": Exit Sub
         
@@ -727,9 +727,9 @@ Dim Ending As String
         PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
-        PicChar.Left = 840 - PicChar.Width + 480
+        PicChar.left = 840 - PicChar.Width + 480
     Else
-        PicChar.Left = 840
+        PicChar.left = 840
     End If
 
     If charSelect(charSelectNum).name <> "" Then
@@ -772,7 +772,7 @@ End Sub
 Private Sub picDelChar_Click()
 Dim Value As Long
 
-    If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then MsgBox "Il n'y a pas de personnage à cette emplacement!": Exit Sub
+    If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then MsgBox "Il n'y a pas de personnage à cette emplacement.": Exit Sub
 
     Value = MsgBox("Es-tu certains de vouloir éffacer ce personnage?", vbYesNo, GAME_NAME)
     
@@ -780,7 +780,7 @@ Dim Value As Long
 End Sub
 
 Private Sub picNewChar_Click()
-    If lstChars.List(lstChars.ListIndex) <> "Emplacement libre" Then MsgBox "Il y a déjà un personnage à cette emplacement!": Exit Sub
+    If lstChars.List(lstChars.ListIndex) <> "Emplacement libre" Then MsgBox "Il y a déjà un personnage à cette emplacement.": Exit Sub
     Call SendData("PICVALUE" & END_CHAR)
     Call MenuState(MENU_STATE_NEWCHAR)
 End Sub
@@ -793,7 +793,7 @@ Private Sub picQuit_Click()
 End Sub
 
 Private Sub picUseChar_Click()
-    If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then MsgBox "Il n'y a pas de personnage à cette emplacement!": Exit Sub
+    If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then MsgBox "Il n'y a pas de personnage à cette emplacement.": Exit Sub
     Call SendData("PICVALUE" & END_CHAR)
     Call MenuState(MENU_STATE_USECHAR)
 End Sub
@@ -861,9 +861,9 @@ Dim Ending As String
         PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
-        PicChar.Left = 840 - PicChar.Width + 480
+        PicChar.left = 840 - PicChar.Width + 480
     Else
-        PicChar.Left = 840
+        PicChar.left = 840
     End If
 End Sub
 

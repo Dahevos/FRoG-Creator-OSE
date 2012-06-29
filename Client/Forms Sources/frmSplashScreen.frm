@@ -8,6 +8,7 @@ Begin VB.Form frmSplashScreen
    LinkTopic       =   "Form1"
    ScaleHeight     =   7050
    ScaleWidth      =   9435
+   StartUpPosition =   1  'CenterOwner
    Begin VB.Timer splashtimer 
       Interval        =   1500
       Left            =   6360

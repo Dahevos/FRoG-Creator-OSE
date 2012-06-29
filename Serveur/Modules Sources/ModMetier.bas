@@ -118,7 +118,7 @@ n = Player(Index).Char(Player(Index).CharNum).metier
 If n > 0 Then
     If metier(n).type = METIER_CRAFT Then
         If Map(GetPlayerMap(Index)).Tile(GetPlayerX(Index), GetPlayerY(Index)).type <> TILE_TYPE_CRAFT Then
-            Call BattleMsg(Index, "(Metier) Il vous faut une table de Craft !", Red, 0)
+            Call BattleMsg(Index, "(Metier) Il vous faut une table de Craft .", Red, 0)
             Exit Sub
         End If
         rb = False

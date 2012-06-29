@@ -1173,11 +1173,11 @@ rest:
     Call SetStatus("Destroying game data...")
             
     ' Shutdown the game
-    Call MsgBox("Erreur relancez SVP")
+    Call MsgBox("Erreur relancez s'il vous plait")
     Call GameDestroy
     
     ' Report disconnection if server disconnects
-    If IsConnected = False And HORS_LIGNE = 0 Then Call MsgBox("Merci d'avoirs joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
+    If IsConnected = False And HORS_LIGNE = 0 Then Call MsgBox("Merci d'avoirs joué à " & GAME_NAME & ".", vbOKOnly, GAME_NAME)
 Exit Sub
 er:
 If Val(Mid$(Err.Number, 1, 9)) = -200553208 Then GoTo rest:
@@ -2236,7 +2236,7 @@ End If
                         End If
                     End If
                 Else
-                    Call MsgBox("Mauvais code!", vbCritical)
+                    Call MsgBox("Mauvais code.", vbCritical)
                 End If
             End If
         End With
@@ -2278,7 +2278,7 @@ End If
        End If
        
         ' Player message
-        If Mid$(MyText, 1, 1) = "!" Or Mid$(MyText, 1, 1) = "w" Or Mid$(MyText, 1, 1) = "/w " Then
+        If Mid$(MyText, 1, 1) = "." Or Mid$(MyText, 1, 1) = "w" Or Mid$(MyText, 1, 1) = "/w " Then
             ChatText = Mid$(MyText, 2, Len(MyText) - 1)
             name = vbNullString
                     
@@ -2294,7 +2294,7 @@ End If
                 ' Send the message to the player
                 Call PlayerMsg(ChatText, name)
             Else
-                Call AddText("Utiliser: !nomjoueur msgici", AlertColor)
+                Call AddText("Utiliser: .nomjoueur msgici", AlertColor)
             End If
             MyText = vbNullString
             Exit Sub
@@ -2767,7 +2767,7 @@ Dim i As Long
     Call ChargerLeTemps
     Call ChargerClasses
     Call InitMirage
-    Call PlayerMsg("Bienvenue dans " & GAME_NAME & "!", 15)
+    Call PlayerMsg("Bienvenue dans " & GAME_NAME & ".", 15)
 End Sub
 
 Public Sub InitMirageVars()

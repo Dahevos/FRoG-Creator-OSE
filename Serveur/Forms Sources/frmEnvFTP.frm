@@ -17,9 +17,9 @@ Begin VB.Form frmEnvFTP
       Left            =   120
       Top             =   960
       Width           =   3735
-      _extentx        =   6588
-      _extenty        =   450
-      appearance      =   1
+      _ExtentX        =   6588
+      _ExtentY        =   450
+      Appearance      =   1
    End
    Begin VB.CommandButton annul 
       Caption         =   "Annuler"
@@ -104,7 +104,7 @@ End Sub
 
 Private Sub debut_Change()
 If debut.text = vbNullString Then debut.text = "1"
-If Not IsNumeric(debut.text) Then MsgBox "Entrez seulement des chiffres SVP!", vbCritical: debut.text = "1": Exit Sub
+If Not IsNumeric(debut.text) Then MsgBox "Entrez seulement des chiffres s'il vous plait.", vbCritical: debut.text = "1": Exit Sub
 If Val(debut.text) <= 0 Then MsgBox "Entrez une valeur supérieur à zéro", vbCritical: debut.text = "1": Exit Sub
 If Val(debut.text) > MAX_MAPS Then MsgBox "Entrez une valeur inférieur au maximum de cartes", vbCritical: debut.text = "1": Exit Sub
 End Sub
@@ -121,7 +121,7 @@ End Sub
 
 Private Sub fin_Change()
 If fin.text = vbNullString Then fin.text = MAX_MAPS
-If Not IsNumeric(fin.text) Then MsgBox "Entrez seulement des chiffres SVP!", vbCritical: fin.text = MAX_MAPS: Exit Sub
+If Not IsNumeric(fin.text) Then MsgBox "Entrez seulement des chiffres s'il vous plait.", vbCritical: fin.text = MAX_MAPS: Exit Sub
 If Val(fin.text) <= 0 Then MsgBox "Entrez une valeur supérieur à zéro", vbCritical: fin.text = MAX_MAPS: Exit Sub
 If Val(fin.text) > MAX_MAPS Then MsgBox "Entrez une valeur inférieur au maximum de cartes", vbCritical: fin.text = MAX_MAPS: Exit Sub
 End Sub
@@ -182,7 +182,7 @@ If ExStop Then Call FermerFTP(Connex): GoTo fin:
 Call FermerFTP(Connex)
 bar.value = bar.Max
 
-MsgBox "Envoie terminé!", vbInformation
+MsgBox "Envoie terminé.", vbInformation
 etat.Enabled = False
 temps.Enabled = False
 etat.Caption = vbNullString

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmIndex 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditer..."
@@ -69,7 +69,7 @@ Begin VB.Form frmIndex
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   2205
+      Height          =   2040
       ItemData        =   "frmIndex.frx":0000
       Left            =   240
       List            =   "frmIndex.frx":0002
@@ -388,7 +388,7 @@ Else
 End If
 Exit Sub
 er:
-MsgBox "Numéros ou Nom introuvable!", vbCritical
+MsgBox "Numéros ou Nom introuvable.", vbCritical
 End Sub
 
 Private Sub Text1_GotFocus()

@@ -528,7 +528,7 @@ Dim f As Long
 
 Exit Sub
 er:
-MsgBox "Erreur pendant l'initialisation du serveur, vérifiez que le port n'est pas déjà utilisé par une autre application ou que le serveur ne soit pas déjà lancé ! (Détails :" & Err.Number & " " & Err.Description & ")"
+MsgBox "Erreur pendant l'initialisation du serveur, vérifiez que le port n'est pas déjà utilisé par une autre application ou que le serveur ne soit pas déjà lancé . (Détails :" & Err.Number & " " & Err.Description & ")"
 Call DestroyServer
 End Sub
 
@@ -721,7 +721,7 @@ Dim SpellSlot As Byte
                                     If DistanceX < 0 Then DistanceX = DistanceX * -1
                                     If DistanceY < 0 Then DistanceY = DistanceY * -1
                                     
-                                    ' Are they in range?  if so GET'M!
+                                    ' Are they in range?  if so GET'M.
                                     If DistanceX <= n And DistanceY <= n Then
                                     
                                         If Npc(npcnum).Behavior = NPC_BEHAVIOR_ATTACKONSIGHT Or GetPlayerPK(i) = YES Then
@@ -836,7 +836,7 @@ Dim SpellSlot As Byte
                                         If Damage > 0 Then
                                             Call NpcAttackPlayer(x, Target, Damage)
                                         Else
-                                            Call BattleMsg(Target, Trim$(Npc(npcnum).Name) & " n'a pas pu vous blesser!", BrightBlue, 1)
+                                            Call BattleMsg(Target, Trim$(Npc(npcnum).Name) & " n'a pas pu vous blesser.", BrightBlue, 1)
                                         End If
                                     Else
                                         Call BattleMsg(Target, "Tu bloques/esquives le coup de " & Trim$(Npc(npcnum).Name), BrightCyan, 1)

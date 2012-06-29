@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCN.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmServer 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "FRoG Server"
@@ -94,59 +94,59 @@ Begin VB.Form frmServer
       TabCaption(1)   =   "Joueur"
       TabPicture(1)   =   "frmServer.frx":17D46
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "TPO"
-      Tab(1).Control(1)=   "lvUsers"
-      Tab(1).Control(2)=   "Command66"
-      Tab(1).Control(3)=   "Check1"
-      Tab(1).Control(4)=   "Command14"
-      Tab(1).Control(5)=   "Command16"
-      Tab(1).Control(6)=   "Command18"
-      Tab(1).Control(7)=   "Command19"
-      Tab(1).Control(8)=   "Command21"
-      Tab(1).Control(9)=   "Command22"
-      Tab(1).Control(10)=   "Command23"
-      Tab(1).Control(11)=   "Command24"
-      Tab(1).Control(12)=   "Command3"
-      Tab(1).Control(13)=   "Command45"
-      Tab(1).Control(14)=   "Command51"
-      Tab(1).Control(15)=   "picStats"
-      Tab(1).Control(16)=   "Picskint"
-      Tab(1).Control(17)=   "picReason"
-      Tab(1).Control(18)=   "Command9"
-      Tab(1).Control(19)=   "Command31"
-      Tab(1).Control(20)=   "Command12"
-      Tab(1).Control(21)=   "Command32"
-      Tab(1).Control(22)=   "Command33"
-      Tab(1).Control(23)=   "Command34"
-      Tab(1).Control(24)=   "Command46"
-      Tab(1).Control(25)=   "picWarp"
-      Tab(1).Control(26)=   "picJail"
-      Tab(1).Control(27)=   "picExp"
+      Tab(1).Control(0)=   "picExp"
+      Tab(1).Control(1)=   "picJail"
+      Tab(1).Control(2)=   "picWarp"
+      Tab(1).Control(3)=   "Command46"
+      Tab(1).Control(4)=   "Command34"
+      Tab(1).Control(5)=   "Command33"
+      Tab(1).Control(6)=   "Command32"
+      Tab(1).Control(7)=   "Command12"
+      Tab(1).Control(8)=   "Command31"
+      Tab(1).Control(9)=   "Command9"
+      Tab(1).Control(10)=   "picReason"
+      Tab(1).Control(11)=   "Picskint"
+      Tab(1).Control(12)=   "picStats"
+      Tab(1).Control(13)=   "Command51"
+      Tab(1).Control(14)=   "Command45"
+      Tab(1).Control(15)=   "Command3"
+      Tab(1).Control(16)=   "Command24"
+      Tab(1).Control(17)=   "Command23"
+      Tab(1).Control(18)=   "Command22"
+      Tab(1).Control(19)=   "Command21"
+      Tab(1).Control(20)=   "Command19"
+      Tab(1).Control(21)=   "Command18"
+      Tab(1).Control(22)=   "Command16"
+      Tab(1).Control(23)=   "Command14"
+      Tab(1).Control(24)=   "Check1"
+      Tab(1).Control(25)=   "Command66"
+      Tab(1).Control(26)=   "lvUsers"
+      Tab(1).Control(27)=   "TPO"
       Tab(1).ControlCount=   28
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "lblPort"
-      Tab(2).Control(1)=   "lblIP"
-      Tab(2).Control(2)=   "Frame7"
-      Tab(2).Control(3)=   "Frame1"
-      Tab(2).Control(4)=   "Frame2"
+      Tab(2).Control(0)=   "picMap"
+      Tab(2).Control(1)=   "Frame4"
+      Tab(2).Control(2)=   "picWeather"
+      Tab(2).Control(3)=   "Frame8"
+      Tab(2).Control(4)=   "Frame9"
       Tab(2).Control(5)=   "Frame3"
-      Tab(2).Control(6)=   "Frame9"
-      Tab(2).Control(7)=   "Frame8"
-      Tab(2).Control(8)=   "picWeather"
-      Tab(2).Control(9)=   "Frame4"
-      Tab(2).Control(10)=   "picMap"
+      Tab(2).Control(6)=   "Frame2"
+      Tab(2).Control(7)=   "Frame1"
+      Tab(2).Control(8)=   "Frame7"
+      Tab(2).Control(9)=   "lblIP"
+      Tab(2).Control(10)=   "lblPort"
       Tab(2).ControlCount=   11
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "sync"
-      Tab(3).Control(1)=   "TopicTitle"
-      Tab(3).Control(2)=   "lstTopics"
-      Tab(3).Control(3)=   "CharInfo(23)"
-      Tab(3).Control(4)=   "CharInfo(22)"
-      Tab(3).Control(5)=   "CharInfo(21)"
+      Tab(3).Control(0)=   "CharInfo(21)"
+      Tab(3).Control(1)=   "CharInfo(22)"
+      Tab(3).Control(2)=   "CharInfo(23)"
+      Tab(3).Control(3)=   "lstTopics"
+      Tab(3).Control(4)=   "TopicTitle"
+      Tab(3).Control(5)=   "sync"
       Tab(3).ControlCount=   6
       Begin VB.PictureBox picExp 
          Appearance      =   0  'Flat
@@ -2364,7 +2364,7 @@ For i = 1 To lvUsers.ListItems.Count - 1 Step 1
     
         If Num = 3 Then
             If Index > 0 Then
-                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été emprisonné par l'admin du serveur!", White)
+                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été emprisonné par l'admin du serveur.", White)
         
                 Call PlayerWarp(Index, scrlMap.value, scrlX.value, scrlY.value)
             End If
@@ -2372,7 +2372,7 @@ For i = 1 To lvUsers.ListItems.Count - 1 Step 1
             If txtReason.text = vbNullString Then txtReason.text = "Aucune raison spécifié": Exit Sub
     
             If Index > 0 Then
-                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été emprisonné par l'admin du serveur! Raison:(" & txtReason.text & ")", White)
+                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été emprisonné par l'admin du serveur. Raison:(" & txtReason.text & ")", White)
             
                 Call PlayerWarp(Index, scrlMap.value, scrlX.value, scrlY.value)
             End If
@@ -2396,7 +2396,7 @@ For Index = 1 To MAX_PLAYERS
     If IsPlaying(Index) = True Then
         Call SetPlayerHP(Index, GetPlayerMaxHP(Index))
         Call SendHP(Index)
-        Call PlayerMsg(Index, "Vous avez été soigné par l'admin du serveur!", BrightGreen)
+        Call PlayerMsg(Index, "Vous avez été soigné par l'admin du serveur.", BrightGreen)
     End If
 Next Index
 End Sub
@@ -2508,8 +2508,8 @@ Dim i As Integer
 For i = 1 To lvUsers.ListItems.Count - 1 Step 1
     If lvUsers.ListItems.item(i).Selected = True Then
         Index = lvUsers.ListItems.item(i).text
-        Call PlayerMsg(Index, "Tu es maintenant muet!", White)
-        Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " est maintenant muet!", True)
+        Call PlayerMsg(Index, "Tu es maintenant muet.", White)
+        Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " est maintenant muet.", True)
         Player(Index).Mute = True
     End If
 Next i
@@ -2525,8 +2525,8 @@ Dim i As Integer
 For i = 1 To lvUsers.ListItems.Count - 1 Step 1
     If lvUsers.ListItems.item(i).Selected = True Then
         Index = lvUsers.ListItems.item(i).text
-        Call PlayerMsg(Index, "Tu peux à nouveau parler!", White)
-        Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " peut à nouveau parler!", True)
+        Call PlayerMsg(Index, "Tu peux à nouveau parler.", White)
+        Call TextAdd(frmServer.txtText(0), GetPlayerName(Index) & " peut à nouveau parler.", True)
         Player(Index).Mute = False
     End If
 Next i
@@ -2552,7 +2552,7 @@ If Scripting = 1 Then
     MyScript.ReadInCode App.Path & "\Scripts\Main.txt", "Scripts\Main.txt", MyScript.SControl, False
     MyScript.SControl.AddObject "ScriptHardCode", clsScriptCommands, True
     Call TextAdd(frmServer.txtText(0), "Scripts rechargés.", True)
-    Call IBMsg("Scripts rechargés!")
+    Call IBMsg("Scripts rechargés.")
 End If
 End Sub
 
@@ -2601,11 +2601,11 @@ Private Sub Command30_Click()
 Dim z As String
 Dim O As Long
     z = InputBox("Numéros de la classe?", "Modifier les classes")
-    If val(z) < 0 Or val(z) > Max_Classes Or Not IsNumeric(z) Then Exit Sub
-    O = val(z)
+    If Val(z) < 0 Or Val(z) > Max_Classes Or Not IsNumeric(z) Then Exit Sub
+    O = Val(z)
     frmclasseseditor.nom.text = ReadINI("CLASS", "Name", App.Path & "\Classes\Class" & O & ".ini")
-    frmclasseseditor.scrlhom.value = val(ReadINI("CLASS", "MaleSprite", App.Path & "\Classes\Class" & O & ".ini"))
-    frmclasseseditor.scrlfem.value = val(ReadINI("CLASS", "FemaleSprite", App.Path & "\Classes\Class" & O & ".ini"))
+    frmclasseseditor.scrlhom.value = Val(ReadINI("CLASS", "MaleSprite", App.Path & "\Classes\Class" & O & ".ini"))
+    frmclasseseditor.scrlfem.value = Val(ReadINI("CLASS", "FemaleSprite", App.Path & "\Classes\Class" & O & ".ini"))
     frmclasseseditor.numsf.Caption = frmclasseseditor.scrlfem.value
     frmclasseseditor.numsh.Caption = frmclasseseditor.scrlhom.value
     frmclasseseditor.force.text = ReadINI("CLASS", "STR", App.Path & "\Classes\Class" & O & ".ini")
@@ -2626,7 +2626,7 @@ Dim O As Long
     frmclasseseditor.cartem.text = ReadINI("DEATH", "Map", App.Path & "\Classes\Class" & O & ".ini")
     frmclasseseditor.xm.text = ReadINI("DEATH", "x", App.Path & "\Classes\Class" & O & ".ini")
     frmclasseseditor.ym.text = ReadINI("DEATH", "y", App.Path & "\Classes\Class" & O & ".ini")
-    frmclasseseditor.lock.value = val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & O & ".ini"))
+    frmclasseseditor.lock.value = Val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & O & ".ini"))
     frmclasseseditor.Tag = O
     frmclasseseditor.Show
 End Sub
@@ -2638,7 +2638,7 @@ For Index = 1 To MAX_PLAYERS
     If IsPlaying(Index) = True Then
         If GetPlayerAccess(Index) <= 0 Then
             Call SetPlayerHP(Index, 0)
-            Call PlayerMsg(Index, "Vous avez été tué par l'admin du serveur!", BrightRed)
+            Call PlayerMsg(Index, "Vous avez été tué par l'admin du serveur.", BrightRed)
             
             ' Warp player away
             If Scripting = 1 Then
@@ -2672,7 +2672,7 @@ Private Sub Command34_Click()
 Dim Index As Long
 Dim i As Long
     
-Call GlobalMsg("L'admin du serveur donne un niveau à tous!", BrightGreen)
+Call GlobalMsg("L'admin du serveur donne un niveau à tous.", BrightGreen)
     
 For Index = 1 To MAX_PLAYERS
     If IsPlaying(Index) = True Then
@@ -2780,10 +2780,10 @@ End Sub
 Private Sub Command40_Click()
 Dim Index As Long
 
-If Not IsNumeric(txtExp.text) Then MsgBox "Entrer un chiffre SVP!": Exit Sub
+If Not IsNumeric(txtExp.text) Then MsgBox "Entrer un chiffre s'il vous plait.": Exit Sub
 
 If txtExp.text >= 0 And txtExp.text <= 1000000 Then
-    Call GlobalMsg("L'admin du serveur donne " & txtExp.text & "pts d'expérience à tous!", BrightGreen)
+    Call GlobalMsg("L'admin du serveur donne " & txtExp.text & "pts d'expérience à tous.", BrightGreen)
     
     For Index = 1 To MAX_PLAYERS
         If IsPlaying(Index) = True Then
@@ -2848,11 +2848,11 @@ End Sub
 
 Private Sub Command47_Click()
 Dim value As Long
-value = CInt(val(txtJournuit.text))
+value = CInt(Val(txtJournuit.text))
 If value < 1 Then
-    Call MsgBox("Minimum 1 minute SVP!!")
+    Call MsgBox("Minimum 1 minute s'il vous plait.")
 ElseIf value > 1000000 Then
-    Call MsgBox("Maximum 1 000 000 minute SVP!!")
+    Call MsgBox("Maximum 1 000 000 minute s'il vous plait.")
 ElseIf txtJournuit.text = vbNullString Then
     tmrJournuit.Enabled = False
 Else
@@ -2864,12 +2864,12 @@ End Sub
 
 Private Sub Command48_Click()
 Dim value As Long
-value = CInt(val(txtRandom.text))
+value = CInt(Val(txtRandom.text))
 
 If value < 1 Then
-    Call MsgBox("Minimum 1 minute SVP!!")
+    Call MsgBox("Minimum 1 minute s'il vous plait.")
 ElseIf value > 1000000 Then
-    Call MsgBox("Maximum 1 000 000 minute SVP!!")
+    Call MsgBox("Maximum 1 000 000 minute s'il vous plait.")
 Else
     tempr = value
     txtRandom.text = tempr
@@ -2997,8 +2997,8 @@ For i = 1 To lvUsers.ListItems.Count - 1 Step 1
 
         If Num = 1 Then
             If Index > 0 Then
-                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été déconnecté par l'admin du serveur! Raison:(" & txtReason.text & ")", White)
-            Call AlertMsg(Index, "Tu as été déconnecté par l'admin du serveur! Raison:(" & txtReason.text & ")")
+                If IsPlaying(Index) Then Call GlobalMsg(GetPlayerName(Index) & " a été déconnecté par l'admin du serveur. Raison:(" & txtReason.text & ")", White)
+            Call AlertMsg(Index, "Tu as été déconnecté par l'admin du serveur. Raison:(" & txtReason.text & ")")
             End If
         ElseIf Num = 2 Then
             Call BanByServer(Index, txtReason.text)
@@ -3038,8 +3038,8 @@ Dim Index As Long
 For Index = 1 To MAX_PLAYERS
     If IsPlaying(Index) = True Then
         If GetPlayerAccess(Index) <= 0 Then
-            Call GlobalMsg(GetPlayerName(Index) & " a été déconnecté du serveur!", White)
-            Call AlertMsg(Index, "Vous avez été déconnecté du serveur!")
+            Call GlobalMsg(GetPlayerName(Index) & " a été déconnecté du serveur.", White)
+            Call AlertMsg(Index, "Vous avez été déconnecté du serveur.")
         End If
     End If
 Next Index
@@ -3225,7 +3225,7 @@ SaveTime = 3600
 
     If frmServer.chkChat.value = Unchecked Then
         ChatSecs = SaveTime
-        Label6.Caption = "Les logs sont désactivés!"
+        Label6.Caption = "Les logs sont désactivés."
         Exit Sub
     End If
     
@@ -3239,7 +3239,7 @@ SaveTime = 3600
     ChatSecs = ChatSecs - 1
     
     If ChatSecs <= 0 Then
-        Call TextAdd(txtText(0), "Les logs ont été enregistrés!", True)
+        Call TextAdd(txtText(0), "Les logs ont été enregistrés.", True)
         Call SaveLogs
         ChatSecs = 0
     End If

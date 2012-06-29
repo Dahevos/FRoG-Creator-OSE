@@ -135,7 +135,7 @@ On Error Resume Next
             Load frmMirage.picInv(i)
             x = Int(i / 3)
             frmMirage.picInv(i).Top = 8 + 40 * x
-            frmMirage.picInv(i).Left = 8 + (i - x * 3) * 40
+            frmMirage.picInv(i).left = 8 + (i - x * 3) * 40
             frmMirage.picInv(i).Visible = True
         Next
         
@@ -146,7 +146,7 @@ On Error Resume Next
             
             x = Int(i / 3)
             frmMirage.picspell(i).Top = 8 + 40 * x
-            frmMirage.picspell(i).Left = 8 + (i - x * 3) * 40
+            frmMirage.picspell(i).left = 8 + (i - x * 3) * 40
             frmMirage.picspell(i).Visible = True
         Next
         
@@ -217,7 +217,7 @@ On Error Resume Next
     ' :: Multi-Serveur ::
     ' :::::::::::::::::::
     If LCase$(Parse(0)) = "serverresults" Then
-        frmServerChooser.lstServers.AddItem ReadINI("SERVER" & Val(Parse(1)), "Name", App.Path & "\Config\Serveur.ini") & " - Ouvert! (" & Val(Parse(2)) & "/" & Val(Parse(3)) & ")"
+        frmServerChooser.lstServers.AddItem ReadINI("SERVER" & Val(Parse(1)), "Name", App.Path & "\Config\Serveur.ini") & " - Ouvert. (" & Val(Parse(2)) & "/" & Val(Parse(3)) & ")"
         CHECK_WAIT = False
         Exit Sub
     End If
@@ -325,9 +325,9 @@ On Error Resume Next
             frmMainMenu.PicChar.height = 960
         End If
         If frmMainMenu.PicChar.Width > 480 Then
-            frmMainMenu.PicChar.Left = 840 - frmMainMenu.PicChar.Width + 480
+            frmMainMenu.PicChar.left = 840 - frmMainMenu.PicChar.Width + 480
         Else
-            frmMainMenu.PicChar.Left = 840
+            frmMainMenu.PicChar.left = 840
         End If
         If charSelect(charSelectNum).name <> "" Then
             frmMainMenu.lblCharNom.Caption = charSelect(charSelectNum).name
@@ -1014,8 +1014,8 @@ mont:
             .Moral = Val(Parse(n + 3))
             .Up = Val(Parse(n + 4))
             .Down = Val(Parse(n + 5))
-            .Left = Val(Parse(n + 6))
-            .Right = Val(Parse(n + 7))
+            .left = Val(Parse(n + 6))
+            .right = Val(Parse(n + 7))
             .Music = Parse(n + 8)
             .BootMap = Val(Parse(n + 9))
             .BootX = Val(Parse(n + 10))
@@ -1463,7 +1463,7 @@ mont:
     End If
     
     If (LCase$(Parse(0)) = "finquete") Then
-        Call MsgBox("Bravo! vous venez de finir la quete : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourner voir celui qui vous la donnez pour avoir vos récompenses")
+        Call MsgBox("Bravo. vous venez de finir la quete : " & Trim$(quete(Player(MyIndex).QueteEnCour).nom) & " retourner voir celui qui vous la donnez pour avoir vos récompenses")
         frmMirage.quetetimersec.Enabled = False
         frmMirage.tmpsquete.Visible = False
         Exit Sub
@@ -1594,7 +1594,7 @@ mont:
         Trade(1).Selected = YES
                     
         frmTrade.shopType.Top = frmTrade.label(1).Top
-        frmTrade.shopType.Left = frmTrade.label(1).Left
+        frmTrade.shopType.left = frmTrade.label(1).left
         frmTrade.shopType.height = frmTrade.label(1).height
         frmTrade.shopType.Width = frmTrade.label(1).Width
         Trade(1).SelectedItem = 1
@@ -1627,8 +1627,8 @@ mont:
     ' :: Weather packet ::
     ' ::::::::::::::::::::
     If (LCase$(Parse(0)) = "weather") Then
-        If Val(Parse(1)) = WEATHER_RAINING And GameWeather <> WEATHER_RAINING Then Call AddText("La pluie commence à tomber!", BrightGreen)
-        If Val(Parse(1)) = WEATHER_THUNDER And GameWeather <> WEATHER_THUNDER Then Call AddText("Le tonnerre commence à gronder!", BrightGreen)
+        If Val(Parse(1)) = WEATHER_RAINING And GameWeather <> WEATHER_RAINING Then Call AddText("La pluie commence à tomber.", BrightGreen)
+        If Val(Parse(1)) = WEATHER_THUNDER And GameWeather <> WEATHER_THUNDER Then Call AddText("Le tonnerre commence à gronder.", BrightGreen)
         If Val(Parse(1)) = WEATHER_SNOWING And GameWeather <> WEATHER_SNOWING Then Call AddText("La neige commence à tomber", BrightGreen)
                 
         If Val(Parse(1)) = WEATHER_NONE Then

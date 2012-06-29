@@ -1191,7 +1191,7 @@ If lstTypeSpell.ListIndex >= 0 Then
 If lstTypeSpell.ItemData(lstTypeSpell.ListIndex) > 0 Then If Not InItemData(lstSpells, lstTypeSpell.ItemData(lstTypeSpell.ListIndex)) Then lstSpells.AddItem lstSpells.ListCount + 1 & ". " & Spell(lstTypeSpell.ItemData(lstTypeSpell.ListIndex)).name: lstSpells.ItemData(lstSpells.ListCount - 1) = lstTypeSpell.ItemData(lstTypeSpell.ListIndex)
 End If
 Else
-MsgBox "Il est impossible d'ajouter plus de sorts !" & vbCrLf & "Maximum : " & MAX_NPC_SPELLS
+MsgBox "Il est impossible d'ajouter plus de sorts ." & vbCrLf & "Maximum : " & MAX_NPC_SPELLS
 End If
 End Sub
 
@@ -1227,7 +1227,7 @@ Private Sub Form_Load()
     'picSprite.Left = Picture1.Left + 30
     'Picture1.Height = (48 * Screen.TwipsPerPixelY) + 44
     'Picture1.Width = (32 * Screen.TwipsPerPixelY) + 44
-    scrlSpriteY.Max = picSprite.height - Picture1.height
+    scrlSpriteY.Max = picSprite.Height - Picture1.Height
     scrlSpriteX.Max = picSprite.Width - Picture1.Width
     Call AffSprites
 End Sub
@@ -1354,7 +1354,7 @@ End Sub
 Private Sub cmdOk_Click()
 Dim tmp As Integer
     If StartHP.value <= 0 And Not CBool(invi.value) Then
-        tmp = MsgBox("ATTENTION : Le PNJ n'a pas de points de vie!" & vbCrLf & "Il sera donc considérer comme mort, et ne pourrat donc pas parler. Voulez-vous continuer?", vbYesNo, "ATTENTION")
+        tmp = MsgBox("ATTENTION : Le PNJ n'a pas de points de vie." & vbCrLf & "Il sera donc considérer comme mort, et ne pourrat donc pas parler. Voulez-vous continuer?", vbYesNo, "ATTENTION")
         If tmp = vbNo Then Exit Sub
     End If
     Call NpcEditorOk
@@ -1379,11 +1379,11 @@ End Sub
 Private Sub AffSprites()
 On Error Resume Next
 Call PrepareSprite(scrlSprite.value)
-picSprite.height = (DDSD_Character(scrlSprite.value).lHeight) / 4
+picSprite.Height = (DDSD_Character(scrlSprite.value).lHeight) / 4
 picSprite.Width = (DDSD_Character(scrlSprite.value).lWidth) / 4
-scrlSpriteY.Max = (picSprite.height) - Picture1.height
+scrlSpriteY.Max = (picSprite.Height) - Picture1.Height
 scrlSpriteX.Max = (picSprite.Width) - Picture1.Width
-If picSprite.height > 96 Then
+If picSprite.Height > 96 Then
 scrlSpriteY.Visible = True
 Else
 scrlSpriteY.Visible = False

@@ -944,10 +944,13 @@ Attribute VB_Exposed = False
 Dim SInv As Long
 Dim SCof As Long
 Dim DInv As Boolean
-Dim Invdeplace(24) As Boolean
-Dim BankDeplace(30) As Boolean
-
 Dim DCof As Boolean
+Dim deplacement As Boolean
+
+Private Sub Command1_Click()
+Call DansInv(SInv, SCof)
+End Sub
+
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
 dr = True
 drx = x
@@ -964,15 +967,15 @@ Public Sub jeter_Click()
 Dim Packet As String
 Dim ival As Long
 
-If SCof = 0 Then Call MsgBox("Veuillez séléctionner un slot dans le coffre!!", vbCritical, "Erreur"): Exit Sub
+If SCof = 0 Then Call MsgBox("Veuillez séléctionner un slot dans le coffre.", vbCritical, "Erreur"): Exit Sub
 
-If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Aucun objet dans le slot" & SCof & " du coffre!!!", vbCritical, "Erreur"): Exit Sub
+If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Aucun objet dans le slot" & SCof & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 ival = CoffreTmp(SCof).Valeur
 
 If ival <= 0 Then ival = 1
 
-cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(CoffreTmp(SCof).Numeros).name) & " du coffre?? il sera supprimé définitivement!!", vbYesNo, "Demande")
+cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(CoffreTmp(SCof).Numeros).name) & " du coffre?? il sera supprimé définitivement.", vbYesNo, "Demande")
 
 If cont = vbYes Then Packet = "MODIFCOFFRE" & SEP_CHAR & SCof & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & END_CHAR: Call SendData(Packet)
 
@@ -985,15 +988,15 @@ Private Sub jinv_Click()
 Dim Packet As String
 Dim ival As Long
 
-If SInv = 0 Then Call MsgBox("Veuillez séléctionner un slot dans l'inventaire!!", vbCritical, "Erreur"): Exit Sub
+If SInv = 0 Then Call MsgBox("Veuillez séléctionner un slot dans l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
-If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Aucun objet dans le slot" & SInv & " de l'inventaire!!!", vbCritical, "Erreur"): Exit Sub
+If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Aucun objet dans le slot" & SInv & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 ival = GetPlayerInvItemValue(MyIndex, SInv)
 
 If ival <= 0 Then ival = 1
 
-cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(GetPlayerInvItemNum(MyIndex, SInv)).name) & " de l'inventaire?? il sera supprimer définitivement!!", vbYesNo, "Demande")
+cont = MsgBox("Voulez vous vraiment jeter " & ival & Trim$(Item(GetPlayerInvItemNum(MyIndex, SInv)).name) & " de l'inventaire?? il sera supprimer définitivement.", vbYesNo, "Demande")
 
 If cont = vbYes Then Packet = "MODIFINV" & SEP_CHAR & SInv & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & 0 & SEP_CHAR & SCof & END_CHAR: Call SendData(Packet)
 
@@ -1025,6 +1028,7 @@ Call SendData(Packet)
 DInv = False
 DCof = False
 Call ActPic
+deplacement = False
 End Sub
 
 Private Sub DansInv(ByVal SlotI As Long, ByVal SlotC As Long)
@@ -1051,15 +1055,15 @@ Cdur = CoffreTmp(SlotC).Durabiliter
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Cnum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotC & " du coffre!!!", vbCritical, "Erreur"): Exit Sub
+If Cnum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 If Inum <> 0 Then
     If Item(Inum).Type <> ITEM_TYPE_CURRENCY Or Item(Inum).Empilable = 0 Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur")
         Exit Sub
     Else
         If Cnum <> Inum Then
-            Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire!!", vbCritical, "Erreur")
+            Call MsgBox("Il y a déja un objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur")
             Exit Sub
         End If
     End If
@@ -1069,9 +1073,9 @@ If Item(Cnum).Type = ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable <> 0 Then
 
     Nbi = InputBox("Combiens d'objet(s) voulez-vous mettre dans le coffre ?", "Demande")
 
-    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre SVP!!", vbCritical, "Erreur"): Exit Sub
+    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre s'il vous plait.", vbCritical, "Erreur"): Exit Sub
     
-    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objets !", vbCritical, "Erreur"): Exit Sub
+    If Val(Nbi) > Cval Then Call MsgBox("Valeur supérieur au nombre d'objets .", vbCritical, "Erreur"): Exit Sub
     
     If Val(Nbi) <= 0 Then Exit Sub
     
@@ -1132,6 +1136,7 @@ Packet = "COFFREITEM" & END_CHAR
 Call SendData(Packet)
 
 Call ActPic
+deplacement = False
 End Sub
 
 Public Sub DansCoffre(ByVal SlotC As Long, ByVal SlotI As Long)
@@ -1163,14 +1168,14 @@ If SlotI = GetPlayerWeaponSlot(MyIndex) Then Call SetPlayerWeaponSlot(MyIndex, 0
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Inum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotI & " de l'inventaire!!!", vbCritical, "Erreur"): Exit Sub
+If Inum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 If Cnum <> 0 Then
     If Item(Cnum).Type <> ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable = 0 Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur")
         Exit Sub
     ElseIf Cnum <> Inum Then
-        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre!!", vbCritical, "Erreur")
+        Call MsgBox("Il y a déja un objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur")
         Exit Sub
     End If
 End If
@@ -1179,9 +1184,9 @@ If Item(Inum).Type = ITEM_TYPE_CURRENCY Or Item(Inum).Empilable <> 0 Then
 
     Nbi = InputBox("Combiens d'objet(s) voulez-vous métre dans le coffre?", "Demande")
 
-    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre SVP!!", vbCritical, "Erreur"): Exit Sub
+    If IsNumeric(Nbi) = False Then Call MsgBox("Entrez un nombre s'il vous plait.", vbCritical, "Erreur"): Exit Sub
     
-    If Val(Nbi) > ival Then Call MsgBox("Valeur supérieur au nombre d'objet!!", vbCritical, "Erreur"): Exit Sub
+    If Val(Nbi) > ival Then Call MsgBox("Valeur supérieur au nombre d'objet.", vbCritical, "Erreur"): Exit Sub
     
     If Val(Nbi) <= 0 Then Exit Sub
     
@@ -1241,13 +1246,13 @@ Packet = "COFFREITEM" & END_CHAR
 Call SendData(Packet)
 
 Call ActPic
-
+deplacement = False
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
-If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
+If dr Then DoEvents: If dr Then Call Me.Move(Me.left + (x - drx), Me.Top + (y - dry))
+If Me.left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.left = Screen.Width \ 2
 picture3.Visible = False
 End Sub
 
@@ -1265,7 +1270,7 @@ Invdeplace(Index) = True
 
 SInv = Index
 Shape3.Visible = True
-Shape3.Left = Picture1(SInv).Left - 1
+Shape3.left = Picture1(SInv).left - 1
 Shape3.Top = Picture1(SInv).Top - 1
 DCof = False
 DInv = False
@@ -1277,11 +1282,12 @@ End Sub
 
 Private Sub Picture1_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
 If DInv = True Then DInv = False: Exit Sub
+If deplacement = False Then
 DCof = False
 SInv = Index
+depacement = True
 Call DansInv(SInv, SCof)
-BankDeplace(SInv) = True
-
+End If
 End Sub
 
 Private Sub Picture1_DragOver(Index As Integer, Source As Control, x As Single, y As Single, State As Integer)
@@ -1292,7 +1298,7 @@ If DInv = False And DCof = False Then
     DCof = False
 End If
 Shape3.Visible = True
-Shape3.Left = Picture1(Index).Left - 1
+Shape3.left = Picture1(Index).left - 1
 Shape3.Top = Picture1(Index).Top - 1
 End Sub
 
@@ -1311,7 +1317,7 @@ If ival = 0 Then ival = 1
 
 If Inum > 0 Then
     picture3.Top = Picture1(Index).Top + 32
-    picture3.Left = Picture1(Index).Left - 40
+    picture3.left = Picture1(Index).left - 40
     nom.Caption = "Nom : " & Trim$(Item(Inum).name)
     nb.Caption = "  Nombre : " & ival
     dur.Caption = "  Durabilité : " & Idur
@@ -1321,29 +1327,25 @@ End If
 End Sub
 
 Private Sub Picture2_Click(Index As Integer)
-
-If BankDeplace(Index) = False Then
-BankDeplace(Index) = True
 SCof = Index
 Shape1.Visible = True
-Shape1.Left = Picture2(SCof).Left - 1
+Shape1.left = Picture2(SCof).left - 1
 Shape1.Top = Picture2(SCof).Top - 1
 DCof = False
 DInv = False
-
-End If
 
 End Sub
 
 Private Sub Picture2_DragDrop(Index As Integer, Source As Control, x As Single, y As Single)
 If DCof = True Then DCof = False: Exit Sub
+If deplacement = False Then
 DInv = False
 SCof = Index
-
+deplacement = True
 Call DansCoffre(SCof, SInv)
-Invdeplace(SInv) = False
 SInv = 0
 SCof = 0
+End If
 End Sub
 
 Private Sub Picture2_DragOver(Index As Integer, Source As Control, x As Single, y As Single, State As Integer)
@@ -1354,7 +1356,7 @@ If DCof = False And DInv = False Then
     DInv = False
 End If
 Shape1.Visible = True
-Shape1.Left = Picture2(Index).Left - 1
+Shape1.left = Picture2(Index).left - 1
 Shape1.Top = Picture2(Index).Top - 1
 End Sub
 
@@ -1373,7 +1375,7 @@ If Cval = 0 Then Cval = 1
 
 If Cnum > 0 Then
     picture3.Top = Picture2(Index).Top + 32
-    picture3.Left = Picture2(Index).Left - 89
+    picture3.left = Picture2(Index).left - 89
     nom.Caption = "Nom : " & Trim$(Item(Cnum).name)
     nb.Caption = "  Nombre : " & Cval
     dur.Caption = "  Durabilité : " & Cdur
@@ -1393,4 +1395,3 @@ For i = 1 To 30
 Next i
 
 End Sub
-

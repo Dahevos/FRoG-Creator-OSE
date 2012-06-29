@@ -79,9 +79,9 @@ Private Const WM_CLOSE = &H10
         GAME_IP = ReadINI("SERVER" & lstServers.ListIndex, "IP", App.Path & "\Config\Serveur.ini")
         GAME_PORT = Val(ReadINI("SERVER" & lstServers.ListIndex, "PORT", App.Path & "\Config\Serveur.ini"))
         Me.Caption = "Liste de Serveur - Vérification de l'état du Serveurs..."
-        If Not CheckServerStatus Then Me.Caption = "Liste de Serveur - Serveur Hors-Ligne!": cmdOk.Enabled = True: Exit Sub
+        If Not CheckServerStatus Then Me.Caption = "Liste de Serveur - Serveur Hors-Ligne.": cmdOk.Enabled = True: Exit Sub
         cmdOk.Enabled = True
-        Me.Caption = "Liste de Serveur - Connecté au Serveur!"
+        Me.Caption = "Liste de Serveur - Connecté au Serveur."
         frmMirage.Socket.Close
         frmMirage.Socket.RemoteHost = GAME_IP
         frmMirage.Socket.RemotePort = GAME_PORT
@@ -135,7 +135,7 @@ End Sub
                     Call SendData("serverresults" & SEP_CHAR & i & END_CHAR)
                     n = n + 1
                     Else
-                    lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé!"
+                    lstServers.AddItem ReadINI("SERVER" & i, "Name", FileName) & " - Fermé."
                     End If
                     i = i + 1
                 Else
@@ -188,8 +188,8 @@ End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
-If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.Left = Screen.Width \ 2
+If dr Then DoEvents: If dr Then Call Me.Move(Me.left + (x - drx), Me.Top + (y - dry))
+If Me.left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.left = Screen.Width \ 2
 End Sub
 
 Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)

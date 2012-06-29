@@ -186,10 +186,10 @@ Private Sub CmdCrafter_Click()
         If Metier(RecetteSelect).data(scrlRecettes.Value, 0) > 0 Then
             Call SendData("crafter" & SEP_CHAR & Metier(RecetteSelect).data(scrlRecettes.Value, 0) & END_CHAR)
         Else
-            MsgBox ("Pas de recettes !")
+            MsgBox ("Pas de recettes .")
         End If
     Else
-        MsgBox ("Ce n'est pas votre métier !")
+        MsgBox ("Ce n'est pas votre métier .")
     End If
 End Sub
 
@@ -204,7 +204,7 @@ Dim i As Byte
         If FileExiste(Rep_Theme & "\Jeu\craft" & Ending) Then Me.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\craft" & Ending)
         
     Next i
-    scrlRecettes.max = MAX_DATA_METIER
+    scrlRecettes.Max = MAX_DATA_METIER
 End Sub
 
 Private Sub Form_MouseDown(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -215,8 +215,8 @@ End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
 On Error Resume Next
-If dr Then DoEvents: If dr Then Call Me.Move(Me.Left + (x - drx), Me.Top + (y - dry))
-If Me.Left > Screen.Width Or Me.Top > Screen.Height Then Me.Top = Screen.Height \ 2: Me.Left = Screen.Width \ 2
+If dr Then DoEvents: If dr Then Call Me.Move(Me.left + (x - drx), Me.Top + (y - dry))
+If Me.left > Screen.Width Or Me.Top > Screen.height Then Me.Top = Screen.height \ 2: Me.left = Screen.Width \ 2
 End Sub
 
 Private Sub Form_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmEmoticonEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditer un Emoticone"
@@ -220,7 +220,7 @@ Dim FA As Byte
 Private Sub cmdOk_Click()
 Dim i As Long
     For i = 0 To MAX_EMOTICONS
-        If Trim$(Emoticons(i).Command) = Trim$(txtCommand.Text) And i <> EditorIndex - 1 And Trim$(txtCommand.Text) <> "/" Then MsgBox "Cette commande est déjà utilisée!": Exit Sub
+        If Trim$(Emoticons(i).Command) = Trim$(txtCommand.Text) And i <> EditorIndex - 1 And Trim$(txtCommand.Text) <> "/" Then MsgBox "Cette commande est déjà utilisée.": Exit Sub
     Next i
     Call EmoticonEditorOk
 End Sub

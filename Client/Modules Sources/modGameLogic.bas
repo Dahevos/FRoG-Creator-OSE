@@ -499,7 +499,7 @@ Dim i As Integer, x As Integer
     
     If notebook Then
     frmMirage.Top = frmMainMenu.Top
-    frmMirage.Left = frmMainMenu.Left
+    frmMirage.left = frmMainMenu.left
     End If
     
     frmMirage.Visible = True
@@ -569,7 +569,7 @@ Dim d As Byte
                         Player(MyIndex).AttackTimer = GetTickCount
                         Player(MyIndex).CastedSpell = YES
                     Else
-                        Call AddText("Vous ne pouvez lancer un sort en marchant!", BrightRed)
+                        Call AddText("Vous ne pouvez lancer un sort en marchant.", BrightRed)
                     End If
                 End If
             Else
@@ -631,8 +631,8 @@ Dim MinDrawMapY As Long 'Calcul du minimum a dessiner en Y
     'Initialisation du RECT pour le backbuffer
     rec_back.Top = 0
     rec_back.Bottom = (MAX_MAPY + 1) * PIC_Y
-    rec_back.Left = 0
-    rec_back.Right = (MAX_MAPX + 1) * PIC_X
+    rec_back.left = 0
+    rec_back.right = (MAX_MAPX + 1) * PIC_X
     
     'Initialisation des variables pour les limites de la "vue" du joueur
     screen_xg = (frmMirage.picScreen.Width \ 64) - 1
@@ -1026,9 +1026,9 @@ rest:
         ' Get the rect to blit to
         Call dX.GetWindowRect(frmMirage.picScreen.hwnd, rec_pos)
         rec_pos.Bottom = rec_pos.Top - sx + ((MAX_MAPY + 1) * PIC_Y)
-        rec_pos.Right = rec_pos.Left - sx + ((MAX_MAPX + 1) * PIC_X)
+        rec_pos.right = rec_pos.left - sx + ((MAX_MAPX + 1) * PIC_X)
         rec_pos.Top = rec_pos.Bottom - ((MAX_MAPY + 1) * PIC_Y)
-        rec_pos.Left = rec_pos.Right - ((MAX_MAPX + 1) * PIC_X)
+        rec_pos.left = rec_pos.right - ((MAX_MAPX + 1) * PIC_X)
 
         ' Blit the backbuffer
         Call DD_PrimarySurf.Blt(rec_pos, DD_BackBuffer, rec_back, DDBLT_WAIT)
@@ -1088,10 +1088,10 @@ rest:
         Call GameDestroy
         
         ' Report disconnection if server disconnects
-        If IsConnected = False Then Call MsgBox("Merci d'avoir joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
+        If IsConnected = False Then Call MsgBox("Merci d'avoir joué à " & GAME_NAME & ".", vbOKOnly, GAME_NAME)
     Else
         deco = False
-        Call MsgBox("Merci d'avoirs joué à " & GAME_NAME & "!", vbOKOnly, GAME_NAME)
+        Call MsgBox("Merci d'avoir joué à " & GAME_NAME & ".", vbOKOnly, GAME_NAME)
     End If
 Exit Sub
 er:
@@ -1160,8 +1160,8 @@ Dim ty As Long
         
     rec.Top = (Ground \ TilesInSheets) * PIC_Y
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = (Ground - (Ground \ TilesInSheets) * TilesInSheets) * PIC_X
-    rec.Right = rec.Left + PIC_X
+    rec.left = (Ground - (Ground \ TilesInSheets) * TilesInSheets) * PIC_X
+    rec.right = rec.left + PIC_X
     'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(GroundTileSet), rec, DDBLT_WAIT)
     Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(GroundTileSet), rec, DDBLTFAST_WAIT)
    
@@ -1171,8 +1171,8 @@ Dim ty As Long
             If Not TileFile(MaskTileSet) Then Exit Sub
             rec.Top = (Anim1 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Anim1 - (Anim1 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Anim1 - (Anim1 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(MaskTileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(MaskTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1182,8 +1182,8 @@ Dim ty As Long
             If Not TileFile(AnimTileSet) Then Exit Sub
             rec.Top = (Anim2 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Anim2 - (Anim2 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Anim2 - (Anim2 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(AnimTileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(AnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1195,8 +1195,8 @@ Dim ty As Long
             If Not TileFile(Mask2TileSet) Then Exit Sub
             rec.Top = (Mask2 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Mask2 - (Mask2 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Mask2 - (Mask2 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(Mask2TileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(Mask2TileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1206,8 +1206,8 @@ Dim ty As Long
             If Not TileFile(M2AnimTileSet) Then Exit Sub
             rec.Top = (M2Anim \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (M2Anim - (M2Anim \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (M2Anim - (M2Anim \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(M2AnimTileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(M2AnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1219,8 +1219,8 @@ Dim ty As Long
             If Not TileFile(Mask3TileSet) Then Exit Sub
             rec.Top = (Mask3 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Mask3 - (Mask3 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Mask3 - (Mask3 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(Mask3TileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(Mask3TileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1230,8 +1230,8 @@ Dim ty As Long
             If Not TileFile(M3AnimTileSet) Then Exit Sub
             rec.Top = (M3Anim \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (M3Anim - (M3Anim \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (M3Anim - (M3Anim \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf(M3AnimTileSet), rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(M3AnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1240,15 +1240,15 @@ Dim ty As Long
     With rec_pos
         .Top = (y - NewPlayerY) * PIC_Y + sy - NewYOffset
         .Bottom = .Top + PIC_Y
-        .Left = (x - NewPlayerX) * PIC_X + sx - NewXOffset
-        .Right = .Left + PIC_X
+        .left = (x - NewPlayerX) * PIC_X + sx - NewXOffset
+        .right = .left + PIC_X
     End With
     'Affichage du panorama inférieur si il y en à un
     If Trim$(Map(GetPlayerMap(MyIndex)).PanoInf) <> vbNullString Then
         rec.Top = y * PIC_Y
         If rec.Top + PIC_Y > DDSD_PanoInf.lHeight Then rec.Bottom = DDSD_PanoInf.lHeight: rec_pos.Bottom = rec_pos.Bottom - ((rec.Top + PIC_Y) - DDSD_PanoInf.lHeight) Else rec.Bottom = rec.Top + PIC_Y
-        rec.Left = x * PIC_X
-        If rec.Left + PIC_Y > DDSD_PanoInf.lWidth Then rec.Right = DDSD_PanoInf.lWidth: rec_pos.Right = rec_pos.Right - ((rec.Left + PIC_X) - DDSD_PanoInf.lWidth) Else rec.Right = rec.Left + PIC_X
+        rec.left = x * PIC_X
+        If rec.left + PIC_Y > DDSD_PanoInf.lWidth Then rec.right = DDSD_PanoInf.lWidth: rec_pos.right = rec_pos.right - ((rec.left + PIC_X) - DDSD_PanoInf.lWidth) Else rec.right = rec.left + PIC_X
         If Map(GetPlayerMap(MyIndex)).TranInf = 1 And TypeName(DD_PanoInfSurf) <> "Nothing" Then Call DD_BackBuffer.Blt(rec_pos, DD_PanoInfSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC) Else If TypeName(DD_PanoInfSurf) <> "Nothing" Then Call DD_BackBuffer.Blt(rec_pos, DD_PanoInfSurf, rec, DDBLT_WAIT)
     End If
 End Sub
@@ -1264,8 +1264,8 @@ Sub BltItem(ByVal ItemNum As Long)
     
     rec.Top = (Item(MapItem(ItemNum).num).Pic \ 6) * PIC_Y
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = (Item(MapItem(ItemNum).num).Pic - (Item(MapItem(ItemNum).num).Pic \ 6) * 6) * PIC_X
-    rec.Right = rec.Left + PIC_X
+    rec.left = (Item(MapItem(ItemNum).num).Pic - (Item(MapItem(ItemNum).num).Pic \ 6) * 6) * PIC_X
+    rec.right = rec.left + PIC_X
     
     'Call DD_BackBuffer.Blt(rec_pos, DD_ItemSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
     Call DD_BackBuffer.BltFast((MapItem(ItemNum).x - NewPlayerX) * PIC_X + sx - NewXOffset, (MapItem(ItemNum).y - NewPlayerY) * PIC_Y + sx - NewYOffset, DD_ItemSurf, rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
@@ -1276,16 +1276,16 @@ Sub BltFog(ByVal MinX As Long, ByVal MaxX As Long, ByVal MinY As Long, ByVal Max
     With rec_pos
         .Top = 0
         .Bottom = (MaxY - MinY + 1) * PIC_Y
-        .Left = 0
-        .Right = .Left + (MaxX - MinX + 1) * PIC_X
+        .left = 0
+        .right = .left + (MaxX - MinX + 1) * PIC_X
     End With
     
     'Initialisation du RECT destination
     With rec
         .Top = -PIC_Y + (NewPlayerY * 32) + NewYOffset
         .Bottom = .Top + rec_pos.Bottom
-        .Left = -PIC_X + (NewPlayerX * 32) + NewXOffset
-        .Right = .Left + (MaxX - MinX + 1) * PIC_X
+        .left = -PIC_X + (NewPlayerX * 32) + NewXOffset
+        .right = .left + (MaxX - MinX + 1) * PIC_X
     End With
     
     'Dessin du brouillard
@@ -1341,8 +1341,8 @@ Dim ty As Long
             If Not TileFile(FringeTileSet) Then Exit Sub
             rec.Top = (Fringe \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Fringe - (Fringe \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Fringe - (Fringe \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(FringeTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1351,8 +1351,8 @@ Dim ty As Long
             If Not TileFile(FAnimTileSet) Then Exit Sub
             rec.Top = (FAnim \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (FAnim - (FAnim \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (FAnim - (FAnim \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(FAnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1364,8 +1364,8 @@ Dim ty As Long
             If Not TileFile(Fringe2TileSet) Then Exit Sub
             rec.Top = (Fringe2 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Fringe2 - (Fringe2 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Fringe2 - (Fringe2 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(Fringe2TileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1374,8 +1374,8 @@ Dim ty As Long
             If Not TileFile(F2AnimTileSet) Then Exit Sub
             rec.Top = (F2Anim \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (F2Anim - (F2Anim \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (F2Anim - (F2Anim \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(F2AnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1387,8 +1387,8 @@ Dim ty As Long
             If Not TileFile(Fringe3TileSet) Then Exit Sub
             rec.Top = (Fringe3 \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (Fringe3 - (Fringe3 \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (Fringe3 - (Fringe3 \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(Fringe3TileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1397,8 +1397,8 @@ Dim ty As Long
             If Not TileFile(F3AnimTileSet) Then Exit Sub
             rec.Top = (F3Anim \ TilesInSheets) * PIC_Y
             rec.Bottom = rec.Top + PIC_Y
-            rec.Left = (F3Anim - (F3Anim \ TilesInSheets) * TilesInSheets) * PIC_X
-            rec.Right = rec.Left + PIC_X
+            rec.left = (F3Anim - (F3Anim \ TilesInSheets) * TilesInSheets) * PIC_X
+            rec.right = rec.left + PIC_X
             'Call DD_BackBuffer.Blt(rec_pos, DD_TileSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
             Call DD_BackBuffer.BltFast(tx, ty, DD_TileSurf(F3AnimTileSet), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1407,8 +1407,8 @@ Dim ty As Long
     If Trim$(Map(GetPlayerMap(MyIndex)).PanoSup) <> vbNullString Then
         rec.Top = y * PIC_Y
         If rec.Top + PIC_Y > DDSD_PanoSup.lHeight Then rec.Bottom = DDSD_PanoSup.lHeight: rec_pos.Bottom = rec_pos.Bottom - ((rec.Top + PIC_Y) - DDSD_PanoSup.lHeight) Else rec.Bottom = rec.Top + PIC_Y
-        rec.Left = x * PIC_X
-        If rec.Left + PIC_Y > DDSD_PanoSup.lWidth Then rec.Right = DDSD_PanoSup.lWidth: rec_pos.Right = rec_pos.Right - ((rec.Left + PIC_X) - DDSD_PanoSup.lWidth) Else rec.Right = rec.Left + PIC_X
+        rec.left = x * PIC_X
+        If rec.left + PIC_Y > DDSD_PanoSup.lWidth Then rec.right = DDSD_PanoSup.lWidth: rec_pos.right = rec_pos.right - ((rec.left + PIC_X) - DDSD_PanoSup.lWidth) Else rec.right = rec.left + PIC_X
         If Map(GetPlayerMap(MyIndex)).TranSup = 1 And TypeName(DD_PanoSupSurf) <> "Nothing" Then Call DD_BackBuffer.BltFast((x - NewPlayerX) * PIC_X + sx - NewXOffset, (y - NewPlayerY) * PIC_Y + sx - NewYOffset, DD_PanoSupSurf, rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY) Else If TypeName(DD_PanoSupSurf) <> "Nothing" Then Call DD_BackBuffer.BltFast((x - NewPlayerX) * PIC_X + sx - NewXOffset, (y - NewPlayerY) * PIC_Y + sx - NewYOffset, DD_PanoSupSurf, rec, DDBLTFAST_WAIT)
     End If
 End Sub
@@ -1444,13 +1444,13 @@ If Map(Player(MyIndex).Map).petView = 1 Then Exit Sub
     
     rec.Top = Player(Index).pet.Dir * ty
     rec.Bottom = rec.Top + ty
-    rec.Left = Anim * tx + tx
-    rec.Right = rec.Left + tx
+    rec.left = Anim * tx + tx
+    rec.right = rec.left + tx
     
     x = Player(Index).pet.x * PIC_X + sx + Player(Index).pet.XOffset - ((tx / 2) - 16)
     y = Player(Index).pet.y * PIC_Y + sx + Player(Index).pet.YOffset - (ty / 2)
 
-    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
     
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PetsSurf(num), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
@@ -1467,8 +1467,8 @@ Dim x As Long, y As Long
     
     rec.Top = 5 * PIC_Y
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = 0 * PIC_X
-    rec.Right = rec.Left + PIC_X
+    rec.left = 0 * PIC_X
+    rec.right = rec.left + PIC_X
     
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_OutilSurf, rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
@@ -1522,14 +1522,14 @@ If Not IsPlaying(Index) Then Exit Sub
     
     rec.Top = GetPlayerDir(Index) * ty + (ty / 2)
     rec.Bottom = rec.Top + (ty / 2)
-    rec.Left = Anim * tx + tx
-    rec.Right = rec.Left + tx
+    rec.left = Anim * tx + tx
+    rec.right = rec.left + tx
 
     x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
     y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
     
     
-    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpriteSurf(GetPlayerSprite(Index)), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
     
@@ -1541,14 +1541,14 @@ If Not IsPlaying(Index) Then Exit Sub
             
             rec.Top = GetPlayerDir(Index) * ty + (ty / 2)
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
         
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
             
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1561,14 +1561,14 @@ If Not IsPlaying(Index) Then Exit Sub
             
             rec.Top = GetPlayerDir(Index) * ty + (ty / 2)
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
         
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
             
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1581,14 +1581,14 @@ If Not IsPlaying(Index) Then Exit Sub
             
             rec.Top = GetPlayerDir(Index) * ty + (ty / 2)
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
         
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
             
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1601,14 +1601,14 @@ If Not IsPlaying(Index) Then Exit Sub
             
             rec.Top = GetPlayerDir(Index) * ty + (ty / 2)
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
         
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset
             
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1662,13 +1662,13 @@ Dim AttackSpeed As Long
     
     rec.Top = GetPlayerDir(Index) * ty
     rec.Bottom = rec.Top + (ty / 2)
-    rec.Left = Anim * tx + tx
-    rec.Right = rec.Left + tx
+    rec.left = Anim * tx + tx
+    rec.right = rec.left + tx
     
     x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16) '(tx / 4) - ((tx / 4) / 2)
     y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset - (ty / 2)
     
-    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
     
     
@@ -1681,13 +1681,13 @@ Dim AttackSpeed As Long
             
             rec.Top = GetPlayerDir(Index) * ty
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
             
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset - (ty / 2)
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerArmorSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1700,13 +1700,13 @@ Dim AttackSpeed As Long
             
             rec.Top = GetPlayerDir(Index) * ty
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
             
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset - (ty / 2)
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerHelmetSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1719,13 +1719,13 @@ Dim AttackSpeed As Long
             
             rec.Top = GetPlayerDir(Index) * ty
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
             
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset - (ty / 2)
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerWeaponSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1738,13 +1738,13 @@ Dim AttackSpeed As Long
             
             rec.Top = GetPlayerDir(Index) * ty
             rec.Bottom = rec.Top + (ty / 2)
-            rec.Left = Anim * tx + tx
-            rec.Right = rec.Left + tx
+            rec.left = Anim * tx + tx
+            rec.right = rec.left + tx
             
             x = GetPlayerX(Index) * PIC_X + sx + Player(Index).XOffset - ((tx / 2) - 16)
             y = GetPlayerY(Index) * PIC_Y + sx + Player(Index).YOffset - (ty / 2)
             Call PreparePaperDoll(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic)
-            If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+            If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
             If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = Player(Index).YOffset + sy
             Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_PaperDollSurf(Item(GetPlayerInvItemNum(Index, GetPlayerShieldSlot(Index))).paperdollPic), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
         End If
@@ -1817,13 +1817,13 @@ Dim tx As Long, ty As Long
     
     rec.Top = MapNpc(MapNpcNum).Dir * ty + (ty / 2)
     rec.Bottom = rec.Top + (ty / 2)
-    rec.Left = Anim * tx + tx
-    rec.Right = rec.Left + tx
+    rec.left = Anim * tx + tx
+    rec.right = rec.left + tx
 
     x = MapNpc(MapNpcNum).x * PIC_X + sx + MapNpc(MapNpcNum).XOffset - ((tx / 2) - 16) '(tx / 4) - ((tx / 4) / 2)
     y = MapNpc(MapNpcNum).y * PIC_Y + sx + MapNpc(MapNpcNum).YOffset
     
-    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = MapNpc(MapNpcNum).YOffset + sy
     
     'Call DD_BackBuffer.Blt(rec_pos, DD_SpriteSurf, rec, DDBLT_WAIT Or DDBLT_KEYSRC)
@@ -1876,8 +1876,8 @@ Dim tx As Long, ty As Long
     
     rec.Top = MapNpc(MapNpcNum).Dir * ty
     rec.Bottom = rec.Top + (ty / 2)
-    rec.Left = Anim * tx + tx
-    rec.Right = rec.Left + tx
+    rec.left = Anim * tx + tx
+    rec.right = rec.left + tx
     
     If tx > 32 Then
         x = MapNpc(MapNpcNum).x * PIC_X + sx + MapNpc(MapNpcNum).XOffset - ((tx / 2) - 16) '(tx / 4) - ((tx / 4) / 2)
@@ -1886,7 +1886,7 @@ Dim tx As Long, ty As Long
     End If
     y = MapNpc(MapNpcNum).y * PIC_Y + sx + MapNpc(MapNpcNum).YOffset - (ty / 2)
     
-    If x < 0 Then rec.Left = rec.Left - x: rec.Right = rec.Left + (tx + x): x = 0
+    If x < 0 Then rec.left = rec.left - x: rec.right = rec.left + (tx + x): x = 0
     If y < 0 Then rec.Top = rec.Top + (ty / 2): rec.Bottom = rec.Top: y = MapNpc(MapNpcNum).YOffset + sy
     
     Call DD_BackBuffer.BltFast(x - NewPlayerPOffsetX, y - NewPlayerPOffsetY, DD_SpriteSurf(Npc(MapNpc(MapNpcNum).num).Sprite), rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
@@ -1897,8 +1897,8 @@ Dim x As Long
 Dim y As Long
     rec.Top = (32 \ TilesInSheets) * PIC_Y
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = (32 - (32 \ TilesInSheets) * TilesInSheets) * PIC_X
-    rec.Right = rec.Left + 96
+    rec.left = (32 - (32 \ TilesInSheets) * TilesInSheets) * PIC_X
+    rec.right = rec.left + 96
     
     If Index = MyIndex Then
         x = NewX + sx
@@ -2172,7 +2172,7 @@ Dim i As Long
 Dim n As Long
 'MyText = frmMirage.txtMyTextBox.Text
 If Len(frmMirage.txtMyTextBox.Text) > 200 Then
-    MyText = Left(frmMirage.txtMyTextBox.Text, 200)
+    MyText = left(frmMirage.txtMyTextBox.Text, 200)
 Else
     MyText = frmMirage.txtMyTextBox.Text
 End If
@@ -2221,7 +2221,7 @@ End If
        End If
        
         ' Player message
-        If Mid$(MyText, 1, 1) = "!" Or Mid$(MyText, 1, 1) = "w" Then
+        If Mid$(MyText, 1, 1) = "." Or Mid$(MyText, 1, 1) = "w" Then
             ChatText = Mid$(MyText, 2, Len(MyText) - 1)
             name = vbNullString
                     
@@ -2237,7 +2237,7 @@ End If
                 ' Send the message to the player
                 Call PlayerMsg(ChatText, name)
             Else
-                Call AddText("Utiliser: !nomjoueur msgici", AlertColor)
+                Call AddText("Utiliser: .nomjoueur msgici", AlertColor)
             End If
             MyText = vbNullString
             Exit Sub
@@ -2571,7 +2571,7 @@ End If
         End If
         
         ' Tell them its not a valid command
-        If Left$(Trim$(MyText), 1) = "/" Then
+        If left$(Trim$(MyText), 1) = "/" Then
             For i = 0 To MAX_EMOTICONS
                 If Trim$(Emoticons(i).Command) = Trim$(MyText) And Trim$(Emoticons(i).Command) <> "/" Then
                     Call SendData("checkemoticons" & SEP_CHAR & i & END_CHAR)
@@ -2722,10 +2722,10 @@ If ObjetPos(CX, CY) = True Then
         frmMirage.OName.Caption = Trim$(Item(ONum).name) & "(1)"
     End If
     frmMirage.OName.ForeColor = Item(ONum).NCoul
-    frmMirage.ObjNm.Left = PotX + 10
+    frmMirage.ObjNm.left = PotX + 10
     frmMirage.ObjNm.Top = PotY - 30
     frmMirage.ObjNm.Width = frmMirage.OName.Width / Screen.TwipsPerPixelY + 240 / Screen.TwipsPerPixelY
-    frmMirage.OName.Left = 120
+    frmMirage.OName.left = 120
     frmMirage.ObjNm.Visible = True
 Else
     frmMirage.ObjNm.Visible = False
@@ -2791,7 +2791,7 @@ Dim Dire As Long
             PY = 0
         Else
             ' Check if they can warp to a new map
-            If Map(GetPlayerMap(MyIndex)).Left > 0 Then Call SendPlayerRequestNewMap: GettingMap = True
+            If Map(GetPlayerMap(MyIndex)).left > 0 Then Call SendPlayerRequestNewMap: GettingMap = True
             CanMove = False
             Exit Function
         End If
@@ -2804,7 +2804,7 @@ Dim Dire As Long
             PY = 0
         Else
             ' Check if they can warp to a new map
-            If Map(GetPlayerMap(MyIndex)).Right > 0 Then Call SendPlayerRequestNewMap: GettingMap = True
+            If Map(GetPlayerMap(MyIndex)).right > 0 Then Call SendPlayerRequestNewMap: GettingMap = True
             CanMove = False
             Exit Function
         End If
@@ -3745,8 +3745,8 @@ End Sub
 Sub BltTile2(ByVal x As Long, ByVal y As Long, ByVal Tile As Long)
     rec.Top = (Tile \ TilesInSheets) * PIC_Y
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = (Tile - (Tile \ TilesInSheets) * TilesInSheets) * PIC_X
-    rec.Right = rec.Left + PIC_X
+    rec.left = (Tile - (Tile \ TilesInSheets) * TilesInSheets) * PIC_X
+    rec.right = rec.left + PIC_X
     Call DD_BackBuffer.BltFast(x - NewPlayerPicX + sx - NewXOffset, y - NewPlayerPicY + sx - NewYOffset, DD_OutilSurf, rec, DDBLTFAST_WAIT Or DDBLTFAST_SRCCOLORKEY)
 End Sub
 
@@ -3940,27 +3940,27 @@ mont:
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name) & " (worn)"
                     frmMirage.EquipS(0).Visible = True
                     frmMirage.EquipS(0).Top = frmMirage.picInv(d).Top - 2
-                    frmMirage.EquipS(0).Left = frmMirage.picInv(d).Left - 2
+                    frmMirage.EquipS(0).left = frmMirage.picInv(d).left - 2
                 ElseIf GetPlayerArmorSlot(MyIndex) = d + 1 Then
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name) & " (worn)"
                     frmMirage.EquipS(1).Visible = True
                     frmMirage.EquipS(1).Top = frmMirage.picInv(d).Top - 2
-                    frmMirage.EquipS(1).Left = frmMirage.picInv(d).Left - 2
+                    frmMirage.EquipS(1).left = frmMirage.picInv(d).left - 2
                 ElseIf GetPlayerHelmetSlot(MyIndex) = d + 1 Then
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name) & " (worn)"
                     frmMirage.EquipS(2).Visible = True
                     frmMirage.EquipS(2).Top = frmMirage.picInv(d).Top - 2
-                    frmMirage.EquipS(2).Left = frmMirage.picInv(d).Left - 2
+                    frmMirage.EquipS(2).left = frmMirage.picInv(d).left - 2
                 ElseIf GetPlayerShieldSlot(MyIndex) = d + 1 Then
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name) & " (worn)"
                     frmMirage.EquipS(3).Visible = True
                     frmMirage.EquipS(3).Top = frmMirage.picInv(d).Top - 2
-                    frmMirage.EquipS(3).Left = frmMirage.picInv(d).Left - 2
+                    frmMirage.EquipS(3).left = frmMirage.picInv(d).left - 2
                 ElseIf GetPlayerPetSlot(MyIndex) = d + 1 Then
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name) & " (worn)"
                     frmMirage.EquipS(4).Visible = True
                     frmMirage.EquipS(4).Top = frmMirage.picInv(d).Top - 2
-                    frmMirage.EquipS(4).Left = frmMirage.picInv(d).Left - 2
+                    frmMirage.EquipS(4).left = frmMirage.picInv(d).left - 2
                 Else
                     'frmMirage.picInv(d).ToolTipText = trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).Name)
                 End If
@@ -3987,8 +3987,8 @@ PrepareSprite (GetPlayerSprite(MyIndex))
                                     
     rec.Top = Map(GetPlayerMap(MyIndex)).Tile(x, y).Data1 * (PIC_NPC1 * 32) + PIC_NPC2
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = 128
-    rec.Right = rec.Left + PIC_X
+    rec.left = 128
+    rec.right = rec.left + PIC_X
     
     x2 = x * PIC_X + sx
     y2 = y * PIC_Y + sy
@@ -4010,8 +4010,8 @@ Dim x2 As Long, y2 As Long
 
     rec.Top = Map(GetPlayerMap(MyIndex)).Tile(x, y).Data1 * 64
     rec.Bottom = rec.Top + PIC_Y
-    rec.Left = 128
-    rec.Right = rec.Left + PIC_X
+    rec.left = 128
+    rec.right = rec.left + PIC_X
     
     x2 = x * PIC_X + sx
     y2 = y * PIC_Y + sy - 32
@@ -4034,7 +4034,7 @@ Dim index2 As Long
 index2 = Trade(Selected).Items(Index).ItemGetNum
 
     frmTrade.shpSelect.Top = frmTrade.picItem(Index - 1).Top - 1
-    frmTrade.shpSelect.Left = frmTrade.picItem(Index - 1).Left - 1
+    frmTrade.shpSelect.left = frmTrade.picItem(Index - 1).left - 1
 
     If index2 <= 0 Then Call clearItemSelected: Exit Sub
 
@@ -4103,14 +4103,14 @@ Dim dRECT As RECT
     With dRECT
         .Top = 0
         .Bottom = PicBox.height
-        .Left = 0
-        .Right = PicBox.Width
+        .left = 0
+        .right = PicBox.Width
     End With
     With sRECT
         .Top = y
         .Bottom = .Top + PicBox.height
-        .Left = x
-        .Right = .Left + PicBox.Width
+        .left = x
+        .right = .left + PicBox.Width
     End With
     Call DD_Surf.BltToDC(PicBox.hDC, sRECT, dRECT)
     PicBox.Refresh
@@ -4143,18 +4143,18 @@ Dim Ending As String
         frmMirage.Width = 9570
         For i = 0 To 8
             frmMirage.picRac(i).Visible = True
-            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).left = 7 + (i * 36)
             frmMirage.picRac(i).Top = 621 - 188
         Next i
-        frmMirage.menu_inv.Left = 358
-        frmMirage.menu_sort.Left = 382
-        frmMirage.menu_equ.Left = 414
-        frmMirage.menu_quete.Left = 446
-        frmMirage.menu_guild.Left = 486
-        frmMirage.menu_tchat.Left = 510
-        frmMirage.menu_who.Left = 534
-        frmMirage.menu_opt.Left = 574
-        frmMirage.menu_quit.Left = 606
+        frmMirage.menu_inv.left = 358
+        frmMirage.menu_sort.left = 382
+        frmMirage.menu_equ.left = 414
+        frmMirage.menu_quete.left = 446
+        frmMirage.menu_guild.left = 486
+        frmMirage.menu_tchat.left = 510
+        frmMirage.menu_who.left = 534
+        frmMirage.menu_opt.left = 574
+        frmMirage.menu_quit.left = 606
         
         frmMirage.menu_inv.Top = 616 - 188
         frmMirage.menu_sort.Top = 616 - 188
@@ -4173,18 +4173,18 @@ Dim Ending As String
         frmMirage.Width = 12075
         For i = 0 To 13
             frmMirage.picRac(i).Visible = True
-            frmMirage.picRac(i).Left = 7 + (i * 36)
+            frmMirage.picRac(i).left = 7 + (i * 36)
             frmMirage.picRac(i).Top = 621
         Next i
-        frmMirage.menu_inv.Left = 528
-        frmMirage.menu_sort.Left = 552
-        frmMirage.menu_equ.Left = 584
-        frmMirage.menu_quete.Left = 616
-        frmMirage.menu_guild.Left = 656
-        frmMirage.menu_tchat.Left = 680
-        frmMirage.menu_who.Left = 704
-        frmMirage.menu_opt.Left = 744
-        frmMirage.menu_quit.Left = 776
+        frmMirage.menu_inv.left = 528
+        frmMirage.menu_sort.left = 552
+        frmMirage.menu_equ.left = 584
+        frmMirage.menu_quete.left = 616
+        frmMirage.menu_guild.left = 656
+        frmMirage.menu_tchat.left = 680
+        frmMirage.menu_who.left = 704
+        frmMirage.menu_opt.left = 744
+        frmMirage.menu_quit.left = 776
         
         frmMirage.menu_inv.Top = 616
         frmMirage.menu_sort.Top = 616
@@ -4203,12 +4203,12 @@ Dim Ending As String
     frmMirage.txtMyTextBox.Top = frmMirage.picScreen.height - frmMirage.txtMyTextBox.height
     frmMirage.picParty.Top = frmMirage.picScreen.height - frmMirage.picParty.height
     frmMirage.fra_fenetre.Top = frmMirage.picScreen.height - frmMirage.fra_fenetre.height - 10
-    frmMirage.fra_fenetre.Left = frmMirage.picScreen.Width - frmMirage.fra_fenetre.Width - 30
+    frmMirage.fra_fenetre.left = frmMirage.picScreen.Width - frmMirage.fra_fenetre.Width - 30
     If notebook = True Then
-        frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
+        frmMirage.itmDesc.left = frmMirage.fra_fenetre.left - frmMirage.itmDesc.Width
         frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
     Else
-        frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+        frmMirage.itmDesc.left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
         frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
     End If
 End Sub

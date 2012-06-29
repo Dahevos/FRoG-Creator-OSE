@@ -441,7 +441,7 @@ On Error Resume Next
 If Index < 0 Or Index > MAX_PLAYERS Then Exit Sub
 Call AddLog("le : " & Date & "     à : " & time & "...Erreur pendant le chargement du joueur : " & Name & ",Compte : " & GetPlayerLogin(Index) & ". Détails : Num :" & Err.Number & " Description : " & Err.Description & " Source : " & Err.Source & "...", "logs\Err.txt")
 If IBErr Then Call IBMsg("Erreur pendant le chargement du joueur : " & Name, BrightRed)
-Call PlainMsg(Index, "Erreur du serveur, relancer SVP!(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
+Call PlainMsg(Index, "Erreur du serveur, relancer s'il vous plait.(Pour tous problème récurent visiter " & Trim$(GetVar(App.Path & "\Config\.ini", "CONFIG", "WebSite")) & ").", 3)
 End Sub
 
 Sub LoadPlayerQuete(ByVal Index As Long)
@@ -1114,7 +1114,7 @@ Dim r As Integer
     Next
     
     If r > (MAX_MAPS * 0.8) Then
-    Call IBMsg("Le serveur à detecté un grand nombre de maps, afin d'améliorer le chargement, veuillez supprimer les maps inutilisées")
+    Call IBMsg("Le serveur a detecté un grand nombre de maps, afin d'améliorer le chargement, veuillez supprimer les maps inutilisées")
     surcharge = True
     End If
 End Sub
@@ -1228,10 +1228,10 @@ Dim f As Long, i As Long
         Print #f, IP & "," & GetPlayerName(BannedByIndex)
     Close #f
     
-    Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par " & GetPlayerName(BannedByIndex) & "!", White)
+    Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par " & GetPlayerName(BannedByIndex) & ".", White)
     Call AddLog(GetPlayerName(BannedByIndex) & " a banni " & GetPlayerName(BanPlayerIndex) & ".", ADMIN_LOG)
     If IBAdmin Then Call IBMsg(GetPlayerName(BannedByIndex) & " a bannis " & GetPlayerName(BanPlayerIndex))
-    Call AlertMsg(BanPlayerIndex, "Vous avez été banni par " & GetPlayerName(BannedByIndex) & "!")
+    Call AlertMsg(BanPlayerIndex, "Vous avez été banni par " & GetPlayerName(BannedByIndex) & ".")
 End Sub
 
 Sub DeleteName(ByVal Name As String)
@@ -1284,12 +1284,12 @@ Dim f As Long, i As Long
     Close #f
     
     If Trim$(Reason) <> vbNullString Then
-        Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par l'admin du serveur! Raison:(" & Reason & ")", White)
-        Call AlertMsg(BanPlayerIndex, "Vous avez été banni par l'admin du serveur!  Raison(" & Reason & ")")
+        Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par l'admin du serveur. Raison:(" & Reason & ")", White)
+        Call AlertMsg(BanPlayerIndex, "Vous avez été banni par l'admin du serveur.  Raison(" & Reason & ")")
         Call AddLog("Le serveur a banni " & GetPlayerName(BanPlayerIndex) & ".  Raison(" & Reason & ")", ADMIN_LOG)
     Else
-        Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par l'admin du serveur!", White)
-        Call AlertMsg(BanPlayerIndex, "Vous avez été banni par l'admin du serveur!")
+        Call GlobalMsg(GetPlayerName(BanPlayerIndex) & " a été banni de " & GAME_NAME & " par l'admin du serveur.", White)
+        Call AlertMsg(BanPlayerIndex, "Vous avez été banni par l'admin du serveur.")
         Call AddLog("Le serveur a banni " & GetPlayerName(BanPlayerIndex) & ".", ADMIN_LOG)
     End If
 End Sub

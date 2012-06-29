@@ -442,7 +442,7 @@ Public Event PgmError(Source As String, Code As Long, Description As String)
 '
 
 ' ######################################################################################################################
-' /!\ NE PAS DEPLACER CETTE FONCTION /!\ '
+' /.\ NE PAS DEPLACER CETTE FONCTION /.\ '
 '----------------------------------------'
 ' Cette fonction doit rester la premiere '
 ' fonction "public" du module de classe  '
@@ -889,7 +889,7 @@ Friend Function SingletonIncrement(ByVal sSpaceName As String) As Long
 '           écriture première valeur = 1
             If WriteMappingValue(lFM, 1&) Then SingletonIncrement = 1
 
-'           le décrément fermera le mapping!
+'           le décrément fermera le mapping.
         Else
 '           mapping ouvert, on récupère la valeur
             If ReadMappingValue(lFM, lRet) Then
@@ -1026,7 +1026,7 @@ Private Function SysTrayIconRefresh() As Boolean
     On Error GoTo ErrorHandler
     
     If mIconLoaded Then
-        ' Thanks to Tom Pydeski for fixing this bug!
+        ' Thanks to Tom Pydeski for fixing this bug.
         mIconData.icoFlags = NIF_ICON Or NIF_MESSAGE Or NIF_TIP
         ' Only bother to refresh if it actually exists
         Call Shell_NotifyIconW(NIM_MODIFY, mIconData)
@@ -1153,13 +1153,13 @@ Private Sub CrashTimerProc()
 End Sub
 
 'Copie un "byte"
-Private Sub MovB(Ofs As Long, ByVal Value As Long)
-    CopyMemory ByVal Ofs, Value, 1: Ofs = Ofs + 1
+Private Sub MovB(Ofs As Long, ByVal value As Long)
+    CopyMemory ByVal Ofs, value, 1: Ofs = Ofs + 1
 End Sub
 
 'Copy un "long"
-Private Sub MovL(Ofs As Long, ByVal Value As Long)
-    CopyMemory ByVal Ofs, Value, 4: Ofs = Ofs + 4
+Private Sub MovL(Ofs As Long, ByVal value As Long)
+    CopyMemory ByVal Ofs, value, 4: Ofs = Ofs + 4
 End Sub
 
 Private Sub ConvertUnicodeStringToArray(ByVal sString As String, _
