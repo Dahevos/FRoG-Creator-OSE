@@ -15,7 +15,7 @@ Begin VB.Form frmMapReport
    StartUpPosition =   3  'Windows Default
    Begin VB.ListBox lstIndex 
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

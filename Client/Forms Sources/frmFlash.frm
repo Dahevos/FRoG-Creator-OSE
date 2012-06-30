@@ -58,7 +58,7 @@ Begin VB.Form frmFlash
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

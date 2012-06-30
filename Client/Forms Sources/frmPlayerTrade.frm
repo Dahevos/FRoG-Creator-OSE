@@ -18,7 +18,7 @@ Begin VB.Form frmPlayerTrade
    Begin VB.ListBox Items2 
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -36,7 +36,7 @@ Begin VB.Form frmPlayerTrade
    Begin VB.ListBox Items1 
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -54,7 +54,7 @@ Begin VB.Form frmPlayerTrade
    Begin VB.ListBox PlayerInv1 
       BackColor       =   &H00FFFFFF&
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -92,7 +92,7 @@ Begin VB.Form frmPlayerTrade
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -112,7 +112,7 @@ Begin VB.Form frmPlayerTrade
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -132,7 +132,7 @@ Begin VB.Form frmPlayerTrade
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -152,7 +152,7 @@ Begin VB.Form frmPlayerTrade
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

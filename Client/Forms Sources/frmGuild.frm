@@ -28,7 +28,7 @@ Begin VB.Form frmGuild
       Appearance      =   0  'Flat
       Enabled         =   0   'False
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400
@@ -45,7 +45,7 @@ Begin VB.Form frmGuild
    Begin VB.TextBox txtGuild 
       Appearance      =   0  'Flat
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   6.75
          Charset         =   0
          Weight          =   400

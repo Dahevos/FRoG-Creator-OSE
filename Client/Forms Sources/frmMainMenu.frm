@@ -483,7 +483,7 @@ Begin VB.Form frmMainMenu
       BackStyle       =   0  'Transparent
       Caption         =   "Quitter"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   9.75
          Charset         =   0
          Weight          =   700

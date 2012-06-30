@@ -48,7 +48,7 @@ Begin VB.Form frmNewChar
       BackColor       =   &H0080FF80&
       Caption         =   "Femme"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -68,7 +68,7 @@ Begin VB.Form frmNewChar
       BackColor       =   &H0080FF80&
       Caption         =   "Homme"
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400

@@ -29,7 +29,7 @@ Begin VB.Form frmPlayerChat
       ReadOnly        =   -1  'True
       TextRTF         =   $"frmPlayerChat.frx":B6FEA
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
@@ -67,7 +67,7 @@ Begin VB.Form frmPlayerChat
       AutoSize        =   -1  'True
       BackStyle       =   0  'Transparent
       BeginProperty Font 
-         Name            =   "Tahoma"
+         Name            =   "Segoe UI"
          Size            =   8.25
          Charset         =   0
          Weight          =   400
