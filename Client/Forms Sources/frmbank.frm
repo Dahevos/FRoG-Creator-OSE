@@ -969,7 +969,7 @@ Dim ival As Long
 
 If SCof = 0 Then Call MsgBox("Veuillez séléctionner un slot dans le coffre.", vbCritical, "Erreur"): Exit Sub
 
-If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Aucun objet dans le slot" & SCof & " du coffre.", vbCritical, "Erreur"): Exit Sub
+If CoffreTmp(SCof).Numeros <= 0 Then Call MsgBox("Il n'y a aucun objet dans le slot" & SCof & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 ival = CoffreTmp(SCof).Valeur
 
@@ -990,7 +990,7 @@ Dim ival As Long
 
 If SInv = 0 Then Call MsgBox("Veuillez séléctionner un slot dans l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
-If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Aucun objet dans le slot" & SInv & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
+If Val(GetPlayerInvItemNum(MyIndex, SInv)) <= 0 Then Call MsgBox("Il n'y a aucun objet dans le slot" & SInv & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 ival = GetPlayerInvItemValue(MyIndex, SInv)
 
@@ -1055,7 +1055,7 @@ Cdur = CoffreTmp(SlotC).Durabiliter
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Cnum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur"): Exit Sub
+If Cnum <= 0 Then Call MsgBox("Il n'y a aucun objet dans le slot " & SlotC & " du coffre.", vbCritical, "Erreur"): Exit Sub
 
 If Inum <> 0 Then
     If Item(Inum).Type <> ITEM_TYPE_CURRENCY Or Item(Inum).Empilable = 0 Then
@@ -1168,7 +1168,7 @@ If SlotI = GetPlayerWeaponSlot(MyIndex) Then Call SetPlayerWeaponSlot(MyIndex, 0
 If Cval < 0 Then Cval = 0
 If ival < 0 Then ival = 0
 
-If Inum <= 0 Then Call MsgBox("Aucun objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
+If Inum <= 0 Then Call MsgBox("Il n'y a Aucun objet dans le slot " & SlotI & " de l'inventaire.", vbCritical, "Erreur"): Exit Sub
 
 If Cnum <> 0 Then
     If Item(Cnum).Type <> ITEM_TYPE_CURRENCY Or Item(Cnum).Empilable = 0 Then
@@ -1265,18 +1265,12 @@ End Sub
 
 Private Sub Picture1_Click(Index As Integer)
 
-If Invdeplace(Index) = False Then
-Invdeplace(Index) = True
-
 SInv = Index
 Shape3.Visible = True
 Shape3.left = Picture1(SInv).left - 1
 Shape3.Top = Picture1(SInv).Top - 1
 DCof = False
 DInv = False
-
-End If
-
 
 End Sub
 
