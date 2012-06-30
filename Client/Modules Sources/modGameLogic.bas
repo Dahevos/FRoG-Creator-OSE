@@ -497,7 +497,7 @@ Sub GameInit()
 Dim i As Integer, x As Integer
     Call StopMidi
     
-    If notebook Then
+    If netbook Then
     frmMirage.Top = frmMainMenu.Top
     frmMirage.left = frmMainMenu.left
     End If
@@ -573,7 +573,7 @@ Dim d As Byte
                     End If
                 End If
             Else
-                Call AddText("Aucun sort ici.", BrightRed)
+                Call AddText("Il n'y a aucun sort ici.", BrightRed)
             End If
         End If
         
@@ -590,7 +590,7 @@ Dim d As Byte
             Call UpdateVisInv
         End If
     Else
-        Call AddText("Aucun raccourci ici.", BrightRed)
+        Call AddText("Il n'y a aucun raccourci ici.", BrightRed)
     End If
 End Sub
 
@@ -915,7 +915,7 @@ rest:
         ' Lock the backbuffer so we can draw text and names
         TexthDC = DD_BackBuffer.GetDC
         If Not GettingMap Then
-            If notebook = True Then
+            If netbook = True Then
                 cychat = 130
             Else
                 cychat = 0
@@ -4117,7 +4117,7 @@ Dim dRECT As RECT
     End If
 End Sub
 
-Public Sub notebook_change()
+Public Sub netbook_change()
 Dim i As Byte
 Dim Ending As String
     For i = 1 To 4
@@ -4125,7 +4125,7 @@ Dim Ending As String
         If i = 2 Then Ending = ".jpg"
         If i = 3 Then Ending = ".png"
         If i = 4 Then Ending = ".bmp"
-        If notebook = True Then
+        If netbook = True Then
             If FileExiste(Rep_Theme & "\Jeu\MiniInterface" & Ending) Then frmMirage.Interface.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\MiniInterface" & Ending)
         Else
             If FileExiste(Rep_Theme & "\Jeu\Interface" & Ending) Then frmMirage.Interface.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Interface" & Ending)
@@ -4135,7 +4135,7 @@ Dim Ending As String
         frmMirage.picRac(i).Visible = False
     Next i
     
-    If notebook = True Then
+    If netbook = True Then
         frmMirage.Interface.Width = 640
         frmMirage.picScreen.Width = 640
         frmMirage.picScreen.height = 416
@@ -4144,7 +4144,7 @@ Dim Ending As String
         For i = 0 To 8
             frmMirage.picRac(i).Visible = True
             frmMirage.picRac(i).left = 7 + (i * 36)
-            frmMirage.picRac(i).Top = 621 - 188
+            frmMirage.picRac(i).Top = 621 - 192
         Next i
         frmMirage.menu_inv.left = 358
         frmMirage.menu_sort.left = 382
@@ -4204,7 +4204,7 @@ Dim Ending As String
     frmMirage.picParty.Top = frmMirage.picScreen.height - frmMirage.picParty.height
     frmMirage.fra_fenetre.Top = frmMirage.picScreen.height - frmMirage.fra_fenetre.height - 10
     frmMirage.fra_fenetre.left = frmMirage.picScreen.Width - frmMirage.fra_fenetre.Width - 30
-    If notebook = True Then
+    If netbook = True Then
         frmMirage.itmDesc.left = frmMirage.fra_fenetre.left - frmMirage.itmDesc.Width
         frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
     Else
