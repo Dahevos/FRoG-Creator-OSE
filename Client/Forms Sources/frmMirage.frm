@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "mswinsck.ocx"
 Begin VB.Form frmMirage 
    BackColor       =   &H00FFFFFF&
    BorderStyle     =   1  'Fixed Single
@@ -1902,15 +1902,6 @@ Begin VB.Form frmMirage
       Appearance      =   0  'Flat
       BackColor       =   &H00000000&
       BorderStyle     =   0  'None
-      BeginProperty Font 
-         Name            =   "Segoe UI"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
       ForeColor       =   &H80000008&
       Height          =   7380
       Left            =   0
@@ -2399,7 +2390,7 @@ Begin VB.Form frmMirage
                   Italic          =   0   'False
                   Strikethrough   =   0   'False
                EndProperty
-               Height          =   2340
+               Height          =   2190
                ItemData        =   "frmMirage.frx":21BCC
                Left            =   75
                List            =   "frmMirage.frx":21BCE
@@ -4966,7 +4957,7 @@ Dim Qq As Long
         
     Next i
 
-    Call notebook_change
+    Call netbook_change
     
     twippy = Screen.TwipsPerPixelY
     twippx = Screen.TwipsPerPixelX
@@ -5018,7 +5009,7 @@ DragY = y
 End Sub
 
 Private Sub Image4_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 3 Then fra_info.Top = fra_info.Top + ((y / twippy) - (DragY / twippy)): fra_info.left = fra_info.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 3 Then fra_info.Top = fra_info.Top + ((y / twippy) - (DragY / twippy)): fra_info.Left = fra_info.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub Image4_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5050,7 +5041,7 @@ DragY = y
 End Sub
 
 Private Sub Label4_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 6 Then picParty.Move picParty.left + ((x / twippx) - (DragX / twippx)), picParty.Top + ((y / twippy) - (DragY / twippy))
+If DragImg = 6 Then picParty.Move picParty.Left + ((x / twippx) - (DragX / twippx)), picParty.Top + ((y / twippy) - (DragY / twippy))
 End Sub
 
 Private Sub Label4_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5110,7 +5101,7 @@ DragY = y
 End Sub
 
 Private Sub lblmaskinv_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 2 Then fra_fenetre.Top = fra_fenetre.Top + ((y / twippy) - (DragY / twippy)): fra_fenetre.left = fra_fenetre.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 2 Then fra_fenetre.Top = fra_fenetre.Top + ((y / twippy) - (DragY / twippy)): fra_fenetre.Left = fra_fenetre.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub lblmaskinv_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5355,7 +5346,7 @@ End Sub
 Private Sub picInv_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, y As Single)
     Inventory = Index + 1
     frmMirage.SelectedItem.Top = frmMirage.picInv(Inventory - 1).Top - 1
-    frmMirage.SelectedItem.left = frmMirage.picInv(Inventory - 1).left - 1
+    frmMirage.SelectedItem.Left = frmMirage.picInv(Inventory - 1).Left - 1
     
     If Button = 1 Then
         Call UpdateVisInv
@@ -5373,7 +5364,7 @@ Private Sub picInv_MouseDown(Index As Integer, Button As Integer, Shift As Integ
                 dragAndDrop = Inventory
                 dragAndDropT = 2
                 IDAD.Top = frmMirage.picInv(Inventory - 1).Top - 1
-                IDAD.left = frmMirage.picInv(Inventory - 1).left - 1
+                IDAD.Left = frmMirage.picInv(Inventory - 1).Left - 1
                 IDAD.Visible = True
             End If
         End If
@@ -5392,33 +5383,33 @@ d = Index
             itmDesc.height = 17
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
-            If notebook = True Then
-                frmMirage.itmDesc.left = frmMirage.fra_fenetre.left - frmMirage.itmDesc.Width
+            If netbook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
                 frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
-                frmMirage.itmDesc.left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
                 frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) = vbNullString Then
             itmDesc.height = 161
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
-            If notebook = True Then
-                frmMirage.itmDesc.left = frmMirage.fra_fenetre.left - frmMirage.itmDesc.Width
+            If netbook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
                 frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
-                frmMirage.itmDesc.left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
                 frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         ElseIf Trim$(Item(GetPlayerInvItemNum(MyIndex, d + 1)).desc) > vbNullString Then
             itmDesc.height = 249
             'itmDesc.Top = fra_fenetre.Top - itmDesc.Height
             'itmDesc.Left = fra_fenetre.Left
-            If notebook = True Then
-                frmMirage.itmDesc.left = frmMirage.fra_fenetre.left - frmMirage.itmDesc.Width
+            If netbook = True Then
+                frmMirage.itmDesc.Left = frmMirage.fra_fenetre.Left - frmMirage.itmDesc.Width
                 frmMirage.itmDesc.Top = frmMirage.picScreen.height - frmMirage.itmDesc.height - 10
             Else
-                frmMirage.itmDesc.left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
+                frmMirage.itmDesc.Left = frmMirage.picScreen.Width - frmMirage.itmDesc.Width - 30
                 frmMirage.itmDesc.Top = frmMirage.fra_fenetre.Top - frmMirage.itmDesc.height
             End If
         End If
@@ -5647,7 +5638,7 @@ DragY = y
 End Sub
 
 Private Sub picquete_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 5 Then DoEvents: If DragImg = 5 Then picquete.Top = picquete.Top + ((y / twippy) - (DragY / twippy)): picquete.left = picquete.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 5 Then DoEvents: If DragImg = 5 Then picquete.Top = picquete.Top + ((y / twippy) - (DragY / twippy)): picquete.Left = picquete.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub picquete_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -5722,7 +5713,7 @@ Private Sub picspell_MouseDown(Index As Integer, Button As Integer, Shift As Int
                 dragAndDrop = Index + 1
                 dragAndDropT = 1
                 SDAD.Top = picspell(Index).Top - 1
-                SDAD.left = picspell(Index).left - 1
+                SDAD.Left = picspell(Index).Left - 1
                 SDAD.Visible = True
             End If
         Else
@@ -5940,7 +5931,7 @@ InvNum = Inventory
    
     If GetPlayerInvItemNum(MyIndex, InvNum) > 0 And GetPlayerInvItemNum(MyIndex, InvNum) <= MAX_ITEMS Then
         If Item(GetPlayerInvItemNum(MyIndex, InvNum)).Type = ITEM_TYPE_CURRENCY Or Item(GetPlayerInvItemNum(MyIndex, InvNum)).Empilable <> 0 Then
-            GoldAmount = InputBox("Combien de " & Trim$(Item(GetPlayerInvItemNum(MyIndex, InvNum)).name) & "(" & GetPlayerInvItemValue(MyIndex, InvNum) & ") voulez vous jeter?", "Jeter " & Trim$(Item(GetPlayerInvItemNum(MyIndex, InvNum)).name), 0, frmMirage.left, frmMirage.Top)
+            GoldAmount = InputBox("Combien de " & Trim$(Item(GetPlayerInvItemNum(MyIndex, InvNum)).name) & "(" & GetPlayerInvItemValue(MyIndex, InvNum) & ") voulez vous jeter?", "Jeter " & Trim$(Item(GetPlayerInvItemNum(MyIndex, InvNum)).name), 0, frmMirage.Left, frmMirage.Top)
             If IsNumeric(GoldAmount) Then Call SendDropItem(InvNum, GoldAmount)
         Else
             Call SendDropItem(InvNum, 0)
@@ -5986,7 +5977,7 @@ DragY = y
 End Sub
 
 Private Sub txtQ_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 4 Then txtQ.Top = txtQ.Top + ((y / twippy) - (DragY / twippy)): txtQ.left = txtQ.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 4 Then txtQ.Top = txtQ.Top + ((y / twippy) - (DragY / twippy)): txtQ.Left = txtQ.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub txtQ_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)

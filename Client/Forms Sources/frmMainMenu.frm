@@ -563,7 +563,7 @@ On Error Resume Next
     Check1.Value = Val(ReadINI("CONFIG", "Music", App.Path & "\Config\Client.ini"))
     
     If getreselotionY < 768 Then
-    notebook = True
+    netbook = True
     End If
     
     For i = 1 To 4
@@ -614,7 +614,7 @@ On Error Resume Next
 
     fraLogin.Visible = True
     
-    Call notebook_change
+    Call netbook_change
         
 End Sub
 
@@ -629,7 +629,7 @@ DragY = y
 End Sub
 
 Private Sub imgLogin_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.left = fraLogin.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 1 Then fraLogin.Top = fraLogin.Top + ((y / twippy) - (DragY / twippy)): fraLogin.Left = fraLogin.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgLogin_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -645,7 +645,7 @@ DragY = y
 End Sub
 
 Private Sub imgNouveau_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.left = fraNewAccount.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 2 Then fraNewAccount.Top = fraNewAccount.Top + ((y / twippy) - (DragY / twippy)): fraNewAccount.Left = fraNewAccount.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgNouveau_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -661,7 +661,7 @@ Private Sub imgPers_MouseDown(Button As Integer, Shift As Integer, x As Single, 
 End Sub
 
 Private Sub imgPers_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
-If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.left = fraPers.left + ((x / twippx) - (DragX / twippx))
+If DragImg = 3 Then fraPers.Top = fraPers.Top + ((y / twippy) - (DragY / twippy)): fraPers.Left = fraPers.Left + ((x / twippx) - (DragX / twippx))
 End Sub
 
 Private Sub imgPers_MouseUp(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -727,9 +727,9 @@ Dim Ending As String
         PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
-        PicChar.left = 840 - PicChar.Width + 480
+        PicChar.Left = 840 - PicChar.Width + 480
     Else
-        PicChar.left = 840
+        PicChar.Left = 840
     End If
 
     If charSelect(charSelectNum).name <> "" Then
@@ -861,9 +861,9 @@ Dim Ending As String
         PicChar.height = 960
     End If
     If PicChar.Width > 480 Then
-        PicChar.left = 840 - PicChar.Width + 480
+        PicChar.Left = 840 - PicChar.Width + 480
     Else
-        PicChar.left = 840
+        PicChar.Left = 840
     End If
 End Sub
 

@@ -207,7 +207,7 @@ Public Const SPELL_TYPE_DEFENC As Byte = 10
 Public Loading As Boolean
 Public deco As Boolean
 
-Public notebook As Boolean
+Public netbook As Boolean
 
 Type ChatBubble
     Text As String
