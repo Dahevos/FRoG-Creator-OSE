@@ -305,7 +305,7 @@ Begin VB.Form frmMirage
       End
       Begin VB.CheckBox chkLowEffect 
          BackColor       =   &H00FFFFFF&
-         Caption         =   "Désactiver les effets avancé"
+         Caption         =   "Désactiver les effets avancés"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -5812,7 +5812,7 @@ If Seco <= 0 And Minu > 0 Then
     Seco = 59
     seconde.Caption = Seco
     Minu = Minu - 1
-    If Len(STR$(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
+    If Len(STR$(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0
