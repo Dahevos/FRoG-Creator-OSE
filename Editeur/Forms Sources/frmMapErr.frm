@@ -30,7 +30,7 @@ Begin VB.Form frmMapErr
    End
    Begin VB.Label Label2 
       Alignment       =   2  'Center
-      Caption         =   "Informations sur la sauvegarde : Carte numéros 1, Derniére modification : 10/09/09 15h30"
+      Caption         =   "Informations sur la sauvegarde : Carte numéros 1, Dernière modification : 10/09/09 15h30"
       Height          =   255
       Left            =   120
       TabIndex        =   3

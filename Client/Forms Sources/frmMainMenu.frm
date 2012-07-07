@@ -60,9 +60,9 @@ Begin VB.Form frmMainMenu
          EndProperty
          ForeColor       =   &H00000000&
          Height          =   930
-         ItemData        =   "frmMainMenu.frx":FD82D
+         ItemData        =   "frmMainMenu.frx":3706B
          Left            =   120
-         List            =   "frmMainMenu.frx":FD82F
+         List            =   "frmMainMenu.frx":3706D
          TabIndex        =   6
          Top             =   640
          Width           =   3135
@@ -135,7 +135,7 @@ Begin VB.Form frmMainMenu
          Height          =   3600
          Left            =   0
          MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":FD831
+         Picture         =   "frmMainMenu.frx":3706F
          Top             =   0
          Width           =   3390
       End
@@ -302,7 +302,7 @@ Begin VB.Form frmMainMenu
          Height          =   2265
          Left            =   0
          MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":1255F3
+         Picture         =   "frmMainMenu.frx":5EE31
          Top             =   0
          Width           =   3390
       End
@@ -441,7 +441,7 @@ Begin VB.Form frmMainMenu
          Height          =   3150
          Left            =   0
          MousePointer    =   5  'Size
-         Picture         =   "frmMainMenu.frx":13E74D
+         Picture         =   "frmMainMenu.frx":77F8B
          Top             =   0
          Width           =   3390
       End

@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmEditeurQuetes 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Editeur de Quetes"
+   Caption         =   "Editeur de Quêtes"
    ClientHeight    =   8730
    ClientLeft      =   -15
    ClientTop       =   375
@@ -176,12 +176,12 @@ Begin VB.Form frmEditeurQuetes
          End
          Begin VB.Label Label23 
             AutoSize        =   -1  'True
-            Caption         =   "Numéros de l'objet3 :"
+            Caption         =   "Numéro de l'objet3 :"
             Height          =   195
             Left            =   240
             TabIndex        =   69
             Top             =   2280
-            Width           =   1485
+            Width           =   1410
          End
          Begin VB.Label Label21 
             AutoSize        =   -1  'True
@@ -194,12 +194,12 @@ Begin VB.Form frmEditeurQuetes
          End
          Begin VB.Label Label18 
             AutoSize        =   -1  'True
-            Caption         =   "Numéros de l'objet2 :"
+            Caption         =   "Numéro de l'objet2 :"
             Height          =   195
             Left            =   240
             TabIndex        =   67
             Top             =   1560
-            Width           =   1485
+            Width           =   1410
          End
          Begin VB.Label Label17 
             AutoSize        =   -1  'True
@@ -212,12 +212,12 @@ Begin VB.Form frmEditeurQuetes
          End
          Begin VB.Label Label16 
             AutoSize        =   -1  'True
-            Caption         =   "Numéros de l'objet1 :"
+            Caption         =   "Numéro de l'objet1 :"
             Height          =   195
             Left            =   240
             TabIndex        =   65
             Top             =   840
-            Width           =   1485
+            Width           =   1410
          End
          Begin VB.Label Label14 
             AutoSize        =   -1  'True
@@ -365,31 +365,31 @@ Begin VB.Form frmEditeurQuetes
          End
          Begin VB.Label Label15 
             AutoSize        =   -1  'True
-            Caption         =   "Index du PNJ (pour la Quete) :"
+            Caption         =   "Index du PNJ (pour la quête) :"
             Height          =   195
             Left            =   240
             TabIndex        =   53
             Top             =   360
-            Width           =   2145
+            Width           =   2115
          End
          Begin VB.Label tp 
             AutoSize        =   -1  'True
-            Caption         =   "Temps pour réalisée la Quete :"
+            Caption         =   "Temps pour réaliser la quête :"
             Height          =   195
             Index           =   4
             Left            =   3360
             TabIndex        =   52
             Top             =   360
-            Width           =   2160
+            Width           =   2085
          End
          Begin VB.Label Label13 
             AutoSize        =   -1  'True
-            Caption         =   "Numéros du PNJ :"
+            Caption         =   "Numéro du PNJ :"
             Height          =   195
             Left            =   240
             TabIndex        =   51
             Top             =   1200
-            Width           =   1290
+            Width           =   1215
          End
       End
       Begin VB.Frame frtp 

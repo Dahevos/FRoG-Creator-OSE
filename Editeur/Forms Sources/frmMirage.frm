@@ -1,6 +1,6 @@
 VERSION 5.00
 Object = "{6BF52A50-394A-11D3-B153-00C04F79FAA6}#1.0#0"; "wmp.dll"
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "mswinsck.ocx"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Begin VB.Form frmMirage 
    BorderStyle     =   1  'Fixed Single
@@ -3391,6 +3391,8 @@ Begin VB.Form frmMirage
          End
          Begin VB.Menu previsu 
             Caption         =   "Prévisualisation"
+            Enabled         =   0   'False
+            Visible         =   0   'False
          End
          Begin VB.Menu grile 
             Caption         =   "Grille"
@@ -3430,9 +3432,12 @@ Begin VB.Form frmMirage
       End
       Begin VB.Menu pmodo 
          Caption         =   "Panneau de modération"
+         Visible         =   0   'False
       End
       Begin VB.Menu modoserv 
          Caption         =   "Modération du serveur"
+         Enabled         =   0   'False
+         Visible         =   0   'False
       End
    End
    Begin VB.Menu admin 
@@ -3562,6 +3567,10 @@ Private Sub adminiguild_Click()
 Dim V As Boolean
 V = Not picGuildAdmin.Visible
     If Player(MyIndex).Guildaccess > 1 Then Call NetPic: frmMirage.picGuildAdmin.Visible = V
+End Sub
+
+Private Sub adminserv_Click()
+frmadmin.Show
 End Sub
 
 Private Sub artquete_Click()
@@ -4607,6 +4616,7 @@ Private Sub previsu_Click()
         WriteINI "CONFIG", "PreVisu", 0, App.Path & "\Config\Account.ini"
         previsu.Checked = False
         AccOpt.CPreVisu = False
+
     Else
         WriteINI "CONFIG", "PreVisu", 1, App.Path & "\Config\Account.ini"
         previsu.Checked = True
@@ -5492,7 +5502,7 @@ On Error Resume Next
     End If
     
     If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.Height = 32
-    If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
+    'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
     If Button = 2 And Not frmTile.Visible Then Call AffSurfPic(DD_TileSurf(EditorSet), frmTile.picTile, 0, 0): frmTile.Defile.Max = Int((DDSD_Tile(EditorSet).lHeight - frmTile.picTile.Height) \ PIC_Y): frmTile.Defile.value = scrlPicture.value: frmTile.shpSelected.Width = shpSelected.Width: frmTile.shpSelected.Height = shpSelected.Height: frmTile.Show vbModeless, frmMirage
     'EditorTileX = ((shpSelected.Left + PIC_X) \ PIC_X)
     'EditorTileY = ((shpSelected.Top + PIC_Y) \ PIC_Y)
@@ -5534,7 +5544,7 @@ Private Sub picBackSelect_MouseMove(Button As Integer, Shift As Integer, x As Si
             End If
             EditorTileX = (shpSelected.Left \ PIC_X)
             EditorTileY = (shpSelected.Top \ PIC_Y) + frmMirage.scrlPicture.value
-            If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
+            'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
         'End If
     End If
     

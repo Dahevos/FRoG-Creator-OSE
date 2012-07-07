@@ -167,7 +167,7 @@ frmMirage.Show
 End Sub
 
 Private Sub nbf_Change()
-Label6.Caption = "Fichier numéros " & nbf.value
+Label6.Caption = "Fichier Numéro " & nbf.value
 
 nf.Text = Fichier(nbf.value).nom
 vf.Text = Fichier(nbf.value).version

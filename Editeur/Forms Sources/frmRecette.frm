@@ -76,7 +76,7 @@ Begin VB.Form frmRecette
       End
    End
    Begin VB.Frame Frame1 
-      Caption         =   "Objet dans la Recette"
+      Caption         =   "Objets dans la Recette"
       Height          =   5175
       Left            =   120
       TabIndex        =   4

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmSpellEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditer un sort"
@@ -529,7 +529,7 @@ Begin VB.Form frmSpellEditor
          Begin VB.Label Label6 
             AutoSize        =   -1  'True
             BackStyle       =   0  'Transparent
-            Caption         =   "Classe Requise :"
+            Caption         =   "Classe requise :"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -539,11 +539,11 @@ Begin VB.Form frmSpellEditor
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   165
+            Height          =   180
             Left            =   120
             TabIndex        =   5
             Top             =   840
-            Width           =   1020
+            Width           =   915
          End
          Begin VB.Label Label1 
             BackStyle       =   0  'Transparent
@@ -833,14 +833,14 @@ Private Sub CheckSpell_Click()
     If CheckSpell.value = Checked Then
         scrlSpellAnim.Max = MAX_DX_BIGSPELLS
         picSpell.Width = 960
-        picSpell.height = 960
+        picSpell.Height = 960
         picSpell.Left = 10680
         picSpell.Top = 3540
         scrlSpellAnim.value = 0
     Else
         scrlSpellAnim.Max = MAX_DX_SPELLS
         picSpell.Width = 480
-        picSpell.height = 480
+        picSpell.Height = 480
         picSpell.Left = 10920
         picSpell.Top = 3720
         scrlSpellAnim.value = 0
@@ -889,7 +889,7 @@ End Sub
 
 Private Sub Form_Load()
     picSpell.Width = 480
-    picSpell.height = 480
+    picSpell.Height = 480
     picSpell.Left = 10920
     picSpell.Top = 3720
     Call AffSurfPic(DD_ItemSurf, picSpellIco, EditorItemX * PIC_X, EditorItemY * PIC_Y)

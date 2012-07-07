@@ -4950,7 +4950,7 @@ Dim Qq As Long
         If FileExiste(Rep_Theme & "\info" & Ending) Then frmMirage.Picture = LoadPNG(App.Path & Rep_Theme & "\info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\Info" & Ending) Then Image1.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Info" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\inventaire" & Ending) Then Image3.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\inventaire" & Ending)
-        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgcarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
+        If FileExiste(Rep_Theme & "\Jeu\Carte" & Ending) Then imgCarte.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\Carte" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quitter" & Ending) Then PicMenuQuitter.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quitter" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\quete" & Ending) Then picquete.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\quete" & Ending)
         If FileExiste(Rep_Theme & "\Jeu\metier" & Ending) Then pictMetier.Picture = LoadPNG(App.Path & Rep_Theme & "\Jeu\metier" & Ending)
@@ -5464,7 +5464,7 @@ Dim tp As Long
 
     Call CheckInput(0, KeyCode, Shift)
     
-    If (KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then
+    If (frmMirage.txtMyTextBox.Visible = False) And (KeyCode = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then
         PX = 0
         PY = 0
         If Player(MyIndex).y - 1 > -1 And PX = 0 And PY = 0 Then
@@ -5812,7 +5812,7 @@ If Seco <= 0 And Minu > 0 Then
     Seco = 59
     seconde.Caption = Seco
     Minu = Minu - 1
-    If Len(STR$(Minu)) > 2 Then Minute.Caption = Minu & ":" Else Minute.Caption = "0" & Minu & ":"
+    If Len(STR$(Minu)) > 2 Then minute.Caption = Minu & ":" Else minute.Caption = "0" & Minu & ":"
 End If
 If Seco <= 0 And Minu <= 0 Then
     seconde.Caption = 0
@@ -5857,7 +5857,7 @@ Private Sub Form_KeyPress(KeyAscii As Integer)
     If ConOff = True Then Exit Sub
     Call HandleKeypresses(KeyAscii)
     If (KeyAscii = vbKeyReturn) Then KeyAscii = 0
-    If (KeyAscii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then KeyAscii = 0
+    If (frmMirage.txtMyTextBox.Visible = False) And (KeyAscii = optTouche(CByte(Val(ReadINI("TJEU", "action", App.Path & "\Config\Option.ini")))).Value) Then KeyAscii = 0
     If KeyAscii = vbKeyEscape Then
         If fra_fenetre.Visible = True Then fra_fenetre.Visible = False
         If fra_info.Visible = True Then fra_info.Visible = False

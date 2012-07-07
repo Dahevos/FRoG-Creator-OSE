@@ -2,7 +2,7 @@
 
 CETTE FONCTION A ETE DESACTIVE DANS LES PLUS RECENTES VERSIONS. UN NOUVEAU EST EN PREPARATION. MERCI DE VOTRE COMPREHENSION.
 
-Le configuration d'un patch est très simple.
+La configuration d'un patch est très simple.
 Utiliser Patch.exe pour créer un patch, en remplissant bien les champs.
 Une fois ceci fait, Uploader info.ini et les fichiers des patchs sur un ftp.
 Une fois ceci fait, aller dans Updater.ini qui est dans le répertoire Config
@@ -14,4 +14,4 @@ exmple:
 http://roonline.free.fr/patch/patch.html
 
 Ensuite, si vous avez bien configuré votre patch (Le patch doit avoir une version
-supérieure à celle de votre jeu) hé bien dès l'ouverture du client, la patch se télécharge.
+supérieure à celle de votre jeu), le patch se télécharge.

@@ -73,25 +73,25 @@ Begin VB.Form frmadmin
       TabCaption(1)   =   "Commande"
       TabPicture(1)   =   "frmadmin.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Frame3"
+      Tab(1).Control(0)=   "Label7"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame10"
+      Tab(1).Control(1)=   "Frame5"
       Tab(1).Control(1).Enabled=   0   'False
       Tab(1).Control(2)=   "Frame9"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "Frame5"
+      Tab(1).Control(3)=   "Frame10"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "Label7"
+      Tab(1).Control(4)=   "Frame3"
       Tab(1).Control(4).Enabled=   0   'False
       Tab(1).ControlCount=   5
       TabCaption(2)   =   "Aide"
       TabPicture(2)   =   "frmadmin.frx":0902
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "Label16"
+      Tab(2).Control(0)=   "Frame8"
       Tab(2).Control(0).Enabled=   0   'False
       Tab(2).Control(1)=   "Frame6"
       Tab(2).Control(1).Enabled=   0   'False
-      Tab(2).Control(2)=   "Frame8"
+      Tab(2).Control(2)=   "Label16"
       Tab(2).Control(2).Enabled=   0   'False
       Tab(2).ControlCount=   3
       Begin VB.Frame Frame11 
@@ -1083,7 +1083,7 @@ Begin VB.Form frmadmin
             Width           =   1815
          End
          Begin VB.CommandButton btnBan 
-            Caption         =   "Banir"
+            Caption         =   "Bannir"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -1134,7 +1134,7 @@ Begin VB.Form frmadmin
             Width           =   1815
          End
          Begin VB.CommandButton btnSetAccess 
-            Caption         =   "Changer les access"
+            Caption         =   "Changer les accès"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -1185,7 +1185,7 @@ Begin VB.Form frmadmin
             Width           =   1815
          End
          Begin VB.Label Label4 
-            Caption         =   "Valeur de l'access:"
+            Caption         =   "Valeur de l'accès:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75

@@ -172,7 +172,7 @@ Begin VB.Form frmclasseseditor
          Left            =   1920
          TabIndex        =   16
          Text            =   "0"
-         Top             =   360
+         Top             =   480
          Width           =   1575
       End
       Begin VB.TextBox ajm 
@@ -311,7 +311,7 @@ Begin VB.Form frmclasseseditor
          Left            =   5520
          TabIndex        =   10
          Text            =   "0"
-         ToolTipText     =   "Numeros du Casque"
+         ToolTipText     =   "Numero du Casque"
          Top             =   1320
          Width           =   1575
       End
@@ -320,7 +320,7 @@ Begin VB.Form frmclasseseditor
          Left            =   5520
          TabIndex        =   9
          Text            =   "0"
-         ToolTipText     =   "Numeros de l'arme"
+         ToolTipText     =   "Numero de l'arme"
          Top             =   960
          Width           =   1575
       End
@@ -329,7 +329,7 @@ Begin VB.Form frmclasseseditor
          Left            =   5520
          TabIndex        =   11
          Text            =   "0"
-         ToolTipText     =   "Numeros de l'armure"
+         ToolTipText     =   "Numero de l'armure"
          Top             =   1680
          Width           =   1575
       End
@@ -338,7 +338,7 @@ Begin VB.Form frmclasseseditor
          Left            =   5520
          TabIndex        =   12
          Text            =   "0"
-         ToolTipText     =   "Numeros du Bouclier"
+         ToolTipText     =   "Numero du Bouclier"
          Top             =   2040
          Width           =   1575
       End
@@ -356,7 +356,7 @@ Begin VB.Form frmclasseseditor
          Left            =   1920
          TabIndex        =   6
          Text            =   "0"
-         ToolTipText     =   "Numéros de la carte"
+         ToolTipText     =   "Numéro de la carte"
          Top             =   2040
          Width           =   1575
       End

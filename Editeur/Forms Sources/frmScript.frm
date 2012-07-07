@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "Tabctl32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmScript 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Case Scripter"
+   Caption         =   "Case scriptée"
    ClientHeight    =   1575
    ClientLeft      =   45
    ClientTop       =   435

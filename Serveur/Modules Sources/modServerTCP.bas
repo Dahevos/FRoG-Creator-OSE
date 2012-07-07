@@ -1601,7 +1601,7 @@ Player(Index).sync = True
                             Case ITEM_TYPE_HELMET
                                 If InvNum <> GetPlayerHelmetSlot(Index) Then
                                     If n4 > -1 Then If GetPlayerClass(Index) <> n4 Then Call PlayerMsg(Index, "Tu as besoin d'être un " & GetClassName(n4) & " pour utiliser ceci.", BrightRed): Exit Sub
-                                    If GetPlayerAccess(Index) < n5 Then Call PlayerMsg(Index, "Votre access doit être supérieur à " & n5 & ".", BrightRed): Exit Sub
+                                    If GetPlayerAccess(Index) < n5 Then Call PlayerMsg(Index, "Votre accès doit être supérieur à " & n5 & ".", BrightRed): Exit Sub
                                     If item(GetPlayerInvItemNum(Index, InvNum)).Sex <> GetPlayerSex(Index) And item(GetPlayerInvItemNum(Index, InvNum)).Sex <> 2 Then Call PlayerMsg(Index, "Tu n'es pas du bon sexe pour utiliser ceci.", BrightRed): Exit Sub
                                     If Int(GetPlayerStr(Index)) < n1 Then
                                         Call PlayerMsg(Index, "Votre force n'est pas suffisante pour ceci.  Force requise (" & n1 & ")", BrightRed)
@@ -1624,7 +1624,7 @@ Player(Index).sync = True
                             Case ITEM_TYPE_SHIELD
                                 If InvNum <> GetPlayerShieldSlot(Index) Then
                                     If n4 > -1 Then If GetPlayerClass(Index) <> n4 Then Call PlayerMsg(Index, "Tu as besoin d'être un " & GetClassName(n4) & " pour utiliser ceci.", BrightRed): Exit Sub
-                                    If GetPlayerAccess(Index) < n5 Then Call PlayerMsg(Index, "Votre access doit être supérieur à " & n5 & ".", BrightRed): Exit Sub
+                                    If GetPlayerAccess(Index) < n5 Then Call PlayerMsg(Index, "Votre accès doit être supérieur à " & n5 & ".", BrightRed): Exit Sub
                                     If item(GetPlayerInvItemNum(Index, InvNum)).Sex <> GetPlayerSex(Index) And item(GetPlayerInvItemNum(Index, InvNum)).Sex <> 2 Then Call PlayerMsg(Index, "Tu n'es pas du bon sexe pour utiliser ceci.", BrightRed): Exit Sub
                                     If Int(GetPlayerStr(Index)) < n1 Then
                                         Call PlayerMsg(Index, "Votre force n'est pas suffisante pour ceci.  Force requise (" & n1 & ")", BrightRed)
@@ -2393,7 +2393,7 @@ Player(Index).sync = True
                             Call PlayerMsg(Index, "Personnage hors-ligne.", White)
                         End If
                     Else
-                        Call PlayerMsg(Index, "Tu ne peux te bannir toi même, idiot.", White)
+                        Call PlayerMsg(Index, "Tu ne peux te bannir toi même.", White)
                     End If
                     Exit Sub
             

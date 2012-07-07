@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmBDir 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Bloquer une direction"
@@ -122,7 +122,7 @@ Begin VB.Form frmBDir
       Begin VB.Label Label1 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Direction accepté :"
+         Caption         =   "Direction acceptée:"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -132,16 +132,16 @@ Begin VB.Form frmBDir
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   165
-         Left            =   240
+         Height          =   180
+         Left            =   255
          TabIndex        =   5
          Top             =   360
-         Width           =   1140
+         Width           =   1125
       End
       Begin VB.Label Label2 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Direction accepté :"
+         Caption         =   "Direction acceptée:"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -151,16 +151,16 @@ Begin VB.Form frmBDir
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   165
-         Left            =   240
+         Height          =   180
+         Left            =   255
          TabIndex        =   4
          Top             =   1080
-         Width           =   1140
+         Width           =   1125
       End
       Begin VB.Label Label3 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Direction accepté :"
+         Caption         =   "Direction acceptée:"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -170,11 +170,11 @@ Begin VB.Form frmBDir
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   165
-         Left            =   240
+         Height          =   180
+         Left            =   255
          TabIndex        =   3
          Top             =   1800
-         Width           =   1140
+         Width           =   1125
       End
    End
 End

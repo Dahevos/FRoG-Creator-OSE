@@ -86,7 +86,7 @@ End Sub
 
 Private Sub picUseChar_Click()
     If lstChars.List(lstChars.ListIndex) = "Emplacement libre" Then
-        MsgBox "Il n'y a pas de personnage à cette emplacement."
+        MsgBox "Il n'y a pas de personnage à cet emplacement."
         Exit Sub
     End If
     Call MenuState(MENU_STATE_USECHAR)

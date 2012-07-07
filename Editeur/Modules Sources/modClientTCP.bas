@@ -345,7 +345,7 @@ Dim z As Long
     ' ::::::::::::::::::::
     If LCase$(Parse(0)) = "ingame" Then
         InGame = True
-        If Player(MyIndex).Access < 1 Then MsgBox "Vous n'avez pas un acces suffisant pour éditer le jeu." & vbCrLf & "Le logiciel va se terminer.": Call GameDestroy
+        If Player(MyIndex).Access < 1 Then MsgBox "Vous n'avez pas un accès suffisant pour éditer le jeu." & vbCrLf & "Le logiciel va se terminer.": Call GameDestroy
         Call GameInit
         Call GameLoop
         
@@ -1557,7 +1557,7 @@ mont:
             frmMirage.quetetimersec.Interval = 1000
             Seco = Val(Parse(1)) - ((Val(Parse(1)) \ 60) * 60)
             Minu = (Val(Parse(1)) \ 60)
-            If Len(CStr(Minu)) > 2 Then frmMirage.minute.Caption = Minu & ":" Else frmMirage.minute.Caption = "0" & Minu & ":"
+            If Len(CStr(Minu)) > 2 Then frmMirage.Minute.Caption = Minu & ":" Else frmMirage.Minute.Caption = "0" & Minu & ":"
             If Len(CStr(Seco)) > 2 Then frmMirage.seconde.Caption = Seco Else frmMirage.seconde.Caption = "0" & Seco
             frmMirage.quetetimersec.Enabled = True
             Exit Sub
@@ -1709,10 +1709,10 @@ mont:
             Trade(xx).Selected = NO
         Next xx
         Trade(1).Selected = YES
-        frmTrade.shopType.Top = frmTrade.label(1).Top
-        frmTrade.shopType.Left = frmTrade.label(1).Left
-        frmTrade.shopType.Height = frmTrade.label(1).Height
-        frmTrade.shopType.Width = frmTrade.label(1).Width
+        frmTrade.shopType.Top = frmTrade.Label(1).Top
+        frmTrade.shopType.Left = frmTrade.Label(1).Left
+        frmTrade.shopType.Height = frmTrade.Label(1).Height
+        frmTrade.shopType.Width = frmTrade.Label(1).Width
         Trade(1).SelectedItem = 1
         NumShop = ShopNum
         
@@ -1944,7 +1944,13 @@ mont:
     ' :::::::::::::::::::
     ' :: Prompt Packet ::
     ' :::::::::::::::::::
-    If LCase$(Parse(0)) = "prompt" Then i = MsgBox(Trim$(Parse(1)), vbYesNo): Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & END_CHAR): Exit Sub
+    If LCase$(Parse(0)) = "prompt" Then
+    i = MsgBox(Trim$(Parse(1)), vbYesNo)
+    If i = vbYes Then
+    Call SendData("prompt" & SEP_CHAR & i & SEP_CHAR & Val(Parse(2)) & END_CHAR)
+    End If
+    Exit Sub
+    End If
 
     ' ::::::::::::::::::::::::::::
     ' :: Emoticon editor packet ::
@@ -2208,8 +2214,8 @@ mont:
     End If
 Exit Sub
 er:
-Call MsgBox("Une erreur de réception du serveur c'est produite(Numéros de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "). Si le probléme pérsiste veulliez contacter un administrateur.", vbCritical, "Erreur")
-Call EcrireEtat("Une erreur de réception du serveur c'est produite(Numéros de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & ").")
+Call MsgBox("Une erreur de réception du serveur c'est produite(Numéro de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & "). Si le probléme pérsiste veulliez contacter un administrateur.", vbCritical, "Erreur")
+Call EcrireEtat("Une erreur de réception du serveur c'est produite(Numéro de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & ").")
 Call GameDestroy
 End Sub
 
@@ -2466,7 +2472,7 @@ End Sub
 Sub SendSetAccess(ByVal name As String, ByVal Access As Byte)
 Dim Packet As String
 
-    Call EcrireEtat("Changement d'acces de " & name & ". Nouvelle acces : " & Access)
+    Call EcrireEtat("Changement d'accès de " & name & ". Nouvelle acces : " & Access)
     Packet = "SETACCESS" & SEP_CHAR & name & SEP_CHAR & Access & END_CHAR
     Call SendData(Packet)
 End Sub

@@ -70,7 +70,7 @@ Begin VB.Form frmEditArrows
          Height          =   255
          Left            =   240
          TabIndex        =   9
-         ToolTipText     =   "Nom du PNJ"
+         ToolTipText     =   "Nom de la flèche"
          Top             =   720
          Width           =   2775
       End

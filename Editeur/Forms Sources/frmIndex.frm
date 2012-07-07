@@ -125,7 +125,7 @@ Begin VB.Form frmIndex
       End
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
-         Caption         =   "Rechercher (numéros ou nom) :"
+         Caption         =   "Rechercher (numéro ou nom) :"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   8.25
@@ -139,7 +139,7 @@ Begin VB.Form frmIndex
          Left            =   840
          TabIndex        =   5
          Top             =   2670
-         Width           =   2280
+         Width           =   2325
       End
    End
    Begin VB.Menu edit 
@@ -388,7 +388,7 @@ Else
 End If
 Exit Sub
 er:
-MsgBox "Numéros ou Nom introuvable.", vbCritical
+MsgBox "Numéro ou Nom introuvable.", vbCritical
 End Sub
 
 Private Sub Text1_GotFocus()

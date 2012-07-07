@@ -470,7 +470,7 @@ On Error GoTo er:
             .chkLowEffect.value = Val(ReadINI("CONFIG", "LowEffect", FileName))
         End With
         If Val(ReadINI("CONFIG", "MapGrid", FileName)) = 0 Then frmMirage.grile.Checked = False Else frmMirage.grile.Checked = True
-        If Val(ReadINI("CONFIG", "PreVisu", FileName)) = 0 Then frmMirage.previsu.Checked = False Else frmMirage.previsu.Checked = True
+        'If Val(ReadINI("CONFIG", "PreVisu", FileName)) = 0 Then frmMirage.previsu.Checked = False Else frmMirage.previsu.Checked = True
     Else
         WriteINI "INFO", "Account", vbNullString, App.Path & "\Config\Client.ini"
         WriteINI "INFO", "Password", vbNullString, App.Path & "\Config\Client.ini"
@@ -496,7 +496,7 @@ On Error GoTo er:
         WriteINI "CONFIG", "PlayerName", 1, App.Path & "\Config\Account.ini"
         WriteINI "CONFIG", "PlayerDamage", 1, App.Path & "\Config\Account.ini"
         WriteINI "CONFIG", "MapGrid", 1, App.Path & "\Config\Account.ini"
-        WriteINI "CONFIG", "PreVisu", 1, App.Path & "\Config\Account.ini"
+        'WriteINI "CONFIG", "PreVisu", 1, App.Path & "\Config\Account.ini"
         WriteINI "CONFIG", "Music", 1, App.Path & "\Config\Account.ini"
         WriteINI "CONFIG", "Sound", 1, App.Path & "\Config\Account.ini"
         WriteINI "CONFIG", "AutoScroll", 1, App.Path & "\Config\Account.ini"
@@ -955,7 +955,7 @@ rest:
             Next i
         End If
         
-        If AccOpt.CPreVisu And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call BltVisu
+        'If AccOpt.CPreVisu And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call BltVisu
         
         If Not GettingMap Then
             If Map(Player(MyIndex).Map).Indoors = 0 Then Call BltWeather
@@ -1182,7 +1182,7 @@ Exit Sub
 er:
 If Val(Mid$(Err.Number, 1, 9)) = -200553208 Then GoTo rest:
 MsgBox "Erreur dans le code de boucle(" & Err.Number & " : " & Err.description & ")" & vbCrLf & "Merci de la rapporter sur le forum de FRoG Creator si elle persiste."
-Call EcrireEtat("Une erreur de boucle (Numéros de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & ").")
+Call EcrireEtat("Une erreur de boucle (Numéro de l'erreur : " & Err.Number & " Description : " & Err.description & " Source : " & Err.Source & ").")
 Call GameDestroy
 End Sub
 Sub GameDestroy()
@@ -4480,7 +4480,7 @@ End If
                     For i = 0 To ExtraSheets
                         If i <> EditorSet Then frmMirage.Tiles(i).Checked = False
                     Next i
-                    If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 Then Call PreVisua
+                    'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 Then Call PreVisua
                 End With
             ElseIf frmMirage.tp(3).Checked Then
                 EditorTileY = (Map(Player(MyIndex).Map).tile(x1, y1).Light \ TilesInSheets)
@@ -6314,7 +6314,7 @@ If test = 0 Then
     frmMirage.mana.Visible = True
     frmMirage.xp.Visible = True
     frmMirage.picScreen.SetFocus
-    frmMirage.test.Caption = "Quitter le teste"
+    frmMirage.test.Caption = "Quitter le test"
     ConOff = True
     Call SendData("refresh" & END_CHAR)
     test = 1

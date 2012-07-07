@@ -1,7 +1,7 @@
 VERSION 5.00
-Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "MSWINSCK.OCX"
 Object = "{831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCTL.OCX"
 Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0"; "mswinsck.ocx"
 Begin VB.Form frmServer 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "FRoG Server"
@@ -126,27 +126,38 @@ Begin VB.Form frmServer
       TabCaption(2)   =   "Panneau de Contrôle"
       TabPicture(2)   =   "frmServer.frx":17D62
       Tab(2).ControlEnabled=   0   'False
-      Tab(2).Control(0)=   "picMap"
-      Tab(2).Control(1)=   "Frame4"
-      Tab(2).Control(2)=   "picWeather"
-      Tab(2).Control(3)=   "Frame8"
-      Tab(2).Control(4)=   "Frame9"
+      Tab(2).Control(0)=   "lblPort"
+      Tab(2).Control(0).Enabled=   0   'False
+      Tab(2).Control(1)=   "lblIP"
+      Tab(2).Control(1).Enabled=   0   'False
+      Tab(2).Control(2)=   "Frame7"
+      Tab(2).Control(2).Enabled=   0   'False
+      Tab(2).Control(3)=   "Frame1"
+      Tab(2).Control(3).Enabled=   0   'False
+      Tab(2).Control(4)=   "Frame2"
+      Tab(2).Control(4).Enabled=   0   'False
       Tab(2).Control(5)=   "Frame3"
-      Tab(2).Control(6)=   "Frame2"
-      Tab(2).Control(7)=   "Frame1"
-      Tab(2).Control(8)=   "Frame7"
-      Tab(2).Control(9)=   "lblIP"
-      Tab(2).Control(10)=   "lblPort"
+      Tab(2).Control(5).Enabled=   0   'False
+      Tab(2).Control(6)=   "Frame9"
+      Tab(2).Control(6).Enabled=   0   'False
+      Tab(2).Control(7)=   "Frame8"
+      Tab(2).Control(7).Enabled=   0   'False
+      Tab(2).Control(8)=   "picWeather"
+      Tab(2).Control(8).Enabled=   0   'False
+      Tab(2).Control(9)=   "Frame4"
+      Tab(2).Control(9).Enabled=   0   'False
+      Tab(2).Control(10)=   "picMap"
+      Tab(2).Control(10).Enabled=   0   'False
       Tab(2).ControlCount=   11
       TabCaption(3)   =   "Aide"
       TabPicture(3)   =   "frmServer.frx":17D7E
       Tab(3).ControlEnabled=   0   'False
-      Tab(3).Control(0)=   "CharInfo(21)"
-      Tab(3).Control(1)=   "CharInfo(22)"
-      Tab(3).Control(2)=   "CharInfo(23)"
-      Tab(3).Control(3)=   "lstTopics"
-      Tab(3).Control(4)=   "TopicTitle"
-      Tab(3).Control(5)=   "sync"
+      Tab(3).Control(0)=   "sync"
+      Tab(3).Control(1)=   "TopicTitle"
+      Tab(3).Control(2)=   "lstTopics"
+      Tab(3).Control(3)=   "CharInfo(23)"
+      Tab(3).Control(4)=   "CharInfo(22)"
+      Tab(3).Control(5)=   "CharInfo(21)"
       Tab(3).ControlCount=   6
       Begin VB.PictureBox picExp 
          Appearance      =   0  'Flat
@@ -225,7 +236,7 @@ Begin VB.Form frmServer
          EndProperty
          ForeColor       =   &H80000008&
          Height          =   3375
-         Left            =   -73920
+         Left            =   -74880
          ScaleHeight     =   223
          ScaleMode       =   3  'Pixel
          ScaleWidth      =   223
@@ -495,7 +506,7 @@ Begin VB.Form frmServer
          End
       End
       Begin VB.Frame Frame4 
-         Caption         =   "Options avancée"
+         Caption         =   "Options avancées"
          Height          =   1215
          Left            =   -72960
          TabIndex        =   185

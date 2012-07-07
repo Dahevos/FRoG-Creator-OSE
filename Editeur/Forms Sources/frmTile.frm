@@ -113,7 +113,7 @@ Private Sub picTile_MouseDown(Button As Integer, Shift As Integer, x As Single, 
             shpSelected.Height = 32
             frmMirage.shpSelected.Width = 32
             frmMirage.shpSelected.Height = 32
-            If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
+            'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
         Else
             EditorTileX = (x \ PIC_X)
             EditorTileY = (y \ PIC_Y)
@@ -151,7 +151,7 @@ Private Sub picTile_MouseDown(Button As Integer, Shift As Integer, x As Single, 
     End If
     
     If frmMirage.tp(2).Checked = True Then shpSelected.Width = 32: shpSelected.Height = 32
-    If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
+    'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
 End Sub
 
 Private Sub picTile_MouseMove(Button As Integer, Shift As Integer, x As Single, y As Single)
@@ -162,7 +162,7 @@ Private Sub picTile_MouseMove(Button As Integer, Shift As Integer, x As Single, 
             shpSelected.Height = 32
             frmMirage.shpSelected.Width = 32
             frmMirage.shpSelected.Height = 32
-            If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
+            'If frmMirage.previsu.Checked And InEditor And frmMirage.tp(1).Checked And frmMirage.MousePointer <> 99 And frmMirage.MousePointer <> 2 Then Call PreVisua
         Else
             EditorTileX = (x \ PIC_X)
             EditorTileY = (y \ PIC_Y)

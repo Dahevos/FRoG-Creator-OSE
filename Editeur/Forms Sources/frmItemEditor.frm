@@ -1,6 +1,6 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
-Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "comdlg32.ocx"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
+Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmItemEditor 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Éditeur d'objets"
@@ -170,9 +170,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   5055
-         Left            =   5540
+         Left            =   5520
          TabIndex        =   64
-         Top             =   1005
+         Top             =   960
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlSexReq 
@@ -274,7 +274,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label34 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Sex Req :"
+            Caption         =   "Sexe requis :"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -285,7 +285,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   240
             TabIndex        =   109
             ToolTipText     =   "Classe requise"
             Top             =   3840
@@ -293,7 +293,7 @@ Begin VB.Form frmItemEditor
          End
          Begin VB.Label Label2 
             Alignment       =   1  'Right Justify
-            Caption         =   "Durabilité :"
+            Caption         =   "Durabilité:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -304,14 +304,14 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   255
-            Left            =   300
+            Left            =   240
             TabIndex        =   85
             Top             =   240
             Width           =   735
          End
          Begin VB.Label Label3 
             Alignment       =   1  'Right Justify
-            Caption         =   "Dommage :"
+            Caption         =   "Dommage:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -322,7 +322,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   300
+            Left            =   240
             TabIndex        =   84
             ToolTipText     =   "Dommage infliger par l'objet"
             Top             =   840
@@ -368,7 +368,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label8 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Force Req :"
+            Caption         =   "Force requise:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -379,16 +379,16 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   300
+            Left            =   0
             TabIndex        =   81
             ToolTipText     =   "Force requise"
             Top             =   1440
-            Width           =   735
+            Width           =   1095
          End
          Begin VB.Label Label9 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Defense Req :"
+            Caption         =   "Défense requise:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -399,11 +399,11 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   240
+            Left            =   0
             TabIndex        =   80
             ToolTipText     =   "Défense requise"
             Top             =   2040
-            Width           =   975
+            Width           =   1335
          End
          Begin VB.Label Label11 
             Alignment       =   1  'Right Justify
@@ -465,7 +465,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label10 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Vitesse Req :"
+            Caption         =   "Vitesse requise:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -476,7 +476,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   180
+            Left            =   320
             TabIndex        =   76
             ToolTipText     =   "Vitesse requise"
             Top             =   2640
@@ -485,7 +485,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label14 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Classe Req :"
+            Caption         =   "Classe requise :"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -496,7 +496,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   180
+            Left            =   240
             TabIndex        =   75
             ToolTipText     =   "Classe requise"
             Top             =   3240
@@ -505,7 +505,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label15 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Access Req :"
+            Caption         =   "Accès Requis:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -537,11 +537,11 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   165
-            Left            =   1080
+            Left            =   1200
             TabIndex        =   73
             ToolTipText     =   "Classe requise"
             Top             =   3240
-            Width           =   1125
+            Width           =   1005
          End
          Begin VB.Label Label17 
             Alignment       =   1  'Right Justify
@@ -578,7 +578,7 @@ Begin VB.Form frmItemEditor
          Height          =   5715
          Left            =   8040
          TabIndex        =   5
-         Top             =   900
+         Top             =   960
          Visible         =   0   'False
          Width           =   3195
          Begin VB.HScrollBar scrlAttackSpeed 
@@ -674,7 +674,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label lblAttackSpeed 
             AutoSize        =   -1  'True
             BackStyle       =   0  'Transparent
-            Caption         =   "1000 Milleseconds"
+            Caption         =   "1000 Millisecondes"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -684,12 +684,12 @@ Begin VB.Form frmItemEditor
                Italic          =   0   'False
                Strikethrough   =   0   'False
             EndProperty
-            Height          =   165
+            Height          =   180
             Left            =   1500
             TabIndex        =   42
             ToolTipText     =   "Intervalle entre 2 coups d'une arme en milliseconde (1000milliseconde = 1seconde)"
             Top             =   5100
-            Width           =   1110
+            Width           =   1125
          End
          Begin VB.Label Label28 
             Alignment       =   1  'Right Justify
@@ -724,15 +724,15 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1680
             TabIndex        =   29
-            Top             =   2220
+            Top             =   2160
             Width           =   495
          End
          Begin VB.Label Label25 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Ajout d'EXP"
+            Caption         =   "Ajout d'EXP:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -743,7 +743,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   240
             TabIndex        =   28
             Top             =   2220
             Width           =   855
@@ -761,14 +761,14 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   26
             Top             =   1560
             Width           =   495
          End
          Begin VB.Label Label24 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de SP"
+            Caption         =   "Ajout de SP:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -779,7 +779,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   240
             TabIndex        =   24
             Top             =   1560
             Width           =   855
@@ -797,10 +797,10 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   23
             ToolTipText     =   "Ajouter de la vitesse"
-            Top             =   4560
+            Top             =   4440
             Width           =   495
          End
          Begin VB.Label lblAddMagi 
@@ -816,7 +816,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   22
             ToolTipText     =   "Ajouter de la magie"
             Top             =   3960
@@ -835,7 +835,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   21
             ToolTipText     =   "Ajouter de la défense "
             Top             =   3360
@@ -854,7 +854,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   20
             ToolTipText     =   "Ajouter de la force"
             Top             =   2760
@@ -873,7 +873,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   19
             ToolTipText     =   "Ajouter des points de magie"
             Top             =   960
@@ -892,7 +892,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1080
+            Left            =   1560
             TabIndex        =   18
             ToolTipText     =   "Ajouter des points de vie"
             Top             =   360
@@ -901,7 +901,7 @@ Begin VB.Form frmItemEditor
          Begin VB.Label Label23 
             Alignment       =   1  'Right Justify
             BackStyle       =   0  'Transparent
-            Caption         =   "Ajout de Vit"
+            Caption         =   "Ajout de vitesse:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -912,15 +912,15 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   -840
             TabIndex        =   11
             ToolTipText     =   "Ajouter de la vitesse"
             Top             =   4560
-            Width           =   855
+            Width           =   2175
          End
          Begin VB.Label Label22 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de Mag"
+            Caption         =   "Ajout de magie:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -931,15 +931,15 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   -150
             TabIndex        =   10
             ToolTipText     =   "Ajouter de la magie"
             Top             =   3960
-            Width           =   855
+            Width           =   1455
          End
          Begin VB.Label Label21 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de Def"
+            Caption         =   "Ajout de défense:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -950,15 +950,15 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   50
             TabIndex        =   9
             ToolTipText     =   "Ajouter de la défense "
             Top             =   3360
-            Width           =   855
+            Width           =   1335
          End
          Begin VB.Label Label20 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de For"
+            Caption         =   "Ajout de force:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -969,7 +969,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   360
             TabIndex        =   8
             ToolTipText     =   "Ajouter de la force"
             Top             =   2760
@@ -977,7 +977,7 @@ Begin VB.Form frmItemEditor
          End
          Begin VB.Label Label19 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de MP"
+            Caption         =   "Ajout de MP:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -988,7 +988,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   240
             TabIndex        =   7
             ToolTipText     =   "Ajouter des points de magie"
             Top             =   960
@@ -996,7 +996,7 @@ Begin VB.Form frmItemEditor
          End
          Begin VB.Label Label18 
             Alignment       =   1  'Right Justify
-            Caption         =   "Ajout de HP"
+            Caption         =   "Ajout de HP:"
             BeginProperty Font 
                Name            =   "Segoe UI"
                Size            =   6.75
@@ -1007,7 +1007,7 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   120
+            Left            =   240
             TabIndex        =   6
             ToolTipText     =   "Ajouter des points de vie"
             Top             =   360
@@ -1343,9 +1343,9 @@ Begin VB.Form frmItemEditor
                Strikethrough   =   0   'False
             EndProperty
             Height          =   315
-            ItemData        =   "frmItemEditor.frx":01C7
+            ItemData        =   "frmItemEditor.frx":01C6
             Left            =   120
-            List            =   "frmItemEditor.frx":01C9
+            List            =   "frmItemEditor.frx":01C8
             Style           =   2  'Dropdown List
             TabIndex        =   34
             ToolTipText     =   "Sélectionner une flèche"
@@ -1449,7 +1449,7 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2355
-         Left            =   5540
+         Left            =   5520
          TabIndex        =   43
          Top             =   960
          Visible         =   0   'False
@@ -1598,9 +1598,9 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1095
-         Left            =   5535
+         Left            =   5520
          TabIndex        =   86
-         Top             =   975
+         Top             =   2640
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlVitalMod 
@@ -1667,7 +1667,7 @@ Begin VB.Form frmItemEditor
          Height          =   1515
          Left            =   5535
          TabIndex        =   90
-         Top             =   960
+         Top             =   2640
          Visible         =   0   'False
          Width           =   2355
          Begin VB.HScrollBar scrlSpell 
@@ -1758,7 +1758,7 @@ Begin VB.Form frmItemEditor
          End
       End
       Begin VB.Frame fraobjsc 
-         Caption         =   "Objet Scripter"
+         Caption         =   "Objet scripté"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -1769,7 +1769,7 @@ Begin VB.Form frmItemEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1695
-         Left            =   5550
+         Left            =   5540
          TabIndex        =   49
          Top             =   945
          Visible         =   0   'False

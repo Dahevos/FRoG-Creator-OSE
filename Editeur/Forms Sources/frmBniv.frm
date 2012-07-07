@@ -112,7 +112,7 @@ Begin VB.Form frmBniv
       Begin VB.Label Label1 
          Alignment       =   1  'Right Justify
          AutoSize        =   -1  'True
-         Caption         =   "Bloquer si le joueur est en dessou du niveau :"
+         Caption         =   "Bloquer si le joueur est en dessous du niveau :"
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   6.75
@@ -122,11 +122,11 @@ Begin VB.Form frmBniv
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   165
-         Left            =   270
+         Height          =   180
+         Left            =   420
          TabIndex        =   4
          Top             =   360
-         Width           =   2820
+         Width           =   2670
       End
    End
 End
@@ -151,7 +151,7 @@ End Sub
 
 Private Sub Form_Load()
 scrlNum1.Max = MAX_LEVEL
-If NivMin < scrlNum1.min Then NivMin = scrlNum1.min
+If NivMin < scrlNum1.Min Then NivMin = scrlNum1.Min
 scrlNum1.value = NivMin
 lblNum1.Caption = scrlNum1.value
 End Sub

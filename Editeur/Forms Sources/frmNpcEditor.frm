@@ -165,7 +165,7 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   2760
+         Left            =   2520
          TabIndex        =   50
          Text            =   "0"
          ToolTipText     =   "Temps mit par le PNJ pour ressusciter après sa mort"
@@ -182,9 +182,9 @@ Begin VB.Form frmNpcEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   285
+         Height          =   300
          ItemData        =   "frmNpcEditor.frx":00CC
-         Left            =   960
+         Left            =   840
          List            =   "frmNpcEditor.frx":00E5
          Style           =   2  'Dropdown List
          TabIndex        =   48
@@ -242,7 +242,7 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   2640
+         Left            =   2520
          TabIndex        =   35
          Text            =   "0"
          ToolTipText     =   "Chance pour le joueur d'avoir l'objet quand il tue le PNJ"
@@ -251,29 +251,29 @@ Begin VB.Form frmNpcEditor
       End
       Begin VB.HScrollBar scrlValue 
          Height          =   255
-         Left            =   960
+         Left            =   1080
          Max             =   10000
          TabIndex        =   34
-         Top             =   1800
+         Top             =   1680
          Value           =   1
          Width           =   3255
       End
       Begin VB.HScrollBar scrlNum 
          Height          =   255
-         Left            =   960
+         Left            =   1080
          Max             =   500
          TabIndex        =   33
-         Top             =   1320
+         Top             =   1200
          Value           =   1
          Width           =   3255
       End
       Begin VB.HScrollBar scrlDropItem 
          Height          =   255
-         Left            =   960
+         Left            =   1080
          Max             =   5
          Min             =   1
          TabIndex        =   32
-         Top             =   360
+         Top             =   240
          Value           =   1
          Width           =   3255
       End
@@ -351,7 +351,7 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   360
+         Left            =   120
          TabIndex        =   49
          Top             =   3240
          Width           =   2295
@@ -369,7 +369,7 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   120
+         Left            =   0
          TabIndex        =   47
          Top             =   2760
          Width           =   735
@@ -387,7 +387,7 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   720
+         Left            =   0
          TabIndex        =   44
          Top             =   2280
          Width           =   1815
@@ -405,10 +405,10 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   4320
+         Left            =   4440
          TabIndex        =   43
          ToolTipText     =   "Nombre d'objet donné"
-         Top             =   1800
+         Top             =   1680
          Width           =   75
       End
       Begin VB.Label Label7 
@@ -427,7 +427,7 @@ Begin VB.Form frmNpcEditor
          Left            =   120
          TabIndex        =   42
          ToolTipText     =   "Nombre d'objet donné"
-         Top             =   1800
+         Top             =   1680
          Width           =   735
       End
       Begin VB.Label lblNum 
@@ -443,10 +443,10 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   4320
+         Left            =   4440
          TabIndex        =   41
          ToolTipText     =   "Numéros de l'objet donné"
-         Top             =   1320
+         Top             =   1200
          Width           =   75
       End
       Begin VB.Label Label9 
@@ -461,11 +461,11 @@ Begin VB.Form frmNpcEditor
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   255
+         Height          =   495
          Left            =   120
          TabIndex        =   40
          ToolTipText     =   "Numéros de l'objet donné"
-         Top             =   1320
+         Top             =   1200
          Width           =   735
       End
       Begin VB.Label lblItemName 
@@ -482,7 +482,7 @@ Begin VB.Form frmNpcEditor
          Left            =   960
          TabIndex        =   39
          ToolTipText     =   "Nom de l'objet donné"
-         Top             =   845
+         Top             =   720
          Width           =   3495
       End
       Begin VB.Label Label11 
@@ -501,7 +501,7 @@ Begin VB.Form frmNpcEditor
          Left            =   120
          TabIndex        =   38
          ToolTipText     =   "Nom de l'objet donné"
-         Top             =   840
+         Top             =   720
          Width           =   735
       End
       Begin VB.Label lblDropItem 
@@ -517,10 +517,10 @@ Begin VB.Form frmNpcEditor
             Strikethrough   =   0   'False
          EndProperty
          Height          =   165
-         Left            =   4320
+         Left            =   4440
          TabIndex        =   37
          ToolTipText     =   "Numéros de l'objet donné par le PNJ a sa mort : un PNJ peut donner 10 objet différent au maximum"
-         Top             =   360
+         Top             =   240
          Width           =   75
       End
       Begin VB.Label Label13 
@@ -540,7 +540,7 @@ Begin VB.Form frmNpcEditor
          TabIndex        =   36
          ToolTipText     =   "Numéros de l'objet donné par le PNJ a sa mort : un PNJ peut donner 10 objet différent au maximum"
          Top             =   240
-         Width           =   735
+         Width           =   855
       End
    End
    Begin VB.Frame Frame1 

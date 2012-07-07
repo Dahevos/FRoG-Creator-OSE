@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmMapProperties 
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Propriétés de la Carte"
@@ -34,7 +34,6 @@ Begin VB.Form frmMapProperties
       _ExtentY        =   14473
       _Version        =   393216
       Tabs            =   2
-      Tab             =   1
       TabsPerRow      =   2
       TabHeight       =   353
       TabMaxWidth     =   1764
@@ -49,7 +48,7 @@ Begin VB.Form frmMapProperties
       EndProperty
       TabCaption(0)   =   "Général"
       TabPicture(0)   =   "frmMapProperties.frx":0000
-      Tab(0).ControlEnabled=   0   'False
+      Tab(0).ControlEnabled=   -1  'True
       Tab(0).Control(0)=   "Label13"
       Tab(0).Control(0).Enabled=   0   'False
       Tab(0).Control(1)=   "txtName"
@@ -71,7 +70,7 @@ Begin VB.Form frmMapProperties
       Tab(0).ControlCount=   9
       TabCaption(1)   =   "PNJ"
       TabPicture(1)   =   "frmMapProperties.frx":001C
-      Tab(1).ControlEnabled=   -1  'True
+      Tab(1).ControlEnabled=   0   'False
       Tab(1).Control(0)=   "cmbNpc(14)"
       Tab(1).Control(0).Enabled=   0   'False
       Tab(1).Control(1)=   "cmbNpc(13)"
@@ -179,7 +178,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   390
-         Left            =   7920
+         Left            =   -67080
          TabIndex        =   90
          Top             =   7680
          Width           =   1575
@@ -196,7 +195,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   375
-         Left            =   6120
+         Left            =   -68880
          TabIndex        =   89
          Top             =   7680
          Width           =   1575
@@ -213,7 +212,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2055
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   75
          ToolTipText     =   "Panorama situé au dessus de la couche frange"
          Top             =   5040
@@ -376,7 +375,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   15
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   59
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   7320
@@ -395,7 +394,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   255
          Index           =   1
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   16
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   600
@@ -414,7 +413,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   2
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   20
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1080
@@ -433,7 +432,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   3
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   23
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1560
@@ -452,7 +451,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   4
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   26
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2040
@@ -471,7 +470,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   5
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   29
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2520
@@ -490,7 +489,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   6
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   32
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3000
@@ -509,7 +508,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   7
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   35
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3480
@@ -528,7 +527,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   8
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   38
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3960
@@ -547,7 +546,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   9
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   41
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4440
@@ -566,7 +565,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   11
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   47
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5400
@@ -585,7 +584,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   12
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   50
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5880
@@ -604,7 +603,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   13
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   53
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6360
@@ -623,7 +622,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   14
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   56
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6840
@@ -642,7 +641,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   10
-         Left            =   5520
+         Left            =   -69480
          TabIndex        =   44
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4920
@@ -660,7 +659,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   420
-         Left            =   -67080
+         Left            =   7920
          TabIndex        =   17
          ToolTipText     =   "Annuler les changements"
          Top             =   7200
@@ -678,7 +677,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   420
-         Left            =   -69000
+         Left            =   6000
          TabIndex        =   14
          ToolTipText     =   "Confirmer les changements"
          Top             =   7200
@@ -697,7 +696,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   9
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   46
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5400
@@ -716,7 +715,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   13
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   58
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   7320
@@ -735,7 +734,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   12
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   55
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6840
@@ -754,7 +753,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   11
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   52
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   6360
@@ -773,7 +772,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   10
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   49
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   5880
@@ -792,7 +791,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   8
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   43
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4920
@@ -811,7 +810,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   7
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   40
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   4440
@@ -830,7 +829,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   6
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   37
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3960
@@ -849,7 +848,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   5
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   34
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3480
@@ -868,7 +867,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   4
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   31
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   3000
@@ -887,7 +886,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   3
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   28
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2520
@@ -906,7 +905,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   2
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   25
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   2040
@@ -925,7 +924,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   270
          Index           =   1
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   22
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1560
@@ -944,7 +943,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   255
          Index           =   0
-         Left            =   4680
+         Left            =   -70320
          TabIndex        =   19
          ToolTipText     =   "Copier le pnj au dessus de celui là"
          Top             =   1080
@@ -962,7 +961,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   1440
+         Left            =   -73560
          TabIndex        =   60
          ToolTipText     =   "Retirer tout les pnj de la carte"
          Top             =   7800
@@ -980,7 +979,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   4215
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   73
          ToolTipText     =   "Musique entendue par les joueurs qui sont sur la carte"
          Top             =   2880
@@ -1052,7 +1051,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1845
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   69
          ToolTipText     =   "Vous pouvez l'utiliser pour faire vos donjons par exemple"
          Top             =   3000
@@ -1195,7 +1194,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   1980
-         Left            =   -70680
+         Left            =   4320
          TabIndex        =   67
          Top             =   840
          Width           =   5085
@@ -1332,7 +1331,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   2115
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   62
          Top             =   840
          Width           =   3615
@@ -1348,7 +1347,7 @@ Begin VB.Form frmMapProperties
                Strikethrough   =   0   'False
             EndProperty
             Height          =   255
-            Left            =   1320
+            Left            =   1440
             TabIndex        =   93
             ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
             Top             =   1800
@@ -1366,10 +1365,10 @@ Begin VB.Form frmMapProperties
                Strikethrough   =   0   'False
             EndProperty
             Height          =   375
-            Left            =   1320
+            Left            =   1440
             TabIndex        =   92
             ToolTipText     =   "La nuit ne tombera pas sur cette carte si la case est cochée"
-            Top             =   1460
+            Top             =   1440
             Width           =   2200
          End
          Begin VB.CheckBox CGuild 
@@ -1423,7 +1422,7 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   5
             Text            =   "0"
-            ToolTipText     =   "Numéros de la carte où les joueurs seront téléporter"
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
             Top             =   1260
             Width           =   855
          End
@@ -1442,8 +1441,8 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   4
             Text            =   "0"
-            ToolTipText     =   "Numéros de la carte où les joueurs seront téléporter"
-            Top             =   975
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
+            Top             =   960
             Width           =   855
          End
          Begin VB.TextBox txtRight 
@@ -1461,7 +1460,7 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   3
             Text            =   "0"
-            ToolTipText     =   "Numéros de la carte où les joueurs seront téléporter"
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
             Top             =   690
             Width           =   855
          End
@@ -1480,7 +1479,7 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   2
             Text            =   "0"
-            ToolTipText     =   "Numéros de la carte où les joueurs seront téléporter"
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
             Top             =   405
             Width           =   855
          End
@@ -1564,10 +1563,10 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   285
-         Left            =   -73260
+         Left            =   1740
          MaxLength       =   40
          TabIndex        =   1
-         ToolTipText     =   "Ecrivez le nom désirer pour la carte ici"
+         ToolTipText     =   "Ecrivez le nom désiré pour la carte ici"
          Top             =   360
          Width           =   7665
       End
@@ -1583,7 +1582,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   0
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   15
          ToolTipText     =   "Sélectionner un pnj"
@@ -1602,7 +1601,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   1
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   18
          ToolTipText     =   "Sélectionner un pnj"
@@ -1621,7 +1620,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   2
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   21
          ToolTipText     =   "Sélectionner un pnj"
@@ -1641,7 +1640,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   3
          ItemData        =   "frmMapProperties.frx":007E
-         Left            =   480
+         Left            =   -74520
          List            =   "frmMapProperties.frx":0080
          Style           =   2  'Dropdown List
          TabIndex        =   24
@@ -1661,7 +1660,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   4
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   27
          ToolTipText     =   "Sélectionner un pnj"
@@ -1680,7 +1679,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   5
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   30
          ToolTipText     =   "Sélectionner un pnj"
@@ -1699,7 +1698,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   6
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   33
          ToolTipText     =   "Sélectionner un pnj"
@@ -1719,7 +1718,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   7
          ItemData        =   "frmMapProperties.frx":0082
-         Left            =   480
+         Left            =   -74520
          List            =   "frmMapProperties.frx":0084
          Style           =   2  'Dropdown List
          TabIndex        =   36
@@ -1739,7 +1738,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   8
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   39
          ToolTipText     =   "Sélectionner un pnj"
@@ -1758,7 +1757,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   9
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   42
          ToolTipText     =   "Sélectionner un pnj"
@@ -1777,7 +1776,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   10
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   45
          ToolTipText     =   "Sélectionner un pnj"
@@ -1796,7 +1795,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   11
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   48
          ToolTipText     =   "Sélectionner un pnj"
@@ -1815,7 +1814,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   12
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   51
          ToolTipText     =   "Sélectionner un pnj"
@@ -1835,7 +1834,7 @@ Begin VB.Form frmMapProperties
          Height          =   315
          Index           =   13
          ItemData        =   "frmMapProperties.frx":0086
-         Left            =   480
+         Left            =   -74520
          List            =   "frmMapProperties.frx":0088
          Style           =   2  'Dropdown List
          TabIndex        =   54
@@ -1855,7 +1854,7 @@ Begin VB.Form frmMapProperties
          EndProperty
          Height          =   315
          Index           =   14
-         Left            =   480
+         Left            =   -74520
          Style           =   2  'Dropdown List
          TabIndex        =   57
          ToolTipText     =   "Sélectionner un pnj"
@@ -1874,7 +1873,7 @@ Begin VB.Form frmMapProperties
             Strikethrough   =   0   'False
          EndProperty
          Height          =   225
-         Left            =   -74640
+         Left            =   360
          TabIndex        =   61
          Top             =   360
          Width           =   1335

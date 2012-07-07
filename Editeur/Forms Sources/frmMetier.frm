@@ -72,7 +72,7 @@ Begin VB.Form frmMetier
          Width           =   615
       End
       Begin VB.Label Label5 
-         Caption         =   "Expérience rapporter"
+         Caption         =   "Expérience rapportée"
          Height          =   255
          Left            =   120
          TabIndex        =   12
@@ -195,13 +195,13 @@ End Sub
 
 Private Sub scrlCibleNPC_Change()
     lblCibleNPC.Caption = scrlCibleNPC.value
-    If Metier(EditorIndex).data(scrlCibleNPC.value, 1) > 0 Then scrlExpNPC.value = Metier(EditorIndex).data(scrlCibleNPC.value, 1)
-    scrlNPCNum.value = Metier(EditorIndex).data(scrlCibleNPC.value, 0)
+    If Metier(EditorIndex).Data(scrlCibleNPC.value, 1) > 0 Then scrlExpNPC.value = Metier(EditorIndex).Data(scrlCibleNPC.value, 1)
+    scrlNPCNum.value = Metier(EditorIndex).Data(scrlCibleNPC.value, 0)
 End Sub
 
 Private Sub scrlExpNPC_Change()
     lblExpNPC.Caption = scrlExpNPC.value
-    Metier(EditorIndex).data(scrlCibleNPC.value, 1) = scrlExpNPC.value
+    Metier(EditorIndex).Data(scrlCibleNPC.value, 1) = scrlExpNPC.value
 End Sub
 
 Private Sub scrlNPCNum_Change()
@@ -218,5 +218,5 @@ Private Sub scrlNPCNum_Change()
             lblNPCNum.Caption = "Pas de Craft"
         End If
     End If
-    Metier(EditorIndex).data(scrlCibleNPC.value, 0) = scrlNPCNum.value
+    Metier(EditorIndex).Data(scrlCibleNPC.value, 0) = scrlNPCNum.value
 End Sub

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL3N.OCX"
+Object = "{BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.1#0"; "TABCTL32.OCX"
 Begin VB.Form frmPlayerHelp 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "Panneau de commande"
@@ -58,9 +58,9 @@ Begin VB.Form frmPlayerHelp
       TabCaption(1)   =   "Aide"
       TabPicture(1)   =   "frmPlayerHelp.frx":08E6
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "Label1(1)"
+      Tab(1).Control(0)=   "Frame8"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "Frame8"
+      Tab(1).Control(1)=   "Label1(1)"
       Tab(1).Control(1).Enabled=   0   'False
       Tab(1).ControlCount=   2
       Begin VB.Frame Frame8 
@@ -156,7 +156,7 @@ Begin VB.Form frmPlayerHelp
       End
       Begin VB.Label Label1 
          Caption         =   "Panneau d'aide au Joueur"
-         Height          =   135
+         Height          =   255
          Index           =   0
          Left            =   120
          TabIndex        =   1
