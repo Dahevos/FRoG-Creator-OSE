@@ -71,99 +71,99 @@ Begin VB.Form frmMapProperties
       TabCaption(1)   =   "PNJ"
       TabPicture(1)   =   "frmMapProperties.frx":001C
       Tab(1).ControlEnabled=   0   'False
-      Tab(1).Control(0)=   "cmbNpc(14)"
+      Tab(1).Control(0)=   "Command5"
       Tab(1).Control(0).Enabled=   0   'False
-      Tab(1).Control(1)=   "cmbNpc(13)"
+      Tab(1).Control(1)=   "Command4"
       Tab(1).Control(1).Enabled=   0   'False
-      Tab(1).Control(2)=   "cmbNpc(12)"
+      Tab(1).Control(2)=   "plus(15)"
       Tab(1).Control(2).Enabled=   0   'False
-      Tab(1).Control(3)=   "cmbNpc(11)"
+      Tab(1).Control(3)=   "plus(1)"
       Tab(1).Control(3).Enabled=   0   'False
-      Tab(1).Control(4)=   "cmbNpc(10)"
+      Tab(1).Control(4)=   "plus(2)"
       Tab(1).Control(4).Enabled=   0   'False
-      Tab(1).Control(5)=   "cmbNpc(9)"
+      Tab(1).Control(5)=   "plus(3)"
       Tab(1).Control(5).Enabled=   0   'False
-      Tab(1).Control(6)=   "cmbNpc(8)"
+      Tab(1).Control(6)=   "plus(4)"
       Tab(1).Control(6).Enabled=   0   'False
-      Tab(1).Control(7)=   "cmbNpc(7)"
+      Tab(1).Control(7)=   "plus(5)"
       Tab(1).Control(7).Enabled=   0   'False
-      Tab(1).Control(8)=   "cmbNpc(6)"
+      Tab(1).Control(8)=   "plus(6)"
       Tab(1).Control(8).Enabled=   0   'False
-      Tab(1).Control(9)=   "cmbNpc(5)"
+      Tab(1).Control(9)=   "plus(7)"
       Tab(1).Control(9).Enabled=   0   'False
-      Tab(1).Control(10)=   "cmbNpc(4)"
+      Tab(1).Control(10)=   "plus(8)"
       Tab(1).Control(10).Enabled=   0   'False
-      Tab(1).Control(11)=   "cmbNpc(3)"
+      Tab(1).Control(11)=   "plus(9)"
       Tab(1).Control(11).Enabled=   0   'False
-      Tab(1).Control(12)=   "cmbNpc(2)"
+      Tab(1).Control(12)=   "plus(11)"
       Tab(1).Control(12).Enabled=   0   'False
-      Tab(1).Control(13)=   "cmbNpc(1)"
+      Tab(1).Control(13)=   "plus(12)"
       Tab(1).Control(13).Enabled=   0   'False
-      Tab(1).Control(14)=   "cmbNpc(0)"
+      Tab(1).Control(14)=   "plus(13)"
       Tab(1).Control(14).Enabled=   0   'False
-      Tab(1).Control(15)=   "Command1"
+      Tab(1).Control(15)=   "plus(14)"
       Tab(1).Control(15).Enabled=   0   'False
-      Tab(1).Control(16)=   "Copy(0)"
+      Tab(1).Control(16)=   "plus(10)"
       Tab(1).Control(16).Enabled=   0   'False
-      Tab(1).Control(17)=   "Copy(1)"
+      Tab(1).Control(17)=   "Copy(9)"
       Tab(1).Control(17).Enabled=   0   'False
-      Tab(1).Control(18)=   "Copy(2)"
+      Tab(1).Control(18)=   "Copy(13)"
       Tab(1).Control(18).Enabled=   0   'False
-      Tab(1).Control(19)=   "Copy(3)"
+      Tab(1).Control(19)=   "Copy(12)"
       Tab(1).Control(19).Enabled=   0   'False
-      Tab(1).Control(20)=   "Copy(4)"
+      Tab(1).Control(20)=   "Copy(11)"
       Tab(1).Control(20).Enabled=   0   'False
-      Tab(1).Control(21)=   "Copy(5)"
+      Tab(1).Control(21)=   "Copy(10)"
       Tab(1).Control(21).Enabled=   0   'False
-      Tab(1).Control(22)=   "Copy(6)"
+      Tab(1).Control(22)=   "Copy(8)"
       Tab(1).Control(22).Enabled=   0   'False
       Tab(1).Control(23)=   "Copy(7)"
       Tab(1).Control(23).Enabled=   0   'False
-      Tab(1).Control(24)=   "Copy(8)"
+      Tab(1).Control(24)=   "Copy(6)"
       Tab(1).Control(24).Enabled=   0   'False
-      Tab(1).Control(25)=   "Copy(10)"
+      Tab(1).Control(25)=   "Copy(5)"
       Tab(1).Control(25).Enabled=   0   'False
-      Tab(1).Control(26)=   "Copy(11)"
+      Tab(1).Control(26)=   "Copy(4)"
       Tab(1).Control(26).Enabled=   0   'False
-      Tab(1).Control(27)=   "Copy(12)"
+      Tab(1).Control(27)=   "Copy(3)"
       Tab(1).Control(27).Enabled=   0   'False
-      Tab(1).Control(28)=   "Copy(13)"
+      Tab(1).Control(28)=   "Copy(2)"
       Tab(1).Control(28).Enabled=   0   'False
-      Tab(1).Control(29)=   "Copy(9)"
+      Tab(1).Control(29)=   "Copy(1)"
       Tab(1).Control(29).Enabled=   0   'False
-      Tab(1).Control(30)=   "plus(10)"
+      Tab(1).Control(30)=   "Copy(0)"
       Tab(1).Control(30).Enabled=   0   'False
-      Tab(1).Control(31)=   "plus(14)"
+      Tab(1).Control(31)=   "Command1"
       Tab(1).Control(31).Enabled=   0   'False
-      Tab(1).Control(32)=   "plus(13)"
+      Tab(1).Control(32)=   "cmbNpc(0)"
       Tab(1).Control(32).Enabled=   0   'False
-      Tab(1).Control(33)=   "plus(12)"
+      Tab(1).Control(33)=   "cmbNpc(1)"
       Tab(1).Control(33).Enabled=   0   'False
-      Tab(1).Control(34)=   "plus(11)"
+      Tab(1).Control(34)=   "cmbNpc(2)"
       Tab(1).Control(34).Enabled=   0   'False
-      Tab(1).Control(35)=   "plus(9)"
+      Tab(1).Control(35)=   "cmbNpc(3)"
       Tab(1).Control(35).Enabled=   0   'False
-      Tab(1).Control(36)=   "plus(8)"
+      Tab(1).Control(36)=   "cmbNpc(4)"
       Tab(1).Control(36).Enabled=   0   'False
-      Tab(1).Control(37)=   "plus(7)"
+      Tab(1).Control(37)=   "cmbNpc(5)"
       Tab(1).Control(37).Enabled=   0   'False
-      Tab(1).Control(38)=   "plus(6)"
+      Tab(1).Control(38)=   "cmbNpc(6)"
       Tab(1).Control(38).Enabled=   0   'False
-      Tab(1).Control(39)=   "plus(5)"
+      Tab(1).Control(39)=   "cmbNpc(7)"
       Tab(1).Control(39).Enabled=   0   'False
-      Tab(1).Control(40)=   "plus(4)"
+      Tab(1).Control(40)=   "cmbNpc(8)"
       Tab(1).Control(40).Enabled=   0   'False
-      Tab(1).Control(41)=   "plus(3)"
+      Tab(1).Control(41)=   "cmbNpc(9)"
       Tab(1).Control(41).Enabled=   0   'False
-      Tab(1).Control(42)=   "plus(2)"
+      Tab(1).Control(42)=   "cmbNpc(10)"
       Tab(1).Control(42).Enabled=   0   'False
-      Tab(1).Control(43)=   "plus(1)"
+      Tab(1).Control(43)=   "cmbNpc(11)"
       Tab(1).Control(43).Enabled=   0   'False
-      Tab(1).Control(44)=   "plus(15)"
+      Tab(1).Control(44)=   "cmbNpc(12)"
       Tab(1).Control(44).Enabled=   0   'False
-      Tab(1).Control(45)=   "Command4"
+      Tab(1).Control(45)=   "cmbNpc(13)"
       Tab(1).Control(45).Enabled=   0   'False
-      Tab(1).Control(46)=   "Command5"
+      Tab(1).Control(46)=   "cmbNpc(14)"
       Tab(1).Control(46).Enabled=   0   'False
       Tab(1).ControlCount=   47
       Begin VB.CommandButton Command5 
@@ -1422,8 +1422,8 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   5
             Text            =   "0"
-            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
-            Top             =   1260
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporté"
+            Top             =   1220
             Width           =   855
          End
          Begin VB.TextBox txtDown 
@@ -1441,8 +1441,8 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   4
             Text            =   "0"
-            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
-            Top             =   960
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléportés"
+            Top             =   900
             Width           =   855
          End
          Begin VB.TextBox txtRight 
@@ -1460,8 +1460,8 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   3
             Text            =   "0"
-            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
-            Top             =   690
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléportés"
+            Top             =   560
             Width           =   855
          End
          Begin VB.TextBox txtUp 
@@ -1479,8 +1479,8 @@ Begin VB.Form frmMapProperties
             Left            =   2070
             TabIndex        =   2
             Text            =   "0"
-            ToolTipText     =   "Numéro de la carte où les joueurs seront téléporter"
-            Top             =   405
+            ToolTipText     =   "Numéro de la carte où les joueurs seront téléportés"
+            Top             =   240
             Width           =   855
          End
          Begin VB.Label Label16 
@@ -1497,7 +1497,7 @@ Begin VB.Form frmMapProperties
             Height          =   255
             Left            =   600
             TabIndex        =   66
-            Top             =   1275
+            Top             =   1200
             Width           =   1365
          End
          Begin VB.Label Label15 
@@ -1514,7 +1514,7 @@ Begin VB.Form frmMapProperties
             Height          =   210
             Left            =   600
             TabIndex        =   65
-            Top             =   1005
+            Top             =   920
             Width           =   1155
          End
          Begin VB.Label Label2 
@@ -1531,7 +1531,7 @@ Begin VB.Form frmMapProperties
             Height          =   210
             Left            =   600
             TabIndex        =   64
-            Top             =   705
+            Top             =   600
             Width           =   1095
          End
          Begin VB.Label Label14 
@@ -1548,7 +1548,7 @@ Begin VB.Form frmMapProperties
             Height          =   240
             Left            =   600
             TabIndex        =   63
-            Top             =   405
+            Top             =   260
             Width           =   1020
          End
       End

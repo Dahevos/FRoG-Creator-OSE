@@ -773,7 +773,7 @@ Begin VB.Form frmoptions
          Width           =   5535
       End
       Begin VB.Label Label1 
-         Caption         =   $"frmoptions.frx":01B1
+         Caption         =   $"frmoptions.frx":01B3
          BeginProperty Font 
             Name            =   "Segoe UI"
             Size            =   8.25
@@ -1096,7 +1096,7 @@ Private Sub editcls_Click()
     frmclasseseditor.cartem.Text = Val(ReadINI("DEATH", "Map", App.Path & "\Classes\Class" & classe & ".ini"))
     frmclasseseditor.xm.Text = Val(ReadINI("DEATH", "x", App.Path & "\Classes\Class" & classe & ".ini"))
     frmclasseseditor.ym.Text = Val(ReadINI("DEATH", "y", App.Path & "\Classes\Class" & classe & ".ini"))
-    frmclasseseditor.lock.value = Val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & classe & ".ini"))
+    frmclasseseditor.Lock.value = Val(ReadINI("CLASS", "Locked", App.Path & "\Classes\Class" & classe & ".ini"))
     frmclasseseditor.homme.Height = 48
     frmclasseseditor.femme.Height = 48
     If frmclasseseditor.homme.Height <= 0 Then frmclasseseditor.homme.Height = 48: frmclasseseditor.femme.Height = 48

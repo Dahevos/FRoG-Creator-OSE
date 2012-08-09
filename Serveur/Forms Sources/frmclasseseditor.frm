@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmclasseseditor 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Editeur de Classes de Frog Creator"
+   Caption         =   "Editeur de Classes de FRoG Creator"
    ClientHeight    =   6645
    ClientLeft      =   45
    ClientTop       =   435
